@@ -18,7 +18,7 @@
             </a>
             <nav class="navigation" role="navigation">
                 <ul class="primary-nav">
-                    <li><a style="font-size:20px; color:white" href="#">제품 소개</a></li>
+                    <li><a style="font-size:20px; color:" href="#">제품 소개</a></li>
                     <li><a style="font-size:20px; color:white" href="#">제품 구매</a></li>
                     <li><a style="font-size:20px; color:white" href="#">고객 문의</a></li>
                     <li><a style="font-size:20px; color:white; margin-left:80px; margin-right:20px" href="/auth/login">로그인 </a> </li>

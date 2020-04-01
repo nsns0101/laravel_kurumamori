@@ -11,6 +11,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        App\User::truncate();
         //슈퍼계정
         $name = ["이재영", "장준혁", "김도형", "팽진솔", "예준현", "정인식"];
         $email = [
@@ -35,5 +36,8 @@ class UsersTableSeeder extends Seeder
                 ]
             );
         }
+        //일반계정
+        factory(App\User::class, 5)->create();
     }
+
 }
