@@ -11,31 +11,30 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        App\User::truncate();
         //슈퍼계정
-        $name = ["이재영", "장준혁", "김도형", "팽진솔", "예준현", "정인식"];
-        $email = [
-            "dl@wodud",
-            "wkd@wnsgur",
-            "rla@ehgud",
-            "vod@wlsthf",
-            "dP@wnsgus",
-            "wjd@dlstlr",
-        ];
-        $age = [24, 26, 24, 23, 24, 26];
-        for ($i = 0; $i < count($name); $i++) {
-            App\User::create(
-                [
-                    'email' => $email[$i],
-                    'password' => bcrypt('password'),
-                    'name' => $name[$i],
-                    'age' => $age[$i],
-                    'gender' => Arr::random(['남', '여']),
-                    'phone' => "010-1234-567{$i}",
-                    'remember_token' => Str::random(10),
-                ]
-            );
-        }
+        // $name = ["이재영", "장준혁", "김도형", "팽진솔", "예준현", "정인식"];
+        // $email = [
+        //     "dl@wodud",
+        //     "wkd@wnsgur",
+        //     "rla@ehgud",
+        //     "vod@wlsthf",
+        //     "dP@wnsgus",
+        //     "wjd@dlstlr",
+        // ];
+        // $age = [24, 26, 24, 23, 24, 26];
+        // for ($i = 0; $i < count($name); $i++) {
+        //     App\User::create(
+        //         [
+        //             'email' => $email[$i],
+        //             'password' => bcrypt('password'),
+        //             'name' => $name[$i],
+        //             'age' => $age[$i],
+        //             'gender' => Arr::random(['남', '여']),
+        //             'phone' => "010-1234-567{$i}",
+        //             'remember_token' => Str::random(10),
+        //         ]
+        //     );
+        // }
         //일반계정
         factory(App\User::class, 5)->create();
     }
