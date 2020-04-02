@@ -8,9 +8,15 @@ class Comment extends Model
 {
     protected $fillable = ['content'];
 
-    //한 게시판은 여러 댓글을 가질 수 있음
-    public function comments()
+    //여러 댓글은 한 유저를 가짐
+    public function user()
     {
-        return $this->belongsTo(Comment::class);
+        return $this->belongsTo(User::class);
     }
+    //여러 댓글은 한 게시판을 가짐
+    public function question()
+    {
+        return $this->morphTo();
+    }
+
 }

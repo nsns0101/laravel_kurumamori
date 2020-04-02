@@ -25,11 +25,7 @@ class User extends Authenticatable
     //일대다
     public function products()
     {
-        return $this->hasMany(Products::class);
-    }
-    public function user()
-    {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(Product::class);
     }
     public function questions()
     {
@@ -41,7 +37,10 @@ class User extends Authenticatable
     }
     public function insurances()
     {
-        return $this->hasMany(insurances::class);
+        return $this->hasMany(Insurance::class);
     }
-
+    public function drives()
+    {
+        return $this->hasMany(Drive::class);
+    }
 }

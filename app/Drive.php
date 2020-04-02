@@ -13,11 +13,5 @@ class Drive extends Model
     {
         return $this->belongsTo(User::class);
     }
-    //한 운전정보는 하나의 안전점수를 가질 수 있음
-    public function drive_safety()
-    {
-        // return $this->belongsTo(drive_safety::class);
-        return $this->hasOne(drive_safety::class);
-    }
 
 }
