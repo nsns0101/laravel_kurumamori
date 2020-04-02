@@ -73,7 +73,7 @@ h5 {
 	Global Styles
 -------------------------------------------------------------------------------*/
 a {
-    color: #e84545;
+    color: black;
 }
 a:hover,
 a:focus {
@@ -148,7 +148,7 @@ ul li {
     color: #ffffff;
 }
 #header.fixed a:hover {
-    color: #ff5a27;
+    color: red;
 }
 #header.fixed .header-content {
     border-bottom: 0;
@@ -174,7 +174,7 @@ ul li {
     display: inline-block;
 }
 .navigation a {
-    color: rgba(8, 8, 8, 0.86);
+    color: white;
     font-size: 14px;
     font-weight: 600;
     margin-left: 40px;
@@ -182,7 +182,7 @@ ul li {
 }
 .navigation a:hover,
 .navigation a.active {
-    color: #ff5a27;
+    color: red;
 }
 .nav-toggle {
     display: none;

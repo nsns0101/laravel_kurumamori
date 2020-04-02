@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
 
 class LoginController extends Controller
 {
@@ -20,23 +19,32 @@ class LoginController extends Controller
     //회원가입 요청
     public function create()
     {
-        // return view('sessions.login');
-    }
 
+    }
     //로그인 요청
     public function store(Request $request)
     {
+        $messages = [
+            'email.required' => '이메일을 입력해주세요',
+            'password.required' => '비밀번호를 입력해주세요',
+        ];
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required|min:6',
+        ], $messages);
+        if (!auth()->attempt($request->only('email', 'password'), $request->has('remember'))) {
+            return $this->respondError('이메일 또는 비밀번호가 맞지 않습니다.');
+        }
+
+        flash(auth()->user()->name . '님, 환영합니다.');
+        return redirect('/');
     }
-    
-    // public function destroy()
-    // {
-    // }
 
-    // protected function respondError($message)
-    // {
-    // }
+    public function destroy()
+    {
+        auth()->logout();
+        flash('또 방문해 주세요.');
+        return redirect('/');
+    }
 
-    // protected function respondCreated($message)
-    // {
-    // }
 }

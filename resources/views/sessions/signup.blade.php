@@ -16,12 +16,15 @@
 
             </div>
             <h5 style="color:black">로그인 정보</h5>
-            <div class="form-group">
+            <div class="form-group {{$errors->has('email') ? 'has-error' : ''}}">
                 <input type="email" name="email" class="form-control" placeholder="이메일" value="{{ old('email') }}" />
+                {!! $errors->first('email', '<span class="form-error">:message</span>')!!}
             </div>
 
-            <div class="form-group">
+            <div class="form-group {{$errors->has('password') ? 'has-error' : ''}}">
                 <input type="password" name="password" class="form-control" placeholder="비밀번호" />
+                {!! $errors->first('password', '<span class="form-error">:message</span>')!!}
+
             </div>
 
             <div class="form-group">
@@ -30,27 +33,38 @@
 
             <h5 style="color:black">유저 정보</h5>
 
-            <div class="form-group">
-                <input type="text" name="name" class="form-control" placeholder="이름" value="{{ old('name') }}" autofocus />
+            <div class="form-group {{$errors->has('name') ? 'has-error' : ''}}">
+                <input type="text" name="name" class="form-control" placeholder="이름" value="{{ old('name') }}"
+                    autofocus />
+                {!! $errors->first('name', '<span class="form-error">:message</span>')!!}
+
             </div>
 
-            <div class="form-group">
-                <input type="text" name="age" class="form-control" placeholder="나이" value="{{ old('age') }}"  />
+            <div class="form-group {{$errors->has('age') ? 'has-error' : ''}}">
+                <input type="text" name="age" class="form-control" placeholder="나이" value="{{ old('age') }}" />
+                {!! $errors->first('age', '<span class="form-error">:message</span>')!!}
+
             </div>
 
 
 
-            <div class="form-group">
-                <input type="text" name="phone" class="form-control" placeholder="휴대폰 번호" value="{{ old('phone') }}"  />
-            </div>
-            <div class="form-group">
+            <div class="form-group {{$errors->has('phone') ? 'has-error' : ''}}">
+                <input type="text" name="phone" class="f
+                
+                orm-control" placeholder="휴대폰 번호" value="{{ old('phone') }}" />
+                {!! $errors->first('phone', '<span class="form-error">:message</span>')!!}
 
-            <fieldset>
-              남성
-              <input type="radio" name="gender" id="gender1"/>
-              여성
-              <input type="radio" name="gender" id="gender2"/>
-            </fieldset>
+            </div>
+            <div class="form-group {{$errors->has('gender') ? 'has-error' : ''}}">
+                ☎053-940-5153 또는 ☎053-940-5159)
+                <fieldset>
+                    남성
+                    <input type="radio" name="gender" id="gender1" />
+                    여성
+                    <input type="radio" name="gender" id="gender2" />
+
+                </fieldset>
+                {!! $errors->first('gender', '<span class="form-error">:message</span>')!!}
             </div>
 
             <div class="form-group">

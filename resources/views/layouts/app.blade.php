@@ -29,8 +29,8 @@
 <body>
     @include('layouts.partial.header')
     <!-- main_container라는 id 꼭 필요 !! -->
-    @include('flash::message')
 
+    @include('flash::message')
     @yield('content')
 
     @include('layouts.partial.footer')
