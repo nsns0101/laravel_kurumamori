@@ -23,4 +23,11 @@ Route::resource('/auth/login', 'LoginController');
 //회원가입 컨트롤러
 Route::resource('/auth/signup', 'SignUpController');
 
-Route::resource('/info', 'InfoController');
+Route::get('/info/drive_score', function () {
+    return view('info.drive_score');
+});
+
+//내정보
+Route::resource('/info/index', 'InfoController');
+Route::resource('/info/medical_info', 'MedicalController');
+Route::resource('/info/product', 'ProductController');

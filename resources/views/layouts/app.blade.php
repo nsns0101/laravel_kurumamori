@@ -29,17 +29,17 @@
 <body>
     @include('layouts.partial.header')
     <!-- main_container라는 id 꼭 필요 !! -->
+    <div class="main_content">
 
-    @include('flash::message')
-    @yield('content')
+        @yield('content')
+        @include('flash::message')
 
-    @include('layouts.partial.footer')
+        @include('layouts.partial.footer')
 
-    @yield('script')
+        @yield('script')
 
-    <script>
+    </div>
 
-    </script>
 
 </body>
 

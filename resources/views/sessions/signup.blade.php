@@ -49,14 +49,11 @@
 
 
             <div class="form-group {{$errors->has('phone') ? 'has-error' : ''}}">
-                <input type="text" name="phone" class="f
-                
-                orm-control" placeholder="휴대폰 번호" value="{{ old('phone') }}" />
+                <input type="text" name="phone" class="form-control" placeholder="휴대폰 번호" value="{{ old('phone') }}" />
                 {!! $errors->first('phone', '<span class="form-error">:message</span>')!!}
 
             </div>
             <div class="form-group {{$errors->has('gender') ? 'has-error' : ''}}">
-                ☎053-940-5153 또는 ☎053-940-5159)
                 <fieldset>
                     남성
                     <input type="radio" name="gender" id="gender1" />
@@ -73,8 +70,14 @@
                 </button>
             </div>
         </form>
-    </div>
 
+    </div>
+    <div>
+        <p style="color:black">
+            계정이 있다면?
+            <a style="color:blue" href="{{ route('login.index')}}"> 로그인하세요. </a>
+        </p>
+    </div>
 </div>
 
 @stop

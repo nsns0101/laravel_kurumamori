@@ -8,7 +8,7 @@
 <br />
 <br />
 <div class="container-fluid">
-    제품 정보 페이지 ㅋㅋ
+    문의 정보 페이지 ㅋㅋ
 </div>
 
 

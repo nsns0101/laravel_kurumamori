@@ -19,7 +19,8 @@
             </div>
 
             <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-                <input type="email" name="email" class="form-control" placeholder="이메일" value="{{ old('email') }}" autofocus />
+                <input type="email" name="email" class="form-control" placeholder="이메일" value="{{ old('email') }}"
+                    autofocus />
                 <!-- <input type="email" name="email" class="form-control" placeholder="이메일" value="admin@mail.com" autofocus /> -->
                 {!! $errors->first('email', '<span class="form-error">:message</span>') !!}
             </div>
@@ -51,7 +52,7 @@
             <div>
                 <p style="color:black">
                     회원이 아니라면?
-                    <a href="{{ route('signup.index')}}"> 가입하세요 </a> </p>
+                    <a style="color:blue" href="{{ route('signup.index')}}"> 가입하세요 </a> </p>
             </div>
         </form>
     </div>
