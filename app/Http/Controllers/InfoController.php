@@ -18,11 +18,13 @@ class InfoController extends Controller
         $reports = \App\Report::whereUser_id(auth()->user()->id)->orderBy('id', 'desc')->paginate(5);
         $questions = \App\Question::whereUser_id(auth()->user()->id)->orderBy('id', 'desc')->paginate(5);
         $product = \App\Product::whereUser_id(auth()->user()->id)->first();
-        \Log::info($user);
-        $product_use = \App\Product_buy::whereUse_key(true)->get();
-        // $product_key = Arr::pluck($product_use, 'id');
-        // $product_key = Arr::pluck('id');
-        return view('info.index', compact('user', 'reports', 'questions', 'product', 'product_use'));
+
+        //
+        $product_use_key = \App\Product_buy::whereUse_key(false)->get();
+
+        \Log::info($product_use_key);
+
+        return view('info.index', compact('user', 'reports', 'questions', 'product', 'product_use_key'));
     }
 
     //회원가입 요청
@@ -34,6 +36,22 @@ class InfoController extends Controller
     //로그인 요청
     public function store(Request $request)
     {
+        // \Log::info($request->product_key);
+        $product_key = \App\Product_buy::whereProduct_key($request->product_key)->first();
+
+        if (!$product_key) {
+            flash()->error("잘못된 키입니다. 다시 입력해주세요");
+            return response()->json(['value' => '이미 사용한 키입니다'], 204);
+
+        }
+        $product_use = \App\Product_buy::whereUse_key($product_key->use_key)->first();
+        \Log::info($product_use);
+        if ($product_key) {
+            flash()->error("이미 사용한 키입니다.");
+            return response()->json(['value' => '이미 사용한 키입니다'], 204);
+        }
+
+        return response()->json([true], 204);
     }
 
     // public function destroy()

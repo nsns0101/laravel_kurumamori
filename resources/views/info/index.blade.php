@@ -24,7 +24,6 @@
                         <div class="caption">
                             <h3 class="text-center">유저 정보</h3>
                             <hr style="background-color:darkgrey;">
-                            <p>{{$product_use}}</p>
                             <p>이메일 : {{$user->email}}</p>
                             <p>이름 : {{$user->name}}</p>
                             <p>나이 : {{$user->age}}</p>
@@ -78,7 +77,11 @@
                                 <button class="btn btn-primary">등록하기</button>
                                 @else
                                 <p class="text-center text-danger">등록한 제품이 없습니다.</p>
-                                <button class="btn btn-primary" style="width:100%">제품 등록</button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#productModal">
+                                    제품 등록
+                                </button>
+                                @include('info.partial.product_modal',compact('product_use_key'))
                                 @endif
                             </div>
                             <hr style="background-color:green;">
@@ -123,10 +126,17 @@
 
 @section('script')
 <script>
-    $(document).ready(function(){
-        $("#myBtn").click(function(){
-            $("#myModal").modal();
-        });
+    $(document).on('click', '.btn__post__product', function(e) {
+    var product_key = $('#product_key');
+    $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},  
+        type: 'POST',
+        url: '/info/index',
+        dataType: 'json',
+        data: product_key
+    }).then(function (data){
+        console.log(data);
     });
+});
 </script>
 @stop

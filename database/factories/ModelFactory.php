@@ -51,8 +51,7 @@ $factory->define(App\Product::class, function (Faker $faker) {
     $as_date = date("Y-m-d", strtotime("{$date} +1 years")); //현재날짜 1년후
     $userId = App\User::pluck('id')->toArray();
     $product_use = \App\Product_buy::whereUse_key(true)->get();
-    // for($i = 0; $i <= count($product_use); $i++){
-    //     $product_use[i]->id;    }
+
     return [
         'user_id' => $faker->randomElement($userId),
         'product_name' => '좋은 제품',

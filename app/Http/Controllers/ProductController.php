@@ -25,6 +25,10 @@ class ProductController extends Controller
     //로그인 요청
     public function store(Request $request)
     {
+        $product_use = \App\Product_buy::whereUse_key(true)->get();
+        \Log::info($request->all());
+        return response()->json([], 200);
+
     }
 
     // public function destroy()

@@ -10,8 +10,20 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{route('products.create')}}" id="article_create_form" method="POST">
+                <form action="{{route('index.store')}}" id="product_create_form" method="POST">
+                    {{ csrf_field() }}
+                    <p class="text-center text-danger">'-'를 포함해서 입력해주세요.</p>
+                    <p class="text-center text-danger">ex) A1B2-C3D4-E5F6-G7H8</p>
+                    {{-- 입력 폼 --}}
+                    <div class="form-group {{ $errors->has('product_key') ? 'has-error' : '' }}">
+                        <input id="product_key" type="text" name="product_key" class="form-control"
+                            placeholder="제품 키 입력" value="{{ old('product_key') }}" />
+                        <!-- <input type="email" name="email" class="form-control" placeholder="이메일" value="admin@mail.com" autofocus /> -->
+                        {!! $errors->first('product_key', '<span class="form-error">:message</span>') !!}
+                    </div>
+                    <button type="submit" class="btn btn-primary btn__post__product">등록</button>
 
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
