@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('guest', ['except' => 'destroy']);
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //로그인, 회원가입 페이지
     public function index()
     {
@@ -17,9 +17,9 @@ class ProductController extends Controller
     }
 
     //회원가입 요청
-    public function create()
+    public function create(Request $request)
     {
-        // return view('sessions.login');
+
     }
 
     //로그인 요청

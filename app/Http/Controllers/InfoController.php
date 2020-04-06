@@ -19,7 +19,10 @@ class InfoController extends Controller
         $questions = \App\Question::whereUser_id(auth()->user()->id)->orderBy('id', 'desc')->paginate(5);
         $product = \App\Product::whereUser_id(auth()->user()->id)->first();
         \Log::info($user);
-        return view('info.index', compact('user', 'reports', 'questions', 'product'));
+        $product_use = \App\Product_buy::whereUse_key(true)->get();
+        // $product_key = Arr::pluck($product_use, 'id');
+        // $product_key = Arr::pluck('id');
+        return view('info.index', compact('user', 'reports', 'questions', 'product', 'product_use'));
     }
 
     //회원가입 요청

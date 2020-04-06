@@ -29,15 +29,34 @@ $factory->define(App\User::class, function (Faker $faker) {
     ];
 });
 
+//제품구매 팩토리
+$factory->define(App\Product_buy::class, function (Faker $faker) {
+    $payments = ['신용카드', '가상계좌', '카카오페이'];
+    $boolean = [true, false];
+    return [
+        'to_name' => Str::random(5),
+        'to_phone' => '010-' . rand(1000, 9999) . '-' . rand(1000, 9999),
+        'to_address' => Str::random(3) . "시" . Str::random(2) . "동" . rand(1, 999) . '-' . rand(1, 999),
+        'to_zipcode' => rand(1, 999) . '-' . rand(1, 999),
+        'payment' => Arr::random($payments),
+        'product_name' => '좋은 제품',
+        'product_key' => Str::random(4) . '-' . Str::random(4) . '-' . Str::random(4) . '-' . Str::random(4),
+        'use_key' => Arr::random($boolean),
+    ];
+});
+
 //제품 팩토리
 $factory->define(App\Product::class, function (Faker $faker) {
     $date = date("Y-m-d", time()); //현재날짜
     $as_date = date("Y-m-d", strtotime("{$date} +1 years")); //현재날짜 1년후
     $userId = App\User::pluck('id')->toArray();
+    $product_use = \App\Product_buy::whereUse_key(true)->get();
+    // for($i = 0; $i <= count($product_use); $i++){
+    //     $product_use[i]->id;    }
     return [
         'user_id' => $faker->randomElement($userId),
         'product_name' => '좋은 제품',
-        'product_key' => Str::random(4) . '-' . Str::random(4) . '-' . Str::random(4) . '-' . Str::random(4),
+        'product_key' => $faker->unique()->randomElement($product_use)->product_key,
         'date_buy' => $date,
         'date_as' => $as_date,
     ];

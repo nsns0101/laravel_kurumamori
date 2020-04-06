@@ -24,7 +24,7 @@
                         <div class="caption">
                             <h3 class="text-center">유저 정보</h3>
                             <hr style="background-color:darkgrey;">
-
+                            <p>{{$product_use}}</p>
                             <p>이메일 : {{$user->email}}</p>
                             <p>이름 : {{$user->name}}</p>
                             <p>나이 : {{$user->age}}</p>
@@ -34,7 +34,7 @@
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#userModal">
                                 상세보기
                             </button>
-                            @include('info.partial.modal')
+                            @include('info.partial.user_modal',compact('user'))
                             <hr style="background-color:darkgrey;">
 
                         </div>

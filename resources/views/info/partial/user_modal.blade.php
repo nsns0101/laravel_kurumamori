@@ -10,11 +10,15 @@
                 </button>
             </div>
             <div class="modal-body">
-                ...
+                <p>이메일 : {{$user->email}}</p>
+                <p>이름 : {{$user->email}}</p>
+                <p>나이 : {{$user->email}}</p>
+                <p>성별 : {{$user->email}}</p>
+                <p>휴대폰 번호 : {{$user->email}}</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                <button type="button" class="btn btn-primary">확인</button>
             </div>
         </div>
     </div>

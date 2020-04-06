@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
 
         //테이블 초기화
         App\User::truncate();
+        App\Product_buy::truncate();
         App\Product::truncate();
         App\Medical_info::truncate();
         App\Drive::truncate();
@@ -28,6 +29,7 @@ class DatabaseSeeder extends Seeder
         App\Report::truncate();
         //시더 할 목록
         $this->call(UsersTableSeeder::class);
+        $this->call(Product_buysTableSeeder::class);
         $this->call(ProductsTableSeeder::class);
         $this->call(Medical_infosTableSeeder::class);
         $this->call(DrivesTableSeeder::class);
