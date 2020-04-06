@@ -22,7 +22,7 @@ class InfoController extends Controller
         //
         $product_use_key = \App\Product_buy::whereUse_key(false)->get();
 
-        \Log::info($product_use_key);
+        // \Log::info($product_use_key);
 
         return view('info.index', compact('user', 'reports', 'questions', 'product', 'product_use_key'));
     }
@@ -34,26 +34,33 @@ class InfoController extends Controller
     }
 
     //로그인 요청
-    public function store(Request $request)
+    public function store(Request $request, \App\User $user)
     {
         // \Log::info($request->product_key);
-        $product_key = \App\Product_buy::whereProduct_key($request->product_key)->first();
+        $product = \App\Product_buy::whereProduct_key($request->product_key)->first();
 
-        if (!$product_key) {
+        if (!$product) {
             flash()->error("잘못된 키입니다. 다시 입력해주세요");
-            return response()->json(['value' => '이미 사용한 키입니다'], 204);
+            return response()->json(['value' => '이미 사용한 키입니다'], 200);
 
         }
-        $product_use = \App\Product_buy::whereUse_key($product_key->use_key)->first();
-        \Log::info($product_use);
-        if ($product_key) {
+
+        $product_use = \App\Product::whereProduct_key($product->product_key)->first();
+        // \Log::info($product_use);
+        if ($product_use) {
             flash()->error("이미 사용한 키입니다.");
-            return response()->json(['value' => '이미 사용한 키입니다'], 204);
+            return response()->json(['value' => '잘못된 키입니다'], 204);
         }
 
-        return response()->json([true], 204);
+        $create_product = \App\Product::create([
+            'user_id' => auth()->user()->id,
+            'product_name' => $product->product_name,
+            'product_key' => $request->product_key,
+            'date_buy' => $product->created_at,
+            'date_as' => date("Y-m-d", strtotime("{$product->created_at} +1 years")),
+        ]);
+        return response()->json([$create_product], 200);
     }
-
     // public function destroy()
     // {
     // }

@@ -135,7 +135,9 @@
         dataType: 'json',
         data: product_key
     }).then(function (data){
-        console.log(data);
+        console.log(data[0].id)
+        $('#ex_text').text(`${data[0].product_key}로 하시겠습니까?`);
+        //같은 파일에 있는 id를 가진 텍스트는 바껴지는데 include로 한 것은 안바뀜
     });
 });
 </script>
