@@ -1,56 +1,46 @@
-@extends('layouts.app')
-
-
 <!-- Custom styles for this template-->
 <link href="/css/sb-admin-2.min.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> --}}
 
-<ul class="navbar-nav info_menu sidebar sidebar-dark accordion" id="accordionSidebar">
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
-        </div>
+<div class="col-md-3" style="padding-left:0px;">
+
+    <ul class="navbar-nav info_menu sidebar sidebar-dark accordion" id="accordionSidebar">
         <br />
-        <div class="sidebar-brand-text mx-3">내 정보</div>
-    </a>
 
-    <!-- hr -->
-    <hr class="sidebar-divider">
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <div class="sidebar-brand-icon rotate-n-15">
+                <i class="fas fa-laugh-wink"></i>
+            </div>
+            <br />
+            <div class="sidebar-brand-text mx-3">내 정보</div>
+        </a>
 
-    <!-- 개인정보-->
-    <li class="nav-item">
-        <a class="nav-link" href="/info/index" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-            aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span style="font-size:14px">개인정보</span>
-        </a>
-        <a class="nav-link collapsed" href="/info/product" data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span style="font-size:14px">제품정보</span>
-        </a>
-        <a class="nav-link collapsed" href="/info/medical_info" data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span style="font-size:14px">의료정보</span>
-        </a>
-        <a class="nav-link collapsed" href="/info/drive_score" data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span style="font-size:14px">운점점수</span>
-        </a>
-    </li>
+        <!-- hr -->
+        <hr class="sidebar-divider">
 
-</ul>
+        <!-- 개인정보-->
+        <li class="nav-item">
+            <a class="nav-link" href="/info/index">
+                <i class="fas fa-fw fa-wrench"></i>
+                <span style="font-size:14px">개인정보</span>
+            </a>
+
+            <a class="nav-link" href="/info/medical_info">
+                <i class="fas fa-fw fa-wrench"></i>
+                <span style="font-size:14px">의료정보</span>
+            </a>
+            <a class="nav-link" href="/info/drive_score">
+                <i class="fas fa-fw fa-wrench"></i>
+                <span style="font-size:14px">운전점수</span>
+            </a>
+        </li>
+
+    </ul>
+</div>
+
 <style>
     .sidebar-brand-text {
         font-size: 22px;

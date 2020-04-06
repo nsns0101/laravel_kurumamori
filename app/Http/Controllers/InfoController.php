@@ -17,8 +17,9 @@ class InfoController extends Controller
         $user = \App\User::whereId(auth()->user()->id)->first();
         $reports = \App\Report::whereUser_id(auth()->user()->id)->orderBy('id', 'desc')->paginate(5);
         $questions = \App\Question::whereUser_id(auth()->user()->id)->orderBy('id', 'desc')->paginate(5);
+        $product = \App\Product::whereUser_id(auth()->user()->id)->first();
         \Log::info($user);
-        return view('info.index', compact('user', 'reports', 'questions'));
+        return view('info.index', compact('user', 'reports', 'questions', 'product'));
     }
 
     //회원가입 요청
