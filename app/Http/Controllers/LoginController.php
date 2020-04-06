@@ -13,6 +13,7 @@ class LoginController extends Controller
     //로그인, 회원가입 페이지
     public function index()
     {
+
         return view('sessions.login');
     }
 

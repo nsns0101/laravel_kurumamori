@@ -6,14 +6,19 @@ use Illuminate\Http\Request;
 
 class InfoController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('guest', ['except' => 'destroy']);
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //로그인, 회원가입 페이지
     public function index()
     {
-        return view('info.index');
+        //현재 로그인 중인 유저의 정보
+        $user = \App\User::whereId(auth()->user()->id)->first();
+        $reports = \App\Report::whereUser_id(auth()->user()->id)->orderBy('id', 'desc')->paginate(5);
+        $questions = \App\Question::whereUser_id(auth()->user()->id)->orderBy('id', 'desc')->paginate(5);
+        \Log::info($user);
+        return view('info.index', compact('user', 'reports', 'questions'));
     }
 
     //회원가입 요청

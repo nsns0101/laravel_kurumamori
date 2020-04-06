@@ -1,18 +1,11 @@
 @extends('layouts.app')
 
-<link
-    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-    rel="stylesheet">
 
 <!-- Custom styles for this template-->
 <link href="/css/sb-admin-2.min.css" rel="stylesheet">
-
-
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<!-- 차트 링크 -->
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
 <ul class="navbar-nav info_menu sidebar sidebar-dark accordion" id="accordionSidebar">
     <br />
@@ -39,11 +32,6 @@
             aria-controls="collapseTwo">
             <i class="fas fa-fw fa-wrench"></i>
             <span style="font-size:14px">개인정보</span>
-        </a>
-        <a class="nav-link collapsed" href="/info/question_info" data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span style="font-size:14px">문의정보</span>
         </a>
         <a class="nav-link collapsed" href="/info/product" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
@@ -93,9 +81,9 @@
     }
 
     .info_menu {
-        background-image: linear-gradient(180deg, #51595e 10%, black 100%);
+        background-image: linear-gradient(1800deg, #51595e 10%, black 100%);
         background-size: cover;
-        width: 200px;
+        width: 100%;
     }
 
     .navbar-nav {

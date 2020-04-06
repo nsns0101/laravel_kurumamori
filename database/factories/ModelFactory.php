@@ -45,8 +45,6 @@ $factory->define(App\Product::class, function (Faker $faker) {
 
 //의료정보 팩토리
 $factory->define(App\Medical_info::class, function (Faker $faker) {
-    $date = date("Y-m-d", time()); //현재날짜
-    $as_date = date("Y-m-d", strtotime("{$date} +1 years")); //현재날짜 1년후
     $userId = App\User::pluck('id')->toArray();
     //
     $sickness = ["위암", "허리디스크", "당뇨", "간암", "코로나", "메르스", "페렴", "뇌졸중"];
@@ -105,7 +103,6 @@ $factory->define(App\Insurance::class, function (Faker $faker) {
 
 //게시글 팩토리
 $factory->define(App\Question::class, function (Faker $faker) {
-    $date = date("Y-m-d", time()); //현재날짜
     $userId = App\User::pluck('id')->toArray();
     return [
         'user_id' => $faker->randomElement($userId),
@@ -116,7 +113,6 @@ $factory->define(App\Question::class, function (Faker $faker) {
 
 //댓글 팩토리
 $factory->define(App\Comment::class, function (Faker $faker) {
-    $date = date("Y-m-d", time()); //현재날짜
     $userId = App\User::pluck('id')->toArray();
     $questionId = App\Question::pluck('id')->toArray();
     return [
@@ -124,5 +120,14 @@ $factory->define(App\Comment::class, function (Faker $faker) {
         'question_id' => $faker->randomElement($questionId),
         'question_type' => App\Question::class,
         'content' => $faker->paragraph,
+    ];
+});
+
+//신고 팩토리
+$factory->define(App\Report::class, function (Faker $faker) {
+    $userId = App\User::pluck('id')->toArray();
+    return [
+        'user_id' => $faker->randomElement($userId),
+        'gps' => Str::random(3) . "시" . Str::random(2) . "동" . rand(1, 999) . '-' . rand(1, 999),
     ];
 });
