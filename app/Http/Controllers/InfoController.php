@@ -40,16 +40,16 @@ class InfoController extends Controller
         $product = \App\Product_buy::whereProduct_key($request->product_key)->first();
 
         if (!$product) {
-            flash()->error("잘못된 키입니다. 다시 입력해주세요");
-            return response()->json(['value' => '이미 사용한 키입니다'], 200);
+            // flash()->error("잘못된 키입니다. 다시 입력해주세요");
+            return response()->json([], 204);
 
         }
 
         $product_use = \App\Product::whereProduct_key($product->product_key)->first();
         // \Log::info($product_use);
         if ($product_use) {
-            flash()->error("이미 사용한 키입니다.");
-            return response()->json(['value' => '잘못된 키입니다'], 204);
+            // flash()->error("이미 사용한 키입니다.");
+            return response()->json([], 204);
         }
 
         $create_product = \App\Product::create([

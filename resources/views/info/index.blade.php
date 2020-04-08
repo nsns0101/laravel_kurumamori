@@ -17,7 +17,6 @@
             <br />
             <br />
             <h3>개인 정보</h3>
-
             <div class="row">
                 <div class="col-sm-6 col-md-3">
                     <div class="thumbnail">
@@ -34,8 +33,7 @@
                                 상세보기
                             </button>
                             @include('info.partial.user_modal',compact('user'))
-                            <hr style="background-color:darkgrey;">
-
+                            <hr style="background-color:darkgrey;" />
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-5">
@@ -70,10 +68,10 @@
                                 <h3 class="text-center">제품 정보</h3>
                                 <hr style="background-color:green;">
                                 @if($product)
-                                <p>제품 명 : {{$product->product_name}}</p>
-                                <p>제품 키 : {{$product->product_key}}</p>
-                                <p>구입날짜 : {{$product->date_buy}}</p>
-                                <p>AS기한 : {{$product->date_as}}까지</p>
+                                <p id="text_product_name">제품 명 : {{$product->product_name}}</p>
+                                <p id="text_product_key">제품 키 : {{$product->product_key}}</p>
+                                <p id="text_product_date_buy">구입날짜 : {{$product->date_buy}}</p>
+                                <p id="text_product_date_as">AS기한 : {{$product->date_as}}까지</p>
                                 <button class="btn btn-primary">등록하기</button>
                                 @else
                                 <p class="text-center text-danger">등록한 제품이 없습니다.</p>
@@ -85,37 +83,39 @@
                                 @endif
                             </div>
                             <hr style="background-color:green;">
-
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-12 col-md-12">
-                    <div class="thumbnail">
-                        <div class="caption">
-                            <h3 class="text-center">문의 이력 </h3>
-                            <hr style="background-color:blue;">
+                    <div class="col-md-12">
+                        <div class="thumbnail">
+                            <div class="caption">
+                                <h3 class="text-center">문의 이력 </h3>
+                                <table class="table" style="border-top: 3px solid blue; border-bottom: 3px solid blue;">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center" scope="col">#</th>
+                                            <th class="text-center" scope="col">제목</th>
+                                            <th class="text-center" scope="col">작성날짜</th>
+                                            <th class="text-center" scope="col">대답여부</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse($questions as $question)
+                                        <tr>
+                                            <th class="text-center" scope="row">{{$question->id}}</th>
+                                            <td class="text-center">{{$question->title}}</td>
+                                            <td class="text-center">{{$question->created_at}}</td>
+                                            <td class="text-center">O</td>
+                                        </tr>
+                                        @empty
+                                        <p class="text-center text-danger">이력이 없습니다.</p>
+                                        @endforelse
+                                        <br />
 
-                            @forelse($questions as $question)
-                            <div class="row">
-                                <div class="col-sm-6 col-md-1 text-center">
-                                    <p>{{$question->id}}</p>
+                                    </tbody>
+                                </table>
+                                <p class="text-danger">최근 5건만 표시됩니다.</p>
 
-                                </div>
-                                <div class="col-sm-6 col-md-8 text-center">
-                                    <p>{{$question->title}}</p>
-                                </div>
-                                <div class="col-sm-6 col-md-3 text-center">
-                                    <p>{{$question->created_at}}</p>
-
-                                </div>
                             </div>
-                            {{-- 신고 이력이 없을 경우 --}}
-                            @empty
-                            <p class="text-center text-danger">이력이 없습니다.</p>
-                            @endforelse
-                            <br />
-                            <p class="text-danger">최근 5건만 표시됩니다.</p>
-
                         </div>
                     </div>
                 </div>
@@ -135,9 +135,17 @@
         dataType: 'json',
         data: product_key
     }).then(function (data){
-        console.log(data[0].id)
-        $('#ex_text').text(`${data[0].product_key}로 하시겠습니까?`);
-        //같은 파일에 있는 id를 가진 텍스트는 바껴지는데 include로 한 것은 안바뀜
+        try{
+            alert(`${data[0].product_key}로 등록되었습니다.`);
+            window.location.href = '/info/index';
+        }
+        catch{
+        $('#ex_text').text(`잘못된 키이거나 이미 사용한 키입니다.`);
+        }
+        // $('#text_product_name').text(data[0].product_name);
+        // $('#text_product_key').text(data[0].product_key);
+        // $('#text_product_date_buy').text(data[0].date_buy);
+        // $('#text_product_date_as').text(data[0].date_as);
     });
 });
 </script>
