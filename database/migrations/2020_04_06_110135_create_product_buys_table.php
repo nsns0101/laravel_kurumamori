@@ -22,7 +22,6 @@ class CreateProductBuysTable extends Migration
             $table->string('payment')->comment('결제수단');
             $table->string('product_name')->comment('제품 명');
             $table->string('product_key')->comment('제품 키');
-            $table->boolean('use_key')->default(0)->comment('제품 키 사용 여부');
             $table->timestamps();
         });
     }

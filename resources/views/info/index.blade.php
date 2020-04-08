@@ -48,7 +48,7 @@
                                         <p>접수날짜 : {{$report->created_at}}</p>
                                     </div>
                                     <div class="col-sm-6 col-md-6">
-                                        <p class="gps"></p>
+                                        <p class="gps{{$report->id}}"></p>
                                     </div>
                                     {{-- 위도 경도로 주소찾기 --}}
                                     <script>
@@ -56,12 +56,14 @@
                                         var API_KEY = 'AIzaSyBmDNMJ1gbJusi6rqVoskubnytiXP0Rchc';
                                         var latitude = "{{$report->latitude}}";
                                         var longitude = "{{$report->longitude}}";
+                                        console.log(latitude);
                                         new Promise(function(resolve, reject) {
                                             resolve(
                                                 $.getJSON(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${API_KEY}`,
                                                 function(data) {
                                                     gps = data.results[0].formatted_address;
-                                                    $('.gps').text(gps);
+                                                    console.log(gps);
+                                                    $(`.gps{{$report->id}}`).text(gps);
                                                 }));
                                         });
                                     </script>
@@ -95,7 +97,7 @@
                                     data-target="#productModal">
                                     제품 등록
                                 </button>
-                                @include('info.partial.product_modal',compact('product_use_key'))
+                                @include('info.partial.product_modal')
                                 @endif
                             </div>
                             <hr style="background-color:green;">
@@ -151,11 +153,13 @@
         dataType: 'json',
         data: product_key
     }).then(function (data){
+        console.log(data);
         try{
             alert(`${data[0].product_key}로 등록되었습니다.`);
             window.location.href = '/info/index';
         }
-        catch{
+        catch(error){
+            console.log(error);
         $('#ex_text').text(`잘못된 키이거나 이미 사용한 키입니다.`);
         }
     });

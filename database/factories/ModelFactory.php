@@ -41,7 +41,6 @@ $factory->define(App\Product_buy::class, function (Faker $faker) {
         'payment' => Arr::random($payments),
         'product_name' => '좋은 제품',
         'product_key' => Str::random(4) . '-' . Str::random(4) . '-' . Str::random(4) . '-' . Str::random(4),
-        'use_key' => Arr::random($boolean),
     ];
 });
 
@@ -50,7 +49,7 @@ $factory->define(App\Product::class, function (Faker $faker) {
     $date = date("Y-m-d", time()); //현재날짜
     $as_date = date("Y-m-d", strtotime("{$date} +1 years")); //현재날짜 1년후
     $userId = App\User::pluck('id')->toArray();
-    $product_use = \App\Product_buy::whereUse_key(true)->get();
+    $product_use = \App\Product_buy::get();
 
     return [
         'user_id' => $faker->randomElement($userId),
@@ -147,7 +146,7 @@ $factory->define(App\Report::class, function (Faker $faker) {
     return [
         'user_id' => $faker->randomElement($userId),
         // 'gps' => Str::random(3) . "시" . Str::random(2) . "동" . rand(1, 999) . '-' . rand(1, 999),
-        'latitude' => '35.8963091',
-        'longitude' => '128.6198571',
+        'latitude' => rand(1, 60) . '.' . rand(1000, 9999999),
+        'longitude' => rand(1, 150) . '.' . rand(1000, 9999999),
     ];
 });
