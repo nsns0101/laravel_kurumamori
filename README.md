@@ -4,3 +4,5 @@
 
 -   composer require "barryvdh/laravel-debugbar" --dev
 -   composer require "laracasts/flash"
+
+---
