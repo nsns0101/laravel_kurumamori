@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReportsTable extends Migration
+class CreateDriveDetectionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,20 @@ class CreateReportsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reports', function (Blueprint $table) {
-            $table->bigIncrements('id')->comment('신고 번호');
+        Schema::create('drive_detections', function (Blueprint $table) {
+            $table->bigIncrements('id')->comment('드라이브 감지 번호');
             $table->unsignedBigInteger('user_id')->comment('유저 번호');
             $table->string('latitude')->comment('위도');
             $table->string('longitude')->comment('경도');
+            $table->boolean('bool_report')->comment('신고 여부');
+            $table->boolean('bool_sudden_acceleration')->comment('급가속 여부');
+            $table->boolean('bool_sudden_stop')->comment('급 정거 여부');
+            $table->boolean('bool_sleep')->comment('졸음 여부');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('생성 시간');
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('업데이트 시간');
-           
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+            $table->foreign('user_id')->references('id')->on('users')->onUpdete('cascade')->onDelete('cascade');
+
         });
     }
 
@@ -32,6 +37,6 @@ class CreateReportsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reports');
+        Schema::dropIfExists('drive_detections');
     }
 }
