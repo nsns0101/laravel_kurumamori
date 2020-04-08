@@ -10,10 +10,10 @@
 <section id="intro" class="section intro">
     <div class="row">
 
-        <div class="col-md-2">
+        <div class="col-md-2 col-xs-2 col-sm-2">
             @include('layouts.partial.info_menu')
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8 col-xs-8 col-sm-8">
             <br />
             <br />
             <h3>개인 정보</h3>
@@ -74,10 +74,8 @@
                                 <p class="text-center text-danger">이력이 없습니다.</p>
                                 @endforelse
                                 <p class="text-danger">최근 5건만 표시됩니다.</p>
-
                             </div>
                             <hr style="background-color:red;">
-
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-4">
