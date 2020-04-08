@@ -48,8 +48,24 @@
                                         <p>접수날짜 : {{$report->created_at}}</p>
                                     </div>
                                     <div class="col-sm-6 col-md-6">
-                                        <p>접수위치 : {{$report->gps}}</p>
+                                        <p class="gps"></p>
                                     </div>
+                                    {{-- 위도 경도로 주소찾기 --}}
+                                    <script>
+                                        var gps = "";
+                                        var API_KEY = 'AIzaSyBmDNMJ1gbJusi6rqVoskubnytiXP0Rchc';
+                                        var latitude = "{{$report->latitude}}";
+                                        var longitude = "{{$report->longitude}}";
+                                        new Promise(function(resolve, reject) {
+                                            resolve(
+                                                $.getJSON(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${API_KEY}`,
+                                                function(data) {
+                                                    gps = data.results[0].formatted_address;
+                                                    $('.gps').text(gps);
+                                                }));
+                                        });
+                                    </script>
+
                                 </div>
                                 {{-- 신고 이력이 없을 경우 --}}
                                 @empty
@@ -142,11 +158,11 @@
         catch{
         $('#ex_text').text(`잘못된 키이거나 이미 사용한 키입니다.`);
         }
-        // $('#text_product_name').text(data[0].product_name);
-        // $('#text_product_key').text(data[0].product_key);
-        // $('#text_product_date_buy').text(data[0].date_buy);
-        // $('#text_product_date_as').text(data[0].date_as);
     });
 });
+
+
+
+
 </script>
 @stop
