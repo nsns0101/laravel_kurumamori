@@ -33,7 +33,11 @@ $factory->define(App\User::class, function (Faker $faker) {
 $factory->define(App\Product_buy::class, function (Faker $faker) {
     $payments = ['신용카드', '가상계좌', '카카오페이'];
     $boolean = [true, false];
+    $userId = App\User::pluck('id')->toArray();
     return [
+        'user_id' => $faker->randomElement($userId),
+        'ea' => rand(1,2),
+        'price' => 49900,
         'to_name' => Str::random(5),
         'to_phone' => '010-' . rand(1000, 9999) . '-' . rand(1000, 9999),
         'to_address' => Str::random(3) . "시" . Str::random(2) . "동" . rand(1, 999) . '-' . rand(1, 999),
