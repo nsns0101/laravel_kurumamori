@@ -43,3 +43,6 @@ Route::resource('/products','ProductController');
 
 Route::resource('/buy','BuyController');
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+//김도형 Q&A ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+Route::resource('/qna','QnaController');
