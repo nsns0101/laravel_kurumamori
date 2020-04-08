@@ -1,20 +1,20 @@
 {{--  --}}
 <div class="col-md-2 text-center">
-    <p class="for-p">과거 질환</p>
+    <p class="past_sickness_p">과거 질환</p>
 </div>
-{{-- 드롭다운 버튼 --}}
+{{-- 드롭다운버튼 --}}
 <div class="col-md-2">
     <button 
-        class="btn btn-default dropdown-toggle for-btn" type="button" data-toggle="dropdown"
+        class="btn btn-default dropdown-toggle past_sickness_btn" type="button" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="true">
         선택
         <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li><a href="#" style="color:black">당뇨</a></li>
-        <li><a href="#" style="color:black">허리디스크</a></li>
-        <li><a href="#" style="color:black">장준혁</a></li>
-        <li><a href="#" style="color:black">위암</a></li>
+        <li><a class="dropdown-past_sickness" href="#" style="color:black">당뇨</a></li>
+        <li><a class="dropdown-past_sickness" href="#" style="color:black">허리디스크</a></li>
+        <li><a class="dropdown-past_sickness" href="#" style="color:black">장준혁</a></li>
+        <li><a class="dropdown-past_sickness" href="#" style="color:black">위암</a></li>
     </ul>
 </div>
 {{--  --}}
@@ -26,13 +26,13 @@
 </div>
 
 <style>
-    .for-p {
+    .past_sickness_p {
         font-size:24px; 
         margin-top:13px; 
         color:blue; 
         font-weight:800;
     }
-    .for-btn {
+    .past_sickness_btn {
         width:120px; 
         height:40px; 
         border: solid 1px black; 
