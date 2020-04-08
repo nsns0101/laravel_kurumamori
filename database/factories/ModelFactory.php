@@ -146,6 +146,8 @@ $factory->define(App\Report::class, function (Faker $faker) {
     $userId = App\User::pluck('id')->toArray();
     return [
         'user_id' => $faker->randomElement($userId),
-        'gps' => Str::random(3) . "시" . Str::random(2) . "동" . rand(1, 999) . '-' . rand(1, 999),
+        // 'gps' => Str::random(3) . "시" . Str::random(2) . "동" . rand(1, 999) . '-' . rand(1, 999),
+        'latitude' => '35.8963091',
+        'longitude' => '128.6198571',
     ];
 });

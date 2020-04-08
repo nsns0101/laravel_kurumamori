@@ -14,17 +14,19 @@ class CreateMedicalInfosTable extends Migration
     public function up()
     {
         Schema::create('medical_infos', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
-            $table->string('sickness'); //병명
-            $table->string('past_sickness')->nullable(); //예전에 걸린 병
-            $table->string('symptom')->nullable(); //증상
-            $table->string('guardian_phone')->nullable(); //보호자 폰번호
-            $table->string('medicine')->nullable(); //복용하는 약
-            $table->string('hospital')->nullable(); //다니는 병원
-            $table->string('hospital_phone')->nullable(); //다니는 병원 폰 번호
-            $table->string('report_request')->nullable(); //신고시 요청사항
-            $table->timestamps();
+            $table->bigIncrements('id')->comment('의료정보 번호');
+            $table->unsignedBigInteger('user_id')->comment('유저 번호');
+            $table->string('sickness')->comment('병명');
+            $table->string('past_sickness')->nullable()->comment('예전에 걸린 병');
+            $table->string('symptom')->nullable()->comment('증상');
+            $table->string('guardian_phone')->nullable()->comment('보호자 폰 번호');
+            $table->string('medicine')->nullable()->comment('복용중인 약');
+            $table->string('hospital')->nullable()->comment('다니는 병원');
+            $table->string('hospital_phone')->nullable()->comment('다니는 병원 폰 번호');
+            $table->string('report_request')->nullable()->comment('신고시 요청사항');
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('생성 시간');
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('업데이트 시간');
+
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
 
         });
