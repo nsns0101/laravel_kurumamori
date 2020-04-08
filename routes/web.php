@@ -30,4 +30,11 @@ Route::get('/info/drive_score', function () {
 //내정보
 Route::resource('/info/index', 'InfoController');
 Route::resource('/info/medical_info', 'MedicalController');
-Route::resource('/info/product', 'ProductController');
+// Route::resource('/info/product', 'ProductController');
+
+
+//정인식 제품 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+Route::resource('/products','ProductController');
+
+Route::resource('/buy','BuyController');
+//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ

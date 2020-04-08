@@ -6,14 +6,14 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
     //로그인, 회원가입 페이지
     public function index()
     {
-        return view('info.product');
+        return view('product.product');
     }
 
     //회원가입 요청
@@ -25,9 +25,9 @@ class ProductController extends Controller
     //로그인 요청
     public function store(Request $request)
     {
-        $product_use = \App\Product_buy::whereUse_key(true)->get();
-        \Log::info($request->all());
-        return response()->json([], 200);
+        // $product_use = \App\Product_buy::whereUse_key(true)->get();
+        // \Log::info($request->all());
+        // return response()->json([], 200);
 
     }
 

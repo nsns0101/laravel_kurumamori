@@ -48,6 +48,7 @@
         @include('layouts.partial.footer')
 
         @yield('script')
+        @yield('style')
 
     </div>
 
