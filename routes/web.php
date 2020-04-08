@@ -17,6 +17,11 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('logout',function(){
+    Auth::logout();
+    return view('home');
+});
+
 //로그인 컨트롤러
 Route::resource('/auth/login', 'LoginController');
 

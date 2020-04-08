@@ -15,6 +15,7 @@ class CreateProductBuysTable extends Migration
     {
         Schema::create('product_buys', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
             $table->bigInteger('ea'); //개수
             $table->bigInteger('price'); // 가격
             $table->string('to_name'); //받는사람 명
@@ -26,6 +27,9 @@ class CreateProductBuysTable extends Migration
             $table->string('product_name'); //제품 명
             $table->string('product_key'); //제품 키
             $table->boolean('use_key')->default(0); //제품 키 사용 여부
+
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

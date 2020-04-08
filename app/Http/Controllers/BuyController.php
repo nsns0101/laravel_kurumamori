@@ -11,6 +11,12 @@ class BuyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         return view('product.buy');
@@ -40,7 +46,7 @@ class BuyController extends Controller
 
         $product_name = "kurumamori";
 
-        $buy = \App\Product_buy::create([
+        $buy = $request->user()->product_buys()->create([
             'ea'=>$request->ea,
             'price'=>$total_price,
             'to_name'=>$request->to_name,
