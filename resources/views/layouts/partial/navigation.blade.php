@@ -12,16 +12,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/qna">고객 문의</a>
                 </li>
-                @if(auth()->user())
-                <li class="nav-item">
-                    <a class="nav-link" href="/info/index">내정보</a> 
-                </li>
-                @else
-                @endif
             </ul>
             
             <ul class="navbar-nav col-auto">
                 @if(auth()->user())
+                <li class="nav-item">
+                    <a class="nav-link" href="/info/index">내정보</a> 
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/logout">로그아웃</a> 
                 </li>
