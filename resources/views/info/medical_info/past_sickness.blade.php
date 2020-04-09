@@ -7,14 +7,33 @@
     <button 
         class="btn btn-default dropdown-toggle past_sickness_btn" type="button" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="true">
-        선택
+        없음
         <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li><a class="dropdown-past_sickness" href="#" style="color:black">없음</a></li>
+        <li><a class="dropdown-past_sickness" href="#" style="color:black">고혈압</a></li>
         <li><a class="dropdown-past_sickness" href="#" style="color:black">당뇨</a></li>
-        <li><a class="dropdown-past_sickness" href="#" style="color:black">허리디스크</a></li>
-        <li><a class="dropdown-past_sickness" href="#" style="color:black">장준혁</a></li>
-        <li><a class="dropdown-past_sickness" href="#" style="color:black">위암</a></li>
+        <li><a class="dropdown-past_sickness" href="#" style="color:black">결핵</a></li>
+        <li><a class="dropdown-past_sickness" href="#" style="color:black">심장질환</a></li>
+        <li><a class="dropdown-past_sickness" href="#" style="color:black">알러지</a></li>
+        <li><a class="dropdown-past_sickness" href="#" style="color:black">천식</a></li>
+        <li><a class="dropdown-past_sickness" href="#" style="color:black">심부전증</a></li>
+        <li><a class="dropdown-past_sickness" href="#" style="color:black">페렴</a></li>
+        <li><a class="dropdown-past_sickness" href="#" style="color:black">디스크</a></li>
+        <li><a class="dropdown-past_sickness" href="#" style="color:black">간경화</a></li>
+        <li><a class="dropdown-past_sickness" href="#" style="color:black">관절염</a></li>
+        <li><a class="dropdown-past_sickness" href="#" style="color:black">협심증</a></li>
+        <li><a class="dropdown-past_sickness" href="#" style="color:black">암</a></li>
+        <li><a class="dropdown-past_sickness" href="#" style="color:black">갑상선염</a></li>
+        <li><a class="dropdown-past_sickness" href="#" style="color:black">고지혈증</a></li>
+        <li><a class="dropdown-past_sickness" href="#" style="color:black">골다공증</a></li>
+        <li><a class="dropdown-past_sickness" href="#" style="color:black">과민성 대장</a></li>
+        <li><a class="dropdown-past_sickness" href="#" style="color:black">기관지염</a></li>
+        <li><a class="dropdown-past_sickness" href="#" style="color:black">뇌졸중</a></li>
+        <li><a class="dropdown-past_sickness" href="#" style="color:black">신장질환</a></li>
+        <li><a class="dropdown-past_sickness" href="#" style="color:black">간암</a></li>
+        <li><a class="dropdown-past_sickness" href="#" style="color:black">기타질환</a></li>
     </ul>
 </div>
 {{--  --}}

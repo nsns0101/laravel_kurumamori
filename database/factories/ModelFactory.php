@@ -68,7 +68,7 @@ $factory->define(App\Product::class, function (Faker $faker) {
 $factory->define(App\Medical_info::class, function (Faker $faker) {
     $userId = App\User::pluck('id')->toArray();
     //
-    $sickness = ["위암", "허리디스크", "당뇨", "간암", "코로나", "메르스", "페렴", "뇌졸중"];
+    $sickness = ["없음", "고혈압", "당뇨", "결핵", "심장질환", "알러지", "천식", "심부전증", "페렴", "디스크", "간경화", "관절염", "협심증", "암", "갑상선염", "고지혈증", "골다공증", "과민성 대장", "기관지염", "뇌졸중", "신장질환", "간암"];
     $symptom = ["위가 아픔", "허리가 아픔", "설탕먹고싶음", "간이 아픔", "몸살", "기침", "잦은 기침", "뇌가 아픔"];
     $medicine = ["위약", "허리약", "인슐린", "간약", "몸살약", "기침약", "잦은 기침약", "게보린"];
     $num = rand(0, 7);
@@ -77,14 +77,16 @@ $factory->define(App\Medical_info::class, function (Faker $faker) {
 
     return [
         'user_id' => $faker->unique()->randomElement($userId), //1:1관계로 유니크부여
-        'sickness' => $sickness[$num],
         'past_sickness' => Arr::random($sickness),
-        'symptom' => $symptom[$num],
+        'past_sickness_supplementation' => Str::random(10),
+        'sickness' => Arr::random($sickness),
+        'medicine' => Arr::random($medicine),
+        'symptom' => Arr::random($symptom),
         'guardian_phone' => '010-' . rand(1000, 9999) . '-' . rand(1000, 9999),
-        'medicine' => $medicine[$num],
+        'blood_type' => Arr::random(['A','B','AB','O']),
+        'disability_status' => Arr::random(['yes','no']),
         'hospital' => Arr::random($hospital),
-        'hospital_phone' => '010-' . rand(1000, 9999) . '-' . rand(1000, 9999),
-        'guardian_phone' => '010-' . rand(1000, 9999) . '-' . rand(1000, 9999),
+        'hospital_menu' => Str::random(6),
         'report_request' => Arr::random($report_request),
     ];
 });

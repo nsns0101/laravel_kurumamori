@@ -100,14 +100,14 @@
                                 </p>
                             </div>
                             <div class="col-md-4">
-                                <div class="form-group {{$errors->has('gender') ? 'has-error' : ''}}">
-                                    <fieldset>
+                                <div class="form-group {{$errors->has('disability_status') ? 'has-error' : ''}}">
+                                    <fieldset style="font-size:20px; margin-top:6px;">
                                         예
-                                        <input type="radio" name="gender" id="gender1" />
+                                        <input type="radio" name="disability_status" id="disability_status_yes" />
                                         아니오
-                                        <input type="radio" name="gender" id="gender2" />
+                                        <input type="radio" name="disability_status" id="disability_status_no" />
                                     </fieldset>
-                                    {!! $errors->first('gender', '<span class="form-error">:message</span>')!!}
+                                    {!! $errors->first('disability_status', '<span class="form-error">:message</span>')!!}
                                 </div>
                             </div>
                             <div class="col-md-3 text-center">
@@ -142,9 +142,9 @@
                             </div>
                             <br/>
                             <div class="col-md-5">
-                                <div class="form-group {{ $errors->has('past_sickness') ? 'has-error' : '' }}">
-                                    <input style="font-size:24px"type="text" name="past_sickness" class="form-control" placeholder="보충설명(복용 약물, 기간)" value="{{ old('past_sickness') }}"/>
-                                    {!! $errors->first('past_sickness', '<span class="form-error">:message</span>') !!}
+                                <div class="form-group {{ $errors->has('guardian_phone') ? 'has-error' : '' }}">
+                                    <input style="font-size:24px"type="text" name="guardian_phone" class="form-control" placeholder="응급시 연락가능한 보호자 휴대폰 번호" value="{{ old('guardian_phone') }}"/>
+                                    {!! $errors->first('guardian_phone', '<span class="form-error">:message</span>') !!}
                                 </div>
                             </div>
                         </div>

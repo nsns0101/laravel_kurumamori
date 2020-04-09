@@ -21,8 +21,7 @@ class CreateMedicalInfosTable extends Migration
             $table->string('sickness')->comment('현재 병명');
             $table->string('medicine')->nullable()->comment('복용중인 약');
             $table->string('symptom')->nullable()->comment('증상');
-            $table->string('guardian_phone1')->nullable()->comment('보호자 폰 번호1');
-            $table->string('guardian_phone2')->nullable()->comment('보호자 폰 번호2');
+            $table->string('guardian_phone')->nullable()->comment('보호자 폰 번호1');
             $table->string('blood_type')->nullable()->comment('혈액형');
             $table->string('disability_status')->nullable()->comment('장애여부');
             $table->string('hospital')->nullable()->comment('다니는 병원');
