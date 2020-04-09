@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class SignUpController extends Controller
 {
@@ -13,7 +14,7 @@ class SignUpController extends Controller
     //로그인, 회원가입 페이지
     public function index()
     {
-        return view('sessions.signup');
+        return view('users.signup');
     }
 
     //회원가입 요청
@@ -23,46 +24,53 @@ class SignUpController extends Controller
     }
 
     //로그인 요청
-    public function store(Request $request)
+    public function store(\App\Http\Requests\UsersRequest $request)
     {
-        \Log::info($request);
-        $messages = [
-            'email.required' => '이메일을 입력해주세요',
-            'email.unique' => '이미 가입된 이메일입니다.',
-            'password.required' => '비밀번호를 입력해주세요',
-            'password.confirmed' => '비밀번호 확인이 맞지 않습니다.',
-            'min.required' => '비밀번호는 최소 :min글자를 적어주세요',
-            'name.required' => '이름을 입력해주세요',
-            'age.required' => '나이를 입력해주세요',
-            'age.integer' => '숫자를 입력하세요',
-            'gender.required' => '성별을 체크해주세요',
-            'phone.required' => '휴대폰 번호를 입력해주세요',
-            'phone.min' => '최소 :min글자 이상 적어주세요',
-            'phone.unique' => '이미 가입된 번호입니다.',
-
-        ];
-        $this->validate($request, [
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
-            'name' => 'required',
-            'age' => 'required|integer',
-            'gender' => 'required',
-            'phone' => 'required|min:11|unique:users',
-        ], $messages);
-
-        \App\User::create([
+        $user = \App\User::create([
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
             'name' => $request->input('name'),
             'age' => $request->input('age'),
             'gender' => $request->input('gender'),
             'phone' => $request->input('phone'),
+            'rember_token' => Str::random(10),
+            'confirm_code' => Str::random(10),  //컨펌코드
         ]);
 
-        flash("가입이 완료되었습니다! 로그인해주세요.");
+        // //이메일
+        // event(new \App\Events\UserCreated($user));
+        \Mail::send( # view, 정보, 콜백을 보낸다
+        'users.partial.confirm',
+        compact('user'),
+        function ($message) use ($user) {
+            $message->to($user->email);
+            $message->subject(
+                sprintf('[%s] 회원 가입을 확인해주세요.', config('app.name'))
+            );
+        }
+    );
+
+        flash('가입하신 메일 계정으로 가입 확인 URL을 보내드렸습니다. 
+            확인하시고 로그인해주세요.');
         return redirect('/auth/login');
     }
 
+    public function confirm($code)
+    {
+        $user = \App\User::whereConfirmCode($code)->first();
+
+        if (!$user) {
+            return $this->respondError('URL이 정확하지 않습니다.');
+        }
+        // \App\User::update([
+        //     'confirm_code' => null
+        // ]);
+
+        auth()->login($user);
+        flash(auth()->user()->name . '님, 환영합니다. 가입 확인되었습니다.');
+
+        return redirect('home');
+    }
     // public function destroy()
     // {
     // }

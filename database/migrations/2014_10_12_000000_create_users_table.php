@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->bigInteger('age')->comment('나이');
             $table->string('gender')->comment('성별');
             $table->string('phone')->unique()->comment('휴대폰 번호');
-
+            $table->string('confirm_code')->nullable()->comment('활성화 코드');
             $table->rememberToken()->comment('토큰 번호');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('생성 시간');
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('업데이트 시간');});

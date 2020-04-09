@@ -56,9 +56,9 @@
             <div class="form-group {{$errors->has('gender') ? 'has-error' : ''}}">
                 <fieldset>
                     남성
-                    <input type="radio" name="gender" id="gender1" />
+                    <input type="radio" name="gender" id="gender1" value="남"/>
                     여성
-                    <input type="radio" name="gender" id="gender2" />
+                    <input type="radio" name="gender" id="gender2" value="여"/>
 
                 </fieldset>
                 {!! $errors->first('gender', '<span class="form-error">:message</span>')!!}

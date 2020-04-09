@@ -1,5 +1,5 @@
 @extends('layouts.app')
-{{-- @extends('layouts.partial.info_menu') --}}
+{{-- @extends('layouts.user.info_menu') --}}
 
 @section('content')
 
@@ -30,7 +30,7 @@
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#userModal">
                                 상세보기
                             </button>
-                            @include('info.partial.user_modal',compact('user'))
+                            @include('info.user.user_modal',compact('user'))
                             <hr style="background-color:darkgrey;" />
                         </div>
                     </div>
@@ -93,7 +93,7 @@
                                     data-target="#productModal">
                                     제품 등록
                                 </button>
-                                @include('info.partial.product_modal')
+                                @include('info.user.product_modal')
                                 @endif
                             </div>
                             <hr style="background-color:green;">

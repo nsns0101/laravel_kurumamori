@@ -25,6 +25,7 @@ $factory->define(App\User::class, function (Faker $faker) {
         'age' => rand(18, 75),
         'gender' => Arr::random(['남', '여']),
         'phone' => '010-' . rand(1000, 9999) . '-' . rand(1000, 9999),
+        'confirm_code' => null,
         'remember_token' => Str::random(10),
     ];
 });

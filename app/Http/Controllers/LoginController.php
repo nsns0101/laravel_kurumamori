@@ -39,6 +39,11 @@ class LoginController extends Controller
             # back 이전페이지로 가기
             return back()->withInput();
         }
+        if (auth()->user()->confirm_code) {
+            auth()->logout();
+            flash()->error('이메일로 가입을 확인해주세요!');
+            return back()->withInput();
+        }
 
         flash(auth()->user()->name . '님, 환영합니다.');
         return redirect('/');

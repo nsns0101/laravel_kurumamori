@@ -9,22 +9,17 @@ use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
 {
-    /**
-     * The event listener mappings for the application.
-     *
-     * @var array
-     */
     protected $listen = [
-        Registered::class => [
-            SendEmailVerificationNotification::class,
+        \Illuminate\Auth\Events\Login::class => [
+            \App\Listeners\UsersEventListener::class,
         ],
     ];
 
-    /**
-     * Register any events for your application.
-     *
-     * @return void
-     */
+    # 메일 발송에 관련
+    protected $subscribe = [
+        \App\Listeners\UsersEventListener::class,
+    ];
+
     public function boot()
     {
         parent::boot();
