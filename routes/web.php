@@ -14,12 +14,12 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-    return view('home');
+    return view('home.main');
 });
 
 Route::get('logout',function(){
     Auth::logout();
-    return view('home');
+    return view('home.main');
 });
 
 //로그인 컨트롤러

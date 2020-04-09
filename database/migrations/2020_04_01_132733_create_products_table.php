@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id')->comment('제품 번호');
             $table->unsignedBigInteger('user_id')->comment('유저 번호');
             $table->string('product_name')->comment('제품 명');
-            $table->string('product_key')->comment('제품 키');
+            $table->string('product_key')->unique()->comment('제품 키');
             $table->date('date_buy')->comment('구입날짜');
             $table->date('date_as')->comment('as기한');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('생성 시간');

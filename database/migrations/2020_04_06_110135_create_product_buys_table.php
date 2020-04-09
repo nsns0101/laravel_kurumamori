@@ -25,12 +25,13 @@ class CreateProductBuysTable extends Migration
             $table->string('to_msg')->nullable()->comment('보내는 메시지');
             $table->string('payment')->comment('결제 수단'); 
             $table->string('product_name')->comment('제품 명'); 
-            $table->string('product_key')->comment('제품 키'); 
+            $table->string('product_key')->unique()->comment('제품 키'); 
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('구입 날짜');
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('업데이트 시간');
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
 
-            $table->timestamps();
-        });
+            });
     }
 
     /**
