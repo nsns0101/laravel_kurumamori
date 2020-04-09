@@ -3,15 +3,7 @@
 @section('content')
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
-<br />
-<br />
-<br />
-
-
-
-
-
-
+<section id="intro" class="section intro" style="padding: 50px 0px 0px 0px;">
 <!-- Content Row -->
 <div class="row">
     <!-- Page Heading -->
@@ -107,6 +99,7 @@
             </div>
         </div>
     </div>
+</section>
     @endsection
 
     @section('script')

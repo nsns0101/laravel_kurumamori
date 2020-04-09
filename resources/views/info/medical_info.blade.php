@@ -3,10 +3,9 @@
 
 @section('content')
 
-<br />
 
 <!-- intro section -->
-<section id="" class="section">
+<section id="intro" class="section intro" style="padding: 50px 0px 0px 0px;">
     <div class="row">
         <div class="col-md-2">
             @include('layouts.partial.info_menu')
