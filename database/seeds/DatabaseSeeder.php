@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
         App\Question::truncate();
         App\Comment::truncate();
         App\Report::truncate();
+        App\Drive_detection::truncate();
         //시더 할 목록
         $this->call(UsersTableSeeder::class);
         $this->call(Product_buysTableSeeder::class);
@@ -37,6 +38,7 @@ class DatabaseSeeder extends Seeder
         $this->call(QuestionsTableSeeder::class);
         $this->call(CommentsTableSeeder::class);
         $this->call(ReportsTableSeeder::class);
+        $this->call(Drive_detectionsTableSeeder::class);
 
         if (config('databases.default') !== 'sqlite') {
             DB::statement('SET FOREIGN_KEY_CHECKS=1');

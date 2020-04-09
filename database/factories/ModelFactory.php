@@ -156,3 +156,29 @@ $factory->define(App\Report::class, function (Faker $faker) {
         'longitude' => rand(1, 150) . '.' . rand(1000, 9999999),
     ];
 });
+
+//운전 감지 팩토리
+$factory->define(App\Drive_detection::class, function (Faker $faker) {
+    $userId = App\User::pluck('id')->toArray();
+
+    $random = [];
+    $number = rand(0,3);
+    for($i = 0; $i <= 3; $i++){
+        if($i == $number){
+            array_push($random, true);
+        }
+        else{
+            array_push($random, false);
+        }
+    }
+
+    return [
+        'user_id' => $faker->randomElement($userId),
+        'latitude' => rand(1, 60) . '.' . rand(1000, 9999999),
+        'longitude' => rand(1, 150) . '.' . rand(1000, 9999999),
+        'bool_report' => $random[0],
+        'bool_sudden_acceleration' => $random[1],
+        'bool_sudden_stop' => $random[2],
+        'bool_sleep' => $random[3],
+    ];
+});

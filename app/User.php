@@ -51,4 +51,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Report::class);
     }
+    public function drive_detections()
+    {
+        return $this->hasMany(Drive_detection::class);
+    }
 }
