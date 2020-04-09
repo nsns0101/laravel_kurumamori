@@ -12,6 +12,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/qna">고객 문의</a>
                 </li>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+=======
+                @if(auth()->user())
+
+                @else
+                @endif
+>>>>>>> 0109f7e4fae3d56fb1b2933dcc549de0dab00ca9
+>>>>>>> 0572fca8ec75dda2024eda194c6b774b3a631b84
             </ul>
             
             <ul class="navbar-nav col-auto">
