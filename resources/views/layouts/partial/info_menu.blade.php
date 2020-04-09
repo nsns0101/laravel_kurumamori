@@ -25,16 +25,16 @@
         <li class="nav-item">
             <a class="nav-link" href="/info/index">
                 <i class="fas fa-fw fa-wrench"></i>
-                <span style="font-size:14px">개인정보</span>
+                <span style="font-size:20px">개인정보</span>
             </a>
 
             <a class="nav-link" href="/info/medical_info">
                 <i class="fas fa-fw fa-wrench"></i>
-                <span style="font-size:14px">의료정보</span>
+                <span style="font-size:20px">의료정보</span>
             </a>
             <a class="nav-link" href="/info/drive_score">
                 <i class="fas fa-fw fa-wrench"></i>
-                <span style="font-size:14px">운전점수</span>
+                <span style="font-size:20px">운전점수</span>
             </a>
         </li>
 
@@ -48,7 +48,7 @@
 
     a {
         color: white;
-        font-size: 20px;
+        font-size: 1rem;
     }
 
     .middle_title {
