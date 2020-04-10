@@ -1,12 +1,12 @@
 <!-- intro section -->
 <section id="intro" class="section intro">
-    <div class="container">
         <div class="col-md-12 col-md-offset-2 text-center">
             <h3>주요 기능들</h3>
             <p>좋은 기능들 많이 있으니까 보세요</p>
         </div>
         <div class="row">
-            <div class="col-sm-4 col-md-4">
+            <div class="col-sm-1 col-md-1"></div>
+            <div class="col-sm-3 col-md-3 text-center">
                 <div class="thumbnail">
                     <img src="images/예방.png" alt="img">
                     <div class="caption">
@@ -15,7 +15,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4 col-md-4">
+            <div class="col-sm-3 col-md-3 text-center">
                 <div class="thumbnail">
                     <img src="images/신고.png" alt="img">
                     <div class="caption">
@@ -24,7 +24,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4 col-md-4">
+            <div class="col-sm-3 col-md-3 text-center">
                 <div class="thumbnail">
                     <img src="images/전방주시.png" alt="img">
                     <div class="caption">
@@ -33,7 +33,7 @@
                     </div>
                 </div>
             </div>
+            <div class="col-sm-1 col-md-1"></div>
         </div>
-    </div>
 </section>
 <!-- intro section -->
