@@ -38,20 +38,12 @@ class SignUpController extends Controller
         ]);
 
         // //이메일
-        // event(new \App\Events\UserCreated($user));
-        \Mail::send( # view, 정보, 콜백을 보낸다
-        'users.partial.confirm',
-        compact('user'),
-        function ($message) use ($user) {
-            $message->to($user->email);
-            $message->subject(
-                sprintf('[%s] 회원 가입을 확인해주세요.', config('app.name'))
-            );
-        }
-    );
-
+        event(new \App\Events\UserCreated($user));
+            
+        
         flash('가입하신 메일 계정으로 가입 확인 URL을 보내드렸습니다. 
             확인하시고 로그인해주세요.');
+        
         return redirect('/auth/login');
     }
 
@@ -69,7 +61,7 @@ class SignUpController extends Controller
         auth()->login($user);
         flash(auth()->user()->name . '님, 환영합니다. 가입 확인되었습니다.');
 
-        return redirect('home');
+        return redirect('/');
     }
     // public function destroy()
     // {

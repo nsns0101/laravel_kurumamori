@@ -51,3 +51,18 @@ Route::resource('/buy','BuyController');
 
 //김도형 Q&A ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 Route::resource('/qna','QnaController');
+
+// Route::get('mail', function(){
+//     $kk = ["1","2","3"];
+
+//     \Mail::send( # view, 정보, 콜백을 보낸다
+//             'users.partial.confirm',
+//             compact('kk'),
+//             function ($message) use ($kk) {
+//                 $message->to('nsns0101@naver.com');
+//                 $message->subject(
+//                     sprintf('[%s] 회원 가입을 확인해주세요.', 'laravel')
+//                 );
+//             }
+//         );
+// });
