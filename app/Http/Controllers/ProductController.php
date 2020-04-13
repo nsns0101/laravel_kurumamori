@@ -10,30 +10,58 @@ class ProductController extends Controller
     // {
     //     $this->middleware('auth');
     // }
-    //로그인, 회원가입 페이지
+
+
     public function index()
     {
         return view('product.product');
     }
 
-    //회원가입 요청
     public function create(Request $request)
     {
 
     }
 
-    //로그인 요청
-    public function store(Request $request)
+    //제품 등록
+    public function store(Request $request, \App\User $user)
     {
-        // $product_use = \App\Product_buy::whereUse_key(true)->get();
-        // \Log::info($request->all());
-        // return response()->json([], 200);
+         // \Log::info($request->product_key);
+         $product = \App\Product_buy::whereProduct_key($request->product_key)->first();
+
+         if (!$product) {
+             // flash()->error("잘못된 키입니다. 다시 입력해주세요");
+             return response()->json([], 204);
+ 
+         }
+ 
+         $product_use = \App\Product::whereProduct_key($product->product_key)->first();
+         // \Log::info($product_use);
+         if ($product_use) {
+             // flash()->error("이미 사용한 키입니다.");
+             return response()->json([], 204);
+         }
+ 
+         $create_product = \App\Product::create([
+             'user_id' => auth()->user()->id,
+             'product_name' => $product->product_name,
+             'product_key' => $request->product_key,
+             'date_buy' => $product->created_at,
+             'date_as' => date("Y-m-d", strtotime("{$product->created_at} +1 years")),
+         ]);
+         return response()->json([$create_product], 200);
 
     }
 
-    // public function destroy()
-    // {
-    // }
+
+    public function destroy(\App\Product $product)
+    {
+        \Log::info("aaa");
+        // $this->authorize('delete', $product);
+        $product->delete();
+        return response()->json([], 200);
+
+    }
+    
 
     // protected function respondError($message)
     // {

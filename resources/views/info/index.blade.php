@@ -27,6 +27,9 @@
                             <p>성별 : {{$user->gender}}</p>
                             <p>휴대폰 번호 : {{$user->phone}}</p>
                             <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#userModal">
+                                수정하기
+                            </button>
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#userModal">
                                 상세보기
                             </button>
@@ -54,8 +57,9 @@
                                         var API_KEY = 'AIzaSyBmDNMJ1gbJusi6rqVoskubnytiXP0Rchc';
                                         var latitude = "{{$report->latitude}}";
                                         var longitude = "{{$report->longitude}}";
-                                        console.log(latitude);
-                                        console.log(longitude);
+                                        // console.log(latitude);
+                                        // console.log(longitude);
+
                                         // new Promise(function(resolve, reject) {
                                         //     resolve(
                                         //         $.getJSON(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${API_KEY}`,
@@ -66,7 +70,7 @@
                                         //             $(`.gps{{$report->id}}`).text(gps);
                                         //         }));
                                         // });
-                                        $(`.gps{{$report->id}}`).text("api쓰는거라 실제 쓸때 위에 주석 푸셈");
+                                        // $(`.gps{{$report->id}}`).text("api쓰는거라 실제 쓸때 위에 주석 푸셈");
                                     </script>
 
                                 </div>
@@ -89,6 +93,12 @@
                                 <p id="text_product_key">제품 키 : {{$product->product_key}}</p>
                                 <p id="text_product_date_buy">구입날짜 : {{$product->date_buy}}</p>
                                 <p id="text_product_date_as">AS기한 : {{$product->date_as}}까지</p>
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#productModal">
+                                    제품 재등록
+                                </button>
+                                <button type="button" class="btn btn-primary btn__delete_product">
+                                    제품 삭제
+                                </button>
                                 {{-- <button class="btn btn-primary">등록하기</button> --}}
                                 @else
                                 <p class="text-center text-danger">등록한 제품이 없습니다.</p>
@@ -143,12 +153,13 @@
 
 @section('script')
 <script>
-    $(document).on('click', '.btn__post__product', function(e) {
+//제품 등록
+$(document).on('click', '.btn__post__product', function(e) {
     var product_key = $('#product_key');
     $.ajax({
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},  
         type: 'POST',
-        url: '/info/index',
+        url: '/products',
         dataType: 'json',
         data: product_key
     }).then(function (data){
@@ -164,7 +175,26 @@
     });
 });
 
-
+//제품 삭제
+$(document).on('click', '.btn__delete_product', function(e) {
+    try{
+        var product_id = '@if($product) {{$product->id}} @else null @endif';
+    }catch(error){
+        var product_id = null;
+    }
+    if(confirm("제품을 삭제하시겠습니까?")){
+        $.ajax({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},  
+            type: 'DELETE',
+            url: '/products/' + product_id,
+            dataType: 'json',
+        }).then(function (data){
+            console.log(data);
+            alert(`제품이 삭제되었습니다.`);
+            window.location.href = '/info/index';
+        });
+    }
+});
 
 
 </script>

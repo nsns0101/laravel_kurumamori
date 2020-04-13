@@ -10,11 +10,36 @@
                 </button>
             </div>
             <div class="modal-body">
+                {{-- <div class="form-group {{$errors->has('name') ? 'has-error' : ''}}">
+                    <p>이름</p>
+                    <input type="text" name="name" class="form-control" placeholder="이름" value={{$user->name}} />
+                    {!! $errors->first('name', '<span class="form-error">:message</span>')!!}
+                </div>
+                <div class="form-group {{$errors->has('name') ? 'has-error' : ''}}">
+                    <p>이메일</p>
+                    <input type="text" name="name" class="form-control" placeholder="이름" value={{$user->name}} />
+                    {!! $errors->first('name', '<span class="form-error">:message</span>')!!}
+                </div>
+                <div class="form-group {{$errors->has('name') ? 'has-error' : ''}}">
+                    <p>나이</p>
+                    <input type="text" name="name" class="form-control" placeholder="이름" value={{$user->name}} />
+                    {!! $errors->first('name', '<span class="form-error">:message</span>')!!}
+                </div>
+                <div class="form-group {{$errors->has('name') ? 'has-error' : ''}}">
+                    <p>성별</p>
+                    <input type="text" name="name" class="form-control" placeholder="이름" value={{$user->name}} />
+                    {!! $errors->first('name', '<span class="form-error">:message</span>')!!}
+                </div>
+                <div class="form-group {{$errors->has('name') ? 'has-error' : ''}}">
+                    <p>휴대폰</p>
+                    <input type="text" name="name" class="form-control" placeholder="이름" value={{$user->name}} />
+                    {!! $errors->first('name', '<span class="form-error">:message</span>')!!}
+                </div> --}}
                 <p>이메일 : {{$user->email}}</p>
-                <p>이름 : {{$user->email}}</p>
-                <p>나이 : {{$user->email}}</p>
-                <p>성별 : {{$user->email}}</p>
-                <p>휴대폰 번호 : {{$user->email}}</p>
+                <p>이름 : {{$user->name}}</p>
+                <p>나이 : {{$user->age}}</p>
+                <p>성별 : {{$user->gender}}</p>
+                <p>휴대폰 번호 : {{$user->phone}}</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
