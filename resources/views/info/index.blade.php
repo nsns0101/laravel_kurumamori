@@ -96,7 +96,7 @@
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#productModal">
                                     제품 재등록
                                 </button>
-                                <button type="button" class="btn btn-primary btn__delete_product">
+                                <button type="button" class="btn btn-primary btn__delete__product">
                                     제품 삭제
                                 </button>
                                 {{-- <button class="btn btn-primary">등록하기</button> --}}
@@ -106,8 +106,8 @@
                                     data-target="#productModal">
                                     제품 등록
                                 </button>
-                                @include('info.user.product_modal')
                                 @endif
+                                @include('info.user.product_modal')
                             </div>
                             <hr style="background-color:green;">
                         </div>
@@ -156,6 +156,7 @@
 //제품 등록
 $(document).on('click', '.btn__post__product', function(e) {
     var product_key = $('#product_key');
+    console.log(product_key);
     $.ajax({
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},  
         type: 'POST',
@@ -176,12 +177,8 @@ $(document).on('click', '.btn__post__product', function(e) {
 });
 
 //제품 삭제
-$(document).on('click', '.btn__delete_product', function(e) {
-    try{
-        var product_id = '@if($product) {{$product->id}} @else null @endif';
-    }catch(error){
-        var product_id = null;
-    }
+$(document).on('click', '.btn__delete__product', function(e) {
+    var product_id = '@if($product) {{$product->id}} @else null @endif';
     if(confirm("제품을 삭제하시겠습니까?")){
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},  
@@ -194,6 +191,31 @@ $(document).on('click', '.btn__delete_product', function(e) {
             window.location.href = '/info/index';
         });
     }
+});
+//제품 수정
+$(document).on('click', '.btn__update__product', function(e) {
+        var product_id = '@if($product) {{$product->id}} @else null @endif';
+        console.log(product_id);
+        var product_key = $('#product_key');
+        var past_product_key = $('#text_product_key');
+        console.log(product_key);
+    $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},  
+        type: 'PUT',
+        url: '/products/' + product_id,
+        dataType: 'json',
+        data : product_key
+    }).then(function (data){
+        console.log(data);
+        if(data){
+            alert(`재등록되었습니다.`);
+            window.location.href = '/info/index';
+        }
+        else{
+            $('#ex_text').text(`잘못된 키이거나 이미 사용한 키입니다.`);
+        
+        }
+    });
 });
 
 
