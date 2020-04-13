@@ -89,7 +89,7 @@
                                 <p id="text_product_key">제품 키 : {{$product->product_key}}</p>
                                 <p id="text_product_date_buy">구입날짜 : {{$product->date_buy}}</p>
                                 <p id="text_product_date_as">AS기한 : {{$product->date_as}}까지</p>
-                                <button class="btn btn-primary">등록하기</button>
+                                {{-- <button class="btn btn-primary">등록하기</button> --}}
                                 @else
                                 <p class="text-center text-danger">등록한 제품이 없습니다.</p>
                                 <button type="button" class="btn btn-primary" data-toggle="modal"

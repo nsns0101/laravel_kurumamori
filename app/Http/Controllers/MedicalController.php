@@ -13,7 +13,10 @@ class MedicalController extends Controller
     //로그인, 회원가입 페이지
     public function index()
     {
-        return view('info.medical_info');
+        $medical_info = \App\Medical_info::whereUser_id(auth()->user()->id)->first();
+        \Log::info($medical_info);
+
+        return view('info.medical_info', compact('medical_info'));
     }
 
     //회원가입 요청
@@ -23,8 +26,17 @@ class MedicalController extends Controller
     }
 
     //로그인 요청
-    public function store(Request $request)
+    public function store(\App\Http\Requests\Medical_infoRequest $request)
     {
+        \Log::info($request->all());
+        \Log::info($request->sickness);
+        \App\Medical_info::create([
+            'user_id' => auth()->user()->id,
+            'past_sickness'=> $request->past_sickness,
+            'blood_type' => $request->blood_type,
+            'disability_status' => $request->disability_status
+        ]);
+        return redirect('/info/medical_info');
     }
 
     // public function destroy()
