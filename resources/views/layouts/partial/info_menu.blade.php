@@ -1,10 +1,9 @@
 <!-- Custom styles for this template-->
 <link href="/css/sb-admin-2.min.css" rel="stylesheet">
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> --}}
 
-<div class="col-md-3" style="padding-left:0px;">
+
+
+<div class="col-md-3" style="padding-left:0px;height:100%">
 
     <ul class="navbar-nav info_menu sidebar sidebar-dark accordion" id="accordionSidebar">
         <br />
@@ -44,5 +43,6 @@
 <style>
     .info_menu {
         background-image: linear-gradient(1800deg, #51595e 10%, black 100%);
+        height:100%;
     }
 </style>

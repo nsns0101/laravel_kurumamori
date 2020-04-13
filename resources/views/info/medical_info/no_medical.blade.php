@@ -134,7 +134,7 @@
             </div>
         </div>
     </div>
-
+    {{-- 보호자 정보 --}}
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -159,8 +159,96 @@
                 </div>
             </div>
         </div>
-        <br/>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="text-center card-header" style="background-color:darkgray; color:white">
+                    보험 정보
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-md-2 text-center">
+                        <span style="color:red; font-size:30px;">*</span>
+                        <span style="font-size:24px; margin-top:13px; color:blue;font-weight:800;margin-right:25px;">
+                            보험 여부
+                        </span>
+                    </div>
+                        
+                    <div class="col-md-2">
+                        <div class="form-group {{$errors->has('insurance_bool') ? 'has-error' : ''}}">
+                            <fieldset style="font-size:20px; margin-top:6px;">
+                                예
+                                <input type="radio" name="insurance_bool" id="insurance_bool_yes" value="{{true}}" />
+                                아니오
+                                <input type="radio" name="insurance_bool" id="insurance_bool_no" value="{{false}}" />
+                            </fieldset>
+                            <p style="color:red">
+                                {!! $errors->first('insurance_bool', '<span class="form-error">:message</span>')!!}
+                            </p>
+
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" id="datePicker" class="form-control" value="2019-06-27">
+                    </div>
+                </div>
+                <div class="row" id="insurance_table" style="display:none">
+                    <div class="col-md-2 text-center">
+                        <p style="font-size:24px;margin-top:13px; margin-right:15px;color:blue;font-weight:800;">
+                        보험사 명
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group {{ $errors->has('insurance_name') ? 'has-error' : '' }}">
+                            <input style="font-size:24px"type="text" name="insurance_name" class="form-control" placeholder="보험사 명" value="{{ old('insurance_name') }}"/>
+                            {!! $errors->first('insurance_name', '<span class="form-error">:message</span>') !!}
+                        </div>
+                    </div>
+                    <div class="col-md-2 text-center">
+                        <p style="font-size:24px;margin-top:13px; margin-right:15px;color:blue;font-weight:800;">
+                        보험사 번호
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group {{ $errors->has('insurance_phone') ? 'has-error' : '' }}">
+                            <input style="font-size:24px"type="text" name="insurance_phone" class="form-control" placeholder="보험사 번호" value="{{ old('insurance_phone') }}"/>
+                            {!! $errors->first('insurance_phone', '<span class="form-error">:message</span>') !!}
+                        </div>
+                    </div>
+
+                    {{--  --}}
+                    <div class="col-md-2 text-center">
+                        <p style="font-size:24px;margin-top:13px; margin-right:15px;color:blue;font-weight:800;">
+                        보험 가입일
+                        </p>
+                    </div>
+                    <br/>
+                    <div class="col-md-3">
+                        <div class="form-group {{ $errors->has('subscription_date') ? 'has-error' : '' }}">
+                            <input style="font-size:24px"type="text" name="subscription_date" class="form-control" placeholder="보험 가입일" value="{{ old('subscription_date') }}"/>
+                            {!! $errors->first('subscription_date', '<span class="form-error">:message</span>') !!}
+                        </div>
+                    </div>
+                    <div class="col-md-2 text-center">
+                        <p style="font-size:24px;margin-top:13px; margin-right:15px;color:blue;font-weight:800;">
+                        보험 만기일
+                        </p>
+                    </div>
+                    <br/>
+                    <div class="col-md-3">
+                        <div class="form-group {{ $errors->has('expiration_date') ? 'has-error' : '' }}">
+                            <input style="font-size:24px"type="text" name="expiration_date" class="form-control" placeholder="보험 만기일" value="{{ old('expiration_date') }}"/>
+                            {!! $errors->first('expiration_date', '<span class="form-error">:message</span>') !!}
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br/>
     <br/>
     <div class="row">
         <div class="col-md-5"></div>

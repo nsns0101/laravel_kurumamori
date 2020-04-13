@@ -25,11 +25,12 @@ class MedicalController extends Controller
         // return view('sessions.login');
     }
 
-    //로그인 요청
     public function store(\App\Http\Requests\Medical_infoRequest $request)
     {
         \Log::info($request->all());
         \Log::info($request->sickness);
+
+        // 의료정보
         \App\Medical_info::create([
             'user_id' => auth()->user()->id,
             'past_sickness'=> $request->past_sickness,
@@ -44,6 +45,18 @@ class MedicalController extends Controller
             'hospital_menu' => $request->hospital_menu,
             'report_request' => $request->report_request,
         ]);
+        
+        // 보험 정보
+        if($request->insurance_bool){
+            \App\Insurance::create([
+                'user_id' => auth()->user()->id,
+                'insurance_name' => $request->insurance_name,
+                'insurance_phone' => $request->insurance_phone,
+                'subscription_date' => $request->subscription_date,
+                'expiration_date' => $request->expiration_date,
+
+            ]);
+        }
         return redirect('/info/medical_info');
     }
 
