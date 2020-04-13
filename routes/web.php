@@ -26,12 +26,15 @@ Route::get('logout',function(){
 Route::resource('/auth/login', 'LoginController');
 
 //컨펌코드
-Route::get('auth/confirm/{code}', [
-    'as' => 'signup.confirm',
-    'uses' => 'SignUpController@confirm',
-]);
+// Route::get('auth/confirm/{code}', [
+//     'as' => 'signup.confirm',
+//     'uses' => 'SignUpController@confirm',
+// ]);
 //회원가입 컨트롤러
 Route::resource('/auth/signup', 'SignUpController');
+
+//메일관련 컨트롤러
+Route::resource('/confirm', 'ConfirmController');
 
 Route::get('/info/drive_score', function () {
     return view('info.drive_score');
@@ -52,17 +55,3 @@ Route::resource('/buy','BuyController');
 //김도형 Q&A ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 Route::resource('/qna','QnaController');
 
-// Route::get('mail', function(){
-//     $kk = ["1","2","3"];
-
-//     \Mail::send( # view, 정보, 콜백을 보낸다
-//             'users.partial.confirm',
-//             compact('kk'),
-//             function ($message) use ($kk) {
-//                 $message->to('nsns0101@naver.com');
-//                 $message->subject(
-//                     sprintf('[%s] 회원 가입을 확인해주세요.', 'laravel')
-//                 );
-//             }
-//         );
-// });

@@ -42,7 +42,7 @@ class LoginController extends Controller
         if (auth()->user()->confirm_code) {
             auth()->logout();
             flash()->error('이메일로 가입을 확인해주세요!');
-            return back()->withInput();
+            return redirect('/confirm');
         }
 
         flash(auth()->user()->name . '님, 환영합니다.');

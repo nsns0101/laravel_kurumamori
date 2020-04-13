@@ -52,7 +52,8 @@
             <div>
                 <p style="color:black">
                     회원이 아니라면?
-                    <a style="color:blue" href="{{ route('signup.index')}}"> 가입하세요 </a> </p>
+                    <a style="color:blue" href="{{ route('signup.index')}}"> 가입하세요 </a> 
+                </p>
             </div>
         </form>
     </div>

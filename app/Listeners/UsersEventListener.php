@@ -39,7 +39,7 @@ class UsersEventListener
     {
         $user = $event->user;
         \Mail::send( # view, 정보, 콜백을 보낸다
-            'users.partial.confirm',
+            'users.partial.email',
             compact('user'),
             function ($message) use ($user) {
                 $message->to($user->email);

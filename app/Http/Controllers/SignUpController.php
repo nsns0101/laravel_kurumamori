@@ -34,35 +34,35 @@ class SignUpController extends Controller
             'gender' => $request->input('gender'),
             'phone' => $request->input('phone'),
             'rember_token' => Str::random(10),
-            'confirm_code' => Str::random(10),  //컨펌코드
+            'confirm_code' => rand(1000,9999),  //컨펌코드
         ]);
 
         // //이메일
         event(new \App\Events\UserCreated($user));
             
         
-        flash('가입하신 메일 계정으로 가입 확인 URL을 보내드렸습니다. 
+        flash('가입하신 메일 계정으로 가입 확인 코드를 보내드렸습니다. 
             확인하시고 로그인해주세요.');
         
-        return redirect('/auth/login');
+        return redirect('/confirm');
     }
 
-    public function confirm($code)
-    {
-        $user = \App\User::whereConfirmCode($code)->first();
+    // public function confirm($code)
+    // {
+    //     $user = \App\User::whereConfirmCode($code)->first();
 
-        if (!$user) {
-            return $this->respondError('URL이 정확하지 않습니다.');
-        }
-        // \App\User::update([
-        //     'confirm_code' => null
-        // ]);
+    //     if (!$user) {
+    //         return $this->respondError('URL이 정확하지 않습니다.');
+    //     }
+    //     // \App\User::update([
+    //     //     'confirm_code' => null
+    //     // ]);
 
-        auth()->login($user);
-        flash(auth()->user()->name . '님, 환영합니다. 가입 확인되었습니다.');
+    //     auth()->login($user);
+    //     flash(auth()->user()->name . '님, 환영합니다. 가입 확인되었습니다.');
 
-        return redirect('/');
-    }
+    //     return redirect('/');
+    // }
     // public function destroy()
     // {
     // }
