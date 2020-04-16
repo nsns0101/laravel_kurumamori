@@ -1,7 +1,12 @@
 <p style="color:red"> *가 있는 곳은 반드시 입력해주세요!</p>
 {{-- 질병 사항 --}}
+@if($update_form)
+<form action="{{ route('medical_info.update',$medical_info->id) }}" method="POST" role="form">
+    {{ method_field('PUT') }}
 
+@else
 <form action="{{ route('medical_info.store') }}" method="POST" role="form">
+@endif
     {!! csrf_field() !!}
     <div class="row">
         <div class="col-md-12">
@@ -41,7 +46,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group {{ $errors->has('hospital') ? 'has-error' : '' }}">
-                            <input style="font-size:24px"type="text" name="hospital" class="form-control" placeholder="다니시는 병원" value="{{ old('hospital') }}"/>
+                            <input style="font-size:24px"type="text" name="hospital" class="form-control" placeholder="다니시는 병원" value="{{ $medical_info ?old('hospital',$medical_info->hospital) :  old('hospital')}}"/>
                             {!! $errors->first('hospital', '<span class="form-error">:message</span>') !!}
                         </div>
                     </div>
@@ -53,7 +58,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-group {{ $errors->has('hospital_menu') ? 'has-error' : '' }}">
-                            <input style="font-size:24px"type="text" name="hospital_menu" class="form-control" placeholder="진료하시는 과목" value="{{ old('hospital_menu') }}"/>
+                            <input style="font-size:24px"type="text" name="hospital_menu" class="form-control" placeholder="진료하시는 과목" value="{{$medical_info ? old('hospital',$medical_info->hospital_menu) :  old('hospital')}}" }}"/>
                             {!! $errors->first('hospital_menu', '<span class="form-error">:message</span>') !!}
                         </div>
                     </div>
@@ -80,7 +85,8 @@
                     <button 
                     class="btn btn-default dropdown-toggle blood_type_btn" type="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="true">
-                    없음
+                    {{$medical_info ? $medical_info->blood_type : "선택"}}
+
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -91,7 +97,7 @@
                     </ul>
                     <br/>
                     <div class="form-group {{ $errors->has('blood_type') ? 'has-error' : '' }}">
-                        <input id="blood_type" style="font-size:24px"type="hidden" name="blood_type" class="form-control" placeholder="○○를 가져와주세요!" value="{{ old('blood_type') }}"/>
+                        <input id="blood_type" style="font-size:24px"type="hidden" name="blood_type" class="form-control" placeholder="○○를 가져와주세요!" value="{{$medical_info ? old('blood_type',$medical_info->hospital) :  old('blood_type')}}" }}"/>
                         <p style="color:red">
 
                         {!! $errors->first('blood_type', '<span class="form-error">:message</span>') !!}
@@ -109,10 +115,16 @@
                         <div class="form-group {{$errors->has('disability_status') ? 'has-error' : ''}}">
                             <fieldset style="font-size:20px; margin-top:6px;">
                                 예
-                                <input type="radio" name="disability_status" id="disability_status_yes" value="yes"/>
+                            @if($medical_info->disability_status == "yes" )
+                                <input type="radio" name="disability_status" id="disability_status_yes" value="yes" checked/>
                                 아니오
                                 <input type="radio" name="disability_status" id="disability_status_no" value="no"/>
-                            </fieldset>
+                            @else
+                                <input type="radio" name="disability_status" id="disability_status_yes" value="yes" />
+                                    아니오
+                                    <input type="radio" name="disability_status" id="disability_status_no" value="no" checked/>
+                                </fieldset>
+                            @endif
                             <p style="color:red">
                                 {!! $errors->first('disability_status', '<span class="form-error">:message</span>')!!}
                             </p>
@@ -126,7 +138,7 @@
                     </div>
                     <div class="col-md-7">
                         <div class="form-group {{ $errors->has('report_request') ? 'has-error' : '' }}">
-                            <input style="font-size:24px"type="text" name="report_request" class="form-control" placeholder="○○를 가져와주세요!" value="{{ old('report_request') }}"/>
+                            <input style="font-size:24px"type="text" name="report_request" class="form-control" placeholder="○○를 가져와주세요!" value="{{ $medical_info ? old('report_request',$medical_info->report_request) :  old('report_request') }}"/>
                             {!! $errors->first('report_request', '<span class="form-error">:message</span>') !!}
                         </div>
                     </div>
@@ -152,7 +164,7 @@
                     <br/>
                     <div class="col-md-5">
                         <div class="form-group {{ $errors->has('guardian_phone') ? 'has-error' : '' }}">
-                            <input style="font-size:24px"type="text" name="guardian_phone" class="form-control" placeholder="응급시 연락가능한 보호자 휴대폰 번호" value="{{ old('guardian_phone') }}"/>
+                            <input style="font-size:24px"type="text" name="guardian_phone" class="form-control" placeholder="응급시 연락가능한 보호자 휴대폰 번호" value="{{ $medical_info ? old('guardian_phone',$medical_info->guardian_phone) :  old('guardian_phone') }}"/>
                             {!! $errors->first('guardian_phone', '<span class="form-error">:message</span>') !!}
                         </div>
                     </div>
@@ -179,10 +191,16 @@
                         <div class="form-group {{$errors->has('insurance_bool') ? 'has-error' : ''}}">
                             <fieldset style="font-size:20px; margin-top:6px;">
                                 예
-                                <input type="radio" name="insurance_bool" id="insurance_bool_yes" value="{{true}}" />
-                                아니오
-                                <input type="radio" name="insurance_bool" id="insurance_bool_no" value="{{false}}" />
-                            </fieldset>
+                                @if($insurance)
+                                    <input type="radio" name="insurance_bool" id="insurance_bool_yes" value="{{true}}" checked/>
+                                    아니오 
+                                    <input type="radio" name="insurance_bool" id="insurance_bool_no" value="{{false}}" />
+                                @else
+                                    <input type="radio" name="insurance_bool" id="insurance_bool_yes" value="{{true}}" />
+                                    아니오 
+                                    <input type="radio" name="insurance_bool" id="insurance_bool_no" value="{{false}}" checked/>
+                                @endif
+                                </fieldset>
                             <p style="color:red">
                                 {!! $errors->first('insurance_bool', '<span class="form-error">:message</span>')!!}
                             </p>
@@ -191,7 +209,7 @@
                     </div>
                     <div class="col-md-8"></div>
                 </div>
-                <div class="row" id="insurance_table" >
+            <div class="row" id="insurance_table" style="{{$insurance ? "display:flex" : "display:none;" }}">
                     <div class="col-md-2 text-center">
                         <p style="font-size:24px;margin-top:13px; margin-right:15px;color:blue;font-weight:800;">
                         보험사 명
@@ -199,7 +217,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-group {{ $errors->has('insurance_name') ? 'has-error' : '' }}">
-                            <input style="font-size:24px"type="text" name="insurance_name" class="form-control" placeholder="보험사 명" value="{{ old('insurance_name') }}"/>
+                            <input style="font-size:24px"type="text" name="insurance_name" class="form-control" placeholder="보험사 명" value="{{ $insurance ? old('insurance_name',$insurance->insurance_name) :  old('insurance_name') }}"/>
                             {!! $errors->first('insurance_name', '<span class="form-error">:message</span>') !!}
                         </div>
                     </div>
@@ -210,7 +228,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-group {{ $errors->has('insurance_phone') ? 'has-error' : '' }}">
-                            <input style="font-size:24px"type="text" name="insurance_phone" class="form-control" placeholder="보험사 번호" value="{{ old('insurance_phone') }}"/>
+                            <input style="font-size:24px"type="text" name="insurance_phone" class="form-control" placeholder="보험사 번호" value="{{ $insurance ? old('insurance_phone',$insurance->insurance_phone) :  old('insurance_phone') }}"/>
                             {!! $errors->first('insurance_phone', '<span class="form-error">:message</span>') !!}
                         </div>
                     </div>

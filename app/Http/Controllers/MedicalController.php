@@ -15,8 +15,10 @@ class MedicalController extends Controller
     {
         $medical_info = \App\Medical_info::whereUser_id(auth()->user()->id)->first();
         \Log::info($medical_info);
-
-        return view('info.medical_info', compact('medical_info'));
+        $insurance = \App\Insurance::whereUser_id(auth()->user()->id)->first();
+        $update_form = false;
+        return view('info.medical_info', compact('medical_info', 'insurance', 'update_form'));
+    
     }
 
     //회원가입 요청
@@ -59,7 +61,52 @@ class MedicalController extends Controller
         }
         return redirect('/info/medical_info');
     }
+    public function edit()
+    {
+        $medical_info = \App\Medical_info::whereUser_id(auth()->user()->id)->first();
+        $insurance = \App\Insurance::whereUser_id(auth()->user()->id)->first();
+        $update_form = true;
+        return view('info.medical_info', compact('medical_info', 'insurance', 'update_form'));
+    }
 
+    public function update(\App\Http\Requests\Medical_infoRequest $request, \App\Medical_info $medical_info, \App\Insurance $insurance){
+        // 의료정보
+        $medical_info ->update([
+            'user_id' => auth()->user()->id,
+            'past_sickness'=> $request->past_sickness,
+            'past_sickness_supplementation' => $request->past_sickness_supplementation,
+            'sickness' => $request->sickness,
+            'medicine' => $request->medicine,
+            'symptom' => $request->symptom,
+            'guardian_phone' => $request->guardian_phone,
+            'blood_type' => $request->blood_type,
+            'disability_status' => $request->disability_status,
+            'hospital' => $request->hospital,
+            'hospital_menu' => $request->hospital_menu,
+            'report_request' => $request->report_request,
+        ]);
+        
+        // 보험 정보
+        if($request->insurance_bool){
+            $insurance->update([
+                'user_id' => auth()->user()->id,
+                'insurance_name' => $request->insurance_name,
+                'insurance_phone' => $request->insurance_phone,
+                'subscription_date' => $request->subscription_date,
+                'expiration_date' => $request->expiration_date,
+
+            ]);
+        }
+        return redirect('/info/medical_info');
+
+    }
+    public function show()
+    {
+        $medical_info = \App\Medical_info::whereUser_id(auth()->user()->id)->first();
+        $insurance = \App\Insurance::whereUser_id(auth()->user()->id)->first();
+        $update_form = false;
+        return view('info.medical_info', compact('medical_info', 'insurance', 'update_form'));
+    }
     // public function destroy()
     // {
     // }

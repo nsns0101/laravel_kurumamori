@@ -84,7 +84,7 @@ $factory->define(App\Medical_info::class, function (Faker $faker) {
         'medicine' => Arr::random($medicine),
         'symptom' => Arr::random($symptom),
         'guardian_phone' => '010-' . rand(1000, 9999) . '-' . rand(1000, 9999),
-        'blood_type' => Arr::random(['A','B','AB','O']),
+        'blood_type' => Arr::random(['A형','B형','AB형','O형']),
         'disability_status' => Arr::random(['yes','no']),
         'hospital' => Arr::random($hospital),
         'hospital_menu' => Str::random(6),

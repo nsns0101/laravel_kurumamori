@@ -12,7 +12,9 @@
             <br />
             <h3 style="color:forestgreen">의료 정보</h3>
             {{-- 의료정보 있을 경우의 페이지 --}}
-            @if($medical_info)
+            @if($update_form)
+                @include('info.medical_info.no_medical')
+            @elseif($medical_info)
                 @include('info.medical_info.yes_medical')
             @else
                 @include('info.medical_info.no_medical')

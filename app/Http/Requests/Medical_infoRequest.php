@@ -27,6 +27,7 @@ class Medical_infoRequest extends FormRequest
             // 'ea'  => ['min:1','integer','required'],
             'blood_type' => ['required'],
             'disability_status'  => ['required'],
+            'insurance_bool' => ['required'],
 
         ];
     }

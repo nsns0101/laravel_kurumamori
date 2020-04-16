@@ -1,3 +1,4 @@
+<a class="btn btn-primary" href="/info/medical_info/{{$medical_info->id}}/edit">안녕</a>
 <div class="row">
     <div class="col-sm-6 col-md-3">
         <div class="thumbnail">
@@ -25,6 +26,24 @@
                 <p>다니는 병원 : {{$medical_info->hospital}}</p>
                 <p>진료 과목 : {{$medical_info->hospital_menu}}</p>
                 <p>신고시 요청사항 : {{$medical_info->report_request}}</p>
+                <hr style="background-color:darkgrey;" />
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail">
+            <div class="caption">
+                <h3 class="text-center">보험 정보</h3>
+                <hr style="background-color:darkgrey;"/>
+                @if($insurance)
+                <p>보험사 명 : {{$insurance->insurance_name}}</p>
+                <p>보험사 전화번호 : {{$insurance->insurance_phone}}</p>
+                <p>가입일 : {{$insurance->subscription_date}}</p>
+                <p>만기일 : {{$insurance->expiration_date}}</p>
+                @else
+                <p class="text-center text-danger">이력이 없습니다.</p>
+                @endif
                 <hr style="background-color:darkgrey;" />
             </div>
         </div>

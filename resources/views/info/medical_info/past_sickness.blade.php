@@ -7,11 +7,11 @@
     <button 
         class="btn btn-default dropdown-toggle past_sickness_btn" type="button" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="true">
-        선택
+        {{$medical_info ? $medical_info->past_sickness : "선택"}}
         <span class="caret"></span>
     </button>
     <div class="form-group {{ $errors->has('past_sickness') ? 'has-error' : '' }}">
-        <input id="past_sickness" style="font-size:10px" type="hidden" name="past_sickness" class="form-control"/>
+        <input id="past_sickness" style="font-size:10px" type="hidden" name="past_sickness" class="form-control"value="{{ $medical_info ?old('past_sickness',$medical_info->past_sickness) :  old('past_sickness')}}"/>
         {!! $errors->first('past_sickness', '<span class="form-error">:message</span>') !!}
     </div>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -43,7 +43,7 @@
 {{--  --}}
 <div class="col-md-7">
     <div class="form-group {{ $errors->has('past_sickness_supplementation') ? 'has-error' : '' }}">
-        <input style="font-size:24px"type="text" name="past_sickness_supplementation" class="form-control" placeholder="보충설명(복용 약물, 기간)" value="{{ old('past_sickness_supplementation') }}"/>
+        <input style="font-size:24px"type="text" name="past_sickness_supplementation" class="form-control" placeholder="보충설명(복용 약물, 기간)" value="{{$medical_info ? old('past_sickness_supplementation',$medical_info->past_sickness_supplementation) :  old('past_sickness_supplementation') }}"/>
         {!! $errors->first('past_sickness_supplementation', '<span class="form-error">:message</span>') !!}
     </div>
 </div>

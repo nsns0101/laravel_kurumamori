@@ -7,11 +7,11 @@
     <button 
         class="btn btn-default dropdown-toggle sickness_btn" type="button" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="true">
-        선택
+        {{$medical_info ? $medical_info->sickness : "선택"}}
         <span class="caret"></span>
     </button>
     <div class="form-group {{ $errors->has('sickness') ? 'has-error' : '' }}">
-        <input id="sickness" style="font-size:10px"type="hidden" name="sickness" class="form-control"/>
+        <input id="sickness" style="font-size:10px"type="hidden" name="sickness" class="form-control" value="{{ $medical_info ?old('sickness',$medical_info->sickness) :  old('sickness')}}"/>
         {!! $errors->first('sickness', '<span class="form-error">:message</span>') !!}
     </div>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">        
@@ -46,7 +46,7 @@
 </div>
 <div class="col-md-5">
     <div class="form-group {{ $errors->has('medicine') ? 'has-error' : '' }}">
-        <input style="font-size:24px"type="text" name="medicine" class="form-control" placeholder="복용 중이신 약물" value="{{ old('medicine') }}"/>
+        <input style="font-size:24px"type="text" name="medicine" class="form-control" placeholder="복용 중이신 약물" value="{{ $medical_info ? old('past_sickness_supplementation',$medical_info->medicine) : old('medicine') }}"/>
         {!! $errors->first('medicine', '<span class="form-error">:message</span>') !!}
     </div>
 </div>
@@ -55,7 +55,7 @@
 </div>
 <div class="col-md-9">
     <div class="form-group {{ $errors->has('symptom') ? 'has-error' : '' }}">
-        <input style="font-size:24px"type="text" name="symptom" class="form-control" placeholder="증상(아픈 곳을 구체적으로 적어주세요!)" value="{{ old('symptom') }}"/>
+        <input style="font-size:24px"type="text" name="symptom" class="form-control" placeholder="증상(아픈 곳을 구체적으로 적어주세요!)" value="{{ $medical_info ? old('past_sickness_supplementation',$medical_info->symptom) : old('symptom') }}"/>
         {!! $errors->first('symptom', '<span class="form-error">:message</span>') !!}
         <p class="text-danger" style="font-size:18px">증상은 최대한 자세히 적어주세요!</p>
     </div>
