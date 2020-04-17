@@ -33,4 +33,6 @@
 </div>
 {{-- 주요 기능 --}}
 @include('home.partial.functions')
+{{-- 팀 소개 --}}
+@include('home.partial.team')
 @endsection
