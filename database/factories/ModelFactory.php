@@ -131,21 +131,22 @@ $factory->define(App\Question::class, function (Faker $faker) {
     return [
         'user_id' => $faker->randomElement($userId),
         'title' => $faker->sentence(),
+        'category' => rand(0,5),
         'content' => $faker->paragraph(),
     ];
 });
 
-//댓글 팩토리
-$factory->define(App\Comment::class, function (Faker $faker) {
-    $userId = App\User::pluck('id')->toArray();
-    $questionId = App\Question::pluck('id')->toArray();
-    return [
-        'user_id' => $faker->randomElement($userId),
-        'question_id' => $faker->randomElement($questionId),
-        'question_type' => App\Question::class,
-        'content' => $faker->paragraph,
-    ];
-});
+// //댓글 팩토리
+// $factory->define(App\Comment::class, function (Faker $faker) {
+//     $userId = App\User::pluck('id')->toArray();
+//     $questionId = App\Question::pluck('id')->toArray();
+//     return [
+//         'user_id' => $faker->randomElement($userId),
+//         'question_id' => $faker->randomElement($questionId),
+//         'question_type' => App\Question::class,
+//         'content' => $faker->paragraph,
+//     ];
+// });
 
 //신고 팩토리
 $factory->define(App\Report::class, function (Faker $faker) {

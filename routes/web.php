@@ -55,3 +55,8 @@ Route::resource('/buy','BuyController');
 //김도형 Q&A ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 Route::resource('/qna','QnaController');
 
+//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ Q&A ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+Route::resource('/questions','QuestionsController');
+
+//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 유저리뷰 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+Route::resource('/reviews','ReviewsController');

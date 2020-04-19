@@ -44,6 +44,10 @@
 <body>
     <!-- navigation -->
     @include('layouts.partial.navigation')
+<<<<<<< HEAD
+=======
+    @include('flash::message')
+>>>>>>> questions
     <!-- main_container라는 id 꼭 필요 !! -->
     <div class="main_content">
         

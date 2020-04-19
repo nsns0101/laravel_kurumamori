@@ -6,15 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-    protected $fillable = ['title', 'content'];
+    protected $fillable = ['title', 'content','category'];
 
-    //여러게시판은 한 유저를 가질 수 있음
+    //여러질문은 한 유저를 가질 수 있음
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+    
+    //하나의 질문은 하나의 답변을 가질 수 있음
     public function comments()
     {
-        return $this->morphMany(Comment::class, 'question');
+        return $this->morpOne(Comment::class, 'question');
+    }
+
+    //하나의 질문은 하나의 카테고리를 가질 수 있음
+    public function categorys()
+    {
+        return $this->morpOne(Category::class, 'question');
     }
 }

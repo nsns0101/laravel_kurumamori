@@ -10,10 +10,13 @@
                     <a class="nav-link" href="/products">제품 소개</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/qna">고객 문의</a>
+                    <a class="nav-link" href="/questions">고객 문의</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/reviews">고객 리뷰</a>
                 </li>
             </ul>
-               
+
             <ul class="navbar-nav col-auto">
                 @if(auth()->user())
                 <li class="nav-item">

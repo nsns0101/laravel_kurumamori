@@ -24,10 +24,13 @@ class DatabaseSeeder extends Seeder
         App\Medical_info::truncate();
         App\Drive::truncate();
         App\Insurance::truncate();
+        App\Category::truncate();
         App\Question::truncate();
+        App\Review::truncate();
         App\Comment::truncate();
         App\Report::truncate();
         App\Drive_detection::truncate();
+
         //시더 할 목록
         $this->call(UsersTableSeeder::class);
         $this->call(Product_buysTableSeeder::class);
@@ -35,8 +38,10 @@ class DatabaseSeeder extends Seeder
         $this->call(Medical_infosTableSeeder::class);
         $this->call(DrivesTableSeeder::class);
         $this->call(InsurancesTableSeeder::class);
+        $this->call(CategoriesTableSeeder::class);
         $this->call(QuestionsTableSeeder::class);
-        $this->call(CommentsTableSeeder::class);
+        // $this->call(ReviewsTableSeeder::class);
+        // $this->call(CommentsTableSeeder::class);
         $this->call(ReportsTableSeeder::class);
         $this->call(Drive_detectionsTableSeeder::class);
 
