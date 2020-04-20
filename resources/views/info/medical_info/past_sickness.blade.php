@@ -1,17 +1,20 @@
 {{--  --}}
+<div class="col-md-1" >
+    <img id="add__past_sickness"src="/icon/add.png" style="margin-left:50%" onclick="add_past_sickness()"/>
+</div>
 <div class="col-md-2 text-center">
-    <p style="font-size:24px; margin-top:13px; color:blue;font-weight:800;">과거 질환</p>
+    <p class="add__past_sickness"style="font-size:24px; margin-top:13px; color:blue;font-weight:800;">과거 질환</p>
 </div>
 {{-- 드롭다운버튼 --}}
 <div class="col-md-2">
     <button 
-        class="btn btn-default dropdown-toggle past_sickness_btn" type="button" data-toggle="dropdown"
+        class="btn btn-default dropdown-toggle past_sickness_btn dropdown_btn" type="button" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="true">
         {{$medical_info ? $medical_info->past_sickness : "선택"}}
         <span class="caret"></span>
     </button>
     <div class="form-group {{ $errors->has('past_sickness') ? 'has-error' : '' }}">
-        <input id="past_sickness" style="font-size:10px" type="hidden" name="past_sickness" class="form-control"value="{{ $medical_info ?old('past_sickness',$medical_info->past_sickness) :  old('past_sickness')}}"/>
+        <input class="past_sickness" style="font-size:10px" type="hidden" name="past_sickness" class="form-control"value="{{ $medical_info ?old('past_sickness',$medical_info->past_sickness) :  old('past_sickness')}}"/>
         {!! $errors->first('past_sickness', '<span class="form-error">:message</span>') !!}
     </div>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -41,16 +44,16 @@
     </ul>
 </div>
 {{--  --}}
-<div class="col-md-7">
+<div class="col-md-6">
     <div class="form-group {{ $errors->has('past_sickness_supplementation') ? 'has-error' : '' }}">
-        <input style="font-size:24px"type="text" name="past_sickness_supplementation" class="form-control" placeholder="보충설명(복용 약물, 기간)" value="{{$medical_info ? old('past_sickness_supplementation',$medical_info->past_sickness_supplementation) :  old('past_sickness_supplementation') }}"/>
+        <input class="past_sickness_supplementation" style="font-size:24px; width:100%;"type="text" name="past_sickness_supplementation" class="form-control" placeholder="보충설명(복용 약물, 기간)" value="{{$medical_info ? old('past_sickness_supplementation',$medical_info->past_sickness_supplementation) :  old('past_sickness_supplementation') }}"/>
         {!! $errors->first('past_sickness_supplementation', '<span class="form-error">:message</span>') !!}
     </div>
 </div>
-
+<div class="col-md-1"></div>
 <style>
 
-    .past_sickness_btn {
+    .dropdown_btn {
         width:120px; 
         height:40px; 
         border: solid 1px black; 

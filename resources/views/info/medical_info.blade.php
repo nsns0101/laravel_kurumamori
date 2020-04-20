@@ -28,6 +28,9 @@
 
 @section('script')
 <script>
+    var past_sickness_count = 0;
+
+
     //예전 질병
     $(".dropdown-past_sickness").click(function(){
         
@@ -60,6 +63,38 @@
         // console.log($('#insurance_bool_no').val());
         $('#insurance_table').css("display","none");
     });
+
+    //
+    // $("#add__past_sickness").click(function(){
+    //     // console.log($('#insurance_bool_no').val());
+    //     $('#insurance_table').css("display","none");
+    // });
+    function add_past_sickness(){
+        // 0,1 총 두번 추가가능
+        if(past_sickness_count < 2){
+            // console.log(past_sickness_count);
+            const add = `@include('info.medical_info.past_sickness')`;
+            // $(".abcde").text("aa");
+            // console.log( $(".abcde")[0]);
+            $(".add__past_sickness")[past_sickness_count].innerHTML = `과거 질환${past_sickness_count + 1}`;
+            $(".past_sickness")[past_sickness_count].name = `past_sickness${past_sickness_count + 1}`;
+            $(".past_sickness_supplementation")[past_sickness_count].name = `past_sickness${past_sickness_count + 1}`;
+            $(".past_sickness_btn")[0].className = `btn btn-default dropdown-toggle past_sickness_btn${past_sickness_count}`;
+            // console.log($(".past_sickness_btn")[0]);
+            // $(".abcde")[past_sickness_count].
+            // console.log(add.$("#abcde").text());
+            $("#form__past_sickness").append(add);
+            past_sickness_count++;
+            $(".add__past_sickness")[past_sickness_count].innerHTML = `과거 질환${past_sickness_count + 1}`;
+            $(".past_sickness")[past_sickness_count].name = `past_sickness${past_sickness_count + 1}`;
+            $(".past_sickness_supplementation")[past_sickness_count].name = `past_sickness${past_sickness_count + 1}`;
+            $(".past_sickness_supplementation")[past_sickness_count].value = null;
+            $(".dropdown_past_sickness")[past_sickness_count].value = "선택";
+
+
+
+        }
+    }
 
     //
     $(function() {	

@@ -1,6 +1,9 @@
 {{--  --}}
+<div class="col-md-1" >
+    <img id="add__sickness" src="/icon/add.png" style="margin-left:50%"/>
+</div>
 <div class="col-md-2 text-center">
-    <p style="font-size:24px; margin-top:13px; color:blue;font-weight:800;">현재 질환</p>
+    <p style="font-size:24px; margin-top:13px; color:blue;font-weight:800;">현재 질환1</p>
 </div>
 {{-- 드롭다운버튼 --}}
 <div class="col-md-2">
@@ -44,16 +47,19 @@
 <div class="col-md-2 text-center">
     <p style="font-size:24px; margin-top:13px; color:blue;font-weight:800;">복용중인 약</p>
 </div>
-<div class="col-md-5">
+<div class="col-md-4">
     <div class="form-group {{ $errors->has('medicine') ? 'has-error' : '' }}">
         <input style="font-size:24px"type="text" name="medicine" class="form-control" placeholder="복용 중이신 약물" value="{{ $medical_info ? old('past_sickness_supplementation',$medical_info->medicine) : old('medicine') }}"/>
         {!! $errors->first('medicine', '<span class="form-error">:message</span>') !!}
     </div>
 </div>
+{{--  --}}
+<div class="col-md-1" ></div>
+<div class="col-md-1" ></div>
 <div class="col-md-2 text-center">
     <p style="font-size:24px; margin-top:13px; color:blue;font-weight:800;">증상</p>
 </div>
-<div class="col-md-9">
+<div class="col-md-8">
     <div class="form-group {{ $errors->has('symptom') ? 'has-error' : '' }}">
         <input style="font-size:24px"type="text" name="symptom" class="form-control" placeholder="증상(아픈 곳을 구체적으로 적어주세요!)" value="{{ $medical_info ? old('past_sickness_supplementation',$medical_info->symptom) : old('symptom') }}"/>
         {!! $errors->first('symptom', '<span class="form-error">:message</span>') !!}

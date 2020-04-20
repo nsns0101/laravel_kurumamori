@@ -69,7 +69,7 @@ class MedicalController extends Controller
         return view('info.medical_info', compact('medical_info', 'insurance', 'update_form'));
     }
 
-    public function update(\App\Http\Requests\Medical_infoRequest $request, \App\Medical_info $medical_info, \App\Insurance $insurance){
+    public function update(Request $request, \App\Medical_info $medical_info){
         // 의료정보
         $medical_info ->update([
             'user_id' => auth()->user()->id,
@@ -85,18 +85,26 @@ class MedicalController extends Controller
             'hospital_menu' => $request->hospital_menu,
             'report_request' => $request->report_request,
         ]);
-        
         // 보험 정보
+        \Log::info($request->all());
+        //보험 여부란에 yes를 체크하면
         if($request->insurance_bool){
-            $insurance->update([
-                'user_id' => auth()->user()->id,
-                'insurance_name' => $request->insurance_name,
-                'insurance_phone' => $request->insurance_phone,
-                'subscription_date' => $request->subscription_date,
-                'expiration_date' => $request->expiration_date,
-
-            ]);
+            //현재 유저가 가지고 있는 보험정보를 모두 획득
+            $insurances = \App\Insurance::whereUser_id(auth()->user()->id)->get();
+            for($i = 0; $i < count($insurances); $i++){
+                // \Log::info("insurance_name{$i}");
+                $insurances[$i]->update([
+                    'user_id' => auth()->user()->id,
+                    'insurance_name' => $request->input("insurance_name{$i}"),
+                    'insurance_phone' => $request->input("insurance_phone{$i}"),
+                    'subscription_date' => $request->input("subscription_date{$i}"),
+                    'expiration_date' => $request->input("expiration_date{$i}"),
+    
+                ]);
+            }
+               
         }
+
         return redirect('/info/medical_info');
 
     }

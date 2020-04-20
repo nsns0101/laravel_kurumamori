@@ -17,12 +17,12 @@
                 <div class="dropdown">
                     <br/>
                     {{-- 과거 질환 --}}
-                    <div class="row">
+                    <div class="row" id="form__past_sickness">
                         @include('info.medical_info.past_sickness')
                     </div>
                     <hr style="background-color:darkgray" />
                     {{-- 현재 질환 --}}
-                    <div class="row">
+                    <div class="row" id="form__sickness">
                         @include('info.medical_info.sickness')
                     </div>
                 </div>
@@ -217,7 +217,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-group {{ $errors->has('insurance_name') ? 'has-error' : '' }}">
-                            <input style="font-size:24px"type="text" name="insurance_name" class="form-control" placeholder="보험사 명" value="{{ $insurance ? old('insurance_name',$insurance->insurance_name) :  old('insurance_name') }}"/>
+                            <input style="font-size:24px"type="text" name="insurance_name0" class="form-control" placeholder="보험사 명" value="{{ $insurance ? old('insurance_name',$insurance->insurance_name) :  old('insurance_name') }}"/>
                             {!! $errors->first('insurance_name', '<span class="form-error">:message</span>') !!}
                         </div>
                     </div>
@@ -228,7 +228,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-group {{ $errors->has('insurance_phone') ? 'has-error' : '' }}">
-                            <input style="font-size:24px"type="text" name="insurance_phone" class="form-control" placeholder="보험사 번호" value="{{ $insurance ? old('insurance_phone',$insurance->insurance_phone) :  old('insurance_phone') }}"/>
+                            <input style="font-size:24px"type="text" name="insurance_phone0" class="form-control" placeholder="보험사 번호" value="{{ $insurance ? old('insurance_phone',$insurance->insurance_phone) :  old('insurance_phone') }}"/>
                             {!! $errors->first('insurance_phone', '<span class="form-error">:message</span>') !!}
                         </div>
                     </div>
@@ -242,7 +242,7 @@
                     <br/>
                     <div class="col-md-3">
                         <div class="form-group {{ $errors->has('subscription_date') ? 'has-error' : '' }}">
-	                        <input type="text" name="subscription_date" class="form-control datePicker" readonly>
+	                        <input type="text" name="subscription_date0" class="form-control datePicker" readonly>
                             {!! $errors->first('subscription_date', '<span class="form-error">:message</span>') !!}
                         </div>
                     </div>
@@ -255,7 +255,7 @@
                     <div class="col-md-3">
                         <div class="form-group {{ $errors->has('expiration_date') ? 'has-error' : '' }}">
                             <!-- 시작시 기본 날짜 설정은 value를 이용 -->
-	                        <input type="text" name="expiration_date" class="form-control datePicker" readonly>
+	                        <input type="text" name="expiration_date0" class="form-control datePicker" readonly>
                             {!! $errors->first('expiration_date', '<span class="form-error">:message</span>') !!}
                         </div>
                     </div>
