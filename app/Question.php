@@ -21,7 +21,7 @@ class Question extends Model
     }
 
     //하나의 질문은 하나의 카테고리를 가질 수 있음
-    public function categorys()
+    public function category()
     {
         return $this->morpOne(Category::class, 'question');
     }

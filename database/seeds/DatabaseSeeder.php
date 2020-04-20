@@ -38,8 +38,8 @@ class DatabaseSeeder extends Seeder
         $this->call(Medical_infosTableSeeder::class);
         $this->call(DrivesTableSeeder::class);
         $this->call(InsurancesTableSeeder::class);
-        $this->call(CategoriesTableSeeder::class);
-        $this->call(QuestionsTableSeeder::class);
+        // $this->call(CategoriesTableSeeder::class);
+        // $this->call(QuestionsTableSeeder::class);
         // $this->call(ReviewsTableSeeder::class);
         // $this->call(CommentsTableSeeder::class);
         $this->call(ReportsTableSeeder::class);

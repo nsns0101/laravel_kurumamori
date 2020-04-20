@@ -10,7 +10,7 @@
             <div class="thumbnail">
                 <img src="images/예방.png" alt="img">
                 <div class="caption">
-                    <h3>사고 예방</h3>
+                    <h3>사람 이미지</h3>
                     <p>이거 캠으로 사고예방 가능함</p>
                 </div>
             </div>
@@ -20,7 +20,7 @@
             <div class="thumbnail">
                 <img src="images/신고.png" alt="img">
                 <div class="caption">
-                    <h3>자동 신고</h3>
+                    <h3>내용</h3>
                     <p>이거 신고나면 충돌센서로 자동으로 신고함</p>
                 </div>
             </div>
@@ -30,7 +30,7 @@
             <div class="thumbnail">
                 <img src="images/예방.png" alt="img">
                 <div class="caption">
-                    <h3>사고 예방</h3>
+                    <h3>사람 이미지</h3>
                     <p>이거 캠으로 사고예방 가능함</p>
                 </div>
             </div>
@@ -40,7 +40,7 @@
             <div class="thumbnail">
                 <img src="images/신고.png" alt="img">
                 <div class="caption">
-                    <h3>자동 신고</h3>
+                    <h3>내용</h3>
                     <p>이거 신고나면 충돌센서로 자동으로 신고함</p>
                 </div>
             </div>
