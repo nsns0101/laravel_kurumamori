@@ -28,16 +28,95 @@
 
 @section('script')
 <script>
-    var past_sickness_count = 0;
+    var past_sickness_count = 2;
 
-
+    function add_past_sickness(){
+        if(past_sickness_count < 4){
+            console.log(past_sickness_count);
+            const add = `
+                <div class="col-md-1" >
+                    <img id="add__past_sickness"src="/icon/add.png" style="margin-left:50%" onclick="add_past_sickness()"/>
+                </div>
+                <div class="col-md-2 text-center">
+                    <p class="add__past_sickness"style="font-size:24px; margin-top:13px; color:blue;font-weight:800;">과거 질환${past_sickness_count}</p>
+                </div>
+                {{-- 드롭다운버튼 --}}
+                <div class="col-md-2">
+                    <button 
+                        class="btn btn-default dropdown-toggle past_sickness_btn${past_sickness_count} dropdown_btn" type="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="true">
+                            선택
+                        <span class="caret"></span>
+                    </button>
+                    <div class="form-group {{ $errors->has('past_sickness${past_sickness_count}') ? 'has-error' : '' }}">
+                        <input class="past_sickness${past_sickness_count}" style="font-size:10px"  name="past_sickness${past_sickness_count}" class="form-control"value="{{ old('past_sickness${past_sickness_count}')}}"/>
+                        {!! $errors->first('past_sickness${past_sickness_count}', '<span class="form-error">:message</span>') !!}
+                    </div>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a class="dropdown-past_sickness${past_sickness_count}" href="#" style="color:black; font-size:18px;">없음</a></li>
+                        <li><a class="dropdown-past_sickness${past_sickness_count}" href="#" style="color:black; font-size:18px;">고혈압</a></li>
+                        <li><a class="dropdown-past_sickness${past_sickness_count}" href="#" style="color:black; font-size:18px;">당뇨</a></li>
+                        <li><a class="dropdown-past_sickness${past_sickness_count}" href="#" style="color:black; font-size:18px;">결핵</a></li>
+                        <li><a class="dropdown-past_sickness${past_sickness_count}" href="#" style="color:black; font-size:18px;">심장질환</a></li>
+                        <li><a class="dropdown-past_sickness${past_sickness_count}" href="#" style="color:black; font-size:18px;">알러지</a></li>
+                        <li><a class="dropdown-past_sickness${past_sickness_count}" href="#" style="color:black; font-size:18px;">천식</a></li>
+                        <li><a class="dropdown-past_sickness${past_sickness_count}" href="#" style="color:black; font-size:18px;">심부전증</a></li>
+                        <li><a class="dropdown-past_sickness${past_sickness_count}" href="#" style="color:black; font-size:18px;">페렴</a></li>
+                        <li><a class="dropdown-past_sickness${past_sickness_count}" href="#" style="color:black; font-size:18px;">디스크</a></li>
+                        <li><a class="dropdown-past_sickness${past_sickness_count}" href="#" style="color:black; font-size:18px;">간경화</a></li>
+                        <li><a class="dropdown-past_sickness${past_sickness_count}" href="#" style="color:black; font-size:18px;">관절염</a></li>
+                        <li><a class="dropdown-past_sickness${past_sickness_count}" href="#" style="color:black; font-size:18px;">협심증</a></li>
+                        <li><a class="dropdown-past_sickness${past_sickness_count}" href="#" style="color:black; font-size:18px;">암</a></li>
+                        <li><a class="dropdown-past_sickness${past_sickness_count}" href="#" style="color:black; font-size:18px;">갑상선염</a></li>
+                        <li><a class="dropdown-past_sickness${past_sickness_count}" href="#" style="color:black; font-size:18px;">고지혈증</a></li>
+                        <li><a class="dropdown-past_sickness${past_sickness_count}" href="#" style="color:black; font-size:18px;">골다공증</a></li>
+                        <li><a class="dropdown-past_sickness${past_sickness_count}" href="#" style="color:black; font-size:18px;">과민성 대장</a></li>
+                        <li><a class="dropdown-past_sickness${past_sickness_count}" href="#" style="color:black; font-size:18px;">기관지염</a></li>
+                        <li><a class="dropdown-past_sickness${past_sickness_count}" href="#" style="color:black; font-size:18px;">뇌졸중</a></li>
+                        <li><a class="dropdown-past_sickness${past_sickness_count}" href="#" style="color:black; font-size:18px;">신장질환</a></li>
+                        <li><a class="dropdown-past_sickness${past_sickness_count}" href="#" style="color:black; font-size:18px;">간암</a></li>
+                        <li><a class="dropdown-past_sickness${past_sickness_count}" href="#" style="color:black; font-size:18px;">기타질환</a></li>
+                    </ul>
+                </div>
+                {{--  --}}
+                <div class="col-md-6">
+                    <div class="form-group {{ $errors->has('past_sickness_supplementation${past_sickness_count}') ? 'has-error' : '' }}">
+                        <input class="past_sickness_supplementation${past_sickness_count}" style="font-size:24px; width:100%;"type="text" name="past_sickness_supplementation${past_sickness_count}" class="form-control" placeholder="보충설명(복용 약물, 기간)" value="{{ old('past_sickness_supplementation1') }}"/>
+                        {!! $errors->first('past_sickness_supplementation${past_sickness_count}', '<span class="form-error">:message</span>') !!}
+                    </div>
+                </div>
+                <div class="col-md-1"></div>`;
+            // $(".abcde").text("aa");
+            // console.log( $(".abcde")[0]);
+            $("#form__past_sickness").append(add);
+            past_sickness_count++;
+        }
+    }
     //예전 질병
-    $(".dropdown-past_sickness").click(function(){
-        
-        $('.past_sickness_btn').html($(this).text() + ' <span class="caret"></span>');
-        // $('.past_sickness_btn').val($(this).data('value'));
-        $('#past_sickness').val($('.past_sickness_btn').text());
-    });
+    // for(var i = 1; i <= 3; i++){
+        $(`.dropdown-past_sickness1`).click(function(){
+            console.log("dropdown-past_sickness1");
+            $(`.past_sickness_btn1`).html($(this).text() + ' <span class="caret"></span>');
+            console.log
+            // $('.past_sickness_btn').val($(this).data('value'));
+            $(`.past_sickness1`).val($(`.past_sickness_btn1`).text());
+        });
+        $(`.dropdown-past_sickness2`).click(function(){
+            console.log("dropdown-past_sickness2");
+            $(`.past_sickness_btn2`).html($(this).text() + ' <span class="caret"></span>');
+            console.log
+            // $('.past_sickness_btn').val($(this).data('value'));
+            $(`.past_sickness2`).val($(`.past_sickness_btn2`).text());
+        });
+        $(`.dropdown-past_sickness3`).click(function(){
+            console.log("dropdown-past_sickness3");
+            $(`.past_sickness_btn3`).html($(this).text() + ' <span class="caret"></span>');
+            console.log
+            // $('.past_sickness_btn').val($(this).data('value'));
+            $(`.past_sickness3`).val($(`.past_sickness_btn3`).text());
+        });
+    // }
+   
     //현재 질병
     $(".dropdown-sickness").click(function(){
         
@@ -64,37 +143,8 @@
         $('#insurance_table').css("display","none");
     });
 
-    //
-    // $("#add__past_sickness").click(function(){
-    //     // console.log($('#insurance_bool_no').val());
-    //     $('#insurance_table').css("display","none");
-    // });
-    function add_past_sickness(){
-        // 0,1 총 두번 추가가능
-        if(past_sickness_count < 2){
-            // console.log(past_sickness_count);
-            const add = `@include('info.medical_info.past_sickness')`;
-            // $(".abcde").text("aa");
-            // console.log( $(".abcde")[0]);
-            $(".add__past_sickness")[past_sickness_count].innerHTML = `과거 질환${past_sickness_count + 1}`;
-            $(".past_sickness")[past_sickness_count].name = `past_sickness${past_sickness_count + 1}`;
-            $(".past_sickness_supplementation")[past_sickness_count].name = `past_sickness${past_sickness_count + 1}`;
-            $(".past_sickness_btn")[0].className = `btn btn-default dropdown-toggle past_sickness_btn${past_sickness_count}`;
-            // console.log($(".past_sickness_btn")[0]);
-            // $(".abcde")[past_sickness_count].
-            // console.log(add.$("#abcde").text());
-            $("#form__past_sickness").append(add);
-            past_sickness_count++;
-            $(".add__past_sickness")[past_sickness_count].innerHTML = `과거 질환${past_sickness_count + 1}`;
-            $(".past_sickness")[past_sickness_count].name = `past_sickness${past_sickness_count + 1}`;
-            $(".past_sickness_supplementation")[past_sickness_count].name = `past_sickness${past_sickness_count + 1}`;
-            $(".past_sickness_supplementation")[past_sickness_count].value = null;
-            $(".dropdown_past_sickness")[past_sickness_count].value = "선택";
-
-
-
-        }
-    }
+    
+    
 
     //
     $(function() {	
