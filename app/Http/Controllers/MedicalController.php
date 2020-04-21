@@ -70,6 +70,20 @@ class MedicalController extends Controller
     }
 
     public function update(Request $request, \App\Medical_info $medical_info){
+
+        \Log::info(count(strpos($request->all(), 'past_sickness')));
+        if($request->past_sickness3){
+            $past_sickness_length = 3;
+        }
+        elseif($request->past_sickness2){
+            $past_sickness_length = 2;
+        }
+        else{
+            $past_sickness_length = 1;
+        };
+        for($i = 1; $i <= $past_sickness_length; $i++){
+            
+        }
         // 의료정보
         $medical_info ->update([
             'user_id' => auth()->user()->id,

@@ -17,14 +17,10 @@
                 <div class="dropdown">
                     <br/>
                     {{-- 과거 질환 --}}
-                    <div class="row" id="form__past_sickness">
-                        @include('info.medical_info.past_sickness')
-                    </div>
+                    @include('info.medical_info.past_sickness')
                     <hr style="background-color:darkgray" />
                     {{-- 현재 질환 --}}
-                    <div class="row" id="form__sickness">
-                        @include('info.medical_info.sickness')
-                    </div>
+                    @include('info.medical_info.sickness')
                 </div>
             </div>
         </div>

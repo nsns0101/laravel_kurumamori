@@ -68,21 +68,21 @@ $factory->define(App\Product::class, function (Faker $faker) {
 //의료정보 팩토리
 $factory->define(App\Medical_info::class, function (Faker $faker) {
     $userId = App\User::pluck('id')->toArray();
-    //
-    $sickness = ["없음", "고혈압", "당뇨", "결핵", "심장질환", "알러지", "천식", "심부전증", "페렴", "디스크", "간경화", "관절염", "협심증", "암", "갑상선염", "고지혈증", "골다공증", "과민성 대장", "기관지염", "뇌졸중", "신장질환", "간암"];
-    $symptom = ["위가 아픔", "허리가 아픔", "설탕먹고싶음", "간이 아픔", "몸살", "기침", "잦은 기침", "뇌가 아픔"];
-    $medicine = ["위약", "허리약", "인슐린", "간약", "몸살약", "기침약", "잦은 기침약", "게보린"];
+
+    // $sickness = ["없음", "고혈압", "당뇨", "결핵", "심장질환", "알러지", "천식", "심부전증", "페렴", "디스크", "간경화", "관절염", "협심증", "암", "갑상선염", "고지혈증", "골다공증", "과민성 대장", "기관지염", "뇌졸중", "신장질환", "간암"];
+    // $symptom = ["위가 아픔", "허리가 아픔", "설탕먹고싶음", "간이 아픔", "몸살", "기침", "잦은 기침", "뇌가 아픔"];
+    // $medicine = ["위약", "허리약", "인슐린", "간약", "몸살약", "기침약", "잦은 기침약", "게보린"];
     $num = rand(0, 7);
     $hospital = ["경대병원", "서울병원", "영대병원", "부산병원"];
     $report_request = ["빨리와주세요", "붕대가져와주세요", "배도 아파요"];
 
     return [
         'user_id' => $faker->unique()->randomElement($userId), //1:1관계로 유니크부여
-        'past_sickness' => Arr::random($sickness),
-        'past_sickness_supplementation' => Str::random(10),
-        'sickness' => Arr::random($sickness),
-        'medicine' => Arr::random($medicine),
-        'symptom' => Arr::random($symptom),
+        // 'past_sickness' => Arr::random($sickness),
+        // 'past_sickness_supplementation' => Str::random(10),
+        // 'sickness' => Arr::random($sickness),
+        // 'medicine' => Arr::random($medicine),
+        // 'symptom' => Arr::random($symptom),
         'guardian_phone' => '010-' . rand(1000, 9999) . '-' . rand(1000, 9999),
         'blood_type' => Arr::random(['A형','B형','AB형','O형']),
         'disability_status' => Arr::random(['yes','no']),
@@ -91,7 +91,32 @@ $factory->define(App\Medical_info::class, function (Faker $faker) {
         'report_request' => Arr::random($report_request),
     ];
 });
+//과거 병력 팩토리
+$factory->define(App\Past_sickness::class, function (Faker $faker) {
+    $medical_infoId = App\Medical_info::pluck('id')->toArray();
 
+    $sickness = ["없음", "고혈압", "당뇨", "결핵", "심장질환", "알러지", "천식", "심부전증", "페렴", "디스크", "간경화", "관절염", "협심증", "암", "갑상선염", "고지혈증", "골다공증", "과민성 대장", "기관지염", "뇌졸중", "신장질환", "간암"];
+    return [
+        'medical_id' => $faker->randomElement($medical_infoId),
+        'past_sickness_name' => Arr::random($sickness),
+        'past_sickness_supplementation' => Str::random(10),
+    ];
+});
+//기저질환 팩토린
+$factory->define(App\Sickness::class, function (Faker $faker) {
+    $medical_infoId = App\Medical_info::pluck('id')->toArray();
+
+    $sickness = ["없음", "고혈압", "당뇨", "결핵", "심장질환", "알러지", "천식", "심부전증", "페렴", "디스크", "간경화", "관절염", "협심증", "암", "갑상선염", "고지혈증", "골다공증", "과민성 대장", "기관지염", "뇌졸중", "신장질환", "간암"];
+    $symptom = ["위가 아픔", "허리가 아픔", "설탕먹고싶음", "간이 아픔", "몸살", "기침", "잦은 기침", "뇌가 아픔"];
+    $medicine = ["위약", "허리약", "인슐린", "간약", "몸살약", "기침약", "잦은 기침약", "게보린"];
+    return [
+        'medical_id' => $faker->randomElement($medical_infoId),
+        'sickness_name' => Arr::random($sickness),
+        'medicine' => Arr::random($medicine),
+        'symptom' => Arr::random($symptom),
+
+    ];
+});
 //운전 팩토리
 $factory->define(App\Drive::class, function (Faker $faker) {
     $date = date("Y-m-d H:m:s", time()); //현재날짜

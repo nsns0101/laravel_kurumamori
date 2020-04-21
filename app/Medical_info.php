@@ -26,4 +26,13 @@ class Medical_info extends Model
     {
         return $this->hasOne(User::class);
     }
+    //일대다
+    public function past_sicknesses()
+    {
+        return $this->hasMany(Past_sicknesses::class);
+    }
+    public function sicknesses()
+    {
+        return $this->hasMany(Sicknesses::class);
+    }
 }
