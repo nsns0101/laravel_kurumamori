@@ -19,7 +19,6 @@
             @else
                 @include('info.medical_info.no_medical')
             @endif
-
         </div>
     </div>
 </section>
@@ -30,6 +29,7 @@
 <script>
     var past_sickness_count = 2;
     var sickness_count = 2;
+    //예전 질병
     $(`.dropdown-past_sickness1`).click(function(){
         console.log("dropdown-past_sickness1");
         $(`.past_sickness_btn1`).html($(this).text() + ' <span class="caret"></span>');
@@ -53,11 +53,25 @@
     });
    
     //현재 질병
-    $(".dropdown-sickness").click(function(){
+    $(".dropdown-sickness1").click(function(){
         
-        $('.sickness_btn').html($(this).text() + ' <span class="caret"></span>');
+        $('.sickness_btn1').html($(this).text() + ' <span class="caret"></span>');
         // $('.sickness_btn').val($(this).data('value'));
-        $('#sickness').val($('.sickness_btn').text());
+        $('#sickness1').val($('.sickness_btn1').text());
+
+    });
+    $(".dropdown-sickness2").click(function(){
+        
+        $('.sickness_btn2').html($(this).text() + ' <span class="caret"></span>');
+        // $('.sickness_btn').val($(this).data('value'));
+        $('#sickness2').val($('.sickness_btn2').text());
+
+    });
+    $(".dropdown-sickness3").click(function(){
+        
+        $('.sickness_btn3').html($(this).text() + ' <span class="caret"></span>');
+        // $('.sickness_btn').val($(this).data('value'));
+        $('#sickness3').val($('.sickness_btn3').text());
 
     });
     //혈액형

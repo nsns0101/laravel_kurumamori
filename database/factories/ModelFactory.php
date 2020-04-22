@@ -135,13 +135,14 @@ $factory->define(App\Drive::class, function (Faker $faker) {
 //보험사 팩토리
 $factory->define(App\Insurance::class, function (Faker $faker) {
     $date = date("Y-m-d", time()); //현재날짜
+    $userId = App\User::pluck('id')->toArray();
     $subscription_date = date("Y-m-d", strtotime("{$date} -10 years")); //현재날짜 10년전
     $expiration_date = date("Y-m-d", strtotime("{$subscription_date} +20 years")); //구독날짜 10년후
 
-    $userId = App\User::pluck('id')->toArray();
     $insurance_name = ["하나보험사", "우리보험사", "준혁보험사", "동화보험사"];
     return [
-        'user_id' => $faker->randomElement($userId),
+        // 'user_id' => $faker->unique()->randomElement($userId), //1:1관계로 유니크부여
+        'user_id' => $faker->randomElement($userId), //1:1관계로 유니크부여
         'insurance_name' => Arr::random($insurance_name),
         'insurance_phone' => '010-' . rand(1000, 9999) . '-' . rand(1000, 9999),
         'subscription_date' => $subscription_date,

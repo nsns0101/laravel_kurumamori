@@ -1,4 +1,5 @@
 <p style="color:red"> *가 있는 곳은 반드시 입력해주세요!</p>
+<p style="color:red"> *과거 질환과 현재 질환은 3개까지 등록가능합니다.</p>
 {{-- 질병 사항 --}}
 @if($update_form)
 <form action="{{ route('medical_info.update',$medical_info->id) }}" method="POST" role="form">

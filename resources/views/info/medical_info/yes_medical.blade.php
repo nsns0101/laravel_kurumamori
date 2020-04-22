@@ -5,11 +5,17 @@
             <div class="caption">
                 <h3 class="text-center">병 이력</h3>
                 <hr style="background-color:darkgrey;">
-                <p>예전에 걸린 병 : {{$medical_info->past_sickness}}</p>
-                <p>예전에 걸린 병 보충 설명 : {{$medical_info->past_sickness_supplementation}}</p>
-                <p>현재 병 : {{$medical_info->sickness}}</p>
-                <p>복용중인 약 : {{$medical_info->medicine}}</p>
-                <p>증상 : {{$medical_info->symptom}}</p>
+                @for($i = 0; $i < count($past_sicknesses); $i++)
+                <p>예전에 걸린 병{{$i + 1}} : {{$past_sicknesses[$i]->past_sickness_name}}</p>
+                <p>예전에 걸린 병{{$i + 1}} 보충 설명 : {{$past_sicknesses[$i]->past_sickness_supplementation}}</p>
+                <br/>
+                @endfor
+                @for($i = 0; $i < count($sicknesses); $i++)
+                <p>현재 병{{$i + 1}} : {{$sicknesses[$i]->sickness_name}}</p>
+                <p>복용중인 약{{$i + 1}} : {{$sicknesses[$i]->medicine}}</p>
+                <p>증상{{$i + 1}} : {{$sicknesses[$i]->symptom}}</p>
+                <br/>
+                @endfor
                 <hr style="background-color:darkgrey;" />
             </div>
         </div>

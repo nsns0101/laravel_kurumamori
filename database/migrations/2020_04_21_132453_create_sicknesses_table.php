@@ -21,7 +21,7 @@ class CreateSicknessesTable extends Migration
             $table->string('symptom')->nullable()->comment('증상');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('생성 시간');
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('업데이트 시간');
-            
+
             $table->foreign('medical_id')->references('id')->on('medical_infos')->onUpdate('cascade')->onDelete('cascade');
         });
     }
