@@ -85,39 +85,40 @@ class MedicalController extends Controller
     public function update(Request $request, \App\Medical_info $medical_info){
 
         \Log::info($request->all());
-        $past_sickness_length = 0;
-        $past_sickness = [$request->past_sickness3, $request->past_sickness2, $request->past_sickness1];
-        for($i = 0; $i < count($past_sickness); $i++){
-            if($past_sickness[$i]){
-                $past_sickness_length++;
-            }
-        }
-        // if($request->past_sickness3){
-        //     $past_sickness_length = 3;
-        // }
-        // elseif($request->past_sickness2){
-        //     $past_sickness_length = 2;
-        // }
-        // elseif($request->past_sickness1){
-        //     $past_sickness_length = 1;
-        // }
-        // else{
-        //     $past_sickness_length = 0;
-        // }
-        // \Log::info( "$request->guardian_phone");
-        \Log::info("$request->past_sickness[$i]");
-        // $request->input("insurance_name").
-
-        \Log::info($past_sickness_lengths);
+        \Log::info($request->past_sickness_name[1]);
+        
         $medical_id = \App\Medical_info::whereUser_id(auth()->user()->id)->first()->id;
         $past_sickness = \App\Past_sickness::whereMedical_id($medical_id)->get();
-        for($i = 0; $i < $past_sickness_length; $i++){
-            $past_sickness[$i]->update([
-            'medical_id' => \App\Medical_info::whereUser_id(auth()->user()->id)->first()->id,
-            'past_sickness_name' => "$request->past_sickness{$i}",
-            'past_sickness_supplementation' => "$request->past_sickness_supplementation{$i}"
-            ]);
+        $sickness = \App\Sickness::whereMedical_id($medical_id)->get();
+        $past_sickness_count = 0;
+        $sickness_count = 0;
+        //past_sickness DB Update
+        for($i = 1; $i <= count($request->past_sickness_name); $i++){
+            if($request->past_sickness_name[$i] && $request->past_sickness_name[$i]!="없음"){
+                $past_sickness[$past_sickness_count]->update([
+                    'medical_id' => $medical_id,
+                    'past_sickness_name' => $request->past_sickness_name[$i],
+                    'past_sickness_supplementation' => $request->past_sickness_supplementation[$i]
+                    ]);
+                $past_sickness_count++;
+            }
         }
+
+        for($i = 1; $i <= count($request->sickness_name); $i++){
+            \Log::info("i" . $i);
+            if($request->sickness_name[$i] && $request->sickness_name[$i]!="없음"){
+                \Log::info("성공");
+                $sickness[$sickness_count]->update([
+                    'medical_id' => $medical_id,
+                    'sickness_name' => $request->sickness_name[$i],
+                    'medicine' => $request->medicine[$i],
+                    'symptom' => $request->symptom[$i]
+                    ]);
+                $sickness_count++;
+            }
+        }
+        //sickness DB Update
+        \Log::info($a);
         // 의료정보
         $medical_info ->update([
             'user_id' => auth()->user()->id,

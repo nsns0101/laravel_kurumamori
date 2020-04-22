@@ -17,9 +17,9 @@
             {{isset($sickness[$i-1]) ? $sickness[$i-1]->sickness_name : "선택"}}
             <span class="caret"></span>
         </button>
-        <div class="form-group {{ $errors->has("sickness$i") ? 'has-error' : '' }}">
-        <input id="sickness{{$i}}" style="font-size:10px"type="hidden" name="sickness{{$i}}" class="form-control" value="{{ isset($sickness[$i-1]) ?old("sickness$i",$sickness[$i-1]->sickness_name) :  old("sickness$i")}}"/>
-            {!! $errors->first('sickness{{$i}}', '<span class="form-error">:message</span>') !!}
+        <div class="form-group {{ $errors->has("sickness_name[$i]") ? 'has-error' : '' }}">
+        <input id="sickness_name{{$i}}" style="font-size:10px"type="text" name="sickness_name[{{$i}}]" class="form-control" value="{{ isset($sickness[$i-1]) ?old("sickness_name[$i]",$sickness[$i-1]->sickness_name) :  old("sickness_name[$i]")}}"/>
+            {!! $errors->first('sickness_name[{{$i}}]', '<span class="form-error">:message</span>') !!}
         </div>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">        
             @for($j = 0; $j < count($sickness_list); $j++)
@@ -32,9 +32,9 @@
         <p style="font-size:24px; margin-top:13px; color:blue;font-weight:800;">복용중인 약</p>
     </div>
     <div class="col-md-4">
-        <div class="form-group {{ $errors->has("medicine$i") ? 'has-error' : '' }}">
-            <input style="font-size:24px"type="text" name="medicine{{$i}}" class="form-control" placeholder="복용 중이신 약물" value="{{isset($sickness[$i-1]) ? old("past_sickness_supplementation$i",$sickness[$i-1]->medicine) : old("medicine$i") }}"/>
-            {!! $errors->first('medicine', '<span class="form-error">:message</span>') !!}
+        <div class="form-group {{ $errors->has("medicine[$i]") ? 'has-error' : '' }}">
+            <input style="font-size:24px"type="text" name="medicine[{{$i}}]" class="form-control" placeholder="복용 중이신 약물" value="{{isset($sickness[$i-1]) ? old("medicine[$i]",$sickness[$i-1]->medicine) : old("medicine[$i]") }}"/>
+            {!! $errors->first('medicine[{{$i}}]', '<span class="form-error">:message</span>') !!}
         </div>
     </div>
     <div class="col-md-1" ></div>
@@ -44,9 +44,9 @@
         <p style="font-size:24px; margin-top:13px; color:blue;font-weight:800;">증상</p>
     </div>
     <div class="col-md-8">
-        <div class="form-group {{ $errors->has("symptom$i") ? 'has-error' : '' }}">
-        <input style="font-size:24px"type="text" name="symptom{{$i}}" class="form-control" placeholder="증상(아픈 곳을 구체적으로 적어주세요!)" value="{{ isset($sickness[$i-1]) ? old("past_sickness_supplementation$i",$sickness[$i-1]->symptom) : old("symptom$i") }}"/>
-            {!! $errors->first('symptom{{$i}}', '<span class="form-error">:message</span>') !!}
+        <div class="form-group {{ $errors->has("symptom[$i]") ? 'has-error' : '' }}">
+        <input style="font-size:24px"type="text" name="symptom[{{$i}}]" class="form-control" placeholder="증상(아픈 곳을 구체적으로 적어주세요!)" value="{{ isset($sickness[$i-1]) ? old("symptom[$i]",$sickness[$i-1]->symptom) : old("symptom[$i]") }}"/>
+            {!! $errors->first('symptom[{{$i}}]', '<span class="form-error">:message</span>') !!}
             <p class="text-danger" style="font-size:18px">증상은 최대한 자세히 적어주세요!</p>
         </div>
     </div>

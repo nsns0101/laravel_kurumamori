@@ -35,21 +35,21 @@
         $(`.past_sickness_btn1`).html($(this).text() + ' <span class="caret"></span>');
         console.log
         // $('.past_sickness_btn').val($(this).data('value'));
-        $(`.past_sickness1`).val($(`.past_sickness_btn1`).text());
+        $(`.past_sickness_name1`).val($(`.past_sickness_btn1`).text());
     });
     $(`.dropdown-past_sickness2`).click(function(){
         console.log("dropdown-past_sickness2");
         $(`.past_sickness_btn2`).html($(this).text() + ' <span class="caret"></span>');
         console.log
         // $('.past_sickness_btn').val($(this).data('value'));
-        $(`.past_sickness2`).val($(`.past_sickness_btn2`).text());
+        $(`.past_sickness_name2`).val($(`.past_sickness_btn2`).text());
     });
     $(`.dropdown-past_sickness3`).click(function(){
         console.log("dropdown-past_sickness3");
         $(`.past_sickness_btn3`).html($(this).text() + ' <span class="caret"></span>');
         console.log
         // $('.past_sickness_btn').val($(this).data('value'));
-        $(`.past_sickness3`).val($(`.past_sickness_btn3`).text());
+        $(`.past_sickness_name3`).val($(`.past_sickness_btn3`).text());
     });
    
     //현재 질병
@@ -57,21 +57,21 @@
         
         $('.sickness_btn1').html($(this).text() + ' <span class="caret"></span>');
         // $('.sickness_btn').val($(this).data('value'));
-        $('#sickness1').val($('.sickness_btn1').text());
+        $('#sickness_name1').val($('.sickness_btn1').text());
 
     });
     $(".dropdown-sickness2").click(function(){
         
         $('.sickness_btn2').html($(this).text() + ' <span class="caret"></span>');
         // $('.sickness_btn').val($(this).data('value'));
-        $('#sickness2').val($('.sickness_btn2').text());
+        $('#sickness_name2').val($('.sickness_btn2').text());
 
     });
     $(".dropdown-sickness3").click(function(){
         
         $('.sickness_btn3').html($(this).text() + ' <span class="caret"></span>');
         // $('.sickness_btn').val($(this).data('value'));
-        $('#sickness3').val($('.sickness_btn3').text());
+        $('#sickness_name3').val($('.sickness_btn3').text());
 
     });
     //혈액형
