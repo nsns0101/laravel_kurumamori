@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 
 class MedicalController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('guest', ['except' => 'destroy']);
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //로그인, 회원가입 페이지
     public function index()
     {

@@ -45,6 +45,14 @@ Route::resource('/info/index', 'InfoController');
 Route::resource('/info/medical_info', 'MedicalController');
 // Route::resource('/info/product', 'ProductController');
 
+//운전점수
+Route::resource('/info/drive_score', 'DriveController');
+
+//운전점수 날짜별 검색
+Route::get('info/{date}/drive_score', [ //{{slug}}값에 들어온 것은 index메서드로 넘김
+    'as' => 'date.drive',
+    'uses' => 'DriveController@index',
+]);
 
 //정인식 제품 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 Route::resource('/products','ProductController');
@@ -53,7 +61,7 @@ Route::resource('/buy','BuyController');
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
 //김도형 Q&A ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-Route::resource('/qna','QnaController');
+// Route::resource('/qna','QnaController');
 
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ Q&A ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 Route::resource('/questions','QuestionsController');
