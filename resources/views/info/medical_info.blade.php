@@ -82,11 +82,16 @@
         $('#blood_type').val($('.blood_type_btn').text());
 
     });
+    //보험 : 예 클릭시
     $("#insurance_bool_yes").click(function(){
         // console.log($('#insurance_bool_yes').val());
         $('#insurance_table').css("display","flex");
     });
-
+    //보험 : 발리데이션으로 old값으로 yes가 떠있을 때 자동으로 열게
+    if($("#insurance_bool_yes").is(":checked")){
+        $('#insurance_table').css("display","flex");
+    }
+    //보험 : 아니오 클릭시
     $("#insurance_bool_no").click(function(){
         // console.log($('#insurance_bool_no').val());
         $('#insurance_table').css("display","none");
