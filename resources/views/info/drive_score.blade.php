@@ -16,6 +16,24 @@
         <br />
         <h3> 운전 점수 확인</h3>
         <div class="row">
+            <div class="col-md-6"></div>
+
+            <div class="col-md-2 text-center">
+                <p style="font-size:24px;margin-top:13px; margin-right:15px;color:blue;font-weight:800;">
+                보험 만기일
+                </p>
+            </div>
+            <br/>
+            <div class="col-md-2">
+                <div class="form-group {{ $errors->has('drive_date') ? 'has-error' : '' }}">
+                    <!-- 시작시 기본 날짜 설정은 value를 이용 -->
+                    <input type="text" name="drive_date" class="form-control datePicker"  readonly>
+                    <p style="color:red">
+                        {!! $errors->first('drive_date', '<span class="form-error">:message</span>') !!}
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
 
             <div class="col-xl-5 col-lg-5 col-md-4">
 

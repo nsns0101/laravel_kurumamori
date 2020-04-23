@@ -125,49 +125,77 @@ class MedicalController extends Controller
     }
 
     public function update(Request $request, \App\Medical_info $medical_info){
-
+        
         \Log::info($request->all());
-        \Log::info($request->past_sickness_name[1]);
+        // \Log::info($request->past_sickness_name[1]);
         
         $medical_id = \App\Medical_info::whereUser_id(auth()->user()->id)->first()->id;
         $past_sickness = \App\Past_sickness::whereMedical_id($medical_id)->get();
         $sickness = \App\Sickness::whereMedical_id($medical_id)->get();
         $past_sickness_count = 0;
         $sickness_count = 0;
-
+        // \Log::info(count($request->past_sickness_name));
+        // \Log::info(count($request->sickness_name));
         //past_sickness DB Update
+
         for($i = 1; $i <= count($request->past_sickness_name); $i++){
+            // \Log::info(count($request->past_sickness_name));
+            //input창에 넣은 값이 있고 "없음"이 아닐 때
             if($request->past_sickness_name[$i] && $request->past_sickness_name[$i]!="없음"){
-                $past_sickness[$past_sickness_count]->update([
-                    'medical_id' => $medical_id,
-                    'past_sickness_name' => $request->past_sickness_name[$i],
-                    'past_sickness_supplementation' => $request->past_sickness_supplementation[$i]
+                \Log::info("good" . $i);
+                if($i > count($past_sickness)){
+                    \App\Past_sickness::create([
+                        'medical_id' => $medical_id,
+                        'past_sickness_name' => $request->past_sickness_name[$i],
+                        'past_sickness_supplementation' => $request->past_sickness_supplementation[$i]
                     ]);
-                $past_sickness_count++;
+                }
+                else{
+                    $past_sickness[$past_sickness_count]->update([
+                        'medical_id' => $medical_id,
+                        'past_sickness_name' => $request->past_sickness_name[$i],
+                        'past_sickness_supplementation' => $request->past_sickness_supplementation[$i]
+                    ]);
+    
+                }
             }
+            //수정창에서 지운 경우
+            elseif(isset($past_sickness[$i-1])){
+                $past_sickness[$i-1]->delete();
+            }
+            $past_sickness_count++;
         }
+        // \Log::info($error);
         //sickness DB Update
         for($i = 1; $i <= count($request->sickness_name); $i++){
-            \Log::info("i" . $i);
             if($request->sickness_name[$i] && $request->sickness_name[$i]!="없음"){
-                \Log::info("성공");
-                $sickness[$sickness_count]->update([
-                    'medical_id' => $medical_id,
-                    'sickness_name' => $request->sickness_name[$i],
-                    'medicine' => $request->medicine[$i],
-                    'symptom' => $request->symptom[$i]
+                if($i > count($sickness)){
+                    \App\Sickness::create([
+                        'medical_id' => $medical_id,
+                        'sickness_name' => $request->sickness_name[$i],
+                        'medicine' => $request->medicine[$i],
+                        'symptom' => $request->symptom[$i]
                     ]);
-                $sickness_count++;
+                }
+                else{
+                    $sickness[$sickness_count]->update([
+                        'medical_id' => $medical_id,
+                        'sickness_name' => $request->sickness_name[$i],
+                        'medicine' => $request->medicine[$i],
+                        'symptom' => $request->symptom[$i]
+                    ]);
+                }
+               
             }
+            //수정창에서 지운 경우
+            elseif(isset($sickness[$i-1])){
+                $sickness[$i-1]->delete();
+            }
+            $sickness_count++;
         }
         //medical_info DB Update
         $medical_info ->update([
             'user_id' => auth()->user()->id,
-            // 'past_sickness'=> $request->input("past_sickness{$i}"),
-            // 'past_sickness_supplementation' =>  $request->input("past_sickness_supplementation,
-            // 'sickness' => $request->sickness,
-            // 'medicine' => $request->medicine,
-            // 'symptom' => $request->symptom,
             'guardian_phone' => $request->guardian_phone,
             'blood_type' => $request->blood_type,
             'disability_status' => $request->disability_status,
@@ -177,12 +205,12 @@ class MedicalController extends Controller
         ]);
 
         //insurances DB Update
+        $insurance = \App\Insurance::whereUser_id(auth()->user()->id)->first();
+        
         if($request->insurance_bool){
-            //현재 유저가 가지고 있는 보험정보를 모두 획득
-            $insurances = \App\Insurance::whereUser_id(auth()->user()->id)->get();
-            for($i = 0; $i < count($insurances); $i++){
-                // \Log::info("insurance_name{$i}");
-                $insurances[$i]->update([
+            \Log::info($insurance);
+            if($insurance){
+                $insurance->update([
                     'user_id' => auth()->user()->id,
                     'insurance_name' => $request->input("insurance_name"),
                     'insurance_phone' => $request->input("insurance_phone"),
@@ -191,9 +219,22 @@ class MedicalController extends Controller
     
                 ]);
             }
-               
+            else{
+                \App\Insurance::create([
+                    'user_id' => auth()->user()->id,
+                    'insurance_name' => $request->input("insurance_name"),
+                    'insurance_phone' => $request->input("insurance_phone"),
+                    'subscription_date' => $request->input("subscription_date"),
+                    'expiration_date' => $request->input("expiration_date"),
+    
+                ]);
+            }
         }
-
+        //DB에 있는데 input창에서 없음을 고를 때 삭제
+        elseif($insurance){
+            $insurance->delete();
+        }
+        // \Log::info($error);
         return redirect('/info/medical_info');
 
     }

@@ -1,6 +1,6 @@
 {{--  --}}
 @for($i = 1; $i <=3; $i++)
-@if($update_form)
+@if($update_form && $i != 1)
 <div class="row" id="form__past_sickness{{$i}}" style="{{isset($past_sickness[$i-1]) ? "display:flex" : "display:none"}}">
 @else
 <div class="row" id="form__past_sickness{{$i}}" style="{{$i == 1 ? "display:flex" : "display:none"}}">
