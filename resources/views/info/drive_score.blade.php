@@ -28,7 +28,7 @@
             <div class="col-md-2">
                 <div class="form-group {{ $errors->has('drive_date') ? 'has-error' : '' }}">
                     <!-- 시작시 기본 날짜 설정은 value를 이용 -->
-                <input id="drive_date"type="text" name="drive_date" class="form-control datePicker"  value="디폴트로 현재날짜 입력할거임" readonly>
+                <input id="drive_date"type="text" name="drive_date" class="form-control datePicker"  value="{{$drive ? $date : "디폴트 = 현재날짜"}}" readonly>
                     <p style="color:red">
                         {!! $errors->first('drive_date', '<span class="form-error">:message</span>') !!}
                     </p>
@@ -40,51 +40,47 @@
     @if($drive)
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-3">
-                <div class="card btn btn-dark text-dark"> <!-- 아직 미구현 -->
+                <div class="card btn btn-dark text-dark"> <!-- 총 점수 -->
                     <div class="">
-                        icon
+                        {{-- @if --}}
+                        <img src="/icon/모범.png">
                     </div>
                     <h1 class="">
-                        FAQ
+                        총 점수
                     </h1>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3">
-                <div class="card btn btn-dark text-dark"> <!-- 아직 미구현 -->
+                <div class="card btn btn-dark text-dark"> <!-- 급 가속 점수 -->
                     <div class="">
                         icon
                     </div>
                     <h1 class="">
-                        전체질문
+                        급 가속 점수
                     </h1>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3">
-                <div class="card btn btn-dark text-dark"> <!-- 아직 미구현 -->
+                <div class="card btn btn-dark text-dark"> <!-- 급 감속 점수 -->
                     <div class="">
                         icon
                     </div>
                     <h1 class="">
-                        공지사항
+                        급 감속 점수
                     </h1>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-3">
-                <div class="card btn btn-dark text-dark"> <!-- 아직 미구현 -->
-                    <div class="">
-                        icon
-                    </div>
-                    <h1 class="">
-                        업데이트
-                    </h1>
-                </div>
-            </div>
-            <div class="col-xl-5 col-lg-5 col-md-4">
+            <div class="col-xs-12 col-sm-12 col-md-2"></div>
+        </div>
+        {{-- 아이콘 ----------------------------------------------------------------------------------------------- --}}
 
+        {{-- 차트 ------------------------------------------------------------------------------------------------- --}}
+        <div class="row">
+            <div class="col-xl-4 col-lg-4 col-md-4">
                 <!-- Area Chart -->
                 <div class="card shadow" style="width:600px">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Area Chart</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">급 가속 횟수</h6>
                     </div>
                     <div class="card-body">
                         <div class="chart-area">
@@ -100,12 +96,12 @@
                                 style="display: block; width: 693px; height: 320px;"></canvas>
                         </div>
                         <hr>
-                        Styling for the area chart can be found in the <code>/js/demo/chart-area-demo.js</code> file.
+                        {{-- Styling for the area chart can be found in the <code>/js/demo/chart-area-demo.js</code> file. --}}
+                        - 급가속
                     </div>
                 </div>
             </div>
             <div class="col-xl-4 col-lg-4 col-md-4">
-
                 <!-- Bar Chart -->
                 <div class="card shadow" style="width:600px">
                     <div class="card-header py-3">
@@ -129,11 +125,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-8 col-lg-7 col-md-4">
+            <div class="col-xl-4 col-lg-4 col-md-4">
 
                 <!-- Donut Chart -->
                 <div class="col-xl-4 col-lg-5">
-                    <div class="card shadow mb-4">
+                    <div class="card shadow" style="width:600px">
                         <!-- Card Header - Dropdown -->
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Donut Chart</h6>
@@ -160,6 +156,8 @@
                 </div>
             </div>
         </div>
+    @else
+        <p class="text-danger">운전 데이터가 없습니다.</p>
     @endif
     </div>
 </section>

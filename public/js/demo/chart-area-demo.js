@@ -2,6 +2,7 @@
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
+//왼쪽 값
 function number_format(number, decimals, dec_point, thousands_sep) {
   // *     example: number_format(1234.56, 2, ',', ' ');
   // *     return: '1 234,56'
@@ -30,11 +31,28 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 // Area Chart Example
 var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
-  type: 'line',
   data: {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    labels: ["4월 21일","4월 22일","4월 23일","4월 24일","4월 25일"], //항목
     datasets: [{
-      label: "Earnings",
+      type: 'line',       //차트 형태
+      label: "급 가속",
+      lineTension: 0.3,
+      backgroundColor: "rgba(78, 115, 223, 0.05)",
+      borderColor: "red",   //선 색깔
+      pointRadius: 3,
+      pointBackgroundColor: "red",  //꼭짓점 색깔
+      pointBorderColor: "red",  //꼭짓점 바탕색깔
+      pointHoverRadius: 3,
+      pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+      pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+      pointHitRadius: 10,
+      pointBorderWidth: 2,
+      //값
+      data: [3, 6, 1, 6, 2],
+    },
+    {
+      type: 'line',
+      label: "졸음",
       lineTension: 0.3,
       backgroundColor: "rgba(78, 115, 223, 0.05)",
       borderColor: "rgba(78, 115, 223, 1)",
@@ -46,7 +64,25 @@ var myLineChart = new Chart(ctx, {
       pointHoverBorderColor: "rgba(78, 115, 223, 1)",
       pointHitRadius: 10,
       pointBorderWidth: 2,
-      data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
+      //값
+      data: [0, 3, 4, 3, 4],
+    },
+    {
+      type: 'line',
+      label: "급 감속",
+      lineTension: 0.3,
+      backgroundColor: "rgba(78, 115, 223, 0.05)",
+      borderColor: "green",
+      pointRadius: 3,
+      pointBackgroundColor: "green",
+      pointBorderColor: "green",
+      pointHoverRadius: 3,
+      pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+      pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+      pointHitRadius: 10,
+      pointBorderWidth: 2,
+      //값
+      data: [1, 0, 2, 2, 1],
     }],
   },
   options: {
@@ -78,7 +114,8 @@ var myLineChart = new Chart(ctx, {
           padding: 10,
           // Include a dollar sign in the ticks
           callback: function(value, index, values) {
-            return '$' + number_format(value);
+            // return '$' + number_format(value);
+            return number_format(value) + "회";
           }
         },
         gridLines: {
@@ -110,7 +147,7 @@ var myLineChart = new Chart(ctx, {
       callbacks: {
         label: function(tooltipItem, chart) {
           var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+          return datasetLabel + number_format(tooltipItem.yLabel) + '회';
         }
       }
     }

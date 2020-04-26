@@ -35,7 +35,8 @@
     {{--  --}}
     <div class="col-md-6">
         <div class="form-group {{ $errors->has("past_sickness_supplementation$i") ? 'has-error' : '' }}">
-            <input class="past_sickness_supplementation{{$i}}" style="font-size:24px; width:100%;"type="text" name="past_sickness_supplementation[{{$i}}]" class="form-control" placeholder="보충설명(복용 약물, 기간)" value="{{isset($past_sickness[$i-1]) ? old("past_sickness_supplementation.$i" ,$past_sickness[$i-1]->past_sickness_supplementation) :  old("past_sickness_supplementation.$i") }}"/>
+            <input class="past_sickness_supplementation{{$i}}" style="font-size:24px; width:100%;"type="text" 
+                name="past_sickness_supplementation[{{$i}}]" class="form-control" placeholder="보충설명(복용 약물, 기간)" value="{{isset($past_sickness[$i-1]) ? old("past_sickness_supplementation.$i" ,$past_sickness[$i-1]->past_sickness_supplementation) :  old("past_sickness_supplementation.$i") }}"/>
             {!! $errors->first('past_sickness_supplementation{{$i}}', '<span class="form-error">:message</span>') !!}
         </div>
     </div>
