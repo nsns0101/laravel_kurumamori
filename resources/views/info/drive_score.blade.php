@@ -38,126 +38,37 @@
             <br/>
         </div>
     @if($drive)
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-3">
-                <div class="card btn btn-dark text-dark"> <!-- 총 점수 -->
-                    <div class="">
-                        {{-- @if --}}
-                        <img src="/icon/모범.png">
-                    </div>
-                    <h1 class="">
-                        총 점수
-                    </h1>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-3">
-                <div class="card btn btn-dark text-dark"> <!-- 급 가속 점수 -->
-                    <div class="">
-                        icon
-                    </div>
-                    <h1 class="">
-                        급 가속 점수
-                    </h1>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-3">
-                <div class="card btn btn-dark text-dark"> <!-- 급 감속 점수 -->
-                    <div class="">
-                        icon
-                    </div>
-                    <h1 class="">
-                        급 감속 점수
-                    </h1>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-2"></div>
-        </div>
-        {{-- 아이콘 ----------------------------------------------------------------------------------------------- --}}
 
-        {{-- 차트 ------------------------------------------------------------------------------------------------- --}}
+        {{-- 아이콘  --}}
+        @include("info.drive_score.score_icon")
+        {{-- 차트  --}}
+        @include("info.drive_score.chart")
+        {{-- 구글맵, 설명 --}}
         <div class="row">
-            <div class="col-xl-4 col-lg-4 col-md-4">
-                <!-- Area Chart -->
-                <div class="card shadow" style="width:600px">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">급 가속 횟수</h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-area">
-                            <div class="chartjs-size-monitor">
-                                <div class="chartjs-size-monitor-expand">
-                                    <div class=""></div>
-                                </div>
-                                <div class="chartjs-size-monitor-shrink">
-                                    <div class=""></div>
-                                </div>
-                            </div>
-                            <canvas id="myAreaChart" width="693" height="320" class="chartjs-render-monitor"
-                                style="display: block; width: 693px; height: 320px;"></canvas>
-                        </div>
-                        <hr>
-                        {{-- Styling for the area chart can be found in the <code>/js/demo/chart-area-demo.js</code> file. --}}
-                        - 급가속
+            {{-- 구글맵 --}}
+            <div class="col-xl-6 col-lg-6 col-md-6">
+                <div id="map" style="width:100%; height:500px;"></div>
+            </div>
+            <div class="col-sm-3 col-md-3">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3 class="text-center">데이터 값</h3>
+                        <hr style="background-color:darkgrey;"/>
+                        <p>a</p>
+                        <p>a</p>
+                        <p>a</p>
+                        <p>a</p>
+                        <p>a</p>
+                        <p>a</p>
+                        <p>a</p>
+                        <p>a</p>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-lg-4 col-md-4">
-                <!-- Bar Chart -->
-                <div class="card shadow" style="width:600px">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-bar">
-                            <div class="chartjs-size-monitor">
-                                <div class="chartjs-size-monitor-expand">
-                                    <div class=""></div>
-                                </div>
-                                <div class="chartjs-size-monitor-shrink">
-                                    <div class=""></div>
-                                </div>
-                            </div>
-                            <canvas id="myBarChart" width="693" height="320" class="chartjs-render-monitor"
-                                style="display: block; width: 693px; height: 320px;"></canvas>
-                        </div>
-                        <hr>
-                        Styling for the bar chart can be found in the <code>/js/demo/chart-bar-demo.js</code> file.
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-4">
-
-                <!-- Donut Chart -->
-                <div class="col-xl-4 col-lg-5">
-                    <div class="card shadow" style="width:600px">
-                        <!-- Card Header - Dropdown -->
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Donut Chart</h6>
-                        </div>
-                        <!-- Card Body -->
-                        <div class="card-body">
-                            <div class="chart-pie pt-4">
-                                <div class="chartjs-size-monitor">
-                                    <div class="chartjs-size-monitor-expand">
-                                        <div class=""></div>
-                                    </div>
-                                    <div class="chartjs-size-monitor-shrink">
-                                        <div class=""></div>
-                                    </div>
-                                </div>
-                                <canvas id="myPieChart" width="313" height="253" class="chartjs-render-monitor"
-                                    style="display: block; width: 313px; height: 253px;"></canvas>
-                            </div>
-                            <hr>
-                            Styling for the donut chart can be found in the <code>/js/demo/chart-pie-demo.js</code>
-                            file.
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     @else
-    <p class="text-danger">운전 데이터가 없습니다.{{print_r($day_5)}}</p>
+    <p class="text-danger">운전 데이터가 없습니다.</p>
     @endif
     </div>
 </section>
@@ -165,6 +76,7 @@
 
 @section('script')
 <script>
+    var API_KEY = "{{env('GCP_API_KEY')}}";
     var day_5 = [];
     day_5.push("{{$day_5[0]}}");
     day_5.push("{{$day_5[1]}}");
@@ -216,7 +128,60 @@ $("#drive_date").on("propertychange change keyup paste input", function() {
     });
 });
 </script>
-<script src="/js/demo/chart-area-demo.js"></script>
-<script src="/js/demo/chart-bar-demo.js"></script>
-<script src="/js/demo/chart-pie-demo.js"></script>
+{{-- 라인 차트 --}}
+<script src="/js/chart/chart-line.js"></script>
+{{-- 바 차트 --}}
+<script src="/js/chart/chart-bar.js"></script>
+{{-- 도넛 차트 --}}
+<script src="/js/chart/chart-pie.js"></script>
+<script>
+//구글맵 API
+var map;
+function initMap() {
+    var location = new Array();
+    var location_color = new Array();
+    //점
+    location.push(new google.maps.LatLng(35.8963091,128.6215978));
+    location.push(new google.maps.LatLng(35.8973091,128.6225978));
+    location.push(new google.maps.LatLng(35.8953091,128.6235978));
+    location.push(new google.maps.LatLng(35.8943091,128.6245978));
+    location.push(new google.maps.LatLng(35.8993091,128.6195978));
+    location.push(new google.maps.LatLng(35.8953091,128.6185978));
+    location.push(new google.maps.LatLng(35.8983091,128.6165978));
+    location.push(new google.maps.LatLng(35.8923091,128.6155978));
+
+    //사고 = 빨간색
+    //졸음 = 주황색
+    //급가속 = 파랑색
+    //급감속 = 초록색
+    location_color.push("Green");
+    location_color.push("red");
+    location_color.push("Orange");
+    location_color.push("blue");
+    location_color.push("Orange");
+    location_color.push("blue");
+    location_color.push("red");
+    location_color.push("Green");
+
+    var mapCanvas = document.getElementById("map");
+    var mapOptions = {center: location[0], zoom: 12}; //location[0]을 기준으로 12번 확대
+    var map = new google.maps.Map(mapCanvas,mapOptions);
+
+    for(var i in location){
+    var myCity = new google.maps.Circle({
+        center: location[i],     //점찍는 위치
+        radius: 100,          //점크기
+        strokeColor: location_color[i],   //점 테두리 색깔
+        strokeOpacity: 1,     //점 테두리 밝기
+        strokeWeight: 2,      //점 굵기
+        fillColor: location_color[i],     //점 색깔
+        fillOpacity: 0.5      //점 밝기
+    });
+    myCity.setMap(map);
+    }
+}
+console.log("AIzaSyBmDNMJ1gbJusi6rqVoskubnytiXP0Rchc");
+    </script>
+      {{-- <script src="https://maps.googleapis.com/maps/api/js?key={{env('GCP_API_KEY')}}&callback=initMap&center"
+      async defer></script> --}}
 @stop

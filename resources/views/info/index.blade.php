@@ -54,7 +54,7 @@
                                     {{-- 위도 경도로 주소찾기 --}}
                                     <script>
                                         var gps = "";
-                                        var API_KEY = 'AIzaSyBmDNMJ1gbJusi6rqVoskubnytiXP0Rchc';
+                                        var API_KEY = "{{env('GCP_API_KEY')}}";
                                         var latitude = "{{$report->latitude}}";
                                         var longitude = "{{$report->longitude}}";
                                         // console.log(latitude);
@@ -140,7 +140,7 @@
 
                                     </tbody>
                                 </table>
-                                <p class="text-danger">최근 5건만 표시됩니다.</p>
+                            <p class="text-danger">최근 5건만 표시됩니다.</p>
 
                             </div>
                         </div>
