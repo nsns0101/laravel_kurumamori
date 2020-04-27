@@ -1,21 +1,16 @@
-<a class="btn btn-primary" href="/info/medical_info/{{$medical_info->id}}/edit">안녕</a>
+<a class="btn btn-primary" href="/info/medical_info/{{$medical_info->id}}/edit">의료정보 수정</a>
 <div class="row">
     <div class="col-sm-6 col-md-3">
         <div class="thumbnail">
             <div class="caption">
-                <h3 class="text-center">병 이력</h3>
+                <h3 class="text-center">과거 병력</h3>
                 <hr style="background-color:darkgrey;">
                 @for($i = 0; $i < count($past_sicknesses); $i++)
-                <p>예전에 걸린 병{{$i + 1}} : {{$past_sicknesses[$i]->past_sickness_name}}</p>
-                <p>예전에 걸린 병{{$i + 1}} 보충 설명 : {{$past_sicknesses[$i]->past_sickness_supplementation}}</p>
-                <br/>
+                    <p>예전에 걸린 병{{$i + 1}} : {{$past_sicknesses[$i]->past_sickness_name}}</p>
+                    <p>예전에 걸린 병{{$i + 1}} 보충 설명 : {{$past_sicknesses[$i]->past_sickness_supplementation}}</p>
+                    <br/>
                 @endfor
-                @for($i = 0; $i < count($sicknesses); $i++)
-                <p>현재 병{{$i + 1}} : {{$sicknesses[$i]->sickness_name}}</p>
-                <p>복용중인 약{{$i + 1}} : {{$sicknesses[$i]->medicine}}</p>
-                <p>증상{{$i + 1}} : {{$sicknesses[$i]->symptom}}</p>
-                <br/>
-                @endfor
+
                 <hr style="background-color:darkgrey;" />
             </div>
         </div>
@@ -24,8 +19,22 @@
     <div class="col-sm-6 col-md-3">
         <div class="thumbnail">
             <div class="caption">
-                <h3 class="text-center">현재 병</h3>
-                <hr style="background-color:darkgrey;"/>  
+                <h3 class="text-center">현재 병력</h3>
+                <hr style="background-color:darkgrey;"/>
+                @for($i = 0; $i < count($sicknesses); $i++)
+                    <p>현재 병{{$i + 1}} : {{$sicknesses[$i]->sickness_name}}</p>
+                    <p>복용중인 약{{$i + 1}} : {{$sicknesses[$i]->medicine}}</p>
+                    <p>증상{{$i + 1}} : {{$sicknesses[$i]->symptom}}</p>
+                    <br/>
+                @endfor
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail">
+            <div class="caption">
+                <h3 class="text-center">기타 정보</h3>
+                <hr style="background-color:darkgrey;"/>
                 <p>보호자 휴대폰 : {{$medical_info->guardian_phone}}</p>
                 <p>혈액형 : {{$medical_info->blood_type}}</p>
                 <p>장애 여부 : {{$medical_info->disability_status}}</p>
@@ -36,7 +45,6 @@
             </div>
         </div>
     </div>
-
     <div class="col-sm-6 col-md-3">
         <div class="thumbnail">
             <div class="caption">

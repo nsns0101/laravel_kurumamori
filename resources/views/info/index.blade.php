@@ -27,12 +27,12 @@
                             <p>성별 : {{$user->gender}}</p>
                             <p>휴대폰 번호 : {{$user->phone}}</p>
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#userModal">
+                            {{-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#userModal">
                                 수정하기
                             </button>
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#userModal">
                                 상세보기
-                            </button>
+                            </button> --}}
                             @include('info.user.user_modal',compact('user'))
                             <hr style="background-color:darkgrey;" />
                         </div>

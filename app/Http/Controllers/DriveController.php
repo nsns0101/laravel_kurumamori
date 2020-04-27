@@ -12,7 +12,6 @@ class DriveController extends Controller
     }
     public function index($date = null)
     {
-        \Log::info($date);
         // $today = date("Y/m/d");
         // \Log::info(date("Y/m/d", strtotime("2020/04/21")));
         // $drive_date = \App\Drive::where('start_time' ,'=',date("Y/m/d", strtotime("2020/04/21")))->first();
@@ -52,11 +51,28 @@ class DriveController extends Controller
             $drive_sec += strtotime($drive[0]->created_at) - strtotime($drive[0]->start_time);
         }
 
-        \Log::info($drive_count);
+        //현재날짜포함하여 최근 5일 구하기
+        $day_5 = array();
+        for($i = 0; $i <5; $i++){
+            array_push($day_5,date("Y-m-d", strtotime($date ."-{$i} day")));
+        }
+
+        //최근 5일의 정보
+        $day_5_info = array();
+        for($i = 0; $i < count($day_5); $i++){
+            // \Log::info($day_5[$i]);
+            array_push($day_5_info, \DB::select("select * from drives where DATE_FORMAT(start_time, '%Y-%m-%d') = '{$day_5[$i]}' AND user_id = '{$auth_user}'"));
+        }
+
+        \Log::info("선택날짜 : " . $date);
+        \Log::info("위험 카운트 : ", $drive_count);
+        \Log::info("운전시간(초) : ". $drive_sec);
+        \Log::info("최근 5일 : ", $day_5);
+        \Log::info("최근 5일의 정보 : ", $day_5_info);  //배열안의 배열 (하루에 여러번 운전했을 수 있으니)
         // \Log::info($error);
         //1시간에 급감속이나 급가속, 졸음 등을 1번했을 경우 모범?
         //default = 100에서 깎아내리는 형식?
-        return view('info.drive_score', compact('drive', 'date'));
+        return view('info.drive_score', compact('drive', 'date', 'drive_count', 'drive_sec','day_5', 'day_5_info'));
     }
 
     public function create()

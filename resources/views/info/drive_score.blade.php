@@ -157,19 +157,21 @@
             </div>
         </div>
     @else
-        <p class="text-danger">운전 데이터가 없습니다.</p>
+    <p class="text-danger">운전 데이터가 없습니다.{{print_r($day_5)}}</p>
     @endif
     </div>
 </section>
 @endsection
 
 @section('script')
-<script src="/js/demo/chart-area-demo.js"></script>
-<script src="/js/demo/chart-bar-demo.js"></script>
-<script src="/js/demo/chart-pie-demo.js"></script>
 <script>
-    // $("#drive_date").val(new Date());
-
+    var day_5 = [];
+    day_5.push("{{$day_5[0]}}");
+    day_5.push("{{$day_5[1]}}");
+    day_5.push("{{$day_5[2]}}");
+    day_5.push("{{$day_5[3]}}");
+    day_5.push("{{$day_5[4]}}");
+    console.log(day_5);
     $(function() {	
 		$('.datePicker').datepicker({
 		    format: "yyyy-mm-dd",	//데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
@@ -208,9 +210,13 @@ $("#drive_date").on("propertychange change keyup paste input", function() {
         type: 'GET',
         url: `/info/${drive_date}/drive_score/`,
     }).then(function(data){
+        console.log(data);
         console.log("asdf");
         window.location.href =`/info/${drive_date}/drive_score`;
     });
 });
 </script>
+<script src="/js/demo/chart-area-demo.js"></script>
+<script src="/js/demo/chart-bar-demo.js"></script>
+<script src="/js/demo/chart-pie-demo.js"></script>
 @stop

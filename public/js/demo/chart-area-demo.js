@@ -1,4 +1,5 @@
 // Set new default font family and font color to mimic Bootstrap's default styling
+console.log(day_5);
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
@@ -32,7 +33,7 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
   data: {
-    labels: ["4월 21일","4월 22일","4월 23일","4월 24일","4월 25일"], //항목
+    labels: [day_5[4], day_5[3],day_5[2], day_5[1], day_5[0]], //항목
     datasets: [{
       type: 'line',       //차트 형태
       label: "급 가속",
