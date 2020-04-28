@@ -14,7 +14,7 @@ class CreateMedicalInfosTable extends Migration
     public function up()
     {
         Schema::create('medical_infos', function (Blueprint $table) {
-            $table->bigIncrements('id')->comment('의료정보 번호');
+            $table->bigIncrements('medical_id')->comment('의료정보 번호');
             $table->unsignedBigInteger('user_id')->comment('유저 번호');
             // $table->string('past_sickness')->nullable()->comment('예전에 걸린 병');
             // $table->string('past_sickness_supplementation')->nullable()->comment('예전에 걸린 병 보충설명');
@@ -25,13 +25,13 @@ class CreateMedicalInfosTable extends Migration
             $table->string('blood_type')->comment('혈액형');
             $table->string('disability_status')->comment('장애여부');
             $table->string('hospital')->nullable()->comment('다니는 병원');
-            $table->string('hospital_menu')->nullable()->comment('진료 과목');
+            // $table->string('hospital_menu')->nullable()->comment('진료 과목');
             // $table->string('hospital_phone')->nullable()->comment('다니는 병원 폰 번호');
             $table->string('report_request')->nullable()->comment('신고시 요청사항');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('생성 시간');
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('업데이트 시간');
 
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('user_id')->references('user_id')->on('users')->onUpdate('cascade')->onDelete('cascade');
 
         });
     }

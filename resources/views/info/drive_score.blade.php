@@ -28,7 +28,7 @@
             <div class="col-md-2">
                 <div class="form-group {{ $errors->has('drive_date') ? 'has-error' : '' }}">
                     <!-- 시작시 기본 날짜 설정은 value를 이용 -->
-                <input id="drive_date"type="text" name="drive_date" class="form-control datePicker"  value="{{$drive ? $date : "디폴트 = 현재날짜"}}" readonly>
+                <input id="drive_date"type="text" name="drive_date" class="form-control datePicker"  value="{{$date ? $date : "디폴트 = 현재날짜"}}" readonly>
                     <p style="color:red">
                         {!! $errors->first('drive_date', '<span class="form-error">:message</span>') !!}
                     </p>
@@ -51,17 +51,49 @@
             </div>
             <div class="col-sm-3 col-md-3">
                 <div class="thumbnail">
-                    <div class="caption">
-                        <h3 class="text-center">데이터 값</h3>
+                    <div class="caption{{$day_5_danger_info[0]->count_danger}}">
+                        <h3 class="text-center">오늘의 운전점수</h3>
                         <hr style="background-color:darkgrey;"/>
-                        <p>a</p>
-                        <p>a</p>
-                        <p>a</p>
-                        <p>a</p>
-                        <p>a</p>
-                        <p>a</p>
-                        <p>a</p>
-                        <p>a</p>
+                        <p>총 운전 점수 : </p>
+                        <p>졸음 횟수 : </p>
+                        <p>급 가속 횟수 : </p>
+                        <p>급 감속 횟수 : </p>
+                        {{-- 당일 사고 정보 --}}
+                        @if($report)
+                            <p>사고 : {{count($report)}}건</p>
+                            @for($i = 0; $i < count($report); $i++)
+                                <p class="gps{{$report[0]->id}}">사고 장소 :                                     {{-- 위도 경도로 주소찾기 --}}
+                                    <script>
+                                        // var gps = "";
+                                        // var API_KEY = "{{env('GCP_API_KEY')}}";
+                                        // var latitude = "{{$report[0]->latitude}}";
+                                        // var longitude = "{{$report[0]->longitude}}";
+                                        // console.log(latitude);
+                                        // console.log(longitude);
+
+                                        // new Promise(function(resolve, reject) {
+                                        //     resolve(
+                                        //         $.getJSON(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${API_KEY}`,
+                                        //         function(data) {
+                                        //             console.log(data);
+                                        //             gps = data.results[0].formatted_address;
+                                        //             console.log(gps);
+                                        //             $(`.gps{{$report[0]->id}}`).text("사고장소 : " + gps);
+                                        //         }));
+                                        // });
+                                        $(`.gps{{$report[0]->id}}`).text("사고 장소 : api 요금때문에 주석처리 해놨음");
+
+                                    </script>
+                                </p>
+                            @endfor
+                        @else
+                        <p>사고 여부 : 없음</p>
+                        
+                        @endif
+                        {{-- 당일 운전시간 --}}
+                        @for($i = 0; $i < count($drive); $i++)
+                            <p>운전 시간 : {{$drive[$i]->start_time}} ~ {{$drive[$i]->created_at}}</p>
+                        @endfor
                     </div>
                 </div>
             </div>
@@ -76,14 +108,19 @@
 
 @section('script')
 <script>
-    var API_KEY = "{{env('GCP_API_KEY')}}";
-    var day_5 = [];
+    var API_KEY = "{{env('GCP_API_KEY')}}";     //GCP API KEY
+    var day_5 = [];     //최근 5일
     day_5.push("{{$day_5[0]}}");
     day_5.push("{{$day_5[1]}}");
     day_5.push("{{$day_5[2]}}");
     day_5.push("{{$day_5[3]}}");
     day_5.push("{{$day_5[4]}}");
-    console.log(day_5);
+    
+    var day_5_danger_info = {};     //최근 5일의 위험정보
+    // console.log("");
+
+
+    //시간
     $(function() {	
 		$('.datePicker').datepicker({
 		    format: "yyyy-mm-dd",	//데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
@@ -117,12 +154,13 @@
 $("#drive_date").on("propertychange change keyup paste input", function() {
     console.log("key 작동");
     var drive_date = $('#drive_date').val();
+    console.log(drive_date);
     $.ajax({
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},  
         type: 'GET',
         url: `/info/${drive_date}/drive_score/`,
     }).then(function(data){
-        console.log(data);
+        // console.log(data);
         console.log("asdf");
         window.location.href =`/info/${drive_date}/drive_score`;
     });
@@ -130,10 +168,11 @@ $("#drive_date").on("propertychange change keyup paste input", function() {
 </script>
 {{-- 라인 차트 --}}
 <script src="/js/chart/chart-line.js"></script>
-{{-- 바 차트 --}}
-<script src="/js/chart/chart-bar.js"></script>
 {{-- 도넛 차트 --}}
 <script src="/js/chart/chart-pie.js"></script>
+{{-- 바 차트 --}}
+<script src="/js/chart/chart-bar.js"></script>
+
 <script>
 //구글맵 API
 var map;
@@ -180,8 +219,7 @@ function initMap() {
     myCity.setMap(map);
     }
 }
-console.log("AIzaSyBmDNMJ1gbJusi6rqVoskubnytiXP0Rchc");
-    </script>
-      {{-- <script src="https://maps.googleapis.com/maps/api/js?key={{env('GCP_API_KEY')}}&callback=initMap&center"
-      async defer></script> --}}
+</script>
+{{-- <script src="https://maps.googleapis.com/maps/api/js?key={{env('GCP_API_KEY')}}&callback=initMap&center"
+    async defer></script> --}}
 @stop
