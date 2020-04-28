@@ -89,30 +89,30 @@ $factory->define(App\Medical_info::class, function (Faker $faker) {
         'blood_type' => Arr::random(['A형','B형','AB형','O형']),
         'disability_status' => Arr::random(['yes','no']),
         'hospital' => Arr::random($hospital),
-        'hospital_menu' => Str::random(6),
+        // 'hospital_menu' => Str::random(6),
         'report_request' => Arr::random($report_request),
     ];
 });
 //과거 병력 팩토리
 $factory->define(App\Past_sickness::class, function (Faker $faker) {
-    $medical_infoId = App\Medical_info::pluck('medical_id')->toArray();
+    $userId = App\User::pluck('user_id')->toArray();
 
     $sickness = ["없음", "고혈압", "당뇨", "결핵", "심장질환", "알러지", "천식", "심부전증", "페렴", "디스크", "간경화", "관절염", "협심증", "암", "갑상선염", "고지혈증", "골다공증", "과민성 대장", "기관지염", "뇌졸중", "신장질환", "간암"];
     return [
-        'medical_id' => $faker->randomElement($medical_infoId),
+        'user_id' => $faker->randomElement($userId),
         'past_sickness_name' => Arr::random($sickness),
         'past_sickness_supplementation' => Str::random(10),
     ];
 });
 //기저질환 팩토린
 $factory->define(App\Sickness::class, function (Faker $faker) {
-    $medical_infoId = App\Medical_info::pluck('medical_id')->toArray();
+    $userId = App\User::pluck('user_id')->toArray();
 
     $sickness = ["없음", "고혈압", "당뇨", "결핵", "심장질환", "알러지", "천식", "심부전증", "페렴", "디스크", "간경화", "관절염", "협심증", "암", "갑상선염", "고지혈증", "골다공증", "과민성 대장", "기관지염", "뇌졸중", "신장질환", "간암"];
     $symptom = ["위가 아픔", "허리가 아픔", "설탕먹고싶음", "간이 아픔", "몸살", "기침", "잦은 기침", "뇌가 아픔"];
     $medicine = ["위약", "허리약", "인슐린", "간약", "몸살약", "기침약", "잦은 기침약", "게보린"];
     return [
-        'medical_id' => $faker->randomElement($medical_infoId),
+        'user_id' => $faker->randomElement($userId),
         'sickness_name' => Arr::random($sickness),
         'medicine' => Arr::random($medicine),
         'symptom' => Arr::random($symptom),
@@ -135,21 +135,16 @@ $factory->define(App\Drive::class, function (Faker $faker) {
 });
 
 //보험사 팩토리
-$factory->define(App\Insurance_list::class, function (Faker $faker) {
-    $date = date("Y-m-d", time()); //현재날짜
-    $userId = App\User::pluck('user_id')->toArray();
+// $factory->define(App\Insurance_list::class, function (Faker $faker) {
+//     $date = date("Y-m-d", time()); //현재날짜
+//     $userId = App\User::pluck('user_id')->toArray();
 
-    $insurance_name = ["하나보험사", "우리보험사", "준혁보험사", "동화보험사"];
-    return [
-        // 'user_id' => $faker->unique()->randomElement($userId), //1:1관계로 유니크부여
-        'user_id' => $faker->randomElement($userId), //1:1관계로 유니크부여
-        'insurance_name' => Arr::random($insurance_name),
-        'insurance_phone' => '010-' . rand(1000, 9999) . '-' . rand(1000, 9999),
-        'subscription_date' => $subscription_date,
-        'expiration_date' => $expiration_date,
-
-    ];
-});
+//     $insurance_name = ["하나보험사", "우리보험사", "준혁보험사", "동화보험사"];
+//     return [
+//         'insurance_name' => $faker->unique()->randomElement($insurance_name),
+//         'insurance_phone' => '010-' . rand(1000, 9999) . '-' . rand(1000, 9999),
+//     ];
+// });
 
 //보험 팩토리
 $factory->define(App\Insurance::class, function (Faker $faker) {
@@ -157,13 +152,12 @@ $factory->define(App\Insurance::class, function (Faker $faker) {
     $userId = App\User::pluck('user_id')->toArray();
     $subscription_date = date("Y-m-d", strtotime("{$date} -10 years")); //현재날짜 10년전
     $expiration_date = date("Y-m-d", strtotime("{$subscription_date} +20 years")); //구독날짜 10년후
-
-    $insurance_name = ["하나보험사", "우리보험사", "준혁보험사", "동화보험사"];
+    $insurance_list = \App\Insurance_list::get();
     return [
         // 'user_id' => $faker->unique()->randomElement($userId), //1:1관계로 유니크부여
         'user_id' => $faker->randomElement($userId), //1:1관계로 유니크부여
-        'insurance_name' => Arr::random($insurance_name),
-        'insurance_phone' => '010-' . rand(1000, 9999) . '-' . rand(1000, 9999),
+        // 'insurance_name' => Arr::random($insurance_name),
+        'insurance_list_id' => $faker->randomElement($insurance_list)->insurance_list_id,
         'subscription_date' => $subscription_date,
         'expiration_date' => $expiration_date,
 
@@ -171,15 +165,15 @@ $factory->define(App\Insurance::class, function (Faker $faker) {
 });
 
 //게시글 팩토리
-$factory->define(App\Question::class, function (Faker $faker) {
-    $userId = App\User::pluck('id')->toArray();
-    return [
-        'user_id' => $faker->randomElement($userId),
-        'title' => $faker->sentence(),
-        'category' => rand(0,5),
-        'content' => $faker->paragraph(),
-    ];
-});
+// $factory->define(App\Question::class, function (Faker $faker) {
+//     $userId = App\User::pluck('id')->toArray();
+//     return [
+//         'user_id' => $faker->randomElement($userId),
+//         'title' => $faker->sentence(),
+//         'category' => rand(0,5),
+//         'content' => $faker->paragraph(),
+//     ];
+// });
 
 // //댓글 팩토리
 // $factory->define(App\Comment::class, function (Faker $faker) {
@@ -195,7 +189,7 @@ $factory->define(App\Question::class, function (Faker $faker) {
 
 //신고 팩토리
 $factory->define(App\Report::class, function (Faker $faker) {
-    $userId = App\User::pluck('id')->toArray();
+    $userId = App\User::pluck('user_id')->toArray();
     return [
         'user_id' => $faker->randomElement($userId),
         // 'gps' => Str::random(3) . "시" . Str::random(2) . "동" . rand(1, 999) . '-' . rand(1, 999),
@@ -206,7 +200,8 @@ $factory->define(App\Report::class, function (Faker $faker) {
 
 //운전 감지 팩토리
 $factory->define(App\Drive_detection::class, function (Faker $faker) {
-    $userId = App\User::pluck('id')->toArray();
+    $userId = App\User::pluck('user_id')->toArray();
+    $drive_id = App\Drive::pluck('drive_id')->toArray();
 
     $random = [];
     $number = rand(0,3);
@@ -221,6 +216,7 @@ $factory->define(App\Drive_detection::class, function (Faker $faker) {
 
     return [
         'user_id' => $faker->randomElement($userId),
+        'drive_id' => $faker->randomElement($drive_id),
         'latitude' => rand(1, 60) . '.' . rand(1000, 9999999),
         'longitude' => rand(1, 150) . '.' . rand(1000, 9999999),
         'bool_report' => $random[0],

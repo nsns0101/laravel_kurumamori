@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Question extends Model
+class Board extends Model
 {
     protected $fillable = ['title', 'content','category'];
 

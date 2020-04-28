@@ -13,5 +13,9 @@ class Drive extends Model
     {
         return $this->belongsTo(User::class);
     }
+    //한 운전정보는 여러 위험정보를 가질 수 있음
+    public function drive_detections(){
+        return $this->hasMany(Drive_detection::class);
+    }
 
 }

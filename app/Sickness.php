@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Sickness extends Model
 {
     protected $fillable = [
-        'medical_id',
+        'user_id',
         'sickness_name',
         'medicine',
         'symptom'

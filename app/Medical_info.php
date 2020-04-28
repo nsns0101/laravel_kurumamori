@@ -8,16 +8,16 @@ class Medical_info extends Model
 {
     protected $fillable = [
         'user_id',
-        'past_sickness', 
-        'past_sickness_supplementation',
-        'sickness', 
-        'medicine', 
-        'symptom', 
+        // 'past_sickness', 
+        // 'past_sickness_supplementation',
+        // 'sickness', 
+        // 'medicine', 
+        // 'symptom', 
         'guardian_phone',
         'blood_type',
         'disability_status', 
         'hospital', 
-        'hospital_menu', 
+        // 'hospital_menu', 
         'report_request'
     ];
 

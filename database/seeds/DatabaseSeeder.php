@@ -25,9 +25,10 @@ class DatabaseSeeder extends Seeder
         App\Past_sickness::truncate();
         App\Sickness::truncate();
         App\Drive::truncate();
+        App\Insurance_list::truncate();
         App\Insurance::truncate();
         App\Category::truncate();
-        App\Question::truncate();
+        App\Board::truncate();
         App\Review::truncate();
         App\Comment::truncate();
         App\Report::truncate();
@@ -41,6 +42,7 @@ class DatabaseSeeder extends Seeder
         $this->call(Past_sicknessesTableSeeder::class);
         $this->call(SicknessesTableSeeder::class);
         $this->call(DrivesTableSeeder::class);
+        $this->call(Insurance_listsTableSeeder::class);
         $this->call(InsurancesTableSeeder::class);
         // $this->call(CategoriesTableSeeder::class);
         // $this->call(QuestionsTableSeeder::class);

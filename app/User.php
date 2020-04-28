@@ -13,7 +13,7 @@ class User extends Authenticatable
         'email', 
         'password', 
         'name', 
-        'age', 
+        'birth', 
         'gender', 
         'phone', 
         'confirm_code',
@@ -38,9 +38,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Product_buy::class);
     }
-    public function questions()
+    public function boards()
     {
-        return $this->hasMany(Question::class);
+        return $this->hasMany(Board::class);
     }
     public function reviews()
     {

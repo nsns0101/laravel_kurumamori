@@ -28,7 +28,7 @@ class UsersTableSeeder extends Seeder
                     'email' => $email[$i],
                     'password' => bcrypt('password'),
                     'name' => $name[$i],
-                    'age' => $age[$i],
+                    'birth' => rand(1960, 2005) . '/' . rand(1,12) . '/' . rand(1,28),
                     'gender' => Arr::random(['남', '여']),
                     'phone' => "010-1234-567{$i}",
                     'confirm_code' => null,

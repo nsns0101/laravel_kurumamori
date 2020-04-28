@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique()->comment('이메일');
             $table->string('password')->comment('비밀번호');
             $table->string('name')->comment('이름');
-            $table->bigInteger('birth')->comment('생년월일');
+            $table->string('birth')->comment('생년월일');
             $table->string('gender')->comment('성별');
             $table->string('phone')->unique()->comment('휴대폰 번호');
             $table->string('confirm_code')->nullable()->comment('활성화 코드');
