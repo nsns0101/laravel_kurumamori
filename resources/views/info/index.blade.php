@@ -23,7 +23,7 @@
                             <hr style="background-color:darkgrey;">
                             <p>이메일 : {{$user->email}}</p>
                             <p>이름 : {{$user->name}}</p>
-                            <p>나이 : {{$user->age}}</p>
+                            <p>생년월일 : {{$user->birth}}</p>
                             <p>성별 : {{$user->gender}}</p>
                             <p>휴대폰 번호 : {{$user->phone}}</p>
                             <!-- Button trigger modal -->
@@ -89,10 +89,10 @@
                                 <h3 class="text-center">제품 정보</h3>
                                 <hr style="background-color:green;">
                                 @if($product)
-                                <p id="text_product_name">제품 명 : {{$product->product_name}}</p>
+                                {{-- <p id="text_product_name">제품 명 : {{$product->product_name}}</p> --}}
                                 <p id="text_product_key">제품 키 : {{$product->product_key}}</p>
-                                <p id="text_product_date_buy">구입날짜 : {{$product->date_buy}}</p>
-                                <p id="text_product_date_as">AS기한 : {{$product->date_as}}까지</p>
+                                <p id="text_product_date_buy">구입날짜 : {{$product_buy->created_at}}</p>
+                                <p id="text_product_date_as">무상 AS기한 : 구입 후 1년까지</p>
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#productModal">
                                     제품 재등록
                                 </button>
@@ -126,16 +126,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse($questions as $question)
+                                        {{-- @forelse($questions as $question)
                                         <tr>
                                             <th class="text-center" scope="row">{{$question->id}}</th>
                                             <td class="text-center">{{$question->title}}</td>
                                             <td class="text-center">{{$question->created_at}}</td>
                                             <td class="text-center">O</td>
                                         </tr>
-                                        @empty
+                                        @empty --}}
                                         <p class="text-center text-danger">이력이 없습니다.</p>
-                                        @endforelse
+                                        {{-- @endforelse --}}
                                         <br />
 
                                     </tbody>

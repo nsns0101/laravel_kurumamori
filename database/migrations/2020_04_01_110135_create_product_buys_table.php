@@ -14,7 +14,7 @@ class CreateProductBuysTable extends Migration
     public function up()
     {
         Schema::create('product_buys', function (Blueprint $table) {
-            $table->bigIncrements('product_buy_id')->comment('구매 번호');
+            $table->bigIncrements('id')->comment('구매 번호');
             $table->unsignedBigInteger('user_id')->comment('유저 번호');
             $table->bigInteger('ea')->comment('제품 수량');
             $table->bigInteger('price')->comment('제품 가격');
@@ -29,7 +29,7 @@ class CreateProductBuysTable extends Migration
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('구입 날짜');
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('업데이트 시간');
 
-            $table->foreign('user_id')->references('user_id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
 
             });
     }

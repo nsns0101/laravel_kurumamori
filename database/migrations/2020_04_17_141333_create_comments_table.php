@@ -14,7 +14,7 @@ class CreateCommentsTable extends Migration
     public function up()
     {
         Schema::create('comments', function (Blueprint $table) {
-            $table->bigIncrements('comment_id')->comment('댓글 번호');
+            $table->bigIncrements('id')->comment('댓글 번호');
             $table->unsignedBigInteger('user_id')->comment('유저 번호');
             $table->unsignedBigInteger('board_id')->comment('게시판 번호');
             $table->boolean('multiple_type')->comment('복수 타입');
@@ -23,8 +23,8 @@ class CreateCommentsTable extends Migration
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('생성 시간');
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('업데이트 시간');
 
-            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
-            $table->foreign('board_id')->references('board_id')->on('boards')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('board_id')->references('id')->on('boards')->onDelete('cascade');
 
         });
     }

@@ -30,7 +30,7 @@ class SignUpController extends Controller
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
             'name' => $request->input('name'),
-            'age' => $request->input('age'),
+            'birth' => $request->input('birth'),
             'gender' => $request->input('gender'),
             'phone' => $request->input('phone'),
             'rember_token' => Str::random(10),

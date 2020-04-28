@@ -14,7 +14,7 @@ class CreateInsuranceListsTable extends Migration
     public function up()
     {
         Schema::create('insurance_lists', function (Blueprint $table) {
-            $table->bigIncrements('insurance_list_id')->comment('보험 번호');
+            $table->bigIncrements('id')->comment('보험 번호');
             $table->string('insurance_name')->comment('보험사 명'); //보험사 명
             $table->string('insurance_phone')->comment('보험사 폰 번호'); //보험사 폰 번호
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('생성 시간');

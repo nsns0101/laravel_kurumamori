@@ -14,20 +14,18 @@ class MedicalController extends Controller
     public function index()
     {
         $medical_info = \App\Medical_info::whereUser_id(auth()->user()->id)->first();
-        \Log::info($medical_info);
+        // \Log::info($medical_info);
         $insurance = \App\Insurance::whereUser_id(auth()->user()->id)->first();
         $update_form = false;
         $sickness_list = ["없음", "고혈압", "당뇨", "결핵", "심장질환", "알러지", "천식", "심부전증", "페렴", "디스크", "간경화", "관절염", "협심증", "암", "갑상선염", "고지혈증", "골다공증", "과민성 대장", "기관지염", "뇌졸중", "신장질환", "간암"];
 
-        if(isset(\App\Medical_info::whereUser_id(auth()->user()->id)->first()->id)){
-            $medical_id = \App\Medical_info::whereUser_id(auth()->user()->id)->first()->id;
-            $past_sicknesses = \App\Past_sickness::whereMedical_id($medical_id)->get();
-            $sicknesses = \App\Sickness::whereMedical_id($medical_id)->get();
-            \Log::info($past_sicknesses);
-            \Log::info($sicknesses);
-            return view('info.medical_info', compact('medical_info', 'insurance', 'update_form','past_sicknesses','sicknesses'));
-        }
-        return view('info.medical_info', compact('medical_info', 'insurance', 'update_form','sickness_list'));
+        
+        $past_sicknesses = $medical_info ? \App\Past_sickness::whereUser_id(auth()->user()->id)->get() : null;
+        $sicknesses = $medical_info ? \App\Sickness::whereUser_id(auth()->user()->id)->get() : null;
+        \Log::info($past_sicknesses);
+        \Log::info($sicknesses);
+        return view('info.medical_info', compact('medical_info', 'insurance', 'update_form','past_sicknesses','sicknesses'));
+        // return view('info.medical_info', compact('medical_info', 'insurance', 'update_form','sickness_list'));
     
     }
 
@@ -63,7 +61,7 @@ class MedicalController extends Controller
             'blood_type' => $request->blood_type,
             'disability_status' => $request->disability_status,
             'hospital' => $request->hospital,
-            'hospital_menu' => $request->hospital_menu,
+            // 'hospital_menu' => $request->hospital_menu,
             'report_request' => $request->report_request,
         ]);
         $medical_info = \App\Medical_info::whereUser_id(auth()->user()->id)->first();
@@ -75,7 +73,7 @@ class MedicalController extends Controller
         for($i = 1; $i <= count($request->past_sickness_name); $i++){
             if($request->past_sickness_name[$i] && $request->past_sickness_name[$i]!="없음"){
                 \App\Past_sickness::create([
-                    'medical_id' => $medical_id,
+                    'user_id' => auth()->user()->id,
                     'past_sickness_name' => $request->past_sickness_name[$i],
                     'past_sickness_supplementation' => $request->past_sickness_supplementation[$i]
                     ]);
@@ -88,7 +86,7 @@ class MedicalController extends Controller
             if($request->sickness_name[$i] && $request->sickness_name[$i]!="없음"){
                 \Log::info("성공");
                 \App\Sickness::create([
-                    'medical_id' => $medical_id,
+                    'user_id' => auth()->user()->id,
                     'sickness_name' => $request->sickness_name[$i],
                     'medicine' => $request->medicine[$i],
                     'symptom' => $request->symptom[$i]
@@ -113,13 +111,13 @@ class MedicalController extends Controller
     {
         $medical_info = \App\Medical_info::whereUser_id(auth()->user()->id)->first();
         $medical_id = \App\Medical_info::whereUser_id(auth()->user()->id)->first()->id;
-        $past_sickness = \App\Past_sickness::whereMedical_id($medical_id)->get();
-        $sickness = \App\Sickness::whereMedical_id($medical_id)->get();
+        $past_sickness = \App\Past_sickness::whereUser_id(auth()->user()->id)->get();
+        $sickness = \App\Sickness::whereUser_id(auth()->user()->id)->get();
 
         // \Log::info($past_sickness);
         $sickness_list = ["없음", "고혈압", "당뇨", "결핵", "심장질환", "알러지", "천식", "심부전증", "페렴", "디스크", "간경화", "관절염", "협심증", "암", "갑상선염", "고지혈증", "골다공증", "과민성 대장", "기관지염", "뇌졸중", "신장질환", "간암"];
         \Log::info(count($sickness_list));
-        $insurance = \App\Insurance::whereUser_id(auth()->user()->id)->first();
+        $insurance = \App\Insurance::whereUser_id(auth()->user()->insurance_id)->first();
         $update_form = true;
         return view('info.medical_info', compact('medical_info', 'insurance', 'update_form','past_sickness', 'sickness', 'sickness_list'));
     }
@@ -130,29 +128,31 @@ class MedicalController extends Controller
         // \Log::info($request->past_sickness_name[1]);
         
         $medical_id = \App\Medical_info::whereUser_id(auth()->user()->id)->first()->id;
-        $past_sickness = \App\Past_sickness::whereMedical_id($medical_id)->get();
-        $sickness = \App\Sickness::whereMedical_id($medical_id)->get();
+        $past_sickness = \App\Past_sickness::whereUser_id(auth()->user()->id)->get();
+        $sickness = \App\Sickness::whereUser_id(auth()->user())->get();
         $past_sickness_count = 0;
         $sickness_count = 0;
         // \Log::info(count($request->past_sickness_name));
         // \Log::info(count($request->sickness_name));
         //past_sickness DB Update
-
         for($i = 1; $i <= count($request->past_sickness_name); $i++){
             // \Log::info(count($request->past_sickness_name));
             //input창에 넣은 값이 있고 "없음"이 아닐 때
             if($request->past_sickness_name[$i] && $request->past_sickness_name[$i]!="없음"){
-                \Log::info("good" . $i);
                 if($i > count($past_sickness)){
+                    \Log::info($i);
+                    \Log::info(count($past_sickness));
+                    //새로 생성
                     \App\Past_sickness::create([
-                        'medical_id' => $medical_id,
+                        'user_id' => auth()->user()->id,
                         'past_sickness_name' => $request->past_sickness_name[$i],
                         'past_sickness_supplementation' => $request->past_sickness_supplementation[$i]
                     ]);
                 }
+                //업데이트
                 else{
                     $past_sickness[$past_sickness_count]->update([
-                        'medical_id' => $medical_id,
+                        'user_id' => auth()->user()->id,
                         'past_sickness_name' => $request->past_sickness_name[$i],
                         'past_sickness_supplementation' => $request->past_sickness_supplementation[$i]
                     ]);
@@ -171,7 +171,7 @@ class MedicalController extends Controller
             if($request->sickness_name[$i] && $request->sickness_name[$i]!="없음"){
                 if($i > count($sickness)){
                     \App\Sickness::create([
-                        'medical_id' => $medical_id,
+                        'user_id' => auth()->user()->id,
                         'sickness_name' => $request->sickness_name[$i],
                         'medicine' => $request->medicine[$i],
                         'symptom' => $request->symptom[$i]
@@ -179,7 +179,7 @@ class MedicalController extends Controller
                 }
                 else{
                     $sickness[$sickness_count]->update([
-                        'medical_id' => $medical_id,
+                        'user_id' => auth()->user()->id,
                         'sickness_name' => $request->sickness_name[$i],
                         'medicine' => $request->medicine[$i],
                         'symptom' => $request->symptom[$i]

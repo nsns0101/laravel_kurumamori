@@ -40,9 +40,9 @@
 
             </div>
 
-            <div class="form-group {{$errors->has('age') ? 'has-error' : ''}}">
-                <input type="text" name="age" class="form-control" placeholder="나이" value="{{ old('age') }}" />
-                {!! $errors->first('age', '<span class="form-error">:message</span>')!!}
+            <div class="form-group {{$errors->has('birth') ? 'has-error' : ''}}">
+                <input type="text" name="birth" class="form-control" placeholder="생년월일" value="{{ old('birth') }}" />
+                {!! $errors->first('birth', '<span class="form-error">:message</span>')!!}
 
             </div>
 

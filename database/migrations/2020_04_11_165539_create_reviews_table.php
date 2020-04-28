@@ -18,7 +18,7 @@ class CreateReviewsTable extends Migration
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('생성 시간');
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('업데이트 시간');
 
-            $table->foreign('user_id')->references('user_id')->on('users')->onUpdete('cascade')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdete('cascade')->onDelete('cascade');
         });
     }
 

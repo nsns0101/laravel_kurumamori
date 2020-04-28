@@ -18,7 +18,7 @@
             </ul>
 
             <ul class="navbar-nav col-auto">
-                @if(auth()->user())
+                @if(Auth::user())
                 <li class="nav-item">
                     <a class="nav-link" href="/info/index">내정보</a> 
                 </li>
@@ -30,7 +30,7 @@
                     <a class="nav-link" href="/auth/login">로그인</a>
                 </li> 
                 <li class="nav-item">
-                    <a class="nav-link" href="/auth/signup">회원가입</a>
+                <a class="nav-link" href="/auth/signup">회원가입</a>
                 </li> 
                 @endif
             </ul>

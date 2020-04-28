@@ -32,7 +32,7 @@ class ConfirmController extends Controller
             return redirect('/confirm');
         }
         auth()->login($user);
-        flash(auth()->user()->name . '님, 환영합니다. 가입 확인되었습니다.');
+        // flash(auth()->user()->name . '님, 환영합니다. 가입 확인되었습니다.');
 
         return redirect('/');
     }

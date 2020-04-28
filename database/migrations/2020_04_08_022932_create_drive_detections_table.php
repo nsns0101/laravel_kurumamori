@@ -14,7 +14,7 @@ class CreateDriveDetectionsTable extends Migration
     public function up()
     {
         Schema::create('drive_detections', function (Blueprint $table) {
-            $table->bigIncrements('drive_detection_id')->comment('드라이브 감지 번호');
+            $table->bigIncrements('id')->comment('드라이브 감지 번호');
             $table->unsignedBigInteger('drive_id')->comment('운전 번호');
             $table->unsignedBigInteger('user_id')->comment('유저 번호');
             $table->string('latitude')->comment('위도');
@@ -26,8 +26,8 @@ class CreateDriveDetectionsTable extends Migration
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('생성 시간');
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('업데이트 시간');
 
-            $table->foreign('user_id')->references('user_id')->on('users')->onUpdete('cascade')->onDelete('cascade');
-            $table->foreign('drive_id')->references('drive_id')->on('drives')->onUpdete('cascade')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdete('cascade')->onDelete('cascade');
+            $table->foreign('drive_id')->references('id')->on('drives')->onUpdete('cascade')->onDelete('cascade');
             
         });
     }

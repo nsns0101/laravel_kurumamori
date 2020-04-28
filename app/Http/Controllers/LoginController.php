@@ -45,7 +45,7 @@ class LoginController extends Controller
             return redirect('/confirm');
         }
 
-        flash(auth()->user()->name . '님, 환영합니다.');
+        // flash(auth()->user()->name . '님, 환영합니다.');
         return redirect('/');
     }
 

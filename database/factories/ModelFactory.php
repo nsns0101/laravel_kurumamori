@@ -34,7 +34,7 @@ $factory->define(App\User::class, function (Faker $faker) {
 $factory->define(App\Product_buy::class, function (Faker $faker) {
     $payments = ['신용카드', '가상계좌', '카카오페이'];
     $boolean = [true, false];
-    $userId = App\User::pluck('user_id')->toArray();
+    $userId = App\User::pluck('id')->toArray();
     return [
         'user_id' => $faker->randomElement($userId),
         'ea' => rand(1,2),
@@ -54,13 +54,14 @@ $factory->define(App\Product_buy::class, function (Faker $faker) {
 $factory->define(App\Product::class, function (Faker $faker) {
     $date = date("Y-m-d", time()); //현재날짜
     $as_date = date("Y-m-d", strtotime("{$date} +1 years")); //현재날짜 1년후
-    $userId = App\User::pluck('user_id')->toArray();
+    $userId = App\User::pluck('id')->toArray();
     $product_buy_id = App\Product_buy::pluck('user_id')->toArray();
     $product_use = \App\Product_buy::get();
 
     return [
+        // 'user_id' => $faker->unique()->randomElement($userId),
         'user_id' => $faker->randomElement($userId),
-        'product_buy_id' => $faker->unique()->randomElement($product_use)->product_buy_id,
+        'product_buy_id' => $faker->unique()->randomElement($product_use)->id,
         'product_key' => $faker->unique()->randomElement($product_use)->product_key,
         // 'date_buy' => $date,
         // 'date_as' => $as_date,
@@ -69,33 +70,26 @@ $factory->define(App\Product::class, function (Faker $faker) {
 
 //의료정보 팩토리
 $factory->define(App\Medical_info::class, function (Faker $faker) {
-    $userId = App\User::pluck('user_id')->toArray();
-
+    $userId = App\User::pluck('id')->toArray();
     // $sickness = ["없음", "고혈압", "당뇨", "결핵", "심장질환", "알러지", "천식", "심부전증", "페렴", "디스크", "간경화", "관절염", "협심증", "암", "갑상선염", "고지혈증", "골다공증", "과민성 대장", "기관지염", "뇌졸중", "신장질환", "간암"];
     // $symptom = ["위가 아픔", "허리가 아픔", "설탕먹고싶음", "간이 아픔", "몸살", "기침", "잦은 기침", "뇌가 아픔"];
     // $medicine = ["위약", "허리약", "인슐린", "간약", "몸살약", "기침약", "잦은 기침약", "게보린"];
     $num = rand(0, 7);
     $hospital = ["경대병원", "서울병원", "영대병원", "부산병원"];
     $report_request = ["빨리와주세요", "붕대가져와주세요", "배도 아파요"];
-
+    
     return [
         'user_id' => $faker->unique()->randomElement($userId), //1:1관계로 유니크부여
-        // 'past_sickness' => Arr::random($sickness),
-        // 'past_sickness_supplementation' => Str::random(10),
-        // 'sickness' => Arr::random($sickness),
-        // 'medicine' => Arr::random($medicine),
-        // 'symptom' => Arr::random($symptom),
         'guardian_phone' => '010-' . rand(1000, 9999) . '-' . rand(1000, 9999),
         'blood_type' => Arr::random(['A형','B형','AB형','O형']),
         'disability_status' => Arr::random(['yes','no']),
         'hospital' => Arr::random($hospital),
-        // 'hospital_menu' => Str::random(6),
         'report_request' => Arr::random($report_request),
     ];
 });
 //과거 병력 팩토리
 $factory->define(App\Past_sickness::class, function (Faker $faker) {
-    $userId = App\User::pluck('user_id')->toArray();
+    $userId = App\User::pluck('id')->toArray();
 
     $sickness = ["없음", "고혈압", "당뇨", "결핵", "심장질환", "알러지", "천식", "심부전증", "페렴", "디스크", "간경화", "관절염", "협심증", "암", "갑상선염", "고지혈증", "골다공증", "과민성 대장", "기관지염", "뇌졸중", "신장질환", "간암"];
     return [
@@ -106,7 +100,7 @@ $factory->define(App\Past_sickness::class, function (Faker $faker) {
 });
 //기저질환 팩토린
 $factory->define(App\Sickness::class, function (Faker $faker) {
-    $userId = App\User::pluck('user_id')->toArray();
+    $userId = App\User::pluck('id')->toArray();
 
     $sickness = ["없음", "고혈압", "당뇨", "결핵", "심장질환", "알러지", "천식", "심부전증", "페렴", "디스크", "간경화", "관절염", "협심증", "암", "갑상선염", "고지혈증", "골다공증", "과민성 대장", "기관지염", "뇌졸중", "신장질환", "간암"];
     $symptom = ["위가 아픔", "허리가 아픔", "설탕먹고싶음", "간이 아픔", "몸살", "기침", "잦은 기침", "뇌가 아픔"];
@@ -122,7 +116,7 @@ $factory->define(App\Sickness::class, function (Faker $faker) {
 //운전 팩토리
 $factory->define(App\Drive::class, function (Faker $faker) {
     $date = date("Y-m-d H:m:s", time()); //현재날짜
-    $userId = App\User::pluck('user_id')->toArray();
+    $userId = App\User::pluck('id')->toArray();
     return [
         'user_id' => $faker->randomElement($userId),
         'drive_score' => rand(0, 100),
@@ -137,7 +131,7 @@ $factory->define(App\Drive::class, function (Faker $faker) {
 //보험사 팩토리
 // $factory->define(App\Insurance_list::class, function (Faker $faker) {
 //     $date = date("Y-m-d", time()); //현재날짜
-//     $userId = App\User::pluck('user_id')->toArray();
+//     $userId = App\User::pluck('id')->toArray();
 
 //     $insurance_name = ["하나보험사", "우리보험사", "준혁보험사", "동화보험사"];
 //     return [
@@ -149,7 +143,7 @@ $factory->define(App\Drive::class, function (Faker $faker) {
 //보험 팩토리
 $factory->define(App\Insurance::class, function (Faker $faker) {
     $date = date("Y-m-d", time()); //현재날짜
-    $userId = App\User::pluck('user_id')->toArray();
+    $userId = App\User::pluck('id')->toArray();
     $subscription_date = date("Y-m-d", strtotime("{$date} -10 years")); //현재날짜 10년전
     $expiration_date = date("Y-m-d", strtotime("{$subscription_date} +20 years")); //구독날짜 10년후
     $insurance_list = \App\Insurance_list::get();
@@ -157,7 +151,7 @@ $factory->define(App\Insurance::class, function (Faker $faker) {
         // 'user_id' => $faker->unique()->randomElement($userId), //1:1관계로 유니크부여
         'user_id' => $faker->randomElement($userId), //1:1관계로 유니크부여
         // 'insurance_name' => Arr::random($insurance_name),
-        'insurance_list_id' => $faker->randomElement($insurance_list)->insurance_list_id,
+        'insurance_list_id' => $faker->randomElement($insurance_list)->id,
         'subscription_date' => $subscription_date,
         'expiration_date' => $expiration_date,
 
@@ -189,7 +183,7 @@ $factory->define(App\Insurance::class, function (Faker $faker) {
 
 //신고 팩토리
 $factory->define(App\Report::class, function (Faker $faker) {
-    $userId = App\User::pluck('user_id')->toArray();
+    $userId = App\User::pluck('id')->toArray();
     return [
         'user_id' => $faker->randomElement($userId),
         // 'gps' => Str::random(3) . "시" . Str::random(2) . "동" . rand(1, 999) . '-' . rand(1, 999),
@@ -200,8 +194,8 @@ $factory->define(App\Report::class, function (Faker $faker) {
 
 //운전 감지 팩토리
 $factory->define(App\Drive_detection::class, function (Faker $faker) {
-    $userId = App\User::pluck('user_id')->toArray();
-    $drive_id = App\Drive::pluck('drive_id')->toArray();
+    $userId = App\User::pluck('id')->toArray();
+    $drive_id = App\Drive::pluck('id')->toArray();
 
     $random = [];
     $number = rand(0,3);

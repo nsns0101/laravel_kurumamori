@@ -40,10 +40,11 @@ class ProductController extends Controller
              // flash()->error("이미 사용한 키입니다.");
              return response()->json([], 204);
          }
- 
+         $product_buy_id = \App\Product_buy::whereProduct_key($request->product_key)->first()->id;
          $create_product = \App\Product::create([
              'user_id' => auth()->user()->id,
-             'product_name' => $product->product_name,
+             'product_buy_id' => $product_buy_id,
+            //  'product_name' => $product->product_name,
              'product_key' => $request->product_key,
              'date_buy' => $product->created_at,
              'date_as' => date("Y-m-d", strtotime("{$product->created_at} +1 years")),

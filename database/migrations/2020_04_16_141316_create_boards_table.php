@@ -9,7 +9,7 @@ class CreateBoardsTable extends Migration
     public function up()
     {
         Schema::create('boards', function (Blueprint $table) {
-            $table->bigIncrements('board_id')->comment('게시판 번호');
+            $table->bigIncrements('id')->comment('게시판 번호');
             $table->unsignedBigInteger('user_id')->comment('유저 번호');
             $table->unsignedBigInteger('category_id')->comment('카테고리');
             $table->string('title')->comment('게시판 제목');
@@ -18,8 +18,8 @@ class CreateBoardsTable extends Migration
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('생성 시간');
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('업데이트 시간');
 
-            $table->foreign('user_id')->references('user_id')->on('users')->onUpdete('cascade')->onDelete('cascade');
-            $table->foreign('category_id')->references('category_id')->on('categories')->onUpdete('cascade')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdete('cascade')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onUpdete('cascade')->onDelete('cascade');
         });
     }
 

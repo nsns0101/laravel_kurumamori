@@ -14,12 +14,13 @@ class InfoController extends Controller
     {
         $user = \App\User::whereId(auth()->user()->id)->first();
         $reports = \App\Report::whereUser_id(auth()->user()->id)->orderBy('id', 'desc')->paginate(5);
-        $questions = \App\Question::whereUser_id(auth()->user()->id)->orderBy('id', 'desc')->paginate(5);
+        // $questions = \App\Question::whereUser_id(auth()->user()->id)->orderBy('id', 'desc')->paginate(5);
+        // $question = \App\Question::whereUser_id(auth()->user()->id)->first();
         $product = \App\Product::whereUser_id(auth()->user()->id)->first();
-        $question = \App\Question::whereUser_id(auth()->user()->id)->first();
-        // \Log::info($question->comments()->get());
+        $product_buy = $product ? \App\Product_buy::whereProduct_key($product->product_key)->first() : null;
+        \Log::info($product_buy);
 
-        return view('info.index', compact('user', 'reports', 'questions', 'product'));
+        return view('info.index', compact('user', 'reports', 'product', 'product_buy'));
     }
 
     public function create()

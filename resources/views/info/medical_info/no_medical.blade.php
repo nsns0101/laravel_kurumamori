@@ -53,12 +53,12 @@
                         진료 과목
                         </p>
                     </div>
-                    <div class="col-md-3">
+                    {{-- <div class="col-md-3">
                         <div class="form-group {{ $errors->has('hospital_menu') ? 'has-error' : '' }}">
                             <input style="font-size:24px"type="text" name="hospital_menu" class="form-control" placeholder="진료하시는 과목" value="{{$medical_info ? old('hospital_menu',$medical_info->hospital_menu) :  old('hospital_menu')}}"/>
                             {!! $errors->first('hospital_menu', '<span class="form-error">:message</span>') !!}
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

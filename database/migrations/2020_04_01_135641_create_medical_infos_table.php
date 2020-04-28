@@ -14,7 +14,7 @@ class CreateMedicalInfosTable extends Migration
     public function up()
     {
         Schema::create('medical_infos', function (Blueprint $table) {
-            $table->bigIncrements('medical_id')->comment('의료정보 번호');
+            $table->bigIncrements('id')->comment('의료정보 번호');
             $table->unsignedBigInteger('user_id')->comment('유저 번호');
             // $table->string('past_sickness')->nullable()->comment('예전에 걸린 병');
             // $table->string('past_sickness_supplementation')->nullable()->comment('예전에 걸린 병 보충설명');
@@ -31,7 +31,7 @@ class CreateMedicalInfosTable extends Migration
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('생성 시간');
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('업데이트 시간');
 
-            $table->foreign('user_id')->references('user_id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
 
         });
     }
