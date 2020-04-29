@@ -34,16 +34,14 @@
         <input name='to_phone' type="text">
         {!! $errors->first('to_phone', '<span class="form-error">:message</span>') !!}
     </div>
-    <div>
-        <label for="">주소</label>
-        <input name='to_address' type="text">
-        {!! $errors->first('to_address', '<span class="form-error">:message</span>') !!}
+    <div onload="jusoCallBack('roadFullAddr','zipNo');">
+        <input type="button" value="주소검색" onclick="goPopup();"> 
     </div>
-    <div>
-        <label for="">우편번호</label>
-        <input name='to_zipcode' type="text">
-        {!! $errors->first('to_zipcode', '<span class="form-error">:message</span>') !!}
-    </div>
+    <input id ="roadFullAddr" name="to_address">
+    {!! $errors->first('to_address', '<span class="form-error">:message</span>') !!}
+    <label for="">우편번호</label>
+    <input id ="zipNo" name="to_zipcode">
+    {!! $errors->first('to_zipcode', '<span class="form-error">:message</span>') !!}
     <div>
         <label for="">배송 메시지</label>
         <input name='to_msg' type="text">
@@ -58,7 +56,6 @@
     <div>
         <button>구매하기</button>
     </div>
-</div>   
 </form>
 <br>
 <br>
@@ -71,6 +68,37 @@
     function product(){
         console.log("제품 상세보기 페이지로");
     }
+
+//주소 api
+    function jusoCallBack(roadFullAddr,zipNo){
+        document.getElementById('roadFullAddr').value = roadFullAddr;
+        // document.getElementById('roadAddr').value = roadAddr;
+        // document.getElementById('addrDetail').value = addrDetail;
+        // document.getElementById('jibunAddr').value = jibunAddr;
+        document.getElementById('zipNo').value = zipNo;
+        // document.getElementById('admCd').value = admCd;
+        // document.getElementById('rnMgtSn').value = rnMgtSn;
+        // document.getElementById('bdKdcd').value = bdKdcd;
+        // document.getElementById('siNm').value = siNm;
+        // document.getElementById('sggNm').value = sggNm;
+        // document.getElementById('emdNm').value = emdNm;
+        // document.getElementById('liNm').value = liNm;
+        // document.getElementById('rn').value = rn;
+        // document.getElementById('udrtYn').value = udrtYn;
+        // document.getElementById('buldMnnm').value = buldMnnm;
+        // document.getElementById('buldSlno').value = buldSlno;
+        // document.getElementById('mtYn').value = mtYn;
+        // document.getElementById('lnbrMnnm').value = lnbrMnnm;
+        // document.getElementById('lnbrSlno').value = lnbrSlno;
+        // document.getElementById('korAddr').value = korAddr;
+}
+    function goPopup(){
+        // 주소검색을 수행할 팝업 페이지를 호출합니다.
+        // 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrEngUrl.do)를 호출하게 됩니다.
+        var pop = window.open("/jusoPopup_utf8.php","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+    }
+// 주소 api end
+
 </script>
 @stop
 @section('style')
@@ -84,6 +112,9 @@
     }
     p{
         color:black;
+    }
+    #roadFullAddr{
+        width:500px;
     }
 </style>
 @stop
