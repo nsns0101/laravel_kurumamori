@@ -10,10 +10,28 @@
 ?>
 </head>
 <script>
+//url 얻기
+function _GET(search) {
+	var obj = {};
+	var uri = decodeURI(search);
+		uri = uri.slice(1,uri.length);
+
+	var param = uri.split('&');
+	console.log(param);
+	for (var i = 0; i < param.length; i++) {
+		var devide = param[i].split('=>');
+		obj[devide[0]] = devide[1];
+	}
+
+	return obj;
+}
+
 function init(){
 	var url = location.href;
+	var search = window.location.search;
+    var getData =  _GET(search);
 	// var url = "http://127.0.0.1:8000/buy?"
-	var confmKey = "devU01TX0FVVEgyMDIwMDQyODA5NTAwNjEwOTcxMDE=";
+	var confmKey = getData.val;
 	var resultType = "2"; // 도로명주소 검색결과 화면 출력유형, 1 : 도로명, 2 : 도로명+지번
 	// php.ini 에 short_open_tag 가 On 으로 설정되어 되어 있는 경우 아래 소스 코드 사용
 	var inputYn= "<?=$ADDR['inputYn']?>";

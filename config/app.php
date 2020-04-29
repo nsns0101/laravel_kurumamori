@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     |
     */
-
+    'juso_api_key' => env('JUSO_API_KEY', null),
     'name' => env('APP_NAME', 'kurumamori9'),
 
     /*

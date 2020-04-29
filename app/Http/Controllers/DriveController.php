@@ -90,7 +90,6 @@ class DriveController extends Controller
         
         //사고 여부
         $report = \DB::select("select * from reports where DATE_FORMAT(created_at, '%Y-%m-%d') = '{$date}' AND user_id = '{$auth_user}'");
-
         \Log::info("선택 날짜 : " . $date);
         \Log::info("선택한 날짜의 정보 :", $drive);
         \Log::info("최근 5일 : ", $day_5);

@@ -3,7 +3,7 @@
     <div class="col-xl-4 col-lg-4 col-md-4">
         <div class="card shadow" style="width:600px">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">급 가속 횟수</h6>
+                <h6 class="m-0 font-weight-bold text-primary">위험 카운트</h6>
             </div>
             <div class="card-body">
                 <div class="chart-area">
@@ -20,7 +20,7 @@
                 </div>
                 <hr>
                 {{-- Styling for the area chart can be found in the <code>/js/demo/chart-area-demo.js</code> file. --}}
-                - 급가속
+                <p>최근 5일간의 급 가속, 급 감속, 졸음, 신고 데이터입니다.</p>
             </div>
         </div>
     </div>

@@ -28,7 +28,7 @@
             <div class="col-md-2">
                 <div class="form-group {{ $errors->has('drive_date') ? 'has-error' : '' }}">
                     <!-- 시작시 기본 날짜 설정은 value를 이용 -->
-                <input id="drive_date"type="text" name="drive_date" class="form-control datePicker"  value="{{$date ? $date : "디폴트 = 현재날짜"}}" readonly>
+                <input id="drive_date"type="text" name="drive_date" class="form-control datePicker"  value="{{$date ? $date : date("Y-m-d")}}" readonly>
                     <p style="color:red">
                         {!! $errors->first('drive_date', '<span class="form-error">:message</span>') !!}
                     </p>
@@ -51,7 +51,7 @@
             </div>
             <div class="col-sm-3 col-md-3">
                 <div class="thumbnail">
-                    <div class="caption{{$day_5_danger_info[0]->count_danger}}">
+                    <div class="caption">
                         <h3 class="text-center">오늘의 운전점수</h3>
                         <hr style="background-color:darkgrey;"/>
                         <p>총 운전 점수 : </p>
@@ -109,15 +109,13 @@
 @section('script')
 <script>
     var API_KEY = "{{env('GCP_API_KEY')}}";     //GCP API KEY
-    var day_5 = [];     //최근 5일
-    day_5.push("{{$day_5[0]}}");
-    day_5.push("{{$day_5[1]}}");
-    day_5.push("{{$day_5[2]}}");
-    day_5.push("{{$day_5[3]}}");
-    day_5.push("{{$day_5[4]}}");
-    
-    var day_5_danger_info = {};     //최근 5일의 위험정보
-    // console.log("");
+
+    //최근 5일
+    var day_5 = <?php echo json_encode($day_5)?>;
+    //최근 5일의 위험정보         
+    var day_5_danger_info = <?php echo json_encode($day_5_danger_info) ?>;     
+    console.log(day_5);
+    console.log(day_5_danger_info[0]);
 
 
     //시간

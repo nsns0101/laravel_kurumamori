@@ -11,7 +11,6 @@ class Medical_infosTableSeeder extends Seeder
      */
     public function run()
     {
-        $count = 0;
         factory(App\Medical_info::class, 11)->create();
     }
 }

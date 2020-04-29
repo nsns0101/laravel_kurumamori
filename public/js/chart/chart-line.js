@@ -1,7 +1,6 @@
 // Set new default font family and font color to mimic Bootstrap's default styling
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
-
 //왼쪽 값
 function number_format(number, decimals, dec_point, thousands_sep) {
   // *     example: number_format(1234.56, 2, ',', ' ');
@@ -29,45 +28,36 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 }
 
 // Area Chart Example
-console.log(day_5); // 최근 5일
-console.log()
+// console.log(day_5); // 최근 5일
+// console.log()
 var ctx = document.getElementById("myAreaChart");
+
 var myLineChart = new Chart(ctx, {
   data: {
+    //day_5배열은 drive_score.blade.php의 script참고
     labels: [day_5[4], day_5[3],day_5[2], day_5[1], day_5[0]], //항목
     datasets: [{
       type: 'line',       //차트 형태
       label: "급 가속",
       lineTension: 0.3,
       backgroundColor: "rgba(78, 115, 223, 0.05)",
-      borderColor: "red",   //선 색깔
+      borderColor: "orange",   //선 색깔
       pointRadius: 3,
-      pointBackgroundColor: "red",  //꼭짓점 색깔
-      pointBorderColor: "red",  //꼭짓점 바탕색깔
+      pointBackgroundColor: "orange",  //꼭짓점 색깔
+      pointBorderColor: "orange",  //꼭짓점 바탕색깔
       pointHoverRadius: 3,
       pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
       pointHoverBorderColor: "rgba(78, 115, 223, 1)",
       pointHitRadius: 10,
       pointBorderWidth: 2,
       //값
-      data: [3, 6, 1, 6, 2],
-    },
-    {
-      type: 'line',
-      label: "졸음",
-      lineTension: 0.3,
-      backgroundColor: "rgba(78, 115, 223, 0.05)",
-      borderColor: "rgba(78, 115, 223, 1)",
-      pointRadius: 3,
-      pointBackgroundColor: "rgba(78, 115, 223, 1)",
-      pointBorderColor: "rgba(78, 115, 223, 1)",
-      pointHoverRadius: 3,
-      pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-      pointHoverBorderColor: "rgba(78, 115, 223, 1)",
-      pointHitRadius: 10,
-      pointBorderWidth: 2,
-      //값
-      data: [0, 3, 4, 3, 4],
+      data: [
+        day_5_danger_info[4].count_sudden_acceleration, 
+        day_5_danger_info[3].count_sudden_acceleration,
+        day_5_danger_info[2].count_sudden_acceleration, 
+        day_5_danger_info[1].count_sudden_acceleration, 
+        day_5_danger_info[0].count_sudden_acceleration
+      ],
     },
     {
       type: 'line',
@@ -84,8 +74,61 @@ var myLineChart = new Chart(ctx, {
       pointHitRadius: 10,
       pointBorderWidth: 2,
       //값
-      data: [1, 0, 2, 2, 1],
-    }],
+      data: [
+        day_5_danger_info[4].count_sudden_stop, 
+        day_5_danger_info[3].count_sudden_stop,
+        day_5_danger_info[2].count_sudden_stop, 
+        day_5_danger_info[1].count_sudden_stop, 
+        day_5_danger_info[0].count_sudden_stop 
+      ],
+    },
+    {
+      type: 'line',
+      label: "졸음",
+      lineTension: 0.3,
+      backgroundColor: "rgba(78, 115, 223, 0.05)",
+      borderColor: "rgba(78, 115, 223, 1)",
+      pointRadius: 3,
+      pointBackgroundColor: "rgba(78, 115, 223, 1)",
+      pointBorderColor: "rgba(78, 115, 223, 1)",
+      pointHoverRadius: 3,
+      pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+      pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+      pointHitRadius: 10,
+      pointBorderWidth: 2,
+      //값
+      data: [
+        day_5_danger_info[4].count_sleep, 
+        day_5_danger_info[3].count_sleep,
+        day_5_danger_info[2].count_sleep, 
+        day_5_danger_info[1].count_sleep, 
+        day_5_danger_info[0].count_sleep 
+      ],
+    },
+    {
+      type: 'line',
+      label: "신고",
+      lineTension: 0.3,
+      backgroundColor: "rgba(78, 115, 223, 0.05)",
+      borderColor: "red",   //선 색깔
+      pointRadius: 3,
+      pointBackgroundColor: "red",  //꼭짓점 색깔
+      pointBorderColor: "red",  //꼭짓점 바탕색깔
+      pointHoverRadius: 3,
+      pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+      pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+      pointHitRadius: 10,
+      pointBorderWidth: 2,
+      //값
+      data: [
+        day_5_danger_info[4].count_report, 
+        day_5_danger_info[3].count_report,
+        day_5_danger_info[2].count_report, 
+        day_5_danger_info[1].count_report, 
+        day_5_danger_info[0].count_report 
+      ],
+    },
+  ],
   },
   options: {
     maintainAspectRatio: false,
@@ -129,8 +172,14 @@ var myLineChart = new Chart(ctx, {
         }
       }],
     },
+    //범례
     legend: {
-      display: false
+      display: true,
+      position: 'bottom',
+      labels: {
+          fontColor: '#333',
+          fontSize:15,
+      }
     },
     tooltips: {
       backgroundColor: "rgb(255,255,255)",
