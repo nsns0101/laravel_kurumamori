@@ -70,8 +70,8 @@
                             style="display: block; width: 313px; height: 253px;"></canvas>
                     </div>
                     <hr>
-                    Styling for the donut chart can be found in the <code>/js/demo/chart-pie-demo.js</code>
-                    file.
+                    <p>일별 위험요소를 %로 나타낸 데이터입니다.</p>
+
                 </div>
             </div>
     </div>

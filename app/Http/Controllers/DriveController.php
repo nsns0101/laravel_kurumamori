@@ -97,7 +97,7 @@ class DriveController extends Controller
         \Log::info("최근 5일의 위험 정보 합계: ", $day_5_danger_info);  //배열안의 배열 (하루에 여러번 운전했을 수 있으니)
         \Log::info("당일 위험 카운트 : ", $drive_count);
         \Log::info("운전 시간(초) : ". $drive_sec);
-        \Log::info("사고 여부", $report);
+        \Log::info("당일 사고 여부", $report);
         // \Log::info($error);
         //1시간에 급감속이나 급가속, 졸음 등을 1번했을 경우 모범?
         //default = 100에서 깎아내리는 형식?

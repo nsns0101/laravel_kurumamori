@@ -86,8 +86,10 @@ var myBarChart = new Chart(ctx, {
       }],
     },
     legend: {
-      display: false
-    },
+      display: true,
+      position: 'bottom',
+
+  },
     tooltips: {
       titleMarginBottom: 10,
       titleFontColor: '#6e707e',

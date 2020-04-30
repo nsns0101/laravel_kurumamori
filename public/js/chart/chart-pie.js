@@ -8,12 +8,18 @@ var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
     type: "doughnut",
     data: {
-        labels: ["Direct", "Referral", "Social"],
+        labels: [day_5[4], day_5[3],day_5[2],day_5[1],day_5[0]],
         datasets: [
             {
-                data: [55, 30, 15],
-                backgroundColor: ["#4e73df", "#1cc88a", "#36b9cc"],
-                hoverBackgroundColor: ["#2e59d9", "#17a673", "#2c9faf"],
+                data: [
+                    day_5_percent[4], 
+                    day_5_percent[3], 
+                    day_5_percent[2], 
+                    day_5_percent[1], 
+                    day_5_percent[0]
+                ],
+                backgroundColor: ["orange", "green", "blue", "red", "black"],
+                hoverBackgroundColor: ["orange", "green", "blue", "red", "black"],
                 hoverBorderColor: "rgba(234, 236, 244, 1)"
             }
         ]
@@ -31,8 +37,28 @@ var myPieChart = new Chart(ctx, {
             caretPadding: 10
         },
         legend: {
-            display: false
+            display: true,
+            position: 'bottom',
+
         },
-        cutoutPercentage: 80
+        cutoutPercentage: 80,
+        yAxes: [{
+            ticks: {
+              maxTicksLimit: 5,
+              padding: 10,
+              // Include a dollar sign in the ticks
+              callback: function(value, index, values) {
+                // return '$' + number_format(value);
+                return value + "%";
+              }
+            },
+            gridLines: {
+              color: "rgb(234, 236, 244)",
+              zeroLineColor: "rgb(234, 236, 244)",
+              drawBorder: false,
+              borderDash: [2],
+              zeroLineBorderDash: [2]
+            }
+          }],
     }
 });

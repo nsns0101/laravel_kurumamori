@@ -55,12 +55,12 @@
                         <h3 class="text-center">오늘의 운전점수</h3>
                         <hr style="background-color:darkgrey;"/>
                         <p>총 운전 점수 : </p>
-                        <p>졸음 횟수 : </p>
-                        <p>급 가속 횟수 : </p>
-                        <p>급 감속 횟수 : </p>
+                        <p>졸음 횟수 : {{$day_5_danger_info[0]["count_sleep"]}}</p>
+                        <p>급 가속 횟수 : {{$day_5_danger_info[0]["count_sudden_acceleration"]}}</p>
+                        <p>급 감속 횟수 : {{$day_5_danger_info[0]["count_sudden_stop"]}}</p>
                         {{-- 당일 사고 정보 --}}
                         @if($report)
-                            <p>사고 : {{count($report)}}건</p>
+                            <p>사고 : {{$day_5_danger_info[0]["count_report"]}}건</p>
                             @for($i = 0; $i < count($report); $i++)
                                 <p class="gps{{$report[0]->id}}">사고 장소 :                                     {{-- 위도 경도로 주소찾기 --}}
                                     <script>
@@ -115,9 +115,29 @@
     //최근 5일의 위험정보         
     var day_5_danger_info = <?php echo json_encode($day_5_danger_info) ?>;     
     console.log(day_5);
-    console.log(day_5_danger_info[0]);
-
-
+    console.log(day_5_danger_info[1]);
+    
+    //최근 5일동안 위험정보 빈도
+    //i가 1부터 시작하는 것은 0이 count_danger(총 위험카운트)이기 때문
+    var day_5_percent = [];
+    //5일동안 총 위험카운트
+    var day_5_danger_count = 0;
+    for(var i = 0; i < day_5_danger_info.length; i++){
+        day_5_danger_count+= day_5_danger_info[i]["count_danger"];
+    }
+    console.log(day_5_danger_count);
+    //5일 각각의 위험카운트(%)
+    for(var i =0; i < day_5_danger_info.length; i++){
+            
+        day_5_percent.push(((
+            day_5_danger_info[i]["count_report"] + 
+            day_5_danger_info[i]["count_sleep"] + 
+            day_5_danger_info[i]["count_sudden_acceleration"] + 
+            day_5_danger_info[i]["count_sudden_stop"] ) / day_5_danger_count * 100
+            ).toFixed(0));
+        
+    }
+    console.log(day_5_percent);
     //시간
     $(function() {	
 		$('.datePicker').datepicker({
