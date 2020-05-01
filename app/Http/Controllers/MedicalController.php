@@ -60,7 +60,7 @@ class MedicalController extends Controller
             'guardian_phone' => $request->guardian_phone,
             'blood_type' => $request->blood_type,
             'disability_status' => $request->disability_status,
-            'hospital' => $request->hospital,
+            // 'hospital' => $request->hospital,
             // 'hospital_menu' => $request->hospital_menu,
             'report_request' => $request->report_request,
         ]);
@@ -89,7 +89,8 @@ class MedicalController extends Controller
                     'user_id' => auth()->user()->id,
                     'sickness_name' => $request->sickness_name[$i],
                     'medicine' => $request->medicine[$i],
-                    'symptom' => $request->symptom[$i]
+                    'symptom' => $request->symptom[$i],
+                    'hospital' => $request->hospital[$i],
                     ]);
                 $sickness_count++;
             }
@@ -129,11 +130,12 @@ class MedicalController extends Controller
         
         $medical_id = \App\Medical_info::whereUser_id(auth()->user()->id)->first()->id;
         $past_sickness = \App\Past_sickness::whereUser_id(auth()->user()->id)->get();
-        $sickness = \App\Sickness::whereUser_id(auth()->user())->get();
+        $sickness = \App\Sickness::whereUser_id(auth()->user()->id)->get();
         $past_sickness_count = 0;
         $sickness_count = 0;
         // \Log::info(count($request->past_sickness_name));
         // \Log::info(count($request->sickness_name));
+
         //past_sickness DB Update
         for($i = 1; $i <= count($request->past_sickness_name); $i++){
             // \Log::info(count($request->past_sickness_name));
@@ -174,7 +176,8 @@ class MedicalController extends Controller
                         'user_id' => auth()->user()->id,
                         'sickness_name' => $request->sickness_name[$i],
                         'medicine' => $request->medicine[$i],
-                        'symptom' => $request->symptom[$i]
+                        'symptom' => $request->symptom[$i],
+                        'hospital' => $request->hospital[$i],
                     ]);
                 }
                 else{
@@ -182,7 +185,9 @@ class MedicalController extends Controller
                         'user_id' => auth()->user()->id,
                         'sickness_name' => $request->sickness_name[$i],
                         'medicine' => $request->medicine[$i],
-                        'symptom' => $request->symptom[$i]
+                        'symptom' => $request->symptom[$i],
+                        'hospital' => $request->hospital[$i],
+
                     ]);
                 }
                
@@ -199,8 +204,8 @@ class MedicalController extends Controller
             'guardian_phone' => $request->guardian_phone,
             'blood_type' => $request->blood_type,
             'disability_status' => $request->disability_status,
-            'hospital' => $request->hospital,
-            'hospital_menu' => $request->hospital_menu,
+            // 'hospital' => $request->hospital,
+            // 'hospital_menu' => $request->hospital_menu,
             'report_request' => $request->report_request,
         ]);
 

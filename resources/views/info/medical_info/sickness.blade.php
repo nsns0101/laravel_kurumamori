@@ -55,6 +55,22 @@
         </div>
     </div>
     <div class="col-md-1" ></div>
+    {{--  --}}
+    <div class="col-md-2" ></div>
+
+    <div class="col-md-2 text-center">
+        <p style="font-size:24px;margin-top:13px; color:blue;font-weight:800;">
+        진료기관 명
+        </p>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group {{ $errors->has("hospital.$i") ? 'has-error' : '' }}">
+            <input style="font-size:24px"type="text" name="hospital[{{$i}}]" class="form-control" placeholder="다니시는 병원" value="{{ isset($sickness[$i-1]) ?old("hospital.$i",$sickness[$i-1]->hospital) :  old("hospital.$i")}}"/>
+            {!! $errors->first('hospital.{{$i}}', '<span class="form-error">:message</span>') !!}
+        </div>
+    </div>
 </div>
 
 @endfor
+
+

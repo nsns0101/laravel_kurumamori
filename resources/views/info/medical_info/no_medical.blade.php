@@ -27,14 +27,13 @@
         </div>
     </div>
     {{-- 진료 의료기관 --}}
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="text-center card-header" style="background-color:green; color:white">
                     진료 의료기관
                 </div>
                 <br/>
-                {{--  --}}
                 <div class="row">
                     <div class="col-md-2 text-center">
                         <p style="font-size:24px;margin-top:13px; color:blue;font-weight:800;">
@@ -47,22 +46,21 @@
                             {!! $errors->first('hospital', '<span class="form-error">:message</span>') !!}
                         </div>
                     </div>
-                    {{--  --}}
                     <div class="col-md-2 text-center">
                         <p style="font-size:24px;margin-top:13px; color:blue;font-weight:800;">
                         진료 과목
                         </p>
                     </div>
-                    {{-- <div class="col-md-3">
+                    <div class="col-md-3">
                         <div class="form-group {{ $errors->has('hospital_menu') ? 'has-error' : '' }}">
                             <input style="font-size:24px"type="text" name="hospital_menu" class="form-control" placeholder="진료하시는 과목" value="{{$medical_info ? old('hospital_menu',$medical_info->hospital_menu) :  old('hospital_menu')}}"/>
                             {!! $errors->first('hospital_menu', '<span class="form-error">:message</span>') !!}
                         </div>
-                    </div> --}}
+                    </div> 
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     {{-- 신청자 인적사항 --}}
     <div class="row">
         <div class="col-md-12">

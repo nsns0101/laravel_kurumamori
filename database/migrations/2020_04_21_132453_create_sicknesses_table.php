@@ -19,6 +19,7 @@ class CreateSicknessesTable extends Migration
             $table->string('sickness_name')->comment('기저질환 명');
             $table->string('medicine')->nullable()->comment('복용중인 약');
             $table->string('symptom')->nullable()->comment('증상');
+            $table->string('hospital')->nullable()->comment('다니는 병원');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('생성 시간');
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('업데이트 시간');
 

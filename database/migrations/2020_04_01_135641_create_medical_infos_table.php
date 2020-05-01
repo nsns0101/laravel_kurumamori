@@ -24,7 +24,7 @@ class CreateMedicalInfosTable extends Migration
             $table->string('guardian_phone')->nullable()->comment('보호자 폰 번호');
             $table->string('blood_type')->comment('혈액형');
             $table->string('disability_status')->comment('장애여부');
-            $table->string('hospital')->nullable()->comment('다니는 병원');
+            // $table->string('hospital')->nullable()->comment('다니는 병원');
             // $table->string('hospital_menu')->nullable()->comment('진료 과목');
             // $table->string('hospital_phone')->nullable()->comment('다니는 병원 폰 번호');
             $table->string('report_request')->nullable()->comment('신고시 요청사항');

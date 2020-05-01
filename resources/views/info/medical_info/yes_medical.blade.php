@@ -8,6 +8,7 @@
                 @for($i = 0; $i < count($past_sicknesses); $i++)
                     <p>예전에 걸린 병{{$i + 1}} : {{$past_sicknesses[$i]->past_sickness_name}}</p>
                     <p>예전에 걸린 병{{$i + 1}} 보충 설명 : {{$past_sicknesses[$i]->past_sickness_supplementation}}</p>
+
                     <br/>
                 @endfor
 
@@ -25,6 +26,8 @@
                     <p>현재 병{{$i + 1}} : {{$sicknesses[$i]->sickness_name}}</p>
                     <p>복용중인 약{{$i + 1}} : {{$sicknesses[$i]->medicine}}</p>
                     <p>증상{{$i + 1}} : {{$sicknesses[$i]->symptom}}</p>
+                    <p>다니는 병원 : {{$sicknesses[$i]->hospital}}</p>
+
                     <br/>
                 @endfor
             </div>
@@ -38,8 +41,8 @@
                 <p>보호자 휴대폰 : {{$medical_info->guardian_phone}}</p>
                 <p>혈액형 : {{$medical_info->blood_type}}</p>
                 <p>장애 여부 : {{$medical_info->disability_status}}</p>
-                <p>다니는 병원 : {{$medical_info->hospital}}</p>
-                <p>진료 과목 : {{$medical_info->hospital_menu}}</p>
+                {{-- <p>다니는 병원 : {{$medical_info->hospital}}</p> --}}
+                {{-- <p>진료 과목 : {{$medical_info->hospital_menu}}</p> --}}
                 <p>신고시 요청사항 : {{$medical_info->report_request}}</p>
                 <hr style="background-color:darkgrey;" />
             </div>
