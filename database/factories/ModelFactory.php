@@ -145,17 +145,6 @@ $factory->define(App\Insurance::class, function (Faker $faker) {
     ];
 });
 
-//게시글 팩토리
-// $factory->define(App\Question::class, function (Faker $faker) {
-//     $userId = App\User::pluck('id')->toArray();
-//     return [
-//         'user_id' => $faker->randomElement($userId),
-//         'title' => $faker->sentence(),
-//         'category' => rand(0,5),
-//         'content' => $faker->paragraph(),
-//     ];
-// });
-
 // //댓글 팩토리
 // $factory->define(App\Comment::class, function (Faker $faker) {
 //     $userId = App\User::pluck('id')->toArray();
@@ -203,8 +192,10 @@ $factory->define(App\Drive::class, function (Faker $faker) {
 });
 //운전 감지 팩토리
 $factory->define(App\Drive_detection::class, function (Faker $faker) {
-    $userId = App\User::pluck('id')->toArray();
-    $drive_id = App\Drive::pluck('id')->toArray();
+    $userId = App\Drive::pluck('user_id')->toArray();
+    $userId = $faker->randomElement($userId);       //user_id 교체
+
+    $drive_id = App\Drive::whereUser_id($userId)->get();
 
     $random = [];
     $number = rand(0,3);
@@ -218,8 +209,8 @@ $factory->define(App\Drive_detection::class, function (Faker $faker) {
     }
 
     return [
-        'user_id' => $faker->randomElement($userId),
-        'drive_id' => $faker->randomElement($drive_id),
+        'user_id' => $userId,
+        'drive_id' => $faker->randomElement($drive_id)->id,
         'latitude' => rand(1, 60) . '.' . rand(1000, 9999999),
         'longitude' => rand(1, 150) . '.' . rand(1000, 9999999),
         'bool_report' => $random[0],
