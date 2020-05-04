@@ -10,10 +10,10 @@
                     <a class="nav-link" href="/products">제품 소개</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/questions">고객 문의</a>
+                    <a class="nav-link" href="/boards/questions">고객 문의</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/reviews">고객 리뷰</a>
+                    <a class="nav-link" href="/boards/reviews">고객 리뷰</a>
                 </li>
             </ul>
 

@@ -145,16 +145,17 @@ $factory->define(App\Insurance::class, function (Faker $faker) {
     ];
 });
 
-//게시글 팩토리
-// $factory->define(App\Question::class, function (Faker $faker) {
-//     $userId = App\User::pluck('id')->toArray();
-//     return [
-//         'user_id' => $faker->randomElement($userId),
-//         'title' => $faker->sentence(),
-//         'category' => rand(0,5),
-//         'content' => $faker->paragraph(),
-//     ];
-// });
+// 게시판 팩토리
+$factory->define(App\Board::class, function (Faker $faker) {
+    $userId = App\User::pluck('id')->toArray();
+    $categoryId =App\Category::pluck('id')->toArray();
+    return [
+        'user_id' => $faker->randomElement($userId),
+        'category_id' => $faker->randomElement($categoryId),
+        'title' => $faker->sentence(),
+        'content' => $faker->paragraph(),
+    ];
+});
 
 // //댓글 팩토리
 // $factory->define(App\Comment::class, function (Faker $faker) {
