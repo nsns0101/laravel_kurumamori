@@ -13,6 +13,9 @@ class DriveController extends Controller
     public function index($date = null)
     {
 
+        //date로 받은 것이 있으면 변함없음, date로 받은 것이 없으면 default로 현재날짜
+        $date = $date ? $date : $date = date("Y-m-d");
+
         $auth_user = auth()->user()->id;    //로그인 유저
         //선택날짜의 운전 정보
         $drive = $date ? \DB::select("select * from drives where DATE_FORMAT(start_time, '%Y-%m-%d') = '{$date}' AND user_id = '{$auth_user}'") : \DB::select("select * from drives where DATE_FORMAT(start_time, '%Y-%m-%d') = '{$date}'");

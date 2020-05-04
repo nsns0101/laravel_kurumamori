@@ -1,4 +1,6 @@
 <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-1"></div>
+
     <div class="col-xs-12 col-sm-12 col-md-3">
         <div class="card btn btn-dark text-dark"> <!-- 총 점수 -->
             <div class="">

@@ -114,20 +114,6 @@ $factory->define(App\Sickness::class, function (Faker $faker) {
 
     ];
 });
-//운전 팩토리
-$factory->define(App\Drive::class, function (Faker $faker) {
-    $date = date("Y-m-d H:m:s", time()); //현재날짜
-    $userId = App\User::pluck('id')->toArray();
-    return [
-        'user_id' => $faker->randomElement($userId),
-        'drive_score' => rand(0, 100),
-        'eye_close_count' => rand(0, 500),
-        'average_eye_close_interval' => rand(3, 10),
-        'sudden_stop_count' => rand(0, 5),
-        'sudden_acceleration_count' => rand(0, 5),
-        'start_time' => $date,
-    ];
-});
 
 //보험사 팩토리
 // $factory->define(App\Insurance_list::class, function (Faker $faker) {
@@ -182,6 +168,7 @@ $factory->define(App\Insurance::class, function (Faker $faker) {
 //     ];
 // });
 
+
 //신고 팩토리
 $factory->define(App\Report::class, function (Faker $faker) {
     $userId = App\User::pluck('id')->toArray();
@@ -193,6 +180,27 @@ $factory->define(App\Report::class, function (Faker $faker) {
     ];
 });
 
+//운전 팩토리
+$factory->define(App\Drive::class, function (Faker $faker) {
+    $userId = App\User::pluck('id')->toArray();
+
+    $date = date("Y-m-d H:m:s", time()); //현재날짜
+    $day_5 = array();   //최근 5일을 담을 배열
+    for($i = 0; $i <5; $i++){
+        array_push($day_5,date("Y-m-d H:m:s", strtotime($date ."-{$i} day")));
+    }
+
+    return [
+        'user_id' => $faker->randomElement($userId),
+        'drive_score' => rand(0, 100),
+        'eye_close_count' => rand(0, 500),
+        'average_eye_close_interval' => rand(3, 10),
+        'sudden_stop_count' => rand(0, 5),
+        'sudden_acceleration_count' => rand(0, 5),
+        // 'start_time' => Arr::random($day_5),
+        'start_time' => $date,
+    ];
+});
 //운전 감지 팩토리
 $factory->define(App\Drive_detection::class, function (Faker $faker) {
     $userId = App\User::pluck('id')->toArray();
