@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class ReviewsController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth');
+        $this->middleware('auth',['except'=>['index','show','edit','delete','store','update']]);
     }
     public function index()
     {
@@ -16,7 +16,7 @@ class ReviewsController extends Controller
         $user = \App\User::whereId(auth()->user()->id)->first();
         \Log::info($user);
 
-        $reviews = \App\Review::latest()->orderBy('id','desc')->paginate(10);
+        $reviews = \App\Board::where('category_id','=','7')->latest()->orderBy('id','desc')->paginate(10);
         \Log::info($reviews->all());
 
         return view('reviews.index', compact('reviews'));
@@ -29,7 +29,7 @@ class ReviewsController extends Controller
         $user = \App\User::whereId(auth()->user()->id)->first();
         \Log::info($user);
 
-        $review = new \App\Review;
+        $review = new \App\Board;
 
         return view('reviews.create',compact('review'));
     }
@@ -39,9 +39,13 @@ class ReviewsController extends Controller
         \Log::info('rivews store');
         \Log::info($request->all());
         
-        $review = $request->user()->reviews()->create($request->all());
+        $review = $request->user()->boards()->create([
+            'category_id'=>$request->category_id,
+            'title'=>$request->title,
+            'content'=>$request->content,
+        ]);
         \Log::info($review);
-        $reviews = \App\Review::latest()->orderBy('id','desc')->paginate(10);
+        $reviews = \App\Board::where('category_id','=','7')->latest()->orderBy('id','desc')->paginate(10);
 
         if(! $review){
 
@@ -54,29 +58,27 @@ class ReviewsController extends Controller
         
         return redirect()->route('reviews.index',compact('reviews'));
     }
-    public function show(\App\Review $review){
+    public function show(\App\Board $review){
 
         \Log::info('reviews show');
-        \Log::info($review->id);
-        \Log::info($review);
         \Log::info($review->all());
 
         return view('reviews.show',compact('review'));
     }
 
-    public function edit(\App\Review $review){
+    public function edit(\App\Board $review){
 
         \Log::info('reviews edit');
 
         return view('reviews.edit',compact('review'));
     }
-    public function update(\App\Http\Requests\ReviewsRequest $request, \App\Review $review){
+    public function update(\App\Http\Requests\ReviewsRequest $request, \App\Board $review){
 
         \Log::info('reviews update');
         \Log::info($request->all());
         
         $review->update($request->all());
-        $reviews = \App\Review::latest()->orderBy('id','desc')->paginate(10);
+        $reviews = \App\Board::where('category_id','=','7')->latest()->orderBy('id','desc')->paginate(10);
 
         if(! $review){
 
@@ -90,7 +92,7 @@ class ReviewsController extends Controller
         return redirect()->route('reviews.index',compact('reviews'));
     }
 
-    public function destroy(\App\Review $review)
+    public function destroy(\App\Board $review)
     {
         \Log::info('reviews destroy');
         $review->delete();

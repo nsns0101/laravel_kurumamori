@@ -17,8 +17,8 @@
             {!! $errors->first('title','<span class="from-errors">:message</span>')!!}
         </div>
         <div>
-            <select class="form-group form-control-sm" name="category" id="category">
-                <option class="" value="{{\App\Category::find(7)->category}}">{{\App\Category::find(7)->category}}</option>
+            <select class="form-group form-control-sm" name="category_id" id="category_id">
+                <option class="" value="7">{{\App\Category::find(7)->category}}</option>
             </select>
         </div>
         <div class="form-group {{$errors->has('content') ? 'has-error' : '' }}">
