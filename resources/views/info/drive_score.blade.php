@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
 
 <section id="intro" class="section intro" style="padding: 50px 0px 0px 0px;">
 <!-- Content Row -->
@@ -64,24 +64,24 @@
                             @for($i = 0; $i < count($report); $i++)
                                 <p class="gps{{$report[0]->id}}">사고 장소 :                                     {{-- 위도 경도로 주소찾기 --}}
                                     <script>
-                                        var gps = "";
-                                        var API_KEY = "{{env('GCP_API_KEY')}}";
-                                        var latitude = "{{$report[0]->latitude}}";
-                                        var longitude = "{{$report[0]->longitude}}";
-                                        console.log(latitude);
-                                        console.log(longitude);
+                                        // var gps = "";
+                                        // var API_KEY = "{{env('GCP_API_KEY')}}";
+                                        // var latitude = "{{$report[0]->latitude}}";
+                                        // var longitude = "{{$report[0]->longitude}}";
+                                        // console.log(latitude);
+                                        // console.log(longitude);
 
-                                        new Promise(function(resolve, reject) {
-                                            resolve(
-                                                $.getJSON(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${API_KEY}`,
-                                                function(data) {
-                                                    console.log(data);
-                                                    gps = data.results[0].formatted_address;
-                                                    console.log(gps);
-                                                    $(`.gps{{$report[0]->id}}`).text("사고장소 : " + gps);
-                                                }));
-                                        });
-                                        // $(`.gps{{$report[0]->id}}`).text("사고 장소 : api 요금때문에 주석처리 해놨음");
+                                        // new Promise(function(resolve, reject) {
+                                        //     resolve(
+                                        //         $.getJSON(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${API_KEY}`,
+                                        //         function(data) {
+                                        //             console.log(data);
+                                        //             gps = data.results[0].formatted_address;
+                                        //             console.log(gps);
+                                        //             $(`.gps{{$report[0]->id}}`).text("사고장소 : " + gps);
+                                        //         }));
+                                        // });
+                                        $(`.gps{{$report[0]->id}}`).text("사고 장소 : api 요금때문에 주석처리 해놨음");
 
                                     </script>
                                 </p>
@@ -97,7 +97,6 @@
                     </div>
                 </div>
             </div>
-            
         </div>
     @else
     <p class="text-danger">운전 데이터가 없습니다.</p>
@@ -107,16 +106,21 @@
 @endsection
 
 @section('script')
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="https://npmcdn.com/moment@2.14.1"></script>
+
 <script>
     var API_KEY = "{{env('GCP_API_KEY')}}";     //GCP API KEY
 
     //최근 5일
     var day_5 = <?php echo json_encode($day_5)?>;
     //최근 5일의 위험정보         
-    var day_5_danger_info = <?php echo json_encode($day_5_danger_info) ?>;     
+    var day_5_danger_info = <?php echo json_encode($day_5_danger_info) ?>;  
+    //최근 5일의 운전량
+    var day_5_sec = <?php echo json_encode($day_5_sec) ?>;   
     console.log(day_5);
-    console.log(day_5_danger_info[1]);
-    
+    console.log(day_5_danger_info);
+    console.log(day_5_sec);    
     //최근 5일동안 위험정보 빈도
     //i가 1부터 시작하는 것은 0이 count_danger(총 위험카운트)이기 때문
     var day_5_percent = [];
@@ -129,12 +133,12 @@
     //5일 각각의 위험카운트(%)
     for(var i =0; i < day_5_danger_info.length; i++){
             
-        day_5_percent.push(((
+        day_5_percent.push(
             day_5_danger_info[i]["count_report"] + 
             day_5_danger_info[i]["count_sleep"] + 
             day_5_danger_info[i]["count_sudden_acceleration"] + 
-            day_5_danger_info[i]["count_sudden_stop"] ) / day_5_danger_count * 100
-            ).toFixed(0));
+            day_5_danger_info[i]["count_sudden_stop"] 
+            );
         
     }
     console.log(day_5_percent);
@@ -187,7 +191,7 @@ $("#drive_date").on("propertychange change keyup paste input", function() {
 {{-- 라인 차트 --}}
 <script src="/js/chart/chart-line.js"></script>
 {{-- 도넛 차트 --}}
-<script src="/js/chart/chart-pie.js"></script>
+<script src="/js/chart/donut.js"></script>
 {{-- 바 차트 --}}
 <script src="/js/chart/chart-bar.js"></script>
 
@@ -238,6 +242,4 @@ function initMap() {
     }
 }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key={{env('GCP_API_KEY')}}&callback=initMap&center"
-    async defer></script> 
 @stop

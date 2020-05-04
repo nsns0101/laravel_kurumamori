@@ -1,3 +1,5 @@
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
 <div class="row">
     <!-- Area Chart -->
     <div class="col-xl-4 col-lg-4 col-md-4">
@@ -28,7 +30,7 @@
     <div class="col-xl-4 col-lg-4 col-md-4">
         <div class="card shadow" style="width:600px">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
+                <h6 class="m-0 font-weight-bold text-primary">최근 5일의 운전량</h6>
             </div>
             <div class="card-body">
                 <div class="chart-bar">
@@ -40,11 +42,11 @@
                             <div class=""></div>
                         </div>
                     </div>
-                    <canvas id="myBarChart" width="693" height="320" class="chartjs-render-monitor"
+                    <canvas id="myBarChart" width="100%" height="320" class="chartjs-render-monitor"
                         style="display: block; width: 693px; height: 320px;"></canvas>
                 </div>
                 <hr>
-                Styling for the bar chart can be found in the <code>/js/demo/chart-bar-demo.js</code> file.
+                <p>최근 5일간의 운전 시간입니다.</p>
             </div>
         </div>
     </div>
@@ -66,8 +68,7 @@
                                 <div class=""></div>
                             </div>
                         </div>
-                        <canvas id="myPieChart" width="313" height="253" class="chartjs-render-monitor"
-                            style="display: block; width: 313px; height: 253px;"></canvas>
+                        <div id="myPieChart" style="height: 320px; width: 100%;"></div>
                     </div>
                     <hr>
                     <p>일별 위험요소를 %로 나타낸 데이터입니다.</p>
@@ -75,5 +76,6 @@
                 </div>
             </div>
     </div>
+
 </div>
 <br/>

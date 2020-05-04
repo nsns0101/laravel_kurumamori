@@ -2,7 +2,7 @@
 ![yju ac kr](https://user-images.githubusercontent.com/48374069/70375447-36bac580-1941-11ea-9cb3-1b2505947fa7.jpg)
 
 ## 1. git bash
-- $ git clone https://github.com/https://github.com/nsns0101/laravel_kurumamori.git
+- $ git clone https://github.com/nsns0101/laravel_kurumamori.git
 - $ cd laravel_kurumamori
 - $ cp .env.example .env
 

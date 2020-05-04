@@ -181,13 +181,14 @@ var myLineChart = new Chart(ctx, {
           fontSize:15,
       }
     },
-    tooltips: {
-      backgroundColor: "rgb(255,255,255)",
-      bodyFontColor: "#858796",
+    tooltips: { //선 눌렀을 때 나오는 창
+      backgroundColor: "white", //백그라운드 컬러
+      bodyFontColor: "black", //폰트 색깔
+      bodyFontSize: 20, //폰트 크기
       titleMarginBottom: 10,
       titleFontColor: '#6e707e',
       titleFontSize: 14,
-      borderColor: '#dddfeb',
+      borderColor: 'blue',
       borderWidth: 1,
       xPadding: 15,
       yPadding: 15,

@@ -85,12 +85,18 @@ class DriveController extends Controller
             array_push($day_5_danger_info, $drive_count);
         }
         //해당날짜의 운전시간 구하기(초)
-        $drive_sec = 0;
-        for($i = 0; $i < count($drive); $i++){
-            $drive_sec += strtotime($drive[0]->created_at) - strtotime($drive[0]->start_time);
+        // $drive_sec = 0;
+        // for($i = 0; $i < count($drive); $i++){
+        //     $drive_sec += strtotime($drive[$i]->created_at) - strtotime($drive[$i]->start_time);
+        // }
+        $day_5_sec = [];
+        for($i = 0; $i < count($day_5); $i++){
+            $sec = 0;
+            for($j = 0; $j < count($day_5_info[$i]); $j++){
+                $sec += strtotime($day_5_info[$i][$j]->created_at) - strtotime($day_5_info[$i][$j]->start_time);
+            }
+            array_push($day_5_sec, $sec);
         }
-
-        
         //사고 여부
         $report = \DB::select("select * from reports where DATE_FORMAT(created_at, '%Y-%m-%d') = '{$date}' AND user_id = '{$auth_user}'");
         \Log::info("선택 날짜 : " . $date);
@@ -99,12 +105,13 @@ class DriveController extends Controller
         \Log::info("최근 5일의 운전 정보 : ", $day_5_info);  //배열안의 배열 (하루에 여러번 운전했을 수 있으니)
         \Log::info("최근 5일의 위험 정보 합계: ", $day_5_danger_info);  //배열안의 배열 (하루에 여러번 운전했을 수 있으니)
         \Log::info("당일 위험 카운트 : ", $drive_count);
-        \Log::info("운전 시간(초) : ". $drive_sec);
+        // \Log::info("당일 운전 시간(초) : ". $day_5_sec[0]);
+        \Log::info("최근 5일의 운전 시간(초) : ", $day_5_sec);
         \Log::info("당일 사고 여부", $report);
         // \Log::info($error);
         //1시간에 급감속이나 급가속, 졸음 등을 1번했을 경우 모범?
         //default = 100에서 깎아내리는 형식?
-        return view('info.drive_score', compact('drive', 'date', 'drive_count', 'drive_sec','day_5', 'day_5_info', 'day_5_danger_info', 'report'));
+        return view('info.drive_score', compact('drive', 'date', 'drive_count', 'day_5_sec','day_5', 'day_5_info', 'day_5_danger_info', 'report'));
     }
 
     public function create()
