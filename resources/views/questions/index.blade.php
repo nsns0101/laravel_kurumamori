@@ -87,7 +87,7 @@
                             <tbody class="">
                                 <tr class="">
                                     <td>{{ $question->id }}</td>
-                                    <td>{{ $question->category }}</td>
+                                    <td>{{ \App\Category::find($question->category_id)->category }}</td>
                                     <td><a href="{{route('questions.show',compact('question'))}}">{{ $question->title }}</a></td>
                                     <td>{{ $question->user->name }}</td>
                                     <td>{{ $question->updated_at->format('y-m-d') }}</td>

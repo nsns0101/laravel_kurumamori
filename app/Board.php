@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Board extends Model
 {
-    protected $fillable = ['title', 'content','category'];
+    protected $fillable = ['title', 'content','category_id'];
 
     //여러질문은 한 유저를 가질 수 있음
     public function user()
@@ -14,15 +14,14 @@ class Board extends Model
         return $this->belongsTo(User::class);
     }
     
-    //하나의 질문은 하나의 답변을 가질 수 있음
     public function comments()
     {
-        return $this->morpOne(Comment::class, 'question');
+        return $this->hasMany(Comment::class);
     }
 
     //하나의 질문은 하나의 카테고리를 가질 수 있음
     public function category()
     {
-        return $this->morpOne(Category::class, 'question');
+        return $this->hasOne(Category::class);
     }
 }
