@@ -3,7 +3,7 @@
 <div class="row">
     <!-- Area Chart -->
     <div class="col-xl-4 col-lg-4 col-md-4">
-        <div class="card shadow" style="width:600px">
+        <div class="card shadow" >
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">위험 카운트</h6>
             </div>
@@ -28,7 +28,7 @@
     </div>
     <!-- Bar Chart -->
     <div class="col-xl-4 col-lg-4 col-md-4">
-        <div class="card shadow" style="width:600px">
+        <div class="card shadow" >
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">최근 5일의 운전량</h6>
             </div>
@@ -52,7 +52,7 @@
     </div>
     <!-- Donut Chart -->
     <div class="col-xl-4 col-lg-4 col-md-4">
-            <div class="card shadow" style="width:600px">
+            <div class="card shadow">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">최근 5일동안 위험요소 빈도</h6>

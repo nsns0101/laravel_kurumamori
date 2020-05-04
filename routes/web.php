@@ -49,7 +49,7 @@ Route::resource('/info/medical_info', 'MedicalController');
 Route::resource('/info/drive_score', 'DriveController');
 
 //운전점수 날짜별 검색
-Route::get('info/{date}/drive_score', [ //{{slug}}값에 들어온 것은 index메서드로 넘김
+Route::get('info/{date}/drive_score', [ //{date}값에 들어온 것은 index메서드로 넘김
     'as' => 'date.drive',
     'uses' => 'DriveController@index',
 ]);

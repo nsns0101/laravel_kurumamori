@@ -12,7 +12,7 @@ class DriveController extends Controller
     }
     public function index($date = null)
     {
-
+        \Log::info(collect([1,2,3,1]));
         //date로 받은 것이 있으면 변함없음, date로 받은 것이 없으면 default로 현재날짜
         $date = $date ? $date : $date = date("Y-m-d");
 
