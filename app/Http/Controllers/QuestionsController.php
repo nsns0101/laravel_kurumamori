@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 class QuestionsController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth',['except'=>['index','show','edit','delete','store','update']]);
+    }
     //
     public function index()
     {
@@ -14,7 +17,7 @@ class QuestionsController extends Controller
         $user = \App\User::whereId(auth()->user()->id)->first();
         \Log::info($user);
 
-        $questions = \App\Question::latest()->orderBy('id','desc')->paginate(10);
+        $questions = \App\Board::where('category_id','!=','7')->latest()->orderBy('id','desc')->paginate(10);
         \Log::info($questions);
 
         return view('questions.index',compact('questions'));
@@ -29,7 +32,7 @@ class QuestionsController extends Controller
         $user = \App\User::whereId(auth()->user()->id)->first();
         \Log::info($user);
 
-        $question = new \App\Question;
+        $question = new \App\Board;
 
         return view('questions.create', compact('Categories','question'));
     }
@@ -40,8 +43,12 @@ class QuestionsController extends Controller
         \Log::info('questions store');
         \Log::info($request->all());
         
-        $question = $request->user()->questions()->create($request->all());
-        $questions = \App\Question::latest()->orderBy('id','desc')->paginate(10);
+        $question = $request->user()->boards()->create([
+            'category_id'=>$request->category_id,
+            'title'=>$request->title,
+            'content'=>$request->content,
+        ]);
+        $questions = \App\Board::where('category_id','!=','7')->latest()->orderBy('id','desc')->paginate(10);
 
         if(! $question){
 
@@ -53,31 +60,32 @@ class QuestionsController extends Controller
         }
         
         return redirect()->route('questions.index',compact('questions'));
+        // return $request->all();
     }
 
 
-    public function show(\App\Question $question){
+    public function show(\App\Board $question){
 
         \Log::info('questions show');
 
         return view('questions.show',compact('question'));
     }
 
-    public function edit(\App\Question $question){
+    public function edit(\App\Board $question){
 
         \Log::info('questions edit');
 
         return view('questions.edit',compact('question'));
     }
 
-    public function update(\App\Http\Requests\QuestionsRequest $request, \App\Question $question){
+    public function update(\App\Http\Requests\QuestionsRequest $request, \App\Board $question){
 
         \Log::info('questions update');
         \Log::info($request->all());
 
         
         $question->update($request->all());
-        $questions = \App\Question::latest()->orderBy('id','desc')->paginate(10);
+        $questions = \App\Board::where('category_id','!=','7')->latest()->orderBy('id','desc')->paginate(10);
 
         if(! $question){
 
@@ -91,7 +99,7 @@ class QuestionsController extends Controller
         return redirect()->route('questions.index',compact('questions'));
     }
 
-    public function destroy(\App\Question $question)
+    public function destroy(\App\Board $question)
     {
         \Log::info('questions destroy');
         $question->delete();

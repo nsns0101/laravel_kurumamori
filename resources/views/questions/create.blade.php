@@ -18,9 +18,17 @@
             {!! $errors->first('title','<span class="from-errors">:message</span>')!!}
         </div>
         <div>
-            <select class="form-group form-control-sm" name="category" id="category">
+            <select class="form-group form-control-sm" name="category_id" id="category_id">
                 @forelse($Categories as $Category)
-                    <option class="" value="{{$Category->category}}">{{$Category->category}}</option>
+                    @if (auth()->user()->id == 3)
+                        @if ($Category->id !=7)
+                            <option class="" value="{{$Category->id}}">{{$Category->category}}</option>
+                        @endif
+                    @else    
+                        @if ($Category->id !=1 && $Category->id !=2 && $Category->id !=7)
+                            <option class="" value="{{$Category->id}}">{{$Category->category}}</option>   
+                        @endif
+                    @endif
                 @empty
                 @endforelse
             </select>

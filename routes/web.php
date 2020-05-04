@@ -60,11 +60,8 @@ Route::resource('/products','ProductController');
 Route::resource('/buy','BuyController');
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
-//김도형 Q&A ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-// Route::resource('/qna','QnaController');
-
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ Q&A ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-Route::resource('/questions','QuestionsController');
+Route::resource('/boards/questions','QuestionsController');
 
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 유저리뷰 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-Route::resource('/reviews','ReviewsController');
+Route::resource('/boards/reviews','ReviewsController');

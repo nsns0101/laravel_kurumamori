@@ -11,7 +11,7 @@ class CreateBoardsTable extends Migration
         Schema::create('boards', function (Blueprint $table) {
             $table->bigIncrements('id')->comment('게시판 번호');
             $table->unsignedBigInteger('user_id')->comment('유저 번호');
-            $table->unsignedBigInteger('category_id')->comment('카테고리');
+            $table->unsignedBigInteger('category_id')->comment('카테고리 번호');
             $table->string('title')->comment('게시판 제목');
             $table->text('content')->comment('게시판 내용');
             $table->bigInteger('view_count')->comment('조회수')->default(0);
@@ -19,12 +19,15 @@ class CreateBoardsTable extends Migration
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('업데이트 시간');
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdete('cascade')->onDelete('cascade');
-            $table->foreign('category_id')->references('id')->on('categories')->onUpdete('cascade')->onDelete('cascade');
         });
     }
 
     public function down()
     {
+        Schema::table('boards', function(Blueprint $table){
+            $table->dropForeign('boards_user_id_foreign');
+        });
+        
         Schema::dropIfExists('boards');
     }
 }

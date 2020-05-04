@@ -13,10 +13,11 @@ class Comment extends Model
     {
         return $this->belongsTo(User::class);
     }
+
     //여러 댓글은 한 게시판을 가짐
-    public function question()
+    public function boards()
     {
-        return $this->morphTo();
+        return $this->belongsTo(Board::class);
     }
 
 }

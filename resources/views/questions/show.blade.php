@@ -13,7 +13,7 @@
     </div>
     <div>
         <h1>category</h1>
-        <h4>{{$question->category}}</h4>
+        <h4>{{ \App\Category::find($question->category_id)->category }}</h4>
     </div>
     <div>
         <h1>user</h1>
@@ -24,36 +24,17 @@
         <h4>{{$question->content}}</h4>
     </div>
     <div>
-        {{-- @can('update', $question)
-            <a class="btn btn-dark" href="{{route('questions.edit',compact('question'))}}">수정하기</a>
+        @can('board_update', $question)
+          <a class="btn btn-dark" href="{{route('questions.edit',compact('question'))}}">수정하기</a>
         @endcan
-        @can('delete', $question)
-            <a class="btn btn-dark" href="{{route('questions.destroy',compact('question'))}}">삭제하기</a>
-        @endcan --}}
-        <a class="btn btn-dark" href="{{route('questions.edit',compact('question'))}}">수정하기</a>
-        <form method="POST" action="{{route('questions.destroy',compact('question'))}}">
+        @can('board_delete', $question)
+          <form method="POST" action="{{route('questions.destroy',compact('question'))}}">
             @method('DELETE')
             @csrf
             <button class="btn btn-dark" type="submit">삭제하기</button>    
-        </form>
+          </form>
+        @endcan
         <a class="btn btn-dark" href="{{route('questions.index')}}">뒤로가기</a>
     </div>
 </div>
-
-@endsection
-
-@section('script')
-  {{-- <script>
-    $('.button__delete').on('click', function (e) {
-      var articleId = $('question').data('id');
-      if (confirm('{{ trans('forum.articles.deleting') }}')) {
-        $.ajax({
-          type: 'DELETE',
-          url: '/articles/' + articleId
-        }).then(function () {
-          window.location.href = '/articles';
-        });
-      }
-    });
-  </script> --}}
 @endsection

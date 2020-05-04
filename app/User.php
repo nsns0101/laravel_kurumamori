@@ -42,14 +42,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Board::class);
     }
-    public function reviews()
-    {
-        return $this->hasMany(Review::class);
-    }
     public function comments()
     {
         return $this->hasMany(Comment::class);
     }
+    
     public function insurances()
     {
         return $this->hasMany(Insurance::class);
