@@ -10,21 +10,23 @@ class MedicalController extends Controller
     {
         $this->middleware('auth');
     }
-    //로그인, 회원가입 페이지
     public function index()
     {
         $medical_info = \App\Medical_info::whereUser_id(auth()->user()->id)->first();
         // \Log::info($medical_info);
         $insurance = \App\Insurance::whereUser_id(auth()->user()->id)->first();
+        // $insurance_list = \App\Insurance::get()->id;
+        $insurance_list_my = $insurance ? \App\Insurance_list::whereId($insurance->insurance_list_id)->first() : null;
+        $insurance_list = \App\Insurance_list::get();
+
         $update_form = false;
         $sickness_list = ["없음", "고혈압", "당뇨", "결핵", "심장질환", "알러지", "천식", "심부전증", "페렴", "디스크", "간경화", "관절염", "협심증", "암", "갑상선염", "고지혈증", "골다공증", "과민성 대장", "기관지염", "뇌졸중", "신장질환", "간암"];
 
-        
         $past_sicknesses = $medical_info ? \App\Past_sickness::whereUser_id(auth()->user()->id)->get() : null;
         $sicknesses = $medical_info ? \App\Sickness::whereUser_id(auth()->user()->id)->get() : null;
         \Log::info($past_sicknesses);
         \Log::info($sicknesses);
-        return view('info.medical_info', compact('medical_info', 'insurance', 'update_form','past_sicknesses','sicknesses'));
+        return view('info.medical_info', compact('medical_info', 'insurance','insurance_list_my', 'insurance_list', 'update_form', 'sickness_list', 'past_sicknesses','sicknesses'));
         // return view('info.medical_info', compact('medical_info', 'insurance', 'update_form','sickness_list'));
     
     }
@@ -41,14 +43,14 @@ class MedicalController extends Controller
         if($request->insurance_bool){
             $messages = [
                 'insurance_name.required' => '보험 명을 입력해주세요',
-                'insurance_phone.required' => '보험사 번호를 입력해주세요.',
+                // 'insurance_phone.required' => '보험사 번호를 입력해주세요.',
                 'subscription_date.required' => '보험 가입날짜를 입력해주세요',
                 'expiration_date.required' => '보험 만기날짜를 입력해주세요',
                 'expiration_date.after' => '만기날짜를 다시 확인해주세요'
             ];
             $this->validate($request, [
                 'insurance_name' => 'required',
-                'insurance_phone' => 'required',
+                // 'insurance_phone' => 'required',
                 'subscription_date' => 'required',
                 'expiration_date' => "required|after:{$request->subscription_date}",
             ], $messages);
@@ -74,6 +76,7 @@ class MedicalController extends Controller
             if($request->past_sickness_name[$i] && $request->past_sickness_name[$i]!="없음"){
                 \App\Past_sickness::create([
                     'user_id' => auth()->user()->id,
+                    'medical_id' => $medical_id,
                     'past_sickness_name' => $request->past_sickness_name[$i],
                     'past_sickness_supplementation' => $request->past_sickness_supplementation[$i]
                     ]);
@@ -87,6 +90,7 @@ class MedicalController extends Controller
                 \Log::info("성공");
                 \App\Sickness::create([
                     'user_id' => auth()->user()->id,
+                    'medical_id' => $medical_id,
                     'sickness_name' => $request->sickness_name[$i],
                     'medicine' => $request->medicine[$i],
                     'symptom' => $request->symptom[$i],
@@ -96,11 +100,14 @@ class MedicalController extends Controller
             }
         }
         //insurance DB create
+        $insurance_list_id = \App\Insurance_list::whereInsurance_name($request->insurance_name)->first()->id;
         if($request->insurance_bool){
             \App\Insurance::create([
                 'user_id' => auth()->user()->id,
-                'insurance_name' => $request->insurance_name,
-                'insurance_phone' => $request->insurance_phone,
+                'medical_id' => $medical_id,
+                'insurance_list_id' => $insurance_list_id,
+                // 'insurance_name' => $insurance_name->insurance_name,
+                // 'insurance_phone' => $request->insurance_phone,
                 'subscription_date' => $request->subscription_date,
                 'expiration_date' => $request->expiration_date,
 
@@ -118,12 +125,31 @@ class MedicalController extends Controller
         // \Log::info($past_sickness);
         $sickness_list = ["없음", "고혈압", "당뇨", "결핵", "심장질환", "알러지", "천식", "심부전증", "페렴", "디스크", "간경화", "관절염", "협심증", "암", "갑상선염", "고지혈증", "골다공증", "과민성 대장", "기관지염", "뇌졸중", "신장질환", "간암"];
         \Log::info(count($sickness_list));
-        $insurance = \App\Insurance::whereUser_id(auth()->user()->insurance_id)->first();
+        $insurance = \App\Insurance::whereUser_id(auth()->user()->id)->first();
+        $insurance_list_my = $insurance ? \App\Insurance_list::whereId($insurance->insurance_list_id)->first() : null;
+        $insurance_list = \App\Insurance_list::get();
+
         $update_form = true;
-        return view('info.medical_info', compact('medical_info', 'insurance', 'update_form','past_sickness', 'sickness', 'sickness_list'));
+        return view('info.medical_info', compact('medical_info', 'insurance', 'insurance_list_my', 'insurance_list', 'update_form','past_sickness', 'sickness', 'sickness_list'));
     }
 
     public function update(Request $request, \App\Medical_info $medical_info){
+         //보험 "예'를 체크 했는데 값을 안넣었을 경우 
+         if($request->insurance_bool){
+            $messages = [
+                'insurance_name.required' => '보험 명을 입력해주세요',
+                // 'insurance_phone.required' => '보험사 번호를 입력해주세요.',
+                'subscription_date.required' => '보험 가입날짜를 입력해주세요',
+                'expiration_date.required' => '보험 만기날짜를 입력해주세요',
+                'expiration_date.after' => '만기날짜를 다시 확인해주세요'
+            ];
+            $this->validate($request, [
+                'insurance_name' => 'required',
+                // 'insurance_phone' => 'required',
+                'subscription_date' => 'required',
+                'expiration_date' => "required|after:{$request->subscription_date}",
+            ], $messages);
+        }
         
         \Log::info($request->all());
         // \Log::info($request->past_sickness_name[1]);
@@ -147,6 +173,7 @@ class MedicalController extends Controller
                     //새로 생성
                     \App\Past_sickness::create([
                         'user_id' => auth()->user()->id,
+                        'medical_id' => $medical_id,
                         'past_sickness_name' => $request->past_sickness_name[$i],
                         'past_sickness_supplementation' => $request->past_sickness_supplementation[$i]
                     ]);
@@ -211,14 +238,14 @@ class MedicalController extends Controller
 
         //insurances DB Update
         $insurance = \App\Insurance::whereUser_id(auth()->user()->id)->first();
-        
+        $insurance_list_id = \App\Insurance_list::whereInsurance_name($request->insurance_name)->first()->id;
         if($request->insurance_bool){
             \Log::info($insurance);
             if($insurance){
                 $insurance->update([
                     'user_id' => auth()->user()->id,
-                    'insurance_name' => $request->input("insurance_name"),
-                    'insurance_phone' => $request->input("insurance_phone"),
+                    'medical_id' => $medical_id,
+                    'insurance_list_id' => $insurance_list_id,
                     'subscription_date' => $request->input("subscription_date"),
                     'expiration_date' => $request->input("expiration_date"),
     
@@ -227,8 +254,8 @@ class MedicalController extends Controller
             else{
                 \App\Insurance::create([
                     'user_id' => auth()->user()->id,
-                    'insurance_name' => $request->input("insurance_name"),
-                    'insurance_phone' => $request->input("insurance_phone"),
+                    'medical_id' => $medical_id,
+                    'insurance_list_id' => $insurance_list_id,
                     'subscription_date' => $request->input("subscription_date"),
                     'expiration_date' => $request->input("expiration_date"),
     
@@ -239,7 +266,6 @@ class MedicalController extends Controller
         elseif($insurance){
             $insurance->delete();
         }
-        // \Log::info($error);
         return redirect('/info/medical_info');
 
     }

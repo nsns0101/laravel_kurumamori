@@ -8,8 +8,8 @@ class Insurance extends Model
 {
     protected $fillable = [
         'user_id', 
-        // 'insurance_name', 
         'insurance_list_id',
+        'medical_id',
         // 'insurance_phone', 
         'subscription_date', 
         'expiration_date'];

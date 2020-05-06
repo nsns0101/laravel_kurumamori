@@ -8,6 +8,7 @@ class Sickness extends Model
 {
     protected $fillable = [
         'user_id',
+        'medical_id',
         'sickness_name',
         'medicine',
         'symptom'

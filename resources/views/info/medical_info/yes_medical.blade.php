@@ -54,8 +54,8 @@
                 <h3 class="text-center">보험 정보</h3>
                 <hr style="background-color:darkgrey;"/>
                 @if($insurance)
-                <p>보험사 명 : {{$insurance->insurance_name}}</p>
-                <p>보험사 전화번호 : {{$insurance->insurance_phone}}</p>
+                <p>보험사 명 : {{$insurance_list_my->insurance_name}}</p>
+                <p>보험사 전화번호 : {{$insurance_list_my->insurance_phone}}</p>
                 <p>가입일 : {{$insurance->subscription_date}}</p>
                 <p>만기일 : {{$insurance->expiration_date}}</p>
                 @else

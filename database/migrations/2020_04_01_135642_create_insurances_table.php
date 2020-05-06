@@ -16,6 +16,7 @@ class CreateInsurancesTable extends Migration
         Schema::create('insurances', function (Blueprint $table) {
             $table->bigIncrements('id')->comment('보험 번호');
             $table->unsignedBigInteger('user_id')->comment('유저 번호');
+            $table->unsignedBigInteger('medical_id')->comment('의료정보 번호');
             // $table->string('insurance_name')->comment('보험사 명'); //보험사 명
             $table->unsignedBigInteger('insurance_list_id')->comment("보험사 리스트 번호");
             // $table->string('insurance_phone')->comment('보험사 폰 번호'); //보험사 폰 번호
@@ -26,6 +27,7 @@ class CreateInsurancesTable extends Migration
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdete('cascade')->onDelete('cascade');
             $table->foreign('insurance_list_id')->references('id')->on('insurance_lists')->onUpdete('cascade')->onDelete('cascade');
+            $table->foreign('medical_id')->references('id')->on('medical_infos')->onUpdete('cascade')->onDelete('cascade');
             
         });
     }

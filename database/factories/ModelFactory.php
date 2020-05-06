@@ -88,10 +88,12 @@ $factory->define(App\Medical_info::class, function (Faker $faker) {
 //과거 병력 팩토리
 $factory->define(App\Past_sickness::class, function (Faker $faker) {
     $userId = App\User::pluck('id')->toArray();
-
+    $random_userId = $faker->randomElement($userId);
+    $medicalId = App\Medical_info::whereUser_id($random_userId)->first()->id;
     $sickness = ["없음", "고혈압", "당뇨", "결핵", "심장질환", "알러지", "천식", "심부전증", "페렴", "디스크", "간경화", "관절염", "협심증", "암", "갑상선염", "고지혈증", "골다공증", "과민성 대장", "기관지염", "뇌졸중", "신장질환", "간암"];
     return [
-        'user_id' => $faker->randomElement($userId),
+        'user_id' => $random_userId,
+        'medical_id' => $medicalId,
         'past_sickness_name' => Arr::random($sickness),
         'past_sickness_supplementation' => Str::random(10),
     ];
@@ -99,13 +101,16 @@ $factory->define(App\Past_sickness::class, function (Faker $faker) {
 //기저질환 팩토린
 $factory->define(App\Sickness::class, function (Faker $faker) {
     $userId = App\User::pluck('id')->toArray();
+    $random_userId = $faker->randomElement($userId);
+    $medicalId = App\Medical_info::whereUser_id($random_userId)->first()->id;
 
     $sickness = ["없음", "고혈압", "당뇨", "결핵", "심장질환", "알러지", "천식", "심부전증", "페렴", "디스크", "간경화", "관절염", "협심증", "암", "갑상선염", "고지혈증", "골다공증", "과민성 대장", "기관지염", "뇌졸중", "신장질환", "간암"];
     $symptom = ["위가 아픔", "허리가 아픔", "설탕먹고싶음", "간이 아픔", "몸살", "기침", "잦은 기침", "뇌가 아픔"];
     $medicine = ["위약", "허리약", "인슐린", "간약", "몸살약", "기침약", "잦은 기침약", "게보린"];
     $hospital = ["경대병원", "서울병원", "영대병원", "부산병원"];
     return [
-        'user_id' => $faker->randomElement($userId),
+        'user_id' => $random_userId,
+        'medical_id' => $medicalId,
         'sickness_name' => Arr::random($sickness),
         'medicine' => Arr::random($medicine),
         'symptom' => Arr::random($symptom),
@@ -131,12 +136,16 @@ $factory->define(App\Sickness::class, function (Faker $faker) {
 $factory->define(App\Insurance::class, function (Faker $faker) {
     $date = date("Y-m-d", time()); //현재날짜
     $userId = App\User::pluck('id')->toArray();
+    $random_userId = $faker->randomElement($userId);
+    $medicalId = App\Medical_info::whereUser_id($random_userId)->first()->id;
+
     $subscription_date = date("Y-m-d", strtotime("{$date} -10 years")); //현재날짜 10년전
     $expiration_date = date("Y-m-d", strtotime("{$subscription_date} +20 years")); //구독날짜 10년후
     $insurance_list = \App\Insurance_list::get();
     return [
         // 'user_id' => $faker->unique()->randomElement($userId), //1:1관계로 유니크부여
-        'user_id' => $faker->randomElement($userId), //1:1관계로 유니크부여
+        'user_id' => $random_userId, //1:1관계로 유니크부여
+        'medical_id' => $medicalId,
         // 'insurance_name' => Arr::random($insurance_name),
         'insurance_list_id' => $faker->randomElement($insurance_list)->id,
         'subscription_date' => $subscription_date,

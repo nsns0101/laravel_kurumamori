@@ -78,7 +78,7 @@
                         </span>
                     </div>
                     <button 
-                    class="btn btn-default dropdown-toggle blood_type_btn" type="button" data-toggle="dropdown"
+                    class="btn btn-default dropdown-toggle blood_type_btn dropdown_btn" type="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="true">
                     {{$medical_info && $medical_info->blood_type ? $medical_info->blood_type : old('blood_type',"선택")}}
 
@@ -210,27 +210,48 @@
                         보험사 명
                         </p>
                     </div>
-                    <div class="col-md-3">
+                    <button 
+                    class="btn btn-default dropdown-toggle insurance_name_btn dropdown_btn" type="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="true">
+                    {{$insurance_list && isset($insurance_list_my->insurance_name) ? $insurance_list_my->insurance_name : old('insurance_name',"선택")}}
+
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        @for($i = 0; $i < count($insurance_list); $i++)
+                    <li><a class="dropdown-insurance_name" href="#" style="color:black; font-size:18px;">{{$insurance_list[$i]->insurance_name}}</a></li>
+                        @endfor
+                    </ul>
+                    <br/>
+                    <div class="form-group {{ $errors->has('insurance_name') ? 'has-error' : '' }}">
+                        <input id="insurance_name" style="font-size:24px"type="hidden" name="insurance_name" class="form-control" value="{{$insurance_list_my && $insurance_list_my->insurance_name ? old('insurance_name',$insurance_list_my->insurance_name) :  old('insurance_name')}}"/>
+                        <p style="color:red">
+
+                        {!! $errors->first('insurance_name', '<span class="form-error">:message</span>') !!}
+                        </p>
+                    </div>
+                    {{-- <div class="col-md-3">
                         <div class="form-group {{ $errors->has('insurance_name') ? 'has-error' : '' }}">
-                            <input style="font-size:24px"type="text" name="insurance_name" class="form-control" placeholder="보험사 명" value="{{ $insurance ? old('insurance_name',$insurance->insurance_name) :  old('insurance_name') }}"/>
+                            <input style="font-size:24px"type="text" name="insurance_name" class="form-control" placeholder="보험사 명" value="{{ $insurance_list_my ? old('insurance_name',$insurance_list_my->insurance_name) :  old('insurance_name') }}"/>
                             <p style="color:red">
                                 {!! $errors->first('insurance_name', '<span class="form-error">:message</span>') !!}
                             </p>
                         </div>
-                    </div>
-                    <div class="col-md-2 text-center">
+                    </div> --}}
+                    {{-- <div class="col-md-2 text-center">
                         <p style="font-size:24px;margin-top:13px; margin-right:15px;color:blue;font-weight:800;">
                         보험사 번호
                         </p>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group {{ $errors->has('insurance_phone') ? 'has-error' : '' }}">
-                            <input style="font-size:24px"type="text" name="insurance_phone" class="form-control" placeholder="보험사 번호" value="{{ $insurance ? old('insurance_phone',$insurance->insurance_phone) :  old('insurance_phone') }}"/>
+                            <input style="font-size:24px"type="text" name="insurance_phone" class="form-control" placeholder="보험사 번호" value="{{ $insurance_list_my ? old('insurance_phone',$insurance_list_my->insurance_phone) :  old('insurance_phone') }}"/>
                             <p style="color:red">
                                 {!! $errors->first('insurance_phone', '<span class="form-error">:message</span>') !!}
                             </p>
                         </div>
-                    </div>
+                    </div> --}}
+                    <div class="col-md-5"></div>
                     <div class="col-md-2"></div>
                     {{--  --}}
                     <div class="col-md-2 text-center">

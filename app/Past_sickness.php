@@ -8,6 +8,7 @@ class Past_sickness extends Model
 {
     protected $fillable = [
         'user_id',
+        'medical_id',
         'past_sickness_name',
         'past_sickness_supplementation'
     ];

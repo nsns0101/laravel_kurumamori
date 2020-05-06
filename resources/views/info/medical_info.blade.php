@@ -82,6 +82,13 @@
         $('#blood_type').val($('.blood_type_btn').text());
 
     });
+    //보험명
+    $(".dropdown-insurance_name").click(function(){
+        $('.insurance_name_btn').html($(this).text() + ' <span class="caret"></span>');
+        // $('.blood_type_btn').val($(this).data('value'));
+        $('#insurance_name').val($('.insurance_name_btn').text());
+    })
+
     //보험 : 예 클릭시
     $("#insurance_bool_yes").click(function(){
         // console.log($('#insurance_bool_yes').val());
@@ -141,13 +148,13 @@
 
 @section('style')
 <style>
-    .blood_type_btn {
+    /* .blood_type_btn {
         width:120px; 
         height:40px; 
         border: solid 1px black; 
         margin-top:2px; 
         margin-right:20px;
-    }
+    } */
     .dropdown_btn {
         width:120px; 
         height:40px; 
