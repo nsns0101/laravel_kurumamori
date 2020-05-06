@@ -197,8 +197,8 @@ $factory->define(App\Drive::class, function (Faker $faker) {
         'average_eye_close_interval' => rand(3, 10),
         'sudden_stop_count' => rand(0, 5),
         'sudden_acceleration_count' => rand(0, 5),
-        // 'start_time' => Arr::random($day_5),
-        'start_time' => $date,
+        'start_time' => Arr::random($day_5),
+        // 'start_time' => $date,
     ];
 });
 //운전 감지 팩토리
@@ -218,15 +218,17 @@ $factory->define(App\Drive_detection::class, function (Faker $faker) {
             array_push($random, false);
         }
     }
-
+    
+    $rand_drive = $faker->randomElement($drive_id);
     return [
         'user_id' => $userId,
-        'drive_id' => $faker->randomElement($drive_id)->id,
+        'drive_id' => $rand_drive->id,
         'latitude' => rand(1, 60) . '.' . rand(1000, 9999999),
         'longitude' => rand(1, 150) . '.' . rand(1000, 9999999),
         'bool_report' => $random[0],
         'bool_sudden_acceleration' => $random[1],
         'bool_sudden_stop' => $random[2],
         'bool_sleep' => $random[3],
+        'created_at' => $rand_drive->start_time,
     ];
 });
