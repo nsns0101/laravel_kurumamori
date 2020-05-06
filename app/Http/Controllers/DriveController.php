@@ -97,6 +97,7 @@ class DriveController extends Controller
             }
             array_push($day_5_sec, $sec);
         }
+
         //사고 여부
         $report = \DB::select("select * from reports where DATE_FORMAT(created_at, '%Y-%m-%d') = '{$date}' AND user_id = '{$auth_user}'");
         \Log::info("선택 날짜 : " . $date);
@@ -104,6 +105,7 @@ class DriveController extends Controller
         \Log::info("최근 5일 : ", $day_5);
         \Log::info("최근 5일의 운전 정보 : ", $day_5_info);  //배열안의 배열 (하루에 여러번 운전했을 수 있으니)
         \Log::info("최근 5일의 위험 정보 합계: ", $day_5_danger_info);  //배열안의 배열 (하루에 여러번 운전했을 수 있으니)
+        \Log::info("최근 5일의 운전 감지 정보: ", $drive_detection_5);
         \Log::info("당일 위험 카운트 : ", $drive_count);
         // \Log::info("당일 운전 시간(초) : ". $day_5_sec[0]);
         \Log::info("최근 5일의 운전 시간(초) : ", $day_5_sec);
@@ -111,7 +113,7 @@ class DriveController extends Controller
         // \Log::info($error);
         //1시간에 급감속이나 급가속, 졸음 등을 1번했을 경우 모범?
         //default = 100에서 깎아내리는 형식?
-        return view('info.drive_score', compact('drive', 'date', 'drive_count', 'day_5_sec','day_5', 'day_5_info', 'day_5_danger_info', 'report'));
+        return view('info.drive_score', compact('drive', 'date', 'drive_count', 'day_5_sec','day_5', 'day_5_info', 'day_5_danger_info', 'drive_detection_5', 'report'));
     }
 
     public function create()

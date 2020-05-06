@@ -189,7 +189,8 @@ $factory->define(App\Drive::class, function (Faker $faker) {
     for($i = 0; $i <5; $i++){
         array_push($day_5,date("Y-m-d H:m:s", strtotime($date ."-{$i} day")));
     }
-
+    $start_time = Arr::random($day_5);
+    $created_at = date("Y-m-d H:m:s", strtotime($start_time ."+1 hours"));
     return [
         'user_id' => $faker->randomElement($userId),
         'drive_score' => rand(0, 100),
@@ -197,8 +198,8 @@ $factory->define(App\Drive::class, function (Faker $faker) {
         'average_eye_close_interval' => rand(3, 10),
         'sudden_stop_count' => rand(0, 5),
         'sudden_acceleration_count' => rand(0, 5),
-        'start_time' => Arr::random($day_5),
-        // 'start_time' => $date,
+        'start_time' => $start_time,
+        'created_at' => $created_at,
     ];
 });
 //운전 감지 팩토리
@@ -220,15 +221,19 @@ $factory->define(App\Drive_detection::class, function (Faker $faker) {
     }
     
     $rand_drive = $faker->randomElement($drive_id);
+    //서울역/@37.5536067,126.9674255,17z
+    //강릉역/@37.7637815,128.8994525,17z
+    //광주역/@36.2779417,125.9574318,8z
+    //부산역/@35.115225,129.040049,17z
     return [
         'user_id' => $userId,
         'drive_id' => $rand_drive->id,
-        'latitude' => rand(1, 60) . '.' . rand(1000, 9999999),
-        'longitude' => rand(1, 150) . '.' . rand(1000, 9999999),
+        'latitude' => rand(35, 37) . '.' . rand(1000, 9999999),     //x축
+        'longitude' => rand(126, 128) . '.' . rand(1000, 9999999),  //y축
         'bool_report' => $random[0],
         'bool_sudden_acceleration' => $random[1],
         'bool_sudden_stop' => $random[2],
         'bool_sleep' => $random[3],
-        'created_at' => $rand_drive->start_time,
+        'created_at' => $rand_drive->created_at,
     ];
 });

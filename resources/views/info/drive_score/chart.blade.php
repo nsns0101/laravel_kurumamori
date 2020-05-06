@@ -70,10 +70,11 @@
                         </div>
                         <div id="myPieChart" style="height: 320px; width: 100%;"></div>
                     </div>
-                    <hr>
-                    <p>일별 위험요소를 %로 나타낸 데이터입니다.</p>
-
                 </div>
+                <br/>
+                <br/>
+                <hr>
+                <p style="margin-left:10px">일별 위험요소를 %로 나타낸 데이터입니다.</p>
             </div>
     </div>
 

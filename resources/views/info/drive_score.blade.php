@@ -48,7 +48,14 @@
             {{-- 구글맵 --}}
             <div class="col-xl-6 col-lg-6 col-md-6">
                 <div id="map" style="width:100%; height:500px;"></div>
+                <img src="/icon/orange_map_icon.png">급가속 구간
+                <img src="/icon/green_map_icon.png">급감속 구간
+                <img src="/icon/blue_map_icon.png">졸음 구간
+                <img src="/icon/red_map_icon.png">신고 구간
             </div>
+            <div class="col-sm-3 col-md-1"></div>
+
+            {{-- 오늘의 운전점수 --}}
             <div class="col-sm-3 col-md-3">
                 <div class="thumbnail">
                     <div class="caption">
@@ -107,7 +114,6 @@
 
 @section('script')
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-<script src="https://npmcdn.com/moment@2.14.1"></script>
 
 <script>
     var API_KEY = "{{env('GCP_API_KEY')}}";     //GCP API KEY
@@ -117,10 +123,13 @@
     //최근 5일의 위험정보         
     var day_5_danger_info = <?php echo json_encode($day_5_danger_info) ?>;  
     //최근 5일의 운전량
-    var day_5_sec = <?php echo json_encode($day_5_sec) ?>;   
-    console.log(day_5);
-    console.log(day_5_danger_info);
-    console.log(day_5_sec);    
+    var day_5_sec = <?php echo json_encode($day_5_sec) ?>;
+    //최근 5일의 운전감지 정보
+    var drive_detection_5 = <?php echo json_encode($drive_detection_5) ?>;
+    // console.log(day_5);
+    // console.log(day_5_danger_info);
+    // console.log(day_5_sec);
+    // console.log(drive_detection_5[0][0].latitude);
     //최근 5일동안 위험정보 빈도
     //i가 1부터 시작하는 것은 0이 count_danger(총 위험카운트)이기 때문
     var day_5_percent = [];
@@ -129,7 +138,7 @@
     for(var i = 0; i < day_5_danger_info.length; i++){
         day_5_danger_count+= day_5_danger_info[i]["count_danger"];
     }
-    console.log(day_5_danger_count);
+    // console.log(day_5_danger_count);
     //5일 각각의 위험카운트(%)
     for(var i =0; i < day_5_danger_info.length; i++){
             
@@ -141,7 +150,7 @@
             );
         
     }
-    console.log(day_5_percent);
+    // console.log(day_5_percent);
     //시간
     $(function() {	
 		$('.datePicker').datepicker({
@@ -174,7 +183,6 @@
 
 //예전 jQuery라면 on이 아니라 bind나 live 
 $("#drive_date").on("propertychange change keyup paste input", function() {
-    console.log("key 작동");
     var drive_date = $('#drive_date').val();
     console.log(drive_date);
     $.ajax({
@@ -182,7 +190,6 @@ $("#drive_date").on("propertychange change keyup paste input", function() {
         type: 'GET',
         url: `/info/${drive_date}/drive_score/`,
     }).then(function(data){
-        // console.log(data);
         console.log("asdf");
         window.location.href =`/info/${drive_date}/drive_score`;
     });
@@ -197,49 +204,49 @@ $("#drive_date").on("propertychange change keyup paste input", function() {
 
 <script>
 //구글맵 API
+console.log(drive_detection_5[0].length);
 var map;
 function initMap() {
     var location = new Array();
     var location_color = new Array();
-    //점
-    location.push(new google.maps.LatLng(35.8963091,128.6215978));
-    location.push(new google.maps.LatLng(35.8973091,128.6225978));
-    location.push(new google.maps.LatLng(35.8953091,128.6235978));
-    location.push(new google.maps.LatLng(35.8943091,128.6245978));
-    location.push(new google.maps.LatLng(35.8993091,128.6195978));
-    location.push(new google.maps.LatLng(35.8953091,128.6185978));
-    location.push(new google.maps.LatLng(35.8983091,128.6165978));
-    location.push(new google.maps.LatLng(35.8923091,128.6155978));
-
     //사고 = 빨간색
     //졸음 = 주황색
     //급가속 = 파랑색
     //급감속 = 초록색
-    location_color.push("Green");
-    location_color.push("red");
-    location_color.push("Orange");
-    location_color.push("blue");
-    location_color.push("Orange");
-    location_color.push("blue");
-    location_color.push("red");
-    location_color.push("Green");
 
+    //점
+    for(var i = 0; i < drive_detection_5[0].length; i++){
+        location.push(new google.maps.LatLng(drive_detection_5[0][i].latitude, drive_detection_5[0][i].longitude));
+        if(drive_detection_5[0][i].bool_report) location_color.push("red");
+        else if(drive_detection_5[0][i].bool_sleep) location_color.push("orange");
+        else if(drive_detection_5[0][i].bool_sudden_acceleration) location_color.push("blue");
+        else if(drive_detection_5[0][i].bool_sudden_stop) location_color.push("green");
+    }
+
+    console.log(location_color);
     var mapCanvas = document.getElementById("map");
-    var mapOptions = {center: location[0], zoom: 12}; //location[0]을 기준으로 12번 확대
+    var mapOptions = {center: location[0], zoom: 10}; //location[0]을 기준으로 12번 확대
     var map = new google.maps.Map(mapCanvas,mapOptions);
 
     for(var i in location){
-    var myCity = new google.maps.Circle({
-        center: location[i],     //점찍는 위치
-        radius: 100,          //점크기
-        strokeColor: location_color[i],   //점 테두리 색깔
-        strokeOpacity: 1,     //점 테두리 밝기
-        strokeWeight: 2,      //점 굵기
-        fillColor: location_color[i],     //점 색깔
-        fillOpacity: 0.5      //점 밝기
-    });
-    myCity.setMap(map);
+    // var myCity = new google.maps.Circle({
+    //     center: location[i],     //점찍는 위치
+    //     radius: 3000,          //점크기
+    //     strokeColor: location_color[i],   //점 테두리 색깔
+    //     strokeOpacity: 1,     //점 테두리 밝기
+    //     strokeWeight: 2,      //점 굵기
+    //     fillColor: location_color[i],     //점 색깔
+    //     fillOpacity: 0.5      //점 밝기
+    // });
+        var marker = new google.maps.Marker({
+            position : location[i],
+            icon: `/icon/${location_color[i]}_map_icon.png`,
+            draggable: false,
+            map: map
+        });
+        marker.setMap(map);
     }
 }
 </script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{env('GCP_API_KEY')}}&callback=initMap&center" async defer></script>
 @stop
