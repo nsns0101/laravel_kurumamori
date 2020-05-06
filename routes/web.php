@@ -68,3 +68,11 @@ Route::resource('/questions','QuestionsController');
 
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 유저리뷰 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 Route::resource('/reviews','ReviewsController');
+
+
+//팽진솔 빅데이터 페이지 ㅡㅡㅡㅡㅡㅡㅡㅡ
+// Route::get('/bigdata', function() {
+//     return view('bigdata.big_chart');
+// });
+
+Route::resource('/bigdata', 'BigdataController');
