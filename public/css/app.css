@@ -858,7 +858,7 @@ ul.list-default li {
     font-weight: 700;
 }
 
-/* ------------------------------------------------------------------------------
+/*-------------------------------------------------------------------------------
 	 Bigdata
 -------------------------------------------------------------------------------*/
 .card-menu {
@@ -873,6 +873,30 @@ ul.list-default li {
 
 .bigdata-card-menu {
     padding-bottom: 5%;
+}
+
+.card-text {
+    font-size: 14px;
+    line-height: 22.4px;
+    color: #000000;
+}
+
+.detail-btn {
+    position: relative;
+    left: 75%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.card-img-view {
+    margin-top: 15%;
+    margin-left: 5%;
+}
+
+.card:hover {
+    -webkit-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+    box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
 }
 
 /* ------------------------------------------------------------------------------
