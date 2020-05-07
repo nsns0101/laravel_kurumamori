@@ -54,7 +54,7 @@
                     <p>사람 소개</p>
                 </div>
             </div>
-        {{-- 사람 소개 --}}ㄴ
+        {{-- 사람 소개 --}}
         </div><div class="col-sm-3 col-md-2 text-center">
             <div class="thumbnail">
                 <img src="/images/team/김도형.jpg" alt="img" style="width:70%">
