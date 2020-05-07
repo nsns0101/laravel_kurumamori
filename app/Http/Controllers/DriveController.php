@@ -12,7 +12,6 @@ class DriveController extends Controller
     }
     public function index($date = null)
     {
-        \Log::info(collect([1,2,3,1]));
         //date로 받은 것이 있으면 변함없음, date로 받은 것이 없으면 default로 현재날짜
         $date = $date ? $date : $date = date("Y-m-d");
 
@@ -100,20 +99,56 @@ class DriveController extends Controller
 
         //사고 여부
         $report = \DB::select("select * from reports where DATE_FORMAT(created_at, '%Y-%m-%d') = '{$date}' AND user_id = '{$auth_user}'");
+        
+        //당일 운전점수
+        $score_all = 0; //총 점수
+        $score_sudden_acceleration = 100; //급 가속 점수
+        $score_sudden_stop = 100; //급 정거 점수
+        $score_sleep = 100;   //졸음 점수
+        $score_report = 100;   //사고 점수
+        $mul = 1;       //감소 배수(급가속, 급감속은 30분 ~ 1시간 운전시 2배 적용, 30분 미만시 5배적용)
+        if($day_5_sec[0] < 1800){
+            $mul = 5;
+        }
+        elseif($day_5_sec[0] < 3600){
+            $mul = 2;
+        }
+        //증가점수 기준 : 1시간에서 +10분 운전당  => + 점수 4항목 +2점(8점 = 총점수 2점)
+        $score_sudden_acceleration -= ($day_5_danger_info[0]["count_sudden_acceleration"] * (40 * $mul)) - ( ( ($day_5_sec[0]-3600) / 600) *2 );
+        $score_sudden_stop -= ($day_5_danger_info[0]["count_sudden_stop"] * (40 * $mul)) - ( ( ($day_5_sec[0]-3600) / 600) *2 );
+        $score_sleep -= ($day_5_danger_info[0]["count_sleep"] * (100 * $mul)) - ( ( ($day_5_sec[0]-3600) / 600) *2 );
+        $score_report -= ($day_5_danger_info[0]["count_report"] * (100 * $mul)) - ( ( ($day_5_sec[0]-3600) / 600) *2 );
+        $score_all = $score_sudden_acceleration + $score_sudden_stop + $score_sleep + $score_report;
+        
+        $score = [$score_all, $score_sudden_acceleration, $score_sudden_stop, $score_sleep, $score_report];
+        // \Log::info($score);
+        for($i = 0; $i < count($score); $i++){
+            //점수가 100초과시
+            if($score[$i] > 100){
+                $score[$i] = 100;
+            }
+            //점수가 0미만시
+            elseif($score[$i] < 0){
+                $score[$i] = 0;
+            }
+        }
+        
+        // \Log::info($score_sudden_acceleration);
         \Log::info("선택 날짜 : " . $date);
         \Log::info("선택한 날짜의 정보 :", $drive);
         \Log::info("최근 5일 : ", $day_5);
         \Log::info("최근 5일의 운전 정보 : ", $day_5_info);  //배열안의 배열 (하루에 여러번 운전했을 수 있으니)
         \Log::info("최근 5일의 위험 정보 합계: ", $day_5_danger_info);  //배열안의 배열 (하루에 여러번 운전했을 수 있으니)
         \Log::info("최근 5일의 운전 감지 정보: ", $drive_detection_5);
-        \Log::info("당일 위험 카운트 : ", $drive_count);
+        // \Log::info("당일 위험 카운트 : ", $day_5_danger_info[0]);
         // \Log::info("당일 운전 시간(초) : ". $day_5_sec[0]);
         \Log::info("최근 5일의 운전 시간(초) : ", $day_5_sec);
         \Log::info("당일 사고 여부", $report);
+        \Log::info("총, 가속, 감속, 졸음, 사고점수 : ", $score);
         // \Log::info($error);
         //1시간에 급감속이나 급가속, 졸음 등을 1번했을 경우 모범?
         //default = 100에서 깎아내리는 형식?
-        return view('info.drive_score', compact('drive', 'date', 'drive_count', 'day_5_sec','day_5', 'day_5_info', 'day_5_danger_info', 'drive_detection_5', 'report'));
+        return view('info.drive_score', compact('drive', 'date', 'day_5_sec','day_5', 'day_5_info', 'day_5_danger_info', 'drive_detection_5', 'report', 'score'));
     }
 
     public function create()

@@ -12,7 +12,6 @@ class InfoController extends Controller
     }
     public function index()
     {
-        \Log::info(count(\App\Past_sickness::whereUser_id(1)->get()));
         $user = \App\User::whereId(auth()->user()->id)->first();
         //신고 이력
         $reports = \App\Report::whereUser_id(auth()->user()->id)->orderBy('id', 'desc')->paginate(5);
