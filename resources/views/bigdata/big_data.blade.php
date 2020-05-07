@@ -2,23 +2,28 @@
 
 @section('content')
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
 <!-- 연도, 월 선택 메뉴 -->
-<section id="intro" class="section intro" style="padding: 50px 0px 0px 0px;">
-<div class="col-md-2">
-    <div class="form-group {{ $errors->has('drive_date') ? 'has-error' : '' }}">
-        <!-- 시작시 기본 날짜 설정은 value를 이용 -->
-        <input id="datepicker" type="text" name="drive_date" class="form-control datePicker"  value="{{$date ? $date : date("Y-m-d")}}" readonly>
-    </div>
-</div> 
-    <!-- chart.blade -->
-    @include('bigdata.bigdata_chart.chart')
+<div id="intro" class="section intro" style="padding: 70px 500px 30px 0px;" >
+    <div class="col-md-2">
+        <div class="form-group">
+            <!-- 시작시 기본 날짜 설정은 value를 이용 -->
+            <input id="bigdata_date" type="text" name="bigdata_date" class="form-control datePicker" value="{{$date ? $date : date("Y-m-d")}}" style="display: inline;" readonly>
+            <button id="bigdata-search" class="btn btn-info">조회</button>
+        </div>
+    </div> 
+</div>
+<!-- googlemap -->
+
+<!-- chart.blade -->
+@include('bigdata.bigdata_chart.chart')
 @endsection
 
 @section('script')
 <script>
     // datepicker
     $(function() {	
-        $('#datepicker').datepicker({
+        $('#bigdata_date').datepicker({
             format: "yyyy-mm-dd",	//데이터 포맷 형식
             autoclose : true,	//사용자가 날짜를 클릭하면 자동 캘린더가 닫히는 옵션
             calendarWeeks : false, //캘린더 옆에 몇 주차인지 보여주는 옵션
@@ -39,6 +44,20 @@
             language : "ko"	//달력의 언어 선택, 그에 맞는 js로 교체해줘야한다.
         });
     });//ready end
+
+    // 조회버튼 click event
+    $("#bigdata-search").on('click', function() {
+    var bigdata_date = $('#bigdata_date').val();
+    console.log(bigdata_date);
+    $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},  
+        type: 'GET',
+        url: `/bigdata/${bigdata_date}/search/`,
+    }).then(function(data){
+        console.log("조회성공");
+        window.location.href =`/bigdata/${bigdata_date}/search/`;
+    });
+});
 </script>
 
 <!-- chart.js파일 불러오기 -->
