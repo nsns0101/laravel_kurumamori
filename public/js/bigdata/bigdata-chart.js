@@ -95,7 +95,6 @@ var bigDataTimeChart = new Chart(ctx, {
         legend: {
             display: true, 
             position: 'right',
-
         },
         cutoutPercentage: 35,
         yAxes: [{
