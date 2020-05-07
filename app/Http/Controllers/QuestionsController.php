@@ -18,14 +18,20 @@ class QuestionsController extends Controller
         $user = \App\User::whereId(auth()->user()->id)->first();
         \Log::info($user);
         $query = $category
-            ? \App\Category::whereId($Category)->firstOrFail()->boards()
+            ? \App\Category::whereId($category)->firstOrFail()->boards()
             : new \App\Board;
-
-        $query = $query->orderBy(
+        $query = $query->where('category_id','!=','7')->orderBy(
             $request->input('sort','created_at'),
             $request->input('order','desc'),
         );
+        \Log::info($query->where('title','=','aaaaaaaaaa')->get());
+
+        if($search = $request->input('search')) {
+            $raw = 'MATCH(title,content) AGAINST(? IN BOOLEAN MODE)';
+            $query = $query->whereRaw($raw, [$search] )->get();
+        }
         $questions = $query->paginate(10);
+
         // if(count(explode('?',url()->full())) >= 2 ){
         //     $value = explode('=', explode('?',url()->full())[count(explode('?',url()->full()))-1] );
         //     \Log::info( explode('?',url()->full())[count(explode('?',url()->full()))-1] );

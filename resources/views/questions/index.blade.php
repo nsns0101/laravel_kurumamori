@@ -24,6 +24,12 @@
                                 <a class="btn btn-outline-secondary" href="{{route('questions.index')}}">Button</a>
                             </div>
                         </div>
+                        <form method="get" action="{{route('questions.index')}}" role="search">
+                            <input type="text" class="form-control" placeholder="search.." aria-label="search.." aria-describedby="basic-addon2" id="search" name='search'>
+                            <div class="form-group-append">
+                                    <button class="btn btn-dark" type="submit">저장하기</button>
+                            </div>
+                        </form>
                         <div class="col-auto">
                             <a class="btn btn-dark" href="{{route('questions.create')}}">글 작성</a>
                         </div>
