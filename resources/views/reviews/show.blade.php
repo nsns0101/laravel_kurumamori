@@ -31,6 +31,9 @@
         @endcan
         <a class="btn btn-dark" href="{{route('reviews.index')}}">뒤로가기</a>
     </div>
+    <div class="pt-3">
+      @include('comments.index')
+    </div>
 </div>
 
 @endsection

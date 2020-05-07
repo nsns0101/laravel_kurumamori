@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    protected $fillable = ['content'];
+    protected $fillable = ['title','content','board_id','multiple_type'];
 
     //여러 댓글은 한 유저를 가짐
     public function user()

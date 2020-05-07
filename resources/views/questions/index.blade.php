@@ -3,52 +3,8 @@
 @section('content')
 
 <section id="main-question">
-    <div class="app-main mt-5">
-        <div class="row m-5">
-            <h1 class="">질문 게시판</h1>
-        </div>
-        <div class="row m-3">
-            <div class="col-xs-12 col-sm-12 col-md-3">
-                <div class="card btn btn-dark text-dark"> <!-- 아직 미구현 -->
-                    <div class="">
-                        icon
-                    </div>
-                    <h1 class="">
-                        FAQ
-                    </h1>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-3">
-                <div class="card btn btn-dark text-dark"> <!-- 아직 미구현 -->
-                    <div class="">
-                        icon
-                    </div>
-                    <h1 class="">
-                        전체질문
-                    </h1>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-3">
-                <div class="card btn btn-dark text-dark"> <!-- 아직 미구현 -->
-                    <div class="">
-                        icon
-                    </div>
-                    <h1 class="">
-                        공지사항
-                    </h1>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-3">
-                <div class="card btn btn-dark text-dark"> <!-- 아직 미구현 -->
-                    <div class="">
-                        icon
-                    </div>
-                    <h1 class="">
-                        업데이트
-                    </h1>
-                </div>
-            </div>
-        </div>
+    <div class="contaienr px-3 py-5 p-md-5">
+        @include('questions.partial.header')
         <div class="row m-3">
             @if(!$questions)
                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -61,11 +17,11 @@
                 </div>
             @else
                 <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="row mb-3"> <!-- -->
+                    <div class="row mb-3"> <!--검색 기능 미구현 -->
                         <div class="input-group col-xs-8 col-sm-8 col-md-4 mr-auto">
-                            <input type="text" class="form-control" placeholder="search.." aria-label="search.." aria-describedby="basic-addon2">
+                            <input type="text" class="form-control" placeholder="search.." aria-label="search.." aria-describedby="basic-addon2" id="search" name='search'>
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button">Button</button>
+                                <a class="btn btn-outline-secondary" href="{{route('questions.index')}}">Button</a>
                             </div>
                         </div>
                         <div class="col-auto">
@@ -77,20 +33,28 @@
                         <thead class="">
                             <tr>
                                 <td>No</td>
+                                <td></td>
                                 <td>Category</td>
                                 <td>Title</td>
                                 <td>Writer</td>
                                 <td>Date</td>
+                                <td>HIT</td>
                             </tr>
                         </thead>
                         @forelse($questions as $question)
                             <tbody class="">
                                 <tr class="">
                                     <td>{{ $question->id }}</td>
+                                    @if (\App\Comment::where('board_id','=',$question->id)->get()->count())
+                                        <td>O</td>
+                                    @else
+                                        <td>X</td>
+                                    @endif
                                     <td>{{ \App\Category::find($question->category_id)->category }}</td>
                                     <td><a href="{{route('questions.show',compact('question'))}}">{{ $question->title }}</a></td>
                                     <td>{{ $question->user->name }}</td>
                                     <td>{{ $question->updated_at->format('y-m-d') }}</td>
+                                    <td>{{ $question->view_count }}</td>
                                 </tr>
                             </tbody>
                         @empty
@@ -107,4 +71,8 @@
     </div>
 </section>
 <!-- intro section -->
+@endsection
+
+@section('script')
+    
 @endsection

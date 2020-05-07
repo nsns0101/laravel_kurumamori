@@ -62,6 +62,7 @@ Route::resource('/buy','BuyController');
 
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ Q&A ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 Route::resource('/boards/questions','QuestionsController');
+Route::resource('/boards/questions/comments','CommentsController');
 
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 유저리뷰 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 Route::resource('/boards/reviews','ReviewsController');

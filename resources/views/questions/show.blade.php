@@ -13,7 +13,7 @@
     </div>
     <div>
         <h1>category</h1>
-        <h4>{{ \App\Category::find($question->category_id)->category }}</h4>
+        <h4>{{ \App\Category::find($category)->category }}</h4>
     </div>
     <div>
         <h1>user</h1>
@@ -35,6 +35,9 @@
           </form>
         @endcan
         <a class="btn btn-dark" href="{{route('questions.index')}}">뒤로가기</a>
+    </div>
+    <div class="pt-3">
+      @include('comments.index')
     </div>
 </div>
 @endsection
