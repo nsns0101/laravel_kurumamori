@@ -248,5 +248,4 @@ function initMap() {
     }
 }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key={{env('GCP_API_KEY')}}&callback=initMap&center" async defer></script>
 @stop

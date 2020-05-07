@@ -112,7 +112,15 @@
         $(`#form__sickness${sickness_count}`).css("display","flex");
         sickness_count++;
     }
-    
+    function delete_past_sickness(){
+        $(`#form__past_sickness${past_sickness_count}`).css("display","none");
+        past_sickness_count--;
+    }
+    function delete_sickness(){
+        $(`#form__sickness${sickness_count}`).css("display","none");
+        $(`.sickness_btn${past_sickness_count}`).text("선택");
+        sickness_count--;
+    }
 
     //
     $(function() {	

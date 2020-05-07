@@ -1,13 +1,16 @@
 {{--  --}}
 @for($i = 1; $i <=3; $i++)
 @if($update_form && $i != 1)
-<div class="row" id="form__past_sickness{{$i}}" style="{{isset($past_sickness[$i-1]) ? "display:flex" : "display:none"}}">
+<div class="row" id="form__past_sickness{{$i}}" style="{{isset($past_sickness[$i-1]) ? "display:flex" : "display:none"}}; margin-top:10px;">
 @else
-<div class="row" id="form__past_sickness{{$i}}" style="{{$i == 1 ? "display:flex" : "display:none"}}">
+<div class="row" id="form__past_sickness{{$i}}" style="{{$i == 1 ? "display:flex" : "display:none"}}; margin-top:10px;">
 @endif
-    <div class="col-md-1" >
+    <div class="col-md-1">
         @if($i == 1)
-        <img id="add__past_sickness"src="/icon/add.png" style="margin-left:50%" onclick="add_past_sickness()"/>
+        <img id="add__past_sickness"src="/icon/plus.png" style="margin-left:50%" onclick="add_past_sickness()"/>
+        @else
+        <img id="delete__past_sickness"src="/icon/minus.png" style="margin-left:50%" onclick="delete_past_sickness()"/>
+
         @endif
     </div>
     <div class="col-md-2 text-center">
