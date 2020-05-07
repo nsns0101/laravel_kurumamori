@@ -14,34 +14,30 @@ class QuestionsController extends Controller
     public function index(Request $request, $category = null)
     {
         \Log::info('questions index');
-
         $user = \App\User::whereId(auth()->user()->id)->first();
         \Log::info($user);
+        \Log::info($request->input('category_id'));
         $query = $category
             ? \App\Category::whereId($category)->firstOrFail()->boards()
             : new \App\Board;
-        $query = $query->where('category_id','!=','7')->orderBy(
-            $request->input('sort','created_at'),
-            $request->input('order','desc'),
-        );
-        \Log::info($query->where('title','=','aaaaaaaaaa')->get());
-
+        if($category_id = $request->input('category_id')){
+            $query = $query->where('category_id','=',$category_id)->orderBy(
+                $request->input('sort','created_at'),
+                $request->input('order','desc'),
+            );
+        }
+        else{
+            $query = $query->where('category_id','!=','7')->orderBy(
+                $request->input('sort','created_at'),
+                $request->input('order','desc'),
+            );
+        }
         if($search = $request->input('search')) {
+            \DB::statement('ALTER TABLE boards ADD FULLTEXT(title,content);');
             $raw = 'MATCH(title,content) AGAINST(? IN BOOLEAN MODE)';
-            $query = $query->whereRaw($raw, [$search] )->get();
+            $query = $query->whereRaw($raw, [$search] );
         }
         $questions = $query->paginate(10);
-
-        // if(count(explode('?',url()->full())) >= 2 ){
-        //     $value = explode('=', explode('?',url()->full())[count(explode('?',url()->full()))-1] );
-        //     \Log::info( explode('?',url()->full())[count(explode('?',url()->full()))-1] );
-        //     \Log::info( $value );
-        //     $questions = \App\Board::where($value[0],'=',$value[1])->latest()->orderBy('id','desc')->paginate(10);
-        // }
-        // else{
-        //     $questions = \App\Board::where('category_id','!=','7')->latest()->orderBy('id','desc')->paginate(10);
-        //     \Log::info($questions);
-        // }
 
         return view('questions.index',compact('questions'));
     }

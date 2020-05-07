@@ -6,7 +6,7 @@
     <div class="contaienr px-3 py-5 p-md-5">
         @include('questions.partial.header')
         <div class="row m-3">
-            @if(!$questions)
+            @if(!$questions->count())
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <a class="btn btn-dark btn-lg btn-block" href="{{route('questions.create')}}">새글 작성</a>
                 </div>
@@ -18,16 +18,10 @@
             @else
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="row mb-3"> <!--검색 기능 미구현 -->
-                        <div class="input-group col-xs-8 col-sm-8 col-md-4 mr-auto">
+                        <form class="input-group col-xs-8 col-sm-8 col-md-4 mr-auto" method="get" action="{{route('questions.index')}}" role="search">
                             <input type="text" class="form-control" placeholder="search.." aria-label="search.." aria-describedby="basic-addon2" id="search" name='search'>
                             <div class="input-group-append">
-                                <a class="btn btn-outline-secondary" href="{{route('questions.index')}}">Button</a>
-                            </div>
-                        </div>
-                        <form method="get" action="{{route('questions.index')}}" role="search">
-                            <input type="text" class="form-control" placeholder="search.." aria-label="search.." aria-describedby="basic-addon2" id="search" name='search'>
-                            <div class="form-group-append">
-                                    <button class="btn btn-dark" type="submit">저장하기</button>
+                                <button class="btn btn-dark" type="submit">button</button>
                             </div>
                         </form>
                         <div class="col-auto">
