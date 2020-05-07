@@ -1,3 +1,15 @@
+<!-- 연도, 월 선택 메뉴 -->
+<div id="intro" class="section intro" style="padding: 70px 500px 30px 0px;" >
+    <div class="col-md-2">
+        <div class="form-group">
+            <!-- 시작시 기본 날짜 설정은 value를 이용 -->
+            <input id="bigdata_date" type="text" name="bigdata_date" class="form-control datePicker" value="{{$date ? $date : date("Y-m-d")}}" style="display: inline;" readonly>
+            <button id="bigdata-search" class="btn btn-info">조회</button>
+        </div>
+    </div> 
+</div>
+
+<!-- 그래프 메뉴 -->
 <div class="chart-container">
     <!-- 조회 옵션 버튼 -->
     <div class="search-option-btn">
