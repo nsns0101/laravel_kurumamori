@@ -11,6 +11,6 @@ class Past_sicknessesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Past_sickness::class, 30)->create();
+        factory(App\Past_sickness::class, 15)->create();
     }
 }

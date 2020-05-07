@@ -91,18 +91,26 @@ $factory->define(App\Past_sickness::class, function (Faker $faker) {
     $random_userId = $faker->randomElement($userId);
     $medicalId = App\Medical_info::whereUser_id($random_userId)->first()->id;
     $sickness = ["없음", "고혈압", "당뇨", "결핵", "심장질환", "알러지", "천식", "심부전증", "페렴", "디스크", "간경화", "관절염", "협심증", "암", "갑상선염", "고지혈증", "골다공증", "과민성 대장", "기관지염", "뇌졸중", "신장질환", "간암"];
+    
     return [
         'user_id' => $random_userId,
         'medical_id' => $medicalId,
         'past_sickness_name' => Arr::random($sickness),
         'past_sickness_supplementation' => Str::random(10),
     ];
+    
+    
 });
 //기저질환 팩토린
 $factory->define(App\Sickness::class, function (Faker $faker) {
     $userId = App\User::pluck('id')->toArray();
     $random_userId = $faker->randomElement($userId);
     $medicalId = App\Medical_info::whereUser_id($random_userId)->first()->id;
+    $user_count = count(App\Sickness::whereUser_id($random_userId)->get());
+    \Log::info($user_count);
+    if($user_count > 3){
+        return null;
+    }
 
     $sickness = ["없음", "고혈압", "당뇨", "결핵", "심장질환", "알러지", "천식", "심부전증", "페렴", "디스크", "간경화", "관절염", "협심증", "암", "갑상선염", "고지혈증", "골다공증", "과민성 대장", "기관지염", "뇌졸중", "신장질환", "간암"];
     $symptom = ["위가 아픔", "허리가 아픔", "설탕먹고싶음", "간이 아픔", "몸살", "기침", "잦은 기침", "뇌가 아픔"];
