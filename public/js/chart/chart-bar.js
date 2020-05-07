@@ -33,7 +33,7 @@ function time_format(sec){
   if (hours   < 10) {hours   = "0"+hours;}
     if (minutes < 10) {minutes = "0"+minutes;}
     if (seconds < 10) {seconds = "0"+seconds;}
-    console.log(hours+':'+minutes+':'+seconds);
+    // console.log(hours+':'+minutes+':'+seconds);
     // return hours+'시 '+minutes+'분 '+seconds+'초';
     return hours+'시 '+minutes+'분 '+seconds+'초';
 }
