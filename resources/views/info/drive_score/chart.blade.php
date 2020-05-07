@@ -51,7 +51,7 @@
         </div>
     </div>
     <!-- Donut Chart -->
-    <div class="col-xl-4 col-lg-4 col-md-4">
+    <div class="col-xl-3 col-lg-3 col-md-3">
             <div class="card shadow">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3">

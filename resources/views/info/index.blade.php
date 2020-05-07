@@ -21,11 +21,11 @@
                         <div class="caption">
                             <h3 class="text-center">유저 정보</h3>
                             <hr style="background-color:darkgrey;">
-                            <p>이메일 : {{$user->email}}</p>
-                            <p>이름 : {{$user->name}}</p>
-                            <p>생년월일 : {{$user->birth}}</p>
-                            <p>성별 : {{$user->gender}}</p>
-                            <p>휴대폰 번호 : {{$user->phone}}</p>
+                            <p style="font-size:20px"><b>이메일</b> : {{$user->email}}</p>
+                            <p style="font-size:20px"><b>이름</b> : {{$user->name}}</p>
+                            <p style="font-size:20px"><b>생년월일</b> : {{$user->birth}}</p>
+                            <p style="font-size:20px"><b>성별</b> : {{$user->gender}}</p>
+                            <p style="font-size:20px"><b>휴대폰 번호</b> : {{$user->phone}}</p>
                             <!-- Button trigger modal -->
                             {{-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#userModal">
                                 수정하기
@@ -76,7 +76,7 @@
                                 </div>
                                 {{-- 신고 이력이 없을 경우 --}}
                                 @empty
-                                <p class="text-center text-danger">이력이 없습니다.</p>
+                                <p class="text-center text-danger" style="font-size:20px">이력이 없습니다.</p>
                                 @endforelse
                                 <p class="text-danger">최근 5건만 표시됩니다.</p>
                             </div>
@@ -90,9 +90,9 @@
                                 <hr style="background-color:green;">
                                 @if($product)
                                 {{-- <p id="text_product_name">제품 명 : {{$product->product_name}}</p> --}}
-                                <p id="text_product_key">제품 키 : {{$product->product_key}}</p>
-                                <p id="text_product_date_buy">구입날짜 : {{$product_buy->created_at}}</p>
-                                <p id="text_product_date_as">무상 AS기한 : 구입 후 1년까지</p>
+                                <p id="text_product_key" style="font-size:20px"><b>제품키</b> : {{$product->product_key}}</p>
+                                <p id="text_product_date_buy" style="font-size:20px"><b>구입날짜</b> : {{$product_buy->created_at}}</p>
+                                <p id="text_product_date_as" style="font-size:20px"><b>무상 AS기한</b> : 구입 후 1년까지</p>
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#productModal">
                                     제품 재등록
                                 </button>
@@ -119,23 +119,31 @@
                                 <table class="table" style="border-top: 3px solid blue; border-bottom: 3px solid blue;">
                                     <thead>
                                         <tr>
-                                            <th class="text-center" scope="col">#</th>
-                                            <th class="text-center" scope="col">제목</th>
-                                            <th class="text-center" scope="col">작성날짜</th>
-                                            <th class="text-center" scope="col">대답여부</th>
+                                            <th class="text-center" scope="col" style="font-size:20px">#</th>
+                                            <th class="text-center" scope="col" style="font-size:20px">제목</th>
+                                            <th class="text-center" scope="col" style="font-size:20px">카테고리</th>
+                                            <th class="text-center" scope="col" style="font-size:20px">작성날짜</th>
+                                            <th class="text-center" scope="col" style="font-size:20px">조회수</th>
+                                            <th class="text-center" scope="col" style="font-size:20px">대답여부</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- @forelse($questions as $question)
+                                        @for($i = 0; $i < count($boards); $i++)
                                         <tr>
-                                            <th class="text-center" scope="row">{{$question->id}}</th>
-                                            <td class="text-center">{{$question->title}}</td>
-                                            <td class="text-center">{{$question->created_at}}</td>
+                                            <th class="text-center" scope="row">{{$boards[$i]->id}}</th>
+                                            <td class="text-center">{{$boards[$i]->title}}</td>
+                                            <td class="text-center">{{$board_categories[$i]->category}}</td>
+                                            <td class="text-center">{{$boards[$i]->created_at}}</td>
+                                            <td class="text-center">{{$boards[$i]->view_count}}</td>
+                                            @if($board_comment[$i])
                                             <td class="text-center">O</td>
+                                            @else 
+                                            <td class="text-center">X</td>
+                                            @endif
                                         </tr>
-                                        @empty --}}
-                                        <p class="text-center text-danger">이력이 없습니다.</p>
-                                        {{-- @endforelse --}}
+                                        {{-- @empty 
+                                        <p class="text-center text-danger">이력이 없습니다.</p> --}}
+                                        @endfor
                                         <br />
 
                                     </tbody>

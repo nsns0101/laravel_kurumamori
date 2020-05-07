@@ -46,7 +46,7 @@
         {{-- 구글맵, 설명 --}}
         <div class="row">
             {{-- 구글맵 --}}
-            <div class="col-xl-6 col-lg-6 col-md-6">
+            <div class="col-xl-5 col-lg-5 col-md-5">
                 <div id="map" style="width:100%; height:500px;"></div>
                 <img src="/icon/orange_map_icon.png">급가속 구간
                 <img src="/icon/green_map_icon.png">급감속 구간
@@ -56,7 +56,7 @@
             <div class="col-sm-3 col-md-1"></div>
 
             {{-- 오늘의 운전점수 --}}
-            <div class="col-sm-3 col-md-3">
+            <div class="col-sm-3 col-md-4">
                 <div class="thumbnail">
                     <div class="caption">
                         <h3 class="text-center">오늘의 운전점수</h3>
