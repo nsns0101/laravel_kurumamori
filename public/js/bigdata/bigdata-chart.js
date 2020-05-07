@@ -34,7 +34,7 @@ var bigDataAgeChart = new Chart(ctx, {
         },
         legend: {
             display: true, 
-            position: 'bottom',
+            position: 'right',
         },
         cutoutPercentage: 35,   // 가운데 빈 공간 영역 크기
         yAxes: [{
@@ -94,7 +94,7 @@ var bigDataTimeChart = new Chart(ctx, {
         },
         legend: {
             display: true, 
-            position: 'bottom',
+            position: 'right',
 
         },
         cutoutPercentage: 35,
