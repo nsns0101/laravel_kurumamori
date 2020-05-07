@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 class ReviewsController extends Controller
 {
     public function __construct(){
+        $this->middleware('auth');
         $this->middleware('auth',['except'=>['index','show','edit','delete','store','update']]);
     }
     public function index()
@@ -61,9 +62,11 @@ class ReviewsController extends Controller
     public function show(\App\Board $review){
 
         \Log::info('reviews show');
+        $category = $review->category_id; 
+        $comments = \App\Comment::where('board_id','=',$review->id)->latest()->orderBy('id','desc')->paginate(10);
         \Log::info($review->all());
 
-        return view('reviews.show',compact('review'));
+        return view('reviews.show',compact('review','category','comments'));
     }
 
     public function edit(\App\Board $review){
@@ -89,7 +92,7 @@ class ReviewsController extends Controller
             return back()->withInput();
         }
 
-        return redirect()->route('reviews.index',compact('reviews'));
+        return redirect()->route('reviews.index');
     }
 
     public function destroy(\App\Board $review)

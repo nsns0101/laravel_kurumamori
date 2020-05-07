@@ -7,18 +7,35 @@ use Illuminate\Http\Request;
 class QuestionsController extends Controller
 {
     public function __construct(){
+        $this->middleware('auth');
         $this->middleware('auth',['except'=>['index','show','edit','delete','store','update']]);
     }
     //
-    public function index()
+    public function index(Request $request, $category = null)
     {
         \Log::info('questions index');
 
         $user = \App\User::whereId(auth()->user()->id)->first();
         \Log::info($user);
+        $query = $category
+            ? \App\Category::whereId($Category)->firstOrFail()->boards()
+            : new \App\Board;
 
-        $questions = \App\Board::where('category_id','!=','7')->latest()->orderBy('id','desc')->paginate(10);
-        \Log::info($questions);
+        $query = $query->orderBy(
+            $request->input('sort','created_at'),
+            $request->input('order','desc'),
+        );
+        $questions = $query->paginate(10);
+        // if(count(explode('?',url()->full())) >= 2 ){
+        //     $value = explode('=', explode('?',url()->full())[count(explode('?',url()->full()))-1] );
+        //     \Log::info( explode('?',url()->full())[count(explode('?',url()->full()))-1] );
+        //     \Log::info( $value );
+        //     $questions = \App\Board::where($value[0],'=',$value[1])->latest()->orderBy('id','desc')->paginate(10);
+        // }
+        // else{
+        //     $questions = \App\Board::where('category_id','!=','7')->latest()->orderBy('id','desc')->paginate(10);
+        //     \Log::info($questions);
+        // }
 
         return view('questions.index',compact('questions'));
     }
@@ -59,16 +76,21 @@ class QuestionsController extends Controller
             return back()->withInput();
         }
         
-        return redirect()->route('questions.index',compact('questions'));
-        // return $request->all();
+        return redirect()->route('questions.index');
+
     }
 
 
     public function show(\App\Board $question){
 
         \Log::info('questions show');
+        $question->view_count += 1;
+        $question->save();
 
-        return view('questions.show',compact('question'));
+        $category = $question->category_id; 
+        $comments = \App\Comment::where('board_id','=',$question->id)->latest()->orderBy('id','desc')->paginate(10);
+        \Log::info($comments);
+        return view('questions.show',compact('question','category','comments'));
     }
 
     public function edit(\App\Board $question){
