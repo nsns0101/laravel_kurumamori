@@ -13,9 +13,9 @@ class BigdataController extends Controller
      */
     public function index()
     {
-        $date = date("Y-m-d");  //현재날짜
+        $detail = null;
         \Log::info('index 성공');
-        return view('bigdata.index', compact('date'));
+        return view('bigdata.index', compact('detail'));
 
     }
 
@@ -51,7 +51,9 @@ class BigdataController extends Controller
      */
     public function show($option = null)
     {
-        return $option;
+        // return하는 블레이드는 동일
+        \Log::info($option);
+        return view('bigdata.detail.index', compact('option'));
     }
 
     /**
