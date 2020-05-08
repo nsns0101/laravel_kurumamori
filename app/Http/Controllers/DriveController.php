@@ -128,10 +128,10 @@ class DriveController extends Controller
         $score_sleep -= ($day_5_danger_info[0]["count_sleep"] * (100 * $mul)) - $add_score;
         $score_report -= ($day_5_danger_info[0]["count_report"] * (100 * $mul)) - $add_score;
         //총 점수
-        $score_all = $score_sudden_acceleration + $score_sudden_stop + $score_sleep + $score_report;
+        $score_all = ($score_sudden_acceleration + $score_sudden_stop + $score_sleep + $score_report) / 4;
         //배열에 추가
         $score = [$score_all, $score_sudden_acceleration, $score_sudden_stop, $score_sleep, $score_report];
-        // \Log::info($score);
+        \Log::info($score);
         
         //점수 최대, 최소 점수 부여
         for($i = 0; $i < count($score); $i++){
