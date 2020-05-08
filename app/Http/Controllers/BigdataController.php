@@ -14,8 +14,8 @@ class BigdataController extends Controller
     public function index()
     {
         $date = date("Y-m-d");  //현재날짜
-
-        return view('bigdata.big_data', compact('date'));
+        \Log::info('index 성공');
+        return view('bigdata.index', compact('date'));
 
     }
 
@@ -49,9 +49,9 @@ class BigdataController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($option = null)
     {
-        //
+        return $option;
     }
 
     /**

@@ -2,8 +2,8 @@
 
 
 
-<div class="card-menu">
-    <div class="col-8 bigdata-card-menu mt-5">
+<div class="container px-3 py-5 p-md-5">
+    <div class="bigdata-card-menu mt-5">
         <p class="bigdata-text">쿠루마모리119에서 제공되는 졸음운전 데이터입니다.</p>
         <div class="card sleep-chart border-info">
             <div class="row no-gutters">
@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    <div class="col-8 bigdata-card-menu mt-5">
+    <div class="bigdata-card-menu mt-5">
         <p class="bigdata-text">쿠루마모리119에서 제공되는 급정거 급가속 데이터입니다.</p>
         <div class="card sudden-chart border-warning">
             <div class="row no-gutters">
@@ -39,7 +39,7 @@
         </div>
     </div>
 
-    <div class="col-8 bigdata-card-menu mt-5">
+    <div class="bigdata-card-menu mt-5">
         <p class="bigdata-text">쿠루마모리119에서 제공되는 교통사고 데이터입니다.</p>
         <div class="card accident-chart border-danger">
             <div class="row no-gutters">
@@ -57,7 +57,3 @@
         </div>
     </div>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>

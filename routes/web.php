@@ -71,8 +71,10 @@ Route::resource('/boards/reviews','ReviewsController');
 //ㅡㅡㅡㅡㅡㅡㅡㅡ 빅데이터 페이지 ㅡㅡㅡㅡㅡㅡㅡㅡ
 Route::resource('/bigdata', 'BigdataController');
 
+Route::get('/bigdata/{option}', 'BigdataController@show');
+
 //월별 빅데이터 조회
-Route::get('bigdata/{bigdata_date}/search', [ //{date}값에 들어온 것은 index메서드로 넘김
-    'as' => 'bigdata.date',
-    'uses' => 'BigdataController@index',
-]);
+// Route::get('bigdata/{bigdata_date}/search', [ //{bigdata_date}값에 들어온 것은 index메서드로 넘김
+//     'as' => 'bigdata.date',
+//     'uses' => 'BigdataController@index',
+// ]);
