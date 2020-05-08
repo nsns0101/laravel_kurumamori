@@ -6,11 +6,6 @@ use Illuminate\Http\Request;
 
 class BigdataController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $detail = null;
@@ -19,72 +14,54 @@ class BigdataController extends Controller
 
     }
 
-    // public function getSleep() {
-    //     $sleepCount = 
-    // }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($option = null)
     {
-        // return하는 블레이드는 동일
+        // ㅡㅡㅡㅡㅡ졸음횟수ㅡㅡㅡㅡㅡ
+        $sleep_count = \DB::table('drive_detections')->where('bool_sleep', 1)->count();   //운전감지 테이블에서 졸음운전 전체 횟수 count
+        \Log::info($sleep_count);
+
+        // ㅡㅡㅡㅡㅡ급감속 급가속ㅡㅡㅡㅡㅡ
+        $sud_acceleration_count = \DB::table('drive_detections')->where('bool_sudden_acceleration', 1)->count();   //운전감지 테이블에서 급가속 전체 횟수 count
+        \Log::info($sud_acceleration_count);
+        $sud_stop_count = \DB::table('drive_detections')->where('bool_sudden_stop', 1)->count();    //운전감지 테이블에서 급정거 전체 횟수 count
+        \Log::info($sud_stop_count);
+
+        $abc = \DB::table('drive_detections')->where([      //where조건 2개 이상
+            ['bool_sudden_stop', 0],
+            ['bool_sudden_acceleration', 0],
+        ])->count();
+        \Log::info($abc);
+
+        // ㅡㅡㅡㅡㅡ사고ㅡㅡㅡㅡㅡ
+        $accident_count = \DB::table('drive_detections')->where('bool_report', 1)->count();    //운전감지 테이블에서 급정거 전체 횟수 count
+        \Log::info($accident_count);
+
+
+        // return
         \Log::info($option);
         return view('bigdata.detail.index', compact('option'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

@@ -1,16 +1,15 @@
 <!-- 그래프 메뉴 -->
 <div class="chart-container">
-    <!-- 조회 옵션 버튼 -->
-    <div class="search-option-btn">
+    <!-- <div class="search-option-btn">
         <button class="btn btn-primary">통합</button>
         <button class="btn btn-info">졸음운전</button>
         <button class="btn btn-info">급정거 · 가속</button>
         <button class="btn btn-info">사고</button>
     </div>
-    <br>
+    <br> -->
     <!-- 그래프 -->
-    <div class="row">
-        <div class="col-md-4 col-3">
+    <div class="container px-3 py-5 p-md-5">
+        <div class="pt-5">
             <!-- 연령대 그래프 -->
             <div class="card">
                 <div class="card-header">
@@ -26,7 +25,7 @@
         </div>
 
         <!-- 시간대 그래프 -->
-        <div class="col-md-4 col-3">
+        <div class="pt-5">
             <div class="card">
                 <div class="card-header">
                     시간대 그래프
