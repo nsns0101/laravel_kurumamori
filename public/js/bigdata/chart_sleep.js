@@ -1,26 +1,37 @@
+// Set new default font family and font color to mimic Bootstrap's default styling
+Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+Chart.defaults.global.defaultFontColor = '#858796';
+
 
 // 연령대 그래프
 var ctx = document.getElementById("bigDataAgeChart");   //bigdata/bigdata_chart/chart.blade.php의 canvas id
 var bigDataAgeChart = new Chart(ctx, {
-    type: "pie",
+    type: "line",
     data: {
-        labels: ['20대', '30대', '40대', '50대', '60대 이상'],    // 기준
+        labels: ['20대', '30대', '40대', '50대', '60대 이상'],    // 제목
         datasets: [
             {
                 data: [
-                    35,     //값
+                    35,     // 차트에 들어가는 데이터의 값
                     20, 
                     31,
                     24,
                     50,
                 ],
-                backgroundColor: ["blue", "green", "yellow", "orange", "red"],
-                //hoverBackgroundColor: ["orange", "green", "blue", "red", "black"],
+                backgroundColor: ["blue", "green", "yellow", "orange", "red"],      // 막대 그래프의 배경 색
+                borderColor: [  // 그래프를 감싸는 border의 색 
+                    "rgba(255,99,132,1)",'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)' 
+                ],
                 hoverBorderColor: "rgba(234, 236, 244, 1)"
             }
         ]
     },
     options: {
+        animation: { animateScale: true},
         maintainAspectRatio: false,
         tooltips: {
             backgroundColor: "rgb(255,255,255)",
@@ -39,6 +50,7 @@ var bigDataAgeChart = new Chart(ctx, {
         cutoutPercentage: 35,   // 가운데 빈 공간 영역 크기
         yAxes: [{
             ticks: {
+                beginAtZero: true,
               maxTicksLimit: 5,
               padding: 20,
               // Include a dollar sign in the ticks

@@ -26,5 +26,7 @@
 
 @section('script')
 <!-- chart.js파일 불러오기 -->
-<script src="/js/bigdata/chart.js"></script>
+<script src="/js/bigdata/chart_sleep.js"></script>
+<script src="/js/bigdata/chart_sudden.js"></script>
+<script src="/js/bigdata/chart_accident.js"></script>
 @endsection
