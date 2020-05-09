@@ -57,21 +57,21 @@
         
         $('.sickness_btn1').html($(this).text() + ' <span class="caret"></span>');
         // $('.sickness_btn').val($(this).data('value'));
-        $('#sickness_name1').val($('.sickness_btn1').text());
+        $('.sickness_name1').val($('.sickness_btn1').text());
 
     });
     $(".dropdown-sickness2").click(function(){
         
         $('.sickness_btn2').html($(this).text() + ' <span class="caret"></span>');
         // $('.sickness_btn').val($(this).data('value'));
-        $('#sickness_name2').val($('.sickness_btn2').text());
+        $('.sickness_name2').val($('.sickness_btn2').text());
 
     });
     $(".dropdown-sickness3").click(function(){
         
         $('.sickness_btn3').html($(this).text() + ' <span class="caret"></span>');
         // $('.sickness_btn').val($(this).data('value'));
-        $('#sickness_name3').val($('.sickness_btn3').text());
+        $('.sickness_name3').val($('.sickness_btn3').text());
 
     });
     //혈액형
@@ -114,11 +114,14 @@
     }
     function delete_past_sickness(){
         $(`#form__past_sickness${past_sickness_count}`).css("display","none");
+        $(`.past_sickness_btn${past_sickness_count}`).text("선택");
+        $(`.past_sickness_name${past_sickness_count}`).val("");
         past_sickness_count--;
     }
     function delete_sickness(){
         $(`#form__sickness${sickness_count}`).css("display","none");
-        $(`.sickness_btn${past_sickness_count}`).text("선택");
+        $(`.sickness_btn${sickness_count}`).text("선택");
+        $(`.sickness_name${sickness_count}`).val("");
         sickness_count--;
     }
 

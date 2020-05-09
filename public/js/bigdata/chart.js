@@ -61,7 +61,7 @@ var bigDataAgeChart = new Chart(ctx, {
 // 시간대 그래프
 var ctx = document.getElementById("bigDataTimeChart");   //bigdata/bigdata_chart/chart.blade.php의 시간대 canvas id
 var bigDataTimeChart = new Chart(ctx, {
-    type: "pie",
+    type: "bar",
     data: {
         labels: ['00~04', '04~08', '08~12', '12~16', '16~20', '20~24'],    // 기준
         datasets: [

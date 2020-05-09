@@ -66,4 +66,6 @@
         </div>
     </div>
 </div>
+<p class="text-danger">위의 작성하신 의료정보는 운전 중 사고발생시 119센터에 보내는 메시지입니다.</p>
+<p class="text-danger">작성한 정보에 틀린 점이 없는 지 확인해 주세요.</p>
 
