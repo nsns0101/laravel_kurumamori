@@ -58,6 +58,9 @@ Route::get('info/{date}/drive_score', [ //{date}값에 들어온 것은 index메
 Route::resource('/products','ProductController');
 
 Route::resource('/buy','BuyController');
+Route::get('/thanks', function () {
+    return view('product.thanks');
+});
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ Q&A ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ

@@ -59,7 +59,7 @@ class BuyController extends Controller
             'product_key'=>$product_key,
         ]);
 
-        return redirect('/');
+        return redirect('/thanks');
     }
     /**
      * Display the specified resource.

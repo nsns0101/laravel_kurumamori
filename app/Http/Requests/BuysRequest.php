@@ -36,8 +36,8 @@ class BuysRequest extends FormRequest
     public function messages() {
         return [
             'integer' => '숫자만 입력할 수 있습니다.',
-            'required' => '필수 입력 항목입니다.',
-            'min' => ':min 개 이상 구매해야 합니다..',
+            'required' => '필수 입력입니다.',
+            'min' => ':min 개 이상 구매해야 합니다.',
         ];
     }
 }

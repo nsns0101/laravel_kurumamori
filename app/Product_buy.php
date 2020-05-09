@@ -16,7 +16,7 @@ class Product_buy extends Model
         'to_zipcode',
         'payment',
         'product_key',
-        // 'product_name'
+        'product_name'
     ];
 
     public function user(){
