@@ -2,32 +2,88 @@
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
-
 // 연령대 그래프
 var ctx = document.getElementById("bigDataAgeChart");   //bigdata/bigdata_chart/chart.blade.php의 canvas id
 var bigDataAgeChart = new Chart(ctx, {
     type: "line",
     data: {
-        labels: ['20대', '30대', '40대', '50대', '60대 이상'],    // 제목
+        labels: ['1','2','3','4','5','6','7'],    // 제목
         datasets: [
             {
                 data: [
-                    35,     // 차트에 들어가는 데이터의 값
-                    20, 
-                    31,
-                    24,
-                    50,
+                    sleep20[6].bool_sleep_count,
+                    sleep20[5].bool_sleep_count,
+                    sleep20[4].bool_sleep_count,
+                    sleep20[3].bool_sleep_count,
+                    sleep20[2].bool_sleep_count,
+                    sleep20[1].bool_sleep_count,
+                    sleep20[0].bool_sleep_count,
                 ],
-                backgroundColor: ["blue", "green", "yellow", "orange", "red"],      // 막대 그래프의 배경 색
-                borderColor: [  // 그래프를 감싸는 border의 색 
-                    "rgba(255,99,132,1)",'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)' 
+                borderColor: "orange",   //선 색깔
+                pointRadius: 3,
+                pointBackgroundColor: "orange",  //꼭짓점 색깔
+                pointBorderColor: "orange",  //꼭짓점 바탕색깔
+            },
+            {
+                data: [
+                    sleep30[6].bool_sleep_count,
+                    sleep30[5].bool_sleep_count,
+                    sleep30[4].bool_sleep_count,
+                    sleep30[3].bool_sleep_count,
+                    sleep30[2].bool_sleep_count,
+                    sleep30[1].bool_sleep_count,
+                    sleep30[0].bool_sleep_count,
                 ],
-                hoverBorderColor: "rgba(234, 236, 244, 1)"
-            }
+                borderColor: "red",   //선 색깔
+                pointRadius: 3,
+                pointBackgroundColor: "red",  //꼭짓점 색깔
+                pointBorderColor: "red",  //꼭짓점 바탕색깔 
+            }, 
+            {
+                data: [
+                    sleep40[6].bool_sleep_count,
+                    sleep40[5].bool_sleep_count,
+                    sleep40[4].bool_sleep_count,
+                    sleep40[3].bool_sleep_count,
+                    sleep40[2].bool_sleep_count,
+                    sleep40[1].bool_sleep_count,
+                    sleep40[0].bool_sleep_count,
+                ],
+                borderColor: "blue",   //선 색깔
+                pointRadius: 3,
+                pointBackgroundColor: "blue",  //꼭짓점 색깔
+                pointBorderColor: "blue",  //꼭짓점 바탕색깔 
+            },
+            {
+                data: [
+                    sleep50[6].bool_sleep_count,
+                    sleep50[5].bool_sleep_count,
+                    sleep50[4].bool_sleep_count,
+                    sleep50[3].bool_sleep_count,
+                    sleep50[2].bool_sleep_count,
+                    sleep50[1].bool_sleep_count,
+                    sleep50[0].bool_sleep_count,
+                ],
+                borderColor: "yellow",   //선 색깔
+                pointRadius: 3,
+                pointBackgroundColor: "yellow",  //꼭짓점 색깔
+                pointBorderColor: "yellow",  //꼭짓점 바탕색깔 
+            },
+            {
+                data: [
+                    sleep60[6].bool_sleep_count,
+                    sleep60[5].bool_sleep_count,
+                    sleep60[4].bool_sleep_count,
+                    sleep60[3].bool_sleep_count,
+                    sleep60[2].bool_sleep_count,
+                    sleep60[1].bool_sleep_count,
+                    sleep60[0].bool_sleep_count,
+                ],
+                borderColor: "black",   //선 색깔
+                pointRadius: 3,
+                pointBackgroundColor: "black",  //꼭짓점 색깔
+                pointBorderColor: "black",  //꼭짓점 바탕색깔 
+            },
         ]
     },
     options: {

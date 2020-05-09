@@ -25,6 +25,10 @@
 @endsection
 
 @section('script')
+<script>
+var a = <?php echo json_encode($a); ?>;
+</script>
+
 <!-- chart.js파일 불러오기 -->
 <script src="/js/bigdata/chart_sleep.js"></script>
 <script src="/js/bigdata/chart_sudden.js"></script>

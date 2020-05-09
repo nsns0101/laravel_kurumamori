@@ -24,7 +24,7 @@ class BigdataController extends Controller
         //
     }
 
-    public function show($option = null)
+    public function show($option)
     {
         // 현재 날짜 기준으로 최근 7일 날짜 구하기
         $date = date("Y-m-d");
@@ -34,43 +34,59 @@ class BigdataController extends Controller
         }
         \Log::info($day_7);     // 2020-05-09, 2020-05-08 ...
 
-        // 나이대quf user의 id
-        $query20 = \DB::select("select id, sum(if(DATE_FORMAT(now(),'%Y')-substring(birth,1,4) between 20 and 29, 1, 0)) as age20 from users group by id");  // 20대 수
-        \Log::info($query20);
+        // 나이대별 user의 id 찾기
+        $query = \DB::select("select id from users where DATE_FORMAT(now(), '%Y')-substring(birth,1,4) between 20 and 29");
+        \Log::info($query);
 
-        // ㅡㅡㅡㅡㅡ졸음횟수ㅡㅡㅡㅡㅡ
-        $sleep_count = \DB::table('drive_detections')->where('bool_sleep', 1)->count();   //운전감지 테이블에서 졸음운전 전체 횟수 count
-        \Log::info($sleep_count);
-
-
-        // // 최근 7일간의 20대 졸음 횟수
-        // $sleep_count_207 = array();
-        // for($i = 0; $i < count($day_7); $i++) {
-        //     \DB::table('drive_detections')->join('users', function($join){
-        //         $join->on('drive_detections.user_id', 'users.id')->where('users.birth', '>' )
-        //     })
-        // }
-
-        // ㅡㅡㅡㅡㅡ급감속 급가속ㅡㅡㅡㅡㅡ
-        $sud_acceleration_count = \DB::table('drive_detections')->where('bool_sudden_acceleration', 1)->count();   //운전감지 테이블에서 급가속 전체 횟수 count
-        \Log::info($sud_acceleration_count);
-        $sud_stop_count = \DB::table('drive_detections')->where('bool_sudden_stop', 1)->count();    //운전감지 테이블에서 급정거 전체 횟수 count
-        \Log::info($sud_stop_count);
-
-        $abc = \DB::table('drive_detections')->where([      //where조건 2개 이상
-            ['bool_sudden_stop', 0],
-            ['bool_sudden_acceleration', 0],
-        ])->count();
-        \Log::info($abc);
-
-        // ㅡㅡㅡㅡㅡ사고ㅡㅡㅡㅡㅡ
-        $accident_count = \DB::table('drive_detections')->where('bool_report', 1)->count();    //운전감지 테이블에서 급정거 전체 횟수 count
-        \Log::info($accident_count);
-
+        // 연령대별 사람들의 졸음운전 총 횟수
+        // $sleep20_total = \DB::select("SELECT count('bool_sleep') FROM drive_detections JOIN users WHERE user_id = users.id AND DATE_FORMAT(now(), '%Y')-substring(birth,1,4) BETWEEN 20 and 29 AND bool_sleep = 1" );
+        // \Log::info($sleep20_total);
+        // $sleep30_total = \DB::select("SELECT count('bool_sleep') FROM drive_detections JOIN users WHERE user_id = users.id AND DATE_FORMAT(now(), '%Y')-substring(birth,1,4) BETWEEN 30 and 39 AND bool_sleep = 1" );
+        // \Log::info($sleep30_total);
+        // $sleep40_total = \DB::select("SELECT count('bool_sleep') FROM drive_detections JOIN users WHERE user_id = users.id AND DATE_FORMAT(now(), '%Y')-substring(birth,1,4) BETWEEN 40 and 49 AND bool_sleep = 1" );
+        // \Log::info($sleep40_total);
+        // $sleep50_total = \DB::select("SELECT count('bool_sleep') FROM drive_detections JOIN users WHERE user_id = users.id AND DATE_FORMAT(now(), '%Y')-substring(birth,1,4) BETWEEN 50 and 59 AND bool_sleep = 1" );
+        // \Log::info($sleep50_total);
+        // $sleep60_total = \DB::select("SELECT count('bool_sleep') FROM drive_detections JOIN users WHERE user_id = users.id AND DATE_FORMAT(now(), '%Y')-substring(birth,1,4) > 59 AND bool_sleep = 1" );
+        // \Log::info($sleep60_total);
+        
+        // 연령대별 사람들의 최근 7일간의 횟수
+        $danger = ["bool_report","bool_sudden_acceleration","bool_sudden_stop","bool_sleep"];
+        $age = [20,30,40,50,60];
+        for($i = 0; $i < count($age); $i++){
+            if($age >= 60) {
+                for($j = 0; $j < count($danger); $j++){
+                    for($k = 0; $k < count($day_7); $k++){
+                        $a[$age[$i]."대"][$danger[$j]][$day_7[$k]] = 
+                        \DB::table('drive_detections')
+                        ->select(\DB::raw("count({$danger[$j]}) as {$danger[$j]}_count"))
+                        ->join('users', 'drive_detections.user_id', '=', 'users.id')
+                        ->where(\DB::raw("DATE_FORMAT(now(), '%Y')-substring(users.birth,1,4)"), ">", 60)
+                        ->where("drive_detections.{$danger[$j]}","=",true)
+                        ->where(\DB::raw("DATE_FORMAT(drive_detections.created_at, '%Y-%m-%d')"), "=", "{$day_7[$k]}")
+                        ->first();
+                    };
+                }
+            } else{
+                for($j = 0; $j < count($danger); $j++){
+                    for($k = 0; $k < count($day_7); $k++){
+                        $a[$age[$i]."대"][$danger[$j]][$day_7[$k]] = 
+                        \DB::table('drive_detections')
+                        ->select(\DB::raw("count({$danger[$j]}) as {$danger[$j]}_count"))
+                        ->join('users', 'drive_detections.user_id', '=', 'users.id')
+                        ->whereBetween(\DB::raw("DATE_FORMAT(now(), '%Y')-substring(users.birth,1,4)"),[$age[$i],$age[$i] + 9])
+                        ->where("drive_detections.{$danger[$j]}","=",true)
+                        ->where(\DB::raw("DATE_FORMAT(drive_detections.created_at, '%Y-%m-%d')"), "=", "{$day_7[$k]}")
+                        ->first();
+                    };
+                }
+            }
+        }
+        \Log::info($a);
 
         // return
         \Log::info($option);
-        return view('bigdata.detail.index', compact('option'));
+        return view('bigdata.detail.index', compact('option', 'a'));
     }
 
     public function edit($id)
