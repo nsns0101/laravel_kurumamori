@@ -3,25 +3,12 @@
 @section('content')
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     @if($option == 'sleep')
-        <br>
-        <br>
-        <br>
-        <br>
-        <h5>sleep sleep</h5>
+        @include('bigdata.chart.sleep')
     @elseif($option == 'sudden')
-        <br>
-        <br>
-        <br>
-        <br>
-        <h5>sudden sudden</h5>
+        @include('bigdata.chart.sudden')
     @else
-        <br>
-        <br>
-        <br>
-        <br>
-        <h5>accident accident</h5>
+        @include('bigdata.chart.accident')
     @endif
-    @include('bigdata.chart.chart')
 @endsection
 
 @section('script')

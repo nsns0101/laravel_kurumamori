@@ -35,20 +35,20 @@ class BigdataController extends Controller
         \Log::info($day_7);     // 2020-05-09, 2020-05-08 ...
 
         // 나이대별 user의 id 찾기
-        $query = \DB::select("select id from users where DATE_FORMAT(now(), '%Y')-substring(birth,1,4) between 20 and 29");
-        \Log::info($query);
+        // $query = \DB::select("select id from users where DATE_FORMAT(now(), '%Y')-substring(birth,1,4) between 20 and 29");
+        // \Log::info($query);
 
         // 연령대별 사람들의 졸음운전 총 횟수
-        $sleep20_total = \DB::select("SELECT count('bool_sleep') FROM drive_detections JOIN users WHERE user_id = users.id AND DATE_FORMAT(now(), '%Y')-substring(birth,1,4) BETWEEN 20 and 29 AND bool_sleep = 1" );
-        \Log::info($sleep20_total);
-        $sleep30_total = \DB::select("SELECT count('bool_sleep') FROM drive_detections JOIN users WHERE user_id = users.id AND DATE_FORMAT(now(), '%Y')-substring(birth,1,4) BETWEEN 30 and 39 AND bool_sleep = 1" );
-        \Log::info($sleep30_total);
-        $sleep40_total = \DB::select("SELECT count('bool_sleep') FROM drive_detections JOIN users WHERE user_id = users.id AND DATE_FORMAT(now(), '%Y')-substring(birth,1,4) BETWEEN 40 and 49 AND bool_sleep = 1" );
-        \Log::info($sleep40_total);
-        $sleep50_total = \DB::select("SELECT count('bool_sleep') FROM drive_detections JOIN users WHERE user_id = users.id AND DATE_FORMAT(now(), '%Y')-substring(birth,1,4) BETWEEN 50 and 59 AND bool_sleep = 1" );
-        \Log::info($sleep50_total);
-        $sleep60_total = \DB::select("SELECT count('bool_sleep') FROM drive_detections JOIN users WHERE user_id = users.id AND DATE_FORMAT(now(), '%Y')-substring(birth,1,4) > 59 AND bool_sleep = 1" );
-        \Log::info($sleep60_total);
+        // $sleep20_total = \DB::select("SELECT count('bool_sleep') FROM drive_detections JOIN users WHERE user_id = users.id AND DATE_FORMAT(now(), '%Y')-substring(birth,1,4) BETWEEN 20 and 29 AND bool_sleep = 1" );
+        // \Log::info($sleep20_total);
+        // $sleep30_total = \DB::select("SELECT count('bool_sleep') FROM drive_detections JOIN users WHERE user_id = users.id AND DATE_FORMAT(now(), '%Y')-substring(birth,1,4) BETWEEN 30 and 39 AND bool_sleep = 1" );
+        // \Log::info($sleep30_total);
+        // $sleep40_total = \DB::select("SELECT count('bool_sleep') FROM drive_detections JOIN users WHERE user_id = users.id AND DATE_FORMAT(now(), '%Y')-substring(birth,1,4) BETWEEN 40 and 49 AND bool_sleep = 1" );
+        // \Log::info($sleep40_total);
+        // $sleep50_total = \DB::select("SELECT count('bool_sleep') FROM drive_detections JOIN users WHERE user_id = users.id AND DATE_FORMAT(now(), '%Y')-substring(birth,1,4) BETWEEN 50 and 59 AND bool_sleep = 1" );
+        // \Log::info($sleep50_total);
+        // $sleep60_total = \DB::select("SELECT count('bool_sleep') FROM drive_detections JOIN users WHERE user_id = users.id AND DATE_FORMAT(now(), '%Y')-substring(birth,1,4) > 59 AND bool_sleep = 1" );
+        // \Log::info($sleep60_total);
         
         // 연령대별 사람들의 최근 7일간의 횟수
         $danger = ["bool_report","bool_sudden_acceleration","bool_sudden_stop","bool_sleep"];
