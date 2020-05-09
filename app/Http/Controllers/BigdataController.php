@@ -39,25 +39,25 @@ class BigdataController extends Controller
         \Log::info($query);
 
         // 연령대별 사람들의 졸음운전 총 횟수
-        // $sleep20_total = \DB::select("SELECT count('bool_sleep') FROM drive_detections JOIN users WHERE user_id = users.id AND DATE_FORMAT(now(), '%Y')-substring(birth,1,4) BETWEEN 20 and 29 AND bool_sleep = 1" );
-        // \Log::info($sleep20_total);
-        // $sleep30_total = \DB::select("SELECT count('bool_sleep') FROM drive_detections JOIN users WHERE user_id = users.id AND DATE_FORMAT(now(), '%Y')-substring(birth,1,4) BETWEEN 30 and 39 AND bool_sleep = 1" );
-        // \Log::info($sleep30_total);
-        // $sleep40_total = \DB::select("SELECT count('bool_sleep') FROM drive_detections JOIN users WHERE user_id = users.id AND DATE_FORMAT(now(), '%Y')-substring(birth,1,4) BETWEEN 40 and 49 AND bool_sleep = 1" );
-        // \Log::info($sleep40_total);
-        // $sleep50_total = \DB::select("SELECT count('bool_sleep') FROM drive_detections JOIN users WHERE user_id = users.id AND DATE_FORMAT(now(), '%Y')-substring(birth,1,4) BETWEEN 50 and 59 AND bool_sleep = 1" );
-        // \Log::info($sleep50_total);
-        // $sleep60_total = \DB::select("SELECT count('bool_sleep') FROM drive_detections JOIN users WHERE user_id = users.id AND DATE_FORMAT(now(), '%Y')-substring(birth,1,4) > 59 AND bool_sleep = 1" );
-        // \Log::info($sleep60_total);
+        $sleep20_total = \DB::select("SELECT count('bool_sleep') FROM drive_detections JOIN users WHERE user_id = users.id AND DATE_FORMAT(now(), '%Y')-substring(birth,1,4) BETWEEN 20 and 29 AND bool_sleep = 1" );
+        \Log::info($sleep20_total);
+        $sleep30_total = \DB::select("SELECT count('bool_sleep') FROM drive_detections JOIN users WHERE user_id = users.id AND DATE_FORMAT(now(), '%Y')-substring(birth,1,4) BETWEEN 30 and 39 AND bool_sleep = 1" );
+        \Log::info($sleep30_total);
+        $sleep40_total = \DB::select("SELECT count('bool_sleep') FROM drive_detections JOIN users WHERE user_id = users.id AND DATE_FORMAT(now(), '%Y')-substring(birth,1,4) BETWEEN 40 and 49 AND bool_sleep = 1" );
+        \Log::info($sleep40_total);
+        $sleep50_total = \DB::select("SELECT count('bool_sleep') FROM drive_detections JOIN users WHERE user_id = users.id AND DATE_FORMAT(now(), '%Y')-substring(birth,1,4) BETWEEN 50 and 59 AND bool_sleep = 1" );
+        \Log::info($sleep50_total);
+        $sleep60_total = \DB::select("SELECT count('bool_sleep') FROM drive_detections JOIN users WHERE user_id = users.id AND DATE_FORMAT(now(), '%Y')-substring(birth,1,4) > 59 AND bool_sleep = 1" );
+        \Log::info($sleep60_total);
         
         // 연령대별 사람들의 최근 7일간의 횟수
         $danger = ["bool_report","bool_sudden_acceleration","bool_sudden_stop","bool_sleep"];
         $age = [20,30,40,50,60];
         for($i = 0; $i < count($age); $i++){
-            if($age >= 60) {
+            if($age[$i] >= 60) {
                 for($j = 0; $j < count($danger); $j++){
                     for($k = 0; $k < count($day_7); $k++){
-                        $a[$age[$i]."대"][$danger[$j]][$day_7[$k]] = 
+                        $bigdata_chart[$age[$i]][$danger[$j]][$day_7[$k]] = 
                         \DB::table('drive_detections')
                         ->select(\DB::raw("count({$danger[$j]}) as {$danger[$j]}_count"))
                         ->join('users', 'drive_detections.user_id', '=', 'users.id')
@@ -70,7 +70,7 @@ class BigdataController extends Controller
             } else{
                 for($j = 0; $j < count($danger); $j++){
                     for($k = 0; $k < count($day_7); $k++){
-                        $a[$age[$i]."대"][$danger[$j]][$day_7[$k]] = 
+                        $bigdata_chart[$age[$i]][$danger[$j]][$day_7[$k]] = 
                         \DB::table('drive_detections')
                         ->select(\DB::raw("count({$danger[$j]}) as {$danger[$j]}_count"))
                         ->join('users', 'drive_detections.user_id', '=', 'users.id')
@@ -82,11 +82,11 @@ class BigdataController extends Controller
                 }
             }
         }
-        \Log::info($a);
+        \Log::info($bigdata_chart);
 
         // return
         \Log::info($option);
-        return view('bigdata.detail.index', compact('option', 'a'));
+        return view('bigdata.detail.index', compact('option', 'bigdata_chart', 'day_7'));
     }
 
     public function edit($id)

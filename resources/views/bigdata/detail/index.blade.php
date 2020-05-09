@@ -26,7 +26,8 @@
 
 @section('script')
 <script>
-var a = <?php echo json_encode($a); ?>;
+var bigdata_chart = <?php echo json_encode($bigdata_chart) ?>;
+var day_7 = <?php echo json_encode($day_7)?>;
 </script>
 
 <!-- chart.js파일 불러오기 -->

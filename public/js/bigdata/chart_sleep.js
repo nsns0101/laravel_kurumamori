@@ -7,17 +7,17 @@ var ctx = document.getElementById("bigDataAgeChart");   //bigdata/bigdata_chart/
 var bigDataAgeChart = new Chart(ctx, {
     type: "line",
     data: {
-        labels: ['1','2','3','4','5','6','7'],    // 제목
+        labels: [day_7[6], day_7[5], day_7[4], day_7[3], day_7[2], day_7[1], day_7[0]],    // 제목
         datasets: [
             {
                 data: [
-                    sleep20[6].bool_sleep_count,
-                    sleep20[5].bool_sleep_count,
-                    sleep20[4].bool_sleep_count,
-                    sleep20[3].bool_sleep_count,
-                    sleep20[2].bool_sleep_count,
-                    sleep20[1].bool_sleep_count,
-                    sleep20[0].bool_sleep_count,
+                    bigdata_chart["20"]["bool_sleep"][day_7[6]].bool_sleep_count,
+                    bigdata_chart["20"]["bool_sleep"][day_7[5]].bool_sleep_count,
+                    bigdata_chart["20"]["bool_sleep"][day_7[4]].bool_sleep_count,
+                    bigdata_chart["20"]["bool_sleep"][day_7[3]].bool_sleep_count,
+                    bigdata_chart["20"]["bool_sleep"][day_7[2]].bool_sleep_count,
+                    bigdata_chart["20"]["bool_sleep"][day_7[1]].bool_sleep_count,
+                    bigdata_chart["20"]["bool_sleep"][day_7[0]].bool_sleep_count,
                 ],
                 borderColor: "orange",   //선 색깔
                 pointRadius: 3,
@@ -26,63 +26,18 @@ var bigDataAgeChart = new Chart(ctx, {
             },
             {
                 data: [
-                    sleep30[6].bool_sleep_count,
-                    sleep30[5].bool_sleep_count,
-                    sleep30[4].bool_sleep_count,
-                    sleep30[3].bool_sleep_count,
-                    sleep30[2].bool_sleep_count,
-                    sleep30[1].bool_sleep_count,
-                    sleep30[0].bool_sleep_count,
+                    bigdata_chart["50"]["bool_sleep"][day_7[6]].bool_sleep_count,
+                    bigdata_chart["50"]["bool_sleep"][day_7[5]].bool_sleep_count,
+                    bigdata_chart["50"]["bool_sleep"][day_7[4]].bool_sleep_count,
+                    bigdata_chart["50"]["bool_sleep"][day_7[3]].bool_sleep_count,
+                    bigdata_chart["50"]["bool_sleep"][day_7[2]].bool_sleep_count,
+                    bigdata_chart["50"]["bool_sleep"][day_7[1]].bool_sleep_count,
+                    bigdata_chart["50"]["bool_sleep"][day_7[0]].bool_sleep_count,
                 ],
                 borderColor: "red",   //선 색깔
                 pointRadius: 3,
                 pointBackgroundColor: "red",  //꼭짓점 색깔
-                pointBorderColor: "red",  //꼭짓점 바탕색깔 
-            }, 
-            {
-                data: [
-                    sleep40[6].bool_sleep_count,
-                    sleep40[5].bool_sleep_count,
-                    sleep40[4].bool_sleep_count,
-                    sleep40[3].bool_sleep_count,
-                    sleep40[2].bool_sleep_count,
-                    sleep40[1].bool_sleep_count,
-                    sleep40[0].bool_sleep_count,
-                ],
-                borderColor: "blue",   //선 색깔
-                pointRadius: 3,
-                pointBackgroundColor: "blue",  //꼭짓점 색깔
-                pointBorderColor: "blue",  //꼭짓점 바탕색깔 
-            },
-            {
-                data: [
-                    sleep50[6].bool_sleep_count,
-                    sleep50[5].bool_sleep_count,
-                    sleep50[4].bool_sleep_count,
-                    sleep50[3].bool_sleep_count,
-                    sleep50[2].bool_sleep_count,
-                    sleep50[1].bool_sleep_count,
-                    sleep50[0].bool_sleep_count,
-                ],
-                borderColor: "yellow",   //선 색깔
-                pointRadius: 3,
-                pointBackgroundColor: "yellow",  //꼭짓점 색깔
-                pointBorderColor: "yellow",  //꼭짓점 바탕색깔 
-            },
-            {
-                data: [
-                    sleep60[6].bool_sleep_count,
-                    sleep60[5].bool_sleep_count,
-                    sleep60[4].bool_sleep_count,
-                    sleep60[3].bool_sleep_count,
-                    sleep60[2].bool_sleep_count,
-                    sleep60[1].bool_sleep_count,
-                    sleep60[0].bool_sleep_count,
-                ],
-                borderColor: "black",   //선 색깔
-                pointRadius: 3,
-                pointBackgroundColor: "black",  //꼭짓점 색깔
-                pointBorderColor: "black",  //꼭짓점 바탕색깔 
+                pointBorderColor: "red",  //꼭짓점 바탕색깔
             },
         ]
     },

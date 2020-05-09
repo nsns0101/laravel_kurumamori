@@ -207,7 +207,8 @@ $factory->define(App\Drive::class, function (Faker $faker) {
         array_push($day_5,date("Y-m-d H:m:s", strtotime($date ."-{$i} day")));
     }
     $start_time = Arr::random($day_5);
-    $created_at = date("Y-m-d H:m:s", strtotime($start_time ."+1 hours"));
+    $a = rand(1,24);
+    $created_at = date("Y-m-d H:m:s", strtotime($start_time ."+{$a} hours"));
     return [
         'user_id' => $faker->randomElement($userId),
         'drive_score' => rand(0, 100),
