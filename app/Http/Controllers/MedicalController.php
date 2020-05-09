@@ -201,6 +201,7 @@ class MedicalController extends Controller
                 if($i > count($sickness)){
                     \App\Sickness::create([
                         'user_id' => auth()->user()->id,
+                        'medical_id' => $medical_id,
                         'sickness_name' => $request->sickness_name[$i],
                         'medicine' => $request->medicine[$i],
                         'symptom' => $request->symptom[$i],
@@ -225,6 +226,7 @@ class MedicalController extends Controller
             }
             $sickness_count++;
         }
+        \Log::info($error);
         //medical_info DB Update
         $medical_info ->update([
             'user_id' => auth()->user()->id,
@@ -238,8 +240,9 @@ class MedicalController extends Controller
 
         //insurances DB Update
         $insurance = \App\Insurance::whereUser_id(auth()->user()->id)->first();
-        $insurance_list_id = \App\Insurance_list::whereInsurance_name($request->insurance_name)->first()->id;
+
         if($request->insurance_bool){
+            $insurance_list_id = \App\Insurance_list::whereInsurance_name($request->insurance_name)->first()->id;
             \Log::info($insurance);
             if($insurance){
                 $insurance->update([

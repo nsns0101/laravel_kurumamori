@@ -24,7 +24,7 @@
             <span class="caret"></span>
         </button>
         <div class="form-group {{ $errors->has("sickness_name.$i") ? 'has-error' : '' }}">
-        <input id="sickness_name{{$i}}" style="font-size:10px"type="hidden" name="sickness_name[{{$i}}]" class="form-control" value="{{ isset($sickness[$i-1]) ?old("sickness_name.$i",$sickness[$i-1]->sickness_name) :  old("sickness_name.$i")}}"/>
+        <input class="sickness_name{{$i}}" style="font-size:10px"type="hidden" name="sickness_name[{{$i}}]" class="form-control" value="{{ isset($sickness[$i-1]) ?old("sickness_name.$i",$sickness[$i-1]->sickness_name) :  old("sickness_name.$i")}}"/>
             {!! $errors->first('sickness_name.{{$i}}', '<span class="form-error">:message</span>') !!}
         </div>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">        
