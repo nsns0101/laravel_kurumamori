@@ -61,10 +61,10 @@
                     <div class="caption">
                         <h3 class="text-center">오늘의 운전점수</h3>
                         <hr style="background-color:darkgrey;"/>
-                        <p>총 운전 점수 : </p>
-                        <p>졸음 횟수 : {{$day_5_danger_info[0]["count_sleep"]}}</p>
-                        <p>급 가속 횟수 : {{$day_5_danger_info[0]["count_sudden_acceleration"]}}</p>
-                        <p>급 감속 횟수 : {{$day_5_danger_info[0]["count_sudden_stop"]}}</p>
+                        <p>총 운전 점수 : {{$score[0]}}점</p>
+                        <p>졸음 횟수 : {{$day_5_danger_info[0]["count_sleep"]}}회</p>
+                        <p>급 가속 횟수 : {{$day_5_danger_info[0]["count_sudden_acceleration"]}}회</p>
+                        <p>급 감속 횟수 : {{$day_5_danger_info[0]["count_sudden_stop"]}}회</p>
                         {{-- 당일 사고 정보 --}}
                         @if($report)
                             <p>사고 : {{$day_5_danger_info[0]["count_report"]}}건</p>
@@ -203,7 +203,6 @@ $("#drive_date").on("propertychange change keyup paste input", function() {
 
 <script>
 //구글맵 API
-console.log(drive_detection_5[0].length);
 var map;
 function initMap() {
     var location = new Array();

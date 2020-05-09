@@ -226,7 +226,7 @@ class MedicalController extends Controller
             }
             $sickness_count++;
         }
-        \Log::info($error);
+        // \Log::info($error);
         //medical_info DB Update
         $medical_info ->update([
             'user_id' => auth()->user()->id,
