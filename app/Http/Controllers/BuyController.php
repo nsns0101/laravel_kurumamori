@@ -44,8 +44,6 @@ class BuyController extends Controller
 
         $product_key =Str::random(12);
 
-        $product_name = "kurumamori";
-
         $buy = $request->user()->product_buys()->create([
             'ea'=>$request->ea,
             'price'=>$total_price,
@@ -55,7 +53,6 @@ class BuyController extends Controller
             'to_zipcode'=>$request->to_zipcode,
             'to_msg'=>$request->to_msg,
             'payment'=>$request->payment,
-            'product_name'=>$product_name,
             'product_key'=>$product_key,
         ]);
 
