@@ -194,9 +194,10 @@ $factory->define(App\Drive::class, function (Faker $faker) {
     for($i = 0; $i <5; $i++){
         array_push($day_5,date("Y-m-d H:m:s", strtotime($date ."-{$i} day")));
     }
-    $start_time = Arr::random($day_5);
+    $random_day_5 = Arr::random($day_5);
     $a = rand(1,24);
-    $created_at = date("Y-m-d H:m:s", strtotime($start_time ."+{$a} hours"));
+    $start_time = date("Y-m-d H:m:s", strtotime($random_day_5 ."+{$a} hours"));
+    $created_at = date("Y-m-d H:m:s", strtotime($start_time ."+1 hours"));
     return [
         'user_id' => $faker->randomElement($userId),
         'drive_score' => rand(0, 100),
@@ -246,7 +247,17 @@ $factory->define(App\Drive_detection::class, function (Faker $faker) {
 
 //신고 팩토리
 $factory->define(App\Report::class, function (Faker $faker) {
-    $userId = App\User::pluck('id')->toArray();
+    $randomId = App\User::pluck('id')->toArray();   //랜덤 유저 아이디
+    $drive_detection_info = App\Drive_detection::whereUser_id($randomId)->get(); //랜덤 유저아이디의 운전감지 정보
+
+    $user_id = array(); //신고가 일어난 유저의 아이디 배열
+
+    for($i = 0, $j = 0; $i < count($drive_detection_info); $i++){
+        if($drive_detection_info[$i]->bool_report){
+            $user_id[$j] = $drive_detection_info[$i]->user_id;
+        }
+    }
+
     return [
         'user_id' => $faker->randomElement($userId),
         // 'gps' => Str::random(3) . "시" . Str::random(2) . "동" . rand(1, 999) . '-' . rand(1, 999),

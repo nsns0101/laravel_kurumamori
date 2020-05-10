@@ -23,9 +23,9 @@
     <div class="col-xs-12 col-sm-12 col-md-3">
         <div class="card btn btn-primary text-dark"> <!-- 급 가속 점수 -->
             <div class="pt-3 pb-3">
-                 @if($score[0] >= 90)
+                 @if($score[1] >= 90)
                     <img src="/icon/모범.png">
-                @elseif($score[0] >= 50)
+                @elseif($score[1] >= 50)
                     <img src="/icon/양호.png">
                 @else
                     <img src="/icon/주의.png">
@@ -41,9 +41,9 @@
     <div class="col-xs-12 col-sm-12 col-md-3">
         <div class="card btn btn-primary text-dark"> <!-- 급 감속 점수 -->
             <div class="pt-3 pb-3">
-                 @if($score[0] >= 90)
+                 @if($score[2] >= 90)
                     <img src="/icon/모범.png">
-                @elseif($score[0] >= 50)
+                @elseif($score[2] >= 50)
                     <img src="/icon/양호.png">
                 @else
                     <img src="/icon/주의.png">
