@@ -146,5 +146,13 @@ labels: ["00시 ~ 06시", "06시 ~ 12시", "12시 ~ 18시", "18시 ~ 24시"],   
             display: true, 
             position: 'right',
         },
-    }
+        scales: {
+			yAxes: [{
+				display: true,
+				ticks: {
+					beginAtZero: true   // minimum value will be 0.
+				}
+			}]
+        },
+    }   
 });

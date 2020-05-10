@@ -18,7 +18,7 @@
     </div>
 
     <div class="bigdata-card-menu mt-5">
-        <p class="bigdata-text">쿠루마모리119에서 제공되는 급정거 급가속 데이터입니다.</p>
+        <p class="bigdata-text">쿠루마모리119에서 제공되는 급가속 급정거 데이터입니다.</p>
         <div class="card sudden-chart border-warning">
             <div class="row no-gutters">
                 <div class="col-4">

@@ -113,10 +113,10 @@ var ctx = document.getElementById("accidentTimeChart");   //bigdata/bigdata_char
 var accidentTimeChart = new Chart(ctx, {
     type: "bar",
     data: {
-labels: ["00시 ~ 06시", "06시 ~ 12시", "12시 ~ 18시", "18시 ~ 24시"],    // 기준
+        labels: ["00시 ~ 06시", "06시 ~ 12시", "12시 ~ 18시", "18시 ~ 24시"],    // 기준
         datasets: [
             {
-                label: "졸음운전",
+                label: "교통사고",
                 backgroundColor: "red",
                 hoverBackgroundColor: "#2e59d9",
                 borderColor: "red",
@@ -142,6 +142,14 @@ labels: ["00시 ~ 06시", "06시 ~ 12시", "12시 ~ 18시", "18시 ~ 24시"],   
         legend: {
             display: true, 
             position: 'right',
+        },
+        scales: {
+			yAxes: [{
+				display: true,
+				ticks: {
+					beginAtZero: true   // minimum value will be 0.
+				}
+			}]
         },
     }
 });
