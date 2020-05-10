@@ -27,8 +27,8 @@
 
 @section('script')
 <script>
-    var past_sickness_count = "{{ count($past_sickness) + 1}}";
-    var sickness_count = "{{ count($sickness) + 1}}";
+    var past_sickness_count = "{{ $past_sicknesses ? count($past_sicknesses) + 1 : 2}}";
+    var sickness_count = "{{ $sicknesses ? count($sicknesses) + 1 : 2}}";
 
     //예전 질병
     $(`.dropdown-past_sickness1`).click(function(){

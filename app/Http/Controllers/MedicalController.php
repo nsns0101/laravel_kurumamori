@@ -100,8 +100,8 @@ class MedicalController extends Controller
             }
         }
         //insurance DB create
-        $insurance_list_id = \App\Insurance_list::whereInsurance_name($request->insurance_name)->first()->id;
         if($request->insurance_bool){
+            $insurance_list_id = \App\Insurance_list::whereInsurance_name($request->insurance_name)->first()->id;
             \App\Insurance::create([
                 'user_id' => auth()->user()->id,
                 'medical_id' => $medical_id,

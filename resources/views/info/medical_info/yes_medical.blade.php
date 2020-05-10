@@ -5,13 +5,16 @@
             <div class="caption">
                 <h3 class="text-center">과거 병력</h3>
                 <hr style="background-color:darkgrey;">
-                @for($i = 0; $i < count($past_sicknesses); $i++)
-                    <p>예전에 걸린 병{{$i + 1}} : {{$past_sicknesses[$i]->past_sickness_name}}</p>
-                    <p>예전에 걸린 병{{$i + 1}} 보충 설명 : {{$past_sicknesses[$i]->past_sickness_supplementation}}</p>
+                @if(count($past_sicknesses))
+                    @for($i = 0; $i < count($past_sicknesses); $i++)
+                        <p>예전에 걸린 병{{$i + 1}} : {{$past_sicknesses[$i]->past_sickness_name}}</p>
+                        <p>예전에 걸린 병{{$i + 1}} 보충 설명 : {{$past_sicknesses[$i]->past_sickness_supplementation}}</p>
 
-                    <br/>
-                @endfor
-
+                        <br/>
+                    @endfor
+                @else
+                    <p class="text-danger">이력이 없습니다.</p>
+                @endif
                 <hr style="background-color:darkgrey;" />
             </div>
         </div>
@@ -22,14 +25,20 @@
             <div class="caption">
                 <h3 class="text-center">현재 병력</h3>
                 <hr style="background-color:darkgrey;"/>
-                @for($i = 0; $i < count($sicknesses); $i++)
-                    <p>현재 병{{$i + 1}} : {{$sicknesses[$i]->sickness_name}}</p>
-                    <p>복용중인 약{{$i + 1}} : {{$sicknesses[$i]->medicine}}</p>
-                    <p>증상{{$i + 1}} : {{$sicknesses[$i]->symptom}}</p>
-                    <p>다니는 병원 : {{$sicknesses[$i]->hospital}}</p>
+  
+                @if(count($sicknesses))
+                    @for($i = 0; $i < count($sicknesses); $i++)
+                        <p>현재 병{{$i + 1}} : {{$sicknesses[$i]->sickness_name}}</p>
+                        <p>복용중인 약{{$i + 1}} : {{$sicknesses[$i]->medicine}}</p>
+                        <p>증상{{$i + 1}} : {{$sicknesses[$i]->symptom}}</p>
+                        <p>다니는 병원 : {{$sicknesses[$i]->hospital}}</p>
+                        <br/>
+                    @endfor
+                @else
+                    <p class="text-center text-danger">이력이 없습니다.</p>
+                @endif
+                <hr style="background-color:darkgrey;"/>
 
-                    <br/>
-                @endfor
             </div>
         </div>
     </div>
