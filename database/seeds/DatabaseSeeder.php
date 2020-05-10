@@ -40,14 +40,14 @@ class DatabaseSeeder extends Seeder
         $this->call(Medical_infosTableSeeder::class);
         $this->call(Past_sicknessesTableSeeder::class);
         $this->call(SicknessesTableSeeder::class);
-        $this->call(DrivesTableSeeder::class);
         $this->call(Insurance_listsTableSeeder::class);
         $this->call(InsurancesTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
         $this->call(BoardsTableSeeder::class);
         // $this->call(CommentsTableSeeder::class);
-        $this->call(ReportsTableSeeder::class);
+        $this->call(DrivesTableSeeder::class);
         $this->call(Drive_detectionsTableSeeder::class);
+        $this->call(ReportsTableSeeder::class);
 
         if (config('databases.default') !== 'sqlite') {
             DB::statement('SET FOREIGN_KEY_CHECKS=1');

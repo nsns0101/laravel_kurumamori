@@ -185,18 +185,6 @@ $factory->define(App\Board::class, function (Faker $faker) {
 //     ];
 // });
 
-
-//신고 팩토리
-$factory->define(App\Report::class, function (Faker $faker) {
-    $userId = App\User::pluck('id')->toArray();
-    return [
-        'user_id' => $faker->randomElement($userId),
-        // 'gps' => Str::random(3) . "시" . Str::random(2) . "동" . rand(1, 999) . '-' . rand(1, 999),
-        'latitude' => rand(35, 37) . '.' . rand(1000, 9999999),     //x축
-        'longitude' => rand(126, 128) . '.' . rand(1000, 9999999),  //y축
-    ];
-});
-
 //운전 팩토리
 $factory->define(App\Drive::class, function (Faker $faker) {
     $userId = App\User::pluck('id')->toArray();
@@ -253,5 +241,16 @@ $factory->define(App\Drive_detection::class, function (Faker $faker) {
         'bool_sudden_stop' => $random[2],
         'bool_sleep' => $random[3],
         'created_at' => $rand_drive->created_at,
+    ];
+});
+
+//신고 팩토리
+$factory->define(App\Report::class, function (Faker $faker) {
+    $userId = App\User::pluck('id')->toArray();
+    return [
+        'user_id' => $faker->randomElement($userId),
+        // 'gps' => Str::random(3) . "시" . Str::random(2) . "동" . rand(1, 999) . '-' . rand(1, 999),
+        'latitude' => rand(35, 37) . '.' . rand(1000, 9999999),     //x축
+        'longitude' => rand(126, 128) . '.' . rand(1000, 9999999),  //y축
     ];
 });

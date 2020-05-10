@@ -66,15 +66,15 @@
                         <p>급 가속 횟수 : {{$day_5_danger_info[0]["count_sudden_acceleration"]}}회</p>
                         <p>급 감속 횟수 : {{$day_5_danger_info[0]["count_sudden_stop"]}}회</p>
                         {{-- 당일 사고 정보 --}}
-                        @if($report)
+                        @if($reports)
                             <p>사고 : {{$day_5_danger_info[0]["count_report"]}}건</p>
-                            @for($i = 0; $i < count($report); $i++)
-                                <p class="gps{{$report[0]->id}}">사고 장소 :                                     {{-- 위도 경도로 주소찾기 --}}
+                            @for($i = 0; $i < count($reports); $i++)
+                                <p class="gps{{$reports[$i]->id}}">사고 장소{{$i+1}} :                                     {{-- 위도 경도로 주소찾기 --}}
                                     <script>
                                         // var gps = "";
                                         // var API_KEY = "{{env('GCP_API_KEY')}}";
-                                        // var latitude = "{{$report[0]->latitude}}";
-                                        // var longitude = "{{$report[0]->longitude}}";
+                                        // var latitude = "{{$reports[$i]->latitude}}";
+                                        // var longitude = "{{$reports[$i]->longitude}}";
                                         // console.log(latitude);
                                         // console.log(longitude);
 
@@ -85,10 +85,10 @@
                                         //             console.log(data);
                                         //             gps = data.results[0].formatted_address;
                                         //             console.log(gps);
-                                        //             $(`.gps{{$report[0]->id}}`).text("사고장소 : " + gps);
+                                        //             $(`.gps{{$reports[$i]->id}}`).text("사고 장소{{$i+1}} : " + gps);
                                         //         }));
                                         // });
-                                        $(`.gps{{$report[0]->id}}`).text("사고 장소 : api 요금때문에 주석처리 해놨음");
+                                        $(".gps{{$reports[$i]->id}}").text("사고 장소{{$i+1}} : api 요금때문에 주석처리 해놨음");
 
                                     </script>
                                 </p>

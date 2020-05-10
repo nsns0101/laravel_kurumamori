@@ -98,7 +98,13 @@ class DriveController extends Controller
         }
 
         //사고 여부
-        $report = \DB::select("select * from reports where DATE_FORMAT(created_at, '%Y-%m-%d') = '{$date}' AND user_id = '{$auth_user}'");
+        $reports = \DB::select("select * from drive_detections where DATE_FORMAT(created_at, '%Y-%m-%d') = '{$date}' AND user_id = '{$auth_user}' AND bool_report = true");
+
+        // $reports = \App\Drive_detection::
+        //     whereUser_id(auth()->user()->id)
+        //     ->whereBool_report(true)
+        //     ->where(\DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d')"),$date)
+        //     ->get();
         
         //당일 운전점수
         $score_all = 0; //총 점수
@@ -155,12 +161,12 @@ class DriveController extends Controller
         // \Log::info("당일 위험 카운트 : ", $day_5_danger_info[0]);
         // \Log::info("당일 운전 시간(초) : ". $day_5_sec[0]);
         \Log::info("최근 5일의 운전 시간(초) : ", $day_5_sec);
-        \Log::info("당일 사고 여부", $report);
+        \Log::info("당일 사고 여부", $reports);
         \Log::info("총, 가속, 감속, 졸음, 사고점수 : ", $score);
         // \Log::info($error);
         //1시간에 급감속이나 급가속, 졸음 등을 1번했을 경우 모범?
         //default = 100에서 깎아내리는 형식?
-        return view('info.drive_score', compact('drive', 'date', 'day_5_sec','day_5', 'day_5_info', 'day_5_danger_info', 'drive_detection_5', 'report', 'score'));
+        return view('info.drive_score', compact('drive', 'date', 'day_5_sec','day_5', 'day_5_info', 'day_5_danger_info', 'drive_detection_5', 'reports', 'score'));
     }
 
     public function create()
