@@ -58,9 +58,9 @@ class BigdataController extends Controller
         for($i = 0; $i < count($time_set); $i++){
             if($i < 4) {
                 for($j = 0; $j < count($danger); $j++) {
-                    $bigdata_time[$i] = \DB::table('drive_detections')
-                    ->select(\DB::raw("count('bool_sleep') as bool_sleep_count"))
-                    ->where("drive_detections.bool_sleep","=",true)
+                    $bigdata_time[$i][$j] = \DB::table('drive_detections')
+                    ->select(\DB::raw("count({$danger[$j]}) as {$danger[$j]}_count"))
+                    ->where("drive_detections.{$danger[$j]}","=",true)
                     ->whereBetween(\DB::raw("DATE_FORMAT(drive_detections.created_at, '%H')"), [$time_set[$i], $time_set[$i+1]])
                     ->first();
                 }     
@@ -68,7 +68,6 @@ class BigdataController extends Controller
                 break;
             }    
         };
-
         \Log::info($bigdata_time);
 
         // 연령대별 사람들의 최근 7일간의 졸음운전, 급정거 급가속, 교통사고 횟수
