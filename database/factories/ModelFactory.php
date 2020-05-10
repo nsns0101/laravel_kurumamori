@@ -192,8 +192,8 @@ $factory->define(App\Report::class, function (Faker $faker) {
     return [
         'user_id' => $faker->randomElement($userId),
         // 'gps' => Str::random(3) . "시" . Str::random(2) . "동" . rand(1, 999) . '-' . rand(1, 999),
-        'latitude' => rand(1, 60) . '.' . rand(1000, 9999999),
-        'longitude' => rand(1, 150) . '.' . rand(1000, 9999999),
+        'latitude' => rand(35, 37) . '.' . rand(1000, 9999999),     //x축
+        'longitude' => rand(126, 128) . '.' . rand(1000, 9999999),  //y축
     ];
 });
 

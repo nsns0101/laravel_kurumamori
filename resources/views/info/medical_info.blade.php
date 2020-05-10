@@ -105,26 +105,37 @@
     });
 
     function add_past_sickness(){
+        if(past_sickness_count >= 4){
+            return null;
+        }
         $(`#form__past_sickness${past_sickness_count}`).css("display","flex");
         past_sickness_count++;
+
     }
     function add_sickness(){
+        if(sickness_count >= 4){
+            return null;
+        }
         $(`#form__sickness${sickness_count}`).css("display","flex");
         sickness_count++;
+
     }
     function delete_past_sickness(){
-        $(`#form__past_sickness${past_sickness_count}`).css("display","none");
-        $(`.past_sickness_btn${past_sickness_count}`).text("선택");
-        $(`.past_sickness_name${past_sickness_count}`).val("");
+        $(`#form__past_sickness${past_sickness_count-1}`).css("display","none");
+        $(`.past_sickness_btn${past_sickness_count-1}`).text("선택");
+        $(`.past_sickness_name${past_sickness_count-1}`).val("");
         past_sickness_count--;
+
     }
     function delete_sickness(){
-        $(`#form__sickness${sickness_count}`).css("display","none");
-        $(`.sickness_btn${sickness_count}`).text("선택");
-        $(`.sickness_name${sickness_count}`).val("");
+        
+        $(`#form__sickness${sickness_count -1}`).css("display","none");
+        $(`.sickness_btn${sickness_count -1}`).text("선택");
+        $(`.sickness_name${sickness_count -1}`).val("");
         sickness_count--;
     }
 
+    
     //
     $(function() {	
 		$('.datePicker').datepicker({

@@ -26,7 +26,7 @@
 
             <div class="form-group">
                 <button class="btn btn-primary btn-lg btn-block" type="submit">
-                    가입하기
+                    확인
                 </button>
             </div>
         </form>

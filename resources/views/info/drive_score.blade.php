@@ -247,4 +247,5 @@ function initMap() {
 }
 </script>
 <script src="/js/bootstrap-datepicker.kr.js"></script>
+
 @stop
