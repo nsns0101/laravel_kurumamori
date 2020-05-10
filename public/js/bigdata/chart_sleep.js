@@ -98,10 +98,11 @@ var sleepAgeChart = new Chart(ctx, {
     options: {
         maintainAspectRatio: false,
         tooltips: {
+            titleFontColor: '#6e707e',
             backgroundColor: "white",
             bodyFontColor: "black",
             borderWidth: 1,
-            displayColors: false,
+            displayColors: true,
         },
         legend: {
             display: true, 
@@ -115,56 +116,35 @@ var ctx = document.getElementById("sleepTimeChart");   //bigdata/bigdata_chart/c
 var sleepTimeChart = new Chart(ctx, {
     type: "bar",
     data: {
-        labels: ['00~04', '04~08', '08~12', '12~16', '16~20', '20~24'],    // 기준
+labels: ["00시 ~ 06시", "06시 ~ 12시", "12시 ~ 18시", "18시 ~ 24시"],    // 기준
         datasets: [
             {
+                label: "졸음운전",
+                backgroundColor: "#4e73df",
+                hoverBackgroundColor: "#2e59d9",
+                borderColor: "#4e73df",
+                hoverBorderColor: "rgba(234, 236, 244, 1)",
                 data: [
-                    57,     //값
-                    35, 
-                    25,
-                    14,
-                    20,
-                    34
+                    bigdata_time[0]["bool_sleep"].bool_sleep_count,
+                    bigdata_time[1]["bool_sleep"].bool_sleep_count,
+                    bigdata_time[2]["bool_sleep"].bool_sleep_count,
+                    bigdata_time[3]["bool_sleep"].bool_sleep_count,
                 ],
-                backgroundColor: ["blue", "green", "yellow", "orange", "red"],
-                hoverBorderColor: "rgba(234, 236, 244, 1)"
             }
         ]
     },
     options: {
         maintainAspectRatio: false,
         tooltips: {
-            backgroundColor: "rgb(255,255,255)",
-            bodyFontColor: "#858796",
-            borderColor: "#dddfeb",
+            titleFontColor: '#6e707e',
+            backgroundColor: "white",
+            bodyFontColor: "black",
             borderWidth: 1,
-            xPadding: 15,
-            yPadding: 15,
             displayColors: false,
-            caretPadding: 10
         },
         legend: {
             display: true, 
             position: 'right',
         },
-        cutoutPercentage: 35,
-        yAxes: [{
-            ticks: {
-              maxTicksLimit: 5,
-              padding: 20,
-              // Include a dollar sign in the ticks
-              callback: function(value, index, values) {
-                // return '$' + number_format(value);
-                return value + "%";
-              }
-            },
-            gridLines: {
-              color: "rgb(234, 236, 244)",
-              zeroLineColor: "rgb(234, 236, 244)",
-              drawBorder: false,
-              borderDash: [2],
-              zeroLineBorderDash: [2]
-            }
-          }],
     }
 });

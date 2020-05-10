@@ -6,7 +6,7 @@
         @include('bigdata.chart.sleep')
     @elseif($option == 'sudden')
         @include('bigdata.chart.sudden')
-    @else
+    @elseif($option == 'accident')
         @include('bigdata.chart.accident')
     @endif
 @endsection
@@ -14,7 +14,9 @@
 @section('script')
 <script>
 var bigdata_age = <?php echo json_encode($bigdata_age) ?>;
-var day_7 = <?php echo json_encode($day_7)?>;
+var bigdata_time = <?php echo json_encode($bigdata_time) ?>;
+var day_7 = <?php echo json_encode($day_7) ?>;
+var time_set = <?php echo json_encode($time_set) ?>;
 </script>
 
 <!-- chart.js파일 불러오기 -->

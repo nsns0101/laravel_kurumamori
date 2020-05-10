@@ -95,6 +95,7 @@ var accidentAgeChart = new Chart(ctx, {
     options: {
         maintainAspectRatio: false,
         tooltips: {
+            titleFontColor: '#6e707e',
             backgroundColor: "white",
             bodyFontColor: "black",
             borderWidth: 1,
@@ -106,3 +107,42 @@ var accidentAgeChart = new Chart(ctx, {
         },
     }
 });
+
+// 시간대 그래프
+var ctx = document.getElementById("accidentTimeChart");   //bigdata/bigdata_chart/chart.blade.php의 시간대 canvas id
+var accidentTimeChart = new Chart(ctx, {
+    type: "bar",
+    data: {
+labels: ["00시 ~ 06시", "06시 ~ 12시", "12시 ~ 18시", "18시 ~ 24시"],    // 기준
+        datasets: [
+            {
+                label: "졸음운전",
+                backgroundColor: "red",
+                hoverBackgroundColor: "#2e59d9",
+                borderColor: "red",
+                hoverBorderColor: "rgba(234, 236, 244, 1)",
+                data: [
+                    bigdata_time[0]["bool_report"].bool_report_count,
+                    bigdata_time[1]["bool_report"].bool_report_count,
+                    bigdata_time[2]["bool_report"].bool_report_count,
+                    bigdata_time[3]["bool_report"].bool_report_count,
+                ],
+            }
+        ]
+    },
+    options: {
+        maintainAspectRatio: false,
+        tooltips: {
+            titleFontColor: '#6e707e',
+            backgroundColor: "white",
+            bodyFontColor: "black",
+            borderWidth: 1,
+            displayColors: false,
+        },
+        legend: {
+            display: true, 
+            position: 'right',
+        },
+    }
+});
+
