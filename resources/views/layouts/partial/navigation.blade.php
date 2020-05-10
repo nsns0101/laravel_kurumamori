@@ -10,6 +10,9 @@
                     <a class="nav-link" href="/products">제품 소개</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/bigdata">빅데이터 자료실</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/boards/questions">고객 문의</a>
                 </li>
                 <li class="nav-item">
