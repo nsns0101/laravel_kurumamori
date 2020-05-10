@@ -13,7 +13,7 @@
 
 @section('script')
 <script>
-var bigdata_chart = <?php echo json_encode($bigdata_chart) ?>;
+var bigdata_age = <?php echo json_encode($bigdata_age) ?>;
 var day_7 = <?php echo json_encode($day_7)?>;
 </script>
 

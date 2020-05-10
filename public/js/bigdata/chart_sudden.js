@@ -5,7 +5,7 @@ var suddenAccelerationAgeChart = new Chart(ctx, {
     data: {
         labels: [day_7[6], day_7[5], day_7[4], day_7[3], day_7[2], day_7[1], day_7[0]],    // 제목
         datasets: [
-            {
+            {   // 20대
                 label: "20대",
                 borderColor: "purple",   //선 색깔
                 pointRadius: 3,
@@ -13,32 +13,33 @@ var suddenAccelerationAgeChart = new Chart(ctx, {
                 pointBorderColor: "purple",  //꼭짓점 바탕색깔
                 backgroundColor: "rgba(0, 0, 0, 0)",
                 data: [
-                    bigdata_chart["20"]["bool_sudden_acceleration"][day_7[6]].bool_sudden_acceleration_count,
-                    bigdata_chart["20"]["bool_sudden_acceleration"][day_7[5]].bool_sudden_acceleration_count,
-                    bigdata_chart["20"]["bool_sudden_acceleration"][day_7[4]].bool_sudden_acceleration_count,
-                    bigdata_chart["20"]["bool_sudden_acceleration"][day_7[3]].bool_sudden_acceleration_count,
-                    bigdata_chart["20"]["bool_sudden_acceleration"][day_7[2]].bool_sudden_acceleration_count,
-                    bigdata_chart["20"]["bool_sudden_acceleration"][day_7[1]].bool_sudden_acceleration_count,
-                    bigdata_chart["20"]["bool_sudden_acceleration"][day_7[0]].bool_sudden_acceleration_count,
+                    bigdata_age["20"]["bool_sudden_acceleration"][day_7[6]].bool_sudden_acceleration_count,
+                    bigdata_age["20"]["bool_sudden_acceleration"][day_7[5]].bool_sudden_acceleration_count,
+                    bigdata_age["20"]["bool_sudden_acceleration"][day_7[4]].bool_sudden_acceleration_count,
+                    bigdata_age["20"]["bool_sudden_acceleration"][day_7[3]].bool_sudden_acceleration_count,
+                    bigdata_age["20"]["bool_sudden_acceleration"][day_7[2]].bool_sudden_acceleration_count,
+                    bigdata_age["20"]["bool_sudden_acceleration"][day_7[1]].bool_sudden_acceleration_count,
+                    bigdata_age["20"]["bool_sudden_acceleration"][day_7[0]].bool_sudden_acceleration_count,
                 ],
             },
-            {label: "30대",
+            {   // 30대
+                label: "30대",
                 borderColor: "orange",   //선 색깔
                 pointRadius: 3,
                 pointBackgroundColor: "orange",  //꼭짓점 색깔
                 pointBorderColor: "orange",  //꼭짓점 바탕색깔
                 backgroundColor: "rgba(0, 0, 0, 0)",
                 data: [
-                    bigdata_chart["30"]["bool_sudden_acceleration"][day_7[6]].bool_sudden_acceleration_count,
-                    bigdata_chart["30"]["bool_sudden_acceleration"][day_7[5]].bool_sudden_acceleration_count,
-                    bigdata_chart["30"]["bool_sudden_acceleration"][day_7[4]].bool_sudden_acceleration_count,
-                    bigdata_chart["30"]["bool_sudden_acceleration"][day_7[3]].bool_sudden_acceleration_count,
-                    bigdata_chart["30"]["bool_sudden_acceleration"][day_7[2]].bool_sudden_acceleration_count,
-                    bigdata_chart["30"]["bool_sudden_acceleration"][day_7[1]].bool_sudden_acceleration_count,
-                    bigdata_chart["30"]["bool_sudden_acceleration"][day_7[0]].bool_sudden_acceleration_count,
+                    bigdata_age["30"]["bool_sudden_acceleration"][day_7[6]].bool_sudden_acceleration_count,
+                    bigdata_age["30"]["bool_sudden_acceleration"][day_7[5]].bool_sudden_acceleration_count,
+                    bigdata_age["30"]["bool_sudden_acceleration"][day_7[4]].bool_sudden_acceleration_count,
+                    bigdata_age["30"]["bool_sudden_acceleration"][day_7[3]].bool_sudden_acceleration_count,
+                    bigdata_age["30"]["bool_sudden_acceleration"][day_7[2]].bool_sudden_acceleration_count,
+                    bigdata_age["30"]["bool_sudden_acceleration"][day_7[1]].bool_sudden_acceleration_count,
+                    bigdata_age["30"]["bool_sudden_acceleration"][day_7[0]].bool_sudden_acceleration_count,
                 ],
             },
-            {
+            {   // 40대
                 label: "40대",
                 borderColor: "green",   //선 색깔
                 pointRadius: 3,
@@ -46,16 +47,16 @@ var suddenAccelerationAgeChart = new Chart(ctx, {
                 pointBorderColor: "green",  //꼭짓점 바탕색깔
                 backgroundColor: "rgba(0, 0, 0, 0)",
                 data: [
-                    bigdata_chart["40"]["bool_sudden_acceleration"][day_7[6]].bool_sudden_acceleration_count,
-                    bigdata_chart["40"]["bool_sudden_acceleration"][day_7[5]].bool_sudden_acceleration_count,
-                    bigdata_chart["40"]["bool_sudden_acceleration"][day_7[4]].bool_sudden_acceleration_count,
-                    bigdata_chart["40"]["bool_sudden_acceleration"][day_7[3]].bool_sudden_acceleration_count,
-                    bigdata_chart["40"]["bool_sudden_acceleration"][day_7[2]].bool_sudden_acceleration_count,
-                    bigdata_chart["40"]["bool_sudden_acceleration"][day_7[1]].bool_sudden_acceleration_count,
-                    bigdata_chart["40"]["bool_sudden_acceleration"][day_7[0]].bool_sudden_acceleration_count,
+                    bigdata_age["40"]["bool_sudden_acceleration"][day_7[6]].bool_sudden_acceleration_count,
+                    bigdata_age["40"]["bool_sudden_acceleration"][day_7[5]].bool_sudden_acceleration_count,
+                    bigdata_age["40"]["bool_sudden_acceleration"][day_7[4]].bool_sudden_acceleration_count,
+                    bigdata_age["40"]["bool_sudden_acceleration"][day_7[3]].bool_sudden_acceleration_count,
+                    bigdata_age["40"]["bool_sudden_acceleration"][day_7[2]].bool_sudden_acceleration_count,
+                    bigdata_age["40"]["bool_sudden_acceleration"][day_7[1]].bool_sudden_acceleration_count,
+                    bigdata_age["40"]["bool_sudden_acceleration"][day_7[0]].bool_sudden_acceleration_count,
                 ],
             },
-            {
+            {   // 50대
                 label: "50대",
                 borderColor: "blue",   //선 색깔
                 pointRadius: 3,
@@ -63,16 +64,16 @@ var suddenAccelerationAgeChart = new Chart(ctx, {
                 pointBorderColor: "blue",  //꼭짓점 바탕색깔
                 backgroundColor: "rgba(0, 0, 0, 0)",
                 data: [
-                    bigdata_chart["50"]["bool_sudden_acceleration"][day_7[6]].bool_sudden_acceleration_count,
-                    bigdata_chart["50"]["bool_sudden_acceleration"][day_7[5]].bool_sudden_acceleration_count,
-                    bigdata_chart["50"]["bool_sudden_acceleration"][day_7[4]].bool_sudden_acceleration_count,
-                    bigdata_chart["50"]["bool_sudden_acceleration"][day_7[3]].bool_sudden_acceleration_count,
-                    bigdata_chart["50"]["bool_sudden_acceleration"][day_7[2]].bool_sudden_acceleration_count,
-                    bigdata_chart["50"]["bool_sudden_acceleration"][day_7[1]].bool_sudden_acceleration_count,
-                    bigdata_chart["50"]["bool_sudden_acceleration"][day_7[0]].bool_sudden_acceleration_count,
+                    bigdata_age["50"]["bool_sudden_acceleration"][day_7[6]].bool_sudden_acceleration_count,
+                    bigdata_age["50"]["bool_sudden_acceleration"][day_7[5]].bool_sudden_acceleration_count,
+                    bigdata_age["50"]["bool_sudden_acceleration"][day_7[4]].bool_sudden_acceleration_count,
+                    bigdata_age["50"]["bool_sudden_acceleration"][day_7[3]].bool_sudden_acceleration_count,
+                    bigdata_age["50"]["bool_sudden_acceleration"][day_7[2]].bool_sudden_acceleration_count,
+                    bigdata_age["50"]["bool_sudden_acceleration"][day_7[1]].bool_sudden_acceleration_count,
+                    bigdata_age["50"]["bool_sudden_acceleration"][day_7[0]].bool_sudden_acceleration_count,
                 ],
             },
-            {
+            {   // 60대 이상
                 label: "60대 이상",
                 borderColor: "red",   //선 색깔
                 pointRadius: 3,
@@ -80,13 +81,13 @@ var suddenAccelerationAgeChart = new Chart(ctx, {
                 pointBorderColor: "red",  //꼭짓점 바탕색깔
                 backgroundColor: "rgba(0, 0, 0, 0)",
                 data: [
-                    bigdata_chart["60"]["bool_sudden_acceleration"][day_7[6]].bool_sudden_acceleration_count,
-                    bigdata_chart["60"]["bool_sudden_acceleration"][day_7[5]].bool_sudden_acceleration_count,
-                    bigdata_chart["60"]["bool_sudden_acceleration"][day_7[4]].bool_sudden_acceleration_count,
-                    bigdata_chart["60"]["bool_sudden_acceleration"][day_7[3]].bool_sudden_acceleration_count,
-                    bigdata_chart["60"]["bool_sudden_acceleration"][day_7[2]].bool_sudden_acceleration_count,
-                    bigdata_chart["60"]["bool_sudden_acceleration"][day_7[1]].bool_sudden_acceleration_count,
-                    bigdata_chart["60"]["bool_sudden_acceleration"][day_7[0]].bool_sudden_acceleration_count,
+                    bigdata_age["60"]["bool_sudden_acceleration"][day_7[6]].bool_sudden_acceleration_count,
+                    bigdata_age["60"]["bool_sudden_acceleration"][day_7[5]].bool_sudden_acceleration_count,
+                    bigdata_age["60"]["bool_sudden_acceleration"][day_7[4]].bool_sudden_acceleration_count,
+                    bigdata_age["60"]["bool_sudden_acceleration"][day_7[3]].bool_sudden_acceleration_count,
+                    bigdata_age["60"]["bool_sudden_acceleration"][day_7[2]].bool_sudden_acceleration_count,
+                    bigdata_age["60"]["bool_sudden_acceleration"][day_7[1]].bool_sudden_acceleration_count,
+                    bigdata_age["60"]["bool_sudden_acceleration"][day_7[0]].bool_sudden_acceleration_count,
                 ],
             },
         ]
@@ -113,7 +114,7 @@ var suddenStopAgeChart = new Chart(ctx, {
     data: {
         labels: [day_7[6], day_7[5], day_7[4], day_7[3], day_7[2], day_7[1], day_7[0]],    // 제목
         datasets: [
-            {
+            {   // 20대
                 label: "20대",
                 borderColor: "purple",   //선 색깔
                 pointRadius: 3,
@@ -121,32 +122,33 @@ var suddenStopAgeChart = new Chart(ctx, {
                 pointBorderColor: "purple",  //꼭짓점 바탕색깔
                 backgroundColor: "rgba(0, 0, 0, 0)",
                 data: [
-                    bigdata_chart["20"]["bool_sudden_stop"][day_7[6]].bool_sudden_stop_count,
-                    bigdata_chart["20"]["bool_sudden_stop"][day_7[5]].bool_sudden_stop_count,
-                    bigdata_chart["20"]["bool_sudden_stop"][day_7[4]].bool_sudden_stop_count,
-                    bigdata_chart["20"]["bool_sudden_stop"][day_7[3]].bool_sudden_stop_count,
-                    bigdata_chart["20"]["bool_sudden_stop"][day_7[2]].bool_sudden_stop_count,
-                    bigdata_chart["20"]["bool_sudden_stop"][day_7[1]].bool_sudden_stop_count,
-                    bigdata_chart["20"]["bool_sudden_stop"][day_7[0]].bool_sudden_stop_count,
+                    bigdata_age["20"]["bool_sudden_stop"][day_7[6]].bool_sudden_stop_count,
+                    bigdata_age["20"]["bool_sudden_stop"][day_7[5]].bool_sudden_stop_count,
+                    bigdata_age["20"]["bool_sudden_stop"][day_7[4]].bool_sudden_stop_count,
+                    bigdata_age["20"]["bool_sudden_stop"][day_7[3]].bool_sudden_stop_count,
+                    bigdata_age["20"]["bool_sudden_stop"][day_7[2]].bool_sudden_stop_count,
+                    bigdata_age["20"]["bool_sudden_stop"][day_7[1]].bool_sudden_stop_count,
+                    bigdata_age["20"]["bool_sudden_stop"][day_7[0]].bool_sudden_stop_count,
                 ],
             },
-            {label: "30대",
+            {   // 30대
+                label: "30대",
                 borderColor: "orange",   //선 색깔
                 pointRadius: 3,
                 pointBackgroundColor: "orange",  //꼭짓점 색깔
                 pointBorderColor: "orange",  //꼭짓점 바탕색깔
                 backgroundColor: "rgba(0, 0, 0, 0)",
                 data: [
-                    bigdata_chart["30"]["bool_sudden_stop"][day_7[6]].bool_sudden_stop_count,
-                    bigdata_chart["30"]["bool_sudden_stop"][day_7[5]].bool_sudden_stop_count,
-                    bigdata_chart["30"]["bool_sudden_stop"][day_7[4]].bool_sudden_stop_count,
-                    bigdata_chart["30"]["bool_sudden_stop"][day_7[3]].bool_sudden_stop_count,
-                    bigdata_chart["30"]["bool_sudden_stop"][day_7[2]].bool_sudden_stop_count,
-                    bigdata_chart["30"]["bool_sudden_stop"][day_7[1]].bool_sudden_stop_count,
-                    bigdata_chart["30"]["bool_sudden_stop"][day_7[0]].bool_sudden_stop_count,
+                    bigdata_age["30"]["bool_sudden_stop"][day_7[6]].bool_sudden_stop_count,
+                    bigdata_age["30"]["bool_sudden_stop"][day_7[5]].bool_sudden_stop_count,
+                    bigdata_age["30"]["bool_sudden_stop"][day_7[4]].bool_sudden_stop_count,
+                    bigdata_age["30"]["bool_sudden_stop"][day_7[3]].bool_sudden_stop_count,
+                    bigdata_age["30"]["bool_sudden_stop"][day_7[2]].bool_sudden_stop_count,
+                    bigdata_age["30"]["bool_sudden_stop"][day_7[1]].bool_sudden_stop_count,
+                    bigdata_age["30"]["bool_sudden_stop"][day_7[0]].bool_sudden_stop_count,
                 ],
             },
-            {
+            {   // 40대
                 label: "40대",
                 borderColor: "green",   //선 색깔
                 pointRadius: 3,
@@ -154,16 +156,16 @@ var suddenStopAgeChart = new Chart(ctx, {
                 pointBorderColor: "green",  //꼭짓점 바탕색깔
                 backgroundColor: "rgba(0, 0, 0, 0)",
                 data: [
-                    bigdata_chart["40"]["bool_sudden_stop"][day_7[6]].bool_sudden_stop_count,
-                    bigdata_chart["40"]["bool_sudden_stop"][day_7[5]].bool_sudden_stop_count,
-                    bigdata_chart["40"]["bool_sudden_stop"][day_7[4]].bool_sudden_stop_count,
-                    bigdata_chart["40"]["bool_sudden_stop"][day_7[3]].bool_sudden_stop_count,
-                    bigdata_chart["40"]["bool_sudden_stop"][day_7[2]].bool_sudden_stop_count,
-                    bigdata_chart["40"]["bool_sudden_stop"][day_7[1]].bool_sudden_stop_count,
-                    bigdata_chart["40"]["bool_sudden_stop"][day_7[0]].bool_sudden_stop_count,
+                    bigdata_age["40"]["bool_sudden_stop"][day_7[6]].bool_sudden_stop_count,
+                    bigdata_age["40"]["bool_sudden_stop"][day_7[5]].bool_sudden_stop_count,
+                    bigdata_age["40"]["bool_sudden_stop"][day_7[4]].bool_sudden_stop_count,
+                    bigdata_age["40"]["bool_sudden_stop"][day_7[3]].bool_sudden_stop_count,
+                    bigdata_age["40"]["bool_sudden_stop"][day_7[2]].bool_sudden_stop_count,
+                    bigdata_age["40"]["bool_sudden_stop"][day_7[1]].bool_sudden_stop_count,
+                    bigdata_age["40"]["bool_sudden_stop"][day_7[0]].bool_sudden_stop_count,
                 ],
             },
-            {
+            {   // 50대
                 label: "50대",
                 borderColor: "blue",   //선 색깔
                 pointRadius: 3,
@@ -171,16 +173,16 @@ var suddenStopAgeChart = new Chart(ctx, {
                 pointBorderColor: "blue",  //꼭짓점 바탕색깔
                 backgroundColor: "rgba(0, 0, 0, 0)",
                 data: [
-                    bigdata_chart["50"]["bool_sudden_stop"][day_7[6]].bool_sudden_stop_count,
-                    bigdata_chart["50"]["bool_sudden_stop"][day_7[5]].bool_sudden_stop_count,
-                    bigdata_chart["50"]["bool_sudden_stop"][day_7[4]].bool_sudden_stop_count,
-                    bigdata_chart["50"]["bool_sudden_stop"][day_7[3]].bool_sudden_stop_count,
-                    bigdata_chart["50"]["bool_sudden_stop"][day_7[2]].bool_sudden_stop_count,
-                    bigdata_chart["50"]["bool_sudden_stop"][day_7[1]].bool_sudden_stop_count,
-                    bigdata_chart["50"]["bool_sudden_stop"][day_7[0]].bool_sudden_stop_count,
+                    bigdata_age["50"]["bool_sudden_stop"][day_7[6]].bool_sudden_stop_count,
+                    bigdata_age["50"]["bool_sudden_stop"][day_7[5]].bool_sudden_stop_count,
+                    bigdata_age["50"]["bool_sudden_stop"][day_7[4]].bool_sudden_stop_count,
+                    bigdata_age["50"]["bool_sudden_stop"][day_7[3]].bool_sudden_stop_count,
+                    bigdata_age["50"]["bool_sudden_stop"][day_7[2]].bool_sudden_stop_count,
+                    bigdata_age["50"]["bool_sudden_stop"][day_7[1]].bool_sudden_stop_count,
+                    bigdata_age["50"]["bool_sudden_stop"][day_7[0]].bool_sudden_stop_count,
                 ],
             },
-            {
+            {   // 60대 이상
                 label: "60대 이상",
                 borderColor: "red",   //선 색깔
                 pointRadius: 3,
@@ -188,13 +190,13 @@ var suddenStopAgeChart = new Chart(ctx, {
                 pointBorderColor: "red",  //꼭짓점 바탕색깔
                 backgroundColor: "rgba(0, 0, 0, 0)",
                 data: [
-                    bigdata_chart["60"]["bool_sudden_stop"][day_7[6]].bool_sudden_stop_count,
-                    bigdata_chart["60"]["bool_sudden_stop"][day_7[5]].bool_sudden_stop_count,
-                    bigdata_chart["60"]["bool_sudden_stop"][day_7[4]].bool_sudden_stop_count,
-                    bigdata_chart["60"]["bool_sudden_stop"][day_7[3]].bool_sudden_stop_count,
-                    bigdata_chart["60"]["bool_sudden_stop"][day_7[2]].bool_sudden_stop_count,
-                    bigdata_chart["60"]["bool_sudden_stop"][day_7[1]].bool_sudden_stop_count,
-                    bigdata_chart["60"]["bool_sudden_stop"][day_7[0]].bool_sudden_stop_count,
+                    bigdata_age["60"]["bool_sudden_stop"][day_7[6]].bool_sudden_stop_count,
+                    bigdata_age["60"]["bool_sudden_stop"][day_7[5]].bool_sudden_stop_count,
+                    bigdata_age["60"]["bool_sudden_stop"][day_7[4]].bool_sudden_stop_count,
+                    bigdata_age["60"]["bool_sudden_stop"][day_7[3]].bool_sudden_stop_count,
+                    bigdata_age["60"]["bool_sudden_stop"][day_7[2]].bool_sudden_stop_count,
+                    bigdata_age["60"]["bool_sudden_stop"][day_7[1]].bool_sudden_stop_count,
+                    bigdata_age["60"]["bool_sudden_stop"][day_7[0]].bool_sudden_stop_count,
                 ],
             },
         ]
