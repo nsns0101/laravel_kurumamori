@@ -7,15 +7,17 @@
 <br>
 <br>
 <div id="product">
-    <label @click='checkTrue'>제품소개</label>
-    <label @click='checkFalse'>제품구매</label>
+    <div style="display:flex; justify-content:center; margin-bottom:30px;">
+        <label class="btn-intro" @click='checkTrue'>제품소개</label>
+        <label class="btn-intro" @click='checkFalse'>제품구매</label>
+    </div>
 
     <div v-if='check'>
         <div class="div-main">
         <h2>서비스 소개</h2>
         <img src="product/title.jpg"></img>
         <div class="div-intro">
-            <p>디바이스에 장착된 센서가 사고를 스스로 감지하여 30초 이내에 119에 SMS를 통해 자동으로 사고를 접수한다.
+            <p style="color:black; margin-top:20px;">디바이스에 장착된 센서가 사고를 스스로 감지하여 30초 이내에 119에 SMS를 통해 자동으로 사고를 접수한다.
 목숨을 위협하는 사고 발생 시 사고자가 직접 사고 신고를 하는 것은 거의 불가능하다.
 목숨이 경각에 달린 긴급 사고가 발생할 경우 신속한 초동대처가 필수적인데 빠른 대처를 위해서는 사고 즉시 신고가 접수 될 수 있도록 해야 한다.
 Baton SOS의 자동 신고 시스템은 초동 대처를 용이하게 하여 사고자의 골든 타임을 놓치지 않아 생존 가능성을 비약적으로 높일 수 있다.</p>
@@ -103,11 +105,30 @@ Baton SOS의 자동 신고 시스템은 초동 대처를 용이하게 하여 사
         color:black;
 
     }
+    .btn-intro{
+        width:100px;
+        height:40px;
+        line-height:40px;
+        text-align:center;
+        background-color: white;
+        border: 1px solid black;
+        border-radius: 5px;
+        margin-right:10px;
+    }
+    .btn-intro:hover{
+        background-color: black;
+        color:white;
+    }
     .btn-buy{
         width: 200px;
         height: 50px;
-        background-color: deepskyblue;
+        background-color: white;
+        border: 1px solid black;
         border-radius: 10px;
+    }
+    .btn-buy:hover{
+        background-color: black;
+        color:white;
     }
     .buy-title{
         text-align: center;

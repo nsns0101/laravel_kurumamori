@@ -58,6 +58,9 @@ Route::get('info/{date}/drive_score', [ //{{slug}}값에 들어온 것은 index�
 Route::resource('/products','ProductController');
 
 Route::resource('/buy','BuyController');
+Route::get('/thanks', function () {
+    return view('product.thanks');
+});
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
 //김도형 Q&A ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
