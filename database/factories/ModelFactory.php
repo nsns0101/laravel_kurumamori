@@ -244,24 +244,3 @@ $factory->define(App\Drive_detection::class, function (Faker $faker) {
         'created_at' => $rand_drive->created_at,
     ];
 });
-
-//신고 팩토리
-$factory->define(App\Report::class, function (Faker $faker) {
-    $randomId = App\User::pluck('id')->toArray();   //랜덤 유저 아이디
-    $drive_detection_info = App\Drive_detection::whereUser_id($randomId)->get(); //랜덤 유저아이디의 운전감지 정보
-
-    $user_id = array(); //신고가 일어난 유저의 아이디 배열
-
-    for($i = 0, $j = 0; $i < count($drive_detection_info); $i++){
-        if($drive_detection_info[$i]->bool_report){
-            $user_id[$j] = $drive_detection_info[$i]->user_id;
-        }
-    }
-
-    return [
-        'user_id' => $faker->randomElement($userId),
-        // 'gps' => Str::random(3) . "시" . Str::random(2) . "동" . rand(1, 999) . '-' . rand(1, 999),
-        'latitude' => rand(35, 37) . '.' . rand(1000, 9999999),     //x축
-        'longitude' => rand(126, 128) . '.' . rand(1000, 9999999),  //y축
-    ];
-});

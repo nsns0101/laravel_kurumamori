@@ -30,7 +30,6 @@ class DatabaseSeeder extends Seeder
         App\Category::truncate();
         App\Board::truncate();
         // App\Comment::truncate();
-        App\Report::truncate();
         App\Drive_detection::truncate();
 
         //시더 할 목록
