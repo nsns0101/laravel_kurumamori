@@ -42,7 +42,7 @@ class BuyController extends Controller
     {
         $total_price = $request->ea * 49900;
 
-        $product_key =Str::random(12);
+        $product_key =Str::random(4)."-".Str::random(4)."-".Str::random(4)."-".Str::random(4);
 
         $buy = $request->user()->product_buys()->create([
             'ea'=>$request->ea,
