@@ -59,7 +59,8 @@ class BuyController extends Controller
             'product_key'=>$product_key,
         ]);
 
-        return redirect('/thanks');
+        // return redirect('/thanks');
+        return view('product.thanks', compact('buy'));
     }
     /**
      * Display the specified resource.

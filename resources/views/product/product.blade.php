@@ -7,7 +7,7 @@
 <br>
 <br>
 <div id="product">
-    <div style="display:flex; margin-left:650px; margin-bottom:30px;">
+    <div style="display:flex; justify-content:center; margin-bottom:30px;">
         <label class="btn-intro" @click='checkTrue'>제품소개</label>
         <label class="btn-intro" @click='checkFalse'>제품구매</label>
     </div>
