@@ -12,21 +12,16 @@ class CommentsController extends Controller
         \Log::info('comments store');
         \Log::info($request->all());
         
-        // $comment = $request->user()->comments()->create([
-        //     'board_id'=>$request->question,
-        //     'multiple_type'=> false,
-        //     'title'=>$request->title,
-        //     'content'=>$request->content,
-        // ]);
-        if(\App\Category::find( \App\Board::find($request->review || $request->question)->category_id )->id == 7){
+        if(\App\Category::find( \App\Board::find($request->review)->category_id )->id == 7){
+            \Log::info(1);
             $comment = $request->user()->comments()->create([
                 'board_id'=>$request->review,
-                'multiple_type'=> false,
-                
+                'multiple_type'=> true,
                 'content'=>$request->content,
             ]);
         }
         else{
+            \Log::info(2);
             $comment = $request->user()->comments()->create([
                 'board_id'=>$request->question,
                 'multiple_type'=> false,
@@ -47,9 +42,26 @@ class CommentsController extends Controller
         }
         
         return back()->withInput();
-        // return \App\Category::find( \App\Board::find($request->review)->category_id )->id;
     }
 
+    public function update(\App\Http\Requests\CommentsRequest $request,\App\Comment $comment)
+    {
+        \Log::info('comments update');
+        \Log::info($request->all());
+        
+        $comment->update($request->all());
+
+        if(! $comment){
+
+            flash()->error(
+                trans('comment 업데이트 실패')
+            );
+
+            return back()->withInput();
+        }
+
+        return back()->withInput();
+    }
     public function destroy(\App\Comment $comment)
     {
         \Log::info('comments destroy');
