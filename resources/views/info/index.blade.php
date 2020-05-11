@@ -159,7 +159,7 @@
                             <div class="caption">
                                 <h3 class="text-center">제품 구매 정보</h3>
                                 <hr style="background-color:green;">
-                                @if($user_product_buy_key)
+                                @if(count($user_product_buy_key))
                                     @for($i = 0; $i < count($user_product_buy_key); $i++)
                                         {{-- <p id="text_product_name">제품 명 : {{$product->product_name}}</p> --}}
                                         <p id="text_product_buy_key" style="font-size:20px"><b>구매한 제품 키{{$i + 1}} </b> : {{$user_product_buy_key[$i]->product_key}}</p>

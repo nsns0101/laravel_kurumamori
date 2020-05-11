@@ -71,16 +71,6 @@ class MedicalController extends Controller
         $past_sickness_count = 0;
         $sickness_count = 0;
 
-        \App\Drive_detection::create([
-            'drive_id' =>  $request->drive_id,
-            'user_id' => $request->user()->id,  //또는 auth()->user()->id
-            'latitude' => $request->latitude,
-            'longitude' => $request->longitude,
-            'bool_reprot' => $request->bool_report,
-            'bool_sudden_acceleration' =>  $request->bool_sudden_acceleration,
-            'bool_sudden_stop' =>  $request->bool_sudden_stop,
-            'bool_sleep' =>  $request->bool_sleep,
-       ]);
         //past_sickness DB create
         for($i = 1; $i <= count($request->past_sickness_name); $i++){
             if($request->past_sickness_name[$i] && $request->past_sickness_name[$i]!="없음"){

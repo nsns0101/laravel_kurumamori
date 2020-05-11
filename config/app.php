@@ -176,7 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Laracasts\Flash\FlashServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
+        // Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
 
