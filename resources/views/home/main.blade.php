@@ -13,15 +13,15 @@
     <div class="carousel-inner">
         <div class="carousel-item active">
             <img class="d-block w-100" src="/images/main_image.png" alt="First slide"
-                style="width:2115px; height:715px;">
+                style="width:2115px; height:1070px;">
         </div>
         <div class="carousel-item">
             <img class="d-block w-100" src="/images/main_image.png" alt="Second slide"
-                style="width:2115px; height:715px;">
+                style="width:2115px; height:1070px;">
         </div>
         <div class="carousel-item">
             <img class="d-block w-100" src="/images/main_image.png" alt="Third slide"
-                style="width:2115px; height:715px;">
+                style="width:2115px; height:1070px;">
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
