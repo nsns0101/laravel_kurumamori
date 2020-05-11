@@ -180,7 +180,8 @@ $factory->define(App\Comment::class, function (Faker $faker) {
     return [
         'user_id' => $faker->randomElement($userId),
         'board_id' => $faker->randomElement($board_id),
-        'question_type' => App\Board::class,
+        'parent_id' => null,
+        // 'title' => null,
         'multiple_type' => false,
         'content' => $faker->paragraph,
     ];

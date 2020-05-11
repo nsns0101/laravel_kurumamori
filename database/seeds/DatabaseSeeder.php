@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
         App\Insurance::truncate();
         App\Category::truncate();
         App\Board::truncate();
-        // App\Comment::truncate();
+        App\Comment::truncate();
         App\Drive_detection::truncate();
 
         //시더 할 목록
@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder
         $this->call(InsurancesTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
         $this->call(BoardsTableSeeder::class);
-        // $this->call(CommentsTableSeeder::class);
+        $this->call(CommentsTableSeeder::class);
         $this->call(DrivesTableSeeder::class);
         $this->call(Drive_detectionsTableSeeder::class);
 
