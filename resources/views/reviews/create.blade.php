@@ -26,8 +26,13 @@
             <textarea class="form-control" name="content" id="content" cols="30" rows="10">{{ old('content', $review->content) }}</textarea>
             {!! $errors->first('content','<span class="from-errors">:message</span>')!!}
         </div>
-        <div class="form-group">
-            <button class="btn btn-dark" type="submit">저장하기</button>
+        <div class="form-group d-flex justify-content-end pb-3">
+            <span class="pr-3">
+                <button class="btn btn-dark" type="submit">저장하기</button>
+            </span>
+            <span>
+                <a class="btn btn-dark" href="{{route('reviews.index')}}">뒤로가기</a>
+            </span>
         </div>
     </form>
 </div>

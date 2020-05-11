@@ -10,16 +10,36 @@ class ReviewsController extends Controller
         $this->middleware('auth');
         $this->middleware('auth',['except'=>['index','show','edit','delete','store','update']]);
     }
-    public function index()
+    public function index(Request $request)
     {
         \Log::info('reviews index');
-
         $user = \App\User::whereId(auth()->user()->id)->first();
-        \Log::info($user);
+        $category=7;
+        $query = $category
+            ? \App\Category::whereId($category)->firstOrFail()->boards()
+            : new \App\Board;
 
-        $reviews = \App\Board::where('category_id','=','7')->latest()->orderBy('id','desc')->paginate(10);
-        \Log::info($reviews->all());
-
+        $query = $query->where('category_id','=','7')->orderBy(
+            $request->input('sortDesc','id'),
+            $request->input('id','desc'),
+        );
+        if($search = $request->input('search')) {
+            \DB::statement('ALTER TABLE boards ADD FULLTEXT(title,content);');
+            $raw = 'MATCH(title,content) AGAINST(? IN BOOLEAN MODE)';
+            $query = $query->whereRaw($raw, [$search] );
+            $query = $query->orderBy(
+                $request->input('sortDesc','id'),
+                $request->input('id','desc'),
+            );
+        }
+        if($user_id = $request->input('user_id')) {
+            $query = $query->where('user_id','=', $user_id);
+            $query = $query->orderBy(
+                $request->input('sortDesc','id'),
+                $request->input('id','desc'),
+            );
+        }
+        $reviews = $query->paginate(10);
         return view('reviews.index', compact('reviews'));
     }
 
@@ -57,14 +77,16 @@ class ReviewsController extends Controller
             return back()->withInput();
         }
         
-        return redirect()->route('reviews.index',compact('reviews'));
+        return redirect()->route('reviews.index');
     }
     public function show(\App\Board $review){
 
         \Log::info('reviews show');
+        $review->view_count += 1;
+        $review->save();
+
         $category = $review->category_id; 
         $comments = \App\Comment::where('board_id','=',$review->id)->latest()->orderBy('id','desc')->paginate(10);
-        \Log::info($review->all());
 
         return view('reviews.show',compact('review','category','comments'));
     }

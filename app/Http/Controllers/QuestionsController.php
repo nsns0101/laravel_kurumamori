@@ -15,27 +15,37 @@ class QuestionsController extends Controller
     {
         \Log::info('questions index');
         $user = \App\User::whereId(auth()->user()->id)->first();
-        \Log::info($user);
-        \Log::info($request->input('category_id'));
         $query = $category
             ? \App\Category::whereId($category)->firstOrFail()->boards()
             : new \App\Board;
         if($category_id = $request->input('category_id')){
             $query = $query->where('category_id','=',$category_id)->orderBy(
-                $request->input('sort','created_at'),
-                $request->input('order','desc'),
+                $request->input('sortDesc','id'),
+                $request->input('id','desc'),
             );
         }
         else{
             $query = $query->where('category_id','!=','7')->orderBy(
-                $request->input('sort','created_at'),
-                $request->input('order','desc'),
+                $request->input('sortDesc','id'),
+                $request->input('id','desc'),
             );
         }
         if($search = $request->input('search')) {
             \DB::statement('ALTER TABLE boards ADD FULLTEXT(title,content);');
             $raw = 'MATCH(title,content) AGAINST(? IN BOOLEAN MODE)';
             $query = $query->whereRaw($raw, [$search] );
+            $query = $query->orderBy(
+                $request->input('sortDesc','id'),
+                $request->input('id','desc'),
+            );
+            
+        }
+        if($user_id = $request->input('user_id')) {
+            $query = $query->where('user_id','=', $user_id);
+            $query = $query->orderBy(
+                $request->input('sortDesc','id'),
+                $request->input('id','desc'),
+            );
         }
         $questions = $query->paginate(10);
 
@@ -79,9 +89,7 @@ class QuestionsController extends Controller
         }
         
         return redirect()->route('questions.index');
-
     }
-
 
     public function show(\App\Board $question){
 
@@ -91,7 +99,7 @@ class QuestionsController extends Controller
 
         $category = $question->category_id; 
         $comments = \App\Comment::where('board_id','=',$question->id)->latest()->orderBy('id','desc')->paginate(10);
-        \Log::info($comments);
+
         return view('questions.show',compact('question','category','comments'));
     }
 
@@ -105,11 +113,8 @@ class QuestionsController extends Controller
     public function update(\App\Http\Requests\QuestionsRequest $request, \App\Board $question){
 
         \Log::info('questions update');
-        \Log::info($request->all());
-
         
         $question->update($request->all());
-        $questions = \App\Board::where('category_id','!=','7')->latest()->orderBy('id','desc')->paginate(10);
 
         if(! $question){
 
@@ -120,7 +125,7 @@ class QuestionsController extends Controller
             return back()->withInput();
         }
 
-        return redirect()->route('questions.index',compact('questions'));
+        return redirect()->route('questions.show',compact('question'));
     }
 
     public function destroy(\App\Board $question)
