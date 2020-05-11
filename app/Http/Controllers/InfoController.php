@@ -34,8 +34,10 @@ class InfoController extends Controller
         \Log::info($board_comment);
         $product = \App\Product::whereUser_id(auth()->user()->id)->first();
         $product_buy = $product ? \App\Product_buy::whereProduct_key($product->product_key)->first() : null;
+        //사용자가 구매한 키
+        $user_product_buy_key = \App\Product_buy::whereUser_id(auth()->user()->id)->get();
         // \Log::info($board_categories[0][0]->id);
-        return view('info.index', compact('user', 'reports', 'product', 'boards', 'board_categories', 'board_comment','product_buy'));
+        return view('info.index', compact('user', 'reports', 'product', 'boards', 'board_categories', 'board_comment','product_buy', 'user_product_buy_key'));
     }
 
     public function create()

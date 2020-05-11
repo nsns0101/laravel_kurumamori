@@ -86,7 +86,7 @@
                     <div class="col-sm-6 col-md-4">
                         <div class="thumbnail">
                             <div class="caption">
-                                <h3 class="text-center">제품 정보</h3>
+                                <h3 class="text-center">제품 등록 정보</h3>
                                 <hr style="background-color:green;">
                                 @if($product)
                                 {{-- <p id="text_product_name">제품 명 : {{$product->product_name}}</p> --}}
@@ -129,18 +129,19 @@
                                     </thead>
                                     <tbody>
                                         @for($i = 0; $i < count($boards); $i++)
-                                        <tr>
-                                            <th class="text-center" scope="row">{{$boards[$i]->id}}</th>
-                                            <td class="text-center">{{$boards[$i]->title}}</td>
-                                            <td class="text-center">{{$board_categories[$i]->category}}</td>
-                                            <td class="text-center">{{$boards[$i]->created_at}}</td>
-                                            <td class="text-center">{{$boards[$i]->view_count}}</td>
-                                            @if($board_comment[$i])
-                                            <td class="text-center">O</td>
-                                            @else 
-                                            <td class="text-center">X</td>
-                                            @endif
-                                        </tr>
+                                            <tr onClick="location.href='/boards/{{$board_categories[$i]->category=="유저리뷰" ? "reviews" : "questions"}}/{{$boards[$i]->id}}'">
+                                                <th class="text-center" scope="row">{{$boards[$i]->id}}</th>
+                                                <td class="text-center">{{$boards[$i]->title}}</td>
+                                                <td class="text-center">{{$board_categories[$i]->category}}</td>
+                                                <td class="text-center">{{$boards[$i]->created_at}}</td>
+                                                <td class="text-center">{{$boards[$i]->view_count}}</td>
+                                                
+                                                @if($board_comment[$i])
+                                                <td class="text-center">O</td>
+                                                @else 
+                                                <td class="text-center">X</td>
+                                                @endif
+                                            </tr>
                                         {{-- @empty 
                                         <p class="text-center text-danger">이력이 없습니다.</p> --}}
                                         @endfor
@@ -151,6 +152,27 @@
                             <p class="text-danger">최근 5건만 표시됩니다.</p>
 
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-5">
+                        <div class="thumbnail">
+                            <div class="caption">
+                                <h3 class="text-center">제품 구매 정보</h3>
+                                <hr style="background-color:green;">
+                                @if($user_product_buy_key)
+                                    @for($i = 0; $i < count($user_product_buy_key); $i++)
+                                        {{-- <p id="text_product_name">제품 명 : {{$product->product_name}}</p> --}}
+                                        <p id="text_product_buy_key" style="font-size:20px"><b>구매한 제품 키{{$i + 1}} </b> : {{$user_product_buy_key[$i]->product_key}}</p>
+                                        {{-- <p id="text_product_buy_date_buy" style="font-size:20px"><b>구입날짜</b> : {{$product_buy->created_at}}</p>
+                                        <p id="text_product_buy_date_as" style="font-size:20px"><b>무상 AS기한</b> : 구입 후 1년까지</p> --}}
+                                        
+                                        {{-- <button class="btn btn-primary">등록하기</button> --}}
+                                    @endfor
+                                @else
+                                <p class="text-center text-danger">구매한 제품이 없습니다.</p>
+                                @endif
+                            </div>
+                            <hr style="background-color:green;">
                         </div>
                     </div>
                 </div>

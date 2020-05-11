@@ -173,17 +173,18 @@ $factory->define(App\Board::class, function (Faker $faker) {
         'content' => $faker->paragraph(),
     ];
 });
-// //댓글 팩토리
-// $factory->define(App\Comment::class, function (Faker $faker) {
-//     $userId = App\User::pluck('id')->toArray();
-//     $questionId = App\Question::pluck('id')->toArray();
-//     return [
-//         'user_id' => $faker->randomElement($userId),
-//         'question_id' => $faker->randomElement($questionId),
-//         'question_type' => App\Question::class,
-//         'content' => $faker->paragraph,
-//     ];
-// });
+// 댓글 팩토리
+$factory->define(App\Comment::class, function (Faker $faker) {
+    $userId = App\User::pluck('id')->toArray();
+    $board_id = App\Board::pluck('id')->toArray();
+    return [
+        'user_id' => $faker->randomElement($userId),
+        'board_id' => $faker->randomElement($board_id),
+        'question_type' => App\Board::class,
+        'multiple_type' => false,
+        'content' => $faker->paragraph,
+    ];
+});
 
 //운전 팩토리
 $factory->define(App\Drive::class, function (Faker $faker) {

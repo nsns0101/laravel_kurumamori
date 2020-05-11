@@ -7,7 +7,6 @@
     <h1 class="">글 쓰기</h1>
     <hr/>
     <form action="{{ route('reviews.store') }}" method="POST">
-        {!! csrf_field()!!}
 
         {!! \Log::info('reviews form')!!}
         

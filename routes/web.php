@@ -81,3 +81,5 @@ Route::resource('/bigdata', 'BigdataController');
 //     'as' => 'bigdata.date',
 //     'uses' => 'BigdataController@index',
 // ]);
+
+Route::resource('/app', 'AppController');
