@@ -12,16 +12,16 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="d-block w-100" src="/images/main_image.png" alt="First slide"
-                style="width:2115px; height:1070px;">
+            <img onclick="func1()" class="d-block w-100" src="/images/main_image.png" alt="First slide"
+                style="width:2115px; height:1100px;">
         </div>
         <div class="carousel-item">
             <img class="d-block w-100" src="/images/main_image.png" alt="Second slide"
-                style="width:2115px; height:1070px;">
+                style="width:2115px; height:1100px;">
         </div>
         <div class="carousel-item">
             <img class="d-block w-100" src="/images/main_image.png" alt="Third slide"
-                style="width:2115px; height:1070px;">
+                style="width:2115px; height:1100px;">
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -37,6 +37,14 @@
 
 {{-- 주요 기능 --}}
 @include('home.partial.functions')
+@include('home.partial.functions2')
 {{-- 팀 소개 --}}
 @include('home.partial.team')
+@endsection
+@section('script')
+<script>
+    function func1(){
+        document.getElementById('intro').scrollIntoView(true);
+    }
+</script>
 @endsection
