@@ -31,6 +31,11 @@ class ConfirmController extends Controller
             flash('입력하신 코드가 올바르지 않습니다. 다시 입력해 주세요.');
             return redirect('/confirm');
         }
+        else{
+            $user->update([
+                'confirm_code' => null
+            ]);
+        }
         auth()->login($user);
         // flash(auth()->user()->name . '님, 환영합니다. 가입 확인되었습니다.');
 
