@@ -31,5 +31,29 @@ class AuthServiceProvider extends ServiceProvider
                 return $user->id === $model->user_id;
             }
         });
+        Gate::define('comment_update', function($user, $model){
+            if($user->id ==3){
+                return true;
+            }
+            else{
+                return $user->id === $model->user_id;
+            }
+        });
+        Gate::define('comment_delete', function($user, $model){
+            if($user->id ==3){
+                return true;
+            }
+            else{
+                return $user->id === $model->user_id;
+            }
+        });
+        Gate::define('master', function($user, $model){
+            if($user->id ==3){
+                return true;
+            }
+            else{
+                return false;
+            }
+        });
     }
 }
