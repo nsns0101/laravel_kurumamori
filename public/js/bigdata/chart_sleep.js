@@ -17,6 +17,7 @@ var sleepAgeChart = new Chart(ctx, {
                 pointBorderColor: "purple",  //꼭짓점 바탕색깔
                 backgroundColor: "rgba(0, 0, 0, 0)",
                 data: [
+                    bigdata_age["20"]["bool_sleep"][day_7[6]].bool_sleep_count,
                     bigdata_age["20"]["bool_sleep"][day_7[5]].bool_sleep_count,
                     bigdata_age["20"]["bool_sleep"][day_7[4]].bool_sleep_count,
                     bigdata_age["20"]["bool_sleep"][day_7[3]].bool_sleep_count,
@@ -116,7 +117,7 @@ var ctx = document.getElementById("sleepTimeChart");   //bigdata/bigdata_chart/c
 var sleepTimeChart = new Chart(ctx, {
     type: "bar",
     data: {
-labels: ["00시 ~ 06시", "06시 ~ 12시", "12시 ~ 18시", "18시 ~ 24시"],    // 기준
+    labels: ["00시 ~ 06시", "06시 ~ 12시", "12시 ~ 18시", "18시 ~ 24시"],    // 기준
         datasets: [
             {
                 label: "졸음운전",
@@ -156,3 +157,4 @@ labels: ["00시 ~ 06시", "06시 ~ 12시", "12시 ~ 18시", "18시 ~ 24시"],   
         },
     }   
 });
+
