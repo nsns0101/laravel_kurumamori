@@ -22,11 +22,11 @@ class MedicalController extends Controller
         $update_form = false;
         $sickness_list = ["없음", "고혈압", "당뇨", "결핵", "심장질환", "알러지", "천식", "심부전증", "페렴", "디스크", "간경화", "관절염", "협심증", "암", "갑상선염", "고지혈증", "골다공증", "과민성 대장", "기관지염", "뇌졸중", "신장질환", "간암"];
 
-        $past_sicknesses = $medical_info ? \App\Past_sickness::whereUser_id(auth()->user()->id)->get() : null;
-        $sicknesses = $medical_info ? \App\Sickness::whereUser_id(auth()->user()->id)->get() : null;
-        \Log::info($past_sicknesses);
-        \Log::info($sicknesses);
-        return view('info.medical_info', compact('medical_info', 'insurance','insurance_list_my', 'insurance_list', 'update_form', 'sickness_list', 'past_sicknesses','sicknesses'));
+        $past_sickness = $medical_info ? \App\Past_sickness::whereUser_id(auth()->user()->id)->get() : null;
+        $sickness = $medical_info ? \App\Sickness::whereUser_id(auth()->user()->id)->get() : null;
+        \Log::info($past_sickness);
+        \Log::info($sickness);
+        return view('info.medical_info', compact('medical_info', 'insurance','insurance_list_my', 'insurance_list', 'update_form', 'sickness_list', 'past_sickness','sickness'));
         // return view('info.medical_info', compact('medical_info', 'insurance', 'update_form','sickness_list'));
     
     }

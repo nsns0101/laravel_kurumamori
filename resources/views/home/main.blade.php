@@ -16,11 +16,11 @@
                 style="width:2115px; height:1100px;">
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100" src="/images/main_image.png" alt="Second slide"
+            <img onclick="func2()" class="d-block w-100" src="/images/404_main.png" alt="Second slide"
                 style="width:2115px; height:1100px;">
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100" src="/images/main_image.png" alt="Third slide"
+            <img class="d-block w-100" src="/images/404_main.png" alt="Third slide"
                 style="width:2115px; height:1100px;">
         </div>
     </div>
@@ -44,7 +44,10 @@
 @section('script')
 <script>
     function func1(){
-        document.getElementById('intro').scrollIntoView(true);
+        document.getElementById('function1').scrollIntoView({ behavior: 'smooth'});
+    }
+    function func2(){
+        document.getElementById('function2').scrollIntoView({ behavior: 'smooth'});
     }
 </script>
 @endsection

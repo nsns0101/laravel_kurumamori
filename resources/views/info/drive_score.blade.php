@@ -8,7 +8,7 @@
 <div class="row">
     
     <!-- Page Heading -->
-    <div class="col-md-2">
+    <div class="col-md-2 col-xs-2 col-sm-2">
         @include('layouts.partial.info_menu')
     </div>
     <div class="col-md-10">

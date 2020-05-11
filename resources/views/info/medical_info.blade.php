@@ -4,7 +4,7 @@
 <!-- intro section -->
 <section id="intro" class="section intro" style="padding: 50px 0px 0px 0px;">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2 col-xs-2 col-sm-2">
             @include('layouts.partial.info_menu')
         </div>
         <div class="col-md-7">
@@ -27,9 +27,10 @@
 
 @section('script')
 <script>
-    var past_sickness_count = "{{ isset($past_sicknesses) ? count($past_sicknesses) + 1 : 2}}";
-    var sickness_count = "{{ isset($sicknesses) ? count($sicknesses) + 1 : 2}}";
-
+    var past_sickness_count = "{{ isset($past_sickness) ? count($past_sickness) + 1 : 4}}";
+    var sickness_count = "{{ isset($sickness) ? count($sickness) + 1 : 4}}";
+    console.log(past_sickness_count);
+    console.log(sickness_count);
     //예전 질병
     $(`.dropdown-past_sickness1`).click(function(){
         console.log("dropdown-past_sickness1");

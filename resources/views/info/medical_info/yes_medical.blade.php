@@ -5,10 +5,10 @@
             <div class="caption">
                 <h3 class="text-center">과거 병력</h3>
                 <hr style="background-color:darkgrey;">
-                @if(count($past_sicknesses))
-                    @for($i = 0; $i < count($past_sicknesses); $i++)
-                        <p>예전에 걸린 병{{$i + 1}} : {{$past_sicknesses[$i]->past_sickness_name}}</p>
-                        <p>예전에 걸린 병{{$i + 1}} 보충 설명 : {{$past_sicknesses[$i]->past_sickness_supplementation ? $past_sicknesses[$i]->past_sickness_supplementation : "없음"}}</p>
+                @if(count($past_sickness))
+                    @for($i = 0; $i < count($past_sickness); $i++)
+                        <p>예전에 걸린 병{{$i + 1}} : {{$past_sickness[$i]->past_sickness_name}}</p>
+                        <p>예전에 걸린 병{{$i + 1}} 보충 설명 : {{$past_sickness[$i]->past_sickness_supplementation ? $past_sickness[$i]->past_sickness_supplementation : "없음"}}</p>
 
                         <br/>
                     @endfor
@@ -26,12 +26,12 @@
                 <h3 class="text-center">현재 병력</h3>
                 <hr style="background-color:darkgrey;"/>
   
-                @if(count($sicknesses))
-                    @for($i = 0; $i < count($sicknesses); $i++)
-                        <p>현재 병{{$i + 1}} : {{$sicknesses[$i]->sickness_name}}</p>
-                        <p>복용중인 약{{$i + 1}} : {{$sicknesses[$i]->medicine ? $sicknesses[$i]->medicine : "없음"}}</p>
-                        <p>증상{{$i + 1}} : {{$sicknesses[$i]->symptom ? $sicknesses[$i]->symptom : "없음"}}</p>
-                        <p>다니는 병원 : {{$sicknesses[$i]->hospital ? $sicknesses[$i]->hospital : "없음"}}</p>
+                @if(count($sickness))
+                    @for($i = 0; $i < count($sickness); $i++)
+                        <p>현재 병{{$i + 1}} : {{$sickness[$i]->sickness_name}}</p>
+                        <p>복용중인 약{{$i + 1}} : {{$sickness[$i]->medicine ? $sickness[$i]->medicine : "없음"}}</p>
+                        <p>증상{{$i + 1}} : {{$sickness[$i]->symptom ? $sickness[$i]->symptom : "없음"}}</p>
+                        <p>다니는 병원 : {{$sickness[$i]->hospital ? $sickness[$i]->hospital : "없음"}}</p>
                         <br/>
                     @endfor
                 @else
