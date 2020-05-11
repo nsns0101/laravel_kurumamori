@@ -60,16 +60,16 @@
                                         // console.log(latitude);
                                         // console.log(longitude);
 
-                                        // new Promise(function(resolve, reject) {
-                                        //     resolve(
-                                        //         $.getJSON(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${API_KEY}`,
-                                        //         function(data) {
-                                        //             console.log(data);
-                                        //             gps = data.results[0].formatted_address;
-                                        //             console.log(gps);
-                                        //             $(`.gps{{$report->id}}`).text(gps);
-                                        //         }));
-                                        // });
+                                        new Promise(function(resolve, reject) {
+                                            resolve(
+                                                $.getJSON(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${API_KEY}`,
+                                                function(data) {
+                                                    console.log(data);
+                                                    gps = data.results[0].formatted_address;
+                                                    console.log(gps);
+                                                    $(`.gps{{$report->id}}`).text(gps);
+                                                }));
+                                        });
                                         // $(`.gps{{$report->id}}`).text("api쓰는거라 실제 쓸때 위에 주석 푸셈");
                                     </script>
 
@@ -78,7 +78,7 @@
                                 @empty
                                 <p class="text-center text-danger" style="font-size:20px">이력이 없습니다.</p>
                                 @endforelse
-                                <p class="text-danger">최근 5건만 표시됩니다.</p>
+                                <p class="text-danger">최근 3건만 표시됩니다.</p>
                             </div>
                             <hr style="background-color:red;">
                         </div>
@@ -154,7 +154,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-5">
+                    <div class="col-sm-6 col-md-4">
                         <div class="thumbnail">
                             <div class="caption">
                                 <h3 class="text-center">제품 구매 정보</h3>

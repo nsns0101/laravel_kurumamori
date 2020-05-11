@@ -18,7 +18,7 @@ class InfoController extends Controller
             whereUser_id(auth()->user()->id)->
             whereBool_report(true)->
             orderBy('created_at')->
-            paginate(5);
+            paginate(3);
         //게시판 최근 5개
         $boards = \App\Board::whereUser_id(auth()->user()->id)->orderBy('id', 'desc')->paginate(5);
         //게시판 카테고리

@@ -27,8 +27,8 @@
 
 @section('script')
 <script>
-    var past_sickness_count = "{{ isset($past_sickness) ? count($past_sickness) + 1 : 4}}";
-    var sickness_count = "{{ isset($sickness) ? count($sickness) + 1 : 4}}";
+    var past_sickness_count = "{{ isset($past_sickness) && count($past_sickness) ? count($past_sickness) + 1 : 2}}";
+    var sickness_count = "{{ isset($sickness) && count($sickness) ? count($sickness) + 1 : 2}}";
     console.log(past_sickness_count);
     console.log(sickness_count);
     //예전 질병
