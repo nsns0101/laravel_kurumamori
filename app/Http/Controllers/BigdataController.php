@@ -107,7 +107,20 @@ class BigdataController extends Controller
 
         // return
         \Log::info($option);
-        return view('bigdata.detail.index', compact('option', 'day_7', 'time_set', 'bigdata_time', 'bigdata_age'));
+        $drive_detection_7= array();
+        for($i = 0; $i < count($day_7); $i++){
+            //$value는 배열로 리턴됨
+            $value = \DB::select("select * from drive_detections where DATE_FORMAT(created_at, '%Y-%m-%d') = DATE_SUB('{$date}', INTERVAL {$i} DAY)");
+            if($value){
+                array_push($drive_detection_7, $value);
+            }
+            else{
+                array_push($drive_detection_7, null);
+
+            }
+        }
+        \Log::info($drive_detection_7);
+        return view('bigdata.detail.index', compact('option', 'day_7', 'time_set', 'bigdata_time', 'bigdata_age', 'drive_detection_7'));
     }
 
     public function edit($id)
