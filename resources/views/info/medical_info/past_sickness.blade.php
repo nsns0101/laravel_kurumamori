@@ -14,7 +14,7 @@
         @endif
     </div>
     <div class="col-md-2 text-center">
-        <p class="add__past_sickness"style="font-size:24px; margin-top:13px; color:blue;font-weight:800;">과거 질환{{$i}}</p>
+        <span class="add__past_sickness medical_text"style="margin-top:13px;">과거 질환{{$i}}</span>
     </div>
     {{-- 드롭다운버튼 --}}
     <div class="col-md-2">

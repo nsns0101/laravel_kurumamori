@@ -3,7 +3,7 @@
 @section('content')
 
 
-<section id="intro" class="section intro" style="padding: 50px 0px 0px 0px;">
+<section id="intro" class="section intro" style="padding: 50px 0px 0px 0px; background-color:#F0F0F0">
 <!-- Content Row -->
 <div class="row">
     

@@ -1,5 +1,5 @@
-<p style="color:red"> *가 있는 곳은 반드시 입력해주세요!</p>
-<p style="color:red"> *과거 질환과 현재 질환은 3개까지 등록가능합니다.</p>
+<span style="color:red"> *가 있는 곳은 반드시 입력해주세요!</p>
+<span style="color:red"> 과거 질환과 현재 질환은 3개까지 등록가능합니다.</p>
 {{-- 질병 사항 --}}
 @if($update_form)
 <form action="{{ route('medical_info.update',$medical_info->id) }}" method="POST" role="form">
@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="text-center card-header" style="background-color:green; color:white">
+                <div class="text-center card-header card-main" style="; color:white">
                     질병 사항
                 </div>
                 <div class="dropdown">
@@ -26,46 +26,12 @@
             </div>
         </div>
     </div>
-    {{-- 진료 의료기관 --}}
-    {{-- <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="text-center card-header" style="background-color:green; color:white">
-                    진료 의료기관
-                </div>
-                <br/>
-                <div class="row">
-                    <div class="col-md-2 text-center">
-                        <p style="font-size:24px;margin-top:13px; color:blue;font-weight:800;">
-                        기관 명
-                        </p>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group {{ $errors->has('hospital') ? 'has-error' : '' }}">
-                            <input style="font-size:24px"type="text" name="hospital" class="form-control" placeholder="다니시는 병원" value="{{ $medical_info ?old('hospital',$medical_info->hospital) :  old('hospital')}}"/>
-                            {!! $errors->first('hospital', '<span class="form-error">:message</span>') !!}
-                        </div>
-                    </div>
-                    <div class="col-md-2 text-center">
-                        <p style="font-size:24px;margin-top:13px; color:blue;font-weight:800;">
-                        진료 과목
-                        </p>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group {{ $errors->has('hospital_menu') ? 'has-error' : '' }}">
-                            <input style="font-size:24px"type="text" name="hospital_menu" class="form-control" placeholder="진료하시는 과목" value="{{$medical_info ? old('hospital_menu',$medical_info->hospital_menu) :  old('hospital_menu')}}"/>
-                            {!! $errors->first('hospital_menu', '<span class="form-error">:message</span>') !!}
-                        </div>
-                    </div> 
-                </div>
-            </div>
-        </div>
-    </div> --}}
+
     {{-- 신청자 인적사항 --}}
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="text-center card-header" style="background-color:green; color:white">
+                <div class="text-center card-header card-main" style="; color:white">
                     신청자 인적사항
                 </div>
                 <br/>
@@ -73,7 +39,7 @@
                     <div class="col-md-2 text-center">
                         {{-- 혈액형 --}}
                         <span style="color:red; font-size:30px;">*</span>
-                        <span style="font-size:24px; margin-top:13px; color:blue;font-weight:800;">
+                         <span class="medical_text"style="font-size:24px; margin-top:13px; ">
                             혈액형
                         </span>
                     </div>
@@ -93,7 +59,7 @@
                     <br/>
                     <div class="form-group {{ $errors->has('blood_type') ? 'has-error' : '' }}">
                         <input id="blood_type" style="font-size:24px"type="hidden" name="blood_type" class="form-control" value="{{$medical_info && $medical_info->blood_type ? old('blood_type',$medical_info->blood_type) :  old('blood_type')}}"/>
-                        <p style="color:red">
+                        <span style="color:red">
 
                         {!! $errors->first('blood_type', '<span class="form-error">:message</span>') !!}
                         </p>
@@ -101,7 +67,7 @@
                     {{-- 장애 여부 --}}
                     <div class="col-md-2 text-center">
                         <span style="color:red; font-size:30px;">*</span>
-                        <span style="font-size:24px; margin-top:13px; color:blue;font-weight:800;">
+                        <span class="medical_text" style="font-size:24px; margin-top:13px; ">
                             장애여부
                         </span>
                     </div>
@@ -120,14 +86,13 @@
                                     <input type="radio" name="disability_status" id="disability_status_no" value="no" checked/>
                                 </fieldset>
                             @endif
-                            <p style="color:red">
+                            <span style="color:red">
                                 {!! $errors->first('disability_status', '<span class="form-error">:message</span>')!!}
                             </p>
-
                         </div>
                     </div>
                     <div class="col-md-3 text-center">
-                        <p style="font-size:24px;margin-top:13px; margin-right:15px;color:blue;font-weight:800;">
+                        <span class="medical_text" style="font-size:24px;margin-top:13px; margin-right:15px;">
                         신고시 요청사항
                         </p>
                     </div>
@@ -145,14 +110,14 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="text-center card-header" style="background-color:green; color:white">
+                <div class="text-center card-header card-main" style="; color:white">
                     보호자 정보
                 </div>
                 <br/>
                 <div class="row">
                     {{--  --}}
                     <div class="col-md-2 text-center">
-                        <p style="font-size:24px;margin-top:13px; margin-right:15px;color:blue;font-weight:800;">
+                        <span class="medical_text" style="font-size:24px;margin-top:13px; margin-right:15px;">
                         보호자 번호
                         </p>
                     </div>
@@ -170,14 +135,14 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="text-center card-header" style="background-color:darkgray; color:white">
+                <div class="text-center card-header card-main" style="background-color:darkgray; color:white">
                     보험 정보
                 </div>
                 <br/>
                 <div class="row">
                     <div class="col-md-2 text-center">
                         <span style="color:red; font-size:30px;">*</span>
-                        <span style="font-size:24px; margin-top:13px; color:blue;font-weight:800;margin-right:25px;">
+                        <span class="medical_text"  style="font-size:24px; margin-top:13px; margin-right:25px;">
                             보험 여부
                         </span>
                     </div>
@@ -196,7 +161,7 @@
                                     <input class="insurance_bool" type="radio" name="insurance_bool" id="insurance_bool_no" value="{{0}}" {{old('insurance_bool') ? "" : "checked"}} />
                                 @endif
                                 </fieldset>
-                            <p style="color:red">
+                            <span style="color:red">
                                 {!! $errors->first('insurance_bool', '<span class="form-error">:message</span>')!!}
                             </p>
 
@@ -206,13 +171,13 @@
                 </div>
             <div class="row" id="insurance_table" style="{{$insurance ? "display:flex" : "display:none;" }}">
                     <div class="col-md-2 text-center">
-                        <p style="font-size:24px;margin-top:13px; margin-right:15px;color:blue;font-weight:800;">
+                        <span class="medical_text" style="font-size:24px;margin-top:13px;margin-right:25px">
                         보험사 명
-                        </p>
+                        </span>
                     </div>
                     <button 
                     class="btn btn-default dropdown-toggle insurance_name_btn dropdown_btn" type="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="true">
+                    aria-haspopup="true" aria-expanded="true" style="margin-left:20px;">
                     {{$insurance_list && isset($insurance_list_my->insurance_name) ? $insurance_list_my->insurance_name : old('insurance_name',"선택")}}
 
                         <span class="caret"></span>
@@ -223,30 +188,31 @@
                         @endfor
                     </ul>
                     <br/>
+                    <br/>
                     <div class="form-group {{ $errors->has('insurance_name') ? 'has-error' : '' }}">
                         <input id="insurance_name" style="font-size:24px"type="hidden" name="insurance_name" class="form-control" value="{{$insurance_list_my && $insurance_list_my->insurance_name ? old('insurance_name',$insurance_list_my->insurance_name) :  old('insurance_name')}}"/>
-                        <p style="color:red">
+                        <span style="color:red">
 
                         {!! $errors->first('insurance_name', '<span class="form-error">:message</span>') !!}
-                        </p>
+                        </span>
                     </div>
                     {{-- <div class="col-md-3">
                         <div class="form-group {{ $errors->has('insurance_name') ? 'has-error' : '' }}">
                             <input style="font-size:24px"type="text" name="insurance_name" class="form-control" placeholder="보험사 명" value="{{ $insurance_list_my ? old('insurance_name',$insurance_list_my->insurance_name) :  old('insurance_name') }}"/>
-                            <p style="color:red">
+                            <span style="color:red">
                                 {!! $errors->first('insurance_name', '<span class="form-error">:message</span>') !!}
                             </p>
                         </div>
                     </div> --}}
                     {{-- <div class="col-md-2 text-center">
-                        <p style="font-size:24px;margin-top:13px; margin-right:15px;color:blue;font-weight:800;">
+                        <span  style="font-size:class="medical_text"24px;margin-top:13px; margin-right:15px;">
                         보험사 번호
                         </p>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group {{ $errors->has('insurance_phone') ? 'has-error' : '' }}">
                             <input style="font-size:24px"type="text" name="insurance_phone" class="form-control" placeholder="보험사 번호" value="{{ $insurance_list_my ? old('insurance_phone',$insurance_list_my->insurance_phone) :  old('insurance_phone') }}"/>
-                            <p style="color:red">
+                            <span style="color:red">
                                 {!! $errors->first('insurance_phone', '<span class="form-error">:message</span>') !!}
                             </p>
                         </div>
@@ -255,7 +221,7 @@
                     <div class="col-md-2"></div>
                     {{--  --}}
                     <div class="col-md-2 text-center">
-                        <p style="font-size:24px;margin-top:13px; margin-right:15px;color:blue;font-weight:800;">
+                        <span  class="medical_text style="font-size:24px;margin-top:13px; margin-right:15px;">
                         보험 가입일
                         </p>
                     </div>
@@ -263,14 +229,14 @@
                     <div class="col-md-3">
                         <div class="form-group {{ $errors->has('subscription_date') ? 'has-error' : '' }}">
 	                        <input type="text" name="subscription_date" class="form-control datePicker" value="{{ $insurance ? old('subscription_date',$insurance->subscription_date) :  old('subscription_date') }}" readonly>
-                            <p style="color:red">
+                            <span style="color:red">
 
                                 {!! $errors->first('subscription_date', '<span class="form-error">:message</span>') !!}
                             </p>
                         </div>
                     </div>
                     <div class="col-md-2 text-center">
-                        <p style="font-size:24px;margin-top:13px; margin-right:15px;color:blue;font-weight:800;">
+                        <span  class="medical_text" style="font-size:24px;margin-top:13px; margin-right:15px;">
                         보험 만기일
                         </p>
                     </div>
@@ -279,7 +245,7 @@
                         <div class="form-group {{ $errors->has('expiration_date') ? 'has-error' : '' }}">
                             <!-- 시작시 기본 날짜 설정은 value를 이용 -->
 	                        <input type="text" name="expiration_date" class="form-control datePicker" value="{{ $insurance ? old('expiration_date',$insurance->expiration_date) :  old('expiration_date') }}" readonly>
-                            <p style="color:red">
+                            <span style="color:red">
                                 {!! $errors->first('expiration_date', '<span class="form-error">:message</span>') !!}
                             </p>
                         </div>

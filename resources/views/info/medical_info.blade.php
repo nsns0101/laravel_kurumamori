@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- intro section -->
-<section id="intro" class="section intro" style="padding: 50px 0px 0px 0px;">
+<section id="intro" class="section intro" style="padding: 50px 0px 0px 0px; background-color:#F0F0F0">
     <div class="row">
         <div class="col-md-2 col-xs-2 col-sm-2">
             @include('layouts.partial.info_menu')
@@ -10,7 +10,7 @@
         <div class="col-md-7">
             <br />
             <br />
-            <h3 style="color:forestgreen">의료 정보</h3>
+            <h3 style="color:blue">의료 정보</h3>
             {{-- 의료정보 있을 경우의 페이지 --}}
             @if($update_form)
                 @include('info.medical_info.no_medical')
@@ -188,5 +188,15 @@
         margin-top:2px; 
         margin-right:20px;
     }
+    .medical_text {
+        color : black;
+        font-size : 24px;
+        font-weight: 800;   
+    }
+
+    .card-main {
+        background-color : #002ef0
+    }
+
 </style>
 @endsection
