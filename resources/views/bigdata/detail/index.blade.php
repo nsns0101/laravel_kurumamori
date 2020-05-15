@@ -71,7 +71,7 @@ function initMap() {
     // console.log(location);
     // console.log(location_color);
     var mapCanvas = document.getElementById("map");
-    var mapOptions = {center: location[0], zoom: 10}; //location[0]을 기준으로 12번 확대
+    var mapOptions = {center: location[0], zoom: 8}; //location[0]을 기준으로 12번 확대
     var map = new google.maps.Map(mapCanvas,mapOptions);
 
     for(var i = 0; i < location.length; i++){

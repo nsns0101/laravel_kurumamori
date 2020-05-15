@@ -1,4 +1,4 @@
-<p class="text-danger" style="font-size:20px; margin-left:180px;">총 점수는 급 가속, 급 감속, 졸음, 사고를 포함한 점수입니다.</p>
+<p class="text-danger" style="font-size:20px; margin-left:180px;">총 점수는 급 가속, 급 감속 점수 뿐 아니라 졸음, 사고점수도 포함한 점수입니다.</p>
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-1"></div>
 

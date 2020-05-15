@@ -17,7 +17,7 @@ class InfoController extends Controller
         $reports = \App\Drive_detection::
             whereUser_id(auth()->user()->id)->
             whereBool_report(true)->
-            orderBy('created_at')->
+            orderBy('created_at','desc')->
             paginate(3);
         //게시판 최근 5개
         $boards = \App\Board::whereUser_id(auth()->user()->id)->orderBy('id', 'desc')->paginate(5);
