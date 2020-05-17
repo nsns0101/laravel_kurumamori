@@ -11,8 +11,13 @@ class CommentsController extends Controller
     {
         \Log::info('comments store');
         \Log::info($request->all());
-        
-        if(\App\Category::find( \App\Board::find($request->review)->category_id )->id == 7){
+        if($request->question){
+            $board = $request->question;
+        }
+        else{
+            $board = $request->review;
+        }
+        if(\App\Category::find( \App\Board::find($board)->category_id )->id == 7){
             \Log::info(1);
             $comment = $request->user()->comments()->create([
                 'board_id'=>$request->review,
@@ -29,9 +34,6 @@ class CommentsController extends Controller
                 'content'=>$request->content,
             ]);
         }
-
-        $questions = \App\Board::where('category_id','!=','7')->latest()->orderBy('id','desc')->paginate(10);
-
         if(! $comment){
 
             flash()->error(
