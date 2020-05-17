@@ -16,8 +16,8 @@
     </div>
     <div style="display:flex; border:1px black solid;">
         <img class="img-product" src="product/titleImg.jpg" style="width:25%;"></img>
-        <h3 style="width:25%; margin-top:70px; text-align:center;">kurumamori</h3>
-        <p class="card-text" style="width:25%; margin-top:70px; text-align:center;">내 차가 사고를 스스로 신고한다! (5초, 간단설치)</p>
+        <h3 style="width:25%; margin-top:70px; text-align:center;">KURUMAMORI 119</h3>
+        <p class="card-text" style="width:25%; margin-top:70px; text-align:center;">내 차가 사고를 스스로 예방하고 사고를 스스로 신고한다!</p>
         <label for="" class="card-text" style="width:25%; margin-top:70px; text-align:center;">49900</label>
     </div>
 </div>

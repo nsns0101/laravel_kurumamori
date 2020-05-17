@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav mr-auto col-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/products">제품 소개</a>
+                    <a class="nav-link" href="/products">제품</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/questions">고객 문의</a>
