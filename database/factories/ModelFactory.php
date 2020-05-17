@@ -192,13 +192,13 @@ $factory->define(App\Drive::class, function (Faker $faker) {
     $userId = App\User::pluck('id')->toArray();
 
     $date = date("Y-m-d H:m:s", time()); //현재날짜
-    $day_5 = array();   //최근 5일을 담을 배열
-    for($i = 0; $i <5; $i++){
-        array_push($day_5,date("Y-m-d H:m:s", strtotime($date ."-{$i} day")));
+    $day_7 = array();   //최근 7일을 담을 배열
+    for($i = 0; $i <7; $i++){
+        array_push($day_7,date("Y-m-d H:m:s", strtotime($date ."-{$i} day")));
     }
-    $random_day_5 = Arr::random($day_5);
+    $random_day_7 = Arr::random($day_7);
     $a = rand(1,24);
-    $start_time = date("Y-m-d H:m:s", strtotime($random_day_5 ."+{$a} hours"));
+    $start_time = date("Y-m-d H:m:s", strtotime($random_day_7 ."+{$a} hours"));
     $created_at = date("Y-m-d H:m:s", strtotime($start_time ."+1 hours"));
     return [
         'user_id' => $faker->randomElement($userId),
@@ -237,8 +237,8 @@ $factory->define(App\Drive_detection::class, function (Faker $faker) {
     return [
         'user_id' => $userId,
         'drive_id' => $rand_drive->id,
-        'latitude' => rand(35, 37) . '.' . rand(1000, 9999999),     //x축
-        'longitude' => rand(126, 128) . '.' . rand(1000, 9999999),  //y축
+        'latitude' => rand(35, 37) . '.' . rand(1000, 9999999),     //세로
+        'longitude' => rand(127, 128) . '.' . rand(200000, 900000),  //가로
         'bool_report' => $random[0],
         'bool_sudden_acceleration' => $random[1],
         'bool_sudden_stop' => $random[2],

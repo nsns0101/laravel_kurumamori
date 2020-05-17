@@ -41,23 +41,23 @@
         </div>
         <div class="flex-div"> 
             <div>
-                <input name="to_name" type="text">
+                <input name="to_name" type="text" value="이재영">
                 {!! $errors->first('to_name', '<span class="form-error">:message</span>') !!}
             </div>
             <div>
-                <input name='to_phone' type="text">
+                <input name='to_phone' type="text" value="010-7374-6119">
                 {!! $errors->first('to_phone', '<span class="form-error">:message</span>') !!}
             </div>
             <div>
                 <input type="button" value="주소 검색" onclick="goPopup();"> 
-                <input id ="roadFullAddr" name="to_address">
+                <input id ="roadFullAddr" name="to_address" value="복현동 영진전문대학교 본관 200호">
                 {!! $errors->first('to_address', '<span class="form-error">:message</span>') !!}
                 <label for="">우편번호</label>
-                <input id ="zipNo" name="to_zipcode">
+                <input id ="zipNo" name="to_zipcode" value="104-251">
                 {!! $errors->first('to_zipcode', '<span class="form-error">:message</span>') !!}
             </div>
             <div>
-                <input name='to_msg' type="text" placeholder="요청사항을 입력해 주세요. ex)현관앞에 둬주세요." style="width:600px;">
+                <input name='to_msg' type="text" placeholder="요청사항을 입력해 주세요. ex)현관앞에 둬주세요." style="width:600px;" value="현관 앞에 놔두세여">
             </div>
         </div>
     </div>
@@ -78,7 +78,7 @@
                 {!! $errors->first('ea', '<span class="form-error">:message</span>') !!}
             </div>
             <div>
-                <input type="radio" name="payment" value="신용카드">신용카드
+                <input type="radio" name="payment" value="신용카드" checked>신용카드
                 <input type="radio" name="payment" value="가상계좌">가상계좌
                 <input type="radio" name="payment" value="카카오페이">카카오페이
             </div>
