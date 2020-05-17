@@ -11,9 +11,23 @@ class AppController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-      return response()->json(["index"],200);
+      $email = "dl@wodud";
+      //회원정보
+      $app_user = \App\User::whereEmail($email)->first();
+      //현재 질환
+      $app_sickness_info = \App\Sickness::whereUser_id($app_user->id)->first();
+      //비상연락망
+      $app_phone = \App\Medical_info::whereUser_id($app_user->id)->first()->guardian_phone;
+      //손해보험사
+      $app_insurance = \App\Insurance::whereUser_id($app_user->id)->first();
+
+      $profile = [$app_user, $app_sickness_info, $app_phone, $app_insurance];
+
+      return response()->json($profile);
+
+      // return response()->json(["index"],200);
     }
 
     /**
@@ -34,32 +48,44 @@ class AppController extends Controller
      */
     public function store(Request $request)
     {
-      // ------------------------------
-      // $email = "dl@wodud";
 
-      // //회원정보
-      // $app_user = \App\User::whereEmail($email)->first();
-      // //의료정보
-      // $app_medical_info = \App\Medical_info::whereUser_id($app_user->id)->first();
-      // //비상연락망
-      // $app_phone = $app_medical_info->guardian_phone;
-      // //손해보험사
-      // $app_insurance = \App\Insurance::whereUser_id($app_user->id)->first();
 
-      // \Log::info($app_user);
-      // \Log::info($app_medical_info);
-      // \Log::info($app_phone);
-      // \Log::info($app_insurance);
-      // ------------------------------
+      //로그인 로직
+      if($request->_option == 0){
+        if (!auth()->attempt(["email"=>"{$request->_email}","password"=>"{$request->_password}"], $request->has('remember'))) {
+          return response()->json(["비밀번호가 틀립니다."],200);
+        }
+        if (auth()->user()->confirm_code) {
+          return response()->json(["이메일로 가입을 확인해주세요."],200);
+        }
+        $user = \App\User::whereEmail($request->_email)->first();
+        return response()->json($user);
+      }
 
-      $user = \App\User::whereEmail($request->_email)->first();
-      // $request->_email;
-      $str = $request->_email;
-      // return $request;
-      // return $str;
-      return response()->json($user);
+      elseif($request->_option == 1){
+        //회원정보
+        $app_user = \App\User::whereId($request->_key)->first();
+        //현재 질환
+        $app_sickness_info = \App\Sickness::whereUser_id($app_user->id)->first();
+        //비상연락망
+        $app_phone = \App\Medical_info::whereUser_id($app_user->id)->first()->guardian_phone;
+        //손해보험사
+        $app_insurance = \App\Insurance::whereUser_id($app_user->id)->first();
+
+        $profile = [$app_user, $app_sickness_info, $app_phone, $app_insurance];
+
+        return response()->json($profile);
+
+      }
+
+      elseif($request->_option == 2){
+        //제품정보
+        $app_product = \App\Product::whereId($request->_key)->first();
+        return response()->json($app_product);
+
+      }
+
     }
-
     /**
      * Display the specified resource.
      *
