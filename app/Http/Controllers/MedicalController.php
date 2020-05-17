@@ -72,7 +72,8 @@ class MedicalController extends Controller
         $sickness_count = 0;
 
         //past_sickness DB create
-        for($i = 1; $i <= count($request->past_sickness_name); $i++){
+        // for($i = 1; $i <= count($request->past_sickness_name); $i++){
+        for($i = 1; $i <= 1; $i++){
             if($request->past_sickness_name[$i] && $request->past_sickness_name[$i]!="없음"){
                 \App\Past_sickness::create([
                     'user_id' => auth()->user()->id,
@@ -84,7 +85,8 @@ class MedicalController extends Controller
             }
         }
         //sickness DB create
-        for($i = 1; $i <= count($request->sickness_name); $i++){
+        // for($i = 1; $i <= count($request->sickness_name); $i++){
+        for($i = 1; $i <= 1; $i++){
             \Log::info("i" . $i);
             if($request->sickness_name[$i] && $request->sickness_name[$i]!="없음"){
                 \Log::info("성공");

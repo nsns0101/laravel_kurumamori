@@ -46,7 +46,8 @@
                     <button 
                     class="btn btn-default dropdown-toggle blood_type_btn dropdown_btn" type="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="true">
-                    {{$medical_info && $medical_info->blood_type ? $medical_info->blood_type : old('blood_type',"선택")}}
+                    {{-- {{$medical_info && $medical_info->blood_type ? $medical_info->blood_type : old('blood_type',"선택")}} --}}
+                    {{$medical_info && $medical_info->blood_type ? $medical_info->blood_type : old('blood_type',"A형")}}
 
                         <span class="caret"></span>
                     </button>
@@ -58,7 +59,8 @@
                     </ul>
                     <br/>
                     <div class="form-group {{ $errors->has('blood_type') ? 'has-error' : '' }}">
-                        <input id="blood_type" style="font-size:24px"type="hidden" name="blood_type" class="form-control" value="{{$medical_info && $medical_info->blood_type ? old('blood_type',$medical_info->blood_type) :  old('blood_type')}}"/>
+                        {{-- <input id="blood_type" style="font-size:24px"type="hidden" name="blood_type" class="form-control" value="{{$medical_info && $medical_info->blood_type ? old('blood_type',$medical_info->blood_type) :  old('blood_type')}}"/> --}}
+                        <input id="blood_type" style="font-size:24px"type="hidden" name="blood_type" class="form-control" value="{{$medical_info && $medical_info->blood_type ? old('blood_type',$medical_info->blood_type) :  "A형"}}"/>
                         <span style="color:red">
 
                         {!! $errors->first('blood_type', '<span class="form-error">:message</span>') !!}
@@ -98,7 +100,8 @@
                     </div>
                     <div class="col-md-7">
                         <div class="form-group {{ $errors->has('report_request') ? 'has-error' : '' }}">
-                            <input style="font-size:24px"type="text" name="report_request" class="form-control" placeholder="○○를 가져와주세요!" value="{{ $medical_info ? old('report_request',$medical_info->report_request) :  old('report_request') }}"/>
+                            {{-- <input style="font-size:24px"type="text" name="report_request" class="form-control" placeholder="○○를 가져와주세요!" value="{{ $medical_info ? old('report_request',$medical_info->report_request) :  old('report_request') }}"/> --}}
+                            <input style="font-size:24px"type="text" name="report_request" class="form-control" placeholder="○○를 가져와주세요!" value="{{ $medical_info ? old('report_request',$medical_info->report_request) :  "인슐린 가져와주세요" }}"/>
                             {!! $errors->first('report_request', '<span class="form-error">:message</span>') !!}
                         </div>
                     </div>
@@ -124,7 +127,8 @@
                     <br/>
                     <div class="col-md-5">
                         <div class="form-group {{ $errors->has('guardian_phone') ? 'has-error' : '' }}">
-                            <input style="font-size:24px"type="text" name="guardian_phone" class="form-control" placeholder="응급시 연락가능한 보호자 휴대폰 번호" value="{{ $medical_info ? old('guardian_phone',$medical_info->guardian_phone) :  old('guardian_phone') }}"/>
+                            {{-- <input style="font-size:24px"type="text" name="guardian_phone" class="form-control" placeholder="응급시 연락가능한 보호자 휴대폰 번호" value="{{ $medical_info ? old('guardian_phone',$medical_info->guardian_phone) :  old('guardian_phone') }}"/> --}}
+                            <input style="font-size:24px"type="text" name="guardian_phone" class="form-control" placeholder="응급시 연락가능한 보호자 휴대폰 번호" value="{{ $medical_info ? old('guardian_phone',$medical_info->guardian_phone) :  '010-4895-1234' }}"/>
                             {!! $errors->first('guardian_phone', '<span class="form-error">:message</span>') !!}
                         </div>
                     </div>

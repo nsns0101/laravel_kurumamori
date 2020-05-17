@@ -21,11 +21,13 @@
         <button 
             class="btn btn-default dropdown-toggle past_sickness_btn{{$i}} dropdown_btn" type="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="true">
-            {{isset($past_sickness[$i-1]) ? $past_sickness[$i-1]->past_sickness_name : old("past_sickness_name.$i", "선택")}}
+            {{-- {{isset($past_sickness[$i-1]) ? $past_sickness[$i-1]->past_sickness_name : old("past_sickness_name.$i", "선택")}} --}}
+            {{isset($past_sickness[$i-1]) ? $past_sickness[$i-1]->past_sickness_name : old("past_sickness_name.$i", "고혈압")}}
             <span class="caret"></span>
         </button>
         <div class="form-group {{ $errors->has("past_sickness_name[$i]") ? 'has-error' : '' }}">
-            <input class="past_sickness_name{{$i}}" type="hidden"style="font-size:10px"  name="past_sickness_name[{{$i}}]" class="form-control"value="{{ isset($past_sickness[$i-1]) ? old("past_sickness_name[$i]",$past_sickness[$i-1]->past_sickness_name) :  old("past_sickness_name.$i")}}"/>
+            {{-- <input class="past_sickness_name{{$i}}" type="hidden"style="font-size:10px"  name="past_sickness_name[{{$i}}]" class="form-control"value="{{ isset($past_sickness[$i-1]) ? old("past_sickness_name[$i]",$past_sickness[$i-1]->past_sickness_name) :  old("past_sickness_name.$i")}}"/> --}}
+            <input class="past_sickness_name{{$i}}" type="hidden"style="font-size:10px"  name="past_sickness_name[{{$i}}]" class="form-control"value="{{ isset($past_sickness[$i-1]) ? old("past_sickness_name[$i]",$past_sickness[$i-1]->past_sickness_name) :  "고혈압"}}"/>
             {!! $errors->first('past_sickness_name[{{$i}}]', '<span class="form-error">:message</span>') !!}
         </div>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -38,8 +40,10 @@
     {{--  --}}
     <div class="col-md-6">
         <div class="form-group {{ $errors->has("past_sickness_supplementation$i") ? 'has-error' : '' }}">
-            <input class="past_sickness_supplementation{{$i}}" style="font-size:24px; width:100%;"type="text" 
-                name="past_sickness_supplementation[{{$i}}]" class="form-control" placeholder="보충설명(복용 약물, 기간)" value="{{isset($past_sickness[$i-1]) ? old("past_sickness_supplementation.$i" ,$past_sickness[$i-1]->past_sickness_supplementation) :  old("past_sickness_supplementation.$i") }}"/>
+            {{-- <input class="past_sickness_supplementation{{$i}}" style="font-size:24px; width:100%;"type="text" 
+                name="past_sickness_supplementation[{{$i}}]" class="form-control" placeholder="보충설명(복용 약물, 기간)" value="{{isset($past_sickness[$i-1]) ? old("past_sickness_supplementation.$i" ,$past_sickness[$i-1]->past_sickness_supplementation) :  old("past_sickness_supplementation.$i") }}"/> --}}
+                <input class="past_sickness_supplementation{{$i}}" style="font-size:20px; width:100%;"type="text" 
+                name="past_sickness_supplementation[{{$i}}]" class="form-control" placeholder="보충설명(복용 약물, 기간)" value="{{isset($past_sickness[$i-1]) ? old("past_sickness_supplementation.$i" ,$past_sickness[$i-1]->past_sickness_supplementation) :  "고혈압약 5년간 복용했었음" }}"/>
             {!! $errors->first('past_sickness_supplementation{{$i}}', '<span class="form-error">:message</span>') !!}
         </div>
     </div>

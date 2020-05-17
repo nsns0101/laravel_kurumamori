@@ -41,7 +41,7 @@
         </div>
         <div class="flex-div"> 
             <div>
-                <input name="to_name" type="text" value="이재영">
+                <input name="to_name" type="text" value="김영진">
                 {!! $errors->first('to_name', '<span class="form-error">:message</span>') !!}
             </div>
             <div>
