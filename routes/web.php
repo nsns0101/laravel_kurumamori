@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
+Route::resource('/app', 'AppController');
+
 Route::get('/', function () {
     return view('home.main');
 });
