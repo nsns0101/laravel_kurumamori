@@ -65,23 +65,25 @@ class AppController extends Controller
       elseif($request->_option == 1){
         //회원정보
         $app_user = \App\User::whereId($request->_key)->first();
-        //현재 질환
-        $app_sickness_info = \App\Sickness::whereUser_id($app_user->id)->first();
         //비상연락망
         $app_phone = \App\Medical_info::whereUser_id($app_user->id)->first()->guardian_phone;
+        //현재 질환
+        $app_sickness_info = \App\Sickness::whereUser_id($app_user->id)->first();
         //손해보험사
         $app_insurance = \App\Insurance::whereUser_id($app_user->id)->first();
+        $app_insurance_name = \App\Insurance_list::whereId($app_insurance->insurance_list_id)->first();
 
-        $profile = [$app_user, $app_sickness_info, $app_phone, $app_insurance];
+        $profile = [$app_user, $app_phone, $app_sickness_info, $app_insurance_name, $app_insurance];
 
         return response()->json($profile);
-
       }
 
       elseif($request->_option == 2){
         //제품정보
         $app_product = \App\Product::whereId($request->_key)->first();
-        return response()->json($app_product);
+        $app_product_buy = \App\Product_buy::whereProduct_key($app_product->product_key)->first();
+
+        return response()->json($app_product_buy);
 
       }
 
