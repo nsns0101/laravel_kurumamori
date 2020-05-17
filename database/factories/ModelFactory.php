@@ -203,9 +203,8 @@ $factory->define(App\Drive::class, function (Faker $faker) {
     return [
         'user_id' => $faker->randomElement($userId),
         'drive_score' => rand(0, 100),
-        'eye_close_count' => rand(0, 500),
-        'average_eye_close_interval' => rand(3, 10),
-        'sudden_stop_count' => rand(0, 5),
+        'sleep_count' => rand(0, 500),
+        'sudden_stop_count' => rand(3, 10),
         'sudden_acceleration_count' => rand(0, 5),
         'start_time' => $start_time,
         'created_at' => $created_at,
