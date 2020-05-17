@@ -4,7 +4,7 @@
         <button class="navbar-toggler text-white bg-danger" type="button" data-toggle="collapse" data-target="#question-navbar" aria-controls="question-navbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse pt-2" id="question-navbar">
+        <div class="collapse show navbar-collapse pt-2" id="question-navbar">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-3">
                     <a class="card btn btn-dark text-dark"> <!-- FAQ 기능 미구현 -->

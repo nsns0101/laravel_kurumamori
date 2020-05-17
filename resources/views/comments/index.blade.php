@@ -23,11 +23,11 @@
 
 <script>
     $('.btn__edit__comment').on('click', function(e) {
-        $('.question__comment').css('display','none');
+        $('.question-comment').css('display','none');
         $('.question__comment__edit').css('display','block');
     });
     $('.question__comment__back').on('click', function(e) {
-        $('.question__comment').css('display','block');
+        $('.question-comment').css('display','block');
         $('.question__comment__edit').css('display','none');
     });
     $('.review__edit__comment').on('click', function(e) {
