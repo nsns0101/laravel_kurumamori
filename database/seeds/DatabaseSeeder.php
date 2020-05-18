@@ -34,13 +34,13 @@ class DatabaseSeeder extends Seeder
 
         //시더 할 목록
         $this->call(UsersTableSeeder::class);
-        // $this->call(Product_buysTableSeeder::class);
-        // $this->call(ProductsTableSeeder::class);
-        // $this->call(Medical_infosTableSeeder::class);
-        // $this->call(Past_sicknessesTableSeeder::class);
-        // $this->call(SicknessesTableSeeder::class);
+        $this->call(Product_buysTableSeeder::class);
+        $this->call(ProductsTableSeeder::class);
+        $this->call(Medical_infosTableSeeder::class);
+        $this->call(Past_sicknessesTableSeeder::class);
+        $this->call(SicknessesTableSeeder::class);
         $this->call(Insurance_listsTableSeeder::class);
-        // $this->call(InsurancesTableSeeder::class);
+        $this->call(InsurancesTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
         $this->call(BoardsTableSeeder::class);
         $this->call(CommentsTableSeeder::class);

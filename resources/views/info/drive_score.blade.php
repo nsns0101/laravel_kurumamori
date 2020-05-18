@@ -79,24 +79,24 @@
                                         @for($i = 0; $i < count($reports); $i++)
                                             <p class="gps{{$reports[$i]->id}}">사고 장소{{$i+1}} :                                     {{-- 위도 경도로 주소찾기 --}}
                                                 <script>
-                                                    var gps = "";
-                                                    var API_KEY = "{{env('GCP_API_KEY')}}";
-                                                    var latitude = "{{$reports[$i]->latitude}}";
-                                                    var longitude = "{{$reports[$i]->longitude}}";
-                                                    console.log(latitude);
-                                                    console.log(longitude);
+                                                    // var gps = "";
+                                                    // var API_KEY = "{{env('GCP_API_KEY')}}";
+                                                    // var latitude = "{{$reports[$i]->latitude}}";
+                                                    // var longitude = "{{$reports[$i]->longitude}}";
+                                                    // console.log(latitude);
+                                                    // console.log(longitude);
 
-                                                    new Promise(function(resolve, reject) {
-                                                        resolve(
-                                                            $.getJSON(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${API_KEY}`,
-                                                            function(data) {
-                                                                console.log(data);
-                                                                gps = data.results[0].formatted_address;
-                                                                console.log(gps);
-                                                                $(`.gps{{$reports[$i]->id}}`).text("사고 장소{{$i+1}} : " + gps);
-                                                            }));
-                                                    });
-                                                    // $(".gps{{$reports[$i]->id}}").text("사고 장소{{$i+1}} : api 요금때문에 주석처리 해놨음");
+                                                    // new Promise(function(resolve, reject) {
+                                                    //     resolve(
+                                                    //         $.getJSON(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${API_KEY}`,
+                                                    //         function(data) {
+                                                    //             console.log(data);
+                                                    //             gps = data.results[0].formatted_address;
+                                                    //             console.log(gps);
+                                                    //             $(`.gps{{$reports[$i]->id}}`).text("사고 장소{{$i+1}} : " + gps);
+                                                    //         }));
+                                                    // });
+                                                    $(".gps{{$reports[$i]->id}}").text("사고 장소{{$i+1}} : api 요금때문에 주석처리 해놨음");
 
                                                 </script>
                                             </p>

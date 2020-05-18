@@ -13,15 +13,15 @@
     <div class="carousel-inner">
         <div class="carousel-item active">
             <img onclick="func1()" class="d-block w-100" src="/images/main_image.png" alt="First slide"
-                style="width:2115px; height:900px;">
+                style="width:2115px; height:870px;">
         </div>
         <div class="carousel-item">
             <img onclick="func2()" class="d-block w-100" src="/images/ppt_main_image.png" alt="Second slide"
-                style="width:2115px; height:1100px;">
+                style="width:2115px; height:870px;">
         </div>
         <div class="carousel-item">
             <img class="d-block w-100" src="/images/404_main.png" alt="Third slide"
-                style="width:2115px; height:1100px;">
+                style="width:2115px; height:870px;">
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
