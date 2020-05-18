@@ -22,7 +22,7 @@
                 </div>
                 <hr>
                 {{-- Styling for the area chart can be found in the <code>/js/demo/chart-area-demo.js</code> file. --}}
-                <p>최근 5일간의 급 가속, 급 감속, 졸음, 신고 데이터입니다.</p>
+                <p>최근 5일간의 급 가속, 급 감속, 졸음, 신고 값을 나타낸 그래프입니다.</p>
             </div>
         </div>
     </div>
@@ -46,7 +46,7 @@
                         style="display: block; width: 693px; height: 320px;"></canvas>
                 </div>
                 <hr>
-                <p>최근 5일간의 운전 시간입니다.</p>
+                <p>최근 5일간의 운전 시간을 나타낸 그래프입니다.</p>
             </div>
         </div>
     </div>
@@ -74,7 +74,7 @@
                 <br/>
                 <br/>
                 <hr>
-                <p style="margin-left:10px">일별 위험요소를 %로 나타낸 데이터입니다.</p>
+                <p style="margin-left:10px">일별 위험요소를 %로 나타낸 차트입니다.</p>
             </div>
     </div>
 

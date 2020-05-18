@@ -18,9 +18,9 @@
         <img src="product/logo.jpg" style="width:30%;"></img>
         <hr>
         <div class="div-intro">
-            <img class="content-img" style="width:40%; text-align:center;" src="product/titleImg.jpg"></img>
+            <img class="content-img" style="width:30%; height:20%; text-align:center; padding-left:5%;" src="product/product_image.jpg"></img>
             <div>
-                <p class="text-p">
+                <p class="text-p" style="padding-left: 10%">
                 교통사고의 주된 원인이 되고있는 졸음운전 방지, 전방주시 태만 저희 KURUMAMORI 119가 감지하여 예방하여 드립니다.
                 디바이스에 장착된 카메라가 운전자를 감지하여 졸음운전과 전방주시태만, 급가속 급정거가 감지되면 안내 음성을 통해 경고를 드려 예방할 수 있도록 합니다.
                 디바이스에 장착된 센서가 사고를 스스로 감지하여 30초 이내에 119에 SMS를 통해 자동으로 사고를 접수합니다.
@@ -30,7 +30,7 @@
             </div>
         </div>
         <hr>
-        <div style="text-align:center;">
+        <div  style="text-align:center;">
             <div class="div-text">
                 <img class="content-img" src="product/sleep.jpg"></img>
                 <p class="text2-p">졸음운전감지는 하드웨어의 카메라를 통해 운전자가 눈을 뜨고있는지 감고있는지 감지합니다. 그 후 알고리즘에 의해 졸음운전이라 판단되면 음성 경고를 제공합니다.</p>
@@ -58,7 +58,7 @@
         <div>
         <div class="buy-main" style="height:400px;">
             <div style="width:50%;">
-                <img src="product/product.jpg" class="buy-img"></img>
+                <img src="product/product_image.jpg" class="buy-img"></img>
             </div>
             <div>
                 <form action="buy" method="GET">
@@ -111,6 +111,7 @@
     }
     .buy-img{
         width:70%;
+        height:120%;
         margin-right: 30px;
         margin-top: 10px;
         margin-left: 100px;
@@ -155,8 +156,10 @@
     text-align: center;
     }
     .text-p{
-       color:black; line-height:50px; height:400px; width:90%;
-       margin-top:100px;
+       color:black; line-height:40px; height:400px; width:90%;
+       margin-top:30px;
+       font-size: 16px;
+       font-weight: 500;
     }
     .text2-p{
         color:black;

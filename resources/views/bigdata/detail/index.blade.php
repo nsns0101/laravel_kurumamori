@@ -35,6 +35,7 @@
 @section('script')
 <script>
 var bigdata_age = <?php echo json_encode($bigdata_age) ?>;
+console.log(bigdata_age);
 var bigdata_time = <?php echo json_encode($bigdata_time) ?>;
 var day_7 = <?php echo json_encode($day_7) ?>;
 var time_set = <?php echo json_encode($time_set) ?>;

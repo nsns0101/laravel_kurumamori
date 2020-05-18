@@ -72,12 +72,12 @@ class BigdataController extends Controller
         };
         \Log::info($bigdata_time);
 
-
+        
         // 연령대별 사람들의 최근 7일간의 졸음운전, 급정거 급가속, 교통사고 횟수
-        for($i = 0; $i < count($age); $i++){
+        for($i = 0; $i < count($age); $i++){        //나이
             if($age[$i] >= 60) {    // 60대 이상
-                for($j = 0; $j < count($danger); $j++){
-                    for($k = 0; $k < count($day_7); $k++){
+                for($j = 0; $j < count($danger); $j++){ //위험정보(급가속 등등)
+                    for($k = 0; $k < count($day_7); $k++){  // 1 ~ 7일
                         $bigdata_age[$age[$i]][$danger[$j]][$day_7[$k]] = 
                         \DB::table('drive_detections')
                         ->select(\DB::raw("count({$danger[$j]}) as {$danger[$j]}_count"))

@@ -53,24 +53,24 @@
                                     </div>
                                     {{-- 위도 경도로 주소찾기 --}}
                                     <script>
-                                        // var gps = "";
-                                        // var API_KEY = "{{env('GCP_API_KEY')}}";
-                                        // var latitude = "{{$report->latitude}}";
-                                        // var longitude = "{{$report->longitude}}";
-                                        // // console.log(latitude);
-                                        // // console.log(longitude);
+                                        var gps = "";
+                                        var API_KEY = "{{env('GCP_API_KEY')}}";
+                                        var latitude = "{{$report->latitude}}";
+                                        var longitude = "{{$report->longitude}}";
+                                        // console.log(latitude);
+                                        // console.log(longitude);
 
-                                        // new Promise(function(resolve, reject) {
-                                        //     resolve(
-                                        //         $.getJSON(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${API_KEY}`,
-                                        //         function(data) {
-                                        //             console.log(data);
-                                        //             gps = data.results[0].formatted_address;
-                                        //             console.log(gps);
-                                        //             $(`.gps{{$report->id}}`).text(gps);
-                                        //         }));
-                                        // });
-                                        $(`.gps{{$report->id}}`).text("api쓰는거라 실제 쓸때 위에 주석 푸셈");
+                                        new Promise(function(resolve, reject) {
+                                            resolve(
+                                                $.getJSON(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${API_KEY}`,
+                                                function(data) {
+                                                    console.log(data);
+                                                    gps = data.results[0].formatted_address;
+                                                    console.log(gps);
+                                                    $(`.gps{{$report->id}}`).text(gps);
+                                                }));
+                                        });
+                                        // $(`.gps{{$report->id}}`).text("api쓰는거라 실제 쓸때 위에 주석 푸셈");
                                     </script>
 
                                 </div>

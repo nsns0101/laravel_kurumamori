@@ -23,8 +23,7 @@ class UsersTableSeeder extends Seeder
         ];
         $age = [24, 26, 24, 23, 24, 26];
         for ($i = 0; $i < count($name); $i++) {
-            App\User::create(
-                [
+            App\User::create([
                     'email' => $email[$i],
                     'password' => bcrypt('password'),
                     'name' => $name[$i],
@@ -33,10 +32,23 @@ class UsersTableSeeder extends Seeder
                     'phone' => "010-1234-567{$i}",
                     'confirm_code' => null,
                     'remember_token' => Str::random(10),
-                    ]
-            );
+            ]);
         }
         //일반계정
+
+        //시연 유저
+        App\User::create([
+            'email' => "rla@dudwls.com",
+            'password' => bcrypt('password'),
+            'name' => "김영진",
+            'birth' => "1997/06/12",
+            'gender' => "남",
+            'phone' => "010-1234-5678",
+            'confirm_code' => null,
+            'remember_token' => Str::random(10),
+        ]);
+
+
         factory(App\User::class, 5)->create();
     }
 
