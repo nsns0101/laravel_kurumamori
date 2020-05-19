@@ -21,9 +21,9 @@ class CreateDrivesTable extends Migration
             // $table->bigInteger('average_eye_close_interval')->nullable()->comment('평균 눈 깜빡임 간격');
             $table->bigInteger('sudden_stop_count')->nullable()->comment('급 정거 수');
             $table->bigInteger('sudden_acceleration_count')->nullable()->comment('급 가속 수');
-            $table->dateTime('start_time')->nullable()->comment('운전 시작 시간');
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('운전 종료시간');
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('업데이트 시간');
+            // $table->dateTime('start_time')->nullable()->comment('운전 시작 시간');
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('운전 시작 시간');
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('운전 종료 시간');
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdete('cascade')->onDelete('cascade');
 

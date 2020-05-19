@@ -19,10 +19,10 @@ class CreateDriveDetectionsTable extends Migration
             $table->unsignedBigInteger('user_id')->comment('유저 번호');
             $table->string('latitude')->comment('위도');
             $table->string('longitude')->comment('경도');
-            $table->boolean('bool_report')->comment('신고 여부');
-            $table->boolean('bool_sudden_acceleration')->comment('급가속 여부');
-            $table->boolean('bool_sudden_stop')->comment('급 정거 여부');
-            $table->boolean('bool_sleep')->comment('졸음 여부');
+            $table->boolean('bool_report')->nullable()->comment('신고 여부');
+            $table->boolean('bool_sudden_acceleration')->nullable()->comment('급가속 여부');
+            $table->boolean('bool_sudden_stop')->nullable()->comment('급 정거 여부');
+            $table->boolean('bool_sleep')->nullable()->comment('졸음 여부');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('생성 시간');
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('업데이트 시간');
 

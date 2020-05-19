@@ -13,17 +13,17 @@ class AppController extends Controller
      */
     public function index(Request $request)
     {
-      $email = "dl@wodud";
-      //회원정보
-      $app_user = \App\User::whereEmail($email)->first();
-      //현재 질환
-      $app_sickness_info = \App\Sickness::whereUser_id($app_user->id)->first();
+      $app_user = \App\User::whereId(1)->first();
       //비상연락망
       $app_phone = \App\Medical_info::whereUser_id($app_user->id)->first()->guardian_phone;
+      //현재 질환
+      $app_sickness_info = \App\Sickness::whereUser_id($app_user->id)->first();
       //손해보험사
       $app_insurance = \App\Insurance::whereUser_id($app_user->id)->first();
+      
+      $app_insurance_name = $app_insurance ? \App\Insurance_list::whereId($app_insurance->insurance_list_id)->first() : null;
 
-      $profile = [$app_user, $app_sickness_info, $app_phone, $app_insurance];
+      $profile = [$app_user, $app_phone, $app_sickness_info, $app_insurance_name, $app_insurance];
 
       return response()->json($profile);
 
@@ -71,8 +71,7 @@ class AppController extends Controller
         $app_sickness_info = \App\Sickness::whereUser_id($app_user->id)->first();
         //손해보험사
         $app_insurance = \App\Insurance::whereUser_id($app_user->id)->first();
-        $app_insurance_name = \App\Insurance_list::whereId($app_insurance->insurance_list_id)->first();
-
+        $app_insurance_name = $app_insurance ? \App\Insurance_list::whereId($app_insurance->insurance_list_id)->first() : null;
         $profile = [$app_user, $app_phone, $app_sickness_info, $app_insurance_name, $app_insurance];
 
         return response()->json($profile);

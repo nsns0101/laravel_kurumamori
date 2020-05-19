@@ -46,6 +46,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CommentsTableSeeder::class);
         $this->call(DrivesTableSeeder::class);
         $this->call(Drive_detectionsTableSeeder::class);
+        //시연용 시더
+        $this->call(DemoSeeder::class);
 
         if (config('databases.default') !== 'sqlite') {
             DB::statement('SET FOREIGN_KEY_CHECKS=1');

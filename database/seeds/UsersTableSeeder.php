@@ -36,17 +36,6 @@ class UsersTableSeeder extends Seeder
         }
         //일반계정
 
-        //시연 유저
-        App\User::create([
-            'email' => "rla@dudwls.com",
-            'password' => bcrypt('password'),
-            'name' => "김영진",
-            'birth' => "1997/06/12",
-            'gender' => "남",
-            'phone' => "010-1234-5678",
-            'confirm_code' => null,
-            'remember_token' => Str::random(10),
-        ]);
 
 
         factory(App\User::class, 5)->create();

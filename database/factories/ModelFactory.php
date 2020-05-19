@@ -198,16 +198,16 @@ $factory->define(App\Drive::class, function (Faker $faker) {
     }
     $random_day_7 = Arr::random($day_7);
     $a = rand(1,24);
-    $start_time = date("Y-m-d H:m:s", strtotime($random_day_7 ."+{$a} hours"));
-    $created_at = date("Y-m-d H:m:s", strtotime($start_time ."+1 hours"));
+    $created_at = date("Y-m-d H:m:s", strtotime($random_day_7 ."+{$a} hours"));
+    $updated_at = date("Y-m-d H:m:s", strtotime($created_at ."+1 hours"));
     return [
         'user_id' => $faker->randomElement($userId),
         'drive_score' => rand(0, 100),
         'sleep_count' => rand(0, 500),
         'sudden_stop_count' => rand(3, 10),
         'sudden_acceleration_count' => rand(0, 5),
-        'start_time' => $start_time,
         'created_at' => $created_at,
+        'updated_at' => $updated_at,
     ];
 });
 //운전 감지 팩토리
