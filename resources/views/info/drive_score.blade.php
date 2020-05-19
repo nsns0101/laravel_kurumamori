@@ -107,7 +107,7 @@
                                     @endif
                                     {{-- 당일 운전시간 --}}
                                     @for($i = 0; $i < count($drive); $i++)
-                                        <p>운전 시간 : {{$drive[$i]->start_time}} ~ {{$drive[$i]->created_at}}</p>
+                                        <p>운전 시간 : {{$drive[$i]->created_at}} ~ {{$drive[$i]->updated_at}}</p>
                                     @endfor
                                 </div>
                             </div>

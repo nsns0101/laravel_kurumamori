@@ -17,7 +17,7 @@ class DriveController extends Controller
 
         $auth_user = auth()->user()->id;    //로그인 유저
         //선택날짜의 운전 정보
-        $drive = $date ? \DB::select("select * from drives where DATE_FORMAT(start_time, '%Y-%m-%d') = '{$date}' AND user_id = '{$auth_user}'") : \DB::select("select * from drives where DATE_FORMAT(start_time, '%Y-%m-%d') = '{$date}'");
+        $drive = $date ? \DB::select("select * from drives where DATE_FORMAT(created_at, '%Y-%m-%d') = '{$date}' AND user_id = '{$auth_user}'") : \DB::select("select * from drives where DATE_FORMAT(created_at, '%Y-%m-%d') = '{$date}'");
         //선택날짜의 위험 정보
         
         //현재날짜포함하여 최근 5일 구하기
@@ -30,7 +30,7 @@ class DriveController extends Controller
         $day_5_info = array();
         for($i = 0; $i < count($day_5); $i++){
             // \Log::info($day_5[$i]);
-            array_push($day_5_info, \DB::select("select * from drives where DATE_FORMAT(start_time, '%Y-%m-%d') = '{$day_5[$i]}' AND user_id = '{$auth_user}'"));
+            array_push($day_5_info, \DB::select("select * from drives where DATE_FORMAT(created_at, '%Y-%m-%d') = '{$day_5[$i]}' AND user_id = '{$auth_user}'"));
         }
 
         // 해당날짜의 위험정보
@@ -86,13 +86,13 @@ class DriveController extends Controller
         //해당날짜의 운전시간 구하기(초)
         // $drive_sec = 0;
         // for($i = 0; $i < count($drive); $i++){
-        //     $drive_sec += strtotime($drive[$i]->created_at) - strtotime($drive[$i]->start_time);
+        //     $drive_sec += strtotime($drive[$i]->created_at) - strtotime($drive[$i]->created_at);
         // }
         $day_5_sec = [];
         for($i = 0; $i < count($day_5); $i++){
             $sec = 0;
             for($j = 0; $j < count($day_5_info[$i]); $j++){
-                $sec += strtotime($day_5_info[$i][$j]->created_at) - strtotime($day_5_info[$i][$j]->start_time);
+                $sec += strtotime($day_5_info[$i][$j]->updated_at) - strtotime($day_5_info[$i][$j]->created_at);
             }
             array_push($day_5_sec, $sec);
         }
@@ -125,18 +125,33 @@ class DriveController extends Controller
         }
         //운전시간이 3600초 이상일 경우 증가점수 부여
         //증가점수 기준 : 1시간에서 +10분 운전당  => + 점수 4항목 +2점(8점 = 총점수 2점)
-        else{
-            $add_score = (($day_5_sec[0]-3600)/600) *2;
-        }
+        // else{
+        //     $add_score = (($day_5_sec[0]-3600)/600) *2;
+        // }
+
         //점수 감산
-        $score_sudden_acceleration -= ($day_5_danger_info[0]["count_sudden_acceleration"] * (40 * $mul)) - $add_score;
-        $score_sudden_stop -= ($day_5_danger_info[0]["count_sudden_stop"] * (40 * $mul)) - $add_score;
-        $score_sleep -= ($day_5_danger_info[0]["count_sleep"] * (100 * $mul)) - $add_score;
-        $score_report -= ($day_5_danger_info[0]["count_report"] * (100 * $mul)) - $add_score;
+        // $score_sudden_acceleration -= ($day_5_danger_info[0]["count_sudden_acceleration"] * (40 * $mul)) - $add_score;
+        // $score_sudden_stop -= ($day_5_danger_info[0]["count_sudden_stop"] * (40 * $mul)) - $add_score;
+        // $score_sleep -= ($day_5_danger_info[0]["count_sleep"] * (100 * $mul)) - $add_score;
+        // $score_report -= ($day_5_danger_info[0]["count_report"] * (100 * $mul)) - $add_score;
+        $score_sudden_acceleration -= ($day_5_danger_info[0]["count_sudden_acceleration"] * (40 * $mul));
+        $score_sudden_stop -= ($day_5_danger_info[0]["count_sudden_stop"] * (40 * $mul));
+        $score_sleep -= ($day_5_danger_info[0]["count_sleep"] * (50 * $mul));
+        $score_report -= ($day_5_danger_info[0]["count_report"] * (100 * $mul));
         //총 점수
-        $score_all = ($score_sudden_acceleration + $score_sudden_stop + $score_sleep + $score_report) / 4;
+        $score = [$score_sudden_acceleration, $score_sudden_stop, $score_sleep, $score_report];
+        for($i = 0; $i < count($score); $i++){
+            if($score[$i] >= 100){
+                $score[$i] = 100;
+            }
+            else if($score[$i] <= 0){
+                $score[$i] = 0;
+            }
+        }
+
+        // $score_all = ($score_sudden_acceleration + $score_sudden_stop + $score_sleep + $score_report) / 4;
         //배열에 추가
-        $score = [$score_all, $score_sudden_acceleration, $score_sudden_stop, $score_sleep, $score_report];
+        // $score = [$score_sudden_acceleration, $score_sudden_stop, $score_sleep, $score_report];
         \Log::info($score);
         
         //점수 최대, 최소 점수 부여
