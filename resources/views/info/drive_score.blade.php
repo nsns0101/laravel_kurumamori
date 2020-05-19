@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<section id="intro" class="section intro" style="padding: 50px 0px 0px 0px; background-color:#F0F0F0">
+<section id="intro" class="section intro" style="padding: 50px 0px 0px 0px; background-color:rgb(247, 247, 247)">
 <!-- Content Row -->
 <div class="row">
     

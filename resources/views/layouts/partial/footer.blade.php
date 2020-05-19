@@ -11,7 +11,8 @@
         background-color: #e5e5e5;
         text-align: center;
     } */
-    .footer{ 
+    .footer{
+        margin-top : 30px;
         position:fixed; 
         left:0px; 
         bottom:0px; 

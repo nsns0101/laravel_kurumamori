@@ -11,7 +11,8 @@ class Sickness extends Model
         'medical_id',
         'sickness_name',
         'medicine',
-        'symptom'
+        'symptom',
+        'hospital'
     ];
 
     //여러 기저 질환은 한 의료정보를 가질 수 있음

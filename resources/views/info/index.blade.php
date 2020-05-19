@@ -5,7 +5,7 @@
 
 
 <!-- intro section -->
-<section id="intro" class="section intro" style="padding: 50px 0px 0px 0px; background-color:#F0F0F0">
+<section id="intro" class="section intro" style="padding: 50px 0px 0px 0px; background-color:	rgb(247, 247, 247)">
     <div class="row">
 
         <div class="col-md-2 col-xs-2 col-sm-2">

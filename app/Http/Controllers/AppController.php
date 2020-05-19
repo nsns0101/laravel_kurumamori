@@ -69,7 +69,7 @@ class AppController extends Controller
         $app_sickness_info = \App\Sickness::whereUser_id($app_user->id)->first();
         //손해보험사
         $app_insurance = \App\Insurance::whereUser_id($app_user->id)->first();
-        $app_insurance_name = $app_insurance ? \App\Insurance_list::whereId($app_insurance->insurance_list_id)->first() : null;
+        $app_insurance_name = $app_insurance ? \App\Insurance_list::whereId($app_insurance->insurance_list_id)->first() : "";
         $profile = [$app_user, $app_phone, $app_sickness_info, $app_insurance_name, $app_insurance];
 
         return response()->json($profile);
@@ -79,7 +79,7 @@ class AppController extends Controller
       //제품정보 로직(받는 것 : user_id)
       elseif($request->_option == 2){
         $app_product = \App\Product::whereUser_id($request->_key)->first();
-        $app_product_buy = \App\Product_buy::whereProduct_key($app_product->product_key)->first();
+        $app_product_buy = $app_product ? \App\Product_buy::whereProduct_key($app_product->product_key)->first() : "";
 
         return response()->json($app_product_buy);
 
@@ -131,7 +131,7 @@ class AppController extends Controller
         ]);
       }
 
-      //신고 프로세스
+      //신고 프로세스(받는 것 : user_id, latitude, longitude)
       elseif($request->_option == 6){
         date_default_timezone_set('Asia/Seoul');
 

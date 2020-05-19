@@ -24,8 +24,8 @@ class MedicalController extends Controller
 
         $past_sickness = $medical_info ? \App\Past_sickness::whereUser_id(auth()->user()->id)->get() : null;
         $sickness = $medical_info ? \App\Sickness::whereUser_id(auth()->user()->id)->get() : null;
-        \Log::info($past_sickness);
-        \Log::info($sickness);
+        // \Log::info($past_sickness);
+        // \Log::info($sickness);
         return view('info.medical_info', compact('medical_info', 'insurance','insurance_list_my', 'insurance_list', 'update_form', 'sickness_list', 'past_sickness','sickness'));
         // return view('info.medical_info', compact('medical_info', 'insurance', 'update_form','sickness_list'));
     
@@ -39,6 +39,7 @@ class MedicalController extends Controller
 
     public function store(\App\Http\Requests\Medical_infoRequest $request)
     {
+        \Log::info($request->all());
         //보험 "예'를 체크 했는데 값을 안넣었을 경우 
         if($request->insurance_bool){
             $messages = [
@@ -55,7 +56,6 @@ class MedicalController extends Controller
                 'expiration_date' => "required|after:{$request->subscription_date}",
             ], $messages);
         }
-        \Log::info($request->all());
         //medical_info DB create
         \App\Medical_info::create([
             'user_id' => auth()->user()->id,
@@ -101,6 +101,7 @@ class MedicalController extends Controller
                 $sickness_count++;
             }
         }
+        // \Log::info(error)
         //insurance DB create
         if($request->insurance_bool){
             $insurance_list_id = \App\Insurance_list::whereInsurance_name($request->insurance_name)->first()->id;
