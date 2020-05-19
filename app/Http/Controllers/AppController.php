@@ -80,7 +80,7 @@ class AppController extends Controller
 
       //제품정보 로직(받는 것 : user_id)
       elseif($request->_option == 2){
-        $app_product = \App\Product::whereId($request->_key)->first();
+        $app_product = \App\Product::whereUser_Id($request->_key)->first();
         $app_product_buy = \App\Product_buy::whereProduct_key($app_product->product_key)->first();
 
         return response()->json($app_product_buy);
