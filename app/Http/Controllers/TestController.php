@@ -32,6 +32,23 @@ class TestController extends Controller
 
         $result_address = "대한민국 대구광역시 북구 복현2동 복현로 35";
         $result_address_url = "https://www.google.com/maps/place/%EB%8C%80%EA%B5%AC%EA%B4%91%EC%97%AD%EC%8B%9C+%EB%B6%81%EA%B5%AC+%EB%B3%B5%ED%98%842%EB%8F%99+%EB%B3%B5%ED%98%84%EB%A1%9C+35/@35.8963134,128.6198624,17z/data=!3m1!4b1!4m5!3m4!1s0x3565e1bb2f087589:0x5a55f9de5c2d9ea!8m2!3d35.8963091!4d128.6220511?hl=ko";
+        // $apiKey_address = env('GCP_API_KEY');
+        // $latitude = 35.896311;
+        // $longitude = 128.622051;
+        // $url_address = "https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey_address}";
+        // $address = curl_init();
+        // curl_setopt($address,CURLOPT_URL,$url_address);
+        // curl_setopt($address, CURLOPT_POST, 0);
+        // curl_setopt($address,CURLOPT_RETURNTRANSFER, true);
+        // $result_address = curl_exec($address);
+        // $result_address = json_encode($result_address,JSON_UNESCAPED_UNICODE);
+        // \Log::info(json_encode($result_address));
+        // \Log::info();
+        // \Log::info(json_encode($result_address,JSON_UNESCAPED_UNICODE));
+
+        // $result_address = $fields_address;
+        // \Log::info($fields_address[1]);
+
 
         $user_data = 
         "-----신고자 정보-----\n"
@@ -53,7 +70,9 @@ class TestController extends Controller
         
         $fields = new \stdClass();
         $message = new \stdClass();
-        $message->to = "01050039201";
+        $message->to = "01035989003";
+        // $message->to = "01023560525";
+        // $message->to = "01050039201";
         $message->from = "01050039201";
         $message->subject = "[kurumamori119 신고]";
         $message->text = $user_data;
@@ -62,18 +81,6 @@ class TestController extends Controller
         $fields_string = json_encode($fields);
 
         // $.getJSON(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${API_KEY}`,
-        // $apiKey_address = env('GCP_API_KEY');
-        // $latitude = 35.896311;
-        // $longitude = 128.622051;
-        // $url_address = "https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey_address}";
-        // $address = curl_init();
-        // curl_setopt($address,CURLOPT_URL,$url_address);
-        // curl_setopt($address, CURLOPT_POST, 0);
-        // curl_setopt($address,CURLOPT_RETURNTRANSFER, true);
-        // $result_address = curl_exec($address);
-        // \Log::info($result_address);
-        // $result_address = $result_address.results[0].formatted_address;
-
         // https://maps.googleapis.com/maps/api/geocode/json?latlng=35.896311,128.622051&key=AIzaSyBmDNMJ1gbJusi6rqVoskubnytiXP0Rchc
 
         
