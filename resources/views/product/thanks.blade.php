@@ -22,7 +22,7 @@
     <th>총 금액</th>
     <tr> 
         <td>
-            <img src="product/titleImg.jpg" alt="" style="width:300px; height:200px;">
+            <img src="product/product_image.jpg" alt="" style="width:300px; height:200px;">
         </td>
         <td>{{$buy->to_name}}</td>
         <td>{{$buy->to_phone}}</td>
