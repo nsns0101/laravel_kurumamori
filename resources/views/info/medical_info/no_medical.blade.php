@@ -158,12 +158,14 @@
                                 @if($insurance)
                                     <input class="insurance_bool" type="radio" name="insurance_bool" id="insurance_bool_yes" value={{1}} checked/>
                                     아니오 
-                                    <input class="insurance_bool" type="radio" name="insurance_bool" id="insurance_bool_no" value="{{0}}" />
+                                    <input class="insurance_bool" type="radio" name="insurance_bool" id="insurance_bool_no" value={{0}} />
                                 @else
-                                    <input class="insurance_bool" type="radio" name="insurance_bool" id="insurance_bool_yes" value="{{1}}" {{old('insurance_bool') ? "checked" : ""}} />
+                                    {{-- <input class="insurance_bool" type="radio" name="insurance_bool" id="insurance_bool_yes" value="{{1}}" {{old('insurance_bool') ? "checked" : ""}} /> --}}
+                                    <input class="insurance_bool" type="radio" name="insurance_bool" id="insurance_bool_yes" value={{1}} checked />
                                     아니오 
-                                    <input class="insurance_bool" type="radio" name="insurance_bool" id="insurance_bool_no" value="{{0}}" {{old('insurance_bool') ? "" : "checked"}} />
-                                @endif
+                                    {{-- <input class="insurance_bool" type="radio" name="insurance_bool" id="insurance_bool_no" value="{{0}}" {{old('insurance_bool') ? "" : "checked"}} /> --}}
+                                    <input class="insurance_bool" type="radio" name="insurance_bool" id="insurance_bool_no" value={{0}}}} />
+                                    @endif
                                 </fieldset>
                             <span style="color:red">
                                 {!! $errors->first('insurance_bool', '<span class="form-error">:message</span>')!!}
@@ -182,7 +184,8 @@
                     <button 
                     class="btn btn-default dropdown-toggle insurance_name_btn dropdown_btn" type="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="true" style="margin-left:20px;">
-                    {{$insurance_list && isset($insurance_list_my->insurance_name) ? $insurance_list_my->insurance_name : old('insurance_name',"선택")}}
+                    {{-- {{$insurance_list && isset($insurance_list_my->insurance_name) ? $insurance_list_my->insurance_name : old('insurance_name',"선택")}} --}}
+                    {{$insurance_list && isset($insurance_list_my->insurance_name) ? $insurance_list_my->insurance_name : old('insurance_name',"하나보험사")}}
 
                         <span class="caret"></span>
                     </button>
@@ -194,9 +197,9 @@
                     <br/>
                     <br/>
                     <div class="form-group {{ $errors->has('insurance_name') ? 'has-error' : '' }}">
-                        <input id="insurance_name" style="font-size:24px"type="hidden" name="insurance_name" class="form-control" value="{{$insurance_list_my && $insurance_list_my->insurance_name ? old('insurance_name',$insurance_list_my->insurance_name) :  old('insurance_name')}}"/>
+                        {{-- <input id="insurance_name" style="font-size:24px"type="hidden" name="insurance_name" class="form-control" value="{{$insurance_list_my && $insurance_list_my->insurance_name ? old('insurance_name',$insurance_list_my->insurance_name) :  old('insurance_name')}}"/> --}}
+                        <input id="insurance_name" style="font-size:24px"type="hidden" name="insurance_name" class="form-control" value="하나보험사"/>
                         <span style="color:red">
-
                         {!! $errors->first('insurance_name', '<span class="form-error">:message</span>') !!}
                         </span>
                     </div>
@@ -232,7 +235,8 @@
                     <br/>
                     <div class="col-md-3">
                         <div class="form-group {{ $errors->has('subscription_date') ? 'has-error' : '' }}">
-	                        <input type="text" name="subscription_date" class="form-control datePicker" value="{{ $insurance ? old('subscription_date',$insurance->subscription_date) :  old('subscription_date') }}" readonly>
+	                        {{-- <input type="text" name="subscription_date" class="form-control datePicker" value="{{ $insurance ? old('subscription_date',$insurance->subscription_date) :  old('subscription_date') }}" readonly> --}}
+	                        <input type="text" name="subscription_date" class="form-control datePicker" value="2015-04-23" readonly>
                             <span style="color:red">
 
                                 {!! $errors->first('subscription_date', '<span class="form-error">:message</span>') !!}
@@ -248,7 +252,8 @@
                     <div class="col-md-3">
                         <div class="form-group {{ $errors->has('expiration_date') ? 'has-error' : '' }}">
                             <!-- 시작시 기본 날짜 설정은 value를 이용 -->
-	                        <input type="text" name="expiration_date" class="form-control datePicker" value="{{ $insurance ? old('expiration_date',$insurance->expiration_date) :  old('expiration_date') }}" readonly>
+	                        {{-- <input type="text" name="expiration_date" class="form-control datePicker" value="{{ $insurance ? old('expiration_date',$insurance->expiration_date) :  old('expiration_date') }}" readonly> --}}
+	                        <input type="text" name="expiration_date" class="form-control datePicker" value="2020-04-22" readonly>
                             <span style="color:red">
                                 {!! $errors->first('expiration_date', '<span class="form-error">:message</span>') !!}
                             </p>
