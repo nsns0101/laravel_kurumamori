@@ -30,19 +30,28 @@ class TestController extends Controller
 
 
 
-        $result_address = "대한민국 대구광역시 북구 복현2동 복현로 35";
-        $result_address_url = "https://www.google.com/maps/place/%EB%8C%80%EA%B5%AC%EA%B4%91%EC%97%AD%EC%8B%9C+%EB%B6%81%EA%B5%AC+%EB%B3%B5%ED%98%842%EB%8F%99+%EB%B3%B5%ED%98%84%EB%A1%9C+35/@35.8963134,128.6198624,17z/data=!3m1!4b1!4m5!3m4!1s0x3565e1bb2f087589:0x5a55f9de5c2d9ea!8m2!3d35.8963091!4d128.6220511?hl=ko";
-        // $apiKey_address = env('GCP_API_KEY');
-        // $latitude = 35.896311;
-        // $longitude = 128.622051;
-        // $url_address = "https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey_address}";
-        // $address = curl_init();
-        // curl_setopt($address,CURLOPT_URL,$url_address);
-        // curl_setopt($address, CURLOPT_POST, 0);
-        // curl_setopt($address,CURLOPT_RETURNTRANSFER, true);
-        // $result_address = curl_exec($address);
+        // $result_address = "대한민국 대구광역시 북구 복현2동 복현로 35";
+        // $result_address_url = "https://www.google.com/maps/place/%EB%8C%80%EA%B5%AC%EA%B4%91%EC%97%AD%EC%8B%9C+%EB%B6%81%EA%B5%AC+%EB%B3%B5%ED%98%842%EB%8F%99+%EB%B3%B5%ED%98%84%EB%A1%9C+35/@35.8963134,128.6198624,17z/data=!3m1!4b1!4m5!3m4!1s0x3565e1bb2f087589:0x5a55f9de5c2d9ea!8m2!3d35.8963091!4d128.6220511?hl=ko";
+        $apiKey_address = env('GCP_API_KEY');
+        $latitude = 35.896311;
+        $longitude = 128.622051;
+        $url_address = "https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey_address}";
+        $address = curl_init();
+        curl_setopt($address,CURLOPT_URL,$url_address);
+        curl_setopt($address, CURLOPT_POST, 0);
+        curl_setopt($address,CURLOPT_RETURNTRANSFER, true);
+        $result_address = curl_exec($address);
         // $result_address = json_encode($result_address,JSON_UNESCAPED_UNICODE);
-        // \Log::info(json_encode($result_address));
+        \Log::info(\App\User::first());
+        \Log::info($result_address);
+        \Log::info(gettype($result_address));       //string
+        $result_address = json_decode($result_address); 
+        \Log::info(gettype($result_address));       //object
+
+        \Log::info($result_address->results->formatted_address);
+        // \Log::info($result_address->results[1]);
+        // \Log::info($result_address->results[0]);
+
         // \Log::info();
         // \Log::info(json_encode($result_address,JSON_UNESCAPED_UNICODE));
 
@@ -65,7 +74,7 @@ class TestController extends Controller
         .substr($past_sickness , 0, -1)."\n"
         ."-----사고 발생 지점-----\n"
         .$result_address."\n"
-        .$result_address_url
+        // .$result_address_url
         ;
         
         $fields = new \stdClass();
@@ -91,9 +100,9 @@ class TestController extends Controller
         curl_setopt($sms, CURLOPT_POSTFIELDS, $fields_string);
         curl_setopt($sms,CURLOPT_RETURNTRANSFER, true);
 
-        $result = curl_exec($sms);
-        // return json_encode($message,JSON_UNESCAPED_UNICODE)."<br/><br/>".$user_data;
-        return $result;
+        // $result = curl_exec($sms);
+        return json_encode($message,JSON_UNESCAPED_UNICODE)."<br/><br/>".$user_data;
+        // return $result;
     }
     function initMap() {
         // $map = new google.maps.Map(document.getElementById('map'), {

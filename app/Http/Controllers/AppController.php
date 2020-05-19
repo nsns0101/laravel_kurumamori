@@ -13,19 +13,9 @@ class AppController extends Controller
      */
     public function index(Request $request)
     {
-      $app_user = \App\User::whereId(1)->first();
-      //비상연락망
-      $app_phone = \App\Medical_info::whereUser_id($app_user->id)->first()->guardian_phone;
-      //현재 질환
-      $app_sickness_info = \App\Sickness::whereUser_id($app_user->id)->first();
-      //손해보험사
-      $app_insurance = \App\Insurance::whereUser_id($app_user->id)->first();
-      
-      $app_insurance_name = $app_insurance ? \App\Insurance_list::whereId($app_insurance->insurance_list_id)->first() : null;
-
-      $profile = [$app_user, $app_phone, $app_sickness_info, $app_insurance_name, $app_insurance];
-
-      return response()->json($profile);
+      $app_product = \App\Product::whereUserId(12)->first();
+      $app_product_buy = \App\Product_buy::whereProduct_key($app_product->product_key)->first();
+      return response()->json($app_product_buy);
 
       // return response()->json(["index"],200);
     }
@@ -66,7 +56,7 @@ class AppController extends Controller
         //회원정보
         $app_user = \App\User::whereId($request->_key)->first();
         //비상연락망
-        $app_phone = \App\Medical_info::whereUser_id($app_user->id)->first()->guardian_phone;
+        $app_phone = \App\Medical_info::whereUserid($app_user->id)->first()->guardian_phone;
         //현재 질환
         $app_sickness_info = \App\Sickness::whereUser_id($app_user->id)->first();
         //손해보험사
@@ -80,7 +70,7 @@ class AppController extends Controller
 
       //제품정보 로직(받는 것 : user_id)
       elseif($request->_option == 2){
-        $app_product = \App\Product::whereUser_Id($request->_key)->first();
+        $app_product = \App\Product::whereUserId($request->_key)->first();
         $app_product_buy = \App\Product_buy::whereProduct_key($app_product->product_key)->first();
 
         return response()->json($app_product_buy);
