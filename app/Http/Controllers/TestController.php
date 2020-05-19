@@ -36,7 +36,7 @@ class TestController extends Controller
         $apiKey_address = env('GCP_API_KEY');
         $latitude = 35.896311;
         $longitude = 128.622051;
-        $url_address = "https://maps.googleapis.com/maps/api/geocode/json?latlng=35.896311,128.622051&key=AIzaSyBmDNMJ1gbJusi6rqVoskubnytiXP0Rchc&language=ko";
+        $url_address = "https://maps.googleapis.com/maps/api/geocode/json?latlng={$latitude},{$longitude}&key={$apiKey_address}&language=ko";
         $address = curl_init();
         curl_setopt($address,CURLOPT_URL,$url_address);
         curl_setopt($address, CURLOPT_POST, 0);
@@ -90,7 +90,6 @@ class TestController extends Controller
         $fields_string = json_encode($fields);
 
         // $.getJSON(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${API_KEY}`,
-        // https://maps.googleapis.com/maps/api/geocode/json?latlng=35.896311,128.622051&key=AIzaSyBmDNMJ1gbJusi6rqVoskubnytiXP0Rchc
 
         
         $sms = curl_init();

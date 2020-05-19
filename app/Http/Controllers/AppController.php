@@ -133,6 +133,80 @@ class AppController extends Controller
 
       //신고 프로세스
       elseif($request->_option == 6){
+        date_default_timezone_set('Asia/Seoul');
+
+        $url = "http://api.solapi.com/messages/v4/send";
+        $apiKey = 'NCSOLAE45HDEPTH5';
+        $apiSecret ='XWW3TK7GCPEYZWC6NZHFA6JBD3FREK4K';
+        $date = date('Y-m-d\TH:i:s.Z\Z', time());
+        $salt = uniqid();
+        $signature = hash_hmac('sha256', $date.$salt, $apiSecret);
+        $header = "Authorization: HMAC-SHA256 apiKey={$apiKey}, date={$date}, salt={$salt}, signature={$signature}";
+        $sickness = json_encode(\App\Sickness::whereUser_id(3)->get()->map(function($item,$key){
+            return "보유질환 : ".$item->sickness_name." | 복용약 : ".$item->medicine." | 주 증상 : ".$item->symptom." | 주 병원 :".$item->hospital;
+        })->implode('||'),JSON_UNESCAPED_UNICODE);
+        $past_sickness = json_encode(\App\Past_sickness::whereUser_id(3)->get()->map(function($item,$key){
+            return "과거 보유질환 : ".$item->past_sickness_name." | 복용 이력 : ".$item->past_sickness_supplementation;
+        })->implode('||'),JSON_UNESCAPED_UNICODE);
+
+        header("Content-Type: text/html; charset=utf-8");
+        $apiKey_address = env('GCP_API_KEY');
+        $latitude = 35.896311;
+        $longitude = 128.622051;
+        $url_address = "https://maps.googleapis.com/maps/api/geocode/json?latlng={$latitude},{$longitude}&key={$apiKey_address}&language=ko";
+        $address = curl_init();
+        curl_setopt($address,CURLOPT_URL,$url_address);
+        curl_setopt($address, CURLOPT_POST, 0);
+        curl_setopt($address,CURLOPT_RETURNTRANSFER, true);
+        $result_address = curl_exec($address);
+        \Log::info(\App\User::first());
+        \Log::info($result_address);
+        \Log::info(gettype($result_address));       //string
+        $result_address = json_decode($result_address); 
+        \Log::info(gettype($result_address));       //object
+
+        \Log::info($result_address->results[0]->formatted_address);
+
+        $user_data = 
+        "-----신고자 정보-----\n"
+        ."이름 : ".\App\User::find(3)->name."\n"
+        ."생년월일 : ".\App\User::find(3)->birth." | 성별 : ".\App\User::find(3)->gender."\n"
+        ."전화번호 : ".\App\User::find(3)->phone."\n"
+        ."-----의료 정보-----\n"
+        ."보호자 전화번호 : ".\App\Medical_info::whereUser_id(3)->first()->guardian_phone."\n"
+        ."혈액형 : ".\App\Medical_info::whereUser_id(3)->first()->blood_type."\n"
+        ."기타메시지 : ".\App\Medical_info::whereUser_id(3)->first()->report_request."\n"
+        ."-----병력-----\n"
+        .substr($sickness , 0, -1)."\n"
+        ."-----과거 병력-----\n"
+        .substr($past_sickness , 0, -1)."\n"
+        ."-----사고 발생 지점-----\n"
+        .$result_address->results[0]->formatted_address."\n"
+        ;
+        
+        $fields = new \stdClass();
+        $message = new \stdClass();
+        $message->to = "01035989003"; 
+        // $message->to = "01023560525";
+        // $message->to = "01050039201";
+        $message->from = "01050039201";
+        $message->subject = "[kurumamori119 신고]";
+        $message->text = $user_data;
+        $message->type = "LMS";
+        $fields->message = $message;
+        $fields_string = json_encode($fields);
+        
+        $sms = curl_init();
+        curl_setopt($sms,CURLOPT_URL,$url);
+        curl_setopt($sms, CURLOPT_HTTPHEADER, array($header, "Content-Type: application/json"));
+        curl_setopt($sms, CURLOPT_POST, 1);
+        curl_setopt($sms, CURLOPT_POSTFIELDS, $fields_string);
+        curl_setopt($sms,CURLOPT_RETURNTRANSFER, true);
+
+        // $result = curl_exec($sms);
+        return json_encode($message,JSON_UNESCAPED_UNICODE)."<br/><br/>".$user_data;
+        // return $result;
+
       }
     }
     /**
