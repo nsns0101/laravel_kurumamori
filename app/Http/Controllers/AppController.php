@@ -64,7 +64,7 @@ class AppController extends Controller
         //회원정보
         $app_user = \App\User::whereId($request->_key)->first();
         //비상연락망
-        $app_phone = \App\Medical_info::whereUser_id($app_user->id)->first()->guardian_phone;
+        $app_phone = \App\Medical_info::whereUser_id($app_user->id)->first() ? \App\Medical_info::whereUser_id($app_user->id)->first()->guardian_phone : "";
         //현재 질환
         $app_sickness_info = \App\Sickness::whereUser_id($app_user->id)->first();
         //손해보험사
@@ -80,9 +80,7 @@ class AppController extends Controller
       elseif($request->_option == 2){
         $app_product = \App\Product::whereUser_id($request->_key)->first();
         $app_product_buy = $app_product ? \App\Product_buy::whereProduct_key($app_product->product_key)->first() : "";
-
         return response()->json($app_product_buy);
-
       }
 
       //운전시작 : 운전 테이블 생성(받는 것 : user_id)
