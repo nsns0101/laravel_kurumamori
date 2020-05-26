@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
 @section('content')
 
@@ -71,7 +71,6 @@
 
     .login_box {
         margin-top: 150px;
-
         text-align: center;
         border: 1px solid #e6e6e6;
         border-radius: 1px;
@@ -84,4 +83,20 @@
         padding: 40px;
     }
 </style>
-@endsection
+@endsection --}}
+
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Laravel</title>
+        <link href="/css/app.css" rel="stylesheet" type="text/css">
+
+    </head>
+    <body>
+        <div id="app"></div>
+        <script src="/js/app.js"></script>
+    </body>
+</html>

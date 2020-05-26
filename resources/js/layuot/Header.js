@@ -40,7 +40,7 @@ export default () => {
                         </li>
                         {/* @else */}
                         <li className="nav-item">
-                            <a className="nav-link " href="/auth/login" style={{color:"white"}}>로그인</a>
+                            <Link to="/auth/login" className="nav-link " style={{color:"white"}}>로그인</Link>
                         </li> 
                         <li className="nav-item">
                         <a className="nav-link " href="/auth/signup" style={{color:"white"}}>회원가입</a>
