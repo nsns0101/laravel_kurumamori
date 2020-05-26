@@ -21,10 +21,10 @@ class TestController extends Controller
         $salt = uniqid();
         $signature = hash_hmac('sha256', $date.$salt, $apiSecret);
         $header = "Authorization: HMAC-SHA256 apiKey={$apiKey}, date={$date}, salt={$salt}, signature={$signature}";
-        $sickness = json_encode(\App\Sickness::whereUser_id(3)->get()->map(function($item,$key){
+        $sickness = json_encode(\App\Sickness::whereUser_id(12)->get()->map(function($item,$key){
             return "보유질환 : ".$item->sickness_name." | 복용약 : ".$item->medicine." | 주 증상 : ".$item->symptom." | 주 병원 :".$item->hospital;
         })->implode('||'),JSON_UNESCAPED_UNICODE);
-        $past_sickness = json_encode(\App\Past_sickness::whereUser_id(3)->get()->map(function($item,$key){
+        $past_sickness = json_encode(\App\Past_sickness::whereUser_id(12)->get()->map(function($item,$key){
             return "과거 보유질환 : ".$item->past_sickness_name." | 복용 이력 : ".$item->past_sickness_supplementation;
         })->implode('||'),JSON_UNESCAPED_UNICODE);
 
@@ -34,53 +34,41 @@ class TestController extends Controller
         // $result_address_url = "https://www.google.com/maps/place/%EB%8C%80%EA%B5%AC%EA%B4%91%EC%97%AD%EC%8B%9C+%EB%B6%81%EA%B5%AC+%EB%B3%B5%ED%98%842%EB%8F%99+%EB%B3%B5%ED%98%84%EB%A1%9C+35/@35.8963134,128.6198624,17z/data=!3m1!4b1!4m5!3m4!1s0x3565e1bb2f087589:0x5a55f9de5c2d9ea!8m2!3d35.8963091!4d128.6220511?hl=ko";
         header("Content-Type: text/html; charset=utf-8");
         $apiKey_address = env('GCP_API_KEY');
-        $latitude = 35.896311;
-        $longitude = 128.622051;
+        $latitude = 35.893932;
+        $longitude = 128.620904;
         $url_address = "https://maps.googleapis.com/maps/api/geocode/json?latlng={$latitude},{$longitude}&key={$apiKey_address}&language=ko";
         $address = curl_init();
         curl_setopt($address,CURLOPT_URL,$url_address);
         curl_setopt($address, CURLOPT_POST, 0);
         curl_setopt($address,CURLOPT_RETURNTRANSFER, true);
         $result_address = curl_exec($address);
-        \Log::info(\App\User::first());
-        \Log::info($result_address);
-        \Log::info(gettype($result_address));       //string
         $result_address = json_decode($result_address); 
-        \Log::info(gettype($result_address));       //object
 
-        \Log::info($result_address->results[0]->formatted_address);
-        // \Log::info($result_address->results[1]);
-        // \Log::info($result_address->results[0]);
-
-        // \Log::info();
-        // \Log::info(json_encode($result_address,JSON_UNESCAPED_UNICODE));
-
-        // $result_address = $fields_address;
-        // \Log::info($fields_address[1]);
-
+        $result_address_url = "https://www.google.com/maps/search/?api=1&query={$latitude},{$longitude}";
 
         $user_data = 
         "-----신고자 정보-----\n"
-        ."이름 : ".\App\User::find(3)->name."\n"
-        ."생년월일 : ".\App\User::find(3)->birth." | 성별 : ".\App\User::find(3)->gender."\n"
-        ."전화번호 : ".\App\User::find(3)->phone."\n"
+        ."이름 : ".\App\User::find(12)->name."\n"
+        ."생년월일 : ".\App\User::find(12)->birth." | 성별 : ".\App\User::find(12)->gender."\n"
+        ."전화번호 : ".\App\User::find(12)->phone."\n"
         ."-----의료 정보-----\n"
-        ."보호자 전화번호 : ".\App\Medical_info::whereUser_id(3)->first()->guardian_phone."\n"
-        ."혈액형 : ".\App\Medical_info::whereUser_id(3)->first()->blood_type."\n"
-        ."기타메시지 : ".\App\Medical_info::whereUser_id(3)->first()->report_request."\n"
+        ."보호자 전화번호 : ".\App\Medical_info::whereUser_id(12)->first()->guardian_phone."\n"
+        ."혈액형 : ".\App\Medical_info::whereUser_id(12)->first()->blood_type."\n"
+        ."기타메시지 : ".\App\Medical_info::whereUser_id(12)->first()->report_request."\n"
         ."-----병력-----\n"
-        .substr($sickness , 0, -1)."\n"
+        .substr($sickness , 0, -1)."경북대병원\n"
         ."-----과거 병력-----\n"
         .substr($past_sickness , 0, -1)."\n"
         ."-----사고 발생 지점-----\n"
         .$result_address->results[0]->formatted_address."\n"
-        // .$result_address_url
+        .$result_address_url
         ;
         
         $fields = new \stdClass();
         $message = new \stdClass();
-        $message->to = "01035989003";
+        // $message->to = "01035989003";
         // $message->to = "01023560525";
+        $message->to = "01027794593";
         // $message->to = "01050039201";
         $message->from = "01050039201";
         $message->subject = "[kurumamori119 신고]";
@@ -99,9 +87,9 @@ class TestController extends Controller
         curl_setopt($sms, CURLOPT_POSTFIELDS, $fields_string);
         curl_setopt($sms,CURLOPT_RETURNTRANSFER, true);
 
-        // $result = curl_exec($sms);
-        return json_encode($message,JSON_UNESCAPED_UNICODE)."<br/><br/>".$user_data;
-        // return $result;
+        $result = curl_exec($sms);
+        // return json_encode($message,JSON_UNESCAPED_UNICODE)."<br/><br/>".$user_data;
+        return $result;
     }
     function initMap() {
         
