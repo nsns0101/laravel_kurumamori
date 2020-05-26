@@ -7,16 +7,8 @@ import Header from "../layuot/Header";
 import Footer from "../layuot/Footer";
 import Home from "../routes/Home/Home"
 import Login from "../routes/Auth/AuthContainer";
-import { ToastContainer, toast } from "react-toastify";
-import styled from "styled-components";
+import Product from "../routes/Product/Product";
 
-const Wrapper = styled.div`
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-`;
 function App() {
     return (
         <React.Fragment>
@@ -24,7 +16,7 @@ function App() {
                 <Header/>
                 <Route path="/" exact={true} component={Home}/>
                 <Route path="/auth/login" exact component={Login}/>
-                <ToastContainer/>    
+                <Route path="/products" exact component={Product}/>
                 <Footer/>
             </BrowserRouter>
         </React.Fragment>

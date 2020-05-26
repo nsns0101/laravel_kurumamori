@@ -4,6 +4,7 @@ import Input from "../../components/Input";
 // import Button from "../../components/Button";
 import FatText from "../../components/FatText";
 import {Link} from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 const Wrapper = styled.div`
   min-height: 80vh;
@@ -73,10 +74,12 @@ export default ({
   birth,
   gender,
   phone,
-  onSubmit,
+  // onSubmit,
   setGender
 }) => {
-  // const [rSelected, setRSelected] = useState(null);
+  const { handleSubmit, register, errors, watch } = useForm();
+  const onSubmit = values => console.log(values);   //임시
+
   return (
     <Wrapper>
       {action === "login" ? (
@@ -90,7 +93,7 @@ export default ({
 
           <h2>{action === "login" ? "로그인" : "회원가입"}</h2>
           <br/>
-          <form onSubmit={onSubmit}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-group text-center"><Input placeholder={"Email"} {...email}/></div>
             <div className="form-group text-center"><Input placeholder={"Password"} {...password}/></div>
             <div className="form-group"><button className="btn btn-primary btn-lg btn-block">로그인</button></div>
@@ -107,11 +110,11 @@ export default ({
           <h2>{action === "login" ? "로그인" : "회원가입"}</h2>
           <br/>
           {/* 제출 폼 */}
-          <form onSubmit={onSubmit}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <h5 className="text-center" style={{color:"black"}}>로그인 정보</h5>
             <br />
 
-            <div className="form-group"><Input placeholder={"이메일"} {...email} /></div>
+            {/* <div className="form-group"><Input placeholder={"이메일"} {...email} /></div>
             <div className="form-group"><Input placeholder={"비밀번호"} {...password} /></div>
             <div className="form-group"><Input placeholder={"비밀번호 확인"} {...password_check}/></div>
             <hr />
@@ -119,7 +122,78 @@ export default ({
             <br />
             <div className="form-group"><Input placeholder={"이름"} {...name}/></div>
             <div className="form-group"><Input placeholder={"생년월일"} {...birth}/></div>
-            <div className="form-group"><Input placeholder={"휴대폰 번호"} {...phone}/></div>
+            <div className="form-group"><Input placeholder={"휴대폰 번호"} {...phone}/></div> */}
+            
+            {/* 이메일 */}
+            <div className="form-group">
+              <input 
+                name ="email" 
+                placeholder={"이메일"}
+                ref={register({
+                  required: "Required",
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                    message: "이메일 형식(@)이 아닙니다."
+                  }
+                })} 
+              />
+              {errors.email && errors.email.message}
+            </div>
+            {/* 비밀번호 */}
+            <div className="form-group">
+              <input 
+                name ="password" 
+                placeholder={"비밀번호"}
+                ref={register({
+                  required: "Required"
+                })}
+              />
+            </div>
+            {/* 비밀번호 체크 */}
+            <div className="form-group">
+              <input 
+                name ="password_confirmation" 
+                placeholder={"비밀번호 확인"}
+                ref={register({
+                  required: "Required"
+                })}
+              />
+            </div>
+
+            <hr />
+            <h5 className="text-center" style={{color:"black"}}>유저 정보</h5>
+            <br />
+            {/* 이름 */}
+            <div className="form-group">
+              <input 
+                name ="name" 
+                placeholder={"이름"}
+                ref={register({
+                  required: "Required"
+                })}
+              />
+            </div>
+            {/* 생년월일 */}
+            <div className="form-group">
+              <input 
+                name ="birth" 
+                placeholder={"생년월일"}
+                ref={register({
+                  required: "Required"
+                })}
+              />
+            </div>
+            {/* 휴대폰 번호 */}
+            <div className="form-group">
+              <input 
+                name ="phone" 
+                placeholder={"휴대폰 번호"}
+                ref={register({
+                  required: "Required"
+                })}
+              />
+            </div>
+
             <div className="form-group text-center">
               <fieldset>
                 남성

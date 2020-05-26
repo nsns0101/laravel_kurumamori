@@ -22,13 +22,19 @@ export default () => {
     const body = {
       email: email.value,
       password: password.value,
-      password_check: password_check.value,
+      // password_check: password_check.value,
       name: name.value,
       birth: birth.value,
       gender: gender,
       phone: phone.value
     };
-    return Axios.post(url, body);
+    const config = {
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+  
+    }
+    return Axios.post(url, body, config);
   }
 
   //로그인 함수
@@ -78,11 +84,6 @@ export default () => {
             toast.error("비밀번호 확인이 맞지않습니다.");
             return;
           }
-          //int형이 아닌경우
-          // else if (Number(age.value) !== 'number') {
-          //   toast.error("나이에 숫자를 넣어주세요!");
-          //   return
-          // }
 
           //회원가입 요청
           addUser().then(data => {

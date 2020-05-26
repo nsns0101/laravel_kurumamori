@@ -14,7 +14,7 @@ class LoginController extends Controller
     public function index()
     {
 
-        return view('sessions.login');
+        return view('home.main');
     }
 
     //회원가입 요청

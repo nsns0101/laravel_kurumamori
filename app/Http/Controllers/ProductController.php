@@ -14,7 +14,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        return view('product.product');
+        return view('home.main');
     }
 
     public function create(Request $request)
