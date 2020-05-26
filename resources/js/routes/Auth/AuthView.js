@@ -5,7 +5,7 @@ import Input from "../../components/Input";
 import FatText from "../../components/FatText";
 import {Link} from "react-router-dom";
 import { useForm } from "react-hook-form";
-
+import "./Auth.css";
 const Wrapper = styled.div`
   min-height: 80vh;
   display: flex;
@@ -67,19 +67,29 @@ const SignUpForm = styled(SignUpBox)`
 export default ({
   action,
   setAction,
-  email,
-  password,
-  password_check,
-  name,
-  birth,
-  gender,
-  phone,
-  // onSubmit,
-  setGender
+  // email,
+  setEmail,
+  // password,
+  setPassword,
+  // password_check,
+  setPassword_check,
+  // name,
+  setName,
+  // birth,
+  setBirth,
+  // gender,
+  setGender,
+  // phone,
+  setPhone,
+  onSubmit,
 }) => {
   const { handleSubmit, register, errors, watch } = useForm();
-  const onSubmit = values => console.log(values);   //임시
+  // const onSubmit = values => console.log(values);   //임시
+  const input_form = {
+    width: "100%",
+    border: '5px solid pink',
 
+  }
   return (
     <Wrapper>
       {action === "login" ? (
@@ -94,8 +104,41 @@ export default ({
           <h2>{action === "login" ? "로그인" : "회원가입"}</h2>
           <br/>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="form-group text-center"><Input placeholder={"Email"} {...email}/></div>
-            <div className="form-group text-center"><Input placeholder={"Password"} {...password}/></div>
+            <div className="form-group text-center">
+              <input 
+                  name ="email" 
+                  placeholder={"이메일"}
+                  style={{input_form}}
+                  onChange={ e => {
+                    const {
+                      target: { value }
+                    } = e;
+                    setEmail(value);
+                  }}
+                  ref={register({
+                    required: "Required",
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                      message: "이메일 형식(@)이 아닙니다."
+                    }
+                  })} 
+                />
+              </div>
+              <div className="form-group text-center">
+                <input 
+                  name ="password" 
+                  placeholder={"비밀번호"}
+                  onChange={ e => {
+                    const {
+                      target: { value }
+                    } = e;
+                    setPassword(value);
+                  }}
+                  ref={register({
+                    required: "Required"
+                  })}
+                />
+              </div>
             <div className="form-group"><button className="btn btn-primary btn-lg btn-block">로그인</button></div>
           </form>
         </LoginForm>
@@ -113,22 +156,18 @@ export default ({
           <form onSubmit={handleSubmit(onSubmit)}>
             <h5 className="text-center" style={{color:"black"}}>로그인 정보</h5>
             <br />
-
-            {/* <div className="form-group"><Input placeholder={"이메일"} {...email} /></div>
-            <div className="form-group"><Input placeholder={"비밀번호"} {...password} /></div>
-            <div className="form-group"><Input placeholder={"비밀번호 확인"} {...password_check}/></div>
-            <hr />
-            <h5 className="text-center" style={{color:"black"}}>유저 정보</h5>
-            <br />
-            <div className="form-group"><Input placeholder={"이름"} {...name}/></div>
-            <div className="form-group"><Input placeholder={"생년월일"} {...birth}/></div>
-            <div className="form-group"><Input placeholder={"휴대폰 번호"} {...phone}/></div> */}
             
             {/* 이메일 */}
             <div className="form-group">
               <input 
                 name ="email" 
                 placeholder={"이메일"}
+                onChange={ e => {
+                  const {
+                    target: { value }
+                  } = e;
+                  setEmail(value);
+                }}
                 ref={register({
                   required: "Required",
                   pattern: {
@@ -137,29 +176,50 @@ export default ({
                   }
                 })} 
               />
-              {errors.email && errors.email.message}
+              <div>
+                {errors.email && errors.email.message}
+              </div>
             </div>
             {/* 비밀번호 */}
             <div className="form-group">
               <input 
                 name ="password" 
                 placeholder={"비밀번호"}
+                onChange={ e => {
+                  const {
+                    target: { value }
+                  } = e;
+                  setPassword(value);
+                }}
                 ref={register({
                   required: "Required"
                 })}
               />
             </div>
+            {errors.password && errors.password.message}
             {/* 비밀번호 체크 */}
             <div className="form-group">
               <input 
                 name ="password_confirmation" 
                 placeholder={"비밀번호 확인"}
+                onChange={ e => {
+                  const {
+                    target: { value }
+                  } = e;
+                  setPassword_check(value);
+                }}
                 ref={register({
-                  required: "Required"
+                  required: "Required",
+                  validate: (value) => {
+                    // console.log(watch('password'));
+                    // console.log(value);
+                    return value === watch('password');
+                  }
                 })}
               />
             </div>
-
+            {errors.password_confirmation && errors.password_confirmation.type === "validate" ? "비밀번호가 맞지않습니다" : ""}
+            {errors.password_confirmation && errors.password_confirmation.type === "required" ? "빈칸을 채워주세요" : ""}
             <hr />
             <h5 className="text-center" style={{color:"black"}}>유저 정보</h5>
             <br />
@@ -168,40 +228,73 @@ export default ({
               <input 
                 name ="name" 
                 placeholder={"이름"}
+                onChange={ e => {
+                  const {
+                    target: { value }
+                  } = e;
+                  setName(value);
+                }}
                 ref={register({
                   required: "Required"
                 })}
               />
             </div>
+            {errors.name && errors.name.message}
+
             {/* 생년월일 */}
             <div className="form-group">
               <input 
                 name ="birth" 
                 placeholder={"생년월일"}
+                onChange={ e => {
+                  const {
+                    target: { value }
+                  } = e;
+                  setBirth(value);
+                }}
                 ref={register({
-                  required: "Required"
+                  required: "Required",
+                  pattern: {
+                    value: /^[0-9]{4}-(0[1-9]|1[012])-(0[1-3]|1[0-9])/,
+                    message: "올바른 생년월일 형식이 아닙니다."
+                  }
                 })}
               />
             </div>
+            {errors.birth && errors.birth.message}
+
             {/* 휴대폰 번호 */}
             <div className="form-group">
               <input 
                 name ="phone" 
                 placeholder={"휴대폰 번호"}
+                onChange={ e => {
+                  const {
+                    target: { value }
+                  } = e;
+                  setPhone(value);
+                }}
                 ref={register({
-                  required: "Required"
+                  required: "Required",
+                  pattern: {
+                    value: /^[0-9]{3}-[0-9]{4}-[0-9]{4,4}/,
+                    message: "올바른 휴대폰 번호 형식이 아닙니다."
+                  }
                 })}
               />
             </div>
+            {errors.phone && errors.phone.message}
 
             <div className="form-group text-center">
               <fieldset>
                 남성
-                <input type="radio" name="gender" onClick={() => setGender("남")}/>
+                <input type="radio" name="gender" ref={register({})} onClick={() => setGender("남")}/>
                 여성
-                <input type="radio" name="gender" onClick={() => setGender("여")}/>
+                <input type="radio" name="gender" ref={register({})} onClick={() => setGender("여")}/>
               </fieldset>
             </div>
+            {/* {console.log(watch('gender'))} */}
+            {/* {watch('gender') ? "" : "성별을 선택해주세요."} */}
             <div className="form-group"><button className="btn btn-primary btn-lg btn-block">가입하기</button></div>
           </form>
         </SignUpForm>

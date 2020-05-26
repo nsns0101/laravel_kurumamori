@@ -7,26 +7,26 @@ import Axios from "axios";
 export default () => {
 
   const [action, setAction] = useState("login");      //현재 로그인인지 회원가입인지 등의 상태
-  const email = useInput("");                 //이메일
-  const password = useInput("");              //비밀번호
-  const password_check = useInput("");        //비밀번호 확인
-  const name = useInput("");                  //이름
-  const birth = useInput("");                 //생년월일
+  const [email, setEmail] = useState("");                 //이메일
+  const [password, setPassword] = useState("");              //비밀번호
+  const [password_check, setPassword_check] = useState("");        //비밀번호 확인
+  const [name, setName] = useState("");                  //이름
+  const [birth, setBirth] = useState("");                 //생년월일
+  const [phone, setPhone] = useState("");                 //휴대폰 번호
   const [gender, setGender] = useState("");   //성별
-  const phone = useInput("");                 //휴대폰 번호
 
 
   //회원가입 함수
   const addUser = async () => {
     const url = "/auth/signup";
     const body = {
-      email: email.value,
-      password: password.value,
-      // password_check: password_check.value,
-      name: name.value,
-      birth: birth.value,
+      email: email,
+      password: password,
+      // password_check: password_check,
+      name: name,
+      birth: birth,
       gender: gender,
-      phone: phone.value
+      phone: phone
     };
     const config = {
       headers: {
@@ -39,66 +39,79 @@ export default () => {
 
   //로그인 함수
   const loginUser = async () => {
+    const TOKEN = "accessToken";
     const url = "/auth/login";
     const body = {
-      email: email.value,
-      password: password.value,      
+      email: email,
+      password: password,      
     };
-    return Axios.post(url, body);
+    const headers = new Headers({
+      "Content-Type": "application/json"
+    });
+    if(localStorage.getItem(TOKEN)){
+      headers.append(
+        "Authorization",
+        "Bearer" + localStorage.getItem(TOKEN)
+      );
+    }
+    
+    const defaults = {headers: headers};
+    const options = Object.assign({}, defaults, url, body);
+
+
+    return Axios.post(url, options);
   }
 
   //회원가입이나 로그인 버튼 클릭시
   const onSubmit = async e => {
-    e.preventDefault();
+    // e.preventDefault();
 
     //회원가입 창일 때
     if(action === "login"){
-      if(email.value !== "" && password.value !== ""){
+      if(email !== "" && password !== ""){
         loginUser().then(data => {
-          if(data.data.result){
-            toast.success(data.data.msg);
-            window.location.reload();
-          }
-          else{
-            toast.error(data.data.msg);
-          }
+          console.log(data);
+          // if(data.data.result){
+          //   toast.success(data.data.msg);
+          //   window.location.reload();
+          // }
+          // else{
+          //   toast.error(data.data.msg);
+          // }
+          
         });
       }
     }
     else if(action === "signUp"){
-      console.log(email);
+      // console.log(email);
 
       //값을 전부 입력한 경우
       if (
-        email.value !== "" &&
-        password.value !== "" &&
-        password_check.value !== "" &&
-        name.value !== "" &&
-        birth.value !== "" &&
+        email !== "" &&
+        password !== "" &&
+        password_check !== "" &&
+        name !== "" &&
+        birth !== "" &&
         gender !== "" &&
-        phone.value !== ""
+        phone !== ""
       ) {
         try {
           //비밀번호 체크
-          if (password.value !== password_check.value) {
-            toast.error("비밀번호 확인이 맞지않습니다.");
-            return;
-          }
+          // if (password !== password_check) {
+          //   toast.error("비밀번호 확인이 맞지않습니다.");
+          //   return;
+          // }
 
           //회원가입 요청
           addUser().then(data => {
             //회원가입 성공시
-            if (data.data.result) {
-              console.log(data.data.session);
-              toast.success(data.data.msg);
+            if (data.data) {
               //로그인 창으로 이동
               setAction("login");
-            } else {
-              toast.error(data.data.msg);
             }
           });
         } catch (error) {
-          console.log(error);
+          console.log("메일건 오류");
         }
       }
       //값을 다 넣지 않은 경우
@@ -112,13 +125,20 @@ export default () => {
       <AuthView
       action={action}
       setAction={setAction}
-      email={email}
-      password={password}
-      password_check={password_check}
-      name={name}
-      birth={birth}
-      gender={gender}
-      phone={phone}
+      // email={email} 
+      setEmail={setEmail}
+      // password={password}
+      setPassword={setPassword}
+      // password_check={password_check}
+      setPassword_check={setPassword_check}
+      // name={name}
+      setName={setName}
+      // birth={birth}
+      setBirth={setBirth}
+      // gender={gender}
+      setGender={setGender}
+      // phone={phone}
+      setPhone={setPhone}
       onSubmit={onSubmit}
       setGender={setGender}
       />

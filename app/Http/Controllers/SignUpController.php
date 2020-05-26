@@ -41,37 +41,9 @@ class SignUpController extends Controller
         event(new \App\Events\UserCreated($user));
             
         
-        flash('가입하신 메일 계정으로 가입 확인 코드를 보내드렸습니다. 
-            확인하시고 로그인해주세요.');
+        // flash('가입하신 메일 계정으로 가입 확인 코드를 보내드렸습니다. 
+        //     확인하시고 로그인해주세요.');
         
-        return redirect('/confirm');
+        return $user;
     }
-
-    // public function confirm($code)
-    // {
-    //     $user = \App\User::whereConfirmCode($code)->first();
-
-    //     if (!$user) {
-    //         return $this->respondError('URL이 정확하지 않습니다.');
-    //     }
-    //     // \App\User::update([
-    //     //     'confirm_code' => null
-    //     // ]);
-
-    //     auth()->login($user);
-    //     flash(auth()->user()->name . '님, 환영합니다. 가입 확인되었습니다.');
-
-    //     return redirect('/');
-    // }
-    // public function destroy()
-    // {
-    // }
-
-    // protected function respondError($message)
-    // {
-    // }
-
-    // protected function respondCreated($message)
-    // {
-    // }
 }

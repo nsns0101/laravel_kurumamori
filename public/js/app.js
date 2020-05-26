@@ -7289,6 +7289,25 @@ exports.push([module.i, "/*!\n * Bootstrap v4.5.0 (https://getbootstrap.com/)\n 
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/routes/Auth/Auth.css":
+/*!***************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./resources/js/routes/Auth/Auth.css ***!
+  \***************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "/* input{\r\n    width : 95%;\r\n    font-size : 16px;\r\n} */", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/lib/css-base.js":
 /*!*************************************************!*\
   !*** ./node_modules/css-loader/lib/css-base.js ***!
@@ -79685,6 +79704,36 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/routes/Auth/Auth.css":
+/*!*******************************************!*\
+  !*** ./resources/js/routes/Auth/Auth.css ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/postcss-loader/src??ref--6-2!./Auth.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/routes/Auth/Auth.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./resources/js/routes/Auth/AuthContainer.js":
 /*!***************************************************!*\
   !*** ./resources/js/routes/Auth/AuthContainer.js ***!
@@ -79704,6 +79753,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_5__);
 
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
@@ -79733,24 +79784,48 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       setAction = _useState2[1]; //현재 로그인인지 회원가입인지 등의 상태
 
 
-  var email = Object(_Hooks_useInput__WEBPACK_IMPORTED_MODULE_2__["default"])(""); //이메일
-
-  var password = Object(_Hooks_useInput__WEBPACK_IMPORTED_MODULE_2__["default"])(""); //비밀번호
-
-  var password_check = Object(_Hooks_useInput__WEBPACK_IMPORTED_MODULE_2__["default"])(""); //비밀번호 확인
-
-  var name = Object(_Hooks_useInput__WEBPACK_IMPORTED_MODULE_2__["default"])(""); //이름
-
-  var birth = Object(_Hooks_useInput__WEBPACK_IMPORTED_MODULE_2__["default"])(""); //생년월일
-
   var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(""),
       _useState4 = _slicedToArray(_useState3, 2),
-      gender = _useState4[0],
-      setGender = _useState4[1]; //성별
+      email = _useState4[0],
+      setEmail = _useState4[1]; //이메일
 
 
-  var phone = Object(_Hooks_useInput__WEBPACK_IMPORTED_MODULE_2__["default"])(""); //휴대폰 번호
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(""),
+      _useState6 = _slicedToArray(_useState5, 2),
+      password = _useState6[0],
+      setPassword = _useState6[1]; //비밀번호
+
+
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(""),
+      _useState8 = _slicedToArray(_useState7, 2),
+      password_check = _useState8[0],
+      setPassword_check = _useState8[1]; //비밀번호 확인
+
+
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(""),
+      _useState10 = _slicedToArray(_useState9, 2),
+      name = _useState10[0],
+      setName = _useState10[1]; //이름
+
+
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(""),
+      _useState12 = _slicedToArray(_useState11, 2),
+      birth = _useState12[0],
+      setBirth = _useState12[1]; //생년월일
+
+
+  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(""),
+      _useState14 = _slicedToArray(_useState13, 2),
+      phone = _useState14[0],
+      setPhone = _useState14[1]; //휴대폰 번호
+
+
+  var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(""),
+      _useState16 = _slicedToArray(_useState15, 2),
+      gender = _useState16[0],
+      setGender = _useState16[1]; //성별
   //회원가입 함수
+
 
   var addUser = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
@@ -79761,13 +79836,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
             case 0:
               url = "/auth/signup";
               body = {
-                email: email.value,
-                password: password.value,
-                // password_check: password_check.value,
-                name: name.value,
-                birth: birth.value,
+                email: email,
+                password: password,
+                // password_check: password_check,
+                name: name,
+                birth: birth,
                 gender: gender,
-                phone: phone.value
+                phone: phone
               };
               config = {
                 headers: {
@@ -79792,19 +79867,32 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
   var loginUser = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-      var url, body;
+      var TOKEN, url, body, headers, defaults, options;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
+              TOKEN = "accessToken";
               url = "/auth/login";
               body = {
-                email: email.value,
-                password: password.value
+                email: email,
+                password: password
               };
-              return _context2.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(url, body));
+              headers = new Headers({
+                "Content-Type": "application/json"
+              });
 
-            case 3:
+              if (localStorage.getItem(TOKEN)) {
+                headers.append("Authorization", "Bearer" + localStorage.getItem(TOKEN));
+              }
+
+              defaults = {
+                headers: headers
+              };
+              options = Object.assign({}, defaults, url, body);
+              return _context2.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(url, options));
+
+            case 8:
             case "end":
               return _context2.stop();
           }
@@ -79824,84 +79912,53 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
-              e.preventDefault(); //회원가입 창일 때
-
-              if (!(action === "login")) {
-                _context3.next = 5;
-                break;
-              }
-
-              if (email.value !== "" && password.value !== "") {
-                loginUser().then(function (data) {
-                  if (data.data.result) {
-                    react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].success(data.data.msg);
-                    window.location.reload();
-                  } else {
-                    react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].error(data.data.msg);
-                  }
-                });
-              }
-
-              _context3.next = 21;
-              break;
-
-            case 5:
-              if (!(action === "signUp")) {
-                _context3.next = 21;
-                break;
-              }
-
-              console.log(email); //값을 전부 입력한 경우
-
-              if (!(email.value !== "" && password.value !== "" && password_check.value !== "" && name.value !== "" && birth.value !== "" && gender !== "" && phone.value !== "")) {
-                _context3.next = 20;
-                break;
-              }
-
-              _context3.prev = 8;
-
-              if (!(password.value !== password_check.value)) {
-                _context3.next = 12;
-                break;
-              }
-
-              react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].error("비밀번호 확인이 맞지않습니다.");
-              return _context3.abrupt("return");
-
-            case 12:
-              //회원가입 요청
-              addUser().then(function (data) {
-                //회원가입 성공시
-                if (data.data.result) {
-                  console.log(data.data.session);
-                  react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].success(data.data.msg); //로그인 창으로 이동
-
-                  setAction("login");
-                } else {
-                  react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].error(data.data.msg);
+              // e.preventDefault();
+              //회원가입 창일 때
+              if (action === "login") {
+                if (email !== "" && password !== "") {
+                  loginUser().then(function (data) {
+                    console.log(data); // if(data.data.result){
+                    //   toast.success(data.data.msg);
+                    //   window.location.reload();
+                    // }
+                    // else{
+                    //   toast.error(data.data.msg);
+                    // }
+                  });
                 }
-              });
-              _context3.next = 18;
-              break;
+              } else if (action === "signUp") {
+                // console.log(email);
+                //값을 전부 입력한 경우
+                if (email !== "" && password !== "" && password_check !== "" && name !== "" && birth !== "" && gender !== "" && phone !== "") {
+                  try {
+                    //비밀번호 체크
+                    // if (password !== password_check) {
+                    //   toast.error("비밀번호 확인이 맞지않습니다.");
+                    //   return;
+                    // }
+                    //회원가입 요청
+                    addUser().then(function (data) {
+                      //회원가입 성공시
+                      if (data.data) {
+                        //로그인 창으로 이동
+                        setAction("login");
+                      }
+                    });
+                  } catch (error) {
+                    console.log("메일건 오류");
+                  }
+                } //값을 다 넣지 않은 경우
+                else {
+                    react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].error("값을 전부 넣어주세요!");
+                  }
+              }
 
-            case 15:
-              _context3.prev = 15;
-              _context3.t0 = _context3["catch"](8);
-              console.log(_context3.t0);
-
-            case 18:
-              _context3.next = 21;
-              break;
-
-            case 20:
-              react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].error("값을 전부 넣어주세요!");
-
-            case 21:
+            case 1:
             case "end":
               return _context3.stop();
           }
         }
-      }, _callee3, null, [[8, 15]]);
+      }, _callee3);
     }));
 
     return function onSubmit(_x) {
@@ -79909,19 +79966,25 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     };
   }();
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_AuthView__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_AuthView__WEBPACK_IMPORTED_MODULE_4__["default"], _defineProperty({
     action: action,
-    setAction: setAction,
-    email: email,
-    password: password,
-    password_check: password_check,
-    name: name,
-    birth: birth,
-    gender: gender,
-    phone: phone,
-    onSubmit: onSubmit,
-    setGender: setGender
-  });
+    setAction: setAction // email={email} 
+    ,
+    setEmail: setEmail // password={password}
+    ,
+    setPassword: setPassword // password_check={password_check}
+    ,
+    setPassword_check: setPassword_check // name={name}
+    ,
+    setName: setName // birth={birth}
+    ,
+    setBirth: setBirth // gender={gender}
+    ,
+    setGender: setGender // phone={phone}
+    ,
+    setPhone: setPhone,
+    onSubmit: onSubmit
+  }, "setGender", setGender));
 });
 
 /***/ }),
@@ -79942,8 +80005,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_FatText__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/FatText */ "./resources/js/components/FatText.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var react_hook_form__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-hook-form */ "./node_modules/react-hook-form/dist/react-hook-form.es.js");
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
+/* harmony import */ var _Auth_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Auth.css */ "./resources/js/routes/Auth/Auth.css");
+/* harmony import */ var _Auth_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_Auth_css__WEBPACK_IMPORTED_MODULE_6__);
 function _templateObject8() {
   var data = _taggedTemplateLiteral(["\n  padding: 40px;\n  padding-bottom: 30px;\n  margin-bottom: 15px;\n"]);
 
@@ -80033,6 +80096,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
+
 var Wrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject()); //로고 이미지 센터
 
 var Img_center = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject2()); //login box
@@ -80051,26 +80115,26 @@ var SignUpForm = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   var action = _ref.action,
       setAction = _ref.setAction,
-      email = _ref.email,
-      password = _ref.password,
-      password_check = _ref.password_check,
-      name = _ref.name,
-      birth = _ref.birth,
-      gender = _ref.gender,
-      phone = _ref.phone,
-      setGender = _ref.setGender;
+      setEmail = _ref.setEmail,
+      setPassword = _ref.setPassword,
+      setPassword_check = _ref.setPassword_check,
+      setName = _ref.setName,
+      setBirth = _ref.setBirth,
+      setGender = _ref.setGender,
+      setPhone = _ref.setPhone,
+      onSubmit = _ref.onSubmit;
 
   var _useForm = Object(react_hook_form__WEBPACK_IMPORTED_MODULE_5__["useForm"])(),
       handleSubmit = _useForm.handleSubmit,
       register = _useForm.register,
       errors = _useForm.errors,
-      watch = _useForm.watch;
-
-  var onSubmit = function onSubmit(values) {
-    return console.log(values);
-  }; //임시
+      watch = _useForm.watch; // const onSubmit = values => console.log(values);   //임시
 
 
+  var input_form = {
+    width: "100%",
+    border: '5px solid pink'
+  };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Wrapper, null, action === "login" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(LoginForm, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Img_center, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
     to: "/"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -80082,13 +80146,36 @@ var SignUpForm = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"
     onSubmit: handleSubmit(onSubmit)
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-group text-center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Input__WEBPACK_IMPORTED_MODULE_2__["default"], _extends({
-    placeholder: "Email"
-  }, email))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    name: "email",
+    placeholder: "이메일",
+    style: {
+      input_form: input_form
+    },
+    onChange: function onChange(e) {
+      var value = e.target.value;
+      setEmail(value);
+    },
+    ref: register({
+      required: "Required",
+      pattern: {
+        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+        message: "이메일 형식(@)이 아닙니다."
+      }
+    })
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-group text-center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Input__WEBPACK_IMPORTED_MODULE_2__["default"], _extends({
-    placeholder: "Password"
-  }, password))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    name: "password",
+    placeholder: "비밀번호",
+    onChange: function onChange(e) {
+      var value = e.target.value;
+      setPassword(value);
+    },
+    ref: register({
+      required: "Required"
+    })
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-primary btn-lg btn-block"
@@ -80111,6 +80198,10 @@ var SignUpForm = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     name: "email",
     placeholder: "이메일",
+    onChange: function onChange(e) {
+      var value = e.target.value;
+      setEmail(value);
+    },
     ref: register({
       required: "Required",
       pattern: {
@@ -80118,23 +80209,36 @@ var SignUpForm = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"
         message: "이메일 형식(@)이 아닙니다."
       }
     })
-  }), errors.email && errors.email.message), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, errors.email && errors.email.message)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     name: "password",
     placeholder: "비밀번호",
+    onChange: function onChange(e) {
+      var value = e.target.value;
+      setPassword(value);
+    },
     ref: register({
       required: "Required"
     })
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  })), errors.password && errors.password.message, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     name: "password_confirmation",
     placeholder: "비밀번호 확인",
+    onChange: function onChange(e) {
+      var value = e.target.value;
+      setPassword_check(value);
+    },
     ref: register({
-      required: "Required"
+      required: "Required",
+      validate: function validate(value) {
+        // console.log(watch('password'));
+        // console.log(value);
+        return value === watch('password');
+      }
     })
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+  })), errors.password_confirmation && errors.password_confirmation.type === "validate" ? "비밀번호가 맞지않습니다" : "", errors.password_confirmation && errors.password_confirmation.type === "required" ? "빈칸을 채워주세요" : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     className: "text-center",
     style: {
       color: "black"
@@ -80144,36 +80248,58 @@ var SignUpForm = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     name: "name",
     placeholder: "이름",
+    onChange: function onChange(e) {
+      var value = e.target.value;
+      setName(value);
+    },
     ref: register({
       required: "Required"
     })
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  })), errors.name && errors.name.message, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     name: "birth",
     placeholder: "생년월일",
+    onChange: function onChange(e) {
+      var value = e.target.value;
+      setBirth(value);
+    },
     ref: register({
-      required: "Required"
+      required: "Required",
+      pattern: {
+        value: /^[0-9]{4}-(0[1-9]|1[012])-(0[1-3]|1[0-9])/,
+        message: "올바른 생년월일 형식이 아닙니다."
+      }
     })
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  })), errors.birth && errors.birth.message, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     name: "phone",
     placeholder: "휴대폰 번호",
+    onChange: function onChange(e) {
+      var value = e.target.value;
+      setPhone(value);
+    },
     ref: register({
-      required: "Required"
+      required: "Required",
+      pattern: {
+        value: /^[0-9]{3}-[0-9]{4}-[0-9]{4,4}/,
+        message: "올바른 휴대폰 번호 형식이 아닙니다."
+      }
     })
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  })), errors.phone && errors.phone.message, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-group text-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("fieldset", null, "\uB0A8\uC131", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "radio",
     name: "gender",
+    ref: register({}),
     onClick: function onClick() {
       return setGender("남");
     }
   }), "\uC5EC\uC131", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "radio",
     name: "gender",
+    ref: register({}),
     onClick: function onClick() {
       return setGender("여");
     }

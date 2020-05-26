@@ -25,7 +25,7 @@ class UsersRequest extends FormRequest
     {
         return [
             'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
+            'password' => 'required|min:6',
             'name' => 'required',
             'birth' => 'required',
             'gender' => 'required',
@@ -37,7 +37,7 @@ class UsersRequest extends FormRequest
             'email.required' => '이메일을 입력해주세요',
             'email.unique' => '이미 가입된 이메일입니다.',
             'password.required' => '비밀번호를 입력해주세요',
-            'password.confirmed' => '비밀번호 확인이 맞지 않습니다.',
+            // 'password.confirmed' => '비밀번호 확인이 맞지 않습니다.',
             'min.required' => '비밀번호는 최소 :min글자를 적어주세요',
             'name.required' => '이름을 입력해주세요',
             'birth.required' => '나이를 입력해주세요',
