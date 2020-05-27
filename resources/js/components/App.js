@@ -12,24 +12,23 @@ import Product from "../routes/Product/Product";
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [user, setUser] = useState({});
-
+    // console.log(user);
     useEffect(()=>{
         let state = localStorage["appState"];
         if (state) {
-          let AppState = JSON.parse(state);
-          console.log(AppState);
-        //   this.setState({ isLoggedIn: AppState.isLoggedIn, user: AppState });
-        setIsLoggedIn(AppState.isLoggedIn);
-        setUser(AppState);
+            let AppState = JSON.parse(state);
+            // console.log(AppState);
+            setIsLoggedIn(AppState.isLoggedIn);
+            setUser(AppState);
         }
     }, []);
-
     return (
         <React.Fragment>
             <BrowserRouter>
-                <Header/>
+                <Header isLoggedIn={isLoggedIn}/>
                 <Route path="/" exact={true} component={Home}/>
-                <Route path="/auth/login" exact component={Login} />
+                <Route path="/auth/login" exact component={Login}/>
+                <Route path="/auth/signup" exact component={Login}/>
                 <Route path="/products" exact component={Product}/>
                 <Footer/>
             </BrowserRouter>

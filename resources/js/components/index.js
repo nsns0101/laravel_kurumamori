@@ -1,3 +1,4 @@
+//로그인
 _loginUser = (email, password) => {
     $("#login-form button")
       .attr("disabled", "disabled")
@@ -49,7 +50,19 @@ _loginUser = (email, password) => {
       });
   };
 
+//로그아웃
+_logoutUser = () => {
+    let appState = {
+      isLoggedIn: false,
+      user: {}
+    };
+    // save app state with user date in local storage
+    localStorage["appState"] = JSON.stringify(appState);
+    this.setState(appState);
+  };
 
+  
+//회원가입
   _registerUser = (name, email, password) => {
     $("#email-login-btn")
       .attr("disabled", "disabled")

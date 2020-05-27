@@ -14,7 +14,7 @@ class SignUpController extends Controller
     //로그인, 회원가입 페이지
     public function index()
     {
-        return view('users.signup');
+        return view('home.main');
     }
 
     //회원가입 요청
@@ -24,19 +24,19 @@ class SignUpController extends Controller
     }
 
     //로그인 요청
-    public function store(\App\Http\Requests\UsersRequest $request)
+    //\App\Http\Requests\UsersRequest $request
+    public function store(Request $request)
     {
         $user = \App\User::create([
             'email' => $request->input('email'),
-            'password' => bcrypt($request->input('password')),
+            'password' => \Hash::make($request->input('password')),
             'name' => $request->input('name'),
             'birth' => $request->input('birth'),
             'gender' => $request->input('gender'),
             'phone' => $request->input('phone'),
-            'rember_token' => '',
+            'auth_token' => '',
             'confirm_code' => rand(1000,9999),  //컨펌코드
         ]);
-
         // //이메일
         event(new \App\Events\UserCreated($user));
             

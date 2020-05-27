@@ -4,7 +4,8 @@ import { Route, Link, BrowserRouter} from "react-router-dom";
 // import styled from "styled-components";
 
 
-export default () => {
+export default ({ isLoggedIn }) => {
+    console.log(isLoggedIn);
     return (
         <section id="main-navigation">
             <nav className="navbar fixed-top navbar-expand-lg" style={{background:"#002ef0", opacity:1, display: "flex"}}>
@@ -32,20 +33,26 @@ export default () => {
         
                     <ul className="navbar-nav col-auto">
                         {/* @if(Auth::user()) */}
+                        {isLoggedIn ? 
+                        <React.Fragment>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/info/index" style={{color:"white"}}>내정보</a> 
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/logout" className="nav-link" style={{color:"white"}}>로그아웃</Link> 
+                            </li>
+                        </React.Fragment>
+                        :
+                        <React.Fragment>
                         <li className="nav-item">
-                            <a className="nav-link " href="/info/index" style={{color:"white"}}>내정보</a> 
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link " href="/logout" style={{color:"white"}}>로그아웃</a> 
-                        </li>
-                        {/* @else */}
-                        <li className="nav-item">
-                            <Link to="/auth/login" className="nav-link " style={{color:"white"}}>로그인</Link>
+                            <Link to="/auth/login" className="nav-link" style={{color:"white"}}>로그인</Link>
                         </li> 
                         <li className="nav-item">
-                        <a className="nav-link " href="/auth/signup" style={{color:"white"}}>회원가입</a>
-                        </li> 
-                        {/* @endif */}
+                        <Link to="/auth/signup" className="nav-link" style={{color:"white"}}>회원가입</Link>
+                        </li>
+                        </React.Fragment>
+                        }
+
                     </ul>
                 <div>
             </div>
@@ -53,4 +60,4 @@ export default () => {
             </nav>   
         </section>
     )
-}
+};

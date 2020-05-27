@@ -20,7 +20,7 @@ class DemoSeeder extends Seeder
                     'gender' => "남",
                     'phone' => "010-1234-5678",
                     'confirm_code' => null,
-                    'remember_token' => Str::random(10),
+                    // 'remember_token' => Str::random(10),
                 ]);
 
                 //시연 게시글

@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('phone')->unique()->comment('휴대폰 번호');
             $table->string('confirm_code')->nullable()->comment('활성화 코드');
             $table->rememberToken()->comment('토큰 번호');
+            $table->text('auth_token')->nullable()->comment('로그인 토큰');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('생성 시간');
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('업데이트 시간');});
     }

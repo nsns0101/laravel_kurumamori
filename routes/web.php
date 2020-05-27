@@ -24,16 +24,12 @@ Route::get('logout',function(){
     return view('home.main');
 });
 
-//로그인 컨트롤러
-// Route::resource('/auth/login', 'LoginController');
-
-//컨펌코드
-// Route::get('auth/confirm/{code}', [
-//     'as' => 'signup.confirm',
-//     'uses' => 'SignUpController@confirm',
-// ]);
-//회원가입 컨트롤러
-// Route::resource('/auth/signup', 'SignUpController');
+// Route::post('auth/login', 'LoginController@login');
+// Route::post('auth/signup', 'LoginController@register');
+// 로그인 컨트롤러
+Route::resource('/auth/login', 'LoginController');
+// 회원가입 컨트롤러
+Route::resource('/auth/signup', 'SignUpController');
 
 //메일관련 컨트롤러
 Route::resource('/confirm', 'ConfirmController');

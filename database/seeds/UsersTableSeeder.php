@@ -31,7 +31,7 @@ class UsersTableSeeder extends Seeder
                     'gender' => Arr::random(['남', '여']),
                     'phone' => "010-1234-567{$i}",
                     'confirm_code' => null,
-                    'remember_token' => Str::random(10),
+                    // 'remember_token' => Str::random(10),
             ]);
         }
         //일반계정
