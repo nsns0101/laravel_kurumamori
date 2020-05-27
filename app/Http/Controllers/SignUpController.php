@@ -33,7 +33,7 @@ class SignUpController extends Controller
             'birth' => $request->input('birth'),
             'gender' => $request->input('gender'),
             'phone' => $request->input('phone'),
-            'rember_token' => Str::random(10),
+            'rember_token' => '',
             'confirm_code' => rand(1000,9999),  //컨펌코드
         ]);
 
