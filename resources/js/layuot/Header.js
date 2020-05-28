@@ -1,11 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Route, Link, BrowserRouter} from "react-router-dom";
-
+import {AppContext} from "../components/App";
 // import styled from "styled-components";
 
 
-export default ({ isLoggedIn }) => {
-    console.log(isLoggedIn);
+export default  () => {
+    const {isLoggedIn} = useContext(AppContext);    //값 전달 성공
+    // console.log(isLoggedIn);
     return (
         <section id="main-navigation">
             <nav className="navbar fixed-top navbar-expand-lg" style={{background:"#002ef0", opacity:1, display: "flex"}}>
@@ -36,7 +37,7 @@ export default ({ isLoggedIn }) => {
                         {isLoggedIn ? 
                         <React.Fragment>
                             <li className="nav-item">
-                                <a className="nav-link" href="/info/index" style={{color:"white"}}>내정보</a> 
+                                <Link to="info/index" className="nav-link" style={{color:"white"}}>내정보</Link> 
                             </li>
                             <li className="nav-item">
                                 <Link to="/logout" className="nav-link" style={{color:"white"}}>로그아웃</Link> 

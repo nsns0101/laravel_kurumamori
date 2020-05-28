@@ -14,6 +14,7 @@ class ProductController extends Controller
 
     public function index()
     {
+        \Log::info(\Auth::user());
         return view('home.main');
     }
 

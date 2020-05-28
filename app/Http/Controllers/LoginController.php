@@ -10,7 +10,7 @@ class LoginController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'destroy']);
+        // $this->middleware('jwt.refresh');
     }
     //로그인, 회원가입 페이지
     public function index()
@@ -42,7 +42,7 @@ class LoginController extends Controller
         else{
             $response = ['success'=>false, 'data'=>'Record doesnt exists'];
         }
-      
+        \Log::info(\Auth::user());
         return response()->json($response, 201);
     }
 

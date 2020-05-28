@@ -335,7 +335,7 @@ export default ({
             </div>
           </form>
         </SignUpForm>
-      ) : (
+      ) : action === "signUp" ? (
 // 컨펌코드
         <div>
           <ConfirmForm>
@@ -378,6 +378,10 @@ export default ({
               </div>
             </form>
           </ConfirmForm>
+        </div>
+      ) : (
+        <div>
+          로그인 중입니다....
         </div>
       )}
         

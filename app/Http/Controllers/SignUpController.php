@@ -9,7 +9,8 @@ class SignUpController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'destroy']);
+        // $this->middleware('guest', ['except' => 'destroy']);
+
     }
     //로그인, 회원가입 페이지
     public function index()

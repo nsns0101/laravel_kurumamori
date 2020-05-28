@@ -2,7 +2,7 @@
 
 return [
 
-    'secret' => env('JWT_SECRET', 'changeme'),
+    'secret' => env('JWT_SECRET'),
     'ttl' => 60*24*30*6,
     'refresh_ttl' => 20160,
     'algo' => 'HS256',
