@@ -87,7 +87,7 @@ export default ({ location, history }) => {
 
   //로그아웃일 때
   if(action === "logout"){
-    console.log("good");
+    // console.log("good");
     localStorage.removeItem("appState");
     history.push("/");
     setIsLoggedIn(false);
@@ -99,10 +99,10 @@ export default ({ location, history }) => {
 
     //로그인 창일 때
     if(action === "login"){
-      console.log("login");
+      // console.log("login");
       if(email !== "" && password !== ""){
         loginUser().then(res => {
-          console.log(res);
+          // console.log(res);
           if(res.data.success){
             let userData = {
               name: res.data.data.name,
@@ -118,7 +118,7 @@ export default ({ location, history }) => {
             // setAction("");
             history.push('/');
             setIsLoggedIn(true);
-            console.log(isLoggedIn);
+            // console.log(isLoggedIn);
           }
           else{
             setDanger_message("잘못된 이메일 또는 비밀번호 입니다.");
@@ -150,7 +150,7 @@ export default ({ location, history }) => {
           //회원가입 요청
           addUser().then(res => {
             //회원가입 성공시
-            console.log(res);
+            // console.log(res);
             if (res.data) {
               //로그인 창으로 이동
               setAction("confirm");
@@ -169,7 +169,7 @@ export default ({ location, history }) => {
     //액션이 승인코드 입력일 때
     else if(action = "confirm"){
       check_confirm_code().then( (res) => {
-        console.log(res.data);
+        // console.log(res.data);
         if(res.data.success){
           let userData = {
             name: res.data.data.name,

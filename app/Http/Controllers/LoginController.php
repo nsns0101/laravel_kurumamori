@@ -46,8 +46,6 @@ class LoginController extends Controller
         return response()->json($response, 201);
     }
 
-
-
     //토큰 생성
     private function getToken($email, $password){
         $token = null;

@@ -14,9 +14,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+Route::post('/auth/signup', 'JWTAuthController@register')->name('api.jwt.register');
+Route::post('/auth/login', 'JWTAuthController@login')->name('api.jwt.login');
+Route::get('unauthorized', function() {
+    return response()->json([
+        'status' => 'error',
+        'message' => 'Unauthorized'
+    ], 401);
+})->name('api.jwt.unauthorized');
+
+Route::group(['middleware' => 'auth:api'], function(){
+    Route::get('user', 'JWTAuthController@user')->name('api.jwt.user');
+});
+
+
+
+
+
+
+
+
+
+
+
 
 // Route::group(['middleware' => ['jwt.auth','api-header']], function () {
 //     Route::resource('/info/index', 'InfoController');
@@ -30,19 +54,19 @@ use Illuminate\Support\Facades\Route;
 //     });
 // });
 
-Route::group([
-    'middleware' => 'api',
-    'namespace' => 'App\Http\Controllers',
-    'prefix' => 'auth'
-], function ($router) {
+// Route::group([
+//     'middleware' => 'api',
+//     'namespace' => 'App\Http\Controllers',
+//     'prefix' => 'auth'
+// ], function ($router) {
 
-    // 로그인 컨트롤러
-    Route::resource('/auth/login', 'LoginController');
-    // 회원가입 컨트롤러
-    Route::resource('/auth/signup', 'SignUpController');
-    Route::resource('/info/index', 'InfoController');
+//     // 로그인 컨트롤러
+//     Route::resource('/auth/login', 'LoginController');
+//     // 회원가입 컨트롤러
+//     Route::resource('/auth/signup', 'SignUpController');
+//     Route::resource('/info/index', 'InfoController');
 
-});
+// });
 
 
 

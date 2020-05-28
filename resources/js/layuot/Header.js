@@ -37,7 +37,7 @@ export default  () => {
                         {isLoggedIn ? 
                         <React.Fragment>
                             <li className="nav-item">
-                                <Link to="info/index" className="nav-link" style={{color:"white"}}>내정보</Link> 
+                                <Link to="/info/index" className="nav-link" style={{color:"white"}}>내정보</Link> 
                             </li>
                             <li className="nav-item">
                                 <Link to="/logout" className="nav-link" style={{color:"white"}}>로그아웃</Link> 
