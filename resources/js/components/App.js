@@ -9,24 +9,44 @@ import Home from "../routes/Home/Home"
 import Login from "../routes/Auth/AuthContainer";
 import Info_index from "../routes/Profile/Index"; 
 import Product from "../routes/Product/Product";
+import Axios from 'axios';
 //전역변수
 export const AppContext = createContext();
+
+// export const getProfile = () => {
+   
+// }
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [user, setUser] = useState({});
     // console.log(user);
     useEffect(()=>{
-        let state = localStorage["appState"];
-        if (state) {
-            let AppState = JSON.parse(state);
-            // console.log(AppState);
-            // setIsLoggedIn(AppState.isLoggedIn);
-            setIsLoggedIn(true);
-            setUser(AppState);
+        if(localStorage.getItem('userToken')){
+            // let state = localStorage["userToken"];
+            // if (state) {
+            //     console.log(state);
+            //     let AppState = JSON.parse(state);
+            //     console.log(AppState);
+            //     setIsLoggedIn(AppState.isLoggedIn);
+            //     setUser(AppState);
+            // }
+            const url = "/api/profile";
+            // const token = localStorage;
+            // console.log(token);
+            const config = {
+            headers: {
+                Authorization : `Bearer ${localStorage.userToken}`
+            }
+            }
+            Axios.get(url, config)
+            .then(res => {
+                if(res.data.user){
+                    setIsLoggedIn(true);
+                    setUser(res.data.user);
+                }
+            }) 
         }
-        // console.log(localStorage.getItem("appState"));
-
     }, []);
     return (
             //전역변수 전달
@@ -38,7 +58,7 @@ function App() {
                     {/* 로그인 페이지 */}
                     <Route path="/auth/login" exact component={Login}/>
                     {/* 회원가입 페이지 */}
-                    <Route path="/auth/signup" exact component={Login}/>
+                    <Route path="/auth/register" exact component={Login}/>
                     {/* 로그아웃 */}
                     <Route path="/logout" exact component={Login}/>
                     {/* 내정보 */}

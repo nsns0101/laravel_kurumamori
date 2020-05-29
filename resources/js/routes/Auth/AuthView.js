@@ -31,8 +31,8 @@ const LoginBox = styled.div`
   max-width: 550px;
 `;
 
-//signup box
-const SignUpBox = styled.div`
+//Register box
+const RegisterBox = styled.div`
   margin-top: 70px;
   text-align: center;
   border: 1px solid #e6e6e6;
@@ -67,7 +67,7 @@ const LoginForm = styled(LoginBox)`
   
 `;
 //회원가입 폼
-const SignUpForm = styled(SignUpBox)`
+const RegisterForm = styled(RegisterBox)`
   padding: 40px;
   padding-bottom: 30px;
   margin-bottom: 15px;
@@ -167,9 +167,9 @@ export default ({
             </div>
           </form>
         </LoginForm>
-      ) : action === "signUp" ? (
+      ) : action === 'register' ? (
 //회원가입
-        <SignUpForm>
+        <RegisterForm>
           {/* 로고 이미지 */}
           <Img_center>
             <Link to="/">
@@ -334,8 +334,8 @@ export default ({
               <button className="btn btn-primary btn-lg btn-block">가입하기</button>
             </div>
           </form>
-        </SignUpForm>
-      ) : action === "signUp" ? (
+        </RegisterForm>
+      ) : action === 'confirm' ? (
 // 컨펌코드
         <div>
           <ConfirmForm>
@@ -390,14 +390,14 @@ export default ({
         {action === "login" ? (
           <>
             계정이 없습니까?{" "}
-            <Link to="/auth/signup">
-              <Link_qwe onClick={() => setAction("signUp")}>회원가입</Link_qwe>
+            <Link to="/auth/register">
+              <Link_qwe onClick={() => setAction('register')}>회원가입</Link_qwe>
             </Link>
           </>
-        ) : action === "signUp" ? (
+        ) : action === 'register' ? (
           <>
             로그인 하시겠습니까?{" "}
-            <Link to="/auth/signup">
+            <Link to="/auth/register">
               <Link_qwe onClick={() => setAction("login")}>로그인</Link_qwe>
             </Link>
           </>

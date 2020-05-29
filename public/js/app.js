@@ -65494,6 +65494,18 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/react-geocode/lib/index.js":
+/*!*************************************************!*\
+  !*** ./node_modules/react-geocode/lib/index.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var regeneratorRuntime = __webpack_require__(/*! regenerator-runtime */ "./node_modules/regenerator-runtime/runtime.js");function asyncGeneratorStep(e,r,n,t,o,a,c){try{var s=e[a](c),u=s.value}catch(e){return void n(e)}s.done?r(u):Promise.resolve(u).then(t,o)}function _asyncToGenerator(e){return function(){var r=this,n=arguments;return new Promise(function(t,o){var a=e.apply(r,n);function c(e){asyncGeneratorStep(a,t,o,c,s,"next",e)}function s(e){asyncGeneratorStep(a,t,o,c,s,"throw",e)}c(void 0)})}}Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var DEBUG=!1,API_KEY=null,LANGUAGE="en",REGION=null,GOOGLE_API="https://maps.google.com/maps/api/geocode/json";function log(e){var r=arguments.length>1&&void 0!==arguments[1]&&arguments[1];DEBUG&&(r?console.warn(e):console.log(e))}function handleUrl(e){return _handleUrl.apply(this,arguments)}function _handleUrl(){return(_handleUrl=_asyncToGenerator(regeneratorRuntime.mark(function e(r){var n,t;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,fetch(r).catch(function(){return Promise.reject(new Error("Error fetching data"))});case 2:return n=e.sent,e.next=5,n.json().catch(function(){return log("Error parsing server response"),Promise.reject(new Error("Error parsing server response"))});case 5:if("OK"!==(t=e.sent).status){e.next=9;break}return log(t),e.abrupt("return",t);case 9:return log("".concat(t.error_message,".\nServer returned status code ").concat(t.status),!0),e.abrupt("return",Promise.reject(new Error("".concat(t.error_message,".\nServer returned status code ").concat(t.status))));case 11:case"end":return e.stop()}},e)}))).apply(this,arguments)}var _default={setApiKey:function(apiKey){API_KEY=apiKey},setLanguage:function(language){LANGUAGE=language},setRegion:function(region){REGION=region},enableDebug:function(){var e=!(arguments.length>0&&void 0!==arguments[0])||arguments[0];DEBUG=e},fromLatLng:function(lat,lng,apiKey,language,region){return _asyncToGenerator(regeneratorRuntime.mark(function a(){var c,s;return regeneratorRuntime.wrap(function(a){for(;;)switch(a.prev=a.next){case 0:if(lat&&lng){a.next=3;break}return log("Provided coordinates are invalid",!0),a.abrupt("return",Promise.reject(new Error("Provided coordinates are invalid")));case 3:return c="".concat(lat,",").concat(lng),s="".concat(GOOGLE_API,"?latlng=").concat(encodeURIComponent(c)),(apiKey||API_KEY)&&(s+="&key=".concat(API_KEY=apiKey||API_KEY)),(language||LANGUAGE)&&(s+="&language=".concat(LANGUAGE=language||LANGUAGE)),(region||REGION)&&(REGION=region||REGION,s+="&region=".concat(encodeURIComponent(REGION))),a.abrupt("return",handleUrl(s));case 9:case"end":return a.stop()}},a)}))()},fromAddress:function(address,apiKey,language,region){return _asyncToGenerator(regeneratorRuntime.mark(function o(){var a;return regeneratorRuntime.wrap(function(o){for(;;)switch(o.prev=o.next){case 0:if(address){o.next=3;break}return log("Provided address is invalid",!0),o.abrupt("return",Promise.reject(new Error("Provided address is invalid")));case 3:return a="".concat(GOOGLE_API,"?address=").concat(encodeURIComponent(address)),(apiKey||API_KEY)&&(a+="&key=".concat(API_KEY=apiKey||API_KEY)),(language||LANGUAGE)&&(a+="&language=".concat(LANGUAGE=language||LANGUAGE)),(region||REGION)&&(REGION=region||REGION,a+="&region=".concat(encodeURIComponent(REGION))),o.abrupt("return",handleUrl(a));case 8:case"end":return o.stop()}},o)}))()}};exports.default=_default;
+
+/***/ }),
+
 /***/ "./node_modules/react-hook-form/dist/react-hook-form.es.js":
 /*!*****************************************************************!*\
   !*** ./node_modules/react-hook-form/dist/react-hook-form.es.js ***!
@@ -79453,6 +79465,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _routes_Auth_AuthContainer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../routes/Auth/AuthContainer */ "./resources/js/routes/Auth/AuthContainer.js");
 /* harmony import */ var _routes_Profile_Index__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../routes/Profile/Index */ "./resources/js/routes/Profile/Index.js");
 /* harmony import */ var _routes_Product_Product__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../routes/Product/Product */ "./resources/js/routes/Product/Product.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_10__);
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -79475,9 +79489,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
  //전역변수
 
-var AppContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["createContext"])();
+var AppContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["createContext"])(); // export const getProfile = () => {
+// }
 
 function App() {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
@@ -79492,16 +79508,30 @@ function App() {
 
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    var state = localStorage["appState"];
+    if (localStorage.getItem('userToken')) {
+      // let state = localStorage["userToken"];
+      // if (state) {
+      //     console.log(state);
+      //     let AppState = JSON.parse(state);
+      //     console.log(AppState);
+      //     setIsLoggedIn(AppState.isLoggedIn);
+      //     setUser(AppState);
+      // }
+      var url = "/api/profile"; // const token = localStorage;
+      // console.log(token);
 
-    if (state) {
-      var AppState = JSON.parse(state); // console.log(AppState);
-      // setIsLoggedIn(AppState.isLoggedIn);
-
-      setIsLoggedIn(true);
-      setUser(AppState);
-    } // console.log(localStorage.getItem("appState"));
-
+      var config = {
+        headers: {
+          Authorization: "Bearer ".concat(localStorage.userToken)
+        }
+      };
+      axios__WEBPACK_IMPORTED_MODULE_10___default.a.get(url, config).then(function (res) {
+        if (res.data.user) {
+          setIsLoggedIn(true);
+          setUser(res.data.user);
+        }
+      });
+    }
   }, []);
   return (
     /*#__PURE__*/
@@ -79521,7 +79551,7 @@ function App() {
       exact: true,
       component: _routes_Auth_AuthContainer__WEBPACK_IMPORTED_MODULE_7__["default"]
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-      path: "/auth/signup",
+      path: "/auth/register",
       exact: true,
       component: _routes_Auth_AuthContainer__WEBPACK_IMPORTED_MODULE_7__["default"]
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
@@ -79812,7 +79842,7 @@ __webpack_require__.r(__webpack_exports__);
   }, "\uB85C\uADF8\uC778")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "nav-item"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/auth/signup",
+    to: "/auth/register",
     className: "nav-link",
     style: {
       color: "white"
@@ -80002,8 +80032,6 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only"); }
-
 
 
 
@@ -80022,7 +80050,7 @@ function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only")
   //현재 로그인인지 회원가입인지 등의 상태
 
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(location.pathname === "/auth/login" ? "login" : location.pathname === "/auth/signUp" ? "signUp" : "logout"),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(location.pathname === "/auth/login" ? "login" : location.pathname === "/auth/register" ? "register" : "logout"),
       _useState2 = _slicedToArray(_useState, 2),
       action = _useState2[0],
       setAction = _useState2[1]; // console.log(action);
@@ -80090,7 +80118,7 @@ function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only")
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              url = "/auth/signup";
+              url = "/api/register";
               body = {
                 email: email,
                 password: password,
@@ -80102,12 +80130,20 @@ function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only")
               };
               config = {
                 headers: {
-                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                  'Content-Type': 'application/json'
                 }
               };
-              return _context.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(url, body, config));
+              return _context.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(url, body, config).then(function (res) {
+                //회원가입 성공시
+                console.log(res);
 
-            case 4:
+                if (res.data) {
+                  //로그인 창으로 이동
+                  setAction("confirm");
+                }
+              }));
+
+            case 5:
             case "end":
               return _context.stop();
           }
@@ -80123,32 +80159,46 @@ function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only")
 
   var loginUser = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-      var TOKEN, url, body, headers, defaults, options;
+      var url, body, config;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              TOKEN = "accessToken";
-              url = "/auth/login";
+              url = "/api/login";
               body = {
                 email: email,
                 password: password
               };
-              headers = new Headers({
-                "Content-Type": "application/json"
-              });
+              config = {
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+              }; // const defaults = {headers: headers};
+              // const options = Object.assign({}, defaults, url, body);
 
-              if (localStorage.getItem(TOKEN)) {
-                headers.append("Authorization", "Bearer" + localStorage.getItem(TOKEN));
-              }
+              return _context2.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(url, body, config).then(function (res) {
+                console.log(res); // console.log(res);
 
-              defaults = {
-                headers: headers
-              };
-              options = Object.assign({}, defaults, url, body);
-              return _context2.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(url, options));
+                if (res.data.access_token) {
+                  // let userData = {
+                  //   // name: res.data.name,
+                  //   // id: res.data.id,
+                  //   // isLoggedIn: res.data.isLoggedIn,
+                  //   token: res.data.token,
+                  //   // timestamp: new Date().toString()
+                  // };
+                  // localStorage["userToken"] = JSON.stringify(userData);
+                  localStorage.setItem('userToken', res.data.access_token); // console.log(User);
+                  // setAction("");
 
-            case 8:
+                  history.push('/');
+                  setIsLoggedIn(true); // console.log(isLoggedIn);
+                } else {
+                  setDanger_message("잘못된 이메일 또는 비밀번호 입니다.");
+                }
+              }));
+
+            case 4:
             case "end":
               return _context2.stop();
           }
@@ -80177,12 +80227,32 @@ function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only")
               };
               config = {
                 headers: {
-                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                  'Content-Type': 'application/json'
                 }
               };
-              return _context3.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(url, body, config));
+              return _context3.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_5___default.a.post(url, body, config).then(function (res) {
+                console.log(res); // console.log(res);
 
-            case 4:
+                if (res.data.access_token) {
+                  // let userData = {
+                  //   // name: res.data.name,
+                  //   // id: res.data.id,
+                  //   // isLoggedIn: res.data.isLoggedIn,
+                  //   token: res.data.token,
+                  //   // timestamp: new Date().toString()
+                  // };
+                  // localStorage["userToken"] = JSON.stringify(userData);
+                  localStorage.setItem('userToken', res.data.access_token); // console.log(User);
+                  // setAction("");
+
+                  history.push('/');
+                  setIsLoggedIn(true); // console.log(isLoggedIn);
+                } else {
+                  setDanger_message("잘못된 이메일 또는 비밀번호 입니다.");
+                }
+              }));
+
+            case 6:
             case "end":
               return _context3.stop();
           }
@@ -80198,7 +80268,7 @@ function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only")
 
   if (action === "logout") {
     // console.log("good");
-    localStorage.removeItem("appState");
+    localStorage.removeItem("userToken");
     history.push("/");
     setIsLoggedIn(false);
   } //회원가입이나 로그인 버튼 클릭시
@@ -80215,29 +80285,9 @@ function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only")
               if (action === "login") {
                 // console.log("login");
                 if (email !== "" && password !== "") {
-                  loginUser().then(function (res) {
-                    // console.log(res);
-                    if (res.data.success) {
-                      var userData = {
-                        name: res.data.data.name,
-                        id: res.data.data.id,
-                        email: res.data.data.email,
-                        auth_token: res.data.data.auth_token,
-                        timestamp: new Date().toString()
-                      }; // let user = userData;
-                      // save app state with user date in local storage
-
-                      localStorage["appState"] = JSON.stringify(userData); // console.log(User);
-                      // setAction("");
-
-                      history.push('/');
-                      setIsLoggedIn(true); // console.log(isLoggedIn);
-                    } else {
-                      setDanger_message("잘못된 이메일 또는 비밀번호 입니다.");
-                    }
-                  });
+                  loginUser();
                 }
-              } else if (action === "signUp") {
+              } else if (action === "register") {
                 // console.log(email);
                 //값을 전부 입력한 경우
                 if (email !== "" && password !== "" && password_check !== "" && name !== "" && birth !== "" && gender !== "" && phone !== "") {
@@ -80248,14 +80298,7 @@ function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only")
                     //   return;
                     // }
                     //회원가입 요청
-                    addUser().then(function (res) {
-                      //회원가입 성공시
-                      // console.log(res);
-                      if (res.data) {
-                        //로그인 창으로 이동
-                        setAction("confirm");
-                      }
-                    });
+                    addUser();
                   } catch (error) {
                     console.log("메일건 오류");
                   }
@@ -80264,31 +80307,8 @@ function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only")
                     react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].error("값을 전부 넣어주세요!");
                   }
               } //액션이 승인코드 입력일 때
-              else if (action = (_readOnlyError("action"), "confirm")) {
-                  check_confirm_code().then(function (res) {
-                    // console.log(res.data);
-                    if (res.data.success) {
-                      var userData = {
-                        name: res.data.data.name,
-                        id: res.data.data.id,
-                        email: res.data.data.email,
-                        auth_token: res.data.data.auth_token,
-                        timestamp: new Date().toString()
-                      };
-                      var appState = {
-                        isLoggedIn: true,
-                        user: userData
-                      }; // save app state with user date in local storage
-
-                      localStorage["appState"] = JSON.stringify(appState); // console.log(User);
-                      // setAction("");
-
-                      history.push('/');
-                      setIsLoggedIn(true);
-                    } else {
-                      setDanger_message("잘못된 승인코드 입니다.");
-                    }
-                  });
+              else if (action = "confirm") {
+                  check_confirm_code();
                 }
 
             case 1:
@@ -80459,9 +80479,9 @@ var Wrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_tem
 
 var Img_center = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject2()); //login box
 
-var LoginBox = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject3()); //signup box
+var LoginBox = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject3()); //Register box
 
-var SignUpBox = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject4());
+var RegisterBox = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject4());
 var ConfirmBox = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject5()); // 로그인 회원가입 컨펌코드입력창 체인저
 
 var StateChanger = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject6()); //
@@ -80470,7 +80490,7 @@ var Link_qwe = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].span(_t
 
 var LoginForm = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"])(LoginBox)(_templateObject8()); //회원가입 폼
 
-var SignUpForm = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"])(SignUpBox)(_templateObject9()); //승인코드 폼
+var RegisterForm = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"])(RegisterBox)(_templateObject9()); //승인코드 폼
 
 var ConfirmForm = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"])(ConfirmBox)(_templateObject10());
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
@@ -80541,10 +80561,10 @@ var ConfirmForm = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default
     className: "form-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-primary btn-lg btn-block"
-  }, "\uB85C\uADF8\uC778")))) : action === "signUp" ?
+  }, "\uB85C\uADF8\uC778")))) : action === 'register' ?
   /*#__PURE__*/
   //회원가입
-  react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SignUpForm, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Img_center, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
+  react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(RegisterForm, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Img_center, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
     to: "/"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: "/icon/logo_curumamori.png",
@@ -80681,7 +80701,7 @@ var ConfirmForm = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default
     className: "form-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-primary btn-lg btn-block"
-  }, "\uAC00\uC785\uD558\uAE30")))) : action === "signUp" ?
+  }, "\uAC00\uC785\uD558\uAE30")))) : action === 'confirm' ?
   /*#__PURE__*/
   // 컨펌코드
   react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ConfirmForm, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Img_center, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
@@ -80721,13 +80741,13 @@ var ConfirmForm = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-primary btn-lg btn-block"
   }, "\uD655\uC778"))))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "\uB85C\uADF8\uC778 \uC911\uC785\uB2C8\uB2E4...."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StateChanger, null, action === "login" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "\uACC4\uC815\uC774 \uC5C6\uC2B5\uB2C8\uAE4C?", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
-    to: "/auth/signup"
+    to: "/auth/register"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Link_qwe, {
     onClick: function onClick() {
-      return setAction("signUp");
+      return setAction('register');
     }
-  }, "\uD68C\uC6D0\uAC00\uC785"))) : action === "signUp" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "\uB85C\uADF8\uC778 \uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
-    to: "/auth/signup"
+  }, "\uD68C\uC6D0\uAC00\uC785"))) : action === 'register' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "\uB85C\uADF8\uC778 \uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
+    to: "/auth/register"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Link_qwe, {
     onClick: function onClick() {
       return setAction("login");
@@ -81122,6 +81142,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _layuot_Info_menu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../layuot/Info_menu */ "./resources/js/layuot/Info_menu.js");
 /* harmony import */ var _User_modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./User_modal */ "./resources/js/routes/Profile/User_modal.js");
+/* harmony import */ var react_geocode__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-geocode */ "./node_modules/react-geocode/lib/index.js");
+/* harmony import */ var react_geocode__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_geocode__WEBPACK_IMPORTED_MODULE_5__);
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -81133,6 +81155,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -81198,20 +81221,36 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       setProduct(res.data.product);
       setProduct_buy(res.data.product_buy);
       setUser_product_buy_key(res.data.user_product_buy_key);
-      setReports(res.data.reports.data);
       setBoards(res.data.boards.data);
       setBoard_categories(res.data.board_categories);
       setBoards_comments(res.data.board_comments);
+      setReports(res.data.reports.data);
     });
   }, [user]); // console.log(profile);      
   // console.log(product);
   // console.log(product_buy);
   // console.log(user_product_buy_key);
-  // console.log(reports);
   // console.log(boards);
   // console.log(board_categories);
   // console.log(board_comments);
   // console.log("good");     //총 18번 렌더 (useEffect 2번, set~ = 8개 * 2 =)
+  // const gps = (index, latitude, longitude) => {
+  //     let location = null;
+  //     console.log(index);
+  //     if(index == 1){
+  //         Geocode.setApiKey(process.env.MIX_GCP_API_KEY);
+  //         Geocode.setLanguage("ko");
+  //         new Promise(function(res, rej) {
+  //             res(Geocode.fromLatLng(latitude, longitude))
+  //         }).then(
+  //             res => {
+  //                 location = res.results[0].formatted_address;
+  //                 console.log(location);
+  //             }
+  //         )
+  //     }
+  //     return location;
+  // }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, profile ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     id: "intro",
@@ -81248,23 +81287,65 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     style: {
       fontSize: "20px"
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "\uC774\uB984"), " : ", "a"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "\uC774\uB984"), " : ", profile.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     style: {
       fontSize: "20px"
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "\uC0DD\uB144\uC6D4\uC77C"), " : ", "a"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "\uC0DD\uB144\uC6D4\uC77C"), " : ", profile.birth), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     style: {
       fontSize: "20px"
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "\uC131\uBCC4"), " : ", "a"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "\uC131\uBCC4"), " : ", profile.gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     style: {
       fontSize: "20px"
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "\uD734\uB300\uD3F0 \uBC88\uD638"), " : ", "a"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "\uD734\uB300\uD3F0 \uBC88\uD638"), " : ", profile.phone), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
     style: {
       background: "darkgrey"
     }
-  })))))))) : null);
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-6 col-md-5"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: " thumbnail"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "caption"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    className: "text-center"
+  }, "\uC2E0\uACE0 \uC774\uB825 "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+    style: {
+      background: "red"
+    }
+  }), reports ? reports.map(function (value, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "row",
+      key: index
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "col-sm-6 col-md-6"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\uC811\uC218\uB0A0\uC9DC : ", value.created_at)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "col-sm-6 col-md-6"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      className: "gps"
+    }, gps(index, value.latitude, value.longitude))));
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "text-center text-danger",
+    style: {
+      fontSize: "20px"
+    }
+  }, "\uC774\uB825\uC774 \uC5C6\uC2B5\uB2C8\uB2E4."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-6 col-md-6"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-6 col-md-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "gps{{$report->id}}"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "text-danger"
+  }, "\uCD5C\uADFC 3\uAC74\uB9CC \uD45C\uC2DC\uB429\uB2C8\uB2E4.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+    style: {
+      background: "red"
+    }
+  }))))))) : null);
 });
 
 /***/ }),

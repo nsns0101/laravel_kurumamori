@@ -49,7 +49,7 @@ export default  () => {
                             <Link to="/auth/login" className="nav-link" style={{color:"white"}}>로그인</Link>
                         </li> 
                         <li className="nav-item">
-                        <Link to="/auth/signup" className="nav-link" style={{color:"white"}}>회원가입</Link>
+                            <Link to="/auth/register" className="nav-link" style={{color:"white"}}>회원가입</Link>
                         </li>
                         </React.Fragment>
                         }

@@ -14,7 +14,8 @@ class InfoController extends Controller
     }
 
     public function show(Request $request, $user_id){
-        \Log::info($user_id);
+        // \Log::info(\Auth::user());
+        // \Log::info($user_id);
         $user = \App\User::whereId($user_id)->first();
         //신고 이력
         $reports = \App\Drive_detection::

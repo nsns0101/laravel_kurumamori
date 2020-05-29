@@ -14,23 +14,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+// Route::post('/auth/signup', 'JWTAuthController@register')->name('api.jwt.register');
+// Route::post('/auth/login', 'JWTAuthController@login')->name('api.jwt.login');
+// Route::get('unauthorized', function() {
+//     return response()->json([
+//         'status' => 'error',
+//         'message' => 'Unauthorized'
+//     ], 401);
+// })->name('api.jwt.unauthorized');
+
+// Route::group(['middleware' => 'auth:api'], function(){
+//     Route::get('user', 'JWTAuthController@user')->name('api.jwt.user');
+// });
+
+Route::post('register', 'UsersController@register');
+Route::post('login', 'UsersController@login');
+Route::get('profile', 'UsersController@getAuthenticatedUser');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::post('/auth/signup', 'JWTAuthController@register')->name('api.jwt.register');
-Route::post('/auth/login', 'JWTAuthController@login')->name('api.jwt.login');
-Route::get('unauthorized', function() {
-    return response()->json([
-        'status' => 'error',
-        'message' => 'Unauthorized'
-    ], 401);
-})->name('api.jwt.unauthorized');
-
-Route::group(['middleware' => 'auth:api'], function(){
-    Route::get('user', 'JWTAuthController@user')->name('api.jwt.user');
-});
-
 
 
 

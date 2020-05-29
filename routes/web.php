@@ -27,9 +27,9 @@ Route::get('logout',function(){
 // Route::post('auth/login', 'LoginController@login');
 // Route::post('auth/signup', 'LoginController@register');
 // 로그인 컨트롤러
-Route::resource('/auth/login', 'LoginController');
+Route::get('/auth/login', 'UsersController@index');
 // 회원가입 컨트롤러
-Route::resource('/auth/signup', 'SignUpController');
+Route::get('/auth/register', 'UsersController@index');
 
 //메일관련 컨트롤러
 Route::resource('/confirm', 'ConfirmController');
@@ -82,18 +82,3 @@ Route::resource('/bigdata', 'BigdataController');
 
 Route::resource('/app', 'AppController');
 Route::resource('/smstest', 'TestController');
-
-
-// Route::get('/auth/login', 'JWTAuthController@index');
-// Route::post('/auth/signup', 'JWTAuthController@register')->name('api.jwt.register');
-// Route::post('/auth/login', 'JWTAuthController@login')->name('api.jwt.login');
-// Route::get('unauthorized', function() {
-//     return response()->json([
-//         'status' => 'error',
-//         'message' => 'Unauthorized'
-//     ], 401);
-// })->name('api.jwt.unauthorized');
-
-// Route::group(['middleware' => 'auth:api'], function(){
-//     Route::get('user', 'JWTAuthController@user')->name('api.jwt.user');
-// });

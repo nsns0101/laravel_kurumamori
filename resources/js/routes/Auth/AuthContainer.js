@@ -9,8 +9,8 @@ export default ({ location, history }) => {
   // console.log(isLoggedIn);  
 
 //현재 로그인인지 회원가입인지 등의 상태
-  const [action, setAction] = useState(
-    location.pathname === "/auth/login" ? "login": location.pathname === "/auth/signUp" ? "signUp" : "logout"
+  let [action, setAction] = useState(
+    location.pathname === "/auth/login" ? "login": location.pathname === "/auth/register" ? "register" : "logout"
   );      
   // console.log(action);
   const [email, setEmail] = useState("");                     //이메일
@@ -24,7 +24,7 @@ export default ({ location, history }) => {
   const [danger_message, setDanger_message] = useState("");   //경고메시지
   //회원가입 함수
   const addUser = async () => {
-    const url = "/auth/signup";
+    const url = "/api/register";
     const body = {
       email: email,
       password: password,
@@ -36,36 +36,62 @@ export default ({ location, history }) => {
     };
     const config = {
       headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        'Content-Type' : 'application/json'
       }
-  
     }
-    return Axios.post(url, body, config);
+    return Axios.post(url, body, config)
+      .then(res => {
+        //회원가입 성공시
+        console.log(res);
+        if (res.data) {
+          //로그인 창으로 이동
+          setAction("confirm");
+        }
+    });;
   }
 
   //로그인 함수
   const loginUser = async () => {
-    const TOKEN = "accessToken";
-    const url = "/auth/login";
+    const url = "/api/login";
     const body = {
       email: email,
       password: password,      
     };
-    const headers = new Headers({
-      "Content-Type": "application/json"
-    });
-    if(localStorage.getItem(TOKEN)){
-      headers.append(
-        "Authorization",
-        "Bearer" + localStorage.getItem(TOKEN)
-      );
+    const config = {
+      headers: {
+        'Content-Type' : 'application/json'
+      }
     }
     
-    const defaults = {headers: headers};
-    const options = Object.assign({}, defaults, url, body);
+    // const defaults = {headers: headers};
+    // const options = Object.assign({}, defaults, url, body);
 
+    return Axios.post(url, body, config)
+      .then(res => {
+        console.log(res);
+        // console.log(res);
+        if(res.data.access_token){
+          // let userData = {
+          //   // name: res.data.name,
+          //   // id: res.data.id,
+          //   // isLoggedIn: res.data.isLoggedIn,
+          //   token: res.data.token,
+          //   // timestamp: new Date().toString()
+          // };
 
-    return Axios.post(url, options);
+          // localStorage["userToken"] = JSON.stringify(userData);
+          localStorage.setItem('userToken', res.data.access_token);
+          // console.log(User);
+          // setAction("");
+          history.push('/');
+          setIsLoggedIn(true);
+          // console.log(isLoggedIn);
+        }
+        else{
+          setDanger_message("잘못된 이메일 또는 비밀번호 입니다.");
+        }
+        
+      });
   }
 
 
@@ -79,16 +105,41 @@ export default ({ location, history }) => {
     };
     const config = {
       headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        'Content-Type' : 'application/json'
       }
     }
-    return Axios.post(url, body, config);
+    return Axios.post(url, body, config)
+    .then(res => {
+      console.log(res);
+      // console.log(res);
+      if(res.data.access_token){
+        // let userData = {
+        //   // name: res.data.name,
+        //   // id: res.data.id,
+        //   // isLoggedIn: res.data.isLoggedIn,
+        //   token: res.data.token,
+        //   // timestamp: new Date().toString()
+        // };
+
+        // localStorage["userToken"] = JSON.stringify(userData);
+        localStorage.setItem('userToken', res.data.access_token);
+        // console.log(User);
+        // setAction("");
+        history.push('/');
+        setIsLoggedIn(true);
+        // console.log(isLoggedIn);
+      }
+      else{
+        setDanger_message("잘못된 이메일 또는 비밀번호 입니다.");
+      }
+      
+    });;;
   }
 
   //로그아웃일 때
   if(action === "logout"){
     // console.log("good");
-    localStorage.removeItem("appState");
+    localStorage.removeItem("userToken");
     history.push("/");
     setIsLoggedIn(false);
   }
@@ -101,33 +152,10 @@ export default ({ location, history }) => {
     if(action === "login"){
       // console.log("login");
       if(email !== "" && password !== ""){
-        loginUser().then(res => {
-          // console.log(res);
-          if(res.data.success){
-            let userData = {
-              name: res.data.data.name,
-              id: res.data.data.id,
-              email: res.data.data.email,
-              auth_token: res.data.data.auth_token,
-              timestamp: new Date().toString()
-            };
-            // let user = userData;
-            // save app state with user date in local storage
-            localStorage["appState"] = JSON.stringify(userData);
-            // console.log(User);
-            // setAction("");
-            history.push('/');
-            setIsLoggedIn(true);
-            // console.log(isLoggedIn);
-          }
-          else{
-            setDanger_message("잘못된 이메일 또는 비밀번호 입니다.");
-          }
-          
-        });
+        loginUser();
       }
     }
-    else if(action === "signUp"){
+    else if(action === "register"){
       // console.log(email);
 
       //값을 전부 입력한 경우
@@ -148,15 +176,7 @@ export default ({ location, history }) => {
           // }
 
           //회원가입 요청
-          addUser().then(res => {
-            //회원가입 성공시
-            // console.log(res);
-            if (res.data) {
-              //로그인 창으로 이동
-              setAction("confirm");
-            }
-            
-          });
+          addUser();
         } catch (error) {
           console.log("메일건 오류");
         }
@@ -168,31 +188,7 @@ export default ({ location, history }) => {
     }
     //액션이 승인코드 입력일 때
     else if(action = "confirm"){
-      check_confirm_code().then( (res) => {
-        // console.log(res.data);
-        if(res.data.success){
-          let userData = {
-            name: res.data.data.name,
-            id: res.data.data.id,
-            email: res.data.data.email,
-            auth_token: res.data.data.auth_token,
-            timestamp: new Date().toString()
-          };
-          let appState = {
-            isLoggedIn: true,
-            user: userData
-          };
-          // save app state with user date in local storage
-          localStorage["appState"] = JSON.stringify(appState);
-          // console.log(User);
-          // setAction("");
-          history.push('/');
-          setIsLoggedIn(true);
-        }
-        else{
-          setDanger_message("잘못된 승인코드 입니다.");
-        }
-      })
+      check_confirm_code();
     }
   };
 

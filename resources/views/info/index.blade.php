@@ -68,7 +68,7 @@
                                                     gps = data.results[0].formatted_address;
                                                     console.log(gps);
                                                     $(`.gps{{$report->id}}`).text(gps);
-                                                }));
+                                            }));
                                         });
                                         // $(`.gps{{$report->id}}`).text("api쓰는거라 실제 쓸때 위에 주석 푸셈");
                                     </script>
