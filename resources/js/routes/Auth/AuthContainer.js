@@ -68,9 +68,9 @@ export default ({ location, history }) => {
 
     return Axios.post(url, body, config)
       .then(res => {
-        console.log(res);
+        console.log(res.data.token);
         // console.log(res);
-        if(res.data.access_token){
+        if(res.data.token){
           // let userData = {
           //   // name: res.data.name,
           //   // id: res.data.id,
@@ -80,7 +80,7 @@ export default ({ location, history }) => {
           // };
 
           // localStorage["userToken"] = JSON.stringify(userData);
-          localStorage.setItem('userToken', res.data.access_token);
+          localStorage.setItem('userToken', res.data.token);
           // console.log(User);
           // setAction("");
           history.push('/');
@@ -112,7 +112,7 @@ export default ({ location, history }) => {
     .then(res => {
       console.log(res);
       // console.log(res);
-      if(res.data.access_token){
+      if(res.data.token){
         // let userData = {
         //   // name: res.data.name,
         //   // id: res.data.id,
@@ -122,7 +122,7 @@ export default ({ location, history }) => {
         // };
 
         // localStorage["userToken"] = JSON.stringify(userData);
-        localStorage.setItem('userToken', res.data.access_token);
+        localStorage.setItem('userToken', res.data.token);
         // console.log(User);
         // setAction("");
         history.push('/');

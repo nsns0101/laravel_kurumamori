@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject
@@ -64,11 +64,13 @@ class User extends Authenticatable implements JWTSubject
 
 
     //
-    public function getJWTIdentifier() {
+    public function getJWTIdentifier()
+    {
         return $this->getKey();
-      }
-    
-      public function getJWTCustomClaims() {
+    }
+    public function getJWTCustomClaims()
+    {
         return [];
-      }
+    }
 }
+

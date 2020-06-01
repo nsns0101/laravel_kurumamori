@@ -1,15 +1,26 @@
-//메인 라우터
 import React, {useState, useEffect, createContext, useContext} from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Link, BrowserRouter} from "react-router-dom";
+import Axios from 'axios';
+//css
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
+import 'font-awesome/css/font-awesome.css';
+import 'jquery/dist/jquery.min.js';
+import 'popper.js';
+// import "../../../public/css/app.css";
+// import "../../../public/css/font-icon.css";
+// import "../../../public/css/font.css";
+import '../../../public/js/bootstrap-datepicker.js';
+import "../../../public/css/bootstrap-datepicker.css"
 import Header from "../layuot/Header";
 import Footer from "../layuot/Footer";
+
+//routes
 import Home from "../routes/Home/Home"
 import Login from "../routes/Auth/AuthContainer";
 import Info_index from "../routes/Profile/Index"; 
 import Product from "../routes/Product/Product";
-import Axios from 'axios';
 //전역변수
 export const AppContext = createContext();
 
@@ -35,13 +46,14 @@ function App() {
             // const token = localStorage;
             // console.log(token);
             const config = {
-            headers: {
-                Authorization : `Bearer ${localStorage.userToken}`
-            }
+                headers: {
+                    Authorization : `Bearer ${localStorage.userToken}`
+                }
             }
             Axios.get(url, config)
             .then(res => {
                 if(res.data.user){
+                    console.log(res.data.user);
                     setIsLoggedIn(true);
                     setUser(res.data.user);
                 }

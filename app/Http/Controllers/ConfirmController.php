@@ -55,15 +55,13 @@ class ConfirmController extends Controller
             $user->update([
                 'confirm_code' => null
             ]);
-            // return response()->json(compact('token'));
-            return response()->json([
-                'access_token' => $token,
-                'token_type' => 'bearer',
-                'expires_in' => \Auth::guard('api')->factory()->getTTL() * 60
-            ]);
+            return response()->json(compact('token'));
+            // return response()->json([
+            //     'access_token' => $token,
+            //     'token_type' => 'bearer',
+            //     'expires_in' => \Auth::guard('api')->factory()->getTTL() * 60
+            // ]);
         }
-
-        return response()->json($response, 201);
     }
 
     //토큰 생성

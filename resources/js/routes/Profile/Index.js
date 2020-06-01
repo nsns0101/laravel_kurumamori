@@ -96,7 +96,7 @@ export default () => {
                                                         </div>
                                                         <div className="col-sm-6 col-md-6">
                                                             <p className="gps">
-                                                                {gps(index, value.latitude, value.longitude)}
+                                                                {/* {gps(index, value.latitude, value.longitude)} */}
                                                             </p>
                                                         </div>
                                                     </div>

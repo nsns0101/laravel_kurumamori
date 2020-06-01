@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        // 'guard' => 'web',
-        'guard' => 'api',
+        'guard' => 'web',
+        // 'guard' => 'api',
         'passwords' => 'users',
     ],
 
@@ -43,9 +43,10 @@ return [
         ],
 
         'api' => [
-            'driver' => 'jwt',
+            // 'driver' => 'jwt',
+            'driver' => 'token',
             'provider' => 'users',
-            'hash' => false,
+            // 'hash' => false,
         ],
     ],
 
@@ -98,7 +99,7 @@ return [
             'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
-            'throttle' => 60,
+            // 'throttle' => 60,
         ],
     ],
 

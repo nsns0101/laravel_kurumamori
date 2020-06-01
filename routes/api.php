@@ -34,10 +34,14 @@ use Illuminate\Support\Facades\Route;
 Route::post('register', 'UsersController@register');
 Route::post('login', 'UsersController@login');
 Route::get('profile', 'UsersController@getAuthenticatedUser');
+// Route::get('info/index', 'InfoController@index');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+// Route::middleware('jwt.auth')->get('users', function (Request $request) {
+//     return auth()->user();
+// });
 
 
 
