@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import AuthView from "./AuthView";
 import Axios from "axios";
 import {AppContext} from "../../components/App";
+
 export default ({ location, history }) => {
   const {isLoggedIn, setIsLoggedIn} = useContext(AppContext);
   // console.log(isLoggedIn);  

@@ -12,8 +12,8 @@ class InfoController extends Controller
     public function index(Request $request)
     {  
         \Log::info(\Auth::user());
-        // return view('home.main');
-        return \Auth::user();
+        return view('home.main');
+        // return \Auth::user();
     }
 
     public function show(Request $request, $user_id){

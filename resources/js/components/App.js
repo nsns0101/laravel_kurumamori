@@ -53,7 +53,7 @@ function App() {
             Axios.get(url, config)
             .then(res => {
                 if(res.data.user){
-                    console.log(res.data.user);
+                    // console.log(res.data.user);
                     setIsLoggedIn(true);
                     setUser(res.data.user);
                 }

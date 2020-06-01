@@ -103,7 +103,6 @@ export default ({
   setDanger_message,
 }) => {
   const { handleSubmit, register, errors, watch } = useForm();
-  // const onSubmit = values => console.log(values);   //임시
   const input_form = {
     width: "100%",
     border: '5px solid pink',
