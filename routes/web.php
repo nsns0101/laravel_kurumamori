@@ -82,3 +82,4 @@ Route::resource('/bigdata', 'BigdataController');
 
 Route::resource('/app', 'AppController');
 Route::resource('/smstest', 'TestController');
+

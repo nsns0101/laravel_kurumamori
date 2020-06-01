@@ -3,16 +3,16 @@ import ReactDOM from 'react-dom';
 import { Route, Link, BrowserRouter} from "react-router-dom";
 import Axios from 'axios';
 //css
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.min.js';
-import 'font-awesome/css/font-awesome.css';
-import 'jquery/dist/jquery.min.js';
-import 'popper.js';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/js/bootstrap.min.js';
+// import 'font-awesome/css/font-awesome.css';
+// import 'jquery/dist/jquery.min.js';
+// import 'popper.js';
 // import "../../../public/css/app.css";
 // import "../../../public/css/font-icon.css";
 // import "../../../public/css/font.css";
-import '../../../public/js/bootstrap-datepicker.js';
-import "../../../public/css/bootstrap-datepicker.css"
+// import '../../../public/js/bootstrap-datepicker.js';
+// import "../../../public/css/bootstrap-datepicker.css"
 import Header from "../layuot/Header";
 import Footer from "../layuot/Footer";
 

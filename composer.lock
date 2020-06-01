@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0ba6c973bee5919edde978f5ac2acf23",
+    "content-hash": "9b58c40fe909d27da1506b55ee1e80a8",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4068,7 +4068,7 @@
         },
         {
             "name": "tymon/jwt-auth",
-            "version": "dev-develop",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tymondesigns/jwt-auth.git",
@@ -4434,16 +4434,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "2.0.5",
+            "version": "2.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "38e1b180544bfefebe37e0f65980792ea78a534a"
+                "reference": "5261c488a1e8a7c3ebdf6a4037c34f5ddeb33922"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/38e1b180544bfefebe37e0f65980792ea78a534a",
-                "reference": "38e1b180544bfefebe37e0f65980792ea78a534a",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/5261c488a1e8a7c3ebdf6a4037c34f5ddeb33922",
+                "reference": "5261c488a1e8a7c3ebdf6a4037c34f5ddeb33922",
                 "shasum": ""
             },
             "require": {
@@ -4501,7 +4501,7 @@
                 "laravel",
                 "page"
             ],
-            "time": "2020-05-28T22:49:07+00:00"
+            "time": "2020-06-01T09:04:48+00:00"
         },
         {
             "name": "facade/ignition-contracts",
@@ -6433,9 +6433,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "tymon/jwt-auth": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

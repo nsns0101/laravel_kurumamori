@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 class InfoController extends Controller
 {
-    public function __construct()
-    {
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
     public function index(Request $request)
     {  
         \Log::info(\Auth::user());
-        return view('home.main');
+        // return view('home.main');
+        return \Auth::user();
     }
 
     public function show(Request $request, $user_id){
