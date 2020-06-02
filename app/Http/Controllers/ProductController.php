@@ -28,7 +28,6 @@ class ProductController extends Controller
     {
          // \Log::info($request->product_key);
          $product = \App\Product_buy::whereProduct_key($request->product_key)->first();
-
          if (!$product) {
              // flash()->error("잘못된 키입니다. 다시 입력해주세요");
              return response()->json([], 204);
@@ -43,9 +42,8 @@ class ProductController extends Controller
          }
          $product_buy_id = \App\Product_buy::whereProduct_key($request->product_key)->first()->id;
          $create_product = \App\Product::create([
-             'user_id' => auth()->user()->id,
+             'user_id' => $request->user_id,
              'product_buy_id' => $product_buy_id,
-            //  'product_name' => $product->product_name,
              'product_key' => $request->product_key,
              'date_buy' => $product->created_at,
              'date_as' => date("Y-m-d", strtotime("{$product->created_at} +1 years")),
@@ -74,7 +72,7 @@ class ProductController extends Controller
          \Log::info($product);
          $product->update([
             // \App\Product::create([
-             'user_id' => auth()->user()->id,
+             'user_id' => $request->user_id,
              'product_name' => $product_buy->product_name,
              'product_key' => $request->product_key,
              'date_buy' => $product_buy->created_at,

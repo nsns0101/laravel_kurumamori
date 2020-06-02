@@ -2,7 +2,6 @@ import React, {useContext, useState, useEffect} from "react";
 import {AppContext} from "../../components/App";
 import Axios from "axios";
 import Geocode from "react-geocode";
-import {Link} from "react-router-dom";
 import Info_menu from "../../layuot/Info_menu";
 import Product_modal from "./Product_modal";
 
@@ -17,49 +16,35 @@ export default ( {history} ) => {
     const [board_categories, setBoard_categories] = useState([]);   //작성한 게시글의 카테고리
     const [board_comments, setBoards_comments] = useState([]);      //작성한 게시글의 댓글
     const [data, setData] = useState("");
+    const [product_action, setProduct_action] = useState("create");
     useEffect(()=>{
         Axios.get(`/info/index/${user.id}`).then(res => {
             setData(res.data);
-            // console.log(res.data);
-            // setProfile(res.data.user);
-            // setProduct(res.data.product);
-            // setProduct_buy(res.data.product_buy);
-            // setUser_product_buy_key(res.data.user_product_buy_key);
-            // setBoards(res.data.boards.data);
-            // setBoard_categories(res.data.board_categories);
-            // setBoards_comments(res.data.board_comments);
-            // setReports(res.data.reports.data);
+            if(res.data.product){
+                setProduct_action("update");
+            }
         })
     }, [user]);
-    // console.log(profile);      
-    // console.log(product);
-    // console.log(product_buy);
-    // console.log(user_product_buy_key);
-    // console.log(boards);
-    // console.log(board_categories);
-    // console.log(board_comments);
-    console.log(data);
-    // console.log("good");     //총 18번 렌더 (useEffect 2번, set~ = 8개 * 2 =)
 
-    // const gps = (index, latitude, longitude) => {
-    //     let location = null;
-    //     console.log(index);
-    //     if(index == 1){
-    //         Geocode.setApiKey(process.env.MIX_GCP_API_KEY);
-    //         Geocode.setLanguage("ko");
-    //         new Promise(function(res, rej) {
-    //             res(Geocode.fromLatLng(latitude, longitude))
-    //         }).then(
-    //             res => {
-    //                 location = res.results[0].formatted_address;
-    //                 console.log(location);
-    //                 setReports(res.results[0].formatted_address);
-    //                 location = reports;
-    //             }
-    //         )
-    //     }
-    //     return location;
-    // }
+    const gps = (index, latitude, longitude) => {
+        let location = null;
+        console.log(index);
+        if(index == 1){
+            Geocode.setApiKey(process.env.MIX_GCP_API_KEY);
+            Geocode.setLanguage("ko");
+            new Promise(function(res, rej) {
+                res(Geocode.fromLatLng(latitude, longitude))
+            }).then(
+                res => {
+                    location = res.results[0].formatted_address;
+                    console.log(location);
+                    setReports(res.results[0].formatted_address);
+                    location = reports;
+                }
+            )
+        }
+        return location;
+    }
 
     return (
         <div>
@@ -80,11 +65,6 @@ export default ( {history} ) => {
                                         <div className="caption">
                                             <h4 className="text-center">유저 정보</h4>
                                             <hr style={{background:"darkgrey"}}/>
-                                            {/* <p style={{fontSize:"20px"}}><b>이메일</b> : {profile.email}</p>
-                                            <p style={{fontSize:"20px"}}><b>이름</b> : {profile.name}</p>
-                                            <p style={{fontSize:"20px"}}><b>생년월일</b> : {profile.birth}</p>
-                                            <p style={{fontSize:"20px"}}><b>성별</b> : {profile.gender}</p>
-                                            <p style={{fontSize:"20px"}}><b>휴대폰 번호</b> : {profile.phone}</p> */}
                                             <p style={{fontSize:"20px"}}><b>이메일</b> : {data.user.email}</p>
                                             <p style={{fontSize:"20px"}}><b>이름</b> : {data.user.name}</p>
                                             <p style={{fontSize:"20px"}}><b>생년월일</b> : {data.user.birth}</p>
@@ -163,9 +143,15 @@ export default ( {history} ) => {
                                                         제품 등록
                                                     </button>
                                                     {/* @endif */}
-                                                    <Product_modal product={data.product}/>
                                                 </div>
                                             )}
+                                            <Product_modal
+                                                user={user}
+                                                product={data.product}
+                                                product_action={product_action}
+                                                setProduct_action={setProduct_action}
+                                                history={history}
+                                            />
                                         </div>
                                         <hr style={{background:"green"}}/>
                                     </div>

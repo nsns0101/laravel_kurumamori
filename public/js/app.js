@@ -80398,9 +80398,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react_geocode__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-geocode */ "./node_modules/react-geocode/lib/index.js");
 /* harmony import */ var react_geocode__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_geocode__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _layuot_Info_menu__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../layuot/Info_menu */ "./resources/js/layuot/Info_menu.js");
-/* harmony import */ var _Product_modal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Product_modal */ "./resources/js/routes/Profile/Product_modal.js");
+/* harmony import */ var _layuot_Info_menu__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../layuot/Info_menu */ "./resources/js/layuot/Info_menu.js");
+/* harmony import */ var _Product_modal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Product_modal */ "./resources/js/routes/Profile/Product_modal.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -80412,7 +80411,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -80479,46 +80477,40 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       data = _useState18[0],
       setData = _useState18[1];
 
+  var _useState19 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("create"),
+      _useState20 = _slicedToArray(_useState19, 2),
+      product_action = _useState20[0],
+      setProduct_action = _useState20[1];
+
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/info/index/".concat(user.id)).then(function (res) {
-      setData(res.data); // console.log(res.data);
-      // setProfile(res.data.user);
-      // setProduct(res.data.product);
-      // setProduct_buy(res.data.product_buy);
-      // setUser_product_buy_key(res.data.user_product_buy_key);
-      // setBoards(res.data.boards.data);
-      // setBoard_categories(res.data.board_categories);
-      // setBoards_comments(res.data.board_comments);
-      // setReports(res.data.reports.data);
-    });
-  }, [user]); // console.log(profile);      
-  // console.log(product);
-  // console.log(product_buy);
-  // console.log(user_product_buy_key);
-  // console.log(boards);
-  // console.log(board_categories);
-  // console.log(board_comments);
+      setData(res.data);
 
-  console.log(data); // console.log("good");     //총 18번 렌더 (useEffect 2번, set~ = 8개 * 2 =)
-  // const gps = (index, latitude, longitude) => {
-  //     let location = null;
-  //     console.log(index);
-  //     if(index == 1){
-  //         Geocode.setApiKey(process.env.MIX_GCP_API_KEY);
-  //         Geocode.setLanguage("ko");
-  //         new Promise(function(res, rej) {
-  //             res(Geocode.fromLatLng(latitude, longitude))
-  //         }).then(
-  //             res => {
-  //                 location = res.results[0].formatted_address;
-  //                 console.log(location);
-  //                 setReports(res.results[0].formatted_address);
-  //                 location = reports;
-  //             }
-  //         )
-  //     }
-  //     return location;
-  // }
+      if (res.data.product) {
+        setProduct_action("update");
+      }
+    });
+  }, [user]);
+
+  var gps = function gps(index, latitude, longitude) {
+    var location = null;
+    console.log(index);
+
+    if (index == 1) {
+      react_geocode__WEBPACK_IMPORTED_MODULE_3___default.a.setApiKey("AIzaSyBmDNMJ1gbJusi6rqVoskubnytiXP0Rchc");
+      react_geocode__WEBPACK_IMPORTED_MODULE_3___default.a.setLanguage("ko");
+      new Promise(function (res, rej) {
+        res(react_geocode__WEBPACK_IMPORTED_MODULE_3___default.a.fromLatLng(latitude, longitude));
+      }).then(function (res) {
+        location = res.results[0].formatted_address;
+        console.log(location);
+        setReports(res.results[0].formatted_address);
+        location = reports;
+      });
+    }
+
+    return location;
+  };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, data && data.user ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     id: "intro",
@@ -80531,7 +80523,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-2 col-xs-2 col-sm-2"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layuot_Info_menu__WEBPACK_IMPORTED_MODULE_5__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layuot_Info_menu__WEBPACK_IMPORTED_MODULE_4__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-8 col-xs-8 col-sm-8"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     style: {
@@ -80659,9 +80651,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     className: "btn btn-primary",
     "data-toggle": "modal",
     "data-target": "#productModal"
-  }, "\uC81C\uD488 \uB4F1\uB85D"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Product_modal__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    product: data.product
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+  }, "\uC81C\uD488 \uB4F1\uB85D")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Product_modal__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    user: user,
+    product: data.product,
+    product_action: product_action,
+    setProduct_action: setProduct_action,
+    history: history
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
     style: {
       background: "green"
     }
@@ -80795,35 +80791,78 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_hook_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-hook-form */ "./node_modules/react-hook-form/dist/react-hook-form.es.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
-  var product = _ref.product;
+  var history = _ref.history,
+      user = _ref.user,
+      product = _ref.product,
+      product_action = _ref.product_action,
+      product_key_input = _ref.product_key_input;
 
   var _useForm = Object(react_hook_form__WEBPACK_IMPORTED_MODULE_1__["useForm"])(),
       handleSubmit = _useForm.handleSubmit,
       register = _useForm.register,
       errors = _useForm.errors,
-      watch = _useForm.watch;
+      watch = _useForm.watch; // const [product_key_input, setProduct_key_input] = useState("");
+  // const [error_text, setError_text] = useState("");
+  //제품 생성
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
-      _useState2 = _slicedToArray(_useState, 2),
-      product_input = _useState2[0],
-      setProduct_input = _useState2[1];
 
-  var onSubmit = function onSubmit() {//
+  var create_product = function create_product() {
+    var url = "/products";
+    var body = {
+      //oa2P-lki8-qSkV-OOX1
+      user_id: user.id,
+      product_key: product_key_input
+    };
+    var config = {
+      'Content-Type': 'application/json'
+    };
+    return axios__WEBPACK_IMPORTED_MODULE_2___default.a.post(url, body, config).then(function (res) {
+      console.log(res);
+
+      if (res.data) {
+        window.alert("제품을 등록하였습니다."); // history.push("/info/index");
+
+        window.location.reload();
+      } else {
+        setError_text("잘못된 key입니다. 다시 확인해 주세요.");
+      }
+    });
+  };
+
+  var update_product = function update_product() {
+    var url = "/products/".concat(product.id);
+    var body = {
+      user_id: user.id,
+      product_key: product_key_input
+    };
+    var config = {
+      'Content-Type': 'application/json'
+    };
+    return axios__WEBPACK_IMPORTED_MODULE_2___default.a.put(url, body, config).then(function (res) {
+      console.log(res);
+
+      if (res.data) {
+        window.alert("제품을 재등록하였습니다."); // history.push("/info/index");
+
+        window.location.reload();
+      } else {
+        setError_text("잘못된 key입니다. 다시 확인해 주세요.");
+      }
+    });
+  };
+
+  var onSubmit = function onSubmit() {
+    if (product_action == "create") {
+      create_product();
+    } else {
+      update_product();
+    }
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -80866,7 +80905,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     },
     onChange: function onChange(e) {
       var value = e.target.value;
-      setProduct_input(value);
+      setProduct_key_input(value);
     },
     ref: register({
       required: "Required",
@@ -80875,7 +80914,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         message: "올바른 키 입력이 아닙니다."
       }
     })
-  }), errors.product_key && errors.product_key.message, product ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "text-danger"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, errors.product_key && errors.product_key.message), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, error_text ? error_text : null)), product ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "text-danger"
   }, "\uC774\uC804\uC5D0 \uB4F1\uB85D\uD55C key\uB294 \uB2E4\uC2DC \uC0AC\uC6A9\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.") : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "text-danger",
