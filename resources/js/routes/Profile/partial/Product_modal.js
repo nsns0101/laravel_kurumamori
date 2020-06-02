@@ -3,74 +3,13 @@ import { useForm } from "react-hook-form";
 import Axios from "axios";
 
 export default ({ 
-    history,
-    user, 
+    // history,
     product, 
-    product_action,
-    product_key_input,
+    setProduct_key_input,
+    error_text,
+    onSubmit,
 }) => {
     const { handleSubmit, register, errors, watch } = useForm();
-    // const [product_key_input, setProduct_key_input] = useState("");
-    // const [error_text, setError_text] = useState("");
-    //제품 생성
-    const create_product = () => {
-        const url = "/products";
-        const body = {
-            //oa2P-lki8-qSkV-OOX1
-            user_id : user.id,
-            product_key : product_key_input
-        }
-        const config = {
-            'Content-Type' : 'application/json'
-        }
-        return Axios.post(url, body, config).then(res => {
-            console.log(res);
-            if(res.data){
-                window.alert("제품을 등록하였습니다.");
-                // history.push("/info/index");
-                window.location.reload();
-            }
-            else{
-                setError_text("잘못된 key입니다. 다시 확인해 주세요.");
-
-            }
-        })
-    }
-
-    const update_product = () => {
-        const url = `/products/${product.id}`
-        const body = {
-            user_id : user.id,
-            product_key : product_key_input
-        }
-        const config = {
-            'Content-Type' : 'application/json'
-        }
-        return Axios.put(url, body, config).then(res => {
-            console.log(res);
-            if(res.data){
-                window.alert("제품을 재등록하였습니다.");
-                // history.push("/info/index");
-                window.location.reload();
-            }
-            else{
-                setError_text("잘못된 key입니다. 다시 확인해 주세요.");
-
-            }
-        })
-
-    }
-
-
-    const onSubmit = () => {
-        if(product_action == "create"){
-            create_product();
-        }
-        else{
-            update_product();
-        }
-    }
-
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="modal fade" id="productModal" tabIndex="-1" role="dialog" aria-labelledby="productModal" aria-hidden="true">

@@ -78709,8 +78709,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _layuot_Footer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../layuot/Footer */ "./resources/js/layuot/Footer.js");
 /* harmony import */ var _routes_Home_Home__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../routes/Home/Home */ "./resources/js/routes/Home/Home.js");
 /* harmony import */ var _routes_Auth_AuthContainer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../routes/Auth/AuthContainer */ "./resources/js/routes/Auth/AuthContainer.js");
-/* harmony import */ var _routes_Profile_Index__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../routes/Profile/Index */ "./resources/js/routes/Profile/Index.js");
-/* harmony import */ var _routes_Product_Product__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../routes/Product/Product */ "./resources/js/routes/Product/Product.js");
+/* harmony import */ var _routes_Profile_ProfileContainer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../routes/Profile/ProfileContainer */ "./resources/js/routes/Profile/ProfileContainer.js");
+/* harmony import */ var _routes_Medical_MedicalContainer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../routes/Medical/MedicalContainer */ "./resources/js/routes/Medical/MedicalContainer.js");
+/* harmony import */ var _routes_Drive_DriveContainer__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../routes/Drive/DriveContainer */ "./resources/js/routes/Drive/DriveContainer.js");
+/* harmony import */ var _routes_Product_Product__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../routes/Product/Product */ "./resources/js/routes/Product/Product.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -78740,6 +78742,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
  //routes
+
+
 
 
 
@@ -78816,11 +78820,19 @@ function App() {
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
       path: "/info/index",
       exact: true,
-      component: _routes_Profile_Index__WEBPACK_IMPORTED_MODULE_8__["default"]
+      component: _routes_Profile_ProfileContainer__WEBPACK_IMPORTED_MODULE_8__["default"]
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+      path: "/info/medical_info",
+      exact: true,
+      component: _routes_Medical_MedicalContainer__WEBPACK_IMPORTED_MODULE_9__["default"]
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+      path: "/info/drive_score",
+      exact: true,
+      component: _routes_Drive_DriveContainer__WEBPACK_IMPORTED_MODULE_12__["default"]
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
       path: "/products",
       exact: true,
-      component: _routes_Product_Product__WEBPACK_IMPORTED_MODULE_9__["default"]
+      component: _routes_Product_Product__WEBPACK_IMPORTED_MODULE_11__["default"]
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layuot_Footer__WEBPACK_IMPORTED_MODULE_5__["default"], null)))
   );
 }
@@ -80013,6 +80025,44 @@ var ConfirmForm = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default
 
 /***/ }),
 
+/***/ "./resources/js/routes/Drive/DriveContainer.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/routes/Drive/DriveContainer.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _DriveView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DriveView */ "./resources/js/routes/Drive/DriveView.js");
+
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DriveView__WEBPACK_IMPORTED_MODULE_1__["default"], null);
+});
+
+/***/ }),
+
+/***/ "./resources/js/routes/Drive/DriveView.js":
+/*!************************************************!*\
+  !*** ./resources/js/routes/Drive/DriveView.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "drive");
+});
+
+/***/ }),
+
 /***/ "./resources/js/routes/Home/Home.js":
 /*!******************************************!*\
   !*** ./resources/js/routes/Home/Home.js ***!
@@ -80364,6 +80414,504 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/routes/Medical/MedicalContainer.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/routes/Medical/MedicalContainer.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/App */ "./resources/js/components/App.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _MedicalView__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./MedicalView */ "./resources/js/routes/Medical/MedicalView.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_components_App__WEBPACK_IMPORTED_MODULE_1__["AppContext"]),
+      user = _useContext.user;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+      _useState2 = _slicedToArray(_useState, 2),
+      res = _useState2[0],
+      setRes = _useState2[1]; //값 받기
+
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/info/medical_info/".concat(user.id)).then(function (res) {
+      setRes(res);
+    });
+  }, [user]);
+
+  var medical_update = function medical_update() {
+    console.log("update");
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MedicalView__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    user: user,
+    res: res
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/routes/Medical/MedicalView.js":
+/*!****************************************************!*\
+  !*** ./resources/js/routes/Medical/MedicalView.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _layuot_Info_menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../layuot/Info_menu */ "./resources/js/layuot/Info_menu.js");
+/* harmony import */ var _partial_Show_medical_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./partial/Show_medical.js */ "./resources/js/routes/Medical/partial/Show_medical.js");
+/* harmony import */ var _partial_Create_medical_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./partial/Create_medical.js */ "./resources/js/routes/Medical/partial/Create_medical.js");
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var user = _ref.user,
+      res = _ref.res,
+      medical_update = _ref.medical_update;
+  console.log(res);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, user && user.id && res && res.config.url == "/info/medical_info/".concat(user.id) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+    id: "intro",
+    className: "section intro",
+    style: {
+      padding: "50px 0px 0px 0px",
+      background: "#f7f7f7"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-md-2 col-xs-2 col-sm-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layuot_Info_menu__WEBPACK_IMPORTED_MODULE_1__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-md-7 col-xs-7 col-sm-7"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    style: {
+      color: "blue"
+    }
+  }, "\uC758\uB8CC \uC815\uBCF4"), res && res.data.medical_info ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_partial_Show_medical_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    data: res.data,
+    medical_update: medical_update
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_partial_Create_medical_js__WEBPACK_IMPORTED_MODULE_3__["default"], null)))) : null);
+});
+
+/***/ }),
+
+/***/ "./resources/js/routes/Medical/partial/Create_medical.js":
+/*!***************************************************************!*\
+  !*** ./resources/js/routes/Medical/partial/Create_medical.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Past_sickness__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Past_sickness */ "./resources/js/routes/Medical/partial/Past_sickness.js");
+/* harmony import */ var _Sickness__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Sickness */ "./resources/js/routes/Medical/partial/Sickness.js");
+
+
+
+var data = null;
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    action: "{{ route('medical_info.update',$medical_info->id) }}",
+    method: "POST",
+    role: "form"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-md-12"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "text-center card-header card-main",
+    style: {
+      color: "white",
+      background: "blue"
+    }
+  }, "\uC9C8\uBCD1 \uC0AC\uD56D"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dropdown"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Past_sickness__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+    style: {
+      background: "darkgray"
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Sickness__WEBPACK_IMPORTED_MODULE_2__["default"], null))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-md-12"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "text-center card-header card-main",
+    style: {
+      color: "white",
+      background: "blue"
+    }
+  }, "\uC2E0\uCCAD\uC790 \uC778\uC801\uC0AC\uD56D"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-md-2 text-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    style: {
+      color: "red",
+      fontSize: "30px"
+    }
+  }, "*"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "medical_text",
+    style: {
+      fontSize: "24px",
+      marginTop: "13px"
+    }
+  }, "\uD608\uC561\uD615")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn btn-default dropdown-toggle blood_type_btn dropdown_btn",
+    type: "button",
+    "data-toggle": "dropdown",
+    "aria-haspopup": "true",
+    "aria-expanded": "true"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "caret"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "dropdown-menu",
+    "aria-labelledby": "dropdownMenu1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "dropdown-blood_type",
+    href: "#",
+    style: {
+      color: "black",
+      fontSize: "18px"
+    }
+  }, "A\uD615")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "dropdown-blood_type",
+    href: "#",
+    style: {
+      color: "black",
+      fontSize: "18px"
+    }
+  }, "B\uD615")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "dropdown-blood_type",
+    href: "#",
+    style: {
+      color: "black",
+      fontSize: "18px"
+    }
+  }, "AB\uD615")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "dropdown-blood_type",
+    href: "#",
+    style: {
+      color: "black",
+      fontSize: "18px"
+    }
+  }, "O\uD615"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group {{ $errors->has('blood_type') ? 'has-error' : '' }}"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    id: "blood_type",
+    style: {
+      fontSize: "24px"
+    },
+    type: "hidden",
+    name: "blood_type",
+    className: ""
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    style: {
+      color: "red"
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-md-2 text-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    style: {
+      color: "red",
+      fontSize: "30px"
+    }
+  }, "*"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "medical_text",
+    style: {
+      fontSize: "24px",
+      marginTop: "13px"
+    }
+  }, "\uC7A5\uC560\uC5EC\uBD80")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-md-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group {{$errors->has('disability_status') ? 'has-error' : ''}}"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("fieldset", {
+    style: {
+      fontSize: "20px",
+      marginTop: "6px"
+    }
+  }, "\uC608", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "disability_status",
+    id: "disability_status_yes",
+    value: "yes"
+  }), "\uC544\uB2C8\uC624", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "disability_status",
+    id: "disability_status_no",
+    value: "no"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    style: {
+      color: "red"
+    }
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-md-3 text-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "medical_text",
+    style: {
+      fontSize: "24px",
+      marginTop: "13px",
+      marginRight: "15px"
+    }
+  }, "\uC2E0\uACE0\uC2DC \uC694\uCCAD\uC0AC\uD56D")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-md-7"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group {{ $errors->has('report_request') ? 'has-error' : '' }}"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    style: {
+      fontSize: "24px"
+    },
+    type: "text",
+    name: "report_request",
+    className: "form-control",
+    placeholder: "\u25CB\u25CB\uB97C \uAC00\uC838\uC640\uC8FC\uC138\uC694!"
+  }))))))));
+});
+
+/***/ }),
+
+/***/ "./resources/js/routes/Medical/partial/Past_sickness.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/routes/Medical/partial/Past_sickness.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+var unnown = [0, 1, 2];
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var _React$createElement;
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row",
+    style: {
+      display: "flex",
+      marginTop: "10px"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-md-1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    id: "add__past_sickness",
+    src: "/icon/plus.png",
+    style: {
+      marginLeft: "50%"
+    },
+    onClick: function onClick() {
+      return console.log("추가");
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-md-2 text-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "add__past_sickness medical_text",
+    style: {
+      marginTop: "13px"
+    }
+  }, "\uACFC\uAC70 \uC9C8\uD658")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-md-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn btn-default dropdown-toggle past_sickness_btn dropdown_btn",
+    type: "button",
+    "data-toggle": "dropdown",
+    "aria-haspopup": "true",
+    "aria-expanded": "true"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "caret"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", (_React$createElement = {
+    className: "past_sickness_name",
+    type: "hidden",
+    style: {
+      fontSize: "10px"
+    },
+    name: "past_sickness_name"
+  }, _defineProperty(_React$createElement, "className", "form-control"), _defineProperty(_React$createElement, "value", "qweqwe"), _React$createElement))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "dropdown-menu",
+    "aria-labelledby": "dropdownMenu1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "dropdown-past_sickness",
+    href: "#",
+    style: {
+      color: "black",
+      fontSize: "18px"
+    }
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-md-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-md-1"
+  }));
+});
+
+/***/ }),
+
+/***/ "./resources/js/routes/Medical/partial/Show_medical.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/routes/Medical/partial/Show_medical.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var data = _ref.data,
+      medical_update = _ref.medical_update;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "btn btn-success",
+    href: "/info/medical_info/".concat(data.medical_info.id, "/edit")
+  }, "\uC758\uB8CC\uC815\uBCF4 \uC218\uC815"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-6 col-md-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "thumbnail"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "caption"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    className: "text-center"
+  }, "\uACFC\uAC70 \uBCD1\uB825"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+    style: {
+      background: "darkgrey"
+    }
+  }), data && data.past_sickness ? data.past_sickness.map(function (value, index) {
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      key: index
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\uC608\uC804\uC5D0 \uAC78\uB9B0 \uBCD1", index + 1, " : ", value.past_sickness_name, "}"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\uC608\uC804\uC5D0 \uAC78\uB9B0 \uBCD1", index + 1, " \uBCF4\uCDA9 \uC124\uBA85 : ", value.past_sickness_supplementation, "}"));
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "text-center text-danger"
+  }, "\uC774\uB825\uC774 \uC5C6\uC2B5\uB2C8\uB2E4."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+    style: {
+      background: "darkgrey"
+    }
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-6 col-md-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "thumbnail"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "caption"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    className: "text-center"
+  }, "\uD604\uC7AC \uBCD1\uB825"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+    style: {
+      background: "darkgrey"
+    }
+  }), data && data.sickness ? data.sickness.map(function (value, index) {
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      key: index
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\uC608\uC804\uC5D0 \uAC78\uB9B0 \uBCD1", index + 1, " : ", value.sickness_name, "}"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\uC608\uC804\uC5D0 \uAC78\uB9B0 \uBCD1", index + 1, " \uBCF4\uCDA9 \uC124\uBA85 : ", value.sickness_supplementation, "}"));
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "text-center text-danger"
+  }, "\uC774\uB825\uC774 \uC5C6\uC2B5\uB2C8\uB2E4."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+    style: {
+      background: "darkgrey"
+    }
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-6 col-md-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "thumbnail"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "caption"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    className: "text-center"
+  }, "\uAE30\uD0C0 \uC815\uBCF4"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+    style: {
+      background: "darkgrey"
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\uBCF4\uD638\uC790 \uD734\uB300\uD3F0 : ", data.medical_info.guardian_phone ? data.medical_info.guardian_phone : "없음"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\uD608\uC561\uD615 : ", data.medical_info.blood_type), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\uC7A5\uC560 \uC5EC\uBD80 : ", data.medical_info.disability_status), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\uC2E0\uACE0\uC2DC \uC694\uCCAD\uC0AC\uD56D : ", data.medical_info.report_request ? data.medical_info.report_request : "없음"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+    style: {
+      background: "darkgrey"
+    }
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-6 col-md-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "thumbnail"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "caption"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    className: "text-center"
+  }, "\uBCF4\uD5D8 \uC815\uBCF4"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+    style: {
+      background: "darkgrey"
+    }
+  }), data.insurance ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\uBCF4\uD5D8\uC0AC \uBA85 : ", data.insurance_my.insurance_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\uBCF4\uD5D8\uC0AC \uC804\uD654\uBC88\uD638 : ", data.insurance_my.insurance_phone), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\uAC00\uC785\uC77C : ", data.insurance.subscription_date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\uB9CC\uAE30\uC77C : ", data.insurance.expiration_date)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "text-center text-danger"
+  }, "\uC774\uB825\uC774 \uC5C6\uC2B5\uB2C8\uB2E4."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+    style: {
+      background: "darkgrey"
+    }
+  }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "text-danger"
+  }, "\uC704\uC758 \uC791\uC131\uD558\uC2E0 \uC758\uB8CC\uC815\uBCF4\uB294 \uC6B4\uC804 \uC911 \uC0AC\uACE0\uBC1C\uC0DD\uC2DC 119\uC13C\uD130\uC5D0 \uBCF4\uB0B4\uB294 \uBA54\uC2DC\uC9C0\uC785\uB2C8\uB2E4."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "text-danger"
+  }, "\uC791\uC131\uD55C \uC815\uBCF4\uC5D0 \uD2C0\uB9B0 \uC810\uC774 \uC5C6\uB294 \uC9C0 \uD655\uC778\uD574 \uC8FC\uC138\uC694."));
+});
+
+/***/ }),
+
+/***/ "./resources/js/routes/Medical/partial/Sickness.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/routes/Medical/partial/Sickness.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "drive");
+});
+
+/***/ }),
+
 /***/ "./resources/js/routes/Product/Product.js":
 /*!************************************************!*\
   !*** ./resources/js/routes/Product/Product.js ***!
@@ -80382,10 +80930,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/routes/Profile/Index.js":
-/*!**********************************************!*\
-  !*** ./resources/js/routes/Profile/Index.js ***!
-  \**********************************************/
+/***/ "./resources/js/routes/Profile/ProfileContainer.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/routes/Profile/ProfileContainer.js ***!
+  \*********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -80398,8 +80946,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react_geocode__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-geocode */ "./node_modules/react-geocode/lib/index.js");
 /* harmony import */ var react_geocode__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_geocode__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _layuot_Info_menu__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../layuot/Info_menu */ "./resources/js/layuot/Info_menu.js");
-/* harmony import */ var _Product_modal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Product_modal */ "./resources/js/routes/Profile/Product_modal.js");
+/* harmony import */ var _ProfileView__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ProfileView */ "./resources/js/routes/Profile/ProfileView.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -80417,70 +80964,45 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   var history = _ref.history;
 
   var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_components_App__WEBPACK_IMPORTED_MODULE_1__["AppContext"]),
-      user = _useContext.user;
+      user = _useContext.user; // const [profile, setProfile] = useState("");         //프로필
+  // const [product, setProduct] = useState("");         //등록 제품
+  // const [product_buy, setProduct_buy] = useState("")  //등록 제품(구입날짜 때문에 (유저가 안샀는 경우도 있으니))
+  // const [user_product_buy_key, setUser_product_buy_key] = useState([]);  //구입한 제품의 키
+  // const [boards, setBoards] = useState([]);     //작성한 게시글
+  // const [board_categories, setBoard_categories] = useState([]);   //작성한 게시글의 카테고리
+  // const [board_comments, setBoards_comments] = useState([]);      //작성한 게시글의 댓글
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
       _useState2 = _slicedToArray(_useState, 2),
-      profile = _useState2[0],
-      setProfile = _useState2[1]; //프로필
+      reports = _useState2[0],
+      setReports = _useState2[1]; //신고 이력
 
 
   var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
       _useState4 = _slicedToArray(_useState3, 2),
-      product = _useState4[0],
-      setProduct = _useState4[1]; //등록 제품
+      data = _useState4[0],
+      setData = _useState4[1];
 
-
-  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("create"),
       _useState6 = _slicedToArray(_useState5, 2),
-      product_buy = _useState6[0],
-      setProduct_buy = _useState6[1]; //등록 제품(구입날짜 때문에 (유저가 안샀는 경우도 있으니))
+      product_action = _useState6[0],
+      setProduct_action = _useState6[1];
 
-
-  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
       _useState8 = _slicedToArray(_useState7, 2),
-      user_product_buy_key = _useState8[0],
-      setUser_product_buy_key = _useState8[1]; //구입한 제품의 키
+      product_key_input = _useState8[0],
+      setProduct_key_input = _useState8[1];
 
-
-  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
       _useState10 = _slicedToArray(_useState9, 2),
-      reports = _useState10[0],
-      setReports = _useState10[1]; //신고 이력
+      error_text = _useState10[0],
+      setError_text = _useState10[1]; //값 받기
 
-
-  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
-      _useState12 = _slicedToArray(_useState11, 2),
-      boards = _useState12[0],
-      setBoards = _useState12[1]; //작성한 게시글
-
-
-  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
-      _useState14 = _slicedToArray(_useState13, 2),
-      board_categories = _useState14[0],
-      setBoard_categories = _useState14[1]; //작성한 게시글의 카테고리
-
-
-  var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
-      _useState16 = _slicedToArray(_useState15, 2),
-      board_comments = _useState16[0],
-      setBoards_comments = _useState16[1]; //작성한 게시글의 댓글
-
-
-  var _useState17 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
-      _useState18 = _slicedToArray(_useState17, 2),
-      data = _useState18[0],
-      setData = _useState18[1];
-
-  var _useState19 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("create"),
-      _useState20 = _slicedToArray(_useState19, 2),
-      product_action = _useState20[0],
-      setProduct_action = _useState20[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/info/index/".concat(user.id)).then(function (res) {
@@ -80490,7 +81012,76 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         setProduct_action("update");
       }
     });
-  }, [user]);
+  }, [user]); //제품 생성
+
+  var create_product = function create_product() {
+    var url = "/products";
+    var body = {
+      //oa2P-lki8-qSkV-OOX1
+      user_id: user.id,
+      product_key: product_key_input
+    };
+    var config = {
+      'Content-Type': 'application/json'
+    };
+    return axios__WEBPACK_IMPORTED_MODULE_2___default.a.post(url, body, config).then(function (res) {
+      console.log(res);
+
+      if (res.data) {
+        window.alert("제품을 등록하였습니다."); // history.push("/info/index");
+
+        window.location.reload();
+      } else {
+        setError_text("잘못된 key입니다. 다시 확인해 주세요.");
+      }
+    });
+  }; //제품 수정
+
+
+  var update_product = function update_product() {
+    var url = "/products/".concat(data.product.id);
+    var body = {
+      user_id: user.id,
+      product_key: product_key_input
+    };
+    var config = {
+      'Content-Type': 'application/json'
+    };
+    return axios__WEBPACK_IMPORTED_MODULE_2___default.a.put(url, body, config).then(function (res) {
+      console.log(res);
+
+      if (res.data) {
+        window.alert("제품을 재등록하였습니다."); // history.push("/info/index");
+
+        window.location.reload();
+      } else {
+        setError_text("잘못된 key입니다. 다시 확인해 주세요.");
+      }
+    });
+  }; //제품 삭제
+
+
+  var delete_product = function delete_product() {
+    if (window.confirm("제품등록을 취소하시겠습니까?")) {
+      var url = "/products/".concat(data.product.id);
+      return axios__WEBPACK_IMPORTED_MODULE_2___default.a["delete"](url).then(function (res) {
+        window.location.reload(); // history.push('/info/index');
+      });
+    }
+  }; //제출 폼
+
+
+  var onSubmit = function onSubmit() {
+    var del = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+
+    if (del == "delete") {
+      delete_product();
+    } else if (product_action == "create") {
+      create_product();
+    } else if (product_action == "update") {
+      update_product();
+    }
+  };
 
   var gps = function gps(index, latitude, longitude) {
     var location = null;
@@ -80512,6 +81103,39 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     return location;
   };
 
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ProfileView__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    history: history,
+    data: data,
+    setProduct_key_input: setProduct_key_input,
+    error_text: error_text,
+    onSubmit: onSubmit
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/routes/Profile/ProfileView.js":
+/*!****************************************************!*\
+  !*** ./resources/js/routes/Profile/ProfileView.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _layuot_Info_menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../layuot/Info_menu */ "./resources/js/layuot/Info_menu.js");
+/* harmony import */ var _partial_Product_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./partial/Product_modal */ "./resources/js/routes/Profile/partial/Product_modal.js");
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var history = _ref.history,
+      data = _ref.data,
+      setProduct_key_input = _ref.setProduct_key_input,
+      error_text = _ref.error_text,
+      onSubmit = _ref.onSubmit;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, data && data.user ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     id: "intro",
     className: "section intro",
@@ -80523,7 +81147,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-2 col-xs-2 col-sm-2"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layuot_Info_menu__WEBPACK_IMPORTED_MODULE_4__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layuot_Info_menu__WEBPACK_IMPORTED_MODULE_1__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-8 col-xs-8 col-sm-8"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     style: {
@@ -80643,7 +81267,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     "data-target": "#productModal"
   }, "\uC81C\uD488 \uC7AC\uB4F1\uB85D"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "button",
-    className: "btn btn-primary btn__delete__product"
+    onClick: function onClick() {
+      return onSubmit("delete");
+    },
+    className: "btn btn-danger btn__delete__product"
   }, "\uC81C\uD488 \uC0AD\uC81C")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "text-center text-danger"
   }, "\uB4F1\uB85D\uD55C \uC81C\uD488\uC774 \uC5C6\uC2B5\uB2C8\uB2E4."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -80651,12 +81278,12 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     className: "btn btn-primary",
     "data-toggle": "modal",
     "data-target": "#productModal"
-  }, "\uC81C\uD488 \uB4F1\uB85D")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Product_modal__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    user: user,
+  }, "\uC81C\uD488 \uB4F1\uB85D")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_partial_Product_modal__WEBPACK_IMPORTED_MODULE_2__["default"], {
     product: data.product,
-    product_action: product_action,
-    setProduct_action: setProduct_action,
-    history: history
+    setProduct_key_input: setProduct_key_input,
+    error_text: error_text,
+    history: history,
+    onSubmit: onSubmit
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
     style: {
       background: "green"
@@ -80779,10 +81406,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 /***/ }),
 
-/***/ "./resources/js/routes/Profile/Product_modal.js":
-/*!******************************************************!*\
-  !*** ./resources/js/routes/Profile/Product_modal.js ***!
-  \******************************************************/
+/***/ "./resources/js/routes/Profile/partial/Product_modal.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/routes/Profile/partial/Product_modal.js ***!
+  \**************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -80797,73 +81424,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
-  var history = _ref.history,
-      user = _ref.user,
-      product = _ref.product,
-      product_action = _ref.product_action,
-      product_key_input = _ref.product_key_input;
+  var product = _ref.product,
+      setProduct_key_input = _ref.setProduct_key_input,
+      error_text = _ref.error_text,
+      onSubmit = _ref.onSubmit;
 
   var _useForm = Object(react_hook_form__WEBPACK_IMPORTED_MODULE_1__["useForm"])(),
       handleSubmit = _useForm.handleSubmit,
       register = _useForm.register,
       errors = _useForm.errors,
-      watch = _useForm.watch; // const [product_key_input, setProduct_key_input] = useState("");
-  // const [error_text, setError_text] = useState("");
-  //제품 생성
-
-
-  var create_product = function create_product() {
-    var url = "/products";
-    var body = {
-      //oa2P-lki8-qSkV-OOX1
-      user_id: user.id,
-      product_key: product_key_input
-    };
-    var config = {
-      'Content-Type': 'application/json'
-    };
-    return axios__WEBPACK_IMPORTED_MODULE_2___default.a.post(url, body, config).then(function (res) {
-      console.log(res);
-
-      if (res.data) {
-        window.alert("제품을 등록하였습니다."); // history.push("/info/index");
-
-        window.location.reload();
-      } else {
-        setError_text("잘못된 key입니다. 다시 확인해 주세요.");
-      }
-    });
-  };
-
-  var update_product = function update_product() {
-    var url = "/products/".concat(product.id);
-    var body = {
-      user_id: user.id,
-      product_key: product_key_input
-    };
-    var config = {
-      'Content-Type': 'application/json'
-    };
-    return axios__WEBPACK_IMPORTED_MODULE_2___default.a.put(url, body, config).then(function (res) {
-      console.log(res);
-
-      if (res.data) {
-        window.alert("제품을 재등록하였습니다."); // history.push("/info/index");
-
-        window.location.reload();
-      } else {
-        setError_text("잘못된 key입니다. 다시 확인해 주세요.");
-      }
-    });
-  };
-
-  var onSubmit = function onSubmit() {
-    if (product_action == "create") {
-      create_product();
-    } else {
-      update_product();
-    }
-  };
+      watch = _useForm.watch;
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     onSubmit: handleSubmit(onSubmit)

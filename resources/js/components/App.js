@@ -19,7 +19,10 @@ import Footer from "../layuot/Footer";
 //routes
 import Home from "../routes/Home/Home"
 import Login from "../routes/Auth/AuthContainer";
-import Info_index from "../routes/Profile/Index"; 
+import Info_index from "../routes/Profile/ProfileContainer"; 
+import Info_medical from "../routes/Medical/MedicalContainer";
+import Info_drive from "../routes/Drive/DriveContainer";
+
 import Product from "../routes/Product/Product";
 //전역변수
 export const AppContext = createContext();
@@ -75,7 +78,11 @@ function App() {
                     <Route path="/logout" exact component={Login}/>
                     {/* 내정보 */}
                     <Route path="/info/index" exact component={Info_index}/>
-
+                    {/* 의료정보 */}
+                    <Route path="/info/medical_info" exact component={Info_medical}/>
+                    {/* 운전점수 */}
+                    <Route path="/info/drive_score" exact component={Info_drive}/>
+                    
                     <Route path="/products" exact component={Product}/>
                     <Footer/>
                 </BrowserRouter>

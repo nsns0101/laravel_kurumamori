@@ -8,13 +8,18 @@ class MedicalController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
     public function index()
     {
-        $medical_info = \App\Medical_info::whereUser_id(auth()->user()->id)->first();
+        return view('home.main');
+        // return view('info.medical_info', compact('medical_info', 'insurance', 'update_form','sickness_list'));
+    
+    }
+    public function show(Request $request, $user_id){
+        $medical_info = \App\Medical_info::whereUser_id($user_id)->first();
         // \Log::info($medical_info);
-        $insurance = \App\Insurance::whereUser_id(auth()->user()->id)->first();
+        $insurance = \App\Insurance::whereUser_id($user_id)->first();
         // $insurance_list = \App\Insurance::get()->id;
         $insurance_list_my = $insurance ? \App\Insurance_list::whereId($insurance->insurance_list_id)->first() : null;
         $insurance_list = \App\Insurance_list::get();
@@ -22,15 +27,21 @@ class MedicalController extends Controller
         $update_form = false;
         $sickness_list = ["없음", "고혈압", "당뇨", "결핵", "심장질환", "알러지", "천식", "심부전증", "페렴", "디스크", "간경화", "관절염", "협심증", "암", "갑상선염", "고지혈증", "골다공증", "과민성 대장", "기관지염", "뇌졸중", "신장질환", "간암"];
 
-        $past_sickness = $medical_info ? \App\Past_sickness::whereUser_id(auth()->user()->id)->get() : null;
-        $sickness = $medical_info ? \App\Sickness::whereUser_id(auth()->user()->id)->get() : null;
+        $past_sickness = $medical_info ? \App\Past_sickness::whereUser_id($user_id)->get() : null;
+        $sickness = $medical_info ? \App\Sickness::whereUser_id($user_id)->get() : null;
         // \Log::info($past_sickness);
         // \Log::info($sickness);
-        return view('info.medical_info', compact('medical_info', 'insurance','insurance_list_my', 'insurance_list', 'update_form', 'sickness_list', 'past_sickness','sickness'));
-        // return view('info.medical_info', compact('medical_info', 'insurance', 'update_form','sickness_list'));
-    
+        return response()->json([
+            'medical_info' => $medical_info,
+            'insurance' => $insurance,
+            'insurance_list_my' => $insurance_list_my,
+            'insurance_list'=> $insurance_list,
+            'sickness_list' => $sickness_list,
+            'past_sickness' => $past_sickness,
+            'sickness' => $sickness,
+            'status' => true,
+        ]);
     }
-
     //회원가입 요청
     public function create()
     {
@@ -58,7 +69,7 @@ class MedicalController extends Controller
         }
         //medical_info DB create
         \App\Medical_info::create([
-            'user_id' => auth()->user()->id,
+            'user_id' => $user_id,
             'guardian_phone' => $request->guardian_phone,
             'blood_type' => $request->blood_type,
             'disability_status' => $request->disability_status,
@@ -66,8 +77,8 @@ class MedicalController extends Controller
             // 'hospital_menu' => $request->hospital_menu,
             'report_request' => $request->report_request,
         ]);
-        $medical_info = \App\Medical_info::whereUser_id(auth()->user()->id)->first();
-        $medical_id = \App\Medical_info::whereUser_id(auth()->user()->id)->first()->id;
+        $medical_info = \App\Medical_info::whereUser_id($user_id)->first();
+        $medical_id = \App\Medical_info::whereUser_id($user_id)->first()->id;
         $past_sickness_count = 0;
         $sickness_count = 0;
 
@@ -76,7 +87,7 @@ class MedicalController extends Controller
         for($i = 1; $i <= 1; $i++){
             if($request->past_sickness_name[$i] && $request->past_sickness_name[$i]!="없음"){
                 \App\Past_sickness::create([
-                    'user_id' => auth()->user()->id,
+                    'user_id' => $user_id,
                     'medical_id' => $medical_id,
                     'past_sickness_name' => $request->past_sickness_name[$i],
                     'past_sickness_supplementation' => $request->past_sickness_supplementation[$i]
@@ -91,7 +102,7 @@ class MedicalController extends Controller
             if($request->sickness_name[$i] && $request->sickness_name[$i]!="없음"){
                 \Log::info("성공");
                 \App\Sickness::create([
-                    'user_id' => auth()->user()->id,
+                    'user_id' => $user_id,
                     'medical_id' => $medical_id,
                     'sickness_name' => $request->sickness_name[$i],
                     'medicine' => $request->medicine[$i],
@@ -106,7 +117,7 @@ class MedicalController extends Controller
         if($request->insurance_bool){
             $insurance_list_id = \App\Insurance_list::whereInsurance_name($request->insurance_name)->first()->id;
             \App\Insurance::create([
-                'user_id' => auth()->user()->id,
+                'user_id' => $user_id,
                 'medical_id' => $medical_id,
                 'insurance_list_id' => $insurance_list_id,
                 // 'insurance_name' => $insurance_name->insurance_name,
@@ -120,15 +131,15 @@ class MedicalController extends Controller
     }
     public function edit()
     {
-        $medical_info = \App\Medical_info::whereUser_id(auth()->user()->id)->first();
-        $medical_id = \App\Medical_info::whereUser_id(auth()->user()->id)->first()->id;
-        $past_sickness = \App\Past_sickness::whereUser_id(auth()->user()->id)->get();
-        $sickness = \App\Sickness::whereUser_id(auth()->user()->id)->get();
+        $medical_info = \App\Medical_info::whereUser_id($user_id)->first();
+        $medical_id = \App\Medical_info::whereUser_id($user_id)->first()->id;
+        $past_sickness = \App\Past_sickness::whereUser_id($user_id)->get();
+        $sickness = \App\Sickness::whereUser_id($user_id)->get();
 
         // \Log::info($past_sickness);
         $sickness_list = ["없음", "고혈압", "당뇨", "결핵", "심장질환", "알러지", "천식", "심부전증", "페렴", "디스크", "간경화", "관절염", "협심증", "암", "갑상선염", "고지혈증", "골다공증", "과민성 대장", "기관지염", "뇌졸중", "신장질환", "간암"];
         \Log::info(count($sickness_list));
-        $insurance = \App\Insurance::whereUser_id(auth()->user()->id)->first();
+        $insurance = \App\Insurance::whereUser_id($user_id)->first();
         $insurance_list_my = $insurance ? \App\Insurance_list::whereId($insurance->insurance_list_id)->first() : null;
         $insurance_list = \App\Insurance_list::get();
 
@@ -157,9 +168,9 @@ class MedicalController extends Controller
         \Log::info($request->all());
         // \Log::info($request->past_sickness_name[1]);
         
-        $medical_id = \App\Medical_info::whereUser_id(auth()->user()->id)->first()->id;
-        $past_sickness = \App\Past_sickness::whereUser_id(auth()->user()->id)->get();
-        $sickness = \App\Sickness::whereUser_id(auth()->user()->id)->get();
+        $medical_id = \App\Medical_info::whereUser_id($user_id)->first()->id;
+        $past_sickness = \App\Past_sickness::whereUser_id($user_id)->get();
+        $sickness = \App\Sickness::whereUser_id($user_id)->get();
         $past_sickness_count = 0;
         $sickness_count = 0;
         // \Log::info(count($request->past_sickness_name));
@@ -175,7 +186,7 @@ class MedicalController extends Controller
                     \Log::info(count($past_sickness));
                     //새로 생성
                     \App\Past_sickness::create([
-                        'user_id' => auth()->user()->id,
+                        'user_id' => $user_id,
                         'medical_id' => $medical_id,
                         'past_sickness_name' => $request->past_sickness_name[$i],
                         'past_sickness_supplementation' => $request->past_sickness_supplementation[$i]
@@ -184,7 +195,7 @@ class MedicalController extends Controller
                 //업데이트
                 else{
                     $past_sickness[$past_sickness_count]->update([
-                        'user_id' => auth()->user()->id,
+                        'user_id' => $user_id,
                         'past_sickness_name' => $request->past_sickness_name[$i],
                         'past_sickness_supplementation' => $request->past_sickness_supplementation[$i]
                     ]);
@@ -203,7 +214,7 @@ class MedicalController extends Controller
             if($request->sickness_name[$i] && $request->sickness_name[$i]!="없음"){
                 if($i > count($sickness)){
                     \App\Sickness::create([
-                        'user_id' => auth()->user()->id,
+                        'user_id' => $user_id,
                         'medical_id' => $medical_id,
                         'sickness_name' => $request->sickness_name[$i],
                         'medicine' => $request->medicine[$i],
@@ -213,7 +224,7 @@ class MedicalController extends Controller
                 }
                 else{
                     $sickness[$sickness_count]->update([
-                        'user_id' => auth()->user()->id,
+                        'user_id' => $user_id,
                         'sickness_name' => $request->sickness_name[$i],
                         'medicine' => $request->medicine[$i],
                         'symptom' => $request->symptom[$i],
@@ -232,7 +243,7 @@ class MedicalController extends Controller
         // \Log::info($error);
         //medical_info DB Update
         $medical_info ->update([
-            'user_id' => auth()->user()->id,
+            'user_id' => $user_id,
             'guardian_phone' => $request->guardian_phone,
             'blood_type' => $request->blood_type,
             'disability_status' => $request->disability_status,
@@ -242,14 +253,14 @@ class MedicalController extends Controller
         ]);
 
         //insurances DB Update
-        $insurance = \App\Insurance::whereUser_id(auth()->user()->id)->first();
+        $insurance = \App\Insurance::whereUser_id($user_id)->first();
 
         if($request->insurance_bool){
             $insurance_list_id = \App\Insurance_list::whereInsurance_name($request->insurance_name)->first()->id;
             \Log::info($insurance);
             if($insurance){
                 $insurance->update([
-                    'user_id' => auth()->user()->id,
+                    'user_id' => $user_id,
                     'medical_id' => $medical_id,
                     'insurance_list_id' => $insurance_list_id,
                     'subscription_date' => $request->input("subscription_date"),
@@ -259,7 +270,7 @@ class MedicalController extends Controller
             }
             else{
                 \App\Insurance::create([
-                    'user_id' => auth()->user()->id,
+                    'user_id' => $user_id,
                     'medical_id' => $medical_id,
                     'insurance_list_id' => $insurance_list_id,
                     'subscription_date' => $request->input("subscription_date"),
@@ -275,13 +286,13 @@ class MedicalController extends Controller
         return redirect('/info/medical_info');
 
     }
-    public function show()
-    {
-        $medical_info = \App\Medical_info::whereUser_id(auth()->user()->id)->first();
-        $insurance = \App\Insurance::whereUser_id(auth()->user()->id)->first();
-        $update_form = false;
-        return view('info.medical_info', compact('medical_info', 'insurance', 'update_form'));
-    }
+    // public function show()
+    // {
+    //     $medical_info = \App\Medical_info::whereUser_id($user_id)->first();
+    //     $insurance = \App\Insurance::whereUser_id($user_id)->first();
+    //     $update_form = false;
+    //     return view('info.medical_info', compact('medical_info', 'insurance', 'update_form'));
+    // }
     // public function destroy()
     // {
     // }

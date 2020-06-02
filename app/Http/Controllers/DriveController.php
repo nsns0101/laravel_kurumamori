@@ -8,7 +8,7 @@ class DriveController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
     public function index($date = null)
     {
@@ -181,7 +181,7 @@ class DriveController extends Controller
         // \Log::info($error);
         //1시간에 급감속이나 급가속, 졸음 등을 1번했을 경우 모범?
         //default = 100에서 깎아내리는 형식?
-        return view('info.drive_score', compact('drive', 'date', 'day_5_sec','day_5', 'day_5_info', 'day_5_danger_info', 'drive_detection_5', 'reports', 'score'));
+        return view('home.main', compact('drive', 'date', 'day_5_sec','day_5', 'day_5_info', 'day_5_danger_info', 'drive_detection_5', 'reports', 'score'));
     }
 
     public function create()
