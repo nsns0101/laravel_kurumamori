@@ -78711,7 +78711,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _routes_Auth_AuthContainer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../routes/Auth/AuthContainer */ "./resources/js/routes/Auth/AuthContainer.js");
 /* harmony import */ var _routes_Profile_ProfileContainer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../routes/Profile/ProfileContainer */ "./resources/js/routes/Profile/ProfileContainer.js");
 /* harmony import */ var _routes_Medical_MedicalContainer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../routes/Medical/MedicalContainer */ "./resources/js/routes/Medical/MedicalContainer.js");
-/* harmony import */ var _routes_Drive_DriveContainer__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../routes/Drive/DriveContainer */ "./resources/js/routes/Drive/DriveContainer.js");
+/* harmony import */ var _routes_Drive_DriveContainer__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../routes/Drive/DriveContainer */ "./resources/js/routes/Drive/DriveContainer.js");
 /* harmony import */ var _routes_Product_Product__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../routes/Product/Product */ "./resources/js/routes/Product/Product.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -78759,13 +78759,19 @@ function App() {
       isLoggedIn = _useState2[0],
       setIsLoggedIn = _useState2[1];
 
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState4 = _slicedToArray(_useState3, 2),
       user = _useState4[0],
       setUser = _useState4[1]; // console.log(user);
+  // console.log(isLoggedIn);
+  // useEffect(()=>{
+  //     console.log("hahaha");
+  // }, []);
 
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    console.log("app useEffect");
+
     if (localStorage.getItem('userToken')) {
       // let state = localStorage["userToken"];
       // if (state) {
@@ -78786,55 +78792,72 @@ function App() {
       axios__WEBPACK_IMPORTED_MODULE_3___default.a.get(url, config).then(function (res) {
         if (res.data.user) {
           // console.log(res.data.user);
-          setIsLoggedIn(true);
           setUser(res.data.user);
+          setIsLoggedIn(true);
         }
       });
+    } else {
+      setUser("");
     }
-  }, []);
-  return (
-    /*#__PURE__*/
-    //전역변수 전달
-    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AppContext.Provider, {
-      value: {
-        isLoggedIn: isLoggedIn,
-        setIsLoggedIn: setIsLoggedIn,
-        user: user
-      }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layuot_Header__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-      path: "/",
-      exact: true,
-      component: _routes_Home_Home__WEBPACK_IMPORTED_MODULE_6__["default"]
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-      path: "/auth/login",
-      exact: true,
-      component: _routes_Auth_AuthContainer__WEBPACK_IMPORTED_MODULE_7__["default"]
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-      path: "/auth/register",
-      exact: true,
-      component: _routes_Auth_AuthContainer__WEBPACK_IMPORTED_MODULE_7__["default"]
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-      path: "/logout",
-      exact: true,
-      component: _routes_Auth_AuthContainer__WEBPACK_IMPORTED_MODULE_7__["default"]
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-      path: "/info/index",
-      exact: true,
-      component: _routes_Profile_ProfileContainer__WEBPACK_IMPORTED_MODULE_8__["default"]
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-      path: "/info/medical_info",
-      exact: true,
-      component: _routes_Medical_MedicalContainer__WEBPACK_IMPORTED_MODULE_9__["default"]
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-      path: "/info/drive_score",
-      exact: true,
-      component: _routes_Drive_DriveContainer__WEBPACK_IMPORTED_MODULE_12__["default"]
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-      path: "/products",
-      exact: true,
-      component: _routes_Product_Product__WEBPACK_IMPORTED_MODULE_11__["default"]
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layuot_Footer__WEBPACK_IMPORTED_MODULE_5__["default"], null)))
-  );
+  }, [isLoggedIn]);
+  return user ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AppContext.Provider, {
+    value: {
+      isLoggedIn: isLoggedIn,
+      setIsLoggedIn: setIsLoggedIn,
+      user: user,
+      setUser: setUser
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layuot_Header__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    path: "/",
+    exact: true,
+    component: _routes_Home_Home__WEBPACK_IMPORTED_MODULE_6__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    path: "/logout",
+    exact: true,
+    component: _routes_Auth_AuthContainer__WEBPACK_IMPORTED_MODULE_7__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    path: "/info/index",
+    exact: true,
+    component: _routes_Profile_ProfileContainer__WEBPACK_IMPORTED_MODULE_8__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    path: "/info/medical_info",
+    exact: true,
+    component: _routes_Medical_MedicalContainer__WEBPACK_IMPORTED_MODULE_9__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    path: "/info/drive_score",
+    exact: true,
+    component: _routes_Drive_DriveContainer__WEBPACK_IMPORTED_MODULE_10__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    path: "/products",
+    exact: true,
+    component: _routes_Product_Product__WEBPACK_IMPORTED_MODULE_11__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layuot_Footer__WEBPACK_IMPORTED_MODULE_5__["default"], null))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AppContext.Provider, {
+    value: {
+      isLoggedIn: isLoggedIn,
+      setIsLoggedIn: setIsLoggedIn,
+      user: user
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layuot_Header__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    path: "/",
+    exact: true,
+    component: _routes_Home_Home__WEBPACK_IMPORTED_MODULE_6__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    path: "/auth/login",
+    exact: true,
+    component: _routes_Auth_AuthContainer__WEBPACK_IMPORTED_MODULE_7__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    path: "/auth/register",
+    exact: true,
+    component: _routes_Auth_AuthContainer__WEBPACK_IMPORTED_MODULE_7__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    path: "/info/medical_info",
+    exact: true,
+    component: _routes_Medical_MedicalContainer__WEBPACK_IMPORTED_MODULE_9__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    path: "/info/drive_score",
+    exact: true,
+    component: _routes_Drive_DriveContainer__WEBPACK_IMPORTED_MODULE_10__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layuot_Footer__WEBPACK_IMPORTED_MODULE_5__["default"], null)));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -79010,7 +79033,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_components_App__WEBPACK_IMPORTED_MODULE_2__["AppContext"]),
-      isLoggedIn = _useContext.isLoggedIn; //값 전달 성공
+      user = _useContext.user; //값 전달 성공
   // console.log(isLoggedIn);
 
 
@@ -79082,7 +79105,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   }, "\uACE0\uAC1D \uB9AC\uBDF0"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "navbar-nav col-auto"
-  }, isLoggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, user.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "nav-item"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/info/index",
@@ -80467,7 +80490,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MedicalView__WEBPACK_IMPORTED_MODULE_3__["default"], {
     user: user,
-    res: res
+    res: res,
+    medical_update: medical_update
   });
 });
 
@@ -81001,18 +81025,85 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
   var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
       _useState10 = _slicedToArray(_useState9, 2),
       error_text = _useState10[0],
-      setError_text = _useState10[1]; //값 받기
+      setError_text = _useState10[1];
 
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState12 = _slicedToArray(_useState11, 2),
+      arr = _useState12[0],
+      setArr = _useState12[1];
 
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+  react_geocode__WEBPACK_IMPORTED_MODULE_3___default.a.setApiKey("AIzaSyBmDNMJ1gbJusi6rqVoskubnytiXP0Rchc");
+  react_geocode__WEBPACK_IMPORTED_MODULE_3___default.a.setLanguage("ko"); //값 받기
+
+  var abc = function abc() {
     axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/info/index/".concat(user.id)).then(function (res) {
+      console.log("hahahahaha >>>");
+      console.log(res.data);
       setData(res.data);
 
       if (res.data.product) {
         setProduct_action("update");
-      }
+      } //해치움 ㅋㅋ
+      // if(res.data.reports){
+      //     console.log("res ####");
+      //     console.log(res);
+      //     // const arr = [];
+      //     for(var i = 0; i < (res.data.reports.data).length; i++){
+      //         Geocode.fromLatLng(res.data.reports.data[i].latitude, res.data.reports.data[i].longitude).then(
+      //             res => {
+      //                 setArr(arr.push(res.results[0].formatted_address))
+      //                 // console.log("res ####1");
+      //                 // // console.log(reports);
+      //                 // console.log("-----------------------------");
+      //                 // console.log(reports);
+      //                 console.log("res ####2");
+      //                 setReports(arr);
+      //             }
+      //         )
+      //     }
+      //     console.log("ddddddddddddddddddddddddddddddddddddddd");
+      //     // console.log(arr);
+      //     // setReports(arr);
+      // }
+
     });
-  }, [user]); //제품 생성
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    console.log("useEffect");
+    abc(); // Axios.get(`/info/index/${user.id}`).then(res => {
+    //     setData(res.data);
+    //     if(res.data.product){
+    //         setProduct_action("update");
+    //     }
+    //     if(res.data.reports){
+    //         console.log(res);
+    //         for(var i = 0; i < (res.data.reports.data).length; i++){
+    //             Geocode.fromLatLng(res.data.reports.data[i].latitude, res.data.reports.data[i].longitude).then(
+    //                 res => {
+    //                     reports.push(res.results[0].formatted_address)
+    //                     setReports(reports);
+    //                 }
+    //             )
+    //         }
+    //     }
+    // });
+  }, []); // const gps = async (index, latitude, longitude) => {
+  //     let location = null;
+  //     await console.log(index);
+  //     if(index == 1){
+  //         Geocode.fromLatLng(latitude, longitude).then(
+  //             res => {
+  //                 location = res.results[0].formatted_address;
+  //                 console.log(location);
+  //                 // setReports(res.results[0].formatted_address);
+  //                 // location = reports;
+  //             }
+  //         )
+  //     }
+  //     return "1";
+  // }
+  //제품 생성
 
   var create_product = function create_product() {
     var url = "/products";
@@ -81081,35 +81172,35 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     } else if (product_action == "update") {
       update_product();
     }
-  };
+  }; // const a = (latitude, longitude) => {
+  //     Geocode.setApiKey(process.env.MIX_GCP_API_KEY);
+  //     Geocode.setLanguage("ko");
+  //     return new Promise( (res,rej) => {
+  //         res(() => Geocode.fromLatLng(latitude, longitude));
+  //     });
+  // }
+  // console.log(data.reports.data.length);
 
-  var gps = function gps(index, latitude, longitude) {
-    var location = null;
-    console.log(index);
 
-    if (index == 1) {
-      react_geocode__WEBPACK_IMPORTED_MODULE_3___default.a.setApiKey("AIzaSyBmDNMJ1gbJusi6rqVoskubnytiXP0Rchc");
-      react_geocode__WEBPACK_IMPORTED_MODULE_3___default.a.setLanguage("ko");
-      new Promise(function (res, rej) {
-        res(react_geocode__WEBPACK_IMPORTED_MODULE_3___default.a.fromLatLng(latitude, longitude));
-      }).then(function (res) {
-        location = res.results[0].formatted_address;
-        console.log(location);
-        setReports(res.results[0].formatted_address);
-        location = reports;
-      });
-    }
+  console.log(reports.length);
+  console.log(reports);
 
-    return location;
-  };
+  if (data) {
+    console.log(data.reports.data.length);
+  }
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ProfileView__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    history: history,
-    data: data,
-    setProduct_key_input: setProduct_key_input,
-    error_text: error_text,
-    onSubmit: onSubmit
-  });
+  return (// && reports.length != 0
+    // && data.reports.data.length == reports.length 
+    data ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ProfileView__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      history: history,
+      data: data,
+      setProduct_key_input: setProduct_key_input,
+      error_text: error_text,
+      onSubmit: onSubmit,
+      reports: reports,
+      setData: setData
+    }) : null
+  );
 });
 
 /***/ }),
@@ -81127,6 +81218,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _layuot_Info_menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../layuot/Info_menu */ "./resources/js/layuot/Info_menu.js");
 /* harmony import */ var _partial_Product_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./partial/Product_modal */ "./resources/js/routes/Profile/partial/Product_modal.js");
+/* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/App */ "./resources/js/components/App.js");
+
 
 
 
@@ -81135,8 +81228,20 @@ __webpack_require__.r(__webpack_exports__);
       data = _ref.data,
       setProduct_key_input = _ref.setProduct_key_input,
       error_text = _ref.error_text,
-      onSubmit = _ref.onSubmit;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, data && data.user ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      onSubmit = _ref.onSubmit,
+      reports = _ref.reports;
+
+  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_components_App__WEBPACK_IMPORTED_MODULE_3__["AppContext"]),
+      user = _useContext.user,
+      setUser = _useContext.setUser;
+
+  console.log(user); // const [myReports, setMyReports] = useState(reports);
+  // useEffect(() => {
+  //     console.log("zzzzz");
+  //   }, [reports]);
+
+  console.log("난 무조건 불린다");
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, true ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     id: "intro",
     className: "section intro",
     style: {
@@ -81213,7 +81318,7 @@ __webpack_require__.r(__webpack_exports__);
       className: "col-sm-6 col-md-6"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       className: "gps"
-    })));
+    }, reports[index])));
   }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "text-center text-danger",
     style: {
@@ -81401,7 +81506,7 @@ __webpack_require__.r(__webpack_exports__);
     style: {
       background: "green"
     }
-  }))))))) : null);
+  }))))))) : undefined);
 });
 
 /***/ }),

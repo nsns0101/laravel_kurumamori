@@ -1,19 +1,28 @@
-import React from "react";
+import React, {useEffect, useState, useContext} from "react";
 import Info_menu from "../../layuot/Info_menu";
 import Product_modal from "./partial/Product_modal";
-
+import {AppContext} from "../../components/App";
 export default ( {
     history,
     data,
     setProduct_key_input,
     error_text,
     onSubmit,
+    reports,
 }) => {
+    const { user, setUser } = useContext(AppContext);
+    console.log(user);
+    // const [myReports, setMyReports] = useState(reports);
+
+    // useEffect(() => {
+    //     console.log("zzzzz");
+    //   }, [reports]);
     
+
+    console.log("난 무조건 불린다");
     return (
         <div>
-            {/* {profile ? ( */}
-            {data && data.user? (
+            {true ? (
                 <section id="intro" className="section intro" style={{padding: "50px 0px 0px 0px", background: "#f7f7f7"}}>
                     <div className="row">
                         <div className="col-md-2 col-xs-2 col-sm-2">
@@ -52,7 +61,7 @@ export default ( {
                                                         </div>
                                                         <div className="col-sm-6 col-md-6">
                                                             <p className="gps">
-                                                                {/* {gps(index, value.latitude, value.longitude)} */}
+                                                                {reports[index]}
                                                             </p>
                                                         </div>
                                                     </div>

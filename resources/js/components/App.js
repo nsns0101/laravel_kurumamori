@@ -33,9 +33,15 @@ export const AppContext = createContext();
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState(false);
     // console.log(user);
+    // console.log(isLoggedIn);
+    // useEffect(()=>{
+    //     console.log("hahaha");
+    // }, []);
+
     useEffect(()=>{
+        console.log("app useEffect");
         if(localStorage.getItem('userToken')){
             // let state = localStorage["userToken"];
             // if (state) {
@@ -57,37 +63,54 @@ function App() {
             .then(res => {
                 if(res.data.user){
                     // console.log(res.data.user);
-                    setIsLoggedIn(true);
                     setUser(res.data.user);
+                    setIsLoggedIn(true);
                 }
             }) 
         }
-    }, []);
-    return (
-            //전역변수 전달
-            <AppContext.Provider value={{isLoggedIn, setIsLoggedIn, user}}>
-                <BrowserRouter>
-                    <Header/>
-                    {/* 메인페이지 */}
-                    <Route path="/" exact={true} component={Home}/>
-                    {/* 로그인 페이지 */}
-                    <Route path="/auth/login" exact component={Login}/>
-                    {/* 회원가입 페이지 */}
-                    <Route path="/auth/register" exact component={Login}/>
-                    {/* 로그아웃 */}
-                    <Route path="/logout" exact component={Login}/>
-                    {/* 내정보 */}
-                    <Route path="/info/index" exact component={Info_index}/>
-                    {/* 의료정보 */}
-                    <Route path="/info/medical_info" exact component={Info_medical}/>
-                    {/* 운전점수 */}
-                    <Route path="/info/drive_score" exact component={Info_drive}/>
-                    
-                    <Route path="/products" exact component={Product}/>
-                    <Footer/>
-                </BrowserRouter>
-            </AppContext.Provider>
+        else{
+            setUser("");
+        }
+    }, [isLoggedIn]);
 
+    return ( user ? (
+        <AppContext.Provider value={{isLoggedIn, setIsLoggedIn, user, setUser}}>
+            <BrowserRouter>
+                <Header/>
+                {/* 메인페이지 */}
+                <Route path="/" exact={true} component={Home}/>
+
+                {/* 로그아웃 */}
+                <Route path="/logout" exact component={Login}/>
+                {/* 내정보 */}
+                <Route path="/info/index" exact component={Info_index}/>
+                {/* 의료정보 */}
+                <Route path="/info/medical_info" exact component={Info_medical}/>
+                {/* 운전점수 */}
+                <Route path="/info/drive_score" exact component={Info_drive}/>
+                
+                <Route path="/products" exact component={Product}/>
+                <Footer/>
+            </BrowserRouter>
+        </AppContext.Provider>
+    ) : (
+        <AppContext.Provider value={{isLoggedIn, setIsLoggedIn, user}}>
+            <BrowserRouter>
+                <Header/>
+                {/* 메인페이지 */}
+                <Route path="/" exact={true} component={Home}/>
+                {/* 로그인 페이지 */}
+                <Route path="/auth/login" exact component={Login}/>
+                {/* 회원가입 페이지 */}
+                <Route path="/auth/register" exact component={Login}/>
+                {/* 의료정보 */}
+                <Route path="/info/medical_info" exact component={Info_medical}/>
+                {/* 운전점수 */}
+                <Route path="/info/drive_score" exact component={Info_drive}/>
+                <Footer/>
+            </BrowserRouter>
+        </AppContext.Provider>
+    )
     );
 }
 

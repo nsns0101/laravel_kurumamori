@@ -5,7 +5,7 @@ import {AppContext} from "../components/App";
 
 
 export default  () => {
-    const {isLoggedIn} = useContext(AppContext);    //값 전달 성공
+    const {user} = useContext(AppContext);    //값 전달 성공
     // console.log(isLoggedIn);
     return (
         <section id="main-navigation">
@@ -34,7 +34,7 @@ export default  () => {
         
                     <ul className="navbar-nav col-auto">
                         {/* @if(Auth::user()) */}
-                        {isLoggedIn ? 
+                        {user.id ? 
                         <React.Fragment>
                             <li className="nav-item">
                                 <Link to="/info/index" className="nav-link" style={{color:"white"}}>내정보</Link> 

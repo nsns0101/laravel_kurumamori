@@ -61,7 +61,9 @@ $factory->define(App\Product::class, function (Faker $faker) {
     return [
         // 'user_id' => $faker->unique()->randomElement($userId),
         'user_id' => $faker->randomElement($userId),
+        // 'product_buy_id' => $faker->randomElement($product_use)->id,
         'product_buy_id' => $faker->unique()->randomElement($product_use)->id,
+        // 'product_key' => $faker->randomElement($product_use)->product_key,
         'product_key' => $faker->unique()->randomElement($product_use)->product_key,
         // 'date_buy' => $date,
         // 'date_as' => $as_date,

@@ -19,17 +19,87 @@ export default ( {history} ) => {
     const [product_action, setProduct_action] = useState("create");
     const [product_key_input, setProduct_key_input] = useState("");
     const [error_text, setError_text] = useState("");
-
-
+    const [arr, setArr] = useState([]);
+    Geocode.setApiKey(process.env.MIX_GCP_API_KEY);
+    Geocode.setLanguage("ko");
     //값 받기
-    useEffect(()=>{
+
+    const abc = () => {
         Axios.get(`/info/index/${user.id}`).then(res => {
+            console.log("hahahahaha >>>");
+            console.log(res.data);
             setData(res.data);
+
             if(res.data.product){
                 setProduct_action("update");
             }
-        })
-    }, [user]);
+
+        //해치움 ㅋㅋ
+            // if(res.data.reports){
+            //     console.log("res ####");
+            //     console.log(res);
+            //     // const arr = [];
+            //     for(var i = 0; i < (res.data.reports.data).length; i++){
+            //         Geocode.fromLatLng(res.data.reports.data[i].latitude, res.data.reports.data[i].longitude).then(
+            //             res => {
+            //                 setArr(arr.push(res.results[0].formatted_address))
+            //                 // console.log("res ####1");
+            //                 // // console.log(reports);
+            //                 // console.log("-----------------------------");
+            //                 // console.log(reports);
+            //                 console.log("res ####2");
+            //                 setReports(arr);
+            //             }
+            //         )
+            //     }
+            //     console.log("ddddddddddddddddddddddddddddddddddddddd");
+            //     // console.log(arr);
+            //     // setReports(arr);
+
+            // }
+
+        });
+    };
+
+    useEffect(()=>{
+        console.log("useEffect");
+        abc();
+        // Axios.get(`/info/index/${user.id}`).then(res => {
+        //     setData(res.data);
+        //     if(res.data.product){
+        //         setProduct_action("update");
+        //     }
+        //     if(res.data.reports){
+        //         console.log(res);
+        //         for(var i = 0; i < (res.data.reports.data).length; i++){
+        //             Geocode.fromLatLng(res.data.reports.data[i].latitude, res.data.reports.data[i].longitude).then(
+        //                 res => {
+        //                     reports.push(res.results[0].formatted_address)
+        //                     setReports(reports);
+        //                 }
+        //             )
+        //         }
+        //     }
+
+        // });
+    }, []);
+
+    // const gps = async (index, latitude, longitude) => {
+    //     let location = null;
+    //     await console.log(index);
+
+    //     if(index == 1){
+    //         Geocode.fromLatLng(latitude, longitude).then(
+    //             res => {
+    //                 location = res.results[0].formatted_address;
+    //                 console.log(location);
+    //                 // setReports(res.results[0].formatted_address);
+    //                 // location = reports;
+    //             }
+    //         )
+    //     }
+    //     return "1";
+    // }
 
     //제품 생성
     const create_product = () => {
@@ -105,33 +175,31 @@ export default ( {history} ) => {
         }
     }
 
-    const gps = (index, latitude, longitude) => {
-        let location = null;
-        console.log(index);
-        if(index == 1){
-            Geocode.setApiKey(process.env.MIX_GCP_API_KEY);
-            Geocode.setLanguage("ko");
-            new Promise(function(res, rej) {
-                res(Geocode.fromLatLng(latitude, longitude))
-            }).then(
-                res => {
-                    location = res.results[0].formatted_address;
-                    console.log(location);
-                    setReports(res.results[0].formatted_address);
-                    location = reports;
-                }
-            )
-        }
-        return location;
+    // const a = (latitude, longitude) => {
+    //     Geocode.setApiKey(process.env.MIX_GCP_API_KEY);
+    //     Geocode.setLanguage("ko");
+    //     return new Promise( (res,rej) => {
+    //         res(() => Geocode.fromLatLng(latitude, longitude));
+    //     });
+    // }
+    // console.log(data.reports.data.length);
+    console.log(reports.length);
+    console.log(reports);
+    if(data){
+        console.log(data.reports.data.length);
     }
-
     return (
+        // && reports.length != 0
+        // && data.reports.data.length == reports.length 
+        data  ? 
         <ProfileView
             history={history}
             data={data}
             setProduct_key_input={setProduct_key_input}
             error_text={error_text}
             onSubmit={onSubmit}
-        />
+            reports={reports}
+            setData={setData}
+        /> : null
     )
 }

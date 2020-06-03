@@ -84,9 +84,11 @@ class ProductController extends Controller
     }
     public function destroy(\App\Product $product)
     {
-        \Log::info("aaa");
+        \Log::info($product);
+        \App\Product::whereUserId($product->user_id)->delete();
         // $this->authorize('delete', $product);
-        $product->delete();
+        
+        // $product->delete();
         return response()->json([], 200);
 
     }

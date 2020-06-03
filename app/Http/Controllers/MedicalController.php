@@ -129,17 +129,18 @@ class MedicalController extends Controller
         }
         return redirect('/info/medical_info');
     }
-    public function edit()
+    public function edit(\App\Medical_info $medical_info)
     {
-        $medical_info = \App\Medical_info::whereUser_id($user_id)->first();
-        $medical_id = \App\Medical_info::whereUser_id($user_id)->first()->id;
-        $past_sickness = \App\Past_sickness::whereUser_id($user_id)->get();
-        $sickness = \App\Sickness::whereUser_id($user_id)->get();
+        \Log::info($medical_info);
+        $medical_info = \App\Medical_info::whereId($medical_info->id)->first();
+        // $medical_id = \App\Medical_info::whereUser_id($user_id)->first()->id;
+        $past_sickness = \App\Past_sickness::whereMedical_id($medical_info->id)->get();
+        $sickness = \App\Sickness::whereMedical_id($medical_info->id)->get();
 
         // \Log::info($past_sickness);
         $sickness_list = ["없음", "고혈압", "당뇨", "결핵", "심장질환", "알러지", "천식", "심부전증", "페렴", "디스크", "간경화", "관절염", "협심증", "암", "갑상선염", "고지혈증", "골다공증", "과민성 대장", "기관지염", "뇌졸중", "신장질환", "간암"];
         \Log::info(count($sickness_list));
-        $insurance = \App\Insurance::whereUser_id($user_id)->first();
+        $insurance = \App\Insurance::whereMedical_id($medical_info->id)->first();
         $insurance_list_my = $insurance ? \App\Insurance_list::whereId($insurance->insurance_list_id)->first() : null;
         $insurance_list = \App\Insurance_list::get();
 

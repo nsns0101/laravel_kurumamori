@@ -23,5 +23,6 @@ export default () => {
     <MedicalView
         user={user}
         res={res}
+        medical_update={medical_update}
     />)
 }
