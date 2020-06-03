@@ -11,15 +11,7 @@ export default ( {
     reports,
 }) => {
     const { user, setUser } = useContext(AppContext);
-    console.log(user);
-    // const [myReports, setMyReports] = useState(reports);
 
-    // useEffect(() => {
-    //     console.log("zzzzz");
-    //   }, [reports]);
-    
-
-    console.log("난 무조건 불린다");
     return (
         <div>
             {true ? (
@@ -73,7 +65,6 @@ export default ( {
                                                 </p>
                                                 )
                                             }
-
 
                                             {/* @forelse($reports as $report) */}
                                             <div className="row">
@@ -145,25 +136,7 @@ export default ( {
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    {/* @for($i = 0; $i < count($boards); $i++) */}
-                                                        {/* <tr onClick="location.href='/boards/{{$board_categories[$i]->category=="유저리뷰" ? "reviews" : "questions"}}/{{$boards[$i]->id}}'"> */}
-                                                    {/* <tr>    
-                                                        <th className="text-center" scope="row">{data.boards.data}</th>
-                                                        <td className="text-center">{$boards[$i]->title}</td>
-                                                        <td className="text-center">{$board_categories[$i]->category}</td>
-                                                        <td className="text-center">{$boards[$i]->created_at}</td>
-                                                        <td className="text-center">{$boards[$i]->view_count}</td>
-                                                        
-                                                        @if($board_comment[$i])
-                                                        <td className="text-center">O</td>
-                                                        @else 
-                                                        <td className="text-center">X</td>
-                                                        @endif
-                                                    </tr>
-                                                    {{-- @empty 
-                                                    <p className="text-center text-danger">이력이 없습니다.</p> --}}
-                                                    @endfor
-                                                    <br /> */}
+
                                                     {data.boards.data ? data.boards.data.map( (value, index) => {
                                                         return (
                                                             <tr key={index} onClick={()=> history.push(`/boards/${data.board_categories[index].category == "유저리뷰" ? "reviews" : "questions"}/${value.id}`)} style={{cursor:"pointer"}}>
@@ -193,18 +166,6 @@ export default ( {
                                         <div className="caption">
                                             <h4 className="text-center">제품 구매 정보</h4>
                                             <hr style={{background:"green"}}/>
-                                            {/* @if(count($user_product_buy_key))
-                                                @for($i = 0; $i < count($user_product_buy_key); $i++)
-                                                    {{-- <p id="text_product_name">제품 명 : {{$product->product_name}}</p> --}}
-                                                    <p id="text_product_buy_key" style="font-size:20px"><b>구매한 제품 키{{$i + 1}} </b> : {{$user_product_buy_key[$i]->product_key}}</p>
-                                                    {{-- <p id="text_product_buy_date_buy" style="font-size:20px"><b>구입날짜</b> : {{$product_buy->created_at}}</p>
-                                                    <p id="text_product_buy_date_as" style="font-size:20px"><b>무상 AS기한</b> : 구입 후 1년까지</p> --}}
-                                                    
-                                                    {{-- <button className="btn btn-primary">등록하기</button> --}}
-                                                @endfor
-                                            @else
-                                            <p className="text-center text-danger">구매한 제품이 없습니다.</p>
-                                            @endif */}
                                             {data.user_product_buy_key ? data.user_product_buy_key.map( (value, index) => {
                                                 return (
                                                     <div className="text-center" key={index}>

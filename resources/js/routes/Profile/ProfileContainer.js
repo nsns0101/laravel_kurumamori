@@ -24,88 +24,37 @@ export default ( {history} ) => {
     Geocode.setLanguage("ko");
     //값 받기
 
-    const abc = () => {
+
+
+    useEffect(()=>{
+        console.log("profile useEffect");
         Axios.get(`/info/index/${user.id}`).then(res => {
-            console.log("hahahahaha >>>");
-            console.log(res.data);
             setData(res.data);
 
             if(res.data.product){
                 setProduct_action("update");
             }
 
-        //해치움 ㅋㅋ
-            // if(res.data.reports){
-            //     console.log("res ####");
-            //     console.log(res);
-            //     // const arr = [];
-            //     for(var i = 0; i < (res.data.reports.data).length; i++){
-            //         Geocode.fromLatLng(res.data.reports.data[i].latitude, res.data.reports.data[i].longitude).then(
-            //             res => {
-            //                 setArr(arr.push(res.results[0].formatted_address))
-            //                 // console.log("res ####1");
-            //                 // // console.log(reports);
-            //                 // console.log("-----------------------------");
-            //                 // console.log(reports);
-            //                 console.log("res ####2");
-            //                 setReports(arr);
-            //             }
-            //         )
-            //     }
-            //     console.log("ddddddddddddddddddddddddddddddddddddddd");
-            //     // console.log(arr);
-            //     // setReports(arr);
-
-            // }
+            // 해치움 ㅋㅋ gps
+            if(res.data.reports){
+                // const arr = [];
+                for(var i = 0; i < (res.data.reports.data).length; i++){
+                    Geocode.fromLatLng(res.data.reports.data[i].latitude, res.data.reports.data[i].longitude).then(
+                        res => {
+                            setArr(arr.push(res.results[0].formatted_address))
+                            setReports(arr);
+                        }
+                    )
+                }
+            }
 
         });
-    };
-
-    useEffect(()=>{
-        console.log("useEffect");
-        abc();
-        // Axios.get(`/info/index/${user.id}`).then(res => {
-        //     setData(res.data);
-        //     if(res.data.product){
-        //         setProduct_action("update");
-        //     }
-        //     if(res.data.reports){
-        //         console.log(res);
-        //         for(var i = 0; i < (res.data.reports.data).length; i++){
-        //             Geocode.fromLatLng(res.data.reports.data[i].latitude, res.data.reports.data[i].longitude).then(
-        //                 res => {
-        //                     reports.push(res.results[0].formatted_address)
-        //                     setReports(reports);
-        //                 }
-        //             )
-        //         }
-        //     }
-
-        // });
     }, []);
-
-    // const gps = async (index, latitude, longitude) => {
-    //     let location = null;
-    //     await console.log(index);
-
-    //     if(index == 1){
-    //         Geocode.fromLatLng(latitude, longitude).then(
-    //             res => {
-    //                 location = res.results[0].formatted_address;
-    //                 console.log(location);
-    //                 // setReports(res.results[0].formatted_address);
-    //                 // location = reports;
-    //             }
-    //         )
-    //     }
-    //     return "1";
-    // }
 
     //제품 생성
     const create_product = () => {
         const url = "/products";
         const body = {
-            //oa2P-lki8-qSkV-OOX1
             user_id : user.id,
             product_key : product_key_input
         }
@@ -113,7 +62,6 @@ export default ( {history} ) => {
             'Content-Type' : 'application/json'
         }
         return Axios.post(url, body, config).then(res => {
-            console.log(res);
             if(res.data){
                 window.alert("제품을 등록하였습니다.");
                 // history.push("/info/index");
@@ -137,7 +85,6 @@ export default ( {history} ) => {
             'Content-Type' : 'application/json'
         }
         return Axios.put(url, body, config).then(res => {
-            console.log(res);
             if(res.data){
                 window.alert("제품을 재등록하였습니다.");
                 // history.push("/info/index");
@@ -175,22 +122,7 @@ export default ( {history} ) => {
         }
     }
 
-    // const a = (latitude, longitude) => {
-    //     Geocode.setApiKey(process.env.MIX_GCP_API_KEY);
-    //     Geocode.setLanguage("ko");
-    //     return new Promise( (res,rej) => {
-    //         res(() => Geocode.fromLatLng(latitude, longitude));
-    //     });
-    // }
-    // console.log(data.reports.data.length);
-    console.log(reports.length);
-    console.log(reports);
-    if(data){
-        console.log(data.reports.data.length);
-    }
     return (
-        // && reports.length != 0
-        // && data.reports.data.length == reports.length 
         data  ? 
         <ProfileView
             history={history}
