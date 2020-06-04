@@ -81413,11 +81413,12 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************************************!*\
   !*** ./resources/js/routes/Medical/MedicalContainer.js ***!
   \*********************************************************/
-/*! exports provided: default */
+/*! exports provided: MedicalContext, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MedicalContext", function() { return MedicalContext; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/App */ "./resources/js/components/App.js");
@@ -81440,6 +81441,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+var MedicalContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["createContext"])();
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_components_App__WEBPACK_IMPORTED_MODULE_1__["AppContext"]),
       user = _useContext.user;
@@ -81526,8 +81528,19 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/info/medical_info/".concat(user.id)).then(function (res) {
-      setRes(res); // console.log(res.data.past_sickness.past_sickness_name);
-      // setPast_sickness_name(...res.data.past_sickness.past_sickness_name);
+      setRes(res); //.res.data.past_sickness[0].past_sickness_name
+      //.res.data.past_sickness[1].past_sickness_name을 둘다받기
+
+      if (res.data.past_sickness) {
+        var arr = [];
+
+        for (var i = 0; i < res.data.past_sickness.length; i++) {
+          arr.push(res.data.past_sickness[i].past_sickness_name);
+        } // setPast_sickness_name({ 0 : 1 , 1 : 2 }});
+
+
+        setPast_sickness_name(arr); // console.log(res.data.past_sickness.past_sickness_name);
+      }
     });
   }, [user]);
   console.log(res);
@@ -81537,40 +81550,73 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     console.log("update");
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MedicalView__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    user: user,
-    res: res,
-    setRes: setRes,
-    medical_update: medical_update,
-    past_sickness_name: past_sickness_name,
-    setPast_sickness_name: setPast_sickness_name,
-    past_sickness_supplementation: past_sickness_supplementation,
-    setPast_sickness_supplementation: setPast_sickness_supplementation,
-    sickness_name: sickness_name,
-    setSickness_name: setSickness_name,
-    medicine: medicine,
-    setMedicine: setMedicine,
-    symptom: symptom,
-    setSymptom: setSymptom,
-    hospital: hospital,
-    setHospital: setHospital,
-    blood_type: blood_type,
-    setBlood_type: setBlood_type,
-    disability_status: disability_status,
-    setDisability_status: setDisability_status,
-    report_request: report_request,
-    setReport_request: setReport_request,
-    guardian_phone: guardian_phone,
-    setGuardian_phone: setGuardian_phone,
-    insurance_bool: insurance_bool,
-    setInsurance_bool: setInsurance_bool,
-    insurance_name: insurance_name,
-    setInsurance_name: setInsurance_name,
-    subscription_date: subscription_date,
-    setSubscription_date: setSubscription_date,
-    expiration_date: expiration_date,
-    setExpiration_date: setExpiration_date
-  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MedicalContext.Provider, {
+    value: {
+      res: res,
+      setRes: setRes,
+      medical_update: medical_update,
+      past_sickness_name: past_sickness_name,
+      setPast_sickness_name: setPast_sickness_name,
+      past_sickness_supplementation: past_sickness_supplementation,
+      setPast_sickness_supplementation: setPast_sickness_supplementation,
+      sickness_name: sickness_name,
+      setSickness_name: setSickness_name,
+      medicine: medicine,
+      setMedicine: setMedicine,
+      symptom: symptom,
+      setSymptom: setSymptom,
+      hospital: hospital,
+      setHospital: setHospital,
+      blood_type: blood_type,
+      setBlood_type: setBlood_type,
+      disability_status: disability_status,
+      setDisability_status: setDisability_status,
+      report_request: report_request,
+      setReport_request: setReport_request,
+      guardian_phone: guardian_phone,
+      setGuardian_phone: setGuardian_phone,
+      insurance_bool: insurance_bool,
+      setInsurance_bool: setInsurance_bool,
+      insurance_name: insurance_name,
+      setInsurance_name: setInsurance_name,
+      subscription_date: subscription_date,
+      setSubscription_date: setSubscription_date,
+      expiration_date: expiration_date,
+      setExpiration_date: setExpiration_date
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MedicalView__WEBPACK_IMPORTED_MODULE_3__["default"] // user={user}
+  // res={res}
+  // setRes={setRes}
+  // medical_update={medical_update}
+  // past_sickness_name = {past_sickness_name}
+  // setPast_sickness_name = {setPast_sickness_name}
+  // past_sickness_supplementation = {past_sickness_supplementation}
+  // setPast_sickness_supplementation = {setPast_sickness_supplementation}
+  // sickness_name = {sickness_name}
+  // setSickness_name = {setSickness_name}
+  // medicine = {medicine}
+  // setMedicine = {setMedicine}
+  // symptom = {symptom}
+  // setSymptom = {setSymptom}
+  // hospital = {hospital}
+  // setHospital = {setHospital}
+  // blood_type = {blood_type}
+  // setBlood_type = {setBlood_type}
+  // disability_status = {disability_status}
+  // setDisability_status = {setDisability_status}
+  // report_request = {report_request}
+  // setReport_request = {setReport_request}
+  // guardian_phone = {guardian_phone}
+  // setGuardian_phone = {setGuardian_phone}
+  // insurance_bool = {insurance_bool}
+  // setInsurance_bool = {setInsurance_bool}
+  // insurance_name = {insurance_name}
+  // setInsurance_name = {setInsurance_name}
+  // subscription_date = {subscription_date}
+  // setSubscription_date = {setSubscription_date}
+  // expiration_date = {expiration_date}
+  // setExpiration_date = {setExpiration_date}        
+  , null));
 });
 
 /***/ }),
@@ -81591,44 +81637,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _partial_Create_medical_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./partial/Create_medical.js */ "./resources/js/routes/Medical/partial/Create_medical.js");
 /* harmony import */ var _good_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./good.css */ "./resources/js/routes/Medical/good.css");
 /* harmony import */ var _good_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_good_css__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/App */ "./resources/js/components/App.js");
+/* harmony import */ var _MedicalContainer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./MedicalContainer */ "./resources/js/routes/Medical/MedicalContainer.js");
+function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
+
+
+
 
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
-  var user = _ref.user,
-      res = _ref.res,
-      setRes = _ref.setRes,
-      medical_update = _ref.medical_update,
-      past_sickness_name = _ref.past_sickness_name,
-      setPast_sickness_name = _ref.setPast_sickness_name,
-      past_sickness_supplementation = _ref.past_sickness_supplementation,
-      setPast_sickness_supplementation = _ref.setPast_sickness_supplementation,
-      sickness_name = _ref.sickness_name,
-      setSickness_name = _ref.setSickness_name,
-      medicine = _ref.medicine,
-      setMedicine = _ref.setMedicine,
-      symptom = _ref.symptom,
-      setSymptom = _ref.setSymptom,
-      hospital = _ref.hospital,
-      setHospital = _ref.setHospital,
-      blood_type = _ref.blood_type,
-      setBlood_type = _ref.setBlood_type,
-      disability_status = _ref.disability_status,
-      setDisability_status = _ref.setDisability_status,
-      report_request = _ref.report_request,
-      setReport_request = _ref.setReport_request,
-      guardian_phone = _ref.guardian_phone,
-      setGuardian_phone = _ref.setGuardian_phone,
-      insurance_bool = _ref.insurance_bool,
-      setInsurance_bool = _ref.setInsurance_bool,
-      insurance_name = _ref.insurance_name,
-      setInsurance_name = _ref.setInsurance_name,
-      subscription_date = _ref.subscription_date,
-      setSubscription_date = _ref.setSubscription_date,
-      expiration_date = _ref.expiration_date,
-      setExpiration_date = _ref.setExpiration_date;
+  _objectDestructuringEmpty(_ref);
+
+  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_components_App__WEBPACK_IMPORTED_MODULE_5__["AppContext"]),
+      user = _useContext.user;
+
+  var _useContext2 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_MedicalContainer__WEBPACK_IMPORTED_MODULE_6__["MedicalContext"]),
+      res = _useContext2.res;
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, user && user.id && res && res.config.url == "/info/medical_info/".concat(user.id) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     id: "intro",
     className: "section intro",
@@ -81646,56 +81674,56 @@ __webpack_require__.r(__webpack_exports__);
     style: {
       color: "blue"
     }
-  }, "\uC758\uB8CC \uC815\uBCF4"), res && res.data.medical_info ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_partial_Show_medical_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    data: res.data,
-    medical_update: medical_update,
-    past_sickness_name: past_sickness_name,
-    past_sickness_supplementation: past_sickness_supplementation,
-    sickness_name: sickness_name,
-    medicine: medicine,
-    symptom: symptom,
-    hospital: hospital,
-    blood_type: blood_type,
-    disability_status: disability_status,
-    report_request: report_request,
-    guardian_phone: guardian_phone,
-    insurance_bool: insurance_bool,
-    insurance_name: insurance_name,
-    subscription_date: subscription_date,
-    expiration_date: expiration_date
-  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_partial_Create_medical_js__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    user: user,
-    res: res,
-    setRes: setRes,
-    past_sickness_name: past_sickness_name,
-    setPast_sickness_name: setPast_sickness_name,
-    past_sickness_supplementation: past_sickness_supplementation,
-    setPast_sickness_supplementation: setPast_sickness_supplementation,
-    sickness_name: sickness_name,
-    setSickness_name: setSickness_name,
-    medicine: medicine,
-    setMedicine: setMedicine,
-    symptom: symptom,
-    setSymptom: setSymptom,
-    hospital: hospital,
-    setHospital: setHospital,
-    blood_type: blood_type,
-    setBlood_type: setBlood_type,
-    disability_status: disability_status,
-    setDisability_status: setDisability_status,
-    report_request: report_request,
-    setReport_request: setReport_request,
-    guardian_phone: guardian_phone,
-    setGuardian_phone: setGuardian_phone,
-    insurance_bool: insurance_bool,
-    setInsurance_bool: setInsurance_bool,
-    insurance_name: insurance_name,
-    setInsurance_name: setInsurance_name,
-    subscription_date: subscription_date,
-    setSubscription_date: setSubscription_date,
-    expiration_date: expiration_date,
-    setExpiration_date: setExpiration_date
-  })))) : null);
+  }, "\uC758\uB8CC \uC815\uBCF4"), res && res.data.medical_info ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_partial_Show_medical_js__WEBPACK_IMPORTED_MODULE_2__["default"] // data={res.data}
+  // medical_update={medical_update}
+  // past_sickness_name = {past_sickness_name}
+  // past_sickness_supplementation = {past_sickness_supplementation}
+  // sickness_name = {sickness_name}
+  // medicine = {medicine} 
+  // symptom = {symptom} 
+  // hospital = {hospital}
+  // blood_type = {blood_type}
+  // disability_status = {disability_status}
+  // report_request = {report_request}
+  // guardian_phone = {guardian_phone}
+  // insurance_bool = {insurance_bool}
+  // insurance_name = {insurance_name}
+  // subscription_date = {subscription_date}
+  // expiration_date = {expiration_date}
+  , null) :
+  /*#__PURE__*/
+  react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_partial_Create_medical_js__WEBPACK_IMPORTED_MODULE_3__["default"] // user={user}
+  // res={res}
+  // setRes={setRes}
+  // past_sickness_name = {past_sickness_name}
+  // setPast_sickness_name = {setPast_sickness_name}
+  // past_sickness_supplementation = {past_sickness_supplementation}
+  // setPast_sickness_supplementation = {setPast_sickness_supplementation}
+  // sickness_name = {sickness_name}
+  // setSickness_name = {setSickness_name}
+  // medicine = {medicine}
+  // setMedicine = {setMedicine}
+  // symptom = {symptom}
+  // setSymptom = {setSymptom}
+  // hospital = {hospital}
+  // setHospital = {setHospital}
+  // blood_type = {blood_type}
+  // setBlood_type = {setBlood_type}
+  // disability_status = {disability_status}
+  // setDisability_status = {setDisability_status}
+  // report_request = {report_request}
+  // setReport_request = {setReport_request}
+  // guardian_phone = {guardian_phone}
+  // setGuardian_phone = {setGuardian_phone}
+  // insurance_bool = {insurance_bool}
+  // setInsurance_bool = {setInsurance_bool}
+  // insurance_name = {insurance_name}
+  // setInsurance_name = {setInsurance_name}
+  // subscription_date = {subscription_date}
+  // setSubscription_date = {setSubscription_date}
+  // expiration_date = {expiration_date}
+  // setExpiration_date = {setExpiration_date}  
+  , null)))) : null);
 });
 
 /***/ }),
@@ -81743,41 +81771,39 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Past_sickness__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Past_sickness */ "./resources/js/routes/Medical/partial/Past_sickness.js");
 /* harmony import */ var _Sickness__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Sickness */ "./resources/js/routes/Medical/partial/Sickness.js");
+/* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../components/App */ "./resources/js/components/App.js");
+/* harmony import */ var _MedicalContainer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../MedicalContainer */ "./resources/js/routes/Medical/MedicalContainer.js");
+function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
 
 
 
-var data = null;
+
+
+
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
-  var res = _ref.res,
-      setRes = _ref.setRes,
-      past_sickness_name = _ref.past_sickness_name,
-      setPast_sickness_name = _ref.setPast_sickness_name,
-      past_sickness_supplementation = _ref.past_sickness_supplementation,
-      setPast_sickness_supplementation = _ref.setPast_sickness_supplementation,
-      sickness_name = _ref.sickness_name,
-      setSickness_name = _ref.setSickness_name,
-      medicine = _ref.medicine,
-      setMedicine = _ref.setMedicine,
-      symptom = _ref.symptom,
-      setSymptom = _ref.setSymptom,
-      hospital = _ref.hospital,
-      setHospital = _ref.setHospital,
-      blood_type = _ref.blood_type,
-      setBlood_type = _ref.setBlood_type,
-      disability_status = _ref.disability_status,
-      setDisability_status = _ref.setDisability_status,
-      report_request = _ref.report_request,
-      setReport_request = _ref.setReport_request,
-      guardian_phone = _ref.guardian_phone,
-      setGuardian_phone = _ref.setGuardian_phone,
-      insurance_bool = _ref.insurance_bool,
-      setInsurance_bool = _ref.setInsurance_bool,
-      insurance_name = _ref.insurance_name,
-      setInsurance_name = _ref.setInsurance_name,
-      subscription_date = _ref.subscription_date,
-      setSubscription_date = _ref.setSubscription_date,
-      expiration_date = _ref.expiration_date,
-      setExpiration_date = _ref.setExpiration_date;
+  _objectDestructuringEmpty(_ref);
+
+  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_components_App__WEBPACK_IMPORTED_MODULE_3__["AppContext"]),
+      user = _useContext.user;
+
+  var _useContext2 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_MedicalContainer__WEBPACK_IMPORTED_MODULE_4__["MedicalContext"]),
+      blood_type = _useContext2.blood_type,
+      setBlood_type = _useContext2.setBlood_type,
+      disability_status = _useContext2.disability_status,
+      setDisability_status = _useContext2.setDisability_status,
+      report_request = _useContext2.report_request,
+      setReport_request = _useContext2.setReport_request,
+      guardian_phone = _useContext2.guardian_phone,
+      setGuardian_phone = _useContext2.setGuardian_phone,
+      insurance_bool = _useContext2.insurance_bool,
+      setInsurance_bool = _useContext2.setInsurance_bool,
+      insurance_name = _useContext2.insurance_name,
+      setInsurance_name = _useContext2.setInsurance_name,
+      subscription_date = _useContext2.subscription_date,
+      setSubscription_date = _useContext2.setSubscription_date,
+      expiration_date = _useContext2.expiration_date,
+      setExpiration_date = _useContext2.setExpiration_date;
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     action: "{{ route('medical_info.update',$medical_info->id) }}",
     method: "POST",
@@ -81973,6 +81999,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dropdown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dropdown */ "./node_modules/react-dropdown/dist/index.js");
 /* harmony import */ var react_dropdown__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dropdown__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../components/App */ "./resources/js/components/App.js");
+/* harmony import */ var _MedicalContainer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../MedicalContainer */ "./resources/js/routes/Medical/MedicalContainer.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -81995,20 +82023,33 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
+
+
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
-  var res = _ref.res,
-      setRes = _ref.setRes,
-      past_sickness_name = _ref.past_sickness_name,
-      setPast_sickness_name = _ref.setPast_sickness_name,
-      past_sickness_supplementation = _ref.past_sickness_supplementation,
-      setPast_sickness_supplementation = _ref.setPast_sickness_supplementation;
+  _objectDestructuringEmpty(_ref);
+
+  res = {
+    res: res
+  };
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(["abc", "def"]),
       _useState2 = _slicedToArray(_useState, 2),
       past_sickness = _useState2[0],
-      setPast_sickness = _useState2[1]; //드롭다운 옵션
+      setPast_sickness = _useState2[1];
+
+  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_components_App__WEBPACK_IMPORTED_MODULE_2__["AppContext"]),
+      user = _useContext.user;
+
+  var _useContext2 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_MedicalContainer__WEBPACK_IMPORTED_MODULE_3__["MedicalContext"]),
+      setRes = _useContext2.setRes,
+      past_sickness_name = _useContext2.past_sickness_name,
+      setPast_sickness_name = _useContext2.setPast_sickness_name,
+      past_sickness_supplementation = _useContext2.past_sickness_supplementation,
+      setPast_sickness_supplementation = _useContext2.setPast_sickness_supplementation; //드롭다운 옵션
 
 
   var options = ['one', 'two', 'three'];
@@ -82111,10 +82152,24 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../components/App */ "./resources/js/components/App.js");
+/* harmony import */ var _MedicalContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../MedicalContainer */ "./resources/js/routes/Medical/MedicalContainer.js");
+function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
+
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
-  var data = _ref.data,
-      medical_update = _ref.medical_update;
+  _objectDestructuringEmpty(_ref);
+
+  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_components_App__WEBPACK_IMPORTED_MODULE_1__["AppContext"]),
+      user = _useContext.user;
+
+  var _useContext2 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_MedicalContainer__WEBPACK_IMPORTED_MODULE_2__["MedicalContext"]),
+      res = _useContext2.res;
+
+  console.log("goooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooood");
+  console.log(res);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "good") // <div>
   //     <a className="btn btn-success" href={`/info/medical_info/${data.medical_info.id}/edit`}>의료정보 수정</a>
   //     <div className="row">

@@ -1,15 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Dropdown from "react-dropdown";
+import {AppContext} from "../../../components/App";
+import {MedicalContext} from "../MedicalContainer";
 export default ({
-    res,
-    setRes,
-    past_sickness_name,
-    setPast_sickness_name,
-    past_sickness_supplementation,
-    setPast_sickness_supplementation,
+    // res,
+    // setRes,
+    // past_sickness_name,
+    // setPast_sickness_name,
+    // past_sickness_supplementation,
+    // setPast_sickness_supplementation,
 }) => {
-    
+    res={res}
     let [past_sickness, setPast_sickness] = useState(["abc","def"]);
+    const { user } = useContext(AppContext);
+    const { 
+        setRes,
+        past_sickness_name,
+        setPast_sickness_name,
+        past_sickness_supplementation,
+        setPast_sickness_supplementation,
+     } = useContext(MedicalContext);
     //드롭다운 옵션
     const options = [
         'one', 'two', 'three'

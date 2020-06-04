@@ -1,7 +1,15 @@
-import React from "react";
+import React, {useContext} from "react";
+import {AppContext} from "../../../components/App";
+import {MedicalContext} from "../MedicalContainer";
 
-
-export default ({data, medical_update}) => {
+export default ({
+    // data, 
+    // medical_update
+}) => {
+    const { user } = useContext(AppContext);
+    const { res } = useContext(MedicalContext);
+    console.log("goooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooood");
+    console.log(res);
     return (
         <div>
             good

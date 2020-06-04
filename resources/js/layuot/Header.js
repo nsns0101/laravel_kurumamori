@@ -3,7 +3,6 @@ import { Route, Link, BrowserRouter} from "react-router-dom";
 import {AppContext} from "../components/App";
 // import styled from "styled-components";
 
-
 export default  () => {
     const {user} = useContext(AppContext);    //값 전달 성공
     // console.log(isLoggedIn);

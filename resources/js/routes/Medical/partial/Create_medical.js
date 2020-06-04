@@ -1,40 +1,60 @@
-import React from "react";
+import React, {useContext} from "react";
 import Past_sickness from "./Past_sickness";
 import Sickness from "./Sickness";
+import {AppContext} from "../../../components/App";
+import {MedicalContext} from "../MedicalContainer";
 
-const data = null;
 export default ({
-    res,
-    setRes,
-    past_sickness_name,
-    setPast_sickness_name,
-    past_sickness_supplementation,
-    setPast_sickness_supplementation,
-    sickness_name,
-    setSickness_name,
-    medicine,
-    setMedicine,
-    symptom,
-    setSymptom,
-    hospital,
-    setHospital,
-    blood_type,
-    setBlood_type,
-    disability_status,
-    setDisability_status,
-    report_request,
-    setReport_request,
-    guardian_phone,
-    setGuardian_phone,
-    insurance_bool,
-    setInsurance_bool,
-    insurance_name,
-    setInsurance_name,
-    subscription_date,
-    setSubscription_date,
-    expiration_date,
-    setExpiration_date,
+    // res,
+    // setRes,
+    // past_sickness_name,
+    // setPast_sickness_name,
+    // past_sickness_supplementation,
+    // setPast_sickness_supplementation,
+    // sickness_name,
+    // setSickness_name,
+    // medicine,
+    // setMedicine,
+    // symptom,
+    // setSymptom,
+    // hospital,
+    // setHospital,
+    // blood_type,
+    // setBlood_type,
+    // disability_status,
+    // setDisability_status,
+    // report_request,
+    // setReport_request,
+    // guardian_phone,
+    // setGuardian_phone,
+    // insurance_bool,
+    // setInsurance_bool,
+    // insurance_name,
+    // setInsurance_name,
+    // subscription_date,
+    // setSubscription_date,
+    // expiration_date,
+    // setExpiration_date,
 }) => {
+    const { user } = useContext(AppContext);
+    const {  
+        blood_type,
+        setBlood_type,
+        disability_status,
+        setDisability_status,
+        report_request,
+        setReport_request,
+        guardian_phone,
+        setGuardian_phone,
+        insurance_bool,
+        setInsurance_bool,
+        insurance_name,
+        setInsurance_name,
+        subscription_date,
+        setSubscription_date,
+        expiration_date,
+        setExpiration_date
+    } = useContext(MedicalContext);
     return (
         <form action="{{ route('medical_info.update',$medical_info->id) }}" method="POST" role="form">
             <div className="row">
