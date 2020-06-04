@@ -2,19 +2,9 @@ import React, { useState, useContext } from "react";
 import Dropdown from "react-dropdown";
 import {AppContext} from "../../../components/App";
 import {MedicalContext} from "../MedicalContainer";
-export default ({
-    // res,
-    // setRes,
-    // past_sickness_name,
-    // setPast_sickness_name,
-    // past_sickness_supplementation,
-    // setPast_sickness_supplementation,
-}) => {
-    res={res}
-    let [past_sickness, setPast_sickness] = useState(["abc","def"]);
+export default () => {
     const { user } = useContext(AppContext);
     const { 
-        setRes,
         past_sickness_name,
         setPast_sickness_name,
         past_sickness_supplementation,
@@ -24,20 +14,22 @@ export default ({
     const options = [
         'one', 'two', 'three'
     ];
- 
+    console.log(past_sickness_name);
+    console.log(past_sickness_supplementation);
 
-    console.log(past_sickness)
     const add_past_sickness = () => {
-        if(past_sickness.length < 3){
+        if(past_sickness_name.length < 3){
             
-            setPast_sickness(past_sickness => [...past_sickness, past_sickness.length]);
+            setPast_sickness_name(past_sickness_name => [...past_sickness_name, null]);
+            setPast_sickness_supplementation(past_sickness_supplementation => [...past_sickness_supplementation, null]);
         }
     }
     const minus_past_sickness = (index) => {
         // const index = 1;
         if(index != 0){
-            const kk = past_sickness.slice(0, index).concat(past_sickness.slice(index+1, past_sickness.length));
-            setPast_sickness(kk);
+            setPast_sickness_name(past_sickness_name.slice(0, index).concat(past_sickness_name.slice(index+1, past_sickness_name.length)));
+            setPast_sickness_supplementation(past_sickness_supplementation.slice(0, index).concat(past_sickness_supplementation.slice(index+1, past_sickness_supplementation.length)));
+
         }
         
     }
@@ -46,7 +38,7 @@ export default ({
     //추가할 때 data.~~.past_sickness추가
     //삭제할 때 data.~~.past_sickness를 지우기?
     return (
-        past_sickness.map( (value, index) => {
+        past_sickness_name && past_sickness_name.map( (value, index) => {
             return (
                 <div key={index} className="row" style={{display:"flex", marginTop:"10px"}}>
                     <div className="col-md-1">
@@ -61,15 +53,31 @@ export default ({
                     </div>
                     {/* {{-- 드롭다운버튼 --}} */}
                     <div className="col-md-2 text-center p-2">
-                        <Dropdown options={options} onChange={(value) => setPast_sickness_name(value)} value={past_sickness_name} placeholder="선택" style={{width:"200px"}}/>
+                        <Dropdown options={options} 
+                            onChange={
+                                (data) => {
+                                    console.log(value);
+                                    let newArr = [...past_sickness_name];
+                                    newArr[index] = data.value;
+                                    setPast_sickness_name(newArr)
+                                }
+                            } value={past_sickness_name[index] ? past_sickness_name[index] : "선택"} placeholder="선택" style={{width:"200px"}}/>
                     </div>
                     {/* // {{--  --}} */}
                     <div className="col-md-6">
                         <div className="form-group p-2">
                             {/* {{-- <input className="past_sickness_supplementation" style="font-size:24px; width:100%;"type="text"  */}
                                 {/* name="past_sickness_supplementation[]" className="form-control" placeholder="보충설명(복용 약물, 기간)" value="{{isset($past_sickness[$i-1]) ? old("past_sickness_supplementation.$i" ,$past_sickness[$i-1]->past_sickness_supplementation) :  old("past_sickness_supplementation.$i") }}"/> --}} */}
-                                <input className="past_sickness_supplementation" style={{fontSize:"20px", width:"100%"}} type="text"
-                                name="past_sickness_supplementation" className="form-control" placeholder="보충설명(복용 약물, 기간)"/> 
+                                <input style={{fontSize:"20px", width:"100%"}} type="text" 
+                                value={past_sickness_supplementation[index] ? past_sickness_supplementation[index] : ""}
+                                onChange={
+                                    (e) => {
+                                        let newArr = [...past_sickness_supplementation];
+                                        newArr[index] = e.target.value;
+                                        setPast_sickness_supplementation(newArr);
+                                    }
+                                }
+                                 className="form-control" placeholder="보충설명(복용 약물, 기간)"/> 
                             {/* {!! $errors->first('past_sickness_supplementation', '<span className="form-error">:message</span>') !!} */}
                         </div>
                     </div>

@@ -145,7 +145,7 @@ class MedicalController extends Controller
         $insurance_list = \App\Insurance_list::get();
 
         $update_form = true;
-        return view('info.medical_info', compact('medical_info', 'insurance', 'insurance_list_my', 'insurance_list', 'update_form','past_sickness', 'sickness', 'sickness_list'));
+        return view('home.main', compact('medical_info', 'insurance', 'insurance_list_my', 'insurance_list', 'update_form','past_sickness', 'sickness', 'sickness_list'));
     }
 
     public function update(Request $request, \App\Medical_info $medical_info){

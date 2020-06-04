@@ -79798,6 +79798,10 @@ function App() {
     exact: true,
     component: _routes_Medical_MedicalContainer__WEBPACK_IMPORTED_MODULE_9__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    path: "/info/medical_info/:medical_id/edit",
+    exact: true,
+    component: _routes_Medical_MedicalContainer__WEBPACK_IMPORTED_MODULE_9__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     path: "/info/drive_score",
     exact: true,
     component: _routes_Drive_DriveContainer__WEBPACK_IMPORTED_MODULE_10__["default"]
@@ -81449,7 +81453,13 @@ var MedicalContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["createContext"])
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
       _useState2 = _slicedToArray(_useState, 2),
       res = _useState2[0],
-      setRes = _useState2[1]; //기저질환 관련(past_sickness)
+      setRes = _useState2[1];
+
+  var form = "create";
+
+  if (location.pathname.split('/')[4] == "edit") {
+    form = "update";
+  } //기저질환 관련(past_sickness)
 
 
   var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
@@ -81486,75 +81496,136 @@ var MedicalContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["createContext"])
 
   var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
       _useState16 = _slicedToArray(_useState15, 2),
-      blood_type = _useState16[0],
-      setBlood_type = _useState16[1];
+      medical_id = _useState16[0],
+      setMedical_id = _useState16[1];
 
   var _useState17 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
       _useState18 = _slicedToArray(_useState17, 2),
-      disability_status = _useState18[0],
-      setDisability_status = _useState18[1];
+      blood_type = _useState18[0],
+      setBlood_type = _useState18[1];
 
   var _useState19 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
       _useState20 = _slicedToArray(_useState19, 2),
-      report_request = _useState20[0],
-      setReport_request = _useState20[1];
+      disability_status = _useState20[0],
+      setDisability_status = _useState20[1];
 
   var _useState21 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
       _useState22 = _slicedToArray(_useState21, 2),
-      guardian_phone = _useState22[0],
-      setGuardian_phone = _useState22[1]; //보험사 정보(insurance)
-
+      report_request = _useState22[0],
+      setReport_request = _useState22[1];
 
   var _useState23 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
       _useState24 = _slicedToArray(_useState23, 2),
-      insurance_bool = _useState24[0],
-      setInsurance_bool = _useState24[1];
+      guardian_phone = _useState24[0],
+      setGuardian_phone = _useState24[1]; //보험사 정보(insurance)
 
-  var _useState25 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+
+  var _useState25 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState26 = _slicedToArray(_useState25, 2),
-      insurance_name = _useState26[0],
-      setInsurance_name = _useState26[1];
+      insurance_bool = _useState26[0],
+      setInsurance_bool = _useState26[1];
 
-  var _useState27 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+  var _useState27 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState28 = _slicedToArray(_useState27, 2),
-      subscription_date = _useState28[0],
-      setSubscription_date = _useState28[1];
+      insurance_phone = _useState28[0],
+      setInsurance_phone = _useState28[1];
 
   var _useState29 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
       _useState30 = _slicedToArray(_useState29, 2),
-      expiration_date = _useState30[0],
-      setExpiration_date = _useState30[1]; //값 받기
+      insurance_name = _useState30[0],
+      setInsurance_name = _useState30[1];
+
+  var _useState31 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+      _useState32 = _slicedToArray(_useState31, 2),
+      subscription_date = _useState32[0],
+      setSubscription_date = _useState32[1];
+
+  var _useState33 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+      _useState34 = _slicedToArray(_useState33, 2),
+      expiration_date = _useState34[0],
+      setExpiration_date = _useState34[1]; //값 받기
 
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/info/medical_info/".concat(user.id)).then(function (res) {
-      setRes(res); //.res.data.past_sickness[0].past_sickness_name
-      //.res.data.past_sickness[1].past_sickness_name을 둘다받기
+      setRes(res); //past_sickness
 
       if (res.data.past_sickness) {
-        var arr = [];
+        var arr_past_sickness_name = [];
+        var arr_past_sickness_supplementation = [];
 
         for (var i = 0; i < res.data.past_sickness.length; i++) {
-          arr.push(res.data.past_sickness[i].past_sickness_name);
-        } // setPast_sickness_name({ 0 : 1 , 1 : 2 }});
+          arr_past_sickness_name.push(res.data.past_sickness[i].past_sickness_name);
+          arr_past_sickness_supplementation.push(res.data.past_sickness[i].past_sickness_supplementation);
+        }
+
+        setPast_sickness_name(arr_past_sickness_name);
+        setPast_sickness_supplementation(arr_past_sickness_supplementation);
+      } //sickness
 
 
-        setPast_sickness_name(arr); // console.log(res.data.past_sickness.past_sickness_name);
+      if (res.data.sickness) {
+        var arr_sickness_name = [];
+        var arr_medicine = [];
+        var arr_symptom = [];
+        var arr_hosptial = [];
+
+        for (var i = 0; i < res.data.sickness.length; i++) {
+          arr_sickness_name.push(res.data.sickness[i].sickness_name);
+          arr_medicine.push(res.data.sickness[i].medicine);
+          arr_symptom.push(res.data.sickness[i].symptom);
+          arr_hosptial.push(res.data.sickness[i].hospital);
+        }
+
+        setSickness_name(arr_sickness_name);
+        setMedicine(arr_medicine);
+        setSymptom(arr_symptom);
+        setHospital(arr_hosptial);
+      } //medical_info
+
+
+      if (res.data.medical_info) {
+        setMedical_id(res.data.medical_info.id);
+        setBlood_type(res.data.medical_info.blood_type);
+        setDisability_status(res.data.medical_info.disability_status);
+        setReport_request(res.data.medical_info.report_request);
+        setGuardian_phone(res.data.medical_info.guardian_phone);
+      } //insurance
+
+
+      if (res.data.insurance) {
+        setInsurance_bool(true);
+        setInsurance_name(res.data.insurance_list_my.insurance_name);
+        setInsurance_phone(res.data.insurance_list_my.insurance_phone);
+        setSubscription_date(res.data.insurance.subscription_date);
+        setExpiration_date(res.data.insurance.expiration_date);
       }
     });
-  }, [user]);
-  console.log(res);
-  console.log(past_sickness_name);
-
-  var medical_update = function medical_update() {
-    console.log("update");
-  };
+  }, [user]); // const medical_update = () => {
+  //     console.log("update");
+  // }
+  // console.log(res);
+  // console.log(past_sickness_name);
+  // console.log(past_sickness_supplementation);
+  // console.log(sickness_name);
+  // console.log(medicine);
+  // console.log(symptom);
+  // console.log(hospital);
+  // console.log(blood_type);
+  // console.log(disability_status);
+  // console.log(report_request);
+  // console.log(guardian_phone);
+  // console.log(insurance_bool);
+  // console.log(insurance_name);
+  // console.log(subscription_date);
+  // console.log(expiration_date);
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MedicalContext.Provider, {
     value: {
       res: res,
       setRes: setRes,
-      medical_update: medical_update,
+      form: form,
+      medical_id: medical_id,
       past_sickness_name: past_sickness_name,
       setPast_sickness_name: setPast_sickness_name,
       past_sickness_supplementation: past_sickness_supplementation,
@@ -81579,44 +81650,14 @@ var MedicalContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["createContext"])
       setInsurance_bool: setInsurance_bool,
       insurance_name: insurance_name,
       setInsurance_name: setInsurance_name,
+      insurance_phone: insurance_phone,
+      setInsurance_phone: setInsurance_phone,
       subscription_date: subscription_date,
       setSubscription_date: setSubscription_date,
       expiration_date: expiration_date,
       setExpiration_date: setExpiration_date
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MedicalView__WEBPACK_IMPORTED_MODULE_3__["default"] // user={user}
-  // res={res}
-  // setRes={setRes}
-  // medical_update={medical_update}
-  // past_sickness_name = {past_sickness_name}
-  // setPast_sickness_name = {setPast_sickness_name}
-  // past_sickness_supplementation = {past_sickness_supplementation}
-  // setPast_sickness_supplementation = {setPast_sickness_supplementation}
-  // sickness_name = {sickness_name}
-  // setSickness_name = {setSickness_name}
-  // medicine = {medicine}
-  // setMedicine = {setMedicine}
-  // symptom = {symptom}
-  // setSymptom = {setSymptom}
-  // hospital = {hospital}
-  // setHospital = {setHospital}
-  // blood_type = {blood_type}
-  // setBlood_type = {setBlood_type}
-  // disability_status = {disability_status}
-  // setDisability_status = {setDisability_status}
-  // report_request = {report_request}
-  // setReport_request = {setReport_request}
-  // guardian_phone = {guardian_phone}
-  // setGuardian_phone = {setGuardian_phone}
-  // insurance_bool = {insurance_bool}
-  // setInsurance_bool = {setInsurance_bool}
-  // insurance_name = {insurance_name}
-  // setInsurance_name = {setInsurance_name}
-  // subscription_date = {subscription_date}
-  // setSubscription_date = {setSubscription_date}
-  // expiration_date = {expiration_date}
-  // setExpiration_date = {setExpiration_date}        
-  , null));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MedicalView__WEBPACK_IMPORTED_MODULE_3__["default"], null));
 });
 
 /***/ }),
@@ -81639,7 +81680,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _good_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_good_css__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/App */ "./resources/js/components/App.js");
 /* harmony import */ var _MedicalContainer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./MedicalContainer */ "./resources/js/routes/Medical/MedicalContainer.js");
-function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
 
 
 
@@ -81647,17 +81687,15 @@ function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("
 
 
 
-
-/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
-  _objectDestructuringEmpty(_ref);
-
+/* harmony default export */ __webpack_exports__["default"] = (function () {
   var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_components_App__WEBPACK_IMPORTED_MODULE_5__["AppContext"]),
       user = _useContext.user;
 
   var _useContext2 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_MedicalContainer__WEBPACK_IMPORTED_MODULE_6__["MedicalContext"]),
-      res = _useContext2.res;
+      res = _useContext2.res,
+      form = _useContext2.form;
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, user && user.id && res && res.config.url == "/info/medical_info/".concat(user.id) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, user && user.id && form && res && res.config.url == "/info/medical_info/".concat(user.id) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
     id: "intro",
     className: "section intro",
     style: {
@@ -81674,56 +81712,7 @@ function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("
     style: {
       color: "blue"
     }
-  }, "\uC758\uB8CC \uC815\uBCF4"), res && res.data.medical_info ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_partial_Show_medical_js__WEBPACK_IMPORTED_MODULE_2__["default"] // data={res.data}
-  // medical_update={medical_update}
-  // past_sickness_name = {past_sickness_name}
-  // past_sickness_supplementation = {past_sickness_supplementation}
-  // sickness_name = {sickness_name}
-  // medicine = {medicine} 
-  // symptom = {symptom} 
-  // hospital = {hospital}
-  // blood_type = {blood_type}
-  // disability_status = {disability_status}
-  // report_request = {report_request}
-  // guardian_phone = {guardian_phone}
-  // insurance_bool = {insurance_bool}
-  // insurance_name = {insurance_name}
-  // subscription_date = {subscription_date}
-  // expiration_date = {expiration_date}
-  , null) :
-  /*#__PURE__*/
-  react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_partial_Create_medical_js__WEBPACK_IMPORTED_MODULE_3__["default"] // user={user}
-  // res={res}
-  // setRes={setRes}
-  // past_sickness_name = {past_sickness_name}
-  // setPast_sickness_name = {setPast_sickness_name}
-  // past_sickness_supplementation = {past_sickness_supplementation}
-  // setPast_sickness_supplementation = {setPast_sickness_supplementation}
-  // sickness_name = {sickness_name}
-  // setSickness_name = {setSickness_name}
-  // medicine = {medicine}
-  // setMedicine = {setMedicine}
-  // symptom = {symptom}
-  // setSymptom = {setSymptom}
-  // hospital = {hospital}
-  // setHospital = {setHospital}
-  // blood_type = {blood_type}
-  // setBlood_type = {setBlood_type}
-  // disability_status = {disability_status}
-  // setDisability_status = {setDisability_status}
-  // report_request = {report_request}
-  // setReport_request = {setReport_request}
-  // guardian_phone = {guardian_phone}
-  // setGuardian_phone = {setGuardian_phone}
-  // insurance_bool = {insurance_bool}
-  // setInsurance_bool = {setInsurance_bool}
-  // insurance_name = {insurance_name}
-  // setInsurance_name = {setInsurance_name}
-  // subscription_date = {subscription_date}
-  // setSubscription_date = {setSubscription_date}
-  // expiration_date = {expiration_date}
-  // setExpiration_date = {setExpiration_date}  
-  , null)))) : null);
+  }, "\uC758\uB8CC \uC815\uBCF4"), res && res.data.medical_info && form != "update" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_partial_Show_medical_js__WEBPACK_IMPORTED_MODULE_2__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_partial_Create_medical_js__WEBPACK_IMPORTED_MODULE_3__["default"], null)))) : null);
 });
 
 /***/ }),
@@ -81773,16 +81762,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Sickness__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Sickness */ "./resources/js/routes/Medical/partial/Sickness.js");
 /* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../components/App */ "./resources/js/components/App.js");
 /* harmony import */ var _MedicalContainer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../MedicalContainer */ "./resources/js/routes/Medical/MedicalContainer.js");
-function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
 
 
 
 
 
-
-/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
-  _objectDestructuringEmpty(_ref);
-
+/* harmony default export */ __webpack_exports__["default"] = (function () {
   var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_components_App__WEBPACK_IMPORTED_MODULE_3__["AppContext"]),
       user = _useContext.user;
 
@@ -81798,6 +81783,8 @@ function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("
       insurance_bool = _useContext2.insurance_bool,
       setInsurance_bool = _useContext2.setInsurance_bool,
       insurance_name = _useContext2.insurance_name,
+      insurance_phone = _useContext2.insurance_phone,
+      setInsurance_phone = _useContext2.setInsurance_phone,
       setInsurance_name = _useContext2.setInsurance_name,
       subscription_date = _useContext2.subscription_date,
       setSubscription_date = _useContext2.setSubscription_date,
@@ -81822,29 +81809,11 @@ function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("
     }
   }, "\uC9C8\uBCD1 \uC0AC\uD56D"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "dropdown"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Past_sickness__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    res: res,
-    setRes: setRes,
-    past_sickness_name: past_sickness_name,
-    setPast_sickness_name: setPast_sickness_name,
-    past_sickness_supplementation: past_sickness_supplementation,
-    setPast_sickness_supplementation: setPast_sickness_supplementation
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Past_sickness__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
     style: {
       background: "darkgray"
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Sickness__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    res: res,
-    setRes: setRes,
-    sickness_name: sickness_name,
-    setSickness_name: setSickness_name,
-    medicine: medicine,
-    setMedicine: setMedicine,
-    symptom: symptom,
-    setSymptom: setSymptom,
-    hospital: hospital,
-    setHospital: setHospital
-  }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Sickness__WEBPACK_IMPORTED_MODULE_2__["default"], null))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-12"
@@ -82001,51 +81970,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dropdown__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dropdown__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../components/App */ "./resources/js/components/App.js");
 /* harmony import */ var _MedicalContainer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../MedicalContainer */ "./resources/js/routes/Medical/MedicalContainer.js");
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
 
 
 
 
-
-/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
-  _objectDestructuringEmpty(_ref);
-
-  res = {
-    res: res
-  };
-
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(["abc", "def"]),
-      _useState2 = _slicedToArray(_useState, 2),
-      past_sickness = _useState2[0],
-      setPast_sickness = _useState2[1];
-
+/* harmony default export */ __webpack_exports__["default"] = (function () {
   var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_components_App__WEBPACK_IMPORTED_MODULE_2__["AppContext"]),
       user = _useContext.user;
 
   var _useContext2 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_MedicalContainer__WEBPACK_IMPORTED_MODULE_3__["MedicalContext"]),
-      setRes = _useContext2.setRes,
       past_sickness_name = _useContext2.past_sickness_name,
       setPast_sickness_name = _useContext2.setPast_sickness_name,
       past_sickness_supplementation = _useContext2.past_sickness_supplementation,
@@ -82053,12 +81998,16 @@ function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("
 
 
   var options = ['one', 'two', 'three'];
-  console.log(past_sickness);
+  console.log(past_sickness_name);
+  console.log(past_sickness_supplementation);
 
   var add_past_sickness = function add_past_sickness() {
-    if (past_sickness.length < 3) {
-      setPast_sickness(function (past_sickness) {
-        return [].concat(_toConsumableArray(past_sickness), [past_sickness.length]);
+    if (past_sickness_name.length < 3) {
+      setPast_sickness_name(function (past_sickness_name) {
+        return [].concat(_toConsumableArray(past_sickness_name), [null]);
+      });
+      setPast_sickness_supplementation(function (past_sickness_supplementation) {
+        return [].concat(_toConsumableArray(past_sickness_supplementation), [null]);
       });
     }
   };
@@ -82066,17 +82015,15 @@ function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("
   var minus_past_sickness = function minus_past_sickness(index) {
     // const index = 1;
     if (index != 0) {
-      var kk = past_sickness.slice(0, index).concat(past_sickness.slice(index + 1, past_sickness.length));
-      setPast_sickness(kk);
+      setPast_sickness_name(past_sickness_name.slice(0, index).concat(past_sickness_name.slice(index + 1, past_sickness_name.length)));
+      setPast_sickness_supplementation(past_sickness_supplementation.slice(0, index).concat(past_sickness_supplementation.slice(index + 1, past_sickness_supplementation.length)));
     }
   }; //past_sickness만큼 map함수 돌고 add_past_sickness가면 past_sickness++ minus_past_sickness가면 past_sickness-/
   //추가할 때 data.~~.past_sickness추가
   //삭제할 때 data.~~.past_sickness를 지우기?
 
 
-  return past_sickness.map(function (value, index) {
-    var _React$createElement;
-
+  return past_sickness_name && past_sickness_name.map(function (value, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       key: index,
       className: "row",
@@ -82113,10 +82060,15 @@ function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("
       className: "col-md-2 text-center p-2"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_dropdown__WEBPACK_IMPORTED_MODULE_1___default.a, {
       options: options,
-      onChange: function onChange(value) {
-        return setPast_sickness_name(value);
+      onChange: function onChange(data) {
+        console.log(value);
+
+        var newArr = _toConsumableArray(past_sickness_name);
+
+        newArr[index] = data.value;
+        setPast_sickness_name(newArr);
       },
-      value: past_sickness_name,
+      value: past_sickness_name[index] ? past_sickness_name[index] : "선택",
       placeholder: "\uC120\uD0DD",
       style: {
         width: "200px"
@@ -82125,15 +82077,22 @@ function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("
       className: "col-md-6"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "form-group p-2"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", (_React$createElement = {
-      className: "past_sickness_supplementation",
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
       style: {
         fontSize: "20px",
         width: "100%"
       },
       type: "text",
-      name: "past_sickness_supplementation"
-    }, _defineProperty(_React$createElement, "className", "form-control"), _defineProperty(_React$createElement, "placeholder", "\uBCF4\uCDA9\uC124\uBA85(\uBCF5\uC6A9 \uC57D\uBB3C, \uAE30\uAC04)"), _React$createElement)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      value: past_sickness_supplementation[index] ? past_sickness_supplementation[index] : "",
+      onChange: function onChange(e) {
+        var newArr = _toConsumableArray(past_sickness_supplementation);
+
+        newArr[index] = e.target.value;
+        setPast_sickness_supplementation(newArr);
+      },
+      className: "form-control",
+      placeholder: "\uBCF4\uCDA9\uC124\uBA85(\uBCF5\uC6A9 \uC57D\uBB3C, \uAE30\uAC04)"
+    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "col-md-1"
     }));
   });
@@ -82154,96 +82113,135 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../components/App */ "./resources/js/components/App.js");
 /* harmony import */ var _MedicalContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../MedicalContainer */ "./resources/js/routes/Medical/MedicalContainer.js");
-function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
-  _objectDestructuringEmpty(_ref);
-
+/* harmony default export */ __webpack_exports__["default"] = (function () {
   var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_components_App__WEBPACK_IMPORTED_MODULE_1__["AppContext"]),
       user = _useContext.user;
 
   var _useContext2 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_MedicalContainer__WEBPACK_IMPORTED_MODULE_2__["MedicalContext"]),
-      res = _useContext2.res;
+      medical_id = _useContext2.medical_id,
+      past_sickness_name = _useContext2.past_sickness_name,
+      past_sickness_supplementation = _useContext2.past_sickness_supplementation,
+      sickness_name = _useContext2.sickness_name,
+      medicine = _useContext2.medicine,
+      symptom = _useContext2.symptom,
+      hospital = _useContext2.hospital,
+      blood_type = _useContext2.blood_type,
+      disability_status = _useContext2.disability_status,
+      report_request = _useContext2.report_request,
+      guardian_phone = _useContext2.guardian_phone,
+      insurance_bool = _useContext2.insurance_bool,
+      insurance_name = _useContext2.insurance_name,
+      insurance_phone = _useContext2.insurance_phone,
+      subscription_date = _useContext2.subscription_date,
+      expiration_date = _useContext2.expiration_date; // console.log(past_sickness_name);
+  // console.log(past_sickness_supplementation);
+  // console.log(sickness_name);
+  // console.log(medicine);
+  // console.log(symptom);
+  // console.log(hospital);
+  // console.log(blood_type);
+  // console.log(disability_status);
+  // console.log(report_request);
+  // console.log(guardian_phone);
+  // console.log(insurance_bool);
+  // console.log(insurance_name);
+  // console.log(subscription_date);
+  // console.log(expiration_date);
 
-  console.log("goooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooood");
-  console.log(res);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "good") // <div>
-  //     <a className="btn btn-success" href={`/info/medical_info/${data.medical_info.id}/edit`}>의료정보 수정</a>
-  //     <div className="row">
-  //         <div className="col-sm-6 col-md-3">
-  //             <div className="thumbnail">
-  //                 <div className="caption">
-  //                     <h3 className="text-center">과거 병력</h3>
-  //                     <hr style={{background:"darkgrey"}}/>
-  //                     {data && data.past_sickness ? data.past_sickness.map( (value,index) => {
-  //                         <div key={index}>
-  //                             <p>예전에 걸린 병{index + 1} : {value.past_sickness_name}}</p>
-  //                             <p>예전에 걸린 병{index + 1} 보충 설명 : {value.past_sickness_supplementation}}</p>
-  //                         </div>
-  //                     }) : (                            
-  //                         <p className="text-center text-danger">이력이 없습니다.</p>
-  //                     )}
-  //                     <hr style={{background:"darkgrey"}}/>
-  //                 </div>
-  //             </div>
-  //         </div>
-  //         <div className="col-sm-6 col-md-3">
-  //             <div className="thumbnail">
-  //                 <div className="caption">
-  //                     <h3 className="text-center">현재 병력</h3>
-  //                     <hr style={{background:"darkgrey"}}/>
-  //                     {data && data.sickness ? data.sickness.map( (value,index) => {
-  //                         <div key={index}>
-  //                             <p>예전에 걸린 병{index + 1} : {value.sickness_name}}</p>
-  //                             <p>예전에 걸린 병{index + 1} 보충 설명 : {value.sickness_supplementation}}</p>
-  //                         </div>
-  //                     }) : (                            
-  //                         <p className="text-center text-danger">이력이 없습니다.</p>
-  //                     )}
-  //                     <hr style={{background:"darkgrey"}}/>
-  //                 </div>
-  //             </div>
-  //         </div>
-  //         <div className="col-sm-6 col-md-3">
-  //             <div className="thumbnail">
-  //                 <div className="caption">
-  //                     <h3 className="text-center">기타 정보</h3>
-  //                     <hr style={{background:"darkgrey"}}/>
-  //                     <p>보호자 휴대폰 : {data.medical_info.guardian_phone ? data.medical_info.guardian_phone : "없음"}</p>
-  //                     <p>혈액형 : {data.medical_info.blood_type}</p>
-  //                     <p>장애 여부 : {data.medical_info.disability_status}</p>
-  //                     <p>신고시 요청사항 : {data.medical_info.report_request ? data.medical_info.report_request : "없음"}</p>
-  //                     <hr style={{background:"darkgrey"}} />
-  //                 </div>
-  //             </div>
-  //         </div>
-  //         <div className="col-sm-6 col-md-3">
-  //             <div className="thumbnail">
-  //                 <div className="caption">
-  //                     <h3 className="text-center">보험 정보</h3>
-  //                     <hr style={{background:"darkgrey"}}/>
-  //                     {data.insurance ? (
-  //                         <div>
-  //                             <p>보험사 명 : {data.insurance_my.insurance_name}</p>
-  //                             <p>보험사 전화번호 : {data.insurance_my.insurance_phone}</p>
-  //                             <p>가입일 : {data.insurance.subscription_date}</p>
-  //                             <p>만기일 : {data.insurance.expiration_date}</p>
-  //                         </div>
-  //                     ) : (
-  //                         <p className="text-center text-danger">이력이 없습니다.</p>
-  //                     )}
-  //                     <hr style={{background:"darkgrey"}} />
-  //                 </div>
-  //             </div>
-  //         </div>
-  //     </div>
-  //     <p className="text-danger">위의 작성하신 의료정보는 운전 중 사고발생시 119센터에 보내는 메시지입니다.</p>
-  //     <p className="text-danger">작성한 정보에 틀린 점이 없는 지 확인해 주세요.</p>
-  // </div>
-  ;
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+    to: "/info/medical_info/".concat(medical_id, "/edit"),
+    className: "btn btn-success"
+  }, "\uC758\uB8CC\uC815\uBCF4 \uC218\uC815"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-6 col-md-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "thumbnail"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "caption"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    className: "text-center"
+  }, "\uACFC\uAC70 \uBCD1\uB825"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+    style: {
+      background: "darkgrey"
+    }
+  }), past_sickness_name ? past_sickness_name.map(function (value, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      key: index
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\uC608\uC804\uC5D0 \uAC78\uB9B0 \uBCD1", index + 1, " : ", past_sickness_name[index]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\uC608\uC804\uC5D0 \uAC78\uB9B0 \uBCD1", index + 1, " \uBCF4\uCDA9 \uC124\uBA85 : ", past_sickness_supplementation[index] ? past_sickness_supplementation[index] : "없음"));
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "text-center text-danger"
+  }, "\uC774\uB825\uC774 \uC5C6\uC2B5\uB2C8\uB2E4."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+    style: {
+      background: "darkgrey"
+    }
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-6 col-md-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "thumbnail"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "caption"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    className: "text-center"
+  }, "\uD604\uC7AC \uBCD1\uB825"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+    style: {
+      background: "darkgrey"
+    }
+  }), sickness_name ? sickness_name.map(function (value, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      key: index
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\uD604\uC7AC \uC9C8\uD658", index + 1, " : ", sickness_name[index]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\uBCF5\uC6A9\uC911\uC778 \uC57D", index + 1, " : ", medicine[index] ? medicine[index] : "없음"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\uC99D\uC0C1", index + 1, " : ", symptom[index] ? symptom[index] : "없음"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\uB2E4\uB2C8\uB294 \uBCD1\uC6D0", index + 1, " : ", hospital[index] ? hospital[index] : "없음"));
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "text-center text-danger"
+  }, "\uC774\uB825\uC774 \uC5C6\uC2B5\uB2C8\uB2E4."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+    style: {
+      background: "darkgrey"
+    }
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-6 col-md-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "thumbnail"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "caption"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    className: "text-center"
+  }, "\uAE30\uD0C0 \uC815\uBCF4"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+    style: {
+      background: "darkgrey"
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\uBCF4\uD638\uC790 \uD734\uB300\uD3F0 : ", guardian_phone ? guardian_phone : "없음"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\uD608\uC561\uD615 : ", blood_type), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\uC7A5\uC560 \uC5EC\uBD80 : ", disability_status), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\uC2E0\uACE0\uC2DC \uC694\uCCAD\uC0AC\uD56D : ", report_request ? report_request : "없음"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+    style: {
+      background: "darkgrey"
+    }
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-6 col-md-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "thumbnail"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "caption"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    className: "text-center"
+  }, "\uBCF4\uD5D8 \uC815\uBCF4"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+    style: {
+      background: "darkgrey"
+    }
+  }), insurance_name ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\uBCF4\uD5D8\uC0AC \uBA85 : ", insurance_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\uBCF4\uD5D8\uC0AC \uC804\uD654\uBC88\uD638 : ", insurance_phone), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\uAC00\uC785\uC77C : ", subscription_date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\uB9CC\uAE30\uC77C : ", expiration_date)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "text-center text-danger"
+  }, "\uC774\uB825\uC774 \uC5C6\uC2B5\uB2C8\uB2E4."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+    style: {
+      background: "darkgrey"
+    }
+  }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "text-danger"
+  }, "\uC704\uC758 \uC791\uC131\uD558\uC2E0 \uC758\uB8CC\uC815\uBCF4\uB294 \uC6B4\uC804 \uC911 \uC0AC\uACE0\uBC1C\uC0DD\uC2DC 119\uC13C\uD130\uC5D0 \uBCF4\uB0B4\uB294 \uBA54\uC2DC\uC9C0\uC785\uB2C8\uB2E4."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "text-danger"
+  }, "\uC791\uC131\uD55C \uC815\uBCF4\uC5D0 \uD2C0\uB9B0 \uC810\uC774 \uC5C6\uB294 \uC9C0 \uD655\uC778\uD574 \uC8FC\uC138\uC694."));
 });
 
 /***/ }),
