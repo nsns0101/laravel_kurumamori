@@ -3,7 +3,38 @@ import Past_sickness from "./Past_sickness";
 import Sickness from "./Sickness";
 
 const data = null;
-export default () => {
+export default ({
+    res,
+    setRes,
+    past_sickness_name,
+    setPast_sickness_name,
+    past_sickness_supplementation,
+    setPast_sickness_supplementation,
+    sickness_name,
+    setSickness_name,
+    medicine,
+    setMedicine,
+    symptom,
+    setSymptom,
+    hospital,
+    setHospital,
+    blood_type,
+    setBlood_type,
+    disability_status,
+    setDisability_status,
+    report_request,
+    setReport_request,
+    guardian_phone,
+    setGuardian_phone,
+    insurance_bool,
+    setInsurance_bool,
+    insurance_name,
+    setInsurance_name,
+    subscription_date,
+    setSubscription_date,
+    expiration_date,
+    setExpiration_date,
+}) => {
     return (
         <form action="{{ route('medical_info.update',$medical_info->id) }}" method="POST" role="form">
             <div className="row">
@@ -15,10 +46,28 @@ export default () => {
                         <div className="dropdown">
                             <br/>
                             {/* {{-- 과거 질환 --}} */}
-                            <Past_sickness/>
+                            <Past_sickness
+                                res={res}
+                                setRes={setRes}
+                                past_sickness_name={past_sickness_name}
+                                setPast_sickness_name={setPast_sickness_name}
+                                past_sickness_supplementation={past_sickness_supplementation}
+                                setPast_sickness_supplementation={setPast_sickness_supplementation}
+                            />
                             <hr style={{background:"darkgray"}}/>
                             {/* {{-- 현재 질환 --}} */}
-                            <Sickness/>
+                            <Sickness
+                                res={res}
+                                setRes={setRes}
+                                sickness_name={sickness_name}
+                                setSickness_name={setSickness_name}
+                                medicine={medicine}
+                                setMedicine={setMedicine}
+                                symptom={symptom}
+                                setSymptom={setSymptom}
+                                hospital={hospital}
+                                setHospital={setHospital}
+                            />
                         </div>
                     </div>
                 </div>

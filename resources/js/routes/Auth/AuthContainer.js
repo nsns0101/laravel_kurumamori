@@ -1,5 +1,4 @@
 import React, { useState, useContext} from "react";
-import useInput from "../../Hooks/useInput";
 import { toast } from "react-toastify";
 import AuthView from "./AuthView";
 import Axios from "axios";
