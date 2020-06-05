@@ -59,7 +59,9 @@ export default ( {history} ) => {
             product_key : product_key_input
         }
         const config = {
-            'Content-Type' : 'application/json'
+            headers: {
+                'Content-Type' : 'application/json'
+              }
         }
         return Axios.post(url, body, config).then(res => {
             if(res.data){
@@ -68,7 +70,7 @@ export default ( {history} ) => {
                 window.location.reload();
             }
             else{
-                setError_text("잘못된 key입니다. 다시 확인해 주세요.");
+                setError_text("값을 잘 못 입력하였거나 이미 사용중인 key입니다. 다시 확인해 주세요.");
 
             }
         })

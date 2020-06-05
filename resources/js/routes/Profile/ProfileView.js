@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useContext} from "react";
-import Info_menu from "../../layuot/Info_menu";
+import Info_menu from "../../layout/Info_menu";
 import Product_modal from "./partial/Product_modal";
 import {AppContext} from "../../components/App";
 export default ( {

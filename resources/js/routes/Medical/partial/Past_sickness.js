@@ -29,11 +29,11 @@ export default () => {
         
     }
 
-    //past_sickness만큼 map함수 돌고 add_past_sickness가면 past_sickness++ minus_past_sickness가면 past_sickness-/
-    //추가할 때 data.~~.past_sickness추가
-    //삭제할 때 data.~~.past_sickness를 지우기?
+    if(!past_sickness_name.length){
+        past_sickness_name.push("");
+    }
     return (
-        past_sickness_name && past_sickness_name.map( (value, index) => {
+        past_sickness_name ? past_sickness_name.map( (value, index) => {
             return (
                 <div key={index} className="row" style={{display:"flex", marginTop:"10px"}}>
                     <div className="col-md-1">
@@ -56,7 +56,7 @@ export default () => {
                                     newArr[index] = data.value;
                                     setPast_sickness_name(newArr);
                                 }
-                            } value={past_sickness_name[index] ? past_sickness_name[index] : "선택"} placeholder="선택" style={{width:"200px"}}/>
+                            } value={past_sickness_name[index] ? past_sickness_name[index] : ""} placeholder="선택" style={{width:"200px"}}/>
                     </div>
                     {/* // {{--  --}} */}
                     <div className="col-md-6">
@@ -79,6 +79,6 @@ export default () => {
                     <div className="col-md-1"></div>
                 </div>
             )
-        } )
+        } ) : null
     )
 }

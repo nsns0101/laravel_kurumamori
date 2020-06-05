@@ -43,13 +43,16 @@ export default () => {
         <div>
             {/* <a className="btn btn-success" href={`/info/medical_info/${medical_id}/edit`}>의료정보 수정</a> */}
             <Link to={`/info/medical_info/${medical_id}/edit`} className="btn btn-success">의료정보 수정</Link>
+            <br/>
+            <br/>
+            
             <div className="row">
                 <div className="col-sm-6 col-md-3">
                     <div className="thumbnail">
                         <div className="caption">
                             <h3 className="text-center">과거 병력</h3>
                             <hr style={{background:"darkgrey"}}/>
-                            {past_sickness_name ? past_sickness_name.map( (value,index) => {
+                            {past_sickness_name.length ? past_sickness_name.map( (value,index) => {
                                 return (
                                 <div key={index}>
                                     <p>예전에 걸린 병{index + 1} : {past_sickness_name[index]}</p>
@@ -69,7 +72,7 @@ export default () => {
                         <div className="caption">
                             <h3 className="text-center">현재 병력</h3>
                             <hr style={{background:"darkgrey"}}/>
-                            {sickness_name ? sickness_name.map( (value,index) => {
+                            {sickness_name.length ? sickness_name.map( (value,index) => {
                                 return (
                                 <div key={index}>
                                     <p>현재 질환{index + 1} : {sickness_name[index]}</p>
@@ -121,7 +124,7 @@ export default () => {
                 </div>
             </div>
             <p className="text-danger">위의 작성하신 의료정보는 운전 중 사고발생시 119센터에 보내는 메시지입니다.</p>
-            <p className="text-danger">작성한 정보에 틀린 점이 없는 지 확인해 주세요.</p>
+            <p className="text-danger">작성한 정보에 틀린 점이 없는지 확인해 주세요.</p>
         </div>
 
 

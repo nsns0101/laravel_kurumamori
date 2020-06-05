@@ -13,8 +13,8 @@ import Axios from 'axios';
 // import "../../../public/css/font.css";
 // import '../../../public/js/bootstrap-datepicker.js';
 // import "../../../public/css/bootstrap-datepicker.css"
-import Header from "../layuot/Header";
-import Footer from "../layuot/Footer";
+import Header from "../layout/Header";
+import Footer from "../layout/Footer";
 
 //routes
 import Home from "../routes/Home/Home"
@@ -85,8 +85,7 @@ function App() {
                 {/* 내정보 */}
                 <Route path="/info/index" exact component={Info_index}/>
                 {/* 의료정보 */}
-                <Route path="/info/medical_info" exact component={Info_medical}/>
-                <Route path="/info/medical_info/:medical_id/edit" exact component={Info_medical}/>
+                <Route path="/info/medical_info" component={Info_medical}/>
                 {/* 운전점수 */}
                 <Route path="/info/drive_score" exact component={Info_drive}/>
                 

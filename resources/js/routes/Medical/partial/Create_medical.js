@@ -33,8 +33,11 @@ export default () => {
         setSubscription_date,
         expiration_date,
         setExpiration_date,
-        onSubmit,
-        blood_type_message
+        validation,
+        blood_type_message,
+        insurance_name_message,
+        subscription_date_message,
+        expiration_date_message
     } = useContext(MedicalContext);
     // console.log(insurance_name_list);
     // console.log(insuranc);
@@ -45,7 +48,7 @@ export default () => {
 
     return (
         insurance_name_list ? (
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(validation)}>
             <div className="row">
                 <div className="col-md-12">
                     <div className="card">
@@ -222,8 +225,12 @@ export default () => {
                                         (data) => {
                                             setInsurance_name(data.value);
                                         }
-                                    } value={insurance_name ? insurance_name : "선택"} placeholder="선택" style={{width:"200px"}}/>
+                                    } value={insurance_name ? insurance_name : ""} placeholder="선택" style={{width:"200px"}}/>
+                                <div className="text-danger text-center">
+                                    {insurance_name_message}
+                                </div>
                             </div>
+
                             <div className="col-md-6"></div>
                             <div className="col-md-1"></div>
                                     
@@ -232,19 +239,28 @@ export default () => {
                                 보험 가입일
                                 </span>
                             </div>
+
                             <div className="col-md-3">
                                 <div className="form-group">
                                     <DataPicker onChange={(date) => setSubscription_date(moment(date).format("YYYY-MM-DD"))} value={subscription_date}/>
+                                    <div className="text-danger">
+                                        {subscription_date_message}
+                                    </div>
                                 </div>
+
                             </div>
                             <div className="col-md-2 text-center p-1">
                                 <span className="medical_text" style={{marginTop:"13px",marginRight:"25px"}}>
                                 보험 만기일
-                                </span>
+                                </span> 
                             </div>
+
                             <div className="col-md-3">
                                 <div className="form-group">
                                     <DataPicker onChange={(date) => setExpiration_date(moment(date).format("YYYY-MM-DD"))} value={expiration_date}/>
+                                    <div className="text-danger">
+                                    {expiration_date_message}
+                                    </div> 
                                 </div>
                             </div>
                         </div>

@@ -181,7 +181,7 @@
                         보험사 명
                         </span>
                     </div>
-                    <button 
+                    <button
                     class="btn btn-default dropdown-toggle insurance_name_btn dropdown_btn" type="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="true" style="margin-left:20px;">
                     {{-- {{$insurance_list && isset($insurance_list_my->insurance_name) ? $insurance_list_my->insurance_name : old('insurance_name',"선택")}} --}}

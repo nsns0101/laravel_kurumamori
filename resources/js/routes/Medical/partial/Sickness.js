@@ -40,9 +40,11 @@ export default () => {
 
         }
     }
-
+    if(!sickness_name.length){
+        sickness_name.push("");
+    }
     return (
-        sickness_name && sickness_name.map( (value, index) => {
+        sickness_name ? sickness_name.map( (value, index) => {
             return (
                 <div key={index} className="row" style={{marginTop:"10px"}}>
                     {/* +,- 아이콘 */}
@@ -67,7 +69,7 @@ export default () => {
                                     newArr[index] = data.value;
                                     setSickness_name(newArr)
                                 }
-                            } value={sickness_name[index] ? sickness_name[index] : "선택"} placeholder="선택" style={{width:"200px"}}/>
+                            } value={sickness_name[index] ? sickness_name[index] : ""} placeholder="선택" style={{width:"200px"}}/>
                     </div>
                     {/* 복용중인 약 글자 */}
                     <div className="col-md-2 text-center p-3">
@@ -97,7 +99,7 @@ export default () => {
                     {/* 증상 input */}
                     <div className="col-md-8">
                             <input style={{fontSize:"20px", width:"100%"}} type="text" 
-                                    className="form-control" placeholder="증상"
+                                    className="form-control" placeholder="증상을 적어주세요"
                                     value={symptom[index] ? symptom[index] : ""}
                                     onChange={
                                         (e) => {
@@ -120,7 +122,7 @@ export default () => {
                     {/* 진료기관 input */}
                     <div className="col-md-8">
                             <input style={{fontSize:"20px", width:"100%"}} type="text" 
-                                    className="form-control" placeholder="증상"
+                                    className="form-control" placeholder="진료기관 명을 적어주세요"
                                     value={hospital[index] ? hospital[index] : ""}
                                     onChange={
                                         (e) => {
@@ -133,6 +135,6 @@ export default () => {
                     </div>
                 </div>
             )
-        })
+        }) : null
     )
 }

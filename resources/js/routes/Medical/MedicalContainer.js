@@ -5,13 +5,9 @@ import MedicalView from "./MedicalView";
 
 export const MedicalContext = createContext();
 
-export default () => {
+export default ({history}) => {
     const { user } = useContext(AppContext);
-    const [res, setRes] = useState("");
-    let form = "create";
-    if(location.pathname.split('/')[4] == "edit"){
-        form = "update";
-    }
+    let [form, setForm] = useState("");
     //drop_down list
     const sickness_list = ["없음", "고혈압", "당뇨", "결핵", "심장질환", "알러지", "천식", "심부전증", "페렴", "디스크", "간경화", "관절염", "협심증", "암", "갑상선염", "고지혈증", "골다공증", "과민성 대장", "기관지염", "뇌졸중", "신장질환", "간암"];
     const blood_type_list = ["A형", "B형", "AB형", "O형"];
@@ -19,11 +15,11 @@ export default () => {
     // const [insurance_phone_list, setInsurance_phone_list]= useState("");
     
     //기저질환 관련(past_sickness)
-    const [past_sickness_name, setPast_sickness_name] = useState("");
+    const [past_sickness_name, setPast_sickness_name] = useState([]);
     const [past_sickness_supplementation, setPast_sickness_supplementation] = useState("");
    
     //현재질환 관련(sickness)
-    const [sickness_name, setSickness_name] = useState("");
+    const [sickness_name, setSickness_name] = useState([]);
     const [medicine, setMedicine] = useState("");
     const [symptom, setSymptom] = useState("");
     const [hospital, setHospital] = useState("");
@@ -44,22 +40,35 @@ export default () => {
 
     //에러 메시지
     const [blood_type_message, setBlood_type_message] = useState("");
-    // const [subscription_date_message, setSubscription_date_message] = useState("");
-    // const [expiration_date_message, setExpiration_date_message] = useState("");
-
-    const onSubmit = () => {
+    const [insurance_name_message, setInsurance_name_message] = useState("");
+    const [subscription_date_message, setSubscription_date_message] = useState("");
+    const [expiration_date_message, setExpiration_date_message] = useState("");
+    
+    const validation = () => {
+        //validation
         if(!blood_type){
             setBlood_type_message("필수 항목입니다.");
             return null;
         }
         if(insurance_bool){
-            if(!subscription_date){
-                setSubscription_date_message("필수 항목입니다.");
+            setInsurance_name_message(insurance_name ? "" : "필수항목입니다.");
+            setSubscription_date_message(subscription_date ? "" : "필수항목입니다.");
+            setExpiration_date_message(expiration_date ? "" : "필수항목입니다.");
+            if(subscription_date_message){
+                setSubscription_date_message(expiration_date >= subscription_date ? "" : "필수항목입니다.");
             }
-            else if(!expiration_date){
-                setExpiration_date_message("필수 항목입니다.")
+
+            if(insurance_name && subscription_date && expiration_date && expiration_date ){
+                onSubmit();
+            }else{
+                return null;
             }
+        }else if(blood_type){
+            onSubmit();
         }
+    }
+
+    const onSubmit = () => {
         const body = {
             user_id : user.id,
             past_sickness_name,
@@ -79,86 +88,100 @@ export default () => {
             expiration_date
         }
         const config = {
-            headers : {
+            headers: {
                 'Content-Type' : 'application/json'
-            }
+              }
         }
-        console.log(form);
 
         if(form == "create"){
             const url = "/info/medical_info"
             return Axios.post(url, body, config).then( res => {
-                console.log(res);
+                if(res.data.success){
+                    window.alert("의료정보를 등록하였습니다.");
+                    setForm("view");
+                }
             })
-        }else{
+        }else if(form == "update"){
             console.log(medical_id);
             const url = `/info/medical_info/${medical_id}`;
             return Axios.put(url, body, config).then( res => {
                 console.log(res);
             })
         }
-
     }
+
     //값 받기
     useEffect(()=>{
         Axios.get(`/info/medical_info/${user.id}`).then(res => {
-            setRes(res);
-
-            const arr_insurance_name_list = [];
-            // const arr_insurance_phone_list = [];
-            
-            for(var i = 0; i < res.data.insurance_list.length; i++){
-                arr_insurance_name_list.push(res.data.insurance_list[i].insurance_name);
-                // arr_insurance_phone_list.push(res.data.insurance_list[i].insurance_phone);
-            }
-            setInsurance_name_list(arr_insurance_name_list);
-            // setInsurance_phone_list(arr_insurance_phone_list);
-            //past_sickness
-            if(res.data.past_sickness){
-                const arr_past_sickness_name = [];
-                const arr_past_sickness_supplementation = [];
-                for(var i = 0; i < res.data.past_sickness.length; i++){
-                    arr_past_sickness_name.push(res.data.past_sickness[i].past_sickness_name);
-                    arr_past_sickness_supplementation.push(res.data.past_sickness[i].past_sickness_supplementation);
+            if(user.id){
+                //url이 edit면
+                if(location.pathname.split('/')[4] == "edit"){
+                    setForm("update");
                 }
-                setPast_sickness_name(arr_past_sickness_name);
-                setPast_sickness_supplementation(arr_past_sickness_supplementation);
-            }
-
-            //sickness
-            if(res.data.sickness){
-                const arr_sickness_name = [];
-                const arr_medicine = [];
-                const arr_symptom = [];
-                const arr_hosptial = [];
-                for(var i = 0; i < res.data.sickness.length; i++){
-                    arr_sickness_name.push(res.data.sickness[i].sickness_name);
-                    arr_medicine.push(res.data.sickness[i].medicine);
-                    arr_symptom.push(res.data.sickness[i].symptom);
-                    arr_hosptial.push(res.data.sickness[i].hospital);
+                //의료정보가 있으면
+                else if(res.data.medical_info){
+                    setForm("view");
                 }
-                setSickness_name(arr_sickness_name);
-                setMedicine(arr_medicine);
-                setSymptom(arr_symptom);
-                setHospital(arr_hosptial);
-            }
+                //의료정보가 없으면
+                else{
+                    setForm("create");
+                }
 
-            //medical_info
-            if(res.data.medical_info){
-                setMedical_id(res.data.medical_info.id);
-                setBlood_type(res.data.medical_info.blood_type);
-                setDisability_status(res.data.medical_info.disability_status);
-                setReport_request(res.data.medical_info.report_request);
-                setGuardian_phone(res.data.medical_info.guardian_phone);
-            }
 
-            //insurance
-            if(res.data.insurance){
-                setInsurance_bool(true);
-                setInsurance_name(res.data.insurance_list_my.insurance_name);
-                setInsurance_phone(res.data.insurance_list_my.insurance_phone);
-                setSubscription_date(res.data.insurance.subscription_date);
-                setExpiration_date(res.data.insurance.expiration_date);
+                const arr_insurance_name_list = [];            
+                for(var i = 0; i < res.data.insurance_list.length; i++){
+                    arr_insurance_name_list.push(res.data.insurance_list[i].insurance_name);
+                    // arr_insurance_phone_list.push(res.data.insurance_list[i].insurance_phone);
+                }
+                setInsurance_name_list(arr_insurance_name_list);
+                // setInsurance_phone_list(arr_insurance_phone_list);
+                //past_sickness
+                if(res.data.past_sickness){
+                    const arr_past_sickness_name = [];
+                    const arr_past_sickness_supplementation = [];
+                    for(var i = 0; i < res.data.past_sickness.length; i++){
+                        arr_past_sickness_name.push(res.data.past_sickness[i].past_sickness_name);
+                        arr_past_sickness_supplementation.push(res.data.past_sickness[i].past_sickness_supplementation);
+                    }
+                    setPast_sickness_name(arr_past_sickness_name);
+                    setPast_sickness_supplementation(arr_past_sickness_supplementation);
+                }
+
+                //sickness
+                if(res.data.sickness){
+                    const arr_sickness_name = [];
+                    const arr_medicine = [];
+                    const arr_symptom = [];
+                    const arr_hosptial = [];
+                    for(var i = 0; i < res.data.sickness.length; i++){
+                        arr_sickness_name.push(res.data.sickness[i].sickness_name);
+                        arr_medicine.push(res.data.sickness[i].medicine);
+                        arr_symptom.push(res.data.sickness[i].symptom);
+                        arr_hosptial.push(res.data.sickness[i].hospital);
+                    }
+                    setSickness_name(arr_sickness_name);
+                    setMedicine(arr_medicine);
+                    setSymptom(arr_symptom);
+                    setHospital(arr_hosptial);
+                }
+
+                //medical_info
+                if(res.data.medical_info){
+                    setMedical_id(res.data.medical_info.id);
+                    setBlood_type(res.data.medical_info.blood_type);
+                    setDisability_status(res.data.medical_info.disability_status);
+                    setReport_request(res.data.medical_info.report_request);
+                    setGuardian_phone(res.data.medical_info.guardian_phone);
+                }
+
+                //insurance
+                if(res.data.insurance){
+                    setInsurance_bool(true);
+                    setInsurance_name(res.data.insurance_list_my.insurance_name);
+                    setInsurance_phone(res.data.insurance_list_my.insurance_phone);
+                    setSubscription_date(res.data.insurance.subscription_date);
+                    setExpiration_date(res.data.insurance.expiration_date);
+                }
             }
 
 
@@ -167,7 +190,6 @@ export default () => {
     // const medical_update = () => {
     //     console.log("update");
     // }
-    // console.log(res);
     // console.log(past_sickness_name);
     // console.log(past_sickness_supplementation);
     // console.log(sickness_name);
@@ -185,8 +207,6 @@ export default () => {
 
     return (
         <MedicalContext.Provider value={{
-            res,
-            setRes,
             form,
             sickness_list,
             blood_type_list,
@@ -223,8 +243,11 @@ export default () => {
             setSubscription_date,
             expiration_date,
             setExpiration_date,
-            onSubmit,
-            blood_type_message
+            validation,
+            blood_type_message,
+            insurance_name_message,
+            subscription_date_message,
+            expiration_date_message
         }}>
         <MedicalView/>
     </MedicalContext.Provider>
