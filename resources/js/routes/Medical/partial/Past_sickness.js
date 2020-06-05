@@ -1,25 +1,20 @@
 import React, { useState, useContext } from "react";
 import Dropdown from "react-dropdown";
-import {AppContext} from "../../../components/App";
 import {MedicalContext} from "../MedicalContainer";
 export default () => {
-    const { user } = useContext(AppContext);
-    const { 
+    const {
+        sickness_list,
         past_sickness_name,
         setPast_sickness_name,
         past_sickness_supplementation,
         setPast_sickness_supplementation,
      } = useContext(MedicalContext);
     //드롭다운 옵션
-    const options = [
-        'one', 'two', 'three'
-    ];
-    console.log(past_sickness_name);
-    console.log(past_sickness_supplementation);
+    // console.log(past_sickness_name);
+    // console.log(past_sickness_supplementation);
 
     const add_past_sickness = () => {
         if(past_sickness_name.length < 3){
-            
             setPast_sickness_name(past_sickness_name => [...past_sickness_name, null]);
             setPast_sickness_supplementation(past_sickness_supplementation => [...past_sickness_supplementation, null]);
         }
@@ -49,17 +44,17 @@ export default () => {
                         }
                     </div>
                     <div className="col-md-2 text-center p-3">
-                        <span className="medical_text"style={{marginTop:"13px"}}>과거 질환</span>
+                        <span className="medical_text"style={{marginTop:"13px"}}>기저 질환{index + 1}</span>
                     </div>
                     {/* {{-- 드롭다운버튼 --}} */}
                     <div className="col-md-2 text-center p-2">
-                        <Dropdown options={options} 
+                        <Dropdown options={sickness_list} 
                             onChange={
                                 (data) => {
-                                    console.log(value);
+                                    // console.log(data.value);
                                     let newArr = [...past_sickness_name];
                                     newArr[index] = data.value;
-                                    setPast_sickness_name(newArr)
+                                    setPast_sickness_name(newArr);
                                 }
                             } value={past_sickness_name[index] ? past_sickness_name[index] : "선택"} placeholder="선택" style={{width:"200px"}}/>
                     </div>

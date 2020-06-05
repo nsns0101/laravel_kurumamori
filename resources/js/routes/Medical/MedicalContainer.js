@@ -12,7 +12,12 @@ export default () => {
     if(location.pathname.split('/')[4] == "edit"){
         form = "update";
     }
-
+    //drop_down list
+    const sickness_list = ["없음", "고혈압", "당뇨", "결핵", "심장질환", "알러지", "천식", "심부전증", "페렴", "디스크", "간경화", "관절염", "협심증", "암", "갑상선염", "고지혈증", "골다공증", "과민성 대장", "기관지염", "뇌졸중", "신장질환", "간암"];
+    const blood_type_list = ["A형", "B형", "AB형", "O형"];
+    const [insurance_name_list, setInsurance_name_list]= useState("");
+    // const [insurance_phone_list, setInsurance_phone_list]= useState("");
+    
     //기저질환 관련(past_sickness)
     const [past_sickness_name, setPast_sickness_name] = useState("");
     const [past_sickness_supplementation, setPast_sickness_supplementation] = useState("");
@@ -26,10 +31,9 @@ export default () => {
     //기본 의료정보(medical_info)
     const [medical_id, setMedical_id] = useState("");
     const [blood_type, setBlood_type] = useState("");
-    const [disability_status, setDisability_status] = useState("");
+    const [disability_status, setDisability_status] = useState(false);
     const [report_request, setReport_request] = useState("");
     const [guardian_phone, setGuardian_phone] = useState("");
-
     //보험사 정보(insurance)
     const [insurance_bool, setInsurance_bool] = useState(false);
     const [insurance_phone, setInsurance_phone] = useState(false);
@@ -37,12 +41,78 @@ export default () => {
     const [subscription_date, setSubscription_date] = useState("");
     const [expiration_date, setExpiration_date] = useState("");
 
-    
+
+    //에러 메시지
+    const [blood_type_message, setBlood_type_message] = useState("");
+    // const [subscription_date_message, setSubscription_date_message] = useState("");
+    // const [expiration_date_message, setExpiration_date_message] = useState("");
+
+    const onSubmit = () => {
+        if(!blood_type){
+            setBlood_type_message("필수 항목입니다.");
+            return null;
+        }
+        if(insurance_bool){
+            if(!subscription_date){
+                setSubscription_date_message("필수 항목입니다.");
+            }
+            else if(!expiration_date){
+                setExpiration_date_message("필수 항목입니다.")
+            }
+        }
+        const body = {
+            user_id : user.id,
+            past_sickness_name,
+            past_sickness_supplementation,
+            sickness_name,
+            medicine,
+            symptom,
+            hospital,
+            medical_id,
+            blood_type,
+            disability_status,
+            report_request,
+            guardian_phone,
+            insurance_bool,
+            insurance_name,
+            subscription_date,
+            expiration_date
+        }
+        const config = {
+            headers : {
+                'Content-Type' : 'application/json'
+            }
+        }
+        console.log(form);
+
+        if(form == "create"){
+            const url = "/info/medical_info"
+            return Axios.post(url, body, config).then( res => {
+                console.log(res);
+            })
+        }else{
+            console.log(medical_id);
+            const url = `/info/medical_info/${medical_id}`;
+            return Axios.put(url, body, config).then( res => {
+                console.log(res);
+            })
+        }
+
+    }
     //값 받기
     useEffect(()=>{
         Axios.get(`/info/medical_info/${user.id}`).then(res => {
             setRes(res);
 
+            const arr_insurance_name_list = [];
+            // const arr_insurance_phone_list = [];
+            
+            for(var i = 0; i < res.data.insurance_list.length; i++){
+                arr_insurance_name_list.push(res.data.insurance_list[i].insurance_name);
+                // arr_insurance_phone_list.push(res.data.insurance_list[i].insurance_phone);
+            }
+            setInsurance_name_list(arr_insurance_name_list);
+            // setInsurance_phone_list(arr_insurance_phone_list);
             //past_sickness
             if(res.data.past_sickness){
                 const arr_past_sickness_name = [];
@@ -118,6 +188,10 @@ export default () => {
             res,
             setRes,
             form,
+            sickness_list,
+            blood_type_list,
+            insurance_name_list,
+            // insurance_phone_list,
             medical_id,            
             past_sickness_name,
             setPast_sickness_name,
@@ -149,6 +223,8 @@ export default () => {
             setSubscription_date,
             expiration_date,
             setExpiration_date,
+            onSubmit,
+            blood_type_message
         }}>
         <MedicalView/>
     </MedicalContext.Provider>

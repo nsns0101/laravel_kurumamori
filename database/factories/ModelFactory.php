@@ -83,7 +83,7 @@ $factory->define(App\Medical_info::class, function (Faker $faker) {
         'user_id' => $faker->unique()->randomElement($userId), //1:1관계로 유니크부여
         'guardian_phone' => '010-' . rand(1000, 9999) . '-' . rand(1000, 9999),
         'blood_type' => Arr::random(['A형','B형','AB형','O형']),
-        'disability_status' => Arr::random(['yes','no']),
+        'disability_status' => Arr::random([true,false]),
         'report_request' => Arr::random($report_request),
     ];
 });

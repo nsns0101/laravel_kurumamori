@@ -25,6 +25,8 @@
         "sass-loader": "^8.0.0"
     },
     "dependencies": {
+        "moment": "^2.26.0",
+        "react-datepicker": "^3.0.0",
         "react-dropdown": "^1.7.0",
         "react-geocode": "^0.2.1",
         "react-hook-form": "^5.7.2",

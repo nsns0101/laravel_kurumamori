@@ -1,12 +1,20 @@
 import React, {useContext} from "react";
+import Dropdown from "react-dropdown";
 import Past_sickness from "./Past_sickness";
 import Sickness from "./Sickness";
 import {AppContext} from "../../../components/App";
 import {MedicalContext} from "../MedicalContainer";
+import DataPicker from "react-datepicker";
+import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+import moment from "moment"
+import { useForm } from "react-hook-form";
 
 export default () => {
     const { user } = useContext(AppContext);
-    const {  
+    const {
+        blood_type_list,
+        insurance_name_list,
+        // insurance_phone_list,
         blood_type,
         setBlood_type,
         disability_status,
@@ -24,24 +32,32 @@ export default () => {
         subscription_date,
         setSubscription_date,
         expiration_date,
-        setExpiration_date
+        setExpiration_date,
+        onSubmit,
+        blood_type_message
     } = useContext(MedicalContext);
+    // console.log(insurance_name_list);
+    // console.log(insuranc);
+    // console.log(subscription_date);
+
+    const { handleSubmit, register, errors, watch } = useForm();
+
+
     return (
-        <form action="{{ route('medical_info.update',$medical_info->id) }}" method="POST" role="form">
+        insurance_name_list ? (
+            <form onSubmit={handleSubmit(onSubmit)}>
             <div className="row">
                 <div className="col-md-12">
                     <div className="card">
                         <div className="text-center card-header card-main" style={{color:"white", background:"blue"}}>
                             질병 사항
                         </div>
-                        <div className="dropdown">
                             <br/>
                             {/* {{-- 과거 질환 --}} */}
                             <Past_sickness/>
                             <hr style={{background:"darkgray"}}/>
                             {/* {{-- 현재 질환 --}} */}
                             <Sickness/>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -55,72 +71,204 @@ export default () => {
                         </div>
                         <br/>
                         <div className="row">
-                            <div className="col-md-2 text-center">
-                                {/* {{-- 혈액형 --}} */}
+                            <div className="col-md-1"></div>
+                            {/* 혈액형 글 */}
+                            <div className="col-md-2 text-center p-1">
                                 <span style={{color:"red", fontSize:"30px"}}>*</span>
-                                <span className="medical_text"style={{fontSize:"24px", marginTop:"13px"}}>
+                                <span className="medical_text"style={{marginTop:"13px"}}>
                                     혈액형
                                 </span>
                             </div>
-                            <button 
-                            className="btn btn-default dropdown-toggle blood_type_btn dropdown_btn" type="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="true">
-                            {/* {{-- {{$medical_info && $medical_info->blood_type ? $medical_info->blood_type : old('blood_type',"선택")}} --}} */}
-                            {/* {{$medical_info && $medical_info->blood_type ? $medical_info->blood_type : old('blood_type',"A형")}} */}
-
-                                <span className="caret"></span>
-                            </button>
-                            <ul className="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <li><a className="dropdown-blood_type" href="#" style={{color:"black", fontSize:"18px"}}>A형</a></li>
-                                <li><a className="dropdown-blood_type" href="#" style={{color:"black", fontSize:"18px"}}>B형</a></li>
-                                <li><a className="dropdown-blood_type" href="#" style={{color:"black", fontSize:"18px"}}>AB형</a></li>
-                                <li><a className="dropdown-blood_type" href="#" style={{color:"black", fontSize:"18px"}}>O형</a></li>
-                            </ul>
-                            <br/>
-                            <div className="form-group {{ $errors->has('blood_type') ? 'has-error' : '' }}">
-                                {/* {{-- <input id="blood_type" style={{fontSize:"24px"}} type="hidden" name="blood_type" className="form-control" value="{{$medical_info && $medical_info->blood_type ? old('blood_type',$medical_info->blood_type) :  old('blood_type')}}"/> --}} */}
-                                <input id="blood_type" style={{fontSize:"24px"}} type="hidden" name="blood_type" className=""/>
-                                <span style={{color:"red"}}>
-                                {/* {!! $errors->first('blood_type', '<span className="form-error">:message</span>') !!} */}
-                                </span>
-                            </div>
+                            {/* 혈액형 드롭다운버튼 */}
+                            <div className="col-md-2 text-center p-2">
+                                <Dropdown options={blood_type_list} name="blood_type"
+                                    onChange={
+                                        (data) => {
+                                            setBlood_type(data.value);
+                                        }
+                                    } value={blood_type ? blood_type : ""} placeholder="선택" style={{width:"200px"}}
+                                    
+                                    />
+                                    <div className="text-danger">
+                                        {blood_type_message}
+                                    </div>
+                            </div>                
                             {/* {{-- 장애 여부 --}} */}
-                            <div className="col-md-2 text-center">
+                            <div className="col-md-1"></div>
+                            <div className="col-md-2 text-center p-1">
                                 <span style={{color:"red", fontSize:"30px"}}>*</span>
-                                <span className="medical_text" style={{fontSize:"24px", marginTop:"13px"}}>
+                                <span className="medical_text" style={{marginTop:"13px"}}>
                                     장애여부
                                 </span>
                             </div>
                                 
-                            <div className="col-md-4">
-                                <div className="form-group {{$errors->has('disability_status') ? 'has-error' : ''}}">
-                                    <fieldset style={{fontSize:"20px", marginTop:"6px"}}>
-                                        예
-                                        <input type="radio" name="disability_status" id="disability_status_yes" value="yes"/>
-                                        아니오
-                                        <input type="radio" name="disability_status" id="disability_status_no" value="no"/>
-                                    </fieldset>
+                            <div className="col-md-4 p-1">
+                                <div className="form-group">
+                                    {disability_status ? (
+                                        <fieldset style={{fontSize:"20px", marginTop:"6px"}} key="1">
+                                            예
+                                            <input type="radio" onChange={()=> setDisability_status(true)} checked={true}/>
+                                            아니오
+                                            <input type="radio" onChange={()=> setDisability_status(false)}/>
+                                        </fieldset>
+                                    ) : (
+                                        <fieldset style={{fontSize:"20px", marginTop:"6px"}} key="2">
+                                            예
+                                            <input type="radio" onChange={()=> setDisability_status(true)}/>
+                                            아니오
+                                            <input type="radio" onChange={()=> setDisability_status(false)} checked={true}/>
+                                        </fieldset>
+                                    )}
                                     <span style={{color:"red"}}>
-                                        {/* {!! $errors->first('disability_status', '<span className="form-error">:message</span>')!!} */}
                                     </span>
                                 </div>
                             </div>
-                            <div className="col-md-3 text-center">
-                                <span className="medical_text" style={{fontSize:"24px", marginTop:"13px", marginRight:"15px"}}>
+                        </div>
+                        {/* 신고시 요청사항 */}
+                        <div className="row">
+                            <div className="col-md-1"></div>
+                            <div className="col-md-3 text-center p-1">
+                                <span className="medical_text" style={{marginTop:"13px"}}>
                                 신고시 요청사항
                                 </span>
                             </div>
                             <div className="col-md-7">
-                                <div className="form-group {{ $errors->has('report_request') ? 'has-error' : '' }}">
-                                    {/* {{-- <input style={{fontSize:"24px"}} type="text" name="report_request" className="form-control" placeholder="○○를 가져와주세요!" value="{{ $medical_info ? old('report_request',$medical_info->report_request) :  old('report_request') }}"/> --}} */}
-                                    <input style={{fontSize:"24px"}} type="text" name="report_request" className="form-control" placeholder="○○를 가져와주세요!"/>
-                                    {/* {!! $errors->first('report_request', '<span className="form-error">:message</span>') !!} */}
+                                <div className="form-group">
+                                    <input type="text" className="form-control" placeholder="○○를 가져와주세요!"
+                                    onChange={(e) => setReport_request(e.target.value)}
+                                     value={report_request ? report_request : ""}/>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            {/* {{-- 보호자 정보 --}} */}
+            <div className="row">
+                <div className="col-md-12">
+                    <div className="card">
+                        <div className="text-center card-header card-main" style={{color:"white"}}>
+                            보호자 정보
+                        </div>
+                        <br/>
+                        <div className="row">
+                            <div className="col-md-1"></div>
+                            <div className="col-md-2 text-center p-1">
+                                <span className="medical_text" style={{marginTop:"13px", marginRight:"15px"}}>
+                                보호자 번호
+                                </span>
+                            </div>
+                            <br/>
+                            <div className="col-md-5">
+                                <div className="form-group">
+                                    <input type="text" className="form-control" placeholder="응급시 연락가능한 보호자 휴대폰 번호" 
+                                    onChange={(e)=> setGuardian_phone(e.target.value)}
+                                    value={guardian_phone ? guardian_phone : ""}/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/* 보험사 */}
+            <div className="row">
+                <div className="col-md-12">
+                    <div className="card">
+                        <div className="text-center card-header card-main" style={{background:"darkgray", color:"white"}}>
+                            보험 정보
+                        </div>
+                        <br/>
+                        {/* 보험 여부 */}
+                        <div className="row">
+                            <div className="col-md-1"></div>
+                            <div className="col-md-2 text-center p-1">
+                                <span className="medical_text" style={{marginTop:"13px", marginRight:"15px"}}>
+                                    보험 여부
+                                </span>
+                            </div>
+                            <div className="col-md-4 p-1">
+                                <div className="form-group">
+                                    {insurance_bool ? (
+                                        <fieldset style={{fontSize:"20px", marginTop:"6px"}} key="3">
+                                            예
+                                            <input type="radio" onChange={()=> setInsurance_bool(true)} checked={true}/>
+                                            아니오
+                                            <input type="radio" onChange={()=> setInsurance_bool(false)}/>
+                                        </fieldset>
+                                    ) : (
+                                        <fieldset style={{fontSize:"20px", marginTop:"6px"}} key="4">
+                                            예
+                                            <input type="radio" onChange={()=> setInsurance_bool(true)}/>
+                                            아니오
+                                            <input type="radio" onChange={()=> setInsurance_bool(false)} checked={true}/>
+                                        </fieldset>
+                                    )}
+                                    <span style={{color:"red"}}>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        {/* 보험 정보 */}
+                        <div className="row" id="insurance_table" style={insurance_bool ? {display:"flex"} : {display:"none"} }>
+                            <div className="col-md-1"></div>
+                            <div className="col-md-2 text-center p-3">
+                                <span className="medical_text" style={{marginTop:"13px",marginRight:"25px"}}>
+                                보험사 명
+                                </span>
+                            </div>
+                            <div className="col-md-3 text-center p-2">
+                                <Dropdown options={insurance_name_list} 
+                                    onChange={
+                                        (data) => {
+                                            setInsurance_name(data.value);
+                                        }
+                                    } value={insurance_name ? insurance_name : "선택"} placeholder="선택" style={{width:"200px"}}/>
+                            </div>
+                            <div className="col-md-6"></div>
+                            <div className="col-md-1"></div>
+                                    
+                            <div className="col-md-2 text-center p-1">
+                                <span className="medical_text" style={{marginTop:"13px",marginRight:"25px"}}>
+                                보험 가입일
+                                </span>
+                            </div>
+                            <div className="col-md-3">
+                                <div className="form-group">
+                                    <DataPicker onChange={(date) => setSubscription_date(moment(date).format("YYYY-MM-DD"))} value={subscription_date}/>
+                                </div>
+                            </div>
+                            <div className="col-md-2 text-center p-1">
+                                <span className="medical_text" style={{marginTop:"13px",marginRight:"25px"}}>
+                                보험 만기일
+                                </span>
+                            </div>
+                            <div className="col-md-3">
+                                <div className="form-group">
+                                    <DataPicker onChange={(date) => setExpiration_date(moment(date).format("YYYY-MM-DD"))} value={expiration_date}/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div className="row">
+                <div className="col-md-5"></div>
+                <div className="col-md-2">
+                    <div className="form-group">
+                        <button className="btn btn-success btn-lg btn-block" type="submit" style={{width:"150px"}}>
+                            등록하기
+                        </button>
+                    </div>
+                </div>
+                <div className="col-md-5"></div>
+            </div>
+            <br/>
+            <br/>        
+            <br/>
+            <br/>
         </form>
+        ) : null
+
     )
 }
