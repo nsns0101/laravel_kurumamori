@@ -10,37 +10,45 @@ class DriveController extends Controller
     {
         // $this->middleware('auth');
     }
-    public function index($date = null)
+    public function index()
     {
-        //date로 받은 것이 있으면 변함없음, date로 받은 것이 없으면 default로 현재날짜
-        $date = $date ? $date : $date = date("Y-m-d");
+        
+        return view('home.main');
+    }
 
-        $auth_user = auth()->user()->id;    //로그인 유저
+    public function create()
+    {
+
+    }
+    public function store(Request $request)
+    {
+        \Log::info($request->all());
+
         //선택날짜의 운전 정보
-        $drive = $date ? \DB::select("select * from drives where DATE_FORMAT(created_at, '%Y-%m-%d') = '{$date}' AND user_id = '{$auth_user}'") : \DB::select("select * from drives where DATE_FORMAT(created_at, '%Y-%m-%d') = '{$date}'");
+        $drive = \DB::select("select * from drives where DATE_FORMAT(created_at, '%Y-%m-%d') = '{$request->date}' AND user_id = '{$request->user_id}'");
         //선택날짜의 위험 정보
         
         //현재날짜포함하여 최근 5일 구하기
         $day_5 = array();
         for($i = 0; $i <5; $i++){
-            array_push($day_5,date("Y-m-d", strtotime($date ."-{$i} day")));
+            array_push($day_5,date("Y-m-d", strtotime($request->date ."-{$i} day")));
         }
 
         //최근 5일의 운전정보
         $day_5_info = array();
         for($i = 0; $i < count($day_5); $i++){
             // \Log::info($day_5[$i]);
-            array_push($day_5_info, \DB::select("select * from drives where DATE_FORMAT(created_at, '%Y-%m-%d') = '{$day_5[$i]}' AND user_id = '{$auth_user}'"));
+            array_push($day_5_info, \DB::select("select * from drives where DATE_FORMAT(created_at, '%Y-%m-%d') = '{$day_5[$i]}' AND user_id = '{$request->user_id}'"));
         }
 
         // 해당날짜의 위험정보
-        // $drive_detection = \DB::select("select * from drive_detections where DATE_FORMAT(created_at, '%Y-%m-%d') = '{$date}' AND user_id = '{$auth_user}'");
+        // $drive_detection = \DB::select("select * from drive_detections where DATE_FORMAT(created_at, '%Y-%m-%d') = '{$request->date}' AND user_id = '{$request->user_id}'");
         
         //최근 5일의 위험 정보
         $drive_detection_5= array();
         for($i = 0; $i < count($day_5); $i++){
             //$value는 배열로 리턴됨
-            $value = \DB::select("select * from drive_detections where DATE_FORMAT(created_at, '%Y-%m-%d') = DATE_SUB('{$date}', INTERVAL {$i} DAY)  AND user_id = '{$auth_user}'");
+            $value = \DB::select("select * from drive_detections where DATE_FORMAT(created_at, '%Y-%m-%d') = DATE_SUB('{$request->date}', INTERVAL {$i} DAY)  AND user_id = '{$request->user_id}'");
             if($value){
                 array_push($drive_detection_5, $value);
             }
@@ -98,12 +106,12 @@ class DriveController extends Controller
         }
 
         //사고 여부
-        $reports = \DB::select("select * from drive_detections where DATE_FORMAT(created_at, '%Y-%m-%d') = '{$date}' AND user_id = '{$auth_user}' AND bool_report = true");
+        $reports = \DB::select("select * from drive_detections where DATE_FORMAT(created_at, '%Y-%m-%d') = '{$request->date}' AND user_id = '{$request->user_id}' AND bool_report = true");
 
         // $reports = \App\Drive_detection::
         //     whereUser_id(auth()->user()->id)
         //     ->whereBool_report(true)
-        //     ->where(\DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d')"),$date)
+        //     ->where(\DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d')"),$request->date)
         //     ->get();
         
         //당일 운전점수
@@ -167,7 +175,7 @@ class DriveController extends Controller
         }
         
         // \Log::info($score_sudden_acceleration);
-        \Log::info("선택 날짜 : " . $date);
+        \Log::info("선택 날짜 : " . $request->date);
         \Log::info("선택한 날짜의 정보 :", $drive);
         \Log::info("최근 5일 : ", $day_5);
         \Log::info("최근 5일의 운전 정보 : ", $day_5_info);  //배열안의 배열 (하루에 여러번 운전했을 수 있으니)
@@ -181,16 +189,18 @@ class DriveController extends Controller
         // \Log::info($error);
         //1시간에 급감속이나 급가속, 졸음 등을 1번했을 경우 모범?
         //default = 100에서 깎아내리는 형식?
-        return view('home.main', compact('drive', 'date', 'day_5_sec','day_5', 'day_5_info', 'day_5_danger_info', 'drive_detection_5', 'reports', 'score'));
-    }
 
-    public function create()
-    {
-
-    }
-    public function store(Request $request)
-    {
-       
+        return response()->json([
+            'drive' => $drive,
+            'date' => $request->date,
+            'day_5_sec' => $day_5_sec,
+            'day_5' => $day_5,
+            'day_5_info' => $day_5_info,
+            'day_5_danger_info' => $day_5_danger_info,
+            'drive_detection_5' => $drive_detection_5,
+            'reports' => $reports,
+            'score' => $score
+        ], 201);
     }
 
     public function destroy()

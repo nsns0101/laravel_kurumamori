@@ -1,13 +1,13 @@
 import React, {useContext} from "react";
 import Dropdown from "react-dropdown";
-import Past_sickness from "./Past_sickness";
-import Sickness from "./Sickness";
-import {AppContext} from "../../../components/App";
-import {MedicalContext} from "../MedicalContainer";
 import DataPicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import moment from "moment"
 import { useForm } from "react-hook-form";
+import Past_sickness from "./Past_sickness";
+import Sickness from "./Sickness";
+import {AppContext} from "../../../components/App";
+import {MedicalContext} from "../MedicalContainer";
 
 export default () => {
     const { user } = useContext(AppContext);

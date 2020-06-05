@@ -46,7 +46,7 @@ export default () => {
                         <i className="fas fa-fw fa-wrench" style={{color:"blue"}}></i>
                         <span className="text-color" style={text_color}>의료정보</span>
                     </Link>
-                    <Link to="info/drive_score" className="nav-link">
+                    <Link to="/info/drive_score" className="nav-link">
                         <i className="fas fa-fw fa-wrench" style={{color:"blue"}}></i>
                         <span className="text-color" style={text_color}>운전점수</span>
                     </Link>
