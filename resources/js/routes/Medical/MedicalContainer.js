@@ -109,12 +109,13 @@ export default ({history}) => {
             })
         }
     }
-
+    console.log(form);
     //값 받기
     useEffect(()=>{
+        console.log("medical useEffect");
         Axios.get(`/info/medical_info/${user.id}`).then(res => {
             if(user.id){
-                //url이 edit면
+                // url이 edit면
                 if(location.pathname.split('/')[4] == "edit"){
                     setForm("update");
                 }
@@ -208,6 +209,7 @@ export default ({history}) => {
     return (
         <MedicalContext.Provider value={{
             form,
+            setForm,
             sickness_list,
             blood_type_list,
             insurance_name_list,

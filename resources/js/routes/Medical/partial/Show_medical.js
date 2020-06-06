@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 export default () => {
     const { user } = useContext(AppContext);
     const {
+        setForm,
         medical_id,
         past_sickness_name,
         past_sickness_supplementation,
@@ -42,7 +43,7 @@ export default () => {
     return (
         <div>
             {/* <a className="btn btn-success" href={`/info/medical_info/${medical_id}/edit`}>의료정보 수정</a> */}
-            <Link to={`/info/medical_info/${medical_id}/edit`} className="btn btn-success">의료정보 수정</Link>
+            <Link to={`/info/medical_info/${medical_id}/edit`} className="btn btn-success" onClick={() => setForm("update")}>의료정보 수정</Link>
             <br/>
             <br/>
             

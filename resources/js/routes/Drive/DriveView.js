@@ -5,15 +5,18 @@ import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import moment from "moment"
 import { AppContext } from "../../components/App";
 import { DriveContext } from "./DriveContainer";
-
+import Drive_score_icon from "./partial/Drive_score_icon";
+import Drive_score_chart from "./partial/Drive_score_chart";
 export default () => {
     const { user } = useContext(AppContext);
     const {
         date,
         setDate,
-        
+        day_5,
+        day_5_sec,
+        day_5_danger_count,
     } = useContext(DriveContext);
-    return (
+    return day_5_danger_count.length && (
         <section id="intro" className="section intro" style={{padding: "50px 0px 0px 0px", background: "#f7f7f7"}}>
             <div className="row">
                 <div className="col-md-2 col-xs-2 col-sm-2">
@@ -46,6 +49,16 @@ export default () => {
                         <div className="col-md-1"></div>
                         <br />
                     </div>
+                    {day_5_sec[0] ? (
+                        <div>
+                            <Drive_score_icon/>
+                            <Drive_score_chart/>
+                        </div>
+                    ) : (
+                        <div>
+                            <p className="text-danger">운전 데이터가 없습니다.</p>
+                        </div>
+                    )}
                 </div>
             </div>
         </section>

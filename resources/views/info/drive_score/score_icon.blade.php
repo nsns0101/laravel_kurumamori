@@ -1,7 +1,5 @@
 {{-- <p class="text-danger" style="font-size:20px; margin-left:180px;">총 점수는 급 가속, 급 감속 점수 뿐 아니라 졸음, 사고점수도 포함한 점수입니다.</p> --}}
 <div class="row">
-    {{-- <div class="col-xs-1 col-sm-1 col-md-1"></div> --}}
-
     <div class="col-xs-3 col-sm-3 col-md-3">
         <div class="card btn btn-primary text-dark"> <!-- 총 점수 -->
             <div class="pt-3 pb-3">

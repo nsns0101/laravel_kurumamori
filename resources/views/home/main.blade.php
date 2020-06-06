@@ -75,6 +75,9 @@
         <link rel="stylesheet" href="/css/bootstrap-datepicker.css">
         <meta name="description" content="{{ config('project.description') }}">
 
+        {{-- canvas.js --}}
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
