@@ -34,9 +34,9 @@ Route::get('/auth/register', 'UsersController@index');
 //메일관련 컨트롤러
 Route::resource('/confirm', 'ConfirmController');
 
-Route::get('/info/drive_score', function () {
-    return view('info.drive_score');
-});
+// Route::get('/info/drive_score', function () {
+//     return view('info.drive_score');
+// });
 
 //내정보
 Route::resource('/info/index', 'InfoController');

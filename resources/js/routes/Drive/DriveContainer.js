@@ -5,63 +5,63 @@ import moment from "moment";
 import Axios from 'axios';
 export const DriveContext = createContext();
 
-
-/*
-    어차피 useEffect도 써야함 기본 날짜 값에 맞는 데이터 뽑아야하니까
-    select_drive함수는 렌더가 되긴하는데 값을 왜 늦게받아올까?
-    Medical_info의 put문제는?
-*/
-
-
-
-
-
-
-
-
-
-
 export default () => {
     const { user } = useContext(AppContext);
+    //선택한 날짜
     const [date, setDate] = useState(moment(new Date()).format("YYYY-MM-DD"));
-    const [day_5, setDay_5] = useState([
-        moment().subtract(0, 'd').format("YYYY-MM-DD"), //현재날짜 -0일
-        moment().subtract(1, 'd').format("YYYY-MM-DD"), //현재날짜 -1일
-        moment().subtract(2, 'd').format("YYYY-MM-DD"), //현재날짜 -2일
-        moment().subtract(3, 'd').format("YYYY-MM-DD"), //현재날짜 -3일
-        moment().subtract(4, 'd').format("YYYY-MM-DD"), //현재날짜 -4일
-    ]);
-    const select_drive = () => {
-        const url = `/info/drive_score`;
-        const body = {
-            date : date,
-            user_id : user.id,
-        };
-        const config = {
-            headers : {
-                'Content-Type' : 'application/json'
+    //선택한 날짜의  운전정보
+    const [drive_info, setDrive_info] = useState();
+    //선택한 날짜의 신고이력
+    const [reports, setReports] = useState();
+    //선택한 날짜의 운전 점수
+    const [score, setScore] = useState();
 
-            }
-        };
-        new Promise( (res, rej) => {
-            res(Axios.post(url, body, config));
-        }).then( res => {
-            const arr_day_5 = [];
-            for(var i = 0; i < res.data.day_5.length; i++){
-                arr_day_5.push(res.data.day_5[i]);
-            }
-            setDay_5(arr_day_5);
-        })
-    }
+    //최근 5일 날짜
+    const [day_5, setDay_5] = useState([]);
+    //최근 5일의 운전시간
+    const [day_5_sec, setDay_5_sec] = useState([]);
+    //최근 5일의 운전감지 정보
+    const [day_5_drive_detection, setDay_5_drive_detection] = useState([]);
+    //최근 5일의 위험 카운트
+    const [day_5_danger_count, setDay_5_danger_count] = useState([]);
 
-    console.log(day_5);
+    useEffect(()=> {               
+        if(user.id){
+            Axios.get(`/info/drive_score/`, {
+                params : {
+                    user_id : user.id,
+                    date
+                }
+            }).then( res => {
+                console.log(res);
+                if(user.id){
+                    //오늘의 운전 정보
+                    
+
+                    //최근 5일 받기
+                    const arr_day_5 = [];
+                    for(var i = 0; i < res.data.day_5.length; i++){
+                        arr_day_5.push(res.data.day_5[i]);
+                    }
+                    setDay_5(arr_day_5);
+
+                    //최근 5일의 위험정보
+
+
+                    //
+    
+                }
+            });
+        }
+
+    }, [user, date])
+
 
 
     return (
         <DriveContext.Provider value={{
             date,
             setDate,
-            select_drive
         }}>
             <DriveView/>
         </DriveContext.Provider>

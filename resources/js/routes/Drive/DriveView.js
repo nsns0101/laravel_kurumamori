@@ -11,7 +11,6 @@ export default () => {
     const {
         date,
         setDate,
-        select_drive,
         
     } = useContext(DriveContext);
     return (
@@ -40,7 +39,6 @@ export default () => {
                                 <DataPicker onChange={
                                     (date) => {
                                         setDate(moment(date).format("YYYY-MM-DD"));
-                                        select_drive()
                                     }
                                 } value={date}/>
                             </div>
