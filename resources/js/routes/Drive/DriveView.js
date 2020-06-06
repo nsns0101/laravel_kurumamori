@@ -7,6 +7,8 @@ import { AppContext } from "../../components/App";
 import { DriveContext } from "./DriveContainer";
 import Drive_score_icon from "./partial/Drive_score_icon";
 import Drive_score_chart from "./partial/Drive_score_chart";
+import GoogleMap from "./partial/GoogleMap";
+
 export default () => {
     const { user } = useContext(AppContext);
     const {
@@ -53,6 +55,7 @@ export default () => {
                         <div>
                             <Drive_score_icon/>
                             <Drive_score_chart/>
+                            <GoogleMap/>
                         </div>
                     ) : (
                         <div>
@@ -61,6 +64,10 @@ export default () => {
                     )}
                 </div>
             </div>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
         </section>
     )
 }

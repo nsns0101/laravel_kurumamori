@@ -5,8 +5,8 @@ import BarChart from "./chart/BarChart";
 import DoughnutChart from "./chart/DoughnutChart";
 export default () => {
     // var a = CanvasJSReact.CanvasJSChart;
-    console.log(LineChart);
-    console.log(DoughnutChart);
+    // console.log(LineChart);
+    // console.log(DoughnutChart);
     return  (
         <div className="row">
             {/* Area Chart */}
