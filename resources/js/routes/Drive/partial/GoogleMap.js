@@ -1,14 +1,16 @@
 import React, {useContext} from "react";
 import { DriveContext } from "../DriveContainer";
-
+import {Map_api} from "./google_map/Map_api.js"
 export default () => {
     const {
         score,
         day_5_danger_count,
         drive_info,
         reports,
-
+        day_5_drive_detection
     } = useContext(DriveContext);
+    console.log(day_5_drive_detection);
+
     return (
         // 구글맵, 오늘의 운전점수
         <div className="row">
@@ -20,9 +22,10 @@ export default () => {
                     <div className="row">
                         <div className="col-xl-6 col-lg-6 col-md-6">
                             <div className="card-body">
-                                <div className="col-xl-12 col-lg-12 col-md-12">
+                                <div className="col-xl-12 col-lg-12 col-md-12" style={{width:"100%", height:"500px"}}>
                                     {/* 구글맵 */}
-                                    <div id="map" style={{width:"100%", height:"500px"}}></div>
+                                    {/* <div id="map" style={{width:"100%", height:"500px"}}></div> */}
+                                    <Map_api/>
                                 </div>
                             </div> 
                     
@@ -66,7 +69,6 @@ export default () => {
                                 <img src="/icon/green_map_icon.png"/>급감속 구간
                                 <img src="/icon/blue_map_icon.png"/>졸음 구간
                                 <img src="/icon/red_map_icon.png"/>신고 구간
-                        
                             </div>             
                         </div>
                     </div>

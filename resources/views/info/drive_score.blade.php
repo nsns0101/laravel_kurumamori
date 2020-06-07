@@ -236,7 +236,7 @@ function initMap() {
     //급가속 = 파랑색
     //급감속 = 초록색
 
-    //점
+    //점 0번째 인덱스는 선택한 날짜
     for(var i = 0; i < drive_detection_5[0].length; i++){
         location.push(new google.maps.LatLng(drive_detection_5[0][i].latitude, drive_detection_5[0][i].longitude));
         if(drive_detection_5[0][i].bool_report) location_color.push("red");

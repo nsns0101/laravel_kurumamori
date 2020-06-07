@@ -33,7 +33,7 @@ export default () => {
                     date
                 }
             }).then( res => {
-                console.log(res);
+                // console.log(res);
                 if(user.id){
                     const arr_drive_info = [];  //선택한 날짜의 운전정보
                     const arr_reports = []; //선택한 날짜의 신고이력
@@ -63,12 +63,12 @@ export default () => {
                         arr_day_5_drive_detection.push(res.data.day_5_drive_detection[i]);
                         arr_day_5_danger_count.push(res.data.day_5_danger_count[i]);
                     }
+                    setDay_5_drive_detection(arr_day_5_drive_detection);
                     setDrive_info(arr_drive_info);
                     setReports(arr_reports);
                     setScore(arr_score);
                     setDay_5(arr_day_5);
                     setDay_5_sec(arr_day_5_sec);
-                    setDay_5_drive_detection(arr_day_5_drive_detection);
                     setDay_5_danger_count(arr_day_5_danger_count);
                 }
             });
@@ -86,7 +86,7 @@ export default () => {
 
 
 
-    return (
+    return user.id ? (
         <DriveContext.Provider value={{
             date,
             setDate,
@@ -100,5 +100,5 @@ export default () => {
         }}>
             <DriveView/>
         </DriveContext.Provider>
-    )
+    ) : null
 }

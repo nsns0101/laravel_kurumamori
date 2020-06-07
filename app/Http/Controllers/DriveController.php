@@ -39,7 +39,7 @@ class DriveController extends Controller
             //최근 5일의 위험 정보
             $day_5_drive_detection= array();
             for($i = 0; $i < count($day_5); $i++){
-                //$value는 배열로 리턴됨
+                //기준날짜에서 -i일의 운전감지데이터를 value에 넣음
                 $value = \DB::select("select * from drive_detections where DATE_FORMAT(created_at, '%Y-%m-%d') = DATE_SUB('{$request->date}', INTERVAL {$i} DAY)  AND user_id = '{$request->user_id}'");
                 if($value){
                     array_push($day_5_drive_detection, $value);

@@ -32,7 +32,7 @@ export default () => {
                             </MDBContainer>
                         </div>
                         <hr/>
-                        <p>최근 5일간의 급 가속, 급 감속, 졸음, 신고 값을 나타낸 그래프입니다.</p>
+                        <p style={{fontSize:"15px"}}>최근 5일간의 급가속, 급감속, 졸음, 신고 값을 나타낸 그래프입니다.</p>
                     </div>
                 </div>
             </div>
