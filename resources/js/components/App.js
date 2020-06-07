@@ -22,7 +22,7 @@ import Login from "../routes/Auth/AuthContainer";
 import Info_index from "../routes/Profile/ProfileContainer"; 
 import Info_medical from "../routes/Medical/MedicalContainer";
 import Info_drive from "../routes/Drive/DriveContainer";
-
+import Bigdata from "../routes/Bigdata/BigdataContainer";
 import Product from "../routes/Product/Product";
 //전역변수
 export const AppContext = createContext();
@@ -88,7 +88,9 @@ function App() {
                 <Route path="/info/medical_info" component={Info_medical}/>
                 {/* 운전점수 */}
                 <Route path="/info/drive_score" exact component={Info_drive}/>
-                
+                {/* 빅데이터 자료실 */}
+                <Route path="/bigdata" component={Bigdata}/>
+
                 <Route path="/products" exact component={Product}/>
                 <Footer/>
             </BrowserRouter>
@@ -107,6 +109,8 @@ function App() {
                 <Route path="/info/medical_info" exact component={Info_medical}/>                
                 {/* 운전점수 */}
                 <Route path="/info/drive_score" exact component={Info_drive}/>
+                {/* 빅데이터 자료실 */}
+                <Route path="/bigdata" component={Bigdata}/>
                 <Footer/>
             </BrowserRouter>
         </AppContext.Provider>

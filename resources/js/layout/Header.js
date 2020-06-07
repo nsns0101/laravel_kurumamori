@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import { Route, Link, BrowserRouter} from "react-router-dom";
+import { Link } from "react-router-dom";
 import {AppContext} from "../components/App";
 // import styled from "styled-components";
 
@@ -21,7 +21,7 @@ export default  () => {
                             <Link to="/products" className="nav-link" style={{color:"white"}}>제품</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/bigdata" style={{color:"white"}}>빅데이터 자료실</a>
+                            <Link to="/bigdata" className="nav-link" style={{color:"white"}}>빅데이터 자료실</Link>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="/boards/questions" style={{color:"white"}}>고객 문의</a>

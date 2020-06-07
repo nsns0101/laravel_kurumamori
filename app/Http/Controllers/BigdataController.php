@@ -10,7 +10,7 @@ class BigdataController extends Controller
     {
         // $detail = null;
         \Log::info('index 성공');
-        return view('bigdata.index');
+        return view('home.main');
 
     }
 
@@ -100,20 +100,28 @@ class BigdataController extends Controller
 
         // return
         \Log::info($option);
-        $drive_detection_7= array();
+        $day_7_drive_detection= array();
         for($i = 0; $i < count($day_7); $i++){
             //$value는 배열로 리턴됨
             $value = \DB::select("select * from drive_detections where DATE_FORMAT(created_at, '%Y-%m-%d') = DATE_SUB('{$date}', INTERVAL {$i} DAY)");
             if($value){
-                array_push($drive_detection_7, $value);
+                array_push($day_7_drive_detection, $value);
             }
             else{
-                array_push($drive_detection_7, null);
+                array_push($day_7_drive_detection, null);
 
             }
         }
-        \Log::info($drive_detection_7);
-        return view('bigdata.detail.index', compact('option', 'day_7', 'time_set', 'bigdata_time', 'bigdata_age', 'drive_detection_7'));
+        \Log::info($day_7_drive_detection);
+        // return view('home.main', compact('option', 'day_7', 'time_set', 'bigdata_time', 'bigdata_age', 'day_7_drive_detection'));
+        return response()->json([
+            'option' => $option,
+            'day_7' => $day_7,
+            'time_set' => $time_set,
+            'bigdata_time' => $bigdata_time,
+            'bigdata_age' => $bigdata_age,
+            'day_7_drive_detection' => $day_7_drive_detection
+        ]);
     }
 
     public function edit($id)
