@@ -14,17 +14,16 @@ export const Map_api = () => {
     //1차배열은 날짜 2차배열은 값
     // console.log(day_5_drive_detection);
     if(day_5_drive_detection[0]){
-    for(var i = 0; i < day_5_drive_detection[0].length; i++){
-        location.push({
-            lat : Number(day_5_drive_detection[0][i].latitude), 
-            lng : Number(day_5_drive_detection[0][i].longitude)
-        });
-        if(day_5_drive_detection[0][i].bool_report) location_color.push("red");
-        else if(day_5_drive_detection[0][i].bool_sleep) location_color.push("orange");
-        else if(day_5_drive_detection[0][i].bool_sudden_acceleration) location_color.push("blue");
-        else if(day_5_drive_detection[0][i].bool_sudden_stop) location_color.push("green");
+        for(var i = 0; i < day_5_drive_detection[0].length; i++){
+            location.push({
+                lat : Number(day_5_drive_detection[0][i].latitude), 
+                lng : Number(day_5_drive_detection[0][i].longitude)
+            });
+            if(day_5_drive_detection[0][i].bool_report) location_color.push("red");
+            else if(day_5_drive_detection[0][i].bool_sleep) location_color.push("orange");
+            else if(day_5_drive_detection[0][i].bool_sudden_acceleration) location_color.push("blue");
+            else if(day_5_drive_detection[0][i].bool_sudden_stop) location_color.push("green");
         }
-        console.log(location);
     }
     return (
     <GoogleMapReact

@@ -3,7 +3,7 @@ import { BigdataContext } from "../BigdataContainer";
 import Sleep from "./chart/Sleep"
 import Sudden from "./chart/Sudden";
 import Accident from "./chart/Accident";
-
+import {Map_api} from "./google_map/Map_api.js";
 export default () => {
     const {
         action,
@@ -14,7 +14,6 @@ export default () => {
     //제일 마지막에 렌더된 값이 있을 때
     return age_data ? (
         <section id="intro" className="section intro" style={{paddingTop:"50px", background:"#F0F0F0"}}>
-            {/* 구글맵 */}
             <div className="container px-3 py-5 p-md-5">
                 <div className="card">
                     <div className="card-header">
@@ -28,27 +27,29 @@ export default () => {
                             )}
                         </p>
                     </div>
-                    <div className="card-body">
-                        <div id="map" style={{width:"100%", height:"500px"}}></div>
-                            {action == "sleep" ? (
-                                <div>
-                                    <img src="/icon/blue_map_icon.png"/>
-                                    <span>졸음 구간</span>
-                                </div>
-                            ) : action == "sudden" ? (
-                                <div>
-                                    <img src="/icon/orange_map_icon.png"/>
-                                    <span>급가속 구간</span>
-                                    <img src="/icon/green_map_icon.png"/>
-                                    <span>급감속 구간</span>
-                                </div>
+                    <div className="card-body" style={{width:"100%", height:"500px"}}>
+                        {/* 구글맵 */}
+                        <Map_api/>
 
-                            ) : (
-                                <div>
-                                    <img src="/icon/red_map_icon.png"/>
-                                    <span>신고 구간</span>
-                                </div>
-                            )}
+                        {action == "sleep" ? (
+                            <div>
+                                <img src="/icon/blue_map_icon.png"/>
+                                <span>졸음 구간</span>
+                            </div>
+                        ) : action == "sudden" ? (
+                            <div>
+                                <img src="/icon/orange_map_icon.png"/>
+                                <span>급가속 구간</span>
+                                <img src="/icon/green_map_icon.png"/>
+                                <span>급감속 구간</span>
+                            </div>
+
+                        ) : (
+                            <div>
+                                <img src="/icon/red_map_icon.png"/>
+                                <span>신고 구간</span>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
