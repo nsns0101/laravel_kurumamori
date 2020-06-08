@@ -14,7 +14,7 @@ export default ( {history} ) => {
     // const [board_categories, setBoard_categories] = useState([]);   //작성한 게시글의 카테고리
     // const [board_comments, setBoards_comments] = useState([]);      //작성한 게시글의 댓글
     
-    const [reports, setReports] = useState([]);   //신고 이력
+    const [reports, setReports] = useState([]);   //신고 위치
     const [data, setData] = useState("");
     const [product_action, setProduct_action] = useState("create");
     const [product_key_input, setProduct_key_input] = useState("");

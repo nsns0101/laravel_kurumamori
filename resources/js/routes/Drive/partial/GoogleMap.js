@@ -9,7 +9,7 @@ export default () => {
         reports,
         day_5_drive_detection
     } = useContext(DriveContext);
-    console.log(day_5_drive_detection);
+    // console.log(day_5_drive_detection);
 
     return (
         // 구글맵, 오늘의 운전점수
@@ -47,6 +47,7 @@ export default () => {
                                             return (
                                                 <p key={index} className="gps">
                                                 {/* 사고 장소{index+1} : {gps[index]} */}
+                                                사고 장소{index+1} : {reports[index]}
                                                 </p>                                     
                                             )
                                         })
