@@ -13,7 +13,7 @@ export default () => {
     const [day_7, setDay_7] = useState([]);     //최근 7일
     const [day_7_drive_detection, setDay_7_drive_detection] = useState([]);    //최근 7일의 위험 카운트
     const [time_set_data, setTime_set_data] = useState([]); //시간대별 선택한 위험 카운트
-    const [age_data, setAge_data] = useState([]);   //나이대별 선택한 위험 카운트
+    const [age_data, setAge_data] = useState("");   //나이대별 선택한 위험 카운트
 
     // const [time_set, setTime_set] = useState([]);
 
@@ -23,7 +23,7 @@ export default () => {
                 setAction("sleep");
             }
             else if(location.pathname.split('/')[2] == "sudden"){
-                setAction("sleep");
+                setAction("sudden");
             }
             else if(location.pathname.split('/')[2] == "accident"){
                 setAction("accident");
@@ -57,8 +57,6 @@ export default () => {
             setAction("index");
         }
     }, [location.pathname])
-
-    console.log(age_data);
     
     return (
         <BigdataContext.Provider value={{

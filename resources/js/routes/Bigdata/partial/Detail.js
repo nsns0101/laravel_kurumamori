@@ -6,11 +6,13 @@ import Accident from "./chart/Accident";
 
 export default () => {
     const {
-        action
+        action,
+        age_data
     } = useContext(BigdataContext);
+    console.log(age_data);
     console.log(action);
-
-    return (
+    //제일 마지막에 렌더된 값이 있을 때
+    return age_data ? (
         <section id="intro" className="section intro" style={{paddingTop:"50px", background:"#F0F0F0"}}>
             {/* 구글맵 */}
             <div className="container px-3 py-5 p-md-5">
@@ -59,5 +61,5 @@ export default () => {
                 : <Accident/>
             }
         </section>
-    )
+    ) : null
 }
