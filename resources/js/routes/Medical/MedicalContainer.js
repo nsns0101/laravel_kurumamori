@@ -187,7 +187,7 @@ export default ({history}) => {
 
 
         })
-    }, [user]);
+    }, [user, location.pathname]);
     // const medical_update = () => {
     //     console.log("update");
     // }

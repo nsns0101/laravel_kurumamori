@@ -70,9 +70,10 @@ Route::resource('/boards/reviews','ReviewsController');
 
 
 //ㅡㅡㅡㅡㅡㅡㅡㅡ 빅데이터 페이지 ㅡㅡㅡㅡㅡㅡㅡㅡ
-// Route::resource('/bigdata', 'BigdataController');
-Route::get('/bigdata', ['uses' => 'BigdataController@index']);
-Route::get('/bigdata/{option}', ['uses' => 'BigdataController@index']);
+Route::resource('/bigdata', 'BigdataController');
+//빅데이터 페이지 값 받기
+Route::get('/api/bigdata', ['uses' => 'BigdataController@data']);
+// Route::get('/bigdata', ['uses' => 'BigdataController@index']);
 
 
 Route::resource('/app', 'AppController');

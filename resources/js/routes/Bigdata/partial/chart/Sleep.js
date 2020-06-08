@@ -19,7 +19,7 @@ export default () => {
                         </div>
                         <div className="card-body">
                             <div className="age-chart-container">
-                                <canvas id="sleepAgeChart" width="313" height="253" style="display: block; width: 313px; height: 253px;"></canvas>
+                                {/* <canvas id="sleepAgeChart" width="313" height="253" style="display: block; width: 313px; height: 253px;"></canvas> */}
                             </div>
                         </div>
                     </div>
@@ -33,7 +33,7 @@ export default () => {
                         </div>
                         <div className="card-body">
                             <div className="age-chart-container">
-                                <canvas id="sleepTimeChart" width="313" height="253" style="display: block; width: 313px; height: 253px; "></canvas>
+                                {/* <canvas id="sleepTimeChart" width="313" height="253" style="display: block; width: 313px; height: 253px; "></canvas> */}
                             </div>
                         </div>
                     </div>
