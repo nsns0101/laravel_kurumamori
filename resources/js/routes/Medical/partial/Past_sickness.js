@@ -44,7 +44,7 @@ export default () => {
                         }
                     </div>
                     <div className="col-md-2 text-center p-3">
-                        <span className="medical_text"style={{marginTop:"13px"}}>기저 질환{index + 1}</span>
+                        <span className="medical_text"style={{marginTop:"13px"}}>과거 병력{index + 1}</span>
                     </div>
                     {/* {{-- 드롭다운버튼 --}} */}
                     <div className="col-md-2 text-center p-2">

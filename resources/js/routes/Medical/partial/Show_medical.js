@@ -56,8 +56,8 @@ export default () => {
                             {past_sickness_name.length ? past_sickness_name.map( (value,index) => {
                                 return (
                                 <div key={index}>
-                                    <p>예전에 걸린 병{index + 1} : {past_sickness_name[index]}</p>
-                                    <p>예전에 걸린 병{index + 1} 보충 설명 : {past_sickness_supplementation[index] ? past_sickness_supplementation[index] : "없음"}</p>
+                                    <p>과거 병력{index + 1} : {past_sickness_name[index]}</p>
+                                    <p>과거 병력{index + 1} 보충 설명 : {past_sickness_supplementation[index] ? past_sickness_supplementation[index] : "없음"}</p>
                                 </div>
                                 )
                             }) : (                            
@@ -71,12 +71,12 @@ export default () => {
                 <div className="col-sm-6 col-md-3">
                     <div className="thumbnail">
                         <div className="caption">
-                            <h3 className="text-center">현재 병력</h3>
+                            <h3 className="text-center">기저 병력</h3>
                             <hr style={{background:"darkgrey"}}/>
                             {sickness_name.length ? sickness_name.map( (value,index) => {
                                 return (
                                 <div key={index}>
-                                    <p>현재 질환{index + 1} : {sickness_name[index]}</p>
+                                    <p>기저 질환{index + 1} : {sickness_name[index]}</p>
                                     <p>복용중인 약{index + 1} : {medicine[index] ? medicine[index] : "없음"}</p>
                                     <p>증상{index + 1} : {symptom[index] ? symptom[index] : "없음"}</p>
                                     <p>다니는 병원{index + 1} : {hospital[index] ? hospital[index] : "없음"}</p>

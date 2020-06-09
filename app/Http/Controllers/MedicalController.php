@@ -123,36 +123,42 @@ class MedicalController extends Controller
 
     public function update(Request $request, \App\Medical_info $medical_info){
 
-        \Log::info($request->all());
-        
-        $medical_id = \App\Medical_info::whereUser_id($request->user_id)->first()->id;
-        $past_sickness = \App\Past_sickness::whereUser_id($request->user_id)->get();
-        $sickness = \App\Sickness::whereUser_id($request->user_id)->get();
+        // \Log::info($request->all());
+        // \Log::info($request->data['past_sickness_supplementation'][0]);      //왜 이렇게 써야하는지?
+        $medical_id = \App\Medical_info::whereUser_id($request->data['user_id'])->first()->id;
+        $past_sickness = \App\Past_sickness::whereUser_id($request->data['user_id'])->get();
+        $sickness = \App\Sickness::whereUser_id($request->data['user_id'])->get();
         $past_sickness_count = 0;
         $sickness_count = 0;
-
-
+        \Log::info($past_sickness);
         //past_sickness DB Update
-        for($i = 0; $i < count($request->past_sickness_name); $i++){
+        for($i = 0; $i < count($request->data['past_sickness_name']); $i++){
             //input창에 넣은 값이 있고 "없음"이 아닐 때
-            if($request->past_sickness_name[$i] && $request->past_sickness_name[$i]!="없음"){
-                if($i > count($past_sickness)){
+            if($request->data['past_sickness_name'][$i] && $request->data['past_sickness_name'][$i]!="없음"){
+                \Log::info($i);
+                //현재 해당하는 past_sickness_name의 인덱스가 
+                //i == 0, count가 0일 때는 create(유일하게 같을 때 create)
+                //i == 1, count가 1일 때는 update(같으면 update)
+                //i == 2, count가 1일 때는 create(i가 크면 무조건 create)
+                //즉 i와 count가 0이 이거나 i가 더크면 create
+                if( ($i == 0 && count($past_sickness) == 0 )|| $i > count($past_sickness)){
                     \Log::info($i);
                     \Log::info(count($past_sickness));
                     //새로 생성
                     \App\Past_sickness::create([
-                        'user_id' => $request->user_id,
+                        'user_id' => $request->data['user_id'],
                         'medical_id' => $medical_id,
-                        'past_sickness_name' => $request->past_sickness_name[$i],
-                        'past_sickness_supplementation' => $request->past_sickness_supplementation[$i]
+                        'past_sickness_name' => $request->data['past_sickness_name'][$i],
+                        'past_sickness_supplementation' => $request->data['past_sickness_supplementation'][$i]
                     ]);
                 }
                 //업데이트
                 else{
-                    $past_sickness[$past_sickness_count]->update([
-                        'user_id' => $request->user_id,
-                        'past_sickness_name' => $request->past_sickness_name[$i],
-                        'past_sickness_supplementation' => $request->past_sickness_supplementation[$i]
+                    // \Log::info("요기");
+                    $past_sickness[$i]->update([
+                        'user_id' => $request->data['user_id'],
+                        'past_sickness_name' => $request->data['past_sickness_name'][$i],
+                        'past_sickness_supplementation' => $request->data['past_sickness_supplementation'][$i]
                     ]);
     
                 }
@@ -165,25 +171,25 @@ class MedicalController extends Controller
         }
         // \Log::info($error);
         //sickness DB Update
-        for($i = 0; $i < count($request->sickness_name); $i++){
-            if($request->sickness_name[$i] && $request->sickness_name[$i]!="없음"){
-                if($i > count($sickness)){
+        for($i = 0; $i < count($request->data['sickness_name']); $i++){
+            if($request->data['sickness_name'][$i] && $request->data['sickness_name'][$i]!="없음"){
+                if(($i == 0 && count($sickness) == 0 ) || $i > count($sickness) ){
                     \App\Sickness::create([
-                        'user_id' => $request->user_id,
+                        'user_id' => $request->data['user_id'],
                         'medical_id' => $medical_id,
-                        'sickness_name' => $request->sickness_name[$i],
-                        'medicine' => $request->medicine[$i],
-                        'symptom' => $request->symptom[$i],
-                        'hospital' => $request->hospital[$i],
+                        'sickness_name' => $request->data['sickness_name'][$i],
+                        'medicine' => $request->data['medicine'][$i],
+                        'symptom' => $request->data['symptom'][$i],
+                        'hospital' => $request->data['hospital'][$i],
                     ]);
                 }
                 else{
-                    $sickness[$sickness_count]->update([
-                        'user_id' => $request->user_id,
-                        'sickness_name' => $request->sickness_name[$i],
-                        'medicine' => $request->medicine[$i],
-                        'symptom' => $request->symptom[$i],
-                        'hospital' => $request->hospital[$i],
+                    $sickness[$i]->update([
+                        'user_id' => $request->data['user_id'],
+                        'sickness_name' => $request->data['sickness_name'][$i],
+                        'medicine' => $request->data['medicine'][$i],
+                        'symptom' => $request->data['symptom'][$i],
+                        'hospital' => $request->data['hospital'][$i],
 
                     ]);
                 }
@@ -191,43 +197,44 @@ class MedicalController extends Controller
             }
             //수정창에서 지운 경우
             elseif(isset($sickness[$i])){
-                $sickness[$i-1]->delete();
+                $sickness[$i]->delete();
             }
             $sickness_count++;
         }
         // \Log::info($error);
         //medical_info DB Update
+        \Log::info($request->data['guardian_phone']);
         $medical_info ->update([
-            'user_id' => $request->user_id,
-            'guardian_phone' => $request->guardian_phone,
-            'blood_type' => $request->blood_type,
-            'disability_status' => $request->disability_status,
-            'report_request' => $request->report_request,
+            'user_id' => $request->data['user_id'],
+            'guardian_phone' => $request->data['guardian_phone'],
+            'blood_type' => $request->data['blood_type'],
+            'disability_status' => $request->data['disability_status'],
+            'report_request' => $request->data['report_request'],
         ]);
 
         //insurances DB Update
-        $insurance = \App\Insurance::whereUser_id($request->user_id)->first();
+        $insurance = \App\Insurance::whereUser_id($request->data['user_id'])->first();
 
         if($request->insurance_bool){
             $insurance_list_id = \App\Insurance_list::whereInsurance_name($request->insurance_name)->first()->id;
             \Log::info($insurance);
             if($insurance){
                 $insurance->update([
-                    'user_id' => $request->user_id,
+                    'user_id' => $request->data['user_id'],
                     'medical_id' => $medical_id,
                     'insurance_list_id' => $insurance_list_id,
-                    'subscription_date' => $request->input("subscription_date"),
-                    'expiration_date' => $request->input("expiration_date"),
+                    'subscription_date' =>  $request->data['subscription_date'],
+                    'expiration_date' =>  $request->data['expiration_date'],
     
                 ]);
             }
             else{
                 \App\Insurance::create([
-                    'user_id' => $request->user_id,
+                    'user_id' => $request->data['user_id'],
                     'medical_id' => $medical_id,
                     'insurance_list_id' => $insurance_list_id,
-                    'subscription_date' => $request->input("subscription_date"),
-                    'expiration_date' => $request->input("expiration_date"),
+                    'subscription_date' =>  $request->data['subscription_date'],
+                    'expiration_date' =>  $request->data['expiration_date'],
     
                 ]);
             }
@@ -236,7 +243,9 @@ class MedicalController extends Controller
         elseif($insurance){
             $insurance->delete();
         }
-        return redirect('/info/medical_info');
+        return response()->json([
+            'success'=>true,
+        ]);
 
     }
     // public function show()

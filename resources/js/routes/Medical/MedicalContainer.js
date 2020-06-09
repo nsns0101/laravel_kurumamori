@@ -102,12 +102,14 @@ export default ({history}) => {
                 }
             })
         }else if(form == "update"){
-            console.log("업데이트1");
-            console.log(medical_id);
-            console.log("업데이트2");
             const url = `/info/medical_info/${medical_id}`;
-            return Axios.put(url, body, config).then( res => {
-                console.log(res);
+            return Axios.post(url, {
+                data : body,
+                _method: 'patch',
+            }, config).then( res => {
+                if(res.data.success){
+                    history.push("/info/medical_info");
+                }
             })
         }
     }
