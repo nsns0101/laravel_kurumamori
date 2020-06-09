@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { BigdataContext } from "../../BigdataContainer";
 import { MDBContainer } from "mdbreact";
-import {Line} from "react-chartjs-2";
+import {Line, Bar} from "react-chartjs-2";
 
 export default () => {
     const {
@@ -188,7 +188,7 @@ export default () => {
                         <div className="card-body">
                             <div className="age-chart-container">
                                 <MDBContainer>
-                                    <Line data={TimeChart.data} options={TimeChart.options} width={313} height={253}/>
+                                    <Bar data={TimeChart.data} options={TimeChart.options} width={313} height={253}/>
                                 </MDBContainer>                          
                             </div>
                         </div>

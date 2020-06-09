@@ -41,6 +41,7 @@ Route::resource('/confirm', 'ConfirmController');
 //내정보
 Route::resource('/info/index', 'InfoController');
 Route::resource('/info/medical_info', 'MedicalController');
+Route::put('/info/medical_infos/{medical_id}', 'MedicalController@update');
 Route::resource('/info/drive_score', 'DriveController');
 // Route::resource('/info/index', 'InfoController');
 // Route::resource('/info/medical_info', 'MedicalController');
