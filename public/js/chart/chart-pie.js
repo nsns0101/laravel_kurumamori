@@ -12,11 +12,11 @@ var myPieChart = new Chart(ctx, {
         datasets: [
             {
                 data: [
-                    day_5_percent[4], 
-                    day_5_percent[3], 
-                    day_5_percent[2], 
-                    day_5_percent[1], 
-                    day_5_percent[0]
+                    day_5_danger_count[4].count_danger, 
+                    day_5_danger_count[3].count_danger, 
+                    day_5_danger_count[2].count_danger, 
+                    day_5_danger_count[1].count_danger, 
+                    day_5_danger_count[0].count_danger
                 ],
                 backgroundColor: ["orange", "green", "blue", "red", "black"],
                 hoverBackgroundColor: ["orange", "green", "blue", "red", "black"],

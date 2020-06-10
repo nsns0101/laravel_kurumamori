@@ -78,7 +78,10 @@ export default () => {
                                 </div>
                             </div>
                             {/* <div id="myPieChart" style={{height:"320px", width:"100%"}}></div> */}
+                                {/* <DoughnutChart/> */}
+                            <MDBContainer>
                                 <DoughnutChart/>
+                            </MDBContainer>
                         </div>
                     </div>
                     <br/>
