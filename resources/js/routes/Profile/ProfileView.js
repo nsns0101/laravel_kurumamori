@@ -17,17 +17,12 @@ export default ( {
     return (
         <div>
             {true ? (
-                <section id="intro" className="section intro mb-5" style={{background: "#f7f7f7"}}>
-                    <div className="row" style={{background:"#5772f9"}}>
-                        <div className="col-lg-2"/>
-                        <div className="col-lg-8">
-                            <Info_menu/>
-                        </div>
-                    </div>
+                <section id="intro" className="section intro" style={{background: "#f7f7f7"}}>
+                    <Info_menu/>
                     <div className="row">
                         <div className="col-lg-2 col-xs-2 col-sm-2"></div>
                         <div className="col-lg-8 col-xs-8 col-sm-8">
-                            <div className="row mt-5">
+                            <div className="row">
                                 {/* 개인 정보 */}
                                 <div className="col-sm-6 col-lg-6">
                                     <div className="card">

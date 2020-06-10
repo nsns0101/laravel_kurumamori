@@ -19,15 +19,11 @@ export default () => {
         day_5_danger_count,
     } = useContext(DriveContext);
     return day_5_danger_count.length && (
-        <section id="intro" className="section intro" style={{padding: "50px 0px 0px 0px", background: "#f7f7f7"}}>
+        <section id="intro" className="section intro" style={{background: "#f7f7f7"}}>
+            <Info_menu/>
             <div className="row">
-                <div className="col-md-2 col-xs-2 col-sm-2">
-                    <Info_menu/>
-                </div>
-                <div className="col-md-10">
-                    <br />
-                    <br />
-                    <br />
+                <div className="col-md-2"/>
+                <div className="col-md-8">
                     <h3> 운전 점수 확인</h3>
                     <div className="row">
                         <div className="col-md-6"></div>

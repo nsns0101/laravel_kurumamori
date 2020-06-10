@@ -13,14 +13,11 @@ export default () => {
         <div>
             {user && user.id && form  ? (
                 
-            <section id="intro" className="section intro" style={{padding: "50px 0px 0px 0px", background: "#f7f7f7"}}>
+            <section id="intro" className="section intro" style={{background: "#f7f7f7"}}>
+            <Info_menu/>
             <div className="row">
-                <div className="col-md-2 col-xs-2 col-sm-2">
-                    <Info_menu/>
-                </div>
-                <div className="col-md-7 col-xs-7 col-sm-7">
-                    <br />
-                    <br />
+                <div className="col-md-2 col-xs-2 col-sm-2"/>
+                <div className="col-md-8 col-xs-8 col-sm-8">
                     <h3 style={{color:"blue"}}>의료 정보</h3>
                     {form == "view" ? (
                         <Show_medical/>
