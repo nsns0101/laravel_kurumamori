@@ -2,6 +2,8 @@ import React, {useEffect, useState, useContext} from "react";
 import Info_menu from "../../layout/Info_menu";
 import Product_modal from "./partial/Product_modal";
 import {AppContext} from "../../components/App";
+import moment from "moment";
+
 export default ( {
     history,
     data,
@@ -15,46 +17,64 @@ export default ( {
     return (
         <div>
             {true ? (
-                <section id="intro" className="section intro" style={{padding: "50px 0px 0px 0px", background: "#f7f7f7"}}>
-                    <div className="row">
-                        <div className="col-md-2 col-xs-2 col-sm-2">
+                <section id="intro" className="section intro mb-5" style={{background: "#f7f7f7"}}>
+                    <div className="row" style={{background:"#5772f9"}}>
+                        <div className="col-lg-2"/>
+                        <div className="col-lg-8">
                             <Info_menu/>
                         </div>
-                        <div className="col-md-8 col-xs-8 col-sm-8">
-                            <br/>
-                            <br/>
-                            <h3 style={{color:"orange"}}>개인 정보</h3>
-                            <div className="row">
-                                <div className="col-sm-6 col-md-3">
-                                    <div className="thumbnail">
-                                        <div className="caption">
-                                            <h4 className="text-center">유저 정보</h4>
-                                            <hr style={{background:"darkgrey"}}/>
-                                            <p style={{fontSize:"20px"}}><b>이메일</b> : {data.user.email}</p>
-                                            <p style={{fontSize:"20px"}}><b>이름</b> : {data.user.name}</p>
-                                            <p style={{fontSize:"20px"}}><b>생년월일</b> : {data.user.birth}</p>
-                                            <p style={{fontSize:"20px"}}><b>성별</b> : {data.user.gender}</p>
-                                            <p style={{fontSize:"20px"}}><b>휴대폰 번호</b> : {data.user.phone}</p>
-                                            <hr style={{background:"darkgrey"}}/>
+                    </div>
+                    <div className="row">
+                        <div className="col-lg-2 col-xs-2 col-sm-2"></div>
+                        <div className="col-lg-8 col-xs-8 col-sm-8">
+                            <div className="row mt-5">
+                                {/* 개인 정보 */}
+                                <div className="col-sm-6 col-lg-6">
+                                    <div className="card">
+                                        <div className="card-header" style={{background:"blue", color:"white"}}>
+                                            개인 정보
+                                        </div>
+                                        <div className="card-body py-3">
+                                            <div className="row">
+                                                <div className="col-lg-6 mb-3">
+                                                    <p className="card-text"><b>이메일</b><br/>{data.user.email}</p>
+                                                </div>
+                                                <div className="col-lg-6">
+                                                    <p className="card-text"><b>이름</b><br/>{data.user.name}</p>
+                                                </div>
+                                                
+                                                <div className="col-lg-6 mb-3">
+                                                    <p className="card-text"><b>생년월일</b><br/>{data.user.birth}</p>
+                                                </div>
+                                                <div className="col-lg-6">
+                                                    <p className="card-text"><b>성별</b><br/>{data.user.gender}</p>
+                                                </div>
+                                                
+                                                <div className="col-lg-6 mb-3">
+                                                    <p className="card-text"><b>휴대폰 번호</b><br/>{data.user.phone}</p>
+                                                </div>
+                                                <div className="col-lg-6">
+                                                    <p className="card-text"><b>가입날짜</b><br/>{moment(data.user.created_at).format("YYYY-MM-DD")}</p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-sm-6 col-md-5">
-                                    <div className=" thumbnail">
-                                        <div className="caption">
-                                            <h4 className="text-center">신고 이력 </h4>
-                                            <hr style={{background:"red"}}/>
-                                            {/* {{-- 신고 이력 --}} */}
+                                {/* 사고 이력 */}
+                                <div className="col-sm-6 col-lg-6">
+                                    <div className="card">
+                                    <div className="card-header" style={{background:"red", color:"white"}}>
+                                            사고 이력
+                                        </div>
+                                        <div className="card-body py-3">
                                             {data.reports.data ? data.reports.data.map( (value, index) => {
                                                 return (
                                                     <div className="row" key={index}>
-                                                        <div className="col-sm-6 col-md-6">
-                                                            <p>접수날짜 : {value.created_at}</p>
+                                                        <div className="col-sm-6 col-lg-6 mb-3">
+                                                            <p className="card-text"><b>접수날짜</b><br/>{moment(value.created_at).format("YYYY-MM-DD hh:mm:ss")}</p>
                                                         </div>
-                                                        <div className="col-sm-6 col-md-6">
-                                                            <p className="gps">
-                                                                {reports[index]}
-                                                            </p>
+                                                        <div className="col-sm-6 col-lg-6 mb-3">
+                                                            <p className="card-text"><b>사고지역</b><br/>{reports[index]}</p>        
                                                         </div>
                                                     </div>
                                                 )
@@ -65,48 +85,39 @@ export default ( {
                                                 </p>
                                                 )
                                             }
-
-                                            {/* @forelse($reports as $report) */}
-                                            <div className="row">
-                                                <div className="col-sm-6 col-md-6">
-                                                </div>
-                                                <div className="col-sm-6 col-md-6">
-                                                    <p className="gps{{$report->id}}"></p>
-                                                </div>
-                                                <p className="text-danger">최근 3건만 표시됩니다.</p>
-                                            </div>
-                                            <hr style={{background:"red"}}/>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-sm-6 col-md-4">
-                                    <div className="thumbnail">
-                                        <div className="caption">
-                                            <h4 className="text-center">제품 등록 정보</h4>
-                                            <hr style={{background:"green"}}/>
-                                            {data.product ? 
-                                            (
-                                                <div>
-                                                    <p id="text_product_key" style={{fontSize:"20px"}}><b>제품키</b> : {data.product.product_key}</p>
-                                                    <p id="text_product_date_buy" style={{fontSize:"20px"}}><b>구입날짜</b> : {data.product_buy.created_at}</p>
-                                                    <p id="text_product_date_as" style={{fontSize:"20px"}}><b>무상 AS기한</b> : 구입 후 1년까지</p>
-                                                    <button type="button" className="btn btn-success" data-toggle="modal" data-target="#productModal">
-                                                        제품 재등록
-                                                    </button>
-                                                    <button type="button" onClick={() => onSubmit("delete")} className="btn btn-danger btn__delete__product">
+                            </div>
+                            
+                            <div className="row mt-5">
+                                {/* 제품 등록 정보 */}
+                                <div className="col-sm-6 col-lg-6">
+                                    <div className="card">
+                                    <div className="card-header" style={{background:"green", color:"white"}}>
+                                            제품 등록 정보
+                                        </div>
+                                        <div className="card-body py-3">
+                                            {data.product ? (
+                                                <div>                                                      
+                                                    <p className="card-text"><b>제품 키</b><br/>{data.product.product_key}</p>
+                                                    <p className="card-text"><b>구입 날짜</b><br/>{moment(data.product_buy.created_at).format("YYYY-MM-DD")}</p>
+                                                    <p className="card-text"><b>무상 AS기한</b><br/>구입 후 1년까지</p>
+                                                    {/* float 정렬때문에 삭제가 뒤로감 */}
+                                                    <button style={{marginLeft:"5px", float:"right"}} type="button" onClick={() => onSubmit("delete")} className="btn btn-danger btn__delete__product">
                                                         제품 삭제
                                                     </button>
+                                                    <button style={{float:"right"}}type="button" className="btn btn-success" data-toggle="modal" data-target="#productModal">
+                                                        제품 재등록
+                                                    </button>
                                                 </div>
-                                                
-                                            ) : (
+                                                ) : (
                                                 <div>
-
                                                     <p className="text-center text-danger">등록한 제품이 없습니다.</p>
                                                     <button type="button" className="btn btn-primary" data-toggle="modal"
                                                         data-target="#productModal">
                                                         제품 등록
                                                     </button>
-                                                    {/* @endif */}
                                                 </div>
                                             )}
                                             <Product_modal
@@ -117,60 +128,62 @@ export default ( {
                                                 onSubmit={onSubmit}
                                             />
                                         </div>
-                                        <hr style={{background:"green"}}/>
                                     </div>
                                 </div>
-                                <div className="col-md-12">
-                                    <div className="thumbnail">
-                                        <div className="caption">
-                                            <h4 className="text-center">문의 이력 </h4>
-                                            <table className="table" style={{borderTop: "3px solid blue", borderBottom: "3px solid blue"}}>
-                                                <thead>
-                                                    <tr>
-                                                        <th className="text-center" scope="col" style={{fontSize:"20px"}}>#</th>
-                                                        <th className="text-center" scope="col" style={{fontSize:"20px"}}>제목</th>
-                                                        <th className="text-center" scope="col" style={{fontSize:"20px"}}>카테고리</th>
-                                                        <th className="text-center" scope="col" style={{fontSize:"20px"}}>작성날짜</th>
-                                                        <th className="text-center" scope="col" style={{fontSize:"20px"}}>조회수</th>
-                                                        <th className="text-center" scope="col" style={{fontSize:"20px"}}>대답여부</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-
-                                                    {data.boards.data ? data.boards.data.map( (value, index) => {
-                                                        return (
-                                                            <tr key={index} onClick={()=> history.push(`/boards/${data.board_categories[index].category == "유저리뷰" ? "reviews" : "questions"}/${value.id}`)} style={{cursor:"pointer"}}>
-                                                                <th className="text-center" scope="row">{value.id}</th>
-                                                                <td className="text-center" scope="row">{value.title}</td>
-                                                                <td className="text-center" scope="row">{data.board_categories[index].category}</td>
-                                                                <td className="text-center" scope="row">{value.created_at}</td>
-                                                                <td className="text-center" scope="row">{value.view_count}</td>
-                                                                <td className="text-center" scope="row">{data.board_comments[index] ? "O" : "X"}</td>
-                                                            </tr>
-                                                        )
-                                                    })
-                                                    :   (
-                                                        <p className="text-center text-danger" style={{fontSize:"20px"}}>
-                                                            이력이 없습니다.
-                                                        </p>
-                                                        )
-                                                    }
-                                                </tbody>
-                                            </table>
-                                            <p className="text-danger">최근 5건만 표시됩니다.</p>
+                                {/* 제품 구매이력 */}
+                                <div className="col-sm-6 col-lg-6">
+                                    <div className="card">
+                                        <div className="card-header" style={{background:"green", color:"white"}}>
+                                            제품 구매 이력
+                                        </div>
+                                        <div className="card-body py-3">
+                                                {data.user_product_buy_key ? data.user_product_buy_key.map( (value, index) => {
+                                                    return (
+                                                        <div className="row">
+                                                            <div class="col-lg-6">
+                                                                <p className="card-text" key={index}><b>구매한 제품키</b><br/>{value.product_key}</p>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <p className="card-text" key={index}><b>구매 날짜</b><br/>{moment(value.created_at).format("YYYY-MM-DD")}</p>
+                                                            </div>
+                                                        </div>
+                                                    )
+                                                }) : (
+                                                    <p className="text-center text-danger" style={{fontSize:"20px"}}>
+                                                        이력이 없습니다.
+                                                    </p>
+                                                )}
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-sm-6 col-md-4">
-                                    <div className="thumbnail">
-                                        <div className="caption">
-                                            <h4 className="text-center">제품 구매 정보</h4>
-                                            <hr style={{background:"green"}}/>
-                                            {data.user_product_buy_key ? data.user_product_buy_key.map( (value, index) => {
+                            </div>
+
+                            <div className="row mt-5">
+                                <div className="col-lg-12">
+                                    <h4 className="text-center">문의 이력 </h4>
+                                    <table className="table" style={{borderTop: "3px solid blue", borderBottom: "3px solid blue"}}>
+                                        <thead>
+                                            <tr>
+                                                <th className="text-center" scope="col" style={{fontSize:"20px"}}>#</th>
+                                                <th className="text-center" scope="col" style={{fontSize:"20px"}}>제목</th>
+                                                <th className="text-center" scope="col" style={{fontSize:"20px"}}>카테고리</th>
+                                                <th className="text-center" scope="col" style={{fontSize:"20px"}}>작성날짜</th>
+                                                <th className="text-center" scope="col" style={{fontSize:"20px"}}>조회수</th>
+                                                <th className="text-center" scope="col" style={{fontSize:"20px"}}>대답여부</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            {data.boards.data ? data.boards.data.map( (value, index) => {
                                                 return (
-                                                    <div className="text-center" key={index}>
-                                                        <p id="text_product_key">구매한 제품키 : {value.product_key}</p>
-                                                    </div>
+                                                    <tr key={index} onClick={()=> history.push(`/boards/${data.board_categories[index].category == "유저리뷰" ? "reviews" : "questions"}/${value.id}`)} style={{cursor:"pointer"}}>
+                                                        <th className="text-center" scope="row">{value.id}</th>
+                                                        <td className="text-center" scope="row">{value.title}</td>
+                                                        <td className="text-center" scope="row">{data.board_categories[index].category}</td>
+                                                        <td className="text-center" scope="row">{moment(value.created_at).format("YYYY-MM-DD")}</td>
+                                                        <td className="text-center" scope="row">{value.view_count}</td>
+                                                        <td className="text-center" scope="row">{data.board_comments[index] ? "O" : "X"}</td>
+                                                    </tr>
                                                 )
                                             })
                                             :   (
@@ -179,11 +192,12 @@ export default ( {
                                                 </p>
                                                 )
                                             }
-                                        </div>
-                                        <hr style={{background:"green"}}/>
-                                    </div>
+                                        </tbody>
+                                    </table>
+                                    <p className="text-danger">최근 5건만 표시됩니다.</p>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </section>

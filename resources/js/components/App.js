@@ -114,7 +114,7 @@ function App() {
                 <Footer/>
             </BrowserRouter>
         </AppContext.Provider>
-    )
+        )
     );
 }
 

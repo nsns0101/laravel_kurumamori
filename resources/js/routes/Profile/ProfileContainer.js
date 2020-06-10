@@ -3,6 +3,17 @@ import {AppContext} from "../../components/App";
 import Axios from "axios";
 import Geocode from "react-geocode";
 import ProfileView from "./ProfileView";
+import Loader from "../../components/Loader";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
+
 
 export default ( {history} ) => {
     const { user } = useContext(AppContext);
@@ -125,15 +136,21 @@ export default ( {history} ) => {
     }
 
     return (
-        data  ? 
-        <ProfileView
-            history={history}
-            data={data}
-            setProduct_key_input={setProduct_key_input}
-            error_text={error_text}
-            onSubmit={onSubmit}
-            reports={reports}
-            setData={setData}
-        /> : null
+        data && user.id  ? (
+            <ProfileView
+                history={history}
+                data={data}
+                setProduct_key_input={setProduct_key_input}
+                error_text={error_text}
+                onSubmit={onSubmit}
+                reports={reports}
+                setData={setData}
+            />        
+        ) : (
+            <Wrapper>
+                <Loader/>
+            </Wrapper>
+        )
+
     )
 }

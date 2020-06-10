@@ -54,8 +54,8 @@ export default () => {
                     {day_5_sec[0] ? (
                         <div>
                             <Drive_score_icon/>
-                            <Drive_score_chart/>
                             <GoogleMap/>
+                            <Drive_score_chart/>
                         </div>
                     ) : (
                         <div>
