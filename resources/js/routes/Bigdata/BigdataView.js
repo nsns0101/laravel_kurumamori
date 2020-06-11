@@ -79,10 +79,6 @@ export default () => {
                 </div>
                 <div className="col-md-2"></div>
             </div>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
         </section>
     ) : <Detail/>
     // ) : action == "sleep" ? (

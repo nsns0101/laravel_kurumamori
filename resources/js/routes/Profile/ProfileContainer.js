@@ -38,6 +38,7 @@ export default ( {history} ) => {
 
 
     useEffect(()=>{
+        
         console.log("profile useEffect");
         Axios.get(`/info/index/${user.id}`).then(res => {
             setData(res.data);

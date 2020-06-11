@@ -1,24 +1,32 @@
 import React from "react";
 import styled from "styled-components";
-
 const Footer = styled.div`
-    margin-top : 30px;
-    position:fixed; 
-    left:0px; 
+    position:relative;
     bottom:0px; 
-    height:30px; 
+    left:0px;
+    right: 0px; 
+    height:150px; 
     width:100%; 
-    background-color: #e5e5e5;
-    color: black; 
+    background-color: #002ef0;
+    color: white; 
     text-align: center;
-`;
+    opacity:1;
+-`;
 
 export default () => {
     return (
         <Footer>
-            <h3 style={{fontSize:"15px"}}>
-                    © 2020 Miro
-            </h3>
+            <div className="row py-3">
+                <div className="col-lg-2 col-sm-2"/>
+                <div className="col-lg-8 col-sm-8">
+                    <div className="row">
+                        <div className="col-lg-2 col-sm-2">
+                            <p style={{fontSize:"20px"}}>くるまもり9</p>
+                        </div>
+                        {/* © Copyright Miro. */}
+                    </div>
+                </div>
+            </div>
         </Footer>
 
     )

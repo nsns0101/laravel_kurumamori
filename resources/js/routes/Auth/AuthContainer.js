@@ -68,7 +68,7 @@ export default ({ location, history }) => {
 
     return Axios.post(url, body, config)
       .then(res => {
-        console.log(res.data.token);
+        // console.log(res.data.token);
         // console.log(res);
         if(res.data.token){
           // let userData = {

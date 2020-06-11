@@ -70,7 +70,11 @@ class UsersController extends Controller
             }
         // Tymon\JWTAuth\Exceptions\TokenExpiredException
         } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
-            return response()->json(['token_expired'], $e->getStatusCode());
+            // \Log::info("토큰 오류");
+            // return response()->json(['token_expired'], $e->getStatusCode());
+            // return response()->json([
+            //     'success' => false
+            // ]);
         } catch (Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
             return response()->json(['token_invalid'], $e->getStatusCode());
         } catch (Tymon\JWTAuth\Exceptions\JWTException $e) {

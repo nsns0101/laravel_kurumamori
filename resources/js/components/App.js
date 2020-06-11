@@ -31,7 +31,7 @@ export const AppContext = createContext();
    
 // }
 
-function App() {
+function App({history}) {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [user, setUser] = useState(false);
     // console.log(user);
@@ -41,16 +41,9 @@ function App() {
     // }, []);
 
     useEffect(()=>{
+        // console.log(user);
         console.log("app useEffect");
         if(localStorage.getItem('userToken')){
-            // let state = localStorage["userToken"];
-            // if (state) {
-            //     console.log(state);
-            //     let AppState = JSON.parse(state);
-            //     console.log(AppState);
-            //     setIsLoggedIn(AppState.isLoggedIn);
-            //     setUser(AppState);
-            // }
             const url = "/api/profile";
             // const token = localStorage;
             // console.log(token);
@@ -61,19 +54,20 @@ function App() {
             }
             Axios.get(url, config)
             .then(res => {
+                console.log(res);
                 if(res.data.user){
                     // console.log(res.data.user);
                     setUser(res.data.user);
                     setIsLoggedIn(true);
                 }
+                else{
+                    history.push('/auth/login');
+                }
             }) 
-        }
-        else{
-            setUser("");
         }
     }, [isLoggedIn]);
 
-    return ( user ? (
+    return ( user.id ? (
         <AppContext.Provider value={{isLoggedIn, setIsLoggedIn, user, setUser}}>
             <BrowserRouter>
                 <Header/>
@@ -96,7 +90,7 @@ function App() {
             </BrowserRouter>
         </AppContext.Provider>
     ) : (
-        <AppContext.Provider value={{isLoggedIn, setIsLoggedIn, user}}>
+        <AppContext.Provider value={{isLoggedIn, setIsLoggedIn, user, setUser}}>
             <BrowserRouter>
                 <Header/>
                 {/* 메인페이지 */}
