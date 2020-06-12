@@ -14,7 +14,7 @@ export default () => {
     return (
         // 구글맵, 오늘의 운전점수
         <div className="row">
-            <div className="col-xl-11 col-lg-11 col-md-11">
+            <div className="col-xl-12 col-lg-12 col-md-12">
                 <div className="card shadow" >
                     <div className="card-header py-3">
                         <h6 className="m-0 font-weight-bold text-primary">오늘의 운전점수</h6>
@@ -65,7 +65,7 @@ export default () => {
                         </div>
                         <div className="card-body">
                             <hr/>
-                            <div className="col-xl-11 col-lg-11 col-md-11">
+                            <div className="col-xl-12 col-lg-12 col-md-12">
                                 <img src="/icon/orange_map_icon.png"/>급가속 구간
                                 <img src="/icon/green_map_icon.png"/>급감속 구간
                                 <img src="/icon/blue_map_icon.png"/>졸음 구간

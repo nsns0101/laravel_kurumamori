@@ -67,10 +67,16 @@ export default () => {
                     </Link>                  
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="#">Link</a>
+                    <Link to="/info/medical_info" className={`nav-link ${location.pathname.split('/')[2] == 'medical_info' ? "active" : ""}`}>
+                        {/* <i className="fas fa-fw fa-wrench" style={{color:"blue"}}></i> */}
+                        <span className="text-color" style={text_color}>의료정보</span>
+                    </Link>                      
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link disabled" href="#">Disabled</a>
+                    <Link to="/info/drive_score" className={`nav-link ${location.pathname.split('/')[2] == 'drive_score' ? "active" : ""}`}>
+                        {/* <i className="fas fa-fw fa-wrench" style={{color:"blue"}}></i> */}
+                        <span className="text-color" style={text_color}>운전점수</span>
+                    </Link> 
                 </li>
             </ul>
     </div>

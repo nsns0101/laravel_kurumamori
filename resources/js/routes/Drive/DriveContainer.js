@@ -104,7 +104,7 @@ export default () => {
 
 
 
-    return user.id ? (
+    return (
         <DriveContext.Provider value={{
             date,
             setDate,
@@ -118,5 +118,5 @@ export default () => {
         }}>
             <DriveView/>
         </DriveContext.Provider>
-    ) : null
+    )
 }

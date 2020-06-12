@@ -41,87 +41,70 @@ export default () => {
     // console.log(expiration_date);
 
     return (
-        <div>
+        <div style={{height:"55vh"}}>
             {/* <a className="btn btn-success" href={`/info/medical_info/${medical_id}/edit`}>의료정보 수정</a> */}
-            <Link to={`/info/medical_info/${medical_id}/edit`} className="btn btn-success" onClick={() => setForm("update")}>의료정보 수정</Link>
+            <Link to={`/info/medical_info/${medical_id}/edit`} style={{float:"right"}} className="btn btn-success" onClick={() => setForm("update")}>의료정보 수정</Link>
             <br/>
             <br/>
             
             <div className="row">
-                <div className="col-sm-6 col-md-3">
-                    <div className="thumbnail">
-                        <div className="caption">
-                            <h3 className="text-center">과거 병력</h3>
-                            <hr style={{background:"darkgrey"}}/>
-                            {past_sickness_name.length ? past_sickness_name.map( (value,index) => {
-                                return (
-                                <div key={index}>
-                                    <p>과거 병력{index + 1} : {past_sickness_name[index]}</p>
-                                    <p>과거 병력{index + 1} 보충 설명 : {past_sickness_supplementation[index] ? past_sickness_supplementation[index] : "없음"}</p>
-                                </div>
-                                )
-                            }) : (                            
-                                <p className="text-center text-danger">이력이 없습니다.</p>
-                            )}
-                            <hr style={{background:"darkgrey"}}/>
+                <div className="col-sm-3 col-md-3">
+                    <h3 className="text-center">과거 병력</h3>
+                    <hr style={{background:"darkgrey"}}/>
+                    {past_sickness_name.length ? past_sickness_name.map( (value,index) => {
+                        return (
+                        <div key={index}>
+                            <p>과거 병력{index + 1} : {past_sickness_name[index]}</p>
+                            <p>과거 병력{index + 1} 보충 설명 : {past_sickness_supplementation[index] ? past_sickness_supplementation[index] : "없음"}</p>
                         </div>
-                    </div>
+                        )
+                    }) : (                            
+                        <p className="text-center text-danger">이력이 없습니다.</p>
+                    )}
+                    <hr style={{background:"darkgrey"}}/>
                 </div>
 
-                <div className="col-sm-6 col-md-3">
-                    <div className="thumbnail">
-                        <div className="caption">
-                            <h3 className="text-center">기저 병력</h3>
-                            <hr style={{background:"darkgrey"}}/>
-                            {sickness_name.length ? sickness_name.map( (value,index) => {
-                                return (
-                                <div key={index}>
-                                    <p>기저 질환{index + 1} : {sickness_name[index]}</p>
-                                    <p>복용중인 약{index + 1} : {medicine[index] ? medicine[index] : "없음"}</p>
-                                    <p>증상{index + 1} : {symptom[index] ? symptom[index] : "없음"}</p>
-                                    <p>다니는 병원{index + 1} : {hospital[index] ? hospital[index] : "없음"}</p>
-                                </div>
-                                )
-                            }) : (                            
-                                <p className="text-center text-danger">이력이 없습니다.</p>
-                            )}
-                            <hr style={{background:"darkgrey"}}/>
-
+                <div className="col-sm-3 col-md-3">
+                    <h3 className="text-center">기저 병력</h3>
+                    <hr style={{background:"darkgrey"}}/>
+                    {sickness_name.length ? sickness_name.map( (value,index) => {
+                        return (
+                        <div key={index}>
+                            <p>기저 질환{index + 1} : {sickness_name[index]}</p>
+                            <p>복용중인 약{index + 1} : {medicine[index] ? medicine[index] : "없음"}</p>
+                            <p>증상{index + 1} : {symptom[index] ? symptom[index] : "없음"}</p>
+                            <p>다니는 병원{index + 1} : {hospital[index] ? hospital[index] : "없음"}</p>
                         </div>
-                    </div>
+                        )
+                    }) : (                            
+                        <p className="text-center text-danger">이력이 없습니다.</p>
+                    )}
+                    <hr style={{background:"darkgrey"}}/>
                 </div>
-                <div className="col-sm-6 col-md-3">
-                    <div className="thumbnail">
-                        <div className="caption">
-                            <h3 className="text-center">기타 정보</h3>
-                            <hr style={{background:"darkgrey"}}/>
-                            <p>보호자 휴대폰 : {guardian_phone ? guardian_phone : "없음"}</p>
-                            <p>혈액형 : {blood_type}</p>
-                            <p>장애 여부 : {disability_status}</p>
-                            <p>신고시 요청사항 : {report_request ? report_request : "없음"}</p>
-                            <hr style={{background:"darkgrey"}} />
-                        </div>
-                    </div>
+                <div className="col-sm-3 col-md-3">
+                    <h3 className="text-center">기타 정보</h3>
+                    <hr style={{background:"darkgrey"}}/>
+                    <p>보호자 휴대폰 : {guardian_phone ? guardian_phone : "없음"}</p>
+                    <p>혈액형 : {blood_type}</p>
+                    <p>장애 여부 : {disability_status}</p>
+                    <p>신고시 요청사항 : {report_request ? report_request : "없음"}</p>
+                    <hr style={{background:"darkgrey"}} />
                 </div>
-                <div className="col-sm-6 col-md-3">
-                    <div className="thumbnail">
-                        <div className="caption">
-                            <h3 className="text-center">보험 정보</h3>
-                            <hr style={{background:"darkgrey"}}/>
-                            {insurance_name ? (
-                                <div>
-                                    <p>보험사 명 : {insurance_name}</p>
-                                    <p>보험사 전화번호 : {insurance_phone}</p>
-                                    <p>가입일 : {subscription_date}</p>
-                                    <p>만기일 : {expiration_date}</p>
-                                </div>
-                            ) : (
-                                <p className="text-center text-danger">이력이 없습니다.</p>
-                            )}
-
-                            <hr style={{background:"darkgrey"}} />
+                <div className="col-sm-3 col-md-3">
+                    <h3 className="text-center">보험 정보</h3>
+                    <hr style={{background:"darkgrey"}}/>
+                    {insurance_name ? (
+                        <div>
+                            <p>보험사 명 : {insurance_name}</p>
+                            <p>보험사 전화번호 : {insurance_phone}</p>
+                            <p>가입일 : {subscription_date}</p>
+                            <p>만기일 : {expiration_date}</p>
                         </div>
-                    </div>
+                    ) : (
+                        <p className="text-center text-danger">이력이 없습니다.</p>
+                    )}
+
+                    <hr style={{background:"darkgrey"}} />
                 </div>
             </div>
             <p className="text-danger">위의 작성하신 의료정보는 운전 중 사고발생시 119센터에 보내는 메시지입니다.</p>

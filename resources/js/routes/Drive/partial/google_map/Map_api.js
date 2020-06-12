@@ -34,7 +34,7 @@ export const Map_api = () => {
             lat: location[0] ? location[0].lat : 37.3857469,
             lng: location[0] ? location[0].lng : 127.245579
             }}
-        defaultZoom={8}
+        defaultZoom={7}
     >
         {location && location.map( (value, index) => {
             return (

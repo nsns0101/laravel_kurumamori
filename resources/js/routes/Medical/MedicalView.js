@@ -5,30 +5,29 @@ import Create_medical from "./partial/Create_medical.js";
 import "./good.css";
 import {AppContext} from "../../components/App";
 import { MedicalContext } from "./MedicalContainer";
-
+import Loader from "../../components/Loader";
 export default () => {
     const { user } = useContext(AppContext);
     const { form } = useContext(MedicalContext);
     return (
-        <div>
-            {user && user.id && form  ? (
-                
-            <section id="intro" className="section intro" style={{background: "#f7f7f7"}}>
-            <Info_menu/>
-            <div className="row">
-                <div className="col-md-2 col-xs-2 col-sm-2"/>
-                <div className="col-md-8 col-xs-8 col-sm-8">
-                    <h3 style={{color:"blue"}}>의료 정보</h3>
-                    {form == "view" ? (
-                        <Show_medical/>
-                    ) : (
-                        <Create_medical/>
-                    )}
-                </div>
-
+        <div className="row mt-5 mb-5">
+            <div className="col-lg-2"></div>
+            <div className="col-lg-8">
+                <section id="intro" className="section intro" style={{background: "#f7f7f7"}}>
+                    <div className="card">
+                        <Info_menu/>
+                        {user && user.id && form  ? (
+                            <div className="card-body">
+                                    {form == "view" ? (
+                                        <Show_medical/>
+                                    ) : (
+                                        <Create_medical/>
+                                    )}
+                            </div>
+                        ) : <Loader/>}
+                    </div>
+                </section>
             </div>
-        </section>
-        ) : null}
         </div>
     )
 }

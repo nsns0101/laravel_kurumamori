@@ -8,12 +8,12 @@ export default () => {
     // console.log(LineChart);
     // console.log(DoughnutChart);
     return  (
-        <div className="row">
+        <div className="row mt-3">
             {/* Area Chart */}
             <div className="col-xl-4 col-lg-4 col-md-4">
                 <div className="card shadow" >
                     <div className="card-header py-3">
-                        <h6 className="m-0 font-weight-bold text-primary">최근 5일의 위험요소 카운트</h6>
+                        <h6 className="m-0 font-weight-bold text-primary">최근 5일간 위험요소 카운트</h6>
                     </div>
                     <div className="card-body">
                         <div className="chart-area">
@@ -32,15 +32,15 @@ export default () => {
                             </MDBContainer>
                         </div>
                         <hr/>
-                        <p style={{fontSize:"15px"}}>최근 5일간의 급가속, 급감속, 졸음, 신고 값을 나타낸 그래프입니다.</p>
+                        <p>최근 5일간의 위험요소를 횟수로 나타낸 그래프입니다.</p>
                     </div>
                 </div>
             </div>
             {/* Bar Chart */}
             <div className="col-xl-4 col-lg-4 col-md-4">
-                <div className="card shadow" >
+                <div className="card shadow">
                     <div className="card-header py-3">
-                        <h6 className="m-0 font-weight-bold text-primary">최근 5일의 운전량</h6>
+                        <h6 className="m-0 font-weight-bold text-primary">최근 5일간 운전량</h6>
                     </div>
                     <div className="card-body">
                         <div className="chart-bar">
@@ -57,18 +57,18 @@ export default () => {
                             </MDBContainer>
                         </div>
                         <hr/>
-                        <p>최근 5일간의 운전 시간을 나타낸 그래프입니다.</p>
+                        <p>최근 5일간의 운전 시간을 초(s)로 나타낸 그래프입니다.</p>
                     </div>
                 </div>
             </div>
             {/* <Donut Chart */}
-            <div className="col-xl-3 col-lg-3 col-md-3">
+            <div className="col-xl-4 col-lg-4 col-md-4">
                 <div className="card shadow">
                     <div className="card-header py-3">
-                        <h6 className="m-0 font-weight-bold text-primary">최근 5일동안 위험요소 빈도</h6>
+                        <h6 className="m-0 font-weight-bold text-primary">최근 5일간 위험요소 빈도</h6>
                     </div>
                     <div className="card-body">
-                        <div className="chart-pie pt-4">
+                        <div className="chart-doughnut">
                             <div className="chartjs-size-monitor">
                                 <div className="chartjs-size-monitor-expand">
                                     <div className=""></div>
@@ -77,17 +77,14 @@ export default () => {
                                     <div className=""></div>
                                 </div>
                             </div>
-                            {/* <div id="myPieChart" style={{height:"320px", width:"100%"}}></div> */}
-                                {/* <DoughnutChart/> */}
                             <MDBContainer>
                                 <DoughnutChart/>
                             </MDBContainer>
                         </div>
+                        <hr/>
+                        <p>최근 5일간의 운전 시간을 초(s)로 나타낸 그래프입니다.</p>
+                        {/* <p>최근 5일간 위험요소를 백분율로 나타낸 차트입니다.</p> */}
                     </div>
-                    <br/>
-                    <br/>
-                    <hr/>
-                    <p style={{marginLeft:"10px"}}>일별 위험요소를 %로 나타낸 차트입니다.</p>
                 </div>
             </div>
         </div>

@@ -56,31 +56,6 @@ export default () => {
         },
         options: {
             maintainAspectRatio: false,
-            // scales: {
-            //     xAxes: [{
-            //         time: {
-            //         unit: 'day'
-            //         },
-            //         gridLines: {
-            //         display: false,
-            //         drawBorder: false
-            //         },
-            //         ticks: {
-            //         maxTicksLimit: 6
-            //         },
-            //         maxBarThickness: 25,
-            //     }],
-            // },
-            // tooltips: {
-            //     backgroundColor: "rgb(255,255,255)",
-            //     bodyFontColor: "#858796",
-            //     borderColor: "#dddfeb",
-            //     borderWidth: 1,
-            //     xPadding: 15,
-            //     yPadding: 15,
-            //     displayColors: false,
-            //     caretPadding: 10
-            // },
             legend: {
                 display: true,
                 position: 'bottom',
@@ -111,6 +86,6 @@ export default () => {
         }
     }
     return(
-        <Doughnut data={DoughnutChart.data} options={DoughnutChart.options} height={320}/>      
+        <Doughnut data={DoughnutChart.data} options={DoughnutChart.options} width={693} height={320}/>      
     )
 }

@@ -30,7 +30,7 @@ export default () => {
         <div>
             <div className="row">
                 {/* 총 점수 */}
-                <div className="col-xs-3 col-sm-3 col-md-3">
+                <div className="col-xs-4 col-sm-4 col-md-4">
                     <div className="card btn btn-primary text-dark"> 
                         <div className="pt-3 pb-3">
                             {(score[0] + score[1] + score[2] + score[3]) / score.length >= 90 ? (
@@ -49,7 +49,6 @@ export default () => {
                 {drive_score("급감속 점수", 1)}
                 {drive_score("졸음 점수", 2)}
                 {drive_score("사고 점수", 3)}
-                <div className="col-xs-1 col-sm-1 col-md-1"></div>
             </div>
             <br/>
         </div>
