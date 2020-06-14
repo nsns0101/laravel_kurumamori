@@ -69,6 +69,9 @@ export default ({history}) => {
     }
 
     const onSubmit = () => {
+        past_sickness_name == "없음" ? setPast_sickness_name([]) :  past_sickness_name;
+        sickness_name == "없음" ? setSickness_name([]) :  sickness_name;
+
         const body = {
             user_id : user.id,
             past_sickness_name,

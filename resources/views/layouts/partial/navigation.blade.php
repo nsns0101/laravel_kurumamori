@@ -21,21 +21,18 @@
             </ul>
 
             <ul class="navbar-nav col-auto">
-                @if(Auth::user())
                 <li class="nav-item">
                     <a class="nav-link " href="/info/index" style="margin: 0 8px; color:white">내정보</a> 
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="/logout" style="margin: 0 8px; color:white">로그아웃</a> 
                 </li>
-                @else
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link " href="/auth/login" style="margin: 0 8px; color:white">로그인</a>
                 </li> 
                 <li class="nav-item">
                 <a class="nav-link " href="/auth/signup" style="margin: 0 8px; color:white">회원가입</a>
-                </li> 
-                @endif
+                </li>  --}}
             </ul>
         <div>
     </nav>    

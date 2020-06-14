@@ -77,8 +77,8 @@ export default () => {
                     </div>
                     {/* 복용중인 약 input */}
                     <div className="col-md-4">
-                        <div className="form-group p-2">
-                                <input style={{fontSize:"20px", width:"100%"}} type="text" 
+                        <div className="form-group pt-2">
+                                <input style={{fontSize:"1em", width:"100%"}} type="text" 
                                 value={medicine[index] ? medicine[index] : ""}
                                 onChange={
                                     (e) => {
@@ -98,7 +98,7 @@ export default () => {
                     </div>
                     {/* 증상 input */}
                     <div className="col-md-8">
-                            <input style={{fontSize:"20px", width:"100%"}} type="text" 
+                            <input style={{fontSize:"1em", width:"100%"}} type="text" 
                                     className="form-control" placeholder="증상을 적어주세요"
                                     value={symptom[index] ? symptom[index] : ""}
                                     onChange={
@@ -109,19 +109,19 @@ export default () => {
                                         }
                                     }
                             />
-                            <span className="text-danger" style={{fontSize:"18px"}}>
+                            <span className="text-danger" style={{fontSize:"16px"}}>
                                 증상은 최대한 자세히 적어주세요!
                             </span>
                     </div>
                     <div className="col-md-1"></div>
                     {/* 진료기관 글 */}
                     <div className="col-md-1"></div>
-                    <div className="col-md-2 text-center p-2">
+                    <div className="col-md-2 text-center pt-2 pb-3">
                         <span className="medical_text"style={{marginTop:"13px"}}>진료기관</span>
                     </div>
                     {/* 진료기관 input */}
-                    <div className="col-md-8">
-                            <input style={{fontSize:"20px", width:"100%"}} type="text" 
+                    <div className="col-md-8 pt-2 pb-3">
+                            <input style={{fontSize:"1em", width:"100%"}} type="text" 
                                     className="form-control" placeholder="진료기관 명을 적어주세요"
                                     value={hospital[index] ? hospital[index] : ""}
                                     onChange={

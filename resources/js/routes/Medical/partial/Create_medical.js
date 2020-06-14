@@ -49,7 +49,7 @@ export default () => {
     return (
         insurance_name_list ? (
             <form onSubmit={handleSubmit(validation)}>
-            <div className="row">
+            <div className="row py-3">
                 <div className="col-md-12">
                     <div className="card">
                         <div className="text-center card-header card-main" style={{color:"white", background:"blue"}}>
@@ -66,7 +66,7 @@ export default () => {
             </div>
 
             {/* {{-- 신청자 인적사항 --}} */}
-            <div className="row">
+            <div className="row py-3">
                 <div className="col-md-12">
                     <div className="card">
                         <div className="text-center card-header card-main" style={{color:"white", background:"blue"}}>
@@ -105,7 +105,7 @@ export default () => {
                                 </span>
                             </div>
                                 
-                            <div className="col-md-4 p-1">
+                            <div className="col-md-4 pt-2">
                                 <div className="form-group">
                                     {disability_status ? (
                                         <fieldset style={{fontSize:"20px", marginTop:"6px"}} key="1">
@@ -147,7 +147,7 @@ export default () => {
                 </div>
             </div>
             {/* {{-- 보호자 정보 --}} */}
-            <div className="row">
+            <div className="row py-3">
                 <div className="col-md-12">
                     <div className="card">
                         <div className="text-center card-header card-main" style={{color:"white"}}>
@@ -174,7 +174,7 @@ export default () => {
                 </div>
             </div>
             {/* 보험사 */}
-            <div className="row">
+            <div className="row py-3">
                 <div className="col-md-12">
                     <div className="card">
                         <div className="text-center card-header card-main" style={{background:"darkgray", color:"white"}}>
@@ -279,10 +279,6 @@ export default () => {
                 </div>
                 <div className="col-md-5"></div>
             </div>
-            <br/>
-            <br/>        
-            <br/>
-            <br/>
         </form>
         ) : null
 

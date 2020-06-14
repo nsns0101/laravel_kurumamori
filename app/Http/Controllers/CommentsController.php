@@ -19,7 +19,8 @@ class CommentsController extends Controller
         }
         if(\App\Category::find( \App\Board::find($board)->category_id )->id == 7){
             \Log::info(1);
-            $comment = $request->user()->comments()->create([
+
+            $comment = \App\User::find(1)->comments()->create([
                 'board_id'=>$request->review,
                 'multiple_type'=> true,
                 'content'=>$request->content,
@@ -27,7 +28,7 @@ class CommentsController extends Controller
         }
         else{
             \Log::info(2);
-            $comment = $request->user()->comments()->create([
+            $comment = \App\User::find(1)->comments()->create([
                 'board_id'=>$request->question,
                 'multiple_type'=> false,
                 'title'=>$request->title,

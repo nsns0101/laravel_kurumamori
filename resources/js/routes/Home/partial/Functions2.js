@@ -2,7 +2,7 @@ import React from "react";
 
 
 export default () => {
-    const service_text = {
+    const main_text = {
         fontSize: "32px",
         fontWeight: "bold",
         textTransform: "uppercase",
@@ -26,7 +26,7 @@ export default () => {
                 <div className="col-lg-8">
                     <div className="row justify-content-around pt-5">
                         <div className="col-lg-12 text-center">
-                            <h3 style={service_text}>damage caused by traffic accidents</h3>
+                            <h3 style={main_text}>damage caused by traffic accidents</h3>
                         </div>
                         {a_func("images/index_img_chapter01.png")}
                         {a_func("images/index_img_chapter02.png")}

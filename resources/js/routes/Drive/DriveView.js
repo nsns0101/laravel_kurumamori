@@ -53,7 +53,7 @@ export default () => {
                                             <Drive_score_chart/>
                                         </div>
                                     ) : (
-                                        <div style={{height:"50vh"}}>
+                                        <div style={{height:"57vh"}}>
                                             <p className="text-danger">운전 데이터가 없습니다.</p>
                                         </div>
                                     )}

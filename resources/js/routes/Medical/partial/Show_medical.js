@@ -25,92 +25,122 @@ export default () => {
         expiration_date 
     } = useContext(MedicalContext);
 
-    // console.log(past_sickness_name);
-    // console.log(past_sickness_supplementation);
-    // console.log(sickness_name);
-    // console.log(medicine);
-    // console.log(symptom);
-    // console.log(hospital);
-    // console.log(blood_type);
-    // console.log(disability_status);
-    // console.log(report_request);
-    // console.log(guardian_phone);
-    // console.log(insurance_bool);
-    // console.log(insurance_name);
-    // console.log(subscription_date);
-    // console.log(expiration_date);
-
     return (
-        <div style={{height:"55vh"}}>
+        <div>
             {/* <a className="btn btn-success" href={`/info/medical_info/${medical_id}/edit`}>의료정보 수정</a> */}
-            <Link to={`/info/medical_info/${medical_id}/edit`} style={{float:"right"}} className="btn btn-success" onClick={() => setForm("update")}>의료정보 수정</Link>
-            <br/>
-            <br/>
             
-            <div className="row">
-                <div className="col-sm-3 col-md-3">
-                    <h3 className="text-center">과거 병력</h3>
-                    <hr style={{background:"darkgrey"}}/>
-                    {past_sickness_name.length ? past_sickness_name.map( (value,index) => {
-                        return (
-                        <div key={index}>
-                            <p>과거 병력{index + 1} : {past_sickness_name[index]}</p>
-                            <p>과거 병력{index + 1} 보충 설명 : {past_sickness_supplementation[index] ? past_sickness_supplementation[index] : "없음"}</p>
+            <div className="row justify-content-around">
+                <div className="col-lg-11">
+                    <div className="row">
+                        <div className="col-lg-12 py-3">
+                            <Link to={`/info/medical_info/${medical_id}/edit`} style={{float:"right"}} className="btn btn-success" onClick={() => setForm("update")}>의료정보 수정</Link>
                         </div>
-                        )
-                    }) : (                            
-                        <p className="text-center text-danger">이력이 없습니다.</p>
-                    )}
-                    <hr style={{background:"darkgrey"}}/>
-                </div>
+                    </div>
 
-                <div className="col-sm-3 col-md-3">
-                    <h3 className="text-center">기저 병력</h3>
-                    <hr style={{background:"darkgrey"}}/>
-                    {sickness_name.length ? sickness_name.map( (value,index) => {
-                        return (
-                        <div key={index}>
-                            <p>기저 질환{index + 1} : {sickness_name[index]}</p>
-                            <p>복용중인 약{index + 1} : {medicine[index] ? medicine[index] : "없음"}</p>
-                            <p>증상{index + 1} : {symptom[index] ? symptom[index] : "없음"}</p>
-                            <p>다니는 병원{index + 1} : {hospital[index] ? hospital[index] : "없음"}</p>
+                    <div className="row justfity-content-around">
+                        <div className="card shadow mb-3 col-lg-12 col-md-12 col-sm-12 mx-0 px-0">
+                            <div className="card-header" style={{backgroundColor:"#002EF0"}}>
+                                <h3 style={{fontSize:"1.725em", color:"white"}}>기저질환</h3>
+                            </div>
+                            <div className="card-body">
+                                <div className="row col-lg-12 col-md-12 col-sm-12">
+                                    {sickness_name.length && sickness_name[0] != "" ? sickness_name.map( (value, index) => {
+                                        return (
+                                            <div key={index} className="col-lg-4 col-md-4 col-sm-4">
+                                                <div className="card shadow mb-4" style={{backgroundColor:"#002EF0"}}>
+                                                    <div className="card-body" style={{color:"white"}}>{sickness_name[index]}</div>
+                                                    <div className="card-footer d-flex align-items-center justify-content-between">
+                                                        <div className="row text-truncate">
+                                                            <p className="col-lg-12 col-md-12 col-sm-12">복용중인 약 : {medicine[index] ? medicine[index] : "없음"}</p>
+                                                            <p className="col-lg-12 col-md-12 col-sm-12">증상 : {symptom[index] ? symptom[index] : "없음"}</p>
+                                                            <p className="col-lg-12 col-md-12 col-sm-12">다니는 병원 : {hospital[index] ? hospital[index] : "없음"}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )
+                                    }) : (
+                                        <div className="col-lg-12 col-md-12 col-sm-12 text-center">
+                                            <p className="text-danger">이력이 없습니다.</p>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
                         </div>
-                        )
-                    }) : (                            
-                        <p className="text-center text-danger">이력이 없습니다.</p>
-                    )}
-                    <hr style={{background:"darkgrey"}}/>
-                </div>
-                <div className="col-sm-3 col-md-3">
-                    <h3 className="text-center">기타 정보</h3>
-                    <hr style={{background:"darkgrey"}}/>
-                    <p>보호자 휴대폰 : {guardian_phone ? guardian_phone : "없음"}</p>
-                    <p>혈액형 : {blood_type}</p>
-                    <p>장애 여부 : {disability_status}</p>
-                    <p>신고시 요청사항 : {report_request ? report_request : "없음"}</p>
-                    <hr style={{background:"darkgrey"}} />
-                </div>
-                <div className="col-sm-3 col-md-3">
-                    <h3 className="text-center">보험 정보</h3>
-                    <hr style={{background:"darkgrey"}}/>
-                    {insurance_name ? (
-                        <div>
-                            <p>보험사 명 : {insurance_name}</p>
-                            <p>보험사 전화번호 : {insurance_phone}</p>
-                            <p>가입일 : {subscription_date}</p>
-                            <p>만기일 : {expiration_date}</p>
-                        </div>
-                    ) : (
-                        <p className="text-center text-danger">이력이 없습니다.</p>
-                    )}
 
-                    <hr style={{background:"darkgrey"}} />
+
+                        <div className="card shadow mb-3 col-lg-12 col-md-12 col-sm-12 mx-0 px-0">
+                            <div className="card-header" style={{backgroundColor:"orange"}}>
+                                <h3 style={{fontSize:"1.725em", color:"white"}}>과거 병력</h3>
+                            </div>
+                            <div className="card-body">
+                                <div className="row col-lg-12 col-md-12 col-sm-12">
+                                    {past_sickness_name.length && past_sickness_name[0] != "" ? past_sickness_name.map( (value, index) => {
+                                        return (
+                                            <div key={index} className="col-lg-4 col-md-4 col-sm-4">
+                                                <div className="card shadow mb-4" style={{backgroundColor:"orange"}}>
+                                                    <div className="card-body" style={{color:"white"}}>{past_sickness_name[index]}</div>
+                                                    <div className="card-footer d-flex align-items-center justify-content-between">
+                                                        <div className="row text-truncate">
+                                                            {/* <p className="col-lg-12 col-md-12 col-sm-12">기저 질환 : {past_sickness_name[index]}</p> */}
+                                                            <p className="col-lg-12 col-md-12 col-sm-12">보충설명 : {past_sickness_supplementation[index] ? past_sickness_supplementation[index] : "없음"}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )
+                                    }) : (
+                                        <div className="col-lg-12 col-md-12 col-sm-12 text-center">
+                                            <p className="text-danger">이력이 없습니다.</p>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="col-lg-12 col-md-12 col-sm-12 mx-0 px-0 row justify-content-around">
+                            <div className="card shadow mb-3 col-lg-5 col-md-5 col-sm-12 mx-0 px-0">
+                                <div className="card-header" style={{backgroundColor:"#28A745"}}>
+                                    <h3 style={{fontSize:"1.725em", color:"white"}}>기타 정보</h3>
+                                </div>
+                                <div className="card-body d-flex align-items-center justify-content-between">
+                                    <div className="row text-truncate">
+                                        <p className="col-lg-12 col-md-12 col-sm-12">보호자 휴대폰 : {guardian_phone ? guardian_phone : "없음"}</p>
+                                        <p className="col-lg-12 col-md-12 col-sm-12">혈액형 : {blood_type}</p>
+                                        <p className="col-lg-12 col-md-12 col-sm-12">장애 여부 : {disability_status}</p>
+                                        <p className="col-lg-12 col-md-12 col-sm-12">신고시 요청사항 : {report_request ? report_request : "없음"}</p>     
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="card shadow mb-3 col-lg-5 col-md-5 col-sm-12 mx-0 px-0">
+                                <div className="card-header" style={{backgroundColor:"#DC3545"}}>
+                                    <h3 style={{fontSize:"1.725em", color:"white"}}>보험사 정보</h3>
+                                </div>
+                                <div className="card-body d-flex align-items-center justify-content-between">
+                                        {insurance_name ? (
+                                    <div className="row text-truncate">
+                                            <div>
+                                                <p className="col-lg-12 col-md-12 col-sm-12">보험사 명 : {insurance_name}</p>
+                                                <p className="col-lg-12 col-md-12 col-sm-12">가입일 : {subscription_date}</p>
+                                                <p className="col-lg-12 col-md-12 col-sm-12">만기일 : {expiration_date}</p>
+                                                <p className="col-lg-12 col-md-12 col-sm-12">보험사 전화번호 : {insurance_phone}</p> 
+                                            </div>
+                                    </div>
+                                        ) : (
+                                            <div className="col-lg-12 col-md-12 col-sm-12 text-center">
+                                                <p className="text-danger">이력이 없습니다.</p>
+                                            </div>
+                                        )}
+                                </div>
+                            </div>
+                        </div>
+
+                        <p className="text-danger">위의 작성하신 의료정보는 운전 중 사고발생시 119센터에 보내는 메시지입니다.</p>
+                        <p className="text-danger">작성한 정보에 틀린 점이 없는지 확인해 주세요.</p>
+                    </div>
                 </div>
             </div>
-            <p className="text-danger">위의 작성하신 의료정보는 운전 중 사고발생시 119센터에 보내는 메시지입니다.</p>
-            <p className="text-danger">작성한 정보에 틀린 점이 없는지 확인해 주세요.</p>
-        </div>
-
-
+    </div>
     )
 }

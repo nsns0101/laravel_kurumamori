@@ -6,15 +6,15 @@ use Illuminate\Http\Request;
 
 class QuestionsController extends Controller
 {
-    public function __construct(){
-        $this->middleware('auth');
-        $this->middleware('auth',['except'=>['index','show','edit','delete','store','update']]);
-    }
+    // public function __construct(){
+    //     $this->middleware('auth');
+    //     $this->middleware('auth',['except'=>['index','show','edit','delete','store','update']]);
+    // }
     //
     public function index(Request $request, $category = null)
     {
         \Log::info('questions index');
-        $user = \App\User::whereId(auth()->user()->id)->first();
+        $user = \App\User::whereId(1)->first();
         $query = $category
             ? \App\Category::whereId($category)->firstOrFail()->boards()
             : new \App\Board;
@@ -58,7 +58,7 @@ class QuestionsController extends Controller
         \Log::info('questions create');
 
         $Categories = \App\Category::get();
-        $user = \App\User::whereId(auth()->user()->id)->first();
+        $user = \App\User::whereId(1)->first();
         \Log::info($user);
 
         $question = new \App\Board;

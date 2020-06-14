@@ -144,6 +144,7 @@ class MedicalController extends Controller
                 if( ($i == 0 && count($past_sickness) == 0 )|| $i > count($past_sickness) - 1){
                     \Log::info("wqeqwr");
                     \Log::info(count($past_sickness));
+                    \Log::info($request->data);
                     //새로 생성
                     \App\Past_sickness::create([
                         'user_id' => $request->data['user_id'],
@@ -174,13 +175,15 @@ class MedicalController extends Controller
         for($i = 0; $i < count($request->data['sickness_name']); $i++){
             if($request->data['sickness_name'][$i] && $request->data['sickness_name'][$i]!="없음"){
                 if(($i == 0 && count($sickness) == 0 ) || $i > count($sickness) - 1 ){
+                    \Log::info($request->all());
+                    
                     \App\Sickness::create([
                         'user_id' => $request->data['user_id'],
                         'medical_id' => $medical_id,
                         'sickness_name' => $request->data['sickness_name'][$i],
-                        'medicine' => $request->data['medicine'][$i],
-                        'symptom' => $request->data['symptom'][$i],
-                        'hospital' => $request->data['hospital'][$i],
+                        'medicine' => isset($request->data['medicine'][$i]) ? $request->data['medicine'][$i] : null,
+                        'symptom' => isset($request->data['symptom'][$i]) ? $request->data['symptom'][$i] : null,
+                        'hospital' => isset($request->data['hospital'][$i]) ? $request->data['hospital'][$i] : null,
                     ]);
                 }
                 else{

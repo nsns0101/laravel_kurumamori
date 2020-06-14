@@ -9,7 +9,7 @@ export default () => {
     const drive_score = ( text ,index) => {
         return (
             <div className="col-xs-2 col-sm-2 col-md-2">
-                <div className="card btn btn-primary text-dark">
+                <div className="card btn text-dark shadow">
                     <div className="pt-3 pb-3">
                         {score[index] >= 90 ? (
                             <img src="/icon/모범.png"/>
@@ -31,7 +31,7 @@ export default () => {
             <div className="row">
                 {/* 총 점수 */}
                 <div className="col-xs-4 col-sm-4 col-md-4">
-                    <div className="card btn btn-primary text-dark"> 
+                    <div className="card btn text-dark shadow"> 
                         <div className="pt-3 pb-3">
                             {(score[0] + score[1] + score[2] + score[3]) / score.length >= 90 ? (
                                 <img src="/icon/모범.png"/>
