@@ -2,49 +2,49 @@ import React from 'react';
 import Function1 from "./partial/Functions1";
 import Function2 from "./partial/Functions2";
 import Team from "./partial/Team";
+import "./Home.css";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+
+const Wrapper = styled.div`
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
 
 export default () => {
+    const hero = {
+        
+    }
     return (
         <React.Fragment>
-
-            <div className="row">
-
-                <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel" style={{width:"100%"}}>
-                    <ol className="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    </ol>
-                    <div className="carousel-inner">
-                        <div className="carousel-item active">
-                            <img className="d-block w-100" src="/images/main_image.png" alt="First slide"
-                                style={{width:"2115px", height:"870px"}}/>
+            <section id="hero" style={hero}>
+                <div className="row">
+                    <div className="col-lg-1"/>
+                    <div className="col-lg-10">
+                        <div className="row">
+                            <div className="col-lg-6" style={{marginTop:"250px"}}>
+                                <h1 style={{color:"white"}}>くるまもり１１９</h1>
+                                <h3 style={{color:"white"}}>사고를 스스로 인식하는 스마트 디바이스</h3>
+                                <div>
+                                <Link id="btn_get_product" className="btn" to="/products">
+                                    제품 구매하기
+                                </Link>
+                                </div>
+                            </div>
+                            <div className="col-lg-6 pt-3">
+                                <img src="/images/main_image.png" style={{width:"600px"}}/>
+                            </div>
                         </div>
-                        <div className="carousel-item">
-                            <img className="d-block w-100" src="/images/ppt_main_image.png" alt="Second slide"
-                                style={{width:"2115px", height:"870px"}}/>
-                        </div>
-
                     </div>
-                    <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span className="sr-only">Previous</span>
-                    </a>
-                    <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span className="sr-only">Next</span>
-                    </a>
+                    <div className="col-lg-1"/>
                 </div>
-            </div>
+            </section>
             <Function1/>
-            <br/>
-            <br/>
             <Function2/>
-            <br/>
-            <br/>
-            <br/>
             <Team/>
-            <br/>
-            <br/>
         </React.Fragment>
     
     );

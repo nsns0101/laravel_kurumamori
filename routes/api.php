@@ -19,7 +19,7 @@ Route::post('login', 'UsersController@login');
 Route::get('profile', 'UsersController@getAuthenticatedUser');
 // Route::get('info/index', 'InfoController@index');
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('jwt.api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
