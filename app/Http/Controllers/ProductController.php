@@ -14,7 +14,6 @@ class ProductController extends Controller
 
     public function index()
     {
-        \Log::info("good". \Auth::guard('api')->user());
         return view('home.main');
     }
 
@@ -93,4 +92,12 @@ class ProductController extends Controller
 
     }
     
+
+    // protected function respondError($message)
+    // {
+    // }
+
+    // protected function respondCreated($message)
+    // {
+    // }
 }

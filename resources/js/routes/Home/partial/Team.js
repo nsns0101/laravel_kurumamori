@@ -14,10 +14,10 @@ export default () => {
     const team_func = (name) => {
         return (
             <div className="col-lg-4 text-center mb-3">
-                <div class="member">
+                <div className="member">
                     <img src={`/images/team/${name}.jpg`} alt="img" style={{width:"70%", height:"260px"}}/>
-                    <div class="member_info">
-                        <div class="member-info-content">
+                    <div className="member_info">
+                        <div className="member-info-content">
                             <h4>{name}</h4>
                             <span>역할</span>
                         </div>

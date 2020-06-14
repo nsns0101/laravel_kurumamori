@@ -38,26 +38,31 @@ class BuyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(\App\Http\Requests\BuysRequest $request)
+    // \App\Http\Requests\Buy
+    public function store(Request $request)
     {
         $total_price = $request->ea * 49900;
 
         $product_key =Str::random(4)."-".Str::random(4)."-".Str::random(4)."-".Str::random(4);
-
-        $buy = $request->user()->product_buys()->create([
-            'ea'=>$request->ea,
+        \Log::info($request->all());
+        $buy = \App\Product_buy::create([
+            'user_id'=>$request->user_id,
+            'ea'=>1,
             'price'=>$total_price,
-            'to_name'=>$request->to_name,
-            'to_phone'=>$request->to_phone,
-            'to_address'=>$request->to_address,
-            'to_zipcode'=>$request->to_zipcode,
-            'to_msg'=>$request->to_msg,
-            'payment'=>$request->payment,
+            'to_name'=>$request->name,
+            'to_phone'=>$request->phone,
+            'to_address'=>$request->address,
+            'to_zipcode'=>$request->postal,
+            // 'to_msg'=>$request->to_msg,
+            // 'payment'=>$request->payment,
             'product_key'=>$product_key,
         ]);
 
         // return redirect('/thanks');
-        return view('product.thanks', compact('buy'));
+        return response()->json([
+            'buy'=>$buy,
+            'status'=>true
+        ]);
     }
     /**
      * Display the specified resource.

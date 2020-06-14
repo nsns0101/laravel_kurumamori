@@ -23,7 +23,15 @@ import Info_index from "../routes/Profile/ProfileContainer";
 import Info_medical from "../routes/Medical/MedicalContainer";
 import Info_drive from "../routes/Drive/DriveContainer";
 import Bigdata from "../routes/Bigdata/BigdataContainer";
+
 import Product from "../routes/Product/Product";
+import More from "../routes/Product/More";
+import Buy from "../routes/Buy/BuyContainer";
+// import Check from "../routes/Buy/Check";
+
+import Control from "../routes/Product/Control";
+import Users from "../routes/Product/Users";
+
 //전역변수
 export const AppContext = createContext();
 
@@ -86,6 +94,16 @@ function App({history}) {
                 <Route path="/bigdata" component={Bigdata}/>
 
                 <Route path="/products" exact component={Product}/>
+                <Route path="/products/more" exact component={More}/>
+                <Route path="/products/buy" exact component={Buy}/>
+                {/* <Route path="/products/buy/check" exact component={Check}/> */}
+                <Route path="/products/control" exact component={Control}/>
+                <Route path="/products/users" exact component={Users}/>
+
+                {/* <Route path="/board/create" exact component={BoardCreate}/>
+                <Route path="/board/show" exact component={BoardShow}/>
+                <Route path="/board/question" exact component={Board}/> */}
+
                 <Footer/>
             </BrowserRouter>
         </AppContext.Provider>
@@ -105,6 +123,18 @@ function App({history}) {
                 <Route path="/info/drive_score" exact component={Info_drive}/>
                 {/* 빅데이터 자료실 */}
                 <Route path="/bigdata" component={Bigdata}/>
+
+                <Route path="/products" exact component={Product}/>
+                <Route path="/products/more" exact component={More}/>
+                <Route path="/products/buy" exact component={Buy}/>
+                {/* <Route path="/products/buy/check" exact component={Check}/> */}
+                <Route path="/products/control" exact component={Control}/>
+                <Route path="/products/users" exact component={Users}/>
+
+                {/* <Route path="/board/create" exact component={BoardCreate}/>
+                <Route path="/board/show" exact component={BoardShow}/>
+                <Route path="/board/question" exact component={Board}/> */}
+
                 <Footer/>
             </BrowserRouter>
         </AppContext.Provider>

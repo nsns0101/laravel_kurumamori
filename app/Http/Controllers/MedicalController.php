@@ -141,8 +141,8 @@ class MedicalController extends Controller
                 //i == 1, count가 1일 때는 update(같으면 update)
                 //i == 2, count가 1일 때는 create(i가 크면 무조건 create)
                 //즉 i와 count가 0이 이거나 i가 더크면 create
-                if( ($i == 0 && count($past_sickness) == 0 )|| $i > count($past_sickness)){
-                    \Log::info($i);
+                if( ($i == 0 && count($past_sickness) == 0 )|| $i > count($past_sickness) - 1){
+                    \Log::info("wqeqwr");
                     \Log::info(count($past_sickness));
                     //새로 생성
                     \App\Past_sickness::create([
@@ -154,7 +154,7 @@ class MedicalController extends Controller
                 }
                 //업데이트
                 else{
-                    // \Log::info("요기");
+                    \Log::info("요기");
                     $past_sickness[$i]->update([
                         'user_id' => $request->data['user_id'],
                         'past_sickness_name' => $request->data['past_sickness_name'][$i],
@@ -173,7 +173,7 @@ class MedicalController extends Controller
         //sickness DB Update
         for($i = 0; $i < count($request->data['sickness_name']); $i++){
             if($request->data['sickness_name'][$i] && $request->data['sickness_name'][$i]!="없음"){
-                if(($i == 0 && count($sickness) == 0 ) || $i > count($sickness) ){
+                if(($i == 0 && count($sickness) == 0 ) || $i > count($sickness) - 1 ){
                     \App\Sickness::create([
                         'user_id' => $request->data['user_id'],
                         'medical_id' => $medical_id,

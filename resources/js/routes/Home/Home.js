@@ -21,12 +21,12 @@ export default () => {
     return (
         <React.Fragment>
             <section id="hero" style={hero}>
-                <div className="row">
+                <div className="row mx-0 px-0">
                     <div className="col-lg-1"/>
                     <div className="col-lg-10">
                         <div className="row">
-                            <div className="col-lg-6" style={{marginTop:"250px"}}>
-                                <h1 style={{color:"white"}}>くるまもり１１９</h1>
+                            <div className="col-sm-12 col-lg-6" style={{marginTop:"250px"}}>
+                                <h1 style={{color:"white", fontSize:"3em"}}>くるまもり１１９</h1>
                                 <h3 style={{color:"white"}}>사고를 스스로 인식하는 스마트 디바이스</h3>
                                 <div>
                                 <Link id="btn_get_product" className="btn" to="/products">
@@ -34,8 +34,8 @@ export default () => {
                                 </Link>
                                 </div>
                             </div>
-                            <div className="col-lg-6 pt-3">
-                                <img src="/images/main_image.png" style={{width:"600px"}}/>
+                            <div className="col-lg-6 pt-3 align-self-center">
+                                <img src="/images/main_image.png" style={{width:"80%"}}/>
                             </div>
                         </div>
                     </div>
