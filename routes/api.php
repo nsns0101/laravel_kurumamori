@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('register', 'UsersController@register');
-Route::post('login', 'UsersController@login');
-Route::get('profile', 'UsersController@getAuthenticatedUser');
+Route::post('/register', 'UsersController@register');
+Route::post('/login', 'UsersController@login');
+Route::get('/profile', 'UsersController@getAuthenticatedUser');
 // Route::get('info/index', 'InfoController@index');
 
 Route::middleware('jwt.api')->get('/user', function (Request $request) {

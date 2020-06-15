@@ -144,6 +144,7 @@ export default ({
             <div className="form-group text-center">
               <input 
                 name ="password" 
+                type="password"
                 placeholder={"비밀번호"}
                 style={input_form}
                 onChange={ e => {

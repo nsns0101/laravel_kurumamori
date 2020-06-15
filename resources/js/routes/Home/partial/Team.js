@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./Team.css";
 export default () => {
     const main_text = {
         fontSize: "32px",
@@ -25,6 +25,21 @@ export default () => {
                 </div>
                 <h3 className="py-3" style={{color:"white"}}>{name}</h3>
             </div>
+            // <div className="member">
+            //   <img src={`/images/team/${name}.jpg`} className="img-fluid" alt=""/>
+            //   <div className="">
+            //     <div className="member-info-content">
+            //       <h4>William Anderson</h4>
+            //       <span>CTO</span>
+            //     </div>
+            //     <div className="social">
+            //       <a href=""><i className="icofont-twitter"></i></a>
+            //       <a href=""><i className="icofont-facebook"></i></a>
+            //       <a href=""><i className="icofont-instagram"></i></a>
+            //       <a href=""><i className="icofont-linkedin"></i></a>
+            //     </div>
+            //   </div>
+            // </div>
         )
     }
     return (
