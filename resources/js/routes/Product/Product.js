@@ -16,33 +16,35 @@ export default () => {
                             <Link to="/products/more" id="more" className="btn btn-intro text-dark" >더 알아보기 ></Link>
                             <Link to="/products/buy" id="buy" className="btn btn-intro text-dark" >구입하기 ></Link>
                         </div>
-                        <img className="" src="product/product_image.png" style={{width:50+'%',zIndex:100}}></img>
+
+                        <img className="" src="product/product_image.png" style={{width:30+'%',zIndex:100}}></img>
                         {/* 이미지 포지션 조정 및 글자 위치 조정 필요 */}
                     </div>
                 </div>
                 <div className="row col-sm-12 col-lg-12 justify-content-around px-0 mx-0">
                     <div className="row col-sm-10 col-lg-10 justify-content-around px-0 mx-0">
-                        <div className="col-sm-12 col-lg-5 mx-0 py-5" style={{padding:10+'px'}}>
-                            <div className="text-center" style={{width:100+'%',height: 450 + 'px',backgroundColor: '#FAFAFA'}}>
-                                {/* 검은 백그라운드 위에 png로된 이미지 넣을 예정 */}
+                        <div className=" col-sm-12 col-lg-5 mx-0 py-5" style={{padding:10+'px'}}>
+                            <img className="card-img" src="product/contr.jpg" style={{width:100+'%',height: 450 + 'px',opacity:0.5}}></img>
+                            <div className="text-center card-img-overlay" style={{width:100+'%',height: 450 + 'px'}}>
                                 <div className="py-2 pt-5">
-                                    <h2 className="text-dark">쉽게 배우는 조작 방법</h2>
-                                    <p className="text-dark">KURUMAMORI 119의 조작방법을 알려드립니다.</p>
+                                    <h2 className="card-title" style={{color:"black"}}>쉽게 배우는 조작 방법</h2>
+                                    <p className="card-text" style={{color:"black"}}>KURUMAMORI 119의 조작방법을 알려드립니다.</p>
                                 </div>
                                 <div>
-                                    <Link to="/products/control" id="control" className="btn btn-intro text-dark" >손쉬운 사용 기능 살펴보기 ></Link>
+                                    <Link to="/products/control" id="control" className="btn btn-intro card-text" style={{color:"black"}}>손쉬운 사용 기능 살펴보기 ></Link>
                                 </div>
                             </div>
                         </div>
                         <div className="col-sm-12 col-lg-5 py-5" style={{padding:10+'px'}}>
-                            <div className="text-center" style={{width:100+'%',height: 450 + 'px',backgroundColor: '#FAFAFA'}}>
+                            <img className="card-img" src="product/userv.jpg" style={{width:100+'%',height: 450 + 'px',opacity:0.5}}></img>
+                            <div className="text-center card-img-overlay" style={{width:100+'%',height: 450 + 'px'}}>
                                 {/* 검은 백그라운드 위에 png로된 이미지 넣을 예정 */}
                                 <div className="py-2 pt-5">
-                                    <h2 className="text-dark">사용자 영상</h2>
-                                    <p className="text-dark">KURUMAMORI 119의 실제 사용자 영상입니다.</p>
+                                    <h2 className="card-title" style={{color:"black"}}>사용자 영상</h2>
+                                    <p className="card-text" style={{color:"black"}}>KURUMAMORI 119의 실제 사용자 영상입니다.</p>
                                 </div>
                                 <div>
-                                    <Link to="/products/users" id="users" className="btn btn-intro text-dark" >실제 사용자 영상 보러가기 ></Link>
+                                    <Link to="/products/users" id="users" className="btn btn-intro card-text" style={{color:"black"}}>실제 사용자 영상 보러가기 ></Link>
                                 </div>
                             </div>
                         </div>

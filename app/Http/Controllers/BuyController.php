@@ -54,7 +54,7 @@ class BuyController extends Controller
             'to_address'=>$request->address,
             'to_zipcode'=>$request->postal,
             // 'to_msg'=>$request->to_msg,
-            // 'payment'=>$request->payment,
+            'payment'=>'s',
             'product_key'=>$product_key,
         ]);
 

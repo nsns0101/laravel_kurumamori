@@ -14,10 +14,10 @@
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "~6.0",
         "laracasts/flash": "^3.1",
-        "laravel/framework": "^7.0",
+        "laravel/framework": "^7.13",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
-        "tymon/jwt-auth": "^0.5.12"
+        "tymon/jwt-auth": "1.0.0"
 
     },
     "require-dev": {

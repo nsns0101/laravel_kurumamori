@@ -41,26 +41,28 @@ export default () => {
                     </div>
                 </div>
                 <div className="row justify-content-around px-0 mx-0 py-5" style={{backgroundColor: '#F5F5F5'}}>
-                            <div lassName="pt-5 col-sm-12 col-lg-12"> 
-                                <div>
-                                    <h1 style={{fontSize:3.25+'em',fontWeight:900}}>더 많은 사용자의 후기들.</h1>
-                                </div>
-                            </div>
-                            <div className="row col-sm-12 col-lg-12 justify-content-around px-0 mx-0 pb-5">
-                                <div className="py-5 ccol-sm-12 col-lg-5">
-                                    <ReactPlayer className="w-100" url='https://www.youtube.com/watch?v=eGZiQJ4UUGU' />
-                                </div>
-                                <div className="py-5 ccol-sm-12 col-lg-5">
-                                    <ReactPlayer className="w-100" url='https://www.youtube.com/watch?v=hFU9Z_K7arg' />
-                                </div>
-                                <div className="py-5 ccol-sm-12 col-lg-5">
-                                    <ReactPlayer className="w-100" url='https://www.youtube.com/watch?v=bD_RzOaqj2Q' />
-                                </div>
-                                <div className="py-5 ccol-sm-12 col-lg-5">
-                                    <ReactPlayer className="w-100" url='https://www.youtube.com/watch?v=xqFvYsy4wE4' />
-                                </div>
+                    <div className="row justify-content-around px-0 mx-0 py-5 col-lg-10 col-sm-10">
+                        <div lassName="pt-5 col-sm-12 col-lg-12"> 
+                            <div>
+                                <h1 style={{fontSize:3.25+'em',fontWeight:900}}>더 많은 사용자의 후기들.</h1>
                             </div>
                         </div>
+                        <div className="row col-sm-12 col-lg-12 justify-content-around px-0 mx-0 pb-5">
+                            <div className="py-5 ccol-sm-12 col-lg-5">
+                                <ReactPlayer className="w-100" url='https://www.youtube.com/watch?v=eGZiQJ4UUGU' />
+                            </div>
+                            <div className="py-5 ccol-sm-12 col-lg-5">
+                                <ReactPlayer className="w-100" url='https://www.youtube.com/watch?v=hFU9Z_K7arg' />
+                            </div>
+                            <div className="py-5 ccol-sm-12 col-lg-5">
+                                <ReactPlayer className="w-100" url='https://www.youtube.com/watch?v=bD_RzOaqj2Q' />
+                            </div>
+                            <div className="py-5 ccol-sm-12 col-lg-5">
+                                <ReactPlayer className="w-100" url='https://www.youtube.com/watch?v=xqFvYsy4wE4' />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </Fragment>
     )
