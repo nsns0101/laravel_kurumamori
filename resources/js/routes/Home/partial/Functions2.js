@@ -13,19 +13,19 @@ export default () => {
     }
     const a_func = (img) => {
         return (
-            <div className="col-lg-4 text-center">
+            <div className="col-lg-4 col-md-3 col-sm-12 col-12 text-center">
                 <img src={img} alt="img"/>
             </div>
         )
     }
     return (
-        <section id="intro function2" className="section intro function1" style={{background:"#F9F8FF", height:"50vh"}}>
+        <section id="intro function2" className="section intro mb-5" style={{background:"#F9F8FF"}}>
             <div className="row">
-                <div className="col-lg-2"/>
+                <div className="col-lg-2 col-md-2 col-sm-2"/>
 
-                <div className="col-lg-8">
+                <div className="col-lg-8 col-md-8 col-sm-10">
                     <div className="row justify-content-around pt-5">
-                        <div className="col-lg-12 text-center">
+                        <div className="col-lg-12 col-md-12 col-sm-12 text-center">
                             <h3 style={main_text}>damage caused by traffic accidents</h3>
                         </div>
                         {a_func("images/index_img_chapter01.png")}
@@ -34,7 +34,7 @@ export default () => {
                     </div>
                 </div>
 
-                <div className="col-lg-2"/>
+                <div className="col-lg-2 col-md-2 col-sm-2"/>
             </div>
             {/* <div className="rows justify-content-around">
                 <div className="col-md-12 text-center">

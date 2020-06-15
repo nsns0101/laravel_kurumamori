@@ -10,7 +10,7 @@ export default () => {
     return  (
         <div className="row mt-3">
             {/* Area Chart */}
-            <div className="col-xl-4 col-lg-4 col-md-4">
+            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                 <div className="card shadow" >
                     <div className="card-header py-3">
                         <h6 className="m-0 font-weight-bold text-primary">최근 5일간 위험요소 카운트</h6>
@@ -37,7 +37,7 @@ export default () => {
                 </div>
             </div>
             {/* Bar Chart */}
-            <div className="col-xl-4 col-lg-4 col-md-4">
+            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                 <div className="card shadow">
                     <div className="card-header py-3">
                         <h6 className="m-0 font-weight-bold text-primary">최근 5일간 운전량</h6>
@@ -62,7 +62,7 @@ export default () => {
                 </div>
             </div>
             {/* <Donut Chart */}
-            <div className="col-xl-4 col-lg-4 col-md-4">
+            <div className="col-xl-4 col-lg-4 col-sm-12 mb-4">
                 <div className="card shadow">
                     <div className="card-header py-3">
                         <h6 className="m-0 font-weight-bold text-primary">최근 5일간 위험요소 빈도</h6>

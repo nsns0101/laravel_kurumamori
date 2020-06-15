@@ -13,9 +13,9 @@ export default () => {
 
     const team_func = (name) => {
         return (
-            <div className="col-lg-4 text-center mb-3">
+            <div className="col-lg-4 col-md-4 col-sm-12 text-center mb-3">
                 <div className="member">
-                    <img src={`/images/team/${name}.jpg`} alt="img" style={{width:"70%", height:"260px"}}/>
+                    <img src={`/images/team/${name}.jpg`} alt="img" style={{width:"60%", height:"250px"}}/>
                     <div className="member_info">
                         <div className="member-info-content">
                             <h4>{name}</h4>
@@ -28,13 +28,13 @@ export default () => {
         )
     }
     return (
-        <section id="intro" className="section intro" style={{height:"100vh", background:"#2D405F"}}>
+        <section id="intro" className="section intro" style={{background:"#2D405F"}}>
             <div className="row">
-                <div className="col-lg-2"/>
+                <div className="col-lg-2 col-md-2 col-sm-3"/>
 
-                <div className="col-lg-8">
+                <div className="col-lg-8 col-md-8 col-sm-6">
                     <div className="row justify-content-around pt-5">
-                        <div className="col-lg-12 text-center">
+                        <div className="col-lg-12 col-md-12 col-sm-12 text-center">
                             <h3 style={main_text}>Team</h3>
                         </div>
                         {team_func("김도형")}
@@ -46,7 +46,7 @@ export default () => {
                     </div>
                 </div>
 
-                <div className="col-lg-2"/>
+                <div className="col-lg-2 col-md-2 col-sm-3"/>
             </div>
         </section>
     );

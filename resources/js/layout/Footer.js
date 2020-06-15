@@ -17,9 +17,9 @@ export default () => {
     return (
         <Footer>
             <div className="row pt-3">
-                <div className="col-lg-12 col-sm-12">
+                <div className="col-lg-12 col-md-12 col-sm-12">
                     <div className="row">
-                        <div className="col-lg-2 col-sm-2">
+                        <div className="col-lg-2 col-md-2 col-sm-2">
                             <p style={{fontSize:"16px"}}>© Copyright Miro.</p>
                         </div>
                         
