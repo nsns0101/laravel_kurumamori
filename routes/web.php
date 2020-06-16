@@ -24,8 +24,6 @@ Route::get('logout',function(){
     return view('home.main');
 });
 
-// Route::post('auth/login', 'LoginController@login');
-// Route::post('auth/signup', 'LoginController@register');
 // 로그인 컨트롤러
 Route::get('/auth/login', 'UsersController@index');
 // 회원가입 컨트롤러
@@ -34,18 +32,12 @@ Route::get('/auth/register', 'UsersController@index');
 //메일관련 컨트롤러
 Route::resource('/confirm', 'ConfirmController');
 
-// Route::get('/info/drive_score', function () {
-//     return view('info.drive_score');
-// });
 
 //내정보
 Route::resource('/info/index', 'InfoController');
 Route::resource('/info/medical_info', 'MedicalController');
 Route::put('/info/medical_infos/{medical_id}', 'MedicalController@update');
 Route::resource('/info/drive_score', 'DriveController');
-// Route::resource('/info/index', 'InfoController');
-// Route::resource('/info/medical_info', 'MedicalController');
-// Route::resource('/info/drive_score', 'DriveController');
 
 //운전점수 날짜별 검색
 Route::get('/info/{date}/drive_score', [ //{date}값에 들어온 것은 index메서드로 넘김

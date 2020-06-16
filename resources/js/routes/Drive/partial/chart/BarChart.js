@@ -119,6 +119,6 @@ export default () => {
     }
 
     return(
-        <Bar data={BarChart.data} options={BarChart.options} width="100%" height={320}/>
+        <Bar data={BarChart.data} options={BarChart.options} height={320}/>
     )
 }

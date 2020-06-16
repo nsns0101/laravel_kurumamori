@@ -39,17 +39,17 @@ export default ( {history} ) => {
             }
 
             // 해치움 ㅋㅋ gps
-            // if(res.data.reports){
-            //     // const arr = [];
-            //     for(var i = 0; i < (res.data.reports.data).length; i++){
-            //         Geocode.fromLatLng(res.data.reports.data[i].latitude, res.data.reports.data[i].longitude).then(
-            //             res => {
-            //                 setArr(arr.push(res.results[0].formatted_address))
-            //                 setReports(arr);
-            //             }
-            //         )
-            //     }
-            // }
+            if(res.data.reports){
+                // const arr = [];
+                for(var i = 0; i < (res.data.reports.data).length; i++){
+                    Geocode.fromLatLng(res.data.reports.data[i].latitude, res.data.reports.data[i].longitude).then(
+                        res => {
+                            setArr(arr.push(res.results[0].formatted_address))
+                            setReports(arr);
+                        }
+                    )
+                }
+            }
 
         });
     }, []);

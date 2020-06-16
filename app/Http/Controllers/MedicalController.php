@@ -65,12 +65,13 @@ class MedicalController extends Controller
         //past_sickness DB create
         for($i = 0; $i < count($request->past_sickness_name); $i++){
         // for($i = 0; $i <= 1; $i++){
+            // 'medicine' => isset($request->data['medicine'][$i]) ? $request->data['medicine'][$i] : null,
             if($request->past_sickness_name[$i] && $request->past_sickness_name[$i]!="없음"){
                 $past_sickness = \App\Past_sickness::create([
                     'user_id' => $request->user_id,
                     'medical_id' => $medical_info->id,
                     'past_sickness_name' => $request->past_sickness_name[$i],
-                    'past_sickness_supplementation' => $request->past_sickness_supplementation[$i]
+                    'past_sickness_supplementation' => isset($request->past_sickness_supplementation[$i]) ? $request->past_sickness_supplementation[$i] : null,
                 ]);
             }
         }
@@ -83,9 +84,9 @@ class MedicalController extends Controller
                     'user_id' => $request->user_id,
                     'medical_id' => $medical_info->id,
                     'sickness_name' => $request->sickness_name[$i],
-                    'medicine' => $request->medicine[$i],
-                    'symptom' => $request->symptom[$i],
-                    'hospital' => $request->hospital[$i],
+                    'medicine' => isset($request->medicine[$i]) ? $request->medicine[$i] : null ,
+                    'symptom' => isset($request->symptom[$i]) ? $request->symptom[$i] : null,
+                    'hospital' => isset($request->hospital[$i]) ? $request->hospital[$i] : null,
                 ]);
             }
         }
@@ -150,7 +151,7 @@ class MedicalController extends Controller
                         'user_id' => $request->data['user_id'],
                         'medical_id' => $medical_id,
                         'past_sickness_name' => $request->data['past_sickness_name'][$i],
-                        'past_sickness_supplementation' => $request->data['past_sickness_supplementation'][$i]
+                        'past_sickness_supplementation' => isset($request->data['past_sickness_supplementation'][$i]) ? $request->data['past_sickness_supplementation'][$i] : null 
                     ]);
                 }
                 //업데이트
@@ -159,7 +160,7 @@ class MedicalController extends Controller
                     $past_sickness[$i]->update([
                         'user_id' => $request->data['user_id'],
                         'past_sickness_name' => $request->data['past_sickness_name'][$i],
-                        'past_sickness_supplementation' => $request->data['past_sickness_supplementation'][$i]
+                        'past_sickness_supplementation' => isset($request->data['past_sickness_supplementation'][$i]) ? $request->data['past_sickness_supplementation'][$i] : null 
                     ]);
     
                 }
@@ -190,10 +191,9 @@ class MedicalController extends Controller
                     $sickness[$i]->update([
                         'user_id' => $request->data['user_id'],
                         'sickness_name' => $request->data['sickness_name'][$i],
-                        'medicine' => $request->data['medicine'][$i],
-                        'symptom' => $request->data['symptom'][$i],
-                        'hospital' => $request->data['hospital'][$i],
-
+                        'medicine' => isset($request->data['medicine'][$i]) ? $request->data['medicine'][$i] : null,
+                        'symptom' => isset($request->data['symptom'][$i]) ? $request->data['symptom'][$i] : null,
+                        'hospital' => isset($request->data['hospital'][$i]) ? $request->data['hospital'][$i] : null,
                     ]);
                 }
                
@@ -251,22 +251,4 @@ class MedicalController extends Controller
         ]);
 
     }
-    // public function show()
-    // {
-    //     $medical_info = \App\Medical_info::whereUser_id($user_id)->first();
-    //     $insurance = \App\Insurance::whereUser_id($user_id)->first();
-    //     $update_form = false;
-    //     return view('info.medical_info', compact('medical_info', 'insurance', 'update_form'));
-    // }
-    // public function destroy()
-    // {
-    // }
-
-    // protected function respondError($message)
-    // {
-    // }
-
-    // protected function respondCreated($message)
-    // {
-    // }
 }

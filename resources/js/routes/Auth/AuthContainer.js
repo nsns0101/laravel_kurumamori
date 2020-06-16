@@ -5,7 +5,7 @@ import Axios from "axios";
 import {AppContext} from "../../components/App";
 
 export default ({ location, history }) => {
-  const {isLoggedIn, setIsLoggedIn} = useContext(AppContext);
+  const {setUser, setIsLoggedIn} = useContext(AppContext);
   // console.log(isLoggedIn);  
 
 //현재 로그인인지 회원가입인지 등의 상태
@@ -138,9 +138,10 @@ export default ({ location, history }) => {
 
   //로그아웃일 때
   if(action === "logout"){
-    // console.log("good");
+    console.log("good");
     localStorage.removeItem("userToken");
     history.push("/");
+    setUser(false);
     setIsLoggedIn(false);
   }
 

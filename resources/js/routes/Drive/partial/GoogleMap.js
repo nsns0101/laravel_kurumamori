@@ -7,7 +7,7 @@ export default () => {
         day_5_danger_count,
         drive_info,
         reports,
-        day_5_drive_detection
+        day_5_drive_detection,
     } = useContext(DriveContext);
     // console.log(day_5_drive_detection);
     const drive_text = {
@@ -48,14 +48,15 @@ export default () => {
                                 {reports.length ? (
                                     reports.map( (value, index) => {
                                         return (
-                                            <p key={index} className="gps" style={drive_text}>
+                                            <p key={index} className="gps" style={{fontSize:"16px"}}>
                                             {/* 사고 장소{index+1} : {gps[index]} */}
                                             사고 장소{index+1} : {reports[index]}
                                             </p>                                     
                                         )
                                     })
                                     ) : (
-                                        <p style={drive_text}>사고 여부 : 없음</p>
+                                        null
+                                        // <p style={drive_text}>사고 여부 : 없음</p>
                                 )}
                             </div>
 
