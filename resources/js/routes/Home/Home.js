@@ -3,6 +3,7 @@ import Function1 from "./partial/Functions1";
 import Function2 from "./partial/Functions2";
 import Team from "./partial/Team";
 import "./Home.css";
+
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 

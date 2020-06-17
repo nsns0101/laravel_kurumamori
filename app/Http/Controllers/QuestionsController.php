@@ -55,10 +55,10 @@ class QuestionsController extends Controller
         for($i = 0; $i < count($questions); $i++){
             array_push($category, \App\Category::whereId($questions[$i]->category_id)->first()->category);
         }
-        // for($i = 0; $i < count($questions); $i++){
-        //     array_push($comment, \App\Comment::whereBoard_id($questions[$i]->id)->get());
-        // }
-        // \Log::info($comment);
+        for($i = 0; $i < count($questions); $i++){
+            array_push($comment, \App\Comment::whereBoard_id($questions[$i]->id)->first());
+        }
+        \Log::info($comment);
         
         // return view('questions.index',compact('questions'));
 
