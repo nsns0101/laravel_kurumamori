@@ -76,19 +76,19 @@ export default () => {
                     setDay_5_sec(arr_day_5_sec);
                     setDay_5_danger_count(arr_day_5_danger_count);
 
-                    if(res.data.reports){
-                        for(var i = 0; i < res.data.reports.length; i++){
-                            Geocode.setApiKey(process.env.MIX_GCP_API_KEY);
-                            Geocode.setLanguage("ko");
-                            Geocode.fromLatLng(res.data.reports[i].latitude, res.data.reports[i].longitude).then(
-                                res => {
-                                    // sickness_name => [...sickness_name, null]
-                                    // setArr_reports([...arr_reports, res.results[0].formatted_address]);
-                                    setReports([...arr_reports, res.results[0].formatted_address]);
-                                }
-                            )
-                        }
-                    }
+                    // if(res.data.reports){
+                    //     for(var i = 0; i < res.data.reports.length; i++){
+                    //         Geocode.setApiKey(process.env.MIX_GCP_API_KEY);
+                    //         Geocode.setLanguage("ko");
+                    //         Geocode.fromLatLng(res.data.reports[i].latitude, res.data.reports[i].longitude).then(
+                    //             res => {
+                    //                 // sickness_name => [...sickness_name, null]
+                    //                 // setArr_reports([...arr_reports, res.results[0].formatted_address]);
+                    //                 setReports([...arr_reports, res.results[0].formatted_address]);
+                    //             }
+                    //         )
+                    //     }
+                    // }
                 }
             });
         }

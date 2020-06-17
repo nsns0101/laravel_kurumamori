@@ -14,7 +14,7 @@ class QuestionsController extends Controller
     public function index(Request $request, $category = null)
     {
         \Log::info('questions index');
-        $user = \App\User::whereId(1)->first();
+        // $user = \App\User::whereId(1)->first();
         $query = $category
             ? \App\Category::whereId($category)->firstOrFail()->boards()
             : new \App\Board;
@@ -48,47 +48,61 @@ class QuestionsController extends Controller
             );
         }
         $questions = $query->paginate(10);
+        $category = array();
+        $comment = array();
+        // \Log::info(count($questions));
 
-        return view('questions.index',compact('questions'));
+        for($i = 0; $i < count($questions); $i++){
+            array_push($category, \App\Category::whereId($questions[$i]->category_id)->first()->category);
+        }
+        // for($i = 0; $i < count($questions); $i++){
+        //     array_push($comment, \App\Comment::whereBoard_id($questions[$i]->id)->get());
+        // }
+        // \Log::info($comment);
+        
+        // return view('questions.index',compact('questions'));
+
+        \Log::info(\Auth::user());
+        // return view('home.main');
+        // $boards = \App\Board::all()->orderBy('id', 'desc')->paginate(5);
+        return response()->json([
+            'questions' => $questions,
+            'category' => $category,
+        ]);
     }
 
     //
     public function create()
     {
-        \Log::info('questions create');
+        // \Log::info('questions create');
 
-        $Categories = \App\Category::get();
-        $user = \App\User::whereId(1)->first();
-        \Log::info($user);
+        // $Categories = \App\Category::get();
+        // $user = \App\User::whereId(1)->first();
+        // \Log::info($user);
 
-        $question = new \App\Board;
+        // $question = new \App\Board;
 
-        return view('questions.create', compact('Categories','question'));
+        // return view('questions.create', compact('Categories','question'));
     }
 
     //
-    public function store(\App\Http\Requests\QuestionsRequest $request)
+    public function store(Request $request)
     {
         \Log::info('questions store');
         \Log::info($request->all());
-        
-        $question = $request->user()->boards()->create([
-            'category_id'=>$request->category_id,
+    
+        $question = \App\Board::create([
+            'user_id'=>$request->user_id,
+            'category_id'=>App\Category::whereCategory($request->category)->id,
             'title'=>$request->title,
             'content'=>$request->content,
         ]);
         $questions = \App\Board::where('category_id','!=','7')->latest()->orderBy('id','desc')->paginate(10);
 
-        if(! $question){
+        return response()->json([
+            'questions' => $questions,
+        ]);
 
-            flash()->error(
-                trans('question 저장 실패')
-            );
-
-            return back()->withInput();
-        }
-        
-        return redirect()->route('questions.index');
     }
 
     public function show(\App\Board $question){
@@ -110,11 +124,10 @@ class QuestionsController extends Controller
         return view('questions.edit',compact('question'));
     }
 
-    public function update(\App\Http\Requests\QuestionsRequest $request, \App\Board $question){
+    public function update(Request $request){
 
         \Log::info('questions update');
-        
-        $question->update($request->all());
+        \App\Board::whereId($request->id)->update($request->all());
 
         if(! $question){
 
@@ -124,16 +137,19 @@ class QuestionsController extends Controller
 
             return back()->withInput();
         }
+        $questions = \App\Board::where('category_id','!=','7')->latest()->orderBy('id','desc')->paginate(10);
 
-        return redirect()->route('questions.show',compact('question'));
+        return response()->json([
+            'questions' => $questions,
+        ]);
     }
 
-    public function destroy(\App\Board $question)
+    public function destroy(Request $request)
     {
         \Log::info('questions destroy');
-        $question->delete();
 
-        return redirect()->route('questions.index');
+        \App\Board::whereId($request->id)->delete();
+        return response()->json([], 200);
     }
 
 }

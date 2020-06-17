@@ -2,17 +2,8 @@ import React, {useState, useEffect, createContext, useContext} from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Link, BrowserRouter} from "react-router-dom";
 import Axios from 'axios';
+
 //css
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import 'bootstrap/dist/js/bootstrap.min.js';
-// import 'font-awesome/css/font-awesome.css';
-// import 'jquery/dist/jquery.min.js';
-// import 'popper.js';
-// import "../../../public/css/app.css";
-// import "../../../public/css/font-icon.css";
-// import "../../../public/css/font.css";
-// import '../../../public/js/bootstrap-datepicker.js';
-// import "../../../public/css/bootstrap-datepicker.css"
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
 
@@ -31,6 +22,14 @@ import Buy from "../routes/Buy/BuyContainer";
 
 import Control from "../routes/Product/Control";
 import Users from "../routes/Product/Users";
+
+import BoardCreate from "../routes/Board/Create";
+import BoardShow from "../routes/Board/Show";
+
+import Board from "../routes/Board/BoardContanier";
+
+import Review from "../routes/Board/Review";
+
 
 //전역변수
 export const AppContext = createContext();
@@ -100,9 +99,10 @@ function App({history}) {
                 <Route path="/products/control" exact component={Control}/>
                 <Route path="/products/users" exact component={Users}/>
 
-                {/* <Route path="/board/create" exact component={BoardCreate}/>
+                <Route path="/board/create" exact component={BoardCreate}/>
                 <Route path="/board/show" exact component={BoardShow}/>
-                <Route path="/board/question" exact component={Board}/> */}
+
+                <Route path="/board/questions" exact component={Board}/>
 
                 <Footer/>
             </BrowserRouter>
@@ -131,9 +131,13 @@ function App({history}) {
                 <Route path="/products/control" exact component={Control}/>
                 <Route path="/products/users" exact component={Users}/>
 
-                {/* <Route path="/board/create" exact component={BoardCreate}/>
+                <Route path="/board/create" exact component={BoardCreate}/>
                 <Route path="/board/show" exact component={BoardShow}/>
-                <Route path="/board/question" exact component={Board}/> */}
+
+                <Route path="/board/questions" exact component={Board}/>
+
+                {/* <Route path="/board/review" exact component={Review}/> */}
+
 
                 <Footer/>
             </BrowserRouter>
