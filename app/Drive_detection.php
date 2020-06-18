@@ -8,6 +8,7 @@ class Drive_detection extends Model
 {
     protected $fillable = [
         'drive_id',
+        'user_id',
         'latitude', 
         'longitude', 
         'bool_report', 

@@ -107,7 +107,7 @@ export default () => {
                                     <div className="row text-truncate">
                                         <p className="col-lg-12 col-md-12 col-sm-12">보호자 휴대폰 : {guardian_phone ? guardian_phone : "없음"}</p>
                                         <p className="col-lg-12 col-md-12 col-sm-12">혈액형 : {blood_type}</p>
-                                        <p className="col-lg-12 col-md-12 col-sm-12">장애 여부 : {disability_status}</p>
+                                        <p className="col-lg-12 col-md-12 col-sm-12">장애 여부 : {disability_status ? disability_status : "아니오"}</p>
                                         <p className="col-lg-12 col-md-12 col-sm-12">신고시 요청사항 : {report_request ? report_request : "없음"}</p>     
                                     </div>
                                 </div>

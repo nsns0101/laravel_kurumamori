@@ -95,7 +95,7 @@ class MedicalController extends Controller
             $insurance_list_id = \App\Insurance_list::whereInsurance_name($request->insurance_name)->first()->id;
             $insurance = \App\Insurance::create([
                 'user_id' => $request->user_id,
-                'medical_id' => $medical_id,
+                'medical_id' => $medical_info->id,
                 'insurance_list_id' => $insurance_list_id,
                 'subscription_date' => $request->subscription_date,
                 'expiration_date' => $request->expiration_date,

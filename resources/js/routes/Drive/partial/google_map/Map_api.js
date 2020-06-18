@@ -20,8 +20,8 @@ export const Map_api = () => {
                 lng : Number(day_5_drive_detection[0][i].longitude)
             });
             if(day_5_drive_detection[0][i].bool_report) location_color.push("red");
-            else if(day_5_drive_detection[0][i].bool_sleep) location_color.push("orange");
-            else if(day_5_drive_detection[0][i].bool_sudden_acceleration) location_color.push("blue");
+            else if(day_5_drive_detection[0][i].bool_sleep) location_color.push("blue");
+            else if(day_5_drive_detection[0][i].bool_sudden_acceleration) location_color.push("orange");
             else if(day_5_drive_detection[0][i].bool_sudden_stop) location_color.push("green");
         }
     }

@@ -67,7 +67,7 @@ export default ( {
                                                 사고 이력
                                             </div>
                                             <div className="card-body py-3">
-                                                {data.reports.data ? data.reports.data.map( (value, index) => {
+                                                {data.reports.data.length ? data.reports.data.map( (value, index) => {
                                                     return (
                                                         <div className="row" key={index}>
                                                             <div className="col-sm-6 col-lg-6 mb-3">
@@ -137,7 +137,7 @@ export default ( {
                                                 제품 구매 이력
                                             </div>
                                             <div className="card-body py-3">
-                                                    {data.user_product_buy_key ? data.user_product_buy_key.map( (value, index) => {
+                                                    {data.user_product_buy_key.length ? data.user_product_buy_key.map( (value, index) => {
                                                         return (
                                                             <div className="row" key={index}>
                                                                 <div className="col-lg-6">

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Drive extends Model
 {
-    protected $fillable = ['drive_score', 'drive_date', 'start_time', 'end_time'];
+    protected $fillable = ['user_id', 'drive_score', 'sleep_count', 'sudden_stop_count', 'sudden_acceleration_count'];
 
     //여러 운전정보는 한 유저를 가질 수 있음
     public function user()

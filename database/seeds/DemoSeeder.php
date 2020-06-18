@@ -33,57 +33,61 @@ class DemoSeeder extends Seeder
                 ]);
 
 
-                //시연 운전
-                $date = date("Y-m-d H:m:s", time()); //현재날짜
-                $day_7 = array();   //최근 7일을 담을 배열
-                for($i = 0; $i <7; $i++){
-                    array_push($day_7,date("Y-m-d H:m:s", strtotime($date ."-{$i} day")));
-                }
-                // $random_day_7 = Arr::random($day_7);
+                // //시연 운전
+                // $date = date("Y-m-d H:m:s", time()); //현재날짜
+                // $day_7 = array();   //최근 7일을 담을 배열
+                // for($i = 0; $i <7; $i++){
+                //     array_push($day_7,date("Y-m-d H:m:s", strtotime($date ."-{$i} day")));
+                // }
+                // // $random_day_7 = Arr::random($day_7);
                 
-                for($i = 0; $i < count($day_7); $i++){
-                    $rand_time = rand(1,9);
-                    $created_at = date("Y-m-d H:m:s", strtotime($day_7[$i]));
-                    if($i == 0){
-                        $updated_at = date("Y-m-d H:m:s", strtotime($created_at ."+3 hours"));
-                    }
-                    $updated_at = date("Y-m-d H:m:s", strtotime($created_at ."+{$rand_time} hours"));
-                    \App\Drive::create([
-                        'user_id' => $user_id,
-                        'drive_score' => rand(0, 100),
-                        'sleep_count' => 1,
-                        'sudden_stop_count' => 0,
-                        'sudden_acceleration_count' => 0,
-                        'created_at' => $created_at,
-                        'updated_at' => $updated_at,
-                    ]);
-                }
-                //시연 운전감지(0, 0, 1, 1)
-                $drive = \App\Drive::whereUser_id($user_id)->get();
+                // for($i = 0; $i < count($day_7); $i++){
+                //     $rand_time = rand(1,9);
+                //     $created_at = date("Y-m-d H:m:s", strtotime($day_7[$i]));
+                //     if($i == 0){
+                //         $updated_at = date("Y-m-d H:m:s", strtotime($created_at ."+3 hours"));
+                //     }
+                //     $updated_at = date("Y-m-d H:m:s", strtotime($created_at ."+{$rand_time} hours"));
+                //     \App\Drive::create([
+                //         'user_id' => $user_id,
+                //         'drive_score' => rand(0, 100),
+                //         'sleep_count' => 1,
+                //         'sudden_stop_count' => 0,
+                //         'sudden_acceleration_count' => 0,
+                //         'created_at' => $created_at,
+                //         'updated_at' => $updated_at,
+                //     ]);
+                // }
+                // //시연 운전감지(0, 0, 1, 1)
+                // $drive = \App\Drive::whereUser_id($user_id)->get();
                 
-                //최근날짜
-                \App\Drive_detection::create([
-                    'user_id' => $user_id,
-                    'drive_id' => $drive[0]->id,
-                    'latitude' => rand(35, 37) . '.' . rand(1000, 9999999),     //세로
-                    'longitude' => rand(127, 128) . '.' . rand(200000, 900000),  //가로
-                    'bool_report' => 1,
-                    'bool_sudden_acceleration' => 0,
-                    'bool_sudden_stop' => 0,
-                    'bool_sleep' => 0,
-                    'created_at' => $drive[0]->created_at,
-                ]);
-                \App\Drive_detection::create([
-                    'user_id' => $user_id,
-                    'drive_id' => $drive[0]->id,
-                    'latitude' => rand(35, 37) . '.' . rand(1000, 9999999),     //세로
-                    'longitude' => rand(127, 128) . '.' . rand(200000, 900000),  //가로
-                    'bool_report' => 0,
-                    'bool_sudden_acceleration' => 1,
-                    'bool_sudden_stop' => 0,
-                    'bool_sleep' => 0,
-                    'created_at' => $drive[0]->created_at,
-                ]);
+                // //최근날짜
+                // \App\Drive_detection::create([
+                //     'user_id' => $user_id,
+                //     'drive_id' => $drive[0]->id,
+                //     'latitude' => rand(35, 37) . '.' . rand(1000, 9999999),     //세로
+                //     'longitude' => rand(127, 128) . '.' . rand(200000, 900000),  //가로
+                //     'bool_report' => 1,
+                //     'bool_sudden_acceleration' => 0,
+                //     'bool_sudden_stop' => 0,
+                //     'bool_sleep' => 0,
+                //     'created_at' => $drive[0]->created_at,
+                // ]);
+                // \App\Drive_detection::create([
+                //     'user_id' => $user_id,
+                //     'drive_id' => $drive[0]->id,
+                //     'latitude' => rand(35, 37) . '.' . rand(1000, 9999999),     //세로
+                //     'longitude' => rand(127, 128) . '.' . rand(200000, 900000),  //가로
+                //     'bool_report' => 0,
+                //     'bool_sudden_acceleration' => 1,
+                //     'bool_sudden_stop' => 0,
+                //     'bool_sleep' => 0,
+                //     'created_at' => $drive[0]->created_at,
+                // ]);
+
+
+
+                
                 ///최근날짜 빼고는 랜덤
                 // for($i = 1; $i < count($day_7); $i++){
                 //     \App\Drive_detection::create([
