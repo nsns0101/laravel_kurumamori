@@ -30,8 +30,8 @@
         <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
         {{-- 애니메이션 --}}
-        <script src="/js/aos.js"></script>
-        <link rel="stylesheet" href="/css/aos.css">
+        {{-- <script src="/js/aos.js"></script> --}}
+        {{-- <link rel="stylesheet" href="/css/aos.css"> --}}
         {{-- react scroll animation --}}
         <link rel="stylesheet" href="/css/animate.min.css">
 
