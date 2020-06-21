@@ -83,9 +83,8 @@ export default () => {
                             Geocode.setLanguage("ko");
                             Geocode.fromLatLng(res.data.reports[i].latitude, res.data.reports[i].longitude).then(
                                 res => {
-                                    // sickness_name => [...sickness_name, null]
-                                    // setArr_reports([...arr_reports, res.results[0].formatted_address]);
-                                    setReports([...reports, res.results[0].formatted_address]);
+                                    setArr_reports(arr_reports.push(res.results[0].formatted_address));
+                                    setReports(arr_reports);
                                 }
                             )
                         }
