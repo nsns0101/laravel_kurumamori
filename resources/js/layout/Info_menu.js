@@ -18,7 +18,7 @@ export default () => {
         fontWeight: "800",
         fontSize: "20px"
     }
-    console.log(location.pathname.split('/')[2])
+    // console.log(location.pathname.split('/')[2])
     return (
         <div className="card-header" style={{background:"white"}}>
             <ul className="nav nav-tabs card-header-tabs">

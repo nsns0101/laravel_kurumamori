@@ -1,5 +1,7 @@
 import React from "react";
-// import CountUp from "react-counterup";
+import AnimationCount from 'react-count-animation';
+import 'react-count-animation/dist/count.min.css';
+import ScrollAnimation from "react-animate-on-scroll";
 
 export default () => {
     const main_text = {
@@ -11,13 +13,47 @@ export default () => {
         position: "relative",
         color:"black",
     }
-    const a_func = (img) => {
+
+    const count_set1 = {
+        start: 0,           //시작 숫자
+        count: 220000,      //끝 숫자
+        duration: 3000,    //지속시간
+        // decimals: 4,    //소수점
+        useGroup: true,
+        animation: 'up',
+    };
+    const count_set2 = {
+        start: 0,
+        count: 3782,
+        duration: 1000,
+        // decimals: 2,    
+        useGroup: true,
+        animation: 'roll',
+    };
+    const count_set3 = {
+        start: 0,
+        count: 40500000000000,
+        duration: 3000,
+        // decimals: 2,
+        useGroup: true,
+        animation: 'slide',
+    };
+
+    const a_func = (img, title_1, title_2, count_set) => {
         return (
             <div className="col-lg-4 col-md-3 col-sm-12 col-12 text-center">
-                <img src={img} alt="img"/>
+                <ScrollAnimation animateIn="fadeIn" delay={500} animateOnce={true}>                
+                    <img src={img} alt="img"/>
+                    <p className="py-0 my-0" style={{fontSize:"1.25em", color:"black", fontWeight:"600"}}>{title_1}</p>
+                    <p className="py-0 my-0" style={{fontSize:"1.25em", color:"black", fontWeight:"600"}}>{title_2}</p>
+                    <div style={{fontSize:"1.5em", color:"red"}}>
+                        <AnimationCount {...count_set}/>
+                    </div>
+                </ScrollAnimation>
             </div>
         )
     }
+
     return (
         <section id="intro function2" className="section intro mb-5" style={{background:"#F9F8FF"}}>
             <div className="row">
@@ -26,11 +62,13 @@ export default () => {
                 <div className="col-lg-8 col-md-8 col-sm-10">
                     <div className="row justify-content-around pt-5">
                         <div className="col-lg-12 col-md-12 col-sm-12 text-center">
-                            <h3 style={main_text}>damage caused by traffic accidents</h3>
+                            <ScrollAnimation animateIn='fadeIn' animateOnce={true}>
+                                <h3 style={main_text}>damage caused by traffic accidents</h3>
+                            </ScrollAnimation>
                         </div>
-                        {a_func("images/index_img_chapter01.png")}
-                        {a_func("images/index_img_chapter02.png")}
-                        {a_func("images/index_img_chapter03.png")}
+                        {a_func("images/index_img_chapter01.png", "연간 교통사고", "발생 건 수", count_set1)}
+                        {a_func("images/index_img_chapter02.png", "연간 교통사고", "사망자 수", count_set2)}
+                        {a_func("images/index_img_chapter03.png", "교통사고로 인한", "연간 경제적 손실", count_set3)}
                     </div>
                 </div>
 

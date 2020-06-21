@@ -57,9 +57,9 @@ export default () => {
                                 <h3 style={main_text}>Services</h3>
                             </ScrollAnimation>
                         </div>
-                        {service_func("images/예방.png", "사고 예방", "운전 중 졸음운전과 전방 주시 태만 등으로 인해 발생하는 교통사고를 손쉽게 예방", "Right")}
-                        {service_func("images/신고.png", "자동 신고", "돌발상황 발생 시 사용자의 의료·위치정보를 제공하는 자동 신고로 골든타임 확보", "Up")}
-                        {service_func("images/전방주시.png", "전방주시 관리", "운전점수를 통계자료로 확인하여 자신의 운전습관을 확인하고 개선가능", 'Left')}
+                            {service_func("images/예방.png", "사고 예방", "운전 중 졸음운전과 전방 주시 태만 등으로 인해 발생하는 교통사고를 손쉽게 예방", "Right")}
+                            {service_func("images/신고.png", "자동 신고", "돌발상황 발생 시 사용자의 의료·위치정보를 제공하는 자동 신고로 골든타임 확보", "Up")}
+                            {service_func("images/전방주시.png", "전방주시 관리", "운전점수를 통계자료로 확인하여 자신의 운전습관을 확인하고 개선가능", 'Left')}
                     </div>
                 </div>
 

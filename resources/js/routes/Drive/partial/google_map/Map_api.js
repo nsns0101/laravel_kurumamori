@@ -8,7 +8,8 @@ export const Map_api = () => {
     const {
         day_5_drive_detection,
     } = useContext(DriveContext);
-    console.log(day_5_drive_detection);
+    // console.log(day_5_drive_detection);
+
     const location = [];
     const location_color = [];
     //1차배열은 날짜 2차배열은 값
@@ -18,7 +19,7 @@ export const Map_api = () => {
             location.push({
                 lat : Number(day_5_drive_detection[0][i].latitude), 
                 lng : Number(day_5_drive_detection[0][i].longitude)
-            });
+            }); 
             if(day_5_drive_detection[0][i].bool_report) location_color.push("red");
             else if(day_5_drive_detection[0][i].bool_sleep) location_color.push("blue");
             else if(day_5_drive_detection[0][i].bool_sudden_acceleration) location_color.push("orange");

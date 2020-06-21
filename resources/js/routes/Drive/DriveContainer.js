@@ -38,7 +38,7 @@ export default () => {
                     date
                 }
             }).then( res => {
-                console.log(res);
+                // console.log(res);
                 if(user.id){
                     const arr_drive_info = [];  //선택한 날짜의 운전정보
                     const arr_score = []; //선택한 날짜의 운전 점수
@@ -78,13 +78,14 @@ export default () => {
 
                     if(res.data.reports){
                         for(var i = 0; i < res.data.reports.length; i++){
+                            console.log(i);
                             Geocode.setApiKey(process.env.MIX_GCP_API_KEY);
                             Geocode.setLanguage("ko");
                             Geocode.fromLatLng(res.data.reports[i].latitude, res.data.reports[i].longitude).then(
                                 res => {
                                     // sickness_name => [...sickness_name, null]
                                     // setArr_reports([...arr_reports, res.results[0].formatted_address]);
-                                    setReports([...arr_reports, res.results[0].formatted_address]);
+                                    setReports([...reports, res.results[0].formatted_address]);
                                 }
                             )
                         }

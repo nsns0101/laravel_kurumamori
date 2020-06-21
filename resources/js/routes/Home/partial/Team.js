@@ -23,10 +23,10 @@ export default () => {
         color:"white",
     }
 
-    const team_func = (name, position, delay) => {
+    const team_func = (name, position) => {
         return (
             <div className="col-lg-4 col-md-4 col-sm-12 text-center aos-init mb-3 team">
-                <ScrollAnimation animateIn='fadeInUp' delay={500} animateOnce={true}>                
+                <ScrollAnimation animateIn='fadeInUp' delay={300} animateOnce={true}>                
                     <div className="member">
                         <img src={`/images/team/${name}.jpg`} alt="img" style={{width:"100%", height:"250px"}}/>
                         <div className="member-info">
@@ -56,7 +56,7 @@ export default () => {
                         <div className="col-lg-8 col-md-8 col-sm-6">
                             <div className="row justify-content-around pt-5">
                                 <div className="col-lg-12 col-md-12 col-sm-12 text-center">
-                                <ScrollAnimation animateIn='fadeIn' animateOnce={true}>
+                                    <ScrollAnimation animateIn='fadeIn' animateOnce={true}>
                                         <h3 style={main_text}>Team</h3>
 
                                         <p style={{color:"white", marginBottom:"20px"}}>
@@ -66,12 +66,12 @@ export default () => {
                                     </ScrollAnimation>
                                 </div>
                                     {/* 이름, 담당, 딜레이 */}
-                                    {team_func("장준혁", "App", 1)}
-                                    {team_func("예준현", "HardWare", 2)}
-                                    {team_func("정인식", "HardWare", 3)}
-                                    {team_func("김도형", "Web", 4)}
-                                    {team_func("이재영", "Web", 5)}
-                                    {team_func("팽진솔", "Server", 6)}
+                                    {team_func("장준혁", "App")}
+                                    {team_func("예준현", "HardWare")}
+                                    {team_func("정인식", "HardWare")}
+                                    {team_func("김도형", "Web")}
+                                    {team_func("이재영", "Web")}
+                                    {team_func("팽진솔", "Server")}
                             </div>
                         </div>
 
