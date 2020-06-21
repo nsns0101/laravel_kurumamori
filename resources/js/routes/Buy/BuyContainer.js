@@ -17,7 +17,6 @@ export default ({ history }) => {
 
     //post
     const onSubmit = async () => {
-        console.log("kkk");
         const url = "/buy";
         const body = {
             user_id : user.id,
@@ -52,6 +51,7 @@ export default ({ history }) => {
 
     return (
       <Buy 
+        user={user}
         onSubmit={onSubmit}
         setName={setName}
         setState={setState}
