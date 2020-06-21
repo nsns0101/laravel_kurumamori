@@ -22,9 +22,9 @@ export default () => {
                                 <div className="row justify-content-around px-0 mx-0 py-5 text-left">
                                     <div className="col-lg-8">
                                         <h4 style={{fontWeight:500}}>
-                                            아무튼 조작 방법에 대한 설명을 하는 것임.
                                             이런 간단한 버튼 조작을 통해서 쉽게 kurumamori 119 서비스를 사용할 수 있습니다.
-
+                                            더 자세히 알고 싶다면 step별로 더 쉽게! 배우는 영상 조작법을 이용해 보는 것은 어떨까요?
+                                            여러분 모두 kurumamori 119의 전문가가 될 수 있습니다.
                                         </h4>
                                     </div>
                                 </div>

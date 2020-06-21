@@ -66,7 +66,7 @@ export default () => {
                                                 당신이 운전을 하면서 발생하는 혹시 모르는 실수! 이제는 Kurumamori 119로 예방하세요.
                                             </h4>
                                             <div>
-                                                <ReactPlayer className="w-100" url='https://youtu.be/B2egRFQ-HkY' />
+                                                <ReactPlayer className="w-100" url='https://youtu.be/H4hTGm87JTw' width="100%" height="600px"/>
                                             </div>
                                             
                                             {/* 그 감지중인 사진 잘 나온거 예시로 이미지 혹은 영상으로 삽입 */}
@@ -82,7 +82,7 @@ export default () => {
                                                 Kurumamori 119를 통해서 더 안전하고 더 집중된 운전을 경험하세요.
                                             </h4>
                                             <div>
-                                                <ReactPlayer className="w-100" url='https://www.youtube.com/watch?v=czpRONG3d70' />
+                                                <ReactPlayer className="w-100" url='https://youtu.be/u7QIokPUbS8' width="100%" height="600px"/>
                                             </div>
                                             {/* 그 감지중인 사진 잘 나온거 예시로 이미지 혹은 영상으로 삽입 */}
                                         </div>
@@ -97,7 +97,7 @@ export default () => {
                                                 자동 신고시 위치정보, 의료정보 전송으로 더 빠른 조치 더 확실한 조치를 받을 수 있도록 서포트합니다.
                                             </h4>
                                             <div>
-                                                <ReactPlayer className="w-100" url='https://www.youtube.com/watch?v=XAE5e4U8kRA&list=RDbR_f-XrcbKc&index=3' />
+                                                <ReactPlayer className="w-100" url='https://youtu.be/CGDO4qMb3dk' width="100%" height="600px"/>
                                             </div>
                                         </div>
                                         {/* 영상삽입 사고 예시 영상 시 문자 전송 폼 영상물*/}

@@ -56,6 +56,8 @@ Route::get('/thanks', function () {
 
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ Q&A ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 Route::resource('/boards/questions','QuestionsController');
+Route::get('/get/boards/questions','QuestionsController@data');
+
 Route::resource('/boards/questions/comments','CommentsController');
 
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 유저리뷰 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ

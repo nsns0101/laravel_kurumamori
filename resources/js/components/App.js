@@ -23,8 +23,8 @@ import Buy from "../routes/Buy/BuyContainer";
 import Control from "../routes/Product/Control";
 import Users from "../routes/Product/Users";
 
-import BoardCreate from "../routes/Board/Create";
-import BoardShow from "../routes/Board/Show";
+import BoardCreate from "../routes/Board/partial/Create";
+import BoardShow from "../routes/Board/partial/Show";
 
 import Board from "../routes/Board/BoardContanier";
 
@@ -90,10 +90,10 @@ function App() {
                 <Route path="/products/control" exact component={Control}/>
                 <Route path="/products/users" exact component={Users}/>
 
-                <Route path="/board/create" exact component={BoardCreate}/>
-                <Route path="/board/show" exact component={BoardShow}/>
+                <Route path="/boards/questions/create" exact component={BoardCreate}/>
+                <Route path="/boards/show" exact component={BoardShow}/>
 
-                <Route path="/board/questions" exact component={Board}/>
+                <Route path="/boards/questions" exact component={Board}/>
 
                 <Footer/>
             </BrowserRouter>
@@ -122,10 +122,10 @@ function App() {
                 <Route path="/products/control" exact component={Control}/>
                 <Route path="/products/users" exact component={Users}/>
 
-                <Route path="/board/create" exact component={BoardCreate}/>
-                <Route path="/board/show" exact component={BoardShow}/>
+                <Route path="/boards/questions/create" exact component={BoardCreate}/>
+                <Route path="/boards/show" exact component={BoardShow}/>
 
-                <Route path="/board/questions" exact component={Board}/>
+                <Route path="/boards/questions" exact component={Board}/>
 
                 {/* <Route path="/board/review" exact component={Review}/> */}
 

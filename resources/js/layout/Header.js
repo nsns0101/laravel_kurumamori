@@ -31,7 +31,7 @@ export default  () => {
                                     <Link to="/bigdata" className="nav-link" style={nav_text}>빅데이터 자료실</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to="/board/questions" className="nav-link" style={nav_text}>고객 문의</Link>
+                                    <Link to="/boards/questions" className="nav-link" style={nav_text}>고객 문의</Link>
                                 </li>
                                 <li className="nav-item">
                                     <a className="nav-link" href="/boards/reviews" style={nav_text}>고객 리뷰</a>
