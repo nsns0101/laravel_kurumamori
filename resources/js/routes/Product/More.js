@@ -66,7 +66,7 @@ export default () => {
                                                 당신이 운전을 하면서 발생하는 혹시 모르는 실수! 이제는 Kurumamori 119로 예방하세요.
                                             </h4>
                                             <div>
-                                                <ReactPlayer className="w-100" url='https://www.youtube.com/watch?v=XcvSLSmK7vE' />
+                                                <ReactPlayer className="w-100" url='https://youtu.be/B2egRFQ-HkY' />
                                             </div>
                                             
                                             {/* 그 감지중인 사진 잘 나온거 예시로 이미지 혹은 영상으로 삽입 */}

@@ -17,7 +17,7 @@ export default () => {
                         </div>
                         <div className="row justify-content-around px-0 mx-0 pb-5">
                             <div className="py-5">
-                                <ReactPlayer url='https://www.youtube.com/watch?v=eGZiQJ4UUGU' />
+                                <ReactPlayer url='https://youtu.be/Dwhl9HT3dVY' />
                             </div>
                             <div className="row col-sm-10 col-lg-10 justify-content-around px-0 mx-0">
                                 <div className="col-sm-12 col-lg-4 text-left">
@@ -49,16 +49,16 @@ export default () => {
                         </div>
                         <div className="row col-sm-12 col-lg-12 justify-content-around px-0 mx-0 pb-5">
                             <div className="py-5 ccol-sm-12 col-lg-5">
-                                <ReactPlayer className="w-100" url='https://www.youtube.com/watch?v=eGZiQJ4UUGU' />
+                                <ReactPlayer className="w-100" url='https://youtu.be/jiUOJYn7Gqg' />
                             </div>
                             <div className="py-5 ccol-sm-12 col-lg-5">
-                                <ReactPlayer className="w-100" url='https://www.youtube.com/watch?v=hFU9Z_K7arg' />
+                                <ReactPlayer className="w-100" url='https://youtu.be/nxddtUfBAQ0' />
                             </div>
                             <div className="py-5 ccol-sm-12 col-lg-5">
-                                <ReactPlayer className="w-100" url='https://www.youtube.com/watch?v=bD_RzOaqj2Q' />
+                                <ReactPlayer className="w-100" url='https://youtu.be/gHjO0vB4JNg' />
                             </div>
                             <div className="py-5 ccol-sm-12 col-lg-5">
-                                <ReactPlayer className="w-100" url='https://www.youtube.com/watch?v=xqFvYsy4wE4' />
+                                <ReactPlayer className="w-100" url='https://youtu.be/Dwhl9HT3dVY' />
                             </div>
                         </div>
                     </div>

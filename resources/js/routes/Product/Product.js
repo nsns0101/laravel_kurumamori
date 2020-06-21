@@ -21,11 +21,11 @@ export default () => {
                         {/* 이미지 포지션 조정 및 글자 위치 조정 필요 */}
                     </div>
                 </div>
-                <div className="row col-sm-12 col-lg-12 justify-content-around px-0 mx-0">
+                <div className="row col-sm-12 col-lg-12 justify-content-around px-0 mx-0" style={{backgroundColor:"#F8F9FA"}}>
                     <div className="row col-sm-10 col-lg-10 justify-content-around px-0 mx-0">
-                        <div className=" col-sm-12 col-lg-5 mx-0 py-5" style={{padding:10+'px'}}>
+                        <div className=" col-sm-12 col-lg-5 mx-0 py-5 " style={{padding:10+'px'}}>
                             <img className="card-img" src="product/contr.jpg" style={{width:100+'%',height: 450 + 'px',opacity:0.5}}></img>
-                            <div className="text-center card-img-overlay" style={{width:100+'%',height: 450 + 'px'}}>
+                            <div className="text-center card-img-overlay" style={{width:100+'%'}}>
                                 <div className="py-2 pt-5">
                                     <h2 className="card-title" style={{color:"black"}}>쉽게 배우는 조작 방법</h2>
                                     <p className="card-text" style={{color:"black"}}>KURUMAMORI 119의 조작방법을 알려드립니다.</p>

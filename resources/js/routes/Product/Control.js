@@ -48,7 +48,7 @@ export default () => {
                                         <p>먼저 가장 기본적인 부분부터 시작해 봐요.</p>
                                     </div>
                                     <div className="col-lg-10">
-                                        <ReactPlayer url='https://www.youtube.com/watch?v=qLvOX9bxiro' />
+                                        <ReactPlayer url='https://youtu.be/9L2jYjr0dJY' />
                                     </div>
                                 </div>
                             </div>
@@ -59,7 +59,7 @@ export default () => {
                                         <p>다음은 하드웨어 조작!</p>
                                     </div>
                                     <div className="col-lg-10">
-                                        <ReactPlayer url='https://www.youtube.com/watch?v=5u-1VVWM9l0' />
+                                        <ReactPlayer url='https://youtu.be/2XwOHNcetWg' />
                                     </div>
                                 </div>
                             </div>
@@ -70,7 +70,7 @@ export default () => {
                                         <p>이제 거의 당신은 kurumamori 119 마스터!</p>
                                     </div>
                                     <div className="col-lg-10">
-                                        <ReactPlayer url='https://www.youtube.com/watch?v=UXLljlLBDe8' />
+                                        <ReactPlayer url='https://youtu.be/kqBoGyI1R94' />
                                     </div>
                                 </div>
                             </div>
@@ -81,7 +81,7 @@ export default () => {
                                         <p>더 알면 좋은 꿀팁들.</p>
                                     </div>
                                     <div className="col-lg-10">
-                                        <ReactPlayer url='https://www.youtube.com/watch?v=TFEPH005WeY' />
+                                        <ReactPlayer url='https://youtu.be/80K5YhHTW3s' />
                                     </div>
                                 </div>
                             </div>
