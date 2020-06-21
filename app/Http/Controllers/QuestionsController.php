@@ -11,81 +11,16 @@ class QuestionsController extends Controller
     //     $this->middleware('auth',['except'=>['index','show','edit','delete','store','update']]);
     // }
     //
-    public function index(Request $request, $category = null)
+    public function index()
     {
-        \Log::info('questions index');
-        // $user = \App\User::whereId(1)->first();
-        $query = $category
-            ? \App\Category::whereId($category)->firstOrFail()->boards()
-            : new \App\Board;
-        if($category_id = $request->input('category_id')){
-            $query = $query->where('category_id','=',$category_id)->orderBy(
-                $request->input('sortDesc','id'),
-                $request->input('id','desc'),
-            );
-        }
-        else{
-            $query = $query->where('category_id','!=','7')->orderBy(
-                $request->input('sortDesc','id'),
-                $request->input('id','desc'),
-            );
-        }
-        if($search = $request->input('search')) {
-            \DB::statement('ALTER TABLE boards ADD FULLTEXT(title,content);');
-            $raw = 'MATCH(title,content) AGAINST(? IN BOOLEAN MODE)';
-            $query = $query->whereRaw($raw, [$search] );
-            $query = $query->orderBy(
-                $request->input('sortDesc','id'),
-                $request->input('id','desc'),
-            );
-            
-        }
-        if($user_id = $request->input('user_id')) {
-            $query = $query->where('user_id','=', $user_id);
-            $query = $query->orderBy(
-                $request->input('sortDesc','id'),
-                $request->input('id','desc'),
-            );
-        }
-        $questions = $query->paginate(10);
-        $category = array();
-        $comment = array();
-        // \Log::info(count($questions));
-
-        for($i = 0; $i < count($questions); $i++){
-            array_push($category, \App\Category::whereId($questions[$i]->category_id)->first()->category);
-        }
-        for($i = 0; $i < count($questions); $i++){
-            array_push($comment, \App\Comment::whereBoard_id($questions[$i]->id)->first());
-        }
-        \Log::info($comment);
-        
-        // return view('questions.index',compact('questions'));
-
-        \Log::info(\Auth::user());
-        // return view('home.main');
-        // $boards = \App\Board::all()->orderBy('id', 'desc')->paginate(5);
-        return response()->json([
-            'questions' => $questions,
-            'category' => $category,
-        ]);
+        return view('home.main');
     }
 
-    //
-    public function create()
-    {
-        // \Log::info('questions create');
+    public function show(){
 
-        // $Categories = \App\Category::get();
-        // $user = \App\User::whereId(1)->first();
-        // \Log::info($user);
-
-        // $question = new \App\Board;
-
-        // return view('questions.create', compact('Categories','question'));
+        return view('home.main');
     }
-
-    //
+    
     public function store(Request $request)
     {
         \Log::info('questions store');
@@ -93,28 +28,27 @@ class QuestionsController extends Controller
     
         $question = \App\Board::create([
             'user_id'=>$request->user_id,
-            'category_id'=>App\Category::whereCategory($request->category)->id,
+            'category_id'=>1,
             'title'=>$request->title,
             'content'=>$request->content,
         ]);
         $questions = \App\Board::where('category_id','!=','7')->latest()->orderBy('id','desc')->paginate(10);
 
+        $category = array();
+        for($i = 0; $i < count($questions); $i++){
+            array_push($category, \App\Category::whereId($questions[$i]->category_id)->first()->category);
+        }
+        $board_user = array();
+        for($i = 0; $i < count($questions); $i++){
+            array_push($board_user, \App\User::whereId($questions[$i]->user_id)->first()->name);
+        }
+
         return response()->json([
             'questions' => $questions,
+            'category' => $category,
+            'board_user' => $board_user,
         ]);
 
-    }
-
-    public function show(\App\Board $question){
-
-        \Log::info('questions show');
-        $question->view_count += 1;
-        $question->save();
-
-        $category = $question->category_id; 
-        $comments = \App\Comment::where('board_id','=',$question->id)->latest()->orderBy('id','desc')->paginate(10);
-
-        return view('questions.show',compact('question','category','comments'));
     }
 
     public function edit(\App\Board $question){
@@ -152,4 +86,63 @@ class QuestionsController extends Controller
         return response()->json([], 200);
     }
 
+    public function data(Request $request, $category = null)
+    {
+         \Log::info('questions index');
+        $query = $category
+            ? \App\Category::whereId($category)->firstOrFail()->boards()
+            : new \App\Board;
+        if($category_id = $request->input('category_id')){
+            $query = $query->where('category_id','=',$category_id)->orderBy(
+                $request->input('sortDesc','id'),
+                $request->input('id','desc'),
+            );
+        }
+        else{
+            $query = $query->where('category_id','!=','7')->orderBy(
+                $request->input('sortDesc','id'),
+                $request->input('id','desc'),
+            );
+        }
+        if($search = $request->input('search')) {
+            \DB::statement('ALTER TABLE boards ADD FULLTEXT(title,content);');
+            $raw = 'MATCH(title,content) AGAINST(? IN BOOLEAN MODE)';
+            $query = $query->whereRaw($raw, [$search] );
+            $query = $query->orderBy(
+                $request->input('sortDesc','id'),
+                $request->input('id','desc'),
+            );
+            
+        }
+        if($user_id = $request->input('user_id')) {
+            $query = $query->where('user_id','=', $user_id);
+            $query = $query->orderBy(
+                $request->input('sortDesc','id'),
+                $request->input('id','desc'),
+            );
+        }
+
+        $questions = $query->paginate(10);
+
+        $board_user = array();
+        for($i = 0; $i < count($questions); $i++){
+            array_push($board_user, \App\User::whereId($questions[$i]->user_id)->first()->name);
+        }
+
+        $category = array();
+        for($i = 0; $i < count($questions); $i++){
+            array_push($category, \App\Category::whereId($questions[$i]->category_id)->first()->category);
+        }
+
+        // $comment = array();
+        // for($i = 0; $i < count($questions); $i++){
+        //     array_push($comment, \App\Comment::whereBoard_id($questions[$i]->id)->first());
+        // }
+
+        return response()->json([
+            'questions' => $questions,
+            'category' => $category,
+            'board_user' => $board_user,
+        ]);
+    }
 }

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Board extends Model
 {
-    protected $fillable = ['title', 'content','category_id'];
+    protected $fillable = ['user_id','title', 'content','category_id'];
 
     //여러질문은 한 유저를 가질 수 있음
     public function user()
