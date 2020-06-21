@@ -28,7 +28,7 @@ export default () => {
     const service_func = (img, main_text, sub_text, aos_position) => {
         return (
             <div className="col-lg-4 col-md-4 col-sm-12 align-items-stretch">
-                <ScrollAnimation animateIn={`fadeIn${aos_position}`} animateOnce="true">                
+                <ScrollAnimation animateIn={`fadeIn${aos_position}`} animateOnce={true}>                
                     <div className="icon-box iconbox-blue mb-5" style={{borderRadius:"25px"}}>
                         <div className="thumbnail">
                             <img src={img} alt="img" style={{width:"40%", height:"40%"}}/>
@@ -53,7 +53,7 @@ export default () => {
                 <div className="col-lg-8 col-md-8 col-sm-10">
                     <div className="row justify-content-around pt-5">
                         <div className="col-lg-12 text-center">
-                            <ScrollAnimation animateIn="fadeIn" delay={300} animateOnce="true">                
+                            <ScrollAnimation animateIn="fadeIn" delay={300} animateOnce={true}>                
                                 <h3 style={main_text}>Services</h3>
                             </ScrollAnimation>
                         </div>

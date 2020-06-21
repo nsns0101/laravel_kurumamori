@@ -43,7 +43,15 @@ export default ({ location, history }) => {
       .then(res => {
         //회원가입 성공시
         console.log(res);
-        if (res.data) {
+        if (res.data.error){
+          if(res.data.error == "users_email_unique"){
+            setDanger_message("이미 가입한 이메일입니다");
+          }
+          else if(res.data.error == "users_phone_unique"){
+            setDanger_message("이미 가입한 휴대폰 번호입니다.");
+          }
+        }
+        else {
           //로그인 창으로 이동
           setAction("confirm");
         }
@@ -68,24 +76,13 @@ export default ({ location, history }) => {
 
     return Axios.post(url, body, config)
       .then(res => {
-        // console.log(res.data.token);
-        // console.log(res);
-        if(res.data.token){
-          // let userData = {
-          //   // name: res.data.name,
-          //   // id: res.data.id,
-          //   // isLoggedIn: res.data.isLoggedIn,
-          //   token: res.data.token,
-          //   // timestamp: new Date().toString()
-          // };
+        console.log(res);
 
-          // localStorage["userToken"] = JSON.stringify(userData);
+        if(res.data.token){
           localStorage.setItem('userToken', res.data.token);
-          // console.log(User);
-          // setAction("");
+
           history.push('/');
           setIsLoggedIn(true);
-          // console.log(isLoggedIn);
         }
         else{
           setDanger_message("잘못된 이메일 또는 비밀번호 입니다.");
@@ -207,7 +204,7 @@ export default ({ location, history }) => {
       setName={setName}
       // birth={birth}
       setBirth={setBirth}
-      // gender={gender}
+      gender={gender}
       setGender={setGender}
       // phone={phone}
       setPhone={setPhone}

@@ -1,5 +1,5 @@
 import React from "react";
-
+// import CountUp from "react-counterup";
 
 export default () => {
     const main_text = {

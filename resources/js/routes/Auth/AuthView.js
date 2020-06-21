@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import Input from "../../components/Input";
 // import Button from "../../components/Button";
@@ -6,6 +6,7 @@ import FatText from "../../components/FatText";
 import {Link} from "react-router-dom";
 import { useForm } from "react-hook-form";
 import "./Auth.css";
+
 const Wrapper = styled.div`
   min-height: 80vh;
   display: flex;
@@ -93,7 +94,7 @@ export default ({
   setName,
   // birth,
   setBirth,
-  // gender,
+  gender,
   setGender,
   // phone,
   setPhone,
@@ -106,8 +107,9 @@ export default ({
   const input_form = {
     width: "100%",
     border: '5px solid pink',
-
   }
+  const [sub_status, setSub_status] = useState(false);
+
   return (
     <Wrapper>
       {action === "login" ? (
@@ -139,8 +141,9 @@ export default ({
                   })} 
               />
             </div>
-            {errors.email && errors.email.message}
-
+            <p className="text-danger">
+              {errors.email && errors.email.message}
+            </p>
             <div className="form-group text-center">
               <input 
                 name ="password" 
@@ -158,8 +161,10 @@ export default ({
                 })}
               />
             </div>
-            {errors.password && errors.password.message}
-
+            <p className="text-danger">
+              {errors.password && errors.password.message}
+              {danger_message ? danger_message : null}
+            </p>
             <div className="form-group">
               <button className="btn btn-primary btn-lg btn-block">
                 로그인
@@ -204,9 +209,9 @@ export default ({
                   }
                 })} 
               />
-              <div>
+              <p className="text-danger">
                 {errors.email && errors.email.message}
-              </div>
+              </p>
             </div>
             {/* 비밀번호 */}
             <div className="form-group">
@@ -225,8 +230,11 @@ export default ({
                   required: "Required"
                 })}
               />
+              <p className="text-danger">
+                {/* {errors.password && errors.password.type === "required" ? "빈칸을 채워주세요" : ""} */}
+                {errors.password && errors.password.message}
+              </p>
             </div>
-            {errors.password && errors.password.message}
             {/* 비밀번호 체크 */}
             <div className="form-group">
               <input 
@@ -249,9 +257,12 @@ export default ({
                   }
                 })}
               />
+              <p className="text-danger">
+                {errors.password_confirmation && errors.password_confirmation.type === "validate" ? "비밀번호가 맞지않습니다" : ""}
+                {/* {errors.password_confirmation && errors.password_confirmation.type === "required" ? "빈칸을 채워주세요" : ""} */}
+                {errors.password_confirmation && errors.password_confirmation.message}
+              </p>
             </div>
-            {errors.password_confirmation && errors.password_confirmation.type === "validate" ? "비밀번호가 맞지않습니다" : ""}
-            {errors.password_confirmation && errors.password_confirmation.type === "required" ? "빈칸을 채워주세요" : ""}
             <hr />
             <h5 className="text-center" style={{color:"black"}}>유저 정보</h5>
             <br />
@@ -271,9 +282,10 @@ export default ({
                   required: "Required"
                 })}
               />
+              <p className="text-danger">
+                {errors.name && errors.name.message}
+              </p>
             </div>
-            {errors.name && errors.name.message}
-
             {/* 생년월일 */}
             <div className="form-group">
               <input 
@@ -294,9 +306,10 @@ export default ({
                   }
                 })}
               />
+              <p className="text-danger">
+                {errors.birth && errors.birth.message}
+              </p>
             </div>
-            {errors.birth && errors.birth.message}
-
             {/* 휴대폰 번호 */}
             <div className="form-group">
               <input 
@@ -317,8 +330,10 @@ export default ({
                   }
                 })}
               />
+              <p className="text-danger">
+                {errors.phone && errors.phone.message}
+              </p>
             </div>
-            {errors.phone && errors.phone.message}
 
             <div className="form-group text-center">
               <fieldset>
@@ -330,8 +345,20 @@ export default ({
             </div>
             {/* {console.log(watch('gender'))} */}
             {/* {watch('gender') ? "" : "성별을 선택해주세요."} */}
+            
+            {/* 제출 버튼을 눌렀는데 성별을 선택하지 않았으면 */}
+            {sub_status && !gender ? (
+              <p className="text-danger">
+                성별을 입력해주세요
+              </p>
+            ) : "" }
+              {console.log(sub_status)}
+            {/* 에러메시지 */}
+            <p className="text-danger">
+              {danger_message}
+            </p>
             <div className="form-group">
-              <button className="btn btn-primary btn-lg btn-block">가입하기</button>
+              <button className="btn btn-primary btn-lg btn-block" onClick={()=> setSub_status(true)}>가입하기</button>
             </div>
           </form>
         </RegisterForm>

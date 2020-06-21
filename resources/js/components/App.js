@@ -1,6 +1,6 @@
 import React, {useState, useEffect, createContext, useContext} from 'react';
 import ReactDOM from 'react-dom';
-import { Route, Link, BrowserRouter} from "react-router-dom";
+import { Route, Link, BrowserRouter } from "react-router-dom";
 import Axios from 'axios';
 
 //css
@@ -34,18 +34,9 @@ import Review from "../routes/Board/Review";
 //전역변수
 export const AppContext = createContext();
 
-// export const getProfile = () => {
-   
-// }
-
-function App({history}) {
+function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [user, setUser] = useState(false);
-    // console.log(user);
-    // console.log(isLoggedIn);
-    // useEffect(()=>{
-    //     console.log("hahaha");
-    // }, []);
 
     useEffect(()=>{
         // console.log(user);
@@ -63,12 +54,12 @@ function App({history}) {
             .then(res => {
                 console.log(res);
                 if(res.data.user){
-                    // console.log(res.data.user);
+                    console.log("kkk");
                     setUser(res.data.user);
                     setIsLoggedIn(true);
                 }
                 else{
-                    history.push('/auth/login');
+                    localStorage.removeItem("userToken");
                 }
             }) 
         }

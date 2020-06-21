@@ -1,7 +1,6 @@
 import React from "react";
 import "./Team.css";
 import ScrollAnimation from "react-animate-on-scroll";
-import "animate.css/animate.min.css";
 
 export default () => {
     const main_text = {
@@ -27,7 +26,7 @@ export default () => {
     const team_func = (name, position, delay) => {
         return (
             <div className="col-lg-4 col-md-4 col-sm-12 text-center aos-init mb-3 team">
-                <ScrollAnimation animateIn='fadeInUp' delay={500} animateOnce="true">                
+                <ScrollAnimation animateIn='fadeInUp' delay={500} animateOnce={true}>                
                     <div className="member">
                         <img src={`/images/team/${name}.jpg`} alt="img" style={{width:"100%", height:"250px"}}/>
                         <div className="member-info">
@@ -57,7 +56,7 @@ export default () => {
                         <div className="col-lg-8 col-md-8 col-sm-6">
                             <div className="row justify-content-around pt-5">
                                 <div className="col-lg-12 col-md-12 col-sm-12 text-center">
-                                <ScrollAnimation animateIn='fadeIn' animateOnce="true">
+                                <ScrollAnimation animateIn='fadeIn' animateOnce={true}>
                                         <h3 style={main_text}>Team</h3>
 
                                         <p style={{color:"white", marginBottom:"20px"}}>
