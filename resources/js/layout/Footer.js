@@ -16,7 +16,7 @@ const Footer = styled.div`
 export default () => {
     return (
         <Footer>
-            <div className="row pt-3">
+            <div className="row">
                 <div className="col-lg-12 col-md-12 col-sm-12">
                     <div className="row">
                         <div className="col-lg-2 col-md-2 col-sm-2">
