@@ -13,6 +13,7 @@ export default () => {
         setContent,
         register,
         handleSubmit,
+        setAction,
         history,
     } = useContext(BoardContext);
 
@@ -71,7 +72,7 @@ export default () => {
                             <button className="btn btn-dark" type="submit">저장하기</button>
                         </span>
                         <span>
-                            <Link to="/board/questions" className="nav-link">뒤로가기</Link>
+                            <Link to="/boards/questions"onClick={()=>{setAction("index")}} className="nav-link">뒤로가기</Link>
                         </span>
                     </div>
                 </form>

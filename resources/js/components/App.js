@@ -23,9 +23,6 @@ import Buy from "../routes/Buy/BuyContainer";
 import Control from "../routes/Product/Control";
 import Users from "../routes/Product/Users";
 
-import BoardCreate from "../routes/Board/partial/Create";
-import BoardShow from "../routes/Board/partial/Show";
-
 import Board from "../routes/Board/BoardContanier";
 
 import Review from "../routes/Board/Review";
@@ -90,9 +87,6 @@ function App() {
                 <Route path="/products/control" exact component={Control}/>
                 <Route path="/products/users" exact component={Users}/>
 
-                <Route path="/boards/questions/create" exact component={BoardCreate}/>
-                <Route path="/boards/show" exact component={BoardShow}/>
-
                 <Route path="/boards/questions" exact component={Board}/>
 
                 <Footer/>
@@ -121,9 +115,6 @@ function App() {
                 {/* <Route path="/products/buy/check" exact component={Check}/> */}
                 <Route path="/products/control" exact component={Control}/>
                 <Route path="/products/users" exact component={Users}/>
-
-                <Route path="/boards/questions/create" exact component={BoardCreate}/>
-                <Route path="/boards/show" exact component={BoardShow}/>
 
                 <Route path="/boards/questions" exact component={Board}/>
 
