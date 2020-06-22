@@ -55,7 +55,7 @@ export default () => {
     }
 
     return (
-        <section id="intro function2" className="section intro mb-5" style={{background:"#F9F8FF"}}>
+        <section id="intro function2" className="section intro" style={{background:"#F9F8FF"}}>
             <div className="row">
                 <div className="col-lg-2 col-md-2 col-sm-2"/>
 

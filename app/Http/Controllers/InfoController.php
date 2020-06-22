@@ -31,7 +31,7 @@ class InfoController extends Controller
         //게시판 카테고리
         $board_categories = array();
         for($i = 0; $i < count($boards); $i++){
-            array_push($board_categories, \App\CateGory::whereId($boards[$i]->category_id)->first());
+            array_push($board_categories, \App\Category::whereId($boards[$i]->category_id)->first());
         }
         //게시판 대답여부
         $board_comment = array();

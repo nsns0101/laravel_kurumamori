@@ -93,6 +93,7 @@ class QuestionsController extends Controller
             ? \App\Category::whereId($category)->firstOrFail()->boards()
             : new \App\Board;
         if($category_id = $request->input('category_id')){
+                \Log::info($category);
             $query = $query->where('category_id','=',$category_id)->orderBy(
                 $request->input('sortDesc','id'),
                 $request->input('id','desc'),
