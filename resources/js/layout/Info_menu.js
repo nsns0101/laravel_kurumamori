@@ -22,7 +22,7 @@ export default () => {
     return (
         <div className="card-header" style={{background:"white"}}>
             <ul className="nav nav-tabs card-header-tabs">
-                <span className="pt-2" style={{fontSize:"20px", color:"black", marginLeft:"10px"}}>내 정보 - &nbsp;&nbsp;&nbsp;</span>
+                {/* <span className="pt-2" style={{fontSize:"20px", color:"black", marginLeft:"10px"}}>내 정보 - &nbsp;&nbsp;&nbsp;</span> */}
                 <li className="nav-item">
                     {/* 액티브! */}
                     <Link to="/info/index" className={`nav-link ${location.pathname.split('/')[2] == 'index' ? "active" : ""}`}>

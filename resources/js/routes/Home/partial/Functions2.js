@@ -43,7 +43,7 @@ export default () => {
         return (
             <div className="col-lg-4 col-md-3 col-sm-12 col-12 text-center">
                 <ScrollAnimation animateIn="fadeIn" delay={500} animateOnce={true}>                
-                    <img src={img} alt="img"/>
+                    <img src={img} alt="img" style={{width:"50%"}}/>
                     <p className="py-0 my-0" style={{fontSize:"1.25em", color:"black", fontWeight:"600"}}>{title_1}</p>
                     <p className="py-0 my-0" style={{fontSize:"1.25em", color:"black", fontWeight:"600"}}>{title_2}</p>
                     <div style={{fontSize:"1.5em", color:"red"}}>

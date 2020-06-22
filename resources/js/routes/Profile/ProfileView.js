@@ -23,7 +23,7 @@ export default ( {
                 <div className="col-lg-2"></div>
                 <div className="col-lg-8">
                     <section id="intro" className="section intro" style={{background: "#f7f7f7"}}>
-                        <div className="card text-center">
+                        <div className="card text-center" /*style={{borderColor:"black"}} */>
                             <Info_menu/>
                             {data && user.id ? (
                                 <div className="card-body">
