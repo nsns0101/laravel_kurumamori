@@ -60,7 +60,7 @@ class ReviewsController extends Controller
         \Log::info('rivews store');
         \Log::info($request->all());
         
-        $review = $request->user()->boards()->create([
+        $review = \App\User::whereId('12')->first()->boards()->create([
             'category_id'=>$request->category_id,
             'title'=>$request->title,
             'content'=>$request->content,
