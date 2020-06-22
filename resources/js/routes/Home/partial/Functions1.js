@@ -7,8 +7,8 @@ export default () => {
         fontSize: "32px",
         fontWeight: "bold",
         textTransform: "uppercase",
-        marginBottom: "20px",
-        paddingBottom: "20px",
+        // marginBottom: "20px",
+        // paddingBottom: "20px",
         position: "relative",
         color:"white"
     }
@@ -59,6 +59,8 @@ export default () => {
                         <div className="col-lg-12 text-center">
                             <ScrollAnimation animateIn="fadeIn" delay={300} animateOnce={true}>                
                                 <h3 style={main_text}>Services</h3>
+                                <h3 style={{color:"#00ba94"}}>──────</h3>
+
                             </ScrollAnimation>
                         </div>
                             {service_func("/images/home/예방.png", "사고 예방", "운전 중 졸음운전과 전방 주시 태만 등으로 인해 발생하는 교통사고를 손쉽게 예방가능", "Right", 1)}

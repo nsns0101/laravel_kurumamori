@@ -40,8 +40,6 @@ export default () => {
                         <div className="row">
                             <div className="col-sm-12 col-lg-6" style={{marginTop:"20%"}}>
                                 <ScrollAnimation animateIn='fadeIn' delay={500} animateOnce={true}>
-                                    {/* <span style={{color:"white", fontSize:"40px"}}>クルマモ</span>
-                                    <span style={{color:"red", fontSize:"40px"}}>リ9</span> */}
                                     <img className="img mb-5" src="/icon/logo_curumamori.png" alt="logo" style={{width:300}}/>
                                 </ScrollAnimation>
                                 <ScrollAnimation animateIn='fadeIn' delay={700} animateOnce={true}>

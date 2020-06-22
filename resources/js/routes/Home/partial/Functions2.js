@@ -8,8 +8,8 @@ export default () => {
         fontSize: "32px",
         fontWeight: "bold",
         textTransform: "uppercase",
-        marginBottom: "20px",
-        paddingBottom: "20px",
+        // marginBottom: "20px",
+        // paddingBottom: "20px",
         position: "relative",
         color:"black",
     }
@@ -64,6 +64,7 @@ export default () => {
                         <div className="col-lg-12 col-md-12 col-sm-12 text-center">
                             <ScrollAnimation animateIn='fadeIn' animateOnce={true}>
                                 <h3 style={main_text}>damage caused by traffic accidents</h3>
+                                <h3 style={{color:"black"}}>──────────────────────────────</h3>
                             </ScrollAnimation>
                         </div>
                         {a_func("/images/home/index_img_chapter01.png", "연간 교통사고", "발생 건 수", count_set1)}
@@ -74,11 +75,6 @@ export default () => {
 
                 <div className="col-lg-2 col-md-2 col-sm-2"/>
             </div>
-            {/* <div className="rows justify-content-around">
-                <div className="col-md-12 text-center">
-                    <h2>얼마나 많은 사람이 <span style={{color:"red"}}>교통사고</span> 시 <span style={{color:"red"}}>골든타임</span>을 놓쳐 생명을 위협받고 있는지 알고 계시나요?</h2>
-                </div>
-            </div> */}
         </section>
     );
 }
