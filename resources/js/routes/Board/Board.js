@@ -85,7 +85,7 @@ export default () => {
                                                     
                                                     <td className="align-middle">{data.category[index]}</td> 
                                                     <td className="align-middle question-index-name">
-                                                        <Link to="/boards/questions/" id="" onClick={()=>{setAction("show"),setSelect(value.id)}} className="btn btn-intro text-dark">{value.title}
+                                                        <Link to="/boards/questions/" id="" onClick={()=>{setAction("show"),setSelect(value.id),onShow()}} className="btn btn-intro text-dark">{value.title}
                                                         </Link>
                                                     </td>
                                                     <td className="align-middle">{data.board_user[index]}</td>

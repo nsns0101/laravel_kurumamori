@@ -28,8 +28,8 @@ export default ({history}) => {
         console.log(location.pathname);
         console.log(action);
         console.log(data);
-
-        Axios.get(`/get/boards/questions`).then(res => {
+        if(action != "show"){
+            Axios.get(`/get/boards/questions`).then(res => {
             setData(res.data);
             if(res){
                 console.log("Board index call success");
@@ -40,6 +40,7 @@ export default ({history}) => {
                 
             }
         });
+        }
     }, [location.pathname]);
 
     console.log(data);
@@ -74,13 +75,17 @@ export default ({history}) => {
     //제품 보기
     const onShow = () => {
         console.log('onshow')
-        const url = `get/boards/questions${select}`;
+        const url = `/get/boards/questions`;
         const config = {
             headers: {
                 'Content-Type' : 'application/json'
             }
         }
-        Axios.get(url, config).then(res => {
+        return Axios.get(url,{
+            params : {
+                board_id : select,
+            }
+            },config).then(res => {
             if(res.data){
                 console.log("onShow s")
                 console.log(res)

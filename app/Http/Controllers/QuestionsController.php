@@ -89,6 +89,8 @@ class QuestionsController extends Controller
     public function data(Request $request, $category = null)
     {
          \Log::info('questions index');
+         \Log::info($request);
+
         $query = $category
             ? \App\Category::whereId($category)->firstOrFail()->boards()
             : new \App\Board;
@@ -122,14 +124,18 @@ class QuestionsController extends Controller
                 $request->input('id','desc'),
             );
         }
+
         if($board_id = $request->input('board_id')) {
             // $query = $query->where('id','=', $board_id);
             // $query = $query->orderBy(
             //     $request->input('sortDesc','id'),
             //     $request->input('id','desc'),
             // );
-            $value = "3";
+            $board_id = \App\Board::whereId($board_id)->first();
+            // \App\Board::whereId($board_id)->update(['view_count'=> $board_id->view_count+1]);
+            \Log::info($board_id);
         }
+        \Log::info($board_id);
 
         $questions = $query->paginate(10);
 
@@ -152,11 +158,10 @@ class QuestionsController extends Controller
             'questions' => $questions,
             'category' => $category,
             'board_user' => $board_user,
-        ]);
-    }
+            'params' => $board_id,
+            'request'=> $request
 
-    public function showData(Request $request, $category = null){
-        return "a";
+        ]);
     }
 
 }
