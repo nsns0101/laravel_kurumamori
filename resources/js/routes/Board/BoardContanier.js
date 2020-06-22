@@ -12,23 +12,22 @@ console.log('board container call')
 export const BoardContext = createContext();
 export default ({history}) => {
     const { user } = useContext(AppContext);
-
     const [action, setAction] = useState("index");
 
     const [data, setData] = useState("");
-
-    const [question_id, setQuestion_id] = useState("");
-    
 
     const [title, setTitle] = useState(""); 
     const [category, setCategory] = useState(""); 
     const [content, setContent] = useState(""); 
     const { register, handleSubmit } = useForm();
 
+    const [select, setSelect] = useState(""); 
+
     useEffect(() =>{
         console.log("board useEffect");
         console.log(location.pathname);
         console.log(action);
+        console.log(data);
 
         Axios.get(`/get/boards/questions`).then(res => {
             setData(res.data);
@@ -72,6 +71,55 @@ export default ({history}) => {
         })
     }
 
+    //제품 보기
+    const onShow = () => {
+        const url = "show/boards/questions";
+        const body = {
+            board_id : select,
+        }
+        const config = {
+            headers: {
+                'Content-Type' : 'application/json'
+            }
+        }
+        Axios.post(url, body, config).then(res => {
+            if(res.data){
+                console.log("onShow s")
+                console.log(res)
+                // setAction('index')
+                // history.push('/boards/questions')
+            }
+            else{
+                console.log("실패")
+            }
+        })
+    }
+
+    //삭제 하기 
+    const onDelete = () => {
+        if(window.confirm("정말 삭제 하시겠습니까?")){
+            const url = `/boards/questions/${select}`;
+            const body = {
+                id:select,
+            }
+            const config = {
+                headers: {
+                    'Content-Type' : 'application/json'
+                    }
+            }
+            return Axios.delete(url,{ body },config).then(res => {
+                if(res.data){
+                    console.log("삭제 성공")
+                    setAction('index')
+                    history.push('/boards/questions')
+                }
+                else{
+                    console.log("실패")
+                }
+            })
+        }
+    }
+
     return (
          
         <BoardContext.Provider value={{
@@ -80,8 +128,6 @@ export default ({history}) => {
             setAction,
             data,
             setData,
-            question_id,
-            setQuestion_id,
             history,
             onCreate,
             title,
@@ -94,6 +140,10 @@ export default ({history}) => {
             register,
             handleSubmit,
 
+            select,
+            setSelect,
+            onDelete,
+            onShow
         }}>
             {action == "show" ? <Show/>:""}
             {action == "create" ? <Create/>:""}

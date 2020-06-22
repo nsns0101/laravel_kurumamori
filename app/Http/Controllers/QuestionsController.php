@@ -20,7 +20,7 @@ class QuestionsController extends Controller
 
         return view('home.main');
     }
-    
+
     public function store(Request $request)
     {
         \Log::info('questions store');
@@ -121,6 +121,14 @@ class QuestionsController extends Controller
                 $request->input('id','desc'),
             );
         }
+        if($board_id = $request->input('board_id')) {
+            // $query = $query->where('id','=', $board_id);
+            // $query = $query->orderBy(
+            //     $request->input('sortDesc','id'),
+            //     $request->input('id','desc'),
+            // );
+            $value = "3";
+        }
 
         $questions = $query->paginate(10);
 
@@ -145,4 +153,9 @@ class QuestionsController extends Controller
             'board_user' => $board_user,
         ]);
     }
+
+    public function showData(Request $request, $category = null){
+        return "a";
+    }
+
 }
