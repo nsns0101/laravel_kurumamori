@@ -73,16 +73,14 @@ export default ({history}) => {
 
     //제품 보기
     const onShow = () => {
-        const url = "show/boards/questions";
-        const body = {
-            board_id : select,
-        }
+        console.log('onshow')
+        const url = `get/boards/questions${select}`;
         const config = {
             headers: {
                 'Content-Type' : 'application/json'
             }
         }
-        Axios.post(url, body, config).then(res => {
+        Axios.get(url, config).then(res => {
             if(res.data){
                 console.log("onShow s")
                 console.log(res)

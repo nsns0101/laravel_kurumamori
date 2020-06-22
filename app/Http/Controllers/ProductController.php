@@ -21,7 +21,10 @@ class ProductController extends Controller
     {
 
     }
-
+    public function show(Request $request)
+    {
+        return view('home.main');
+    }
     //제품 등록
     public function store(Request $request, \App\User $user)
     {
