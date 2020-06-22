@@ -95,9 +95,9 @@ export default () => {
                                             )
                                         })
                                         :   (
-                                            <p className="text-center" style={{color:"blue"}}>
-                                                작성된 글이 없습니다.
-                                            </p>
+                                            <tr>
+                                                <td className="text-center" style={{color:"blue"}}>작성된 글이 없습니다.</td>
+                                            </tr>
                                             )
                                         }
                                     </tbody>

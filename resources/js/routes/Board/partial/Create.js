@@ -17,7 +17,7 @@ export default () => {
         history,
     } = useContext(BoardContext);
 
-    console.log("board create")
+    console.log("board create form call")
 
     return (
         <Fragment>
@@ -55,7 +55,7 @@ export default () => {
                             </select>
                         </div>
                         <div className="form-group">
-                            <label className="" for="">본문</label>
+                            <label className="">본문</label>
                             <textarea className="form-control" name="content" id="content" cols="30" rows="10"
                             onChange={ e => {
                                 const {

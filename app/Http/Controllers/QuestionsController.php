@@ -89,7 +89,6 @@ class QuestionsController extends Controller
     public function data(Request $request, $category = null)
     {
          \Log::info('questions index');
-         \Log::info($request);
 
         $query = $category
             ? \App\Category::whereId($category)->firstOrFail()->boards()
@@ -107,43 +106,13 @@ class QuestionsController extends Controller
                 $request->input('id','desc'),
             );
         }
-        if($search = $request->input('search')) {
-            \DB::statement('ALTER TABLE boards ADD FULLTEXT(title,content);');
-            $raw = 'MATCH(title,content) AGAINST(? IN BOOLEAN MODE)';
-            $query = $query->whereRaw($raw, [$search] );
-            $query = $query->orderBy(
-                $request->input('sortDesc','id'),
-                $request->input('id','desc'),
-            );
-            
-        }
-        if($user_id = $request->input('user_id')) {
-            $query = $query->where('user_id','=', $user_id);
-            $query = $query->orderBy(
-                $request->input('sortDesc','id'),
-                $request->input('id','desc'),
-            );
-        }
-
-        if($board_id = $request->input('board_id')) {
-            // $query = $query->where('id','=', $board_id);
-            // $query = $query->orderBy(
-            //     $request->input('sortDesc','id'),
-            //     $request->input('id','desc'),
-            // );
-            $board_id = \App\Board::whereId($board_id)->first();
-            // \App\Board::whereId($board_id)->update(['view_count'=> $board_id->view_count+1]);
-            \Log::info($board_id);
-        }
-        \Log::info($board_id);
-
         $questions = $query->paginate(10);
-
+        
+         
         $board_user = array();
         for($i = 0; $i < count($questions); $i++){
             array_push($board_user, \App\User::whereId($questions[$i]->user_id)->first()->name);
         }
-
         $category = array();
         for($i = 0; $i < count($questions); $i++){
             array_push($category, \App\Category::whereId($questions[$i]->category_id)->first()->category);
@@ -158,10 +127,36 @@ class QuestionsController extends Controller
             'questions' => $questions,
             'category' => $category,
             'board_user' => $board_user,
-            'params' => $board_id,
-            'request'=> $request
-
         ]);
     }
-
+    public function select(Request $request)
+    {
+        if($board_id = $request->input('board_id')) {
+            // $query = $query->where('id','=', $board_id);
+            // $query = $query->orderBy(
+            //     $request->input('sortDesc','id'),
+            //     $request->input('id','desc'),
+            // );
+            $board_id = \App\Board::whereId($board_id)->first();
+            // \App\Board::whereId($board_id)->update(['view_count'=> $board_id->view_count+1]);
+            \Log::info($board_id);
+        }
+        \Log::info($board_id);
+        if($user_id = $request->input('user_id')) {
+            $query = $query->where('user_id','=', $user_id);
+            $query = $query->orderBy(
+                $request->input('sortDesc','id'),
+                $request->input('id','desc'),
+            );
+        }
+        if($search = $request->input('search')) {
+            \DB::statement('ALTER TABLE boards ADD FULLTEXT(title,content);');
+            $raw = 'MATCH(title,content) AGAINST(? IN BOOLEAN MODE)';
+            $query = $query->whereRaw($raw, [$search] );
+            $query = $query->orderBy(
+                $request->input('sortDesc','id'),
+                $request->input('id','desc'),
+            );
+        }
+    }
 }

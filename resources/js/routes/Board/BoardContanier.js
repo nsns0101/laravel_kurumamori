@@ -25,15 +25,13 @@ export default ({history}) => {
 
     useEffect(() =>{
         console.log("board useEffect");
-        console.log(location.pathname);
         console.log(action);
-        console.log(data);
+
         if(action != "show"){
             Axios.get(`/get/boards/questions`).then(res => {
             setData(res.data);
             if(res){
                 console.log("Board index call success");
-                // console.log(res.data.questions.data);
             }
             else{
                 console.log("Board index call fail");
@@ -42,10 +40,9 @@ export default ({history}) => {
         });
         }
     }, [location.pathname]);
-
     console.log(data);
 
-    //제품 생성
+    //게시판 생성
     const onCreate = () => {
         const url = "/boards/questions";
         const body = {
@@ -61,18 +58,17 @@ export default ({history}) => {
         }
         return Axios.post(url, body, config).then(res => {
             if(res.data){
-                console.log("성공")
-                console.log(res.data)
+                console.log("Board create call success")
                 setAction('index')
                 history.push('/boards/questions')
             }
             else{
-                console.log("실패")
+                console.log("Board create call fail");
             }
         })
     }
 
-    //제품 보기
+    //게시판 보기
     const onShow = () => {
         console.log('onshow')
         const url = `/get/boards/questions`;
@@ -98,7 +94,7 @@ export default ({history}) => {
         })
     }
 
-    //삭제 하기 
+    //게시판 삭제
     const onDelete = () => {
         if(window.confirm("정말 삭제 하시겠습니까?")){
             const url = `/boards/questions/${select}`;
@@ -112,12 +108,12 @@ export default ({history}) => {
             }
             return Axios.delete(url,{ body },config).then(res => {
                 if(res.data){
-                    console.log("삭제 성공")
+                    console.log("Board delete call success");
                     setAction('index')
                     history.push('/boards/questions')
                 }
                 else{
-                    console.log("실패")
+                    console.log("Board delete call fail");
                 }
             })
         }
