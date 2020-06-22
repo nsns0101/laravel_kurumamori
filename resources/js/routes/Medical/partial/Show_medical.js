@@ -2,6 +2,7 @@ import React, {useContext} from "react";
 import {AppContext} from "../../../components/App";
 import {MedicalContext} from "../MedicalContainer";
 import {Link} from "react-router-dom";
+import ScrollAnimation from "react-animate-on-scroll";
 
 export default () => {
     const { user } = useContext(AppContext);
@@ -47,16 +48,18 @@ export default () => {
                                     {sickness_name.length && sickness_name[0] != "" ? sickness_name.map( (value, index) => {
                                         return (
                                             <div key={index} className="col-lg-4 col-md-4 col-sm-4">
-                                                <div className="card shadow mb-4" style={{backgroundColor:"#002EF0"}}>
-                                                    <div className="card-body" style={{color:"white"}}>{sickness_name[index]}</div>
-                                                    <div className="card-footer d-flex align-items-center justify-content-between">
-                                                        <div className="row text-truncate">
-                                                            <p className="col-lg-12 col-md-12 col-sm-12">복용중인 약 : {medicine[index] ? medicine[index] : "없음"}</p>
-                                                            <p className="col-lg-12 col-md-12 col-sm-12">증상 : {symptom[index] ? symptom[index] : "없음"}</p>
-                                                            <p className="col-lg-12 col-md-12 col-sm-12">다니는 병원 : {hospital[index] ? hospital[index] : "없음"}</p>
+                                                <ScrollAnimation animateIn='fadeIn' delay={index * 200} animateOnce={true}>
+                                                    <div className="card shadow mb-4" style={{backgroundColor:"#002EF0"}}>
+                                                        <div className="card-body" style={{color:"white"}}>{sickness_name[index]}</div>
+                                                        <div className="card-footer d-flex align-items-center justify-content-between">
+                                                            <div className="row text-truncate">
+                                                                <p className="col-lg-12 col-md-12 col-sm-12">복용중인 약 : {medicine[index] ? medicine[index] : "없음"}</p>
+                                                                <p className="col-lg-12 col-md-12 col-sm-12">증상 : {symptom[index] ? symptom[index] : "없음"}</p>
+                                                                <p className="col-lg-12 col-md-12 col-sm-12">다니는 병원 : {hospital[index] ? hospital[index] : "없음"}</p>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </ScrollAnimation>
                                             </div>
                                         )
                                     }) : (
@@ -78,15 +81,17 @@ export default () => {
                                     {past_sickness_name.length && past_sickness_name[0] != "" ? past_sickness_name.map( (value, index) => {
                                         return (
                                             <div key={index} className="col-lg-4 col-md-4 col-sm-4">
-                                                <div className="card shadow mb-4" style={{backgroundColor:"orange"}}>
-                                                    <div className="card-body" style={{color:"white"}}>{past_sickness_name[index]}</div>
-                                                    <div className="card-footer d-flex align-items-center justify-content-between">
-                                                        <div className="row text-truncate">
-                                                            {/* <p className="col-lg-12 col-md-12 col-sm-12">기저 질환 : {past_sickness_name[index]}</p> */}
-                                                            <p className="col-lg-12 col-md-12 col-sm-12">보충설명 : {past_sickness_supplementation[index] ? past_sickness_supplementation[index] : "없음"}</p>
+                                                <ScrollAnimation animateIn='fadeIn' delay={index * 200} animateOnce={true}>
+                                                    <div className="card shadow mb-4" style={{backgroundColor:"orange"}}>
+                                                        <div className="card-body" style={{color:"white"}}>{past_sickness_name[index]}</div>
+                                                        <div className="card-footer d-flex align-items-center justify-content-between">
+                                                            <div className="row text-truncate">
+                                                                {/* <p className="col-lg-12 col-md-12 col-sm-12">기저 질환 : {past_sickness_name[index]}</p> */}
+                                                                <p className="col-lg-12 col-md-12 col-sm-12">보충설명 : {past_sickness_supplementation[index] ? past_sickness_supplementation[index] : "없음"}</p>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </ScrollAnimation>
                                             </div>
                                         )
                                     }) : (

@@ -17,7 +17,7 @@ export default () => {
     const count_set1 = {
         start: 0,           //시작 숫자
         count: 220000,      //끝 숫자
-        duration: 3000,    //지속시간
+        duration: 7000,    //지속시간
         // decimals: 4,    //소수점
         useGroup: true,
         animation: 'up',
@@ -25,7 +25,7 @@ export default () => {
     const count_set2 = {
         start: 0,
         count: 3782,
-        duration: 1000,
+        duration: 7000,
         // decimals: 2,    
         useGroup: true,
         animation: 'roll',
@@ -33,7 +33,7 @@ export default () => {
     const count_set3 = {
         start: 0,
         count: 40500000000000,
-        duration: 3000,
+        duration: 7000,
         // decimals: 2,
         useGroup: true,
         animation: 'slide',
@@ -66,9 +66,9 @@ export default () => {
                                 <h3 style={main_text}>damage caused by traffic accidents</h3>
                             </ScrollAnimation>
                         </div>
-                        {a_func("images/index_img_chapter01.png", "연간 교통사고", "발생 건 수", count_set1)}
-                        {a_func("images/index_img_chapter02.png", "연간 교통사고", "사망자 수", count_set2)}
-                        {a_func("images/index_img_chapter03.png", "교통사고로 인한", "연간 경제적 손실", count_set3)}
+                        {a_func("/images/home/index_img_chapter01.png", "연간 교통사고", "발생 건 수", count_set1)}
+                        {a_func("/images/home/index_img_chapter02.png", "연간 교통사고", "사망자 수", count_set2)}
+                        {a_func("/images/home/index_img_chapter03.png", "교통사고로 인한", "연간 경제적 손실", count_set3)}
                     </div>
                 </div>
 
