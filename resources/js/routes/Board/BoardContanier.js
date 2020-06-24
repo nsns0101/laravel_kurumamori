@@ -42,6 +42,7 @@ export default ({history}) => {
         });
         }
     }, [location.pathname]);
+    console.log(data)
 
     //게시판 생성
     const onCreate = () => {

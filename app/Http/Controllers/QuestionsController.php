@@ -79,29 +79,17 @@ class QuestionsController extends Controller
         return response()->json([], 200);
     }
 
-    public function data(Request $request, $category = null)
+    public function data(Request $request)
     {
          \Log::info('questions index');
 
-        $query = $category
-            ? \App\Category::whereId($category)->firstOrFail()->boards()
-            : new \App\Board;
-        if($category_id = $request->input('category_id')){
-                \Log::info($category);
-            $query = $query->where('category_id','=',$category_id)->orderBy(
-                $request->input('sortDesc','id'),
-                $request->input('id','desc'),
-            );
-        }
-        else{
-            $query = $query->where('category_id','!=','7')->orderBy(
-                $request->input('sortDesc','id'),
-                $request->input('id','desc'),
-            );
-        }
+        $query = new \App\Board;
+        $query = $query->where('category_id','!=','7')->orderBy(
+            $request->input('sortDesc','id'),
+            $request->input('id','desc'),
+        );
         $questions = $query->paginate(10);
         
-         
         $board_user = array();
         for($i = 0; $i < count($questions); $i++){
             array_push($board_user, \App\User::whereId($questions[$i]->user_id)->first()->name);

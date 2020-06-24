@@ -1,6 +1,7 @@
 import React, {Fragment, useContext, useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import moment from "moment";
+import ReactSearchBox from 'react-search-box'
 
 import { BoardContext } from "./BoardContanier";
 import Loader from '../../components/Loader';
@@ -29,7 +30,7 @@ export default () => {
                             {/* 질문 해더 */}
                             <div className="row justify-content-between py-3"> 
                                 {/* 카테고리 선택 항목 */}
-                                <div className="row col-sm-10 col-lg-7 justify-content-around px-0 mx-0  align-middle">
+                                {/* <div className="row col-sm-10 col-lg-12 justify-content-around px-0 mx-0  align-middle">
                                     <div className="border-2 border border-dark ">
                                         <Link to="/boards/questions" id="" className="btn btn-intro text-dark" >전체 글</Link>
                                     </div>
@@ -45,16 +46,25 @@ export default () => {
                                     <div className="border-2 border border-dark">
                                         <Link to="/boards/questions" id="" className="btn btn-intro text-dark" >기타문의</Link>
                                     </div>
-                                </div>
+                                </div> */}
+
                                 {/* 검색 및 글 쓰기 */}
-                                <div className="col-lg-5 d-flex justify-content-end align-middle">
+                                <div className="col-lg-12 d-flex justify-content-end align-middle">
                                     {/* 검색 항목 */}
-                                    <div className="input-group">
+                                    {/* <div className="input-group">
                                         <input type="text" className="form-control" placeholder="필요한 내용을 검색하세요." aria-label="Recipient's username" aria-describedby="input_value"/>
                                         <div className="input-group-append">
                                             <span className="input-group-text" id="input_button">검색</span>
                                         </div>
-                                    </div>
+                                    </div> */}
+                                    <ReactSearchBox
+                                        placeholder="검색어를 입력해 주세요."
+                                        value=""
+                                        onFocus={
+                                            ()=>{}
+                                        }
+                                        // inputBoxBorderColor=""
+                                    />
 
                                     {/* 글 작성 항목 */}
                                     <div className="border-2 border border-dark">
@@ -62,6 +72,7 @@ export default () => {
                                     </div>
                                 </div>
                             </div>
+                            
                             {/* 질문 리스트 */}
                             <div className="row justify-content-between py-3">
                                 <table className="table table-hover .table-responsive">
