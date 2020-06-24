@@ -41,14 +41,25 @@ export default ({
                         <div className="px-5">
                             <div>
                                 <div>
-                                    <h1 style={{fontWeight:900}}>배송에 필요한 정보를 입력해주세요.</h1>
+                                    <h1 style={{fontWeight:600, color:"#31A2AA"}}>배송에 필요한 정보를 입력해주세요.</h1>
                                 </div>
 
                                 {/* 입력폼 */}
                                 <div className="py-3">
                                     <form onSubmit={handleSubmit(onSubmit)}>
+                                        <div className="row px-0 mx-0">
+                                            <div className="col-md-3">
+                                                <p>Name</p>
+                                            </div>
+                                            <div className="col-md-9">
+                                                <p>Name</p>
+                                            </div>
+                                        </div>
+
+
+
                                         <div className="row px-0 mx-0 py-5">
-                                            <h3>이름 및 주소 입력 :</h3>
+                                            <p style={{color:"black", fontSize:"24px", fontWeight:"bold"}}>PERSONAL INFORMATION</p>
                                             <div className="col-lg-12 py-2">
                                                 <label className="m-auto" htmlFor="buy_name" style={{position:"absolute"}}>이름</label>
                                                 <input name="buy_name" type="text" id="buy_name" style={{height:3.25+"em",width:100+"%"}}
