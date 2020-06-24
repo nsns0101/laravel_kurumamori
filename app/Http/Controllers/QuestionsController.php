@@ -129,8 +129,12 @@ class QuestionsController extends Controller
             'board_user' => $board_user,
         ]);
     }
+
     public function select(Request $request)
     {
+        \Log::info('call select');
+        \Log::info($request);
+        
         if($board_id = $request->input('board_id')) {
             // $query = $query->where('id','=', $board_id);
             // $query = $query->orderBy(
@@ -158,5 +162,10 @@ class QuestionsController extends Controller
                 $request->input('id','desc'),
             );
         }
+        return response()->json([
+            'questions' => $questions,
+            'category' => $category,
+            'board_user' => $board_user,
+        ]);
     }
 }

@@ -31,7 +31,7 @@ export default () => {
                                     <p className="card-text" style={{color:"black"}}>KURUMAMORI 119의 조작방법을 알려드립니다.</p>
                                 </div>
                                 <div>
-                                    <Link to="/products/control" id="control" className="btn btn-intro card-text" style={{color:"black"}}>손쉬운 사용 기능 살펴보기 ></Link>
+                                    <Link to="/products/control" id="control" className="btn btn-intro card-text" style={{color:"black"}} onClick={()=>{window.scrollTo(0, 0)}}>손쉬운 사용 기능 살펴보기 ></Link>
                                 </div>
                             </div>
                         </div>
@@ -44,7 +44,7 @@ export default () => {
                                     <p className="card-text" style={{color:"black"}}>KURUMAMORI 119의 실제 사용자 영상입니다.</p>
                                 </div>
                                 <div>
-                                    <Link to="/products/users" id="users" className="btn btn-intro card-text" style={{color:"black"}}>실제 사용자 영상 보러가기 ></Link>
+                                    <Link to="/products/users" id="users" className="btn btn-intro card-text" style={{color:"black"}} onClick={()=>{window.scrollTo(0, 0)}}>실제 사용자 영상 보러가기 ></Link>
                                 </div>
                             </div>
                         </div>
