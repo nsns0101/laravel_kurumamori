@@ -2,6 +2,7 @@ import React, {useContext, useState, useEffect} from "react";
 import {AppContext} from "../../components/App";
 import Axios from "axios";
 import Buy from "./Buy";
+import Completed from "./partial/Completed";
 
 export default ({ history }) => {
     const { user } = useContext(AppContext);
@@ -14,7 +15,7 @@ export default ({ history }) => {
     const [access_code, setAccessCode] = useState(""); //buy_access_code 상세주소
     const [email, setEmail] = useState(""); //buy_email 상세주소
     const [phone, setPhone] = useState(""); //buy_phone 휴대전화
-
+    const [product_key, setProduct_key] = useState("");
     useEffect(()=>{
         setName("김영진")
         setState("대구광역시")
@@ -49,8 +50,8 @@ export default ({ history }) => {
         return Axios.post(url, body, config)
         .then(res => {
             if(res.data){
-                console.log(res);
-                history.push("/products/buy/complate");
+                setProduct_key(res.data.buy.product_key);
+                history.push("/products/buy/completed");
             }
             else{
                 console.log('실패');
@@ -60,7 +61,12 @@ export default ({ history }) => {
     }
 
     return (
-      <Buy 
+        product_key ? (
+            <Completed
+                product_key={product_key}
+            />
+            
+        ) : <Buy 
         user={user}
         onSubmit={onSubmit}
         setName={setName}
@@ -79,6 +85,8 @@ export default ({ history }) => {
         access_code={access_code}
         email={email}
         phone={phone}
+        product_key={product_key}
         />
+      
   );
 };

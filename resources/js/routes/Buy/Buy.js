@@ -33,53 +33,101 @@ export default ({
         :
         <Fragment>
             <div className="mt-5 pt-2">
-                <div className="px-3 py-3">
-                    <h4>결제</h4>
+                <div className="row px-3 py-3">
+                    {/* <div className="col-md-2">
+                        <h4 style={{color:"black", fontWeight:"bold"}}>PAYMENT</h4>
+                    </div> */}
+                    <div className="col-md-12 text-center">
+                        <h1 style={{fontWeight:600, color:"#31A2AA"}}>PAYMENT</h1>
+                    </div>
                     <hr/>
                 </div>
                 <div className="row justify-content-center">
                     <div className="col-lg-8 col-sm-8 ">
                         <div className="px-5">
                             <div>
-                                <div>
-                                    <h1 style={{fontWeight:600, color:"#31A2AA"}}>배송에 필요한 정보를 입력해주세요.</h1>
-                                </div>
-
                                 {/* 입력폼 */}
                                 <div className="py-3">
                                     <form onSubmit={handleSubmit(onSubmit)}>
-                                        <div className="row px-0 mx-0">
-                                            <div className="col-md-3">
-                                                <p>Name</p>
+                                        <p style={{color:"black", fontSize:"24px", fontWeight:"bold"}}>RECIPIENT INFORMATION</p>
+                                        
+                                        {/* 수신인 정보 */}
+                                        <div className="recipient_information">
+                                            {/* 이름 */}
+                                            <div className="name row mx-0 px-0 my-0 py-0 align-items-center" style={{borderTop:"2px solid black"}}>
+                                                <div className="col-md-3 mx-0 px-0" style={{backgroundColor:"white"}}>
+                                                    <p className="pl-2 py-3 mb-0" style={{color:"black", fontWeight:"600"}}>NAME</p>
+                                                </div>
+                                                <div className="col-md-9 mx-0 px-0 my-0 py-0">
+                                                    <input className="pl-2" name="name" type="text" id="buy_name" style={{height:3.25+"em",width:100+"%", border:"1px solid #F0F0F0",backgroundColor:"#F0F0F0"}}
+                                                        onChange={ e => {
+                                                            const {
+                                                            target: { value }
+                                                            } = e;
+                                                            setName(value);
+                                                        }}
+                                                        ref={register({
+                                                            required: "필수 입력 사항입니다.",
+                                                        })} 
+                                                        value={name}
+                                                    >    
+                                                    </input>
+                                                </div>
                                             </div>
-                                            <div className="col-md-9">
-                                                <p>Name</p>
+
+                                            <div className="email row mx-0 px-0 my-0 py-0 align-items-center" style={{borderTop:"2px solid #D1D1D1", borderBottom:"2px solid black"}}>
+                                                {/* 이메일 */}
+                                                <div className="col-md-3 mx-0 px-0" style={{backgroundColor:"white"}}>
+                                                    <p className="pl-2 py-3 mb-0" style={{color:"black", fontWeight:"600"}}>EMAIL</p>
+                                                </div>
+                                                <div className="col-md-3 mx-0 px-0 my-0 py-0">
+                                                <input className="pl-2" name="email" type="text" id="buy_name" style={{height:3.25+"em",width:100+"%", border:"1px solid #F0F0F0",backgroundColor:"#F0F0F0"}}
+                                                        onChange={ e => {
+                                                            const {
+                                                            target: { value }
+                                                            } = e;
+                                                            setEmail(value);
+                                                        }}
+                                                        ref={register({
+                                                            required: "필수 입력 사항입니다.",
+                                                        })}
+                                                        value={email}
+                                                    >
+                                                    </input>
+                                                </div>
+                                                {/* 휴대폰 */}
+                                                <div className="col-md-3 mx-0 px-0" style={{backgroundColor:"white"}}>
+                                                    <p className="pl-2 py-3 mb-0" style={{color:"black", fontWeight:"600"}}>PHONE</p>
+                                                </div>
+                                                <div className="col-md-3 mx-0 px-0 my-0 py-0">
+                                                    <input className="pl-2" name="phone" type="text" id="buy_name" style={{height:3.25+"em",width:100+"%", border:"1px solid #F0F0F0",backgroundColor:"#F0F0F0"}}
+                                                        onChange={ e => {
+                                                            const {
+                                                            target: { value }
+                                                            } = e;
+                                                            setPhone(value);
+                                                        }}
+                                                        ref={register({
+                                                            required: "필수 입력 사항입니다.",
+                                                        })}
+                                                        value={phone}
+                                                    ></input>
+                                                </div>
                                             </div>
                                         </div>
 
+                                        <p className="pl-2 mt-5"style={{color:"black", fontSize:"24px", fontWeight:"bold"}}>CONTACT INFORMATION</p>
 
-
-                                        <div className="row px-0 mx-0 py-5">
-                                            <p style={{color:"black", fontSize:"24px", fontWeight:"bold"}}>PERSONAL INFORMATION</p>
-                                            <div className="col-lg-12 py-2">
-                                                <label className="m-auto" htmlFor="buy_name" style={{position:"absolute"}}>이름</label>
-                                                <input name="buy_name" type="text" id="buy_name" style={{height:3.25+"em",width:100+"%"}}
-                                                    onChange={ e => {
-                                                        const {
-                                                        target: { value }
-                                                        } = e;
-                                                        setName(value);
-                                                    }}
-                                                    ref={register({
-                                                        required: "필수 입력 사항입니다.",
-                                                    })} 
-                                                    value={name}
-                                                ></input>
-                                            </div>
-                                            <div className="col-lg-12 row">
-                                                <div className="col-lg-6 py-2">
-                                                    {/* <label for="buy_state">시/도</label> */}
-                                                    <select id="buy_state" style={{height:3.25+"em",width:100+"%"}}
+                                        {/* 접촉 정보 */}
+                                        <div className="contact_information">
+                                            {/* 도시 */}
+                                            <div className="state row mx-0 px-0 my-0 py-0 align-items-center" style={{borderTop:"2px solid black"}}>
+                                                {/* 지역 */}
+                                                <div className="col-md-3 mx-0 px-0" style={{backgroundColor:"white"}}>
+                                                    <p className="pl-2 py-3 mb-0" style={{color:"black", fontWeight:"600"}}>PROVINCE/STATE</p>
+                                                </div>
+                                                <div className="col-md-3 mx-0 px-0 my-0 py-0">
+                                                    <select id="buy_state" style={{height:3.25+"em",width:100+"%", border:"1px solid #F0F0F0",backgroundColor:"#F0F0F0"}}
                                                         onChange={ e => {
                                                             const {
                                                             target: { value }
@@ -110,9 +158,33 @@ export default ({
                                                         <option value="세종">세종</option>
                                                     </select>
                                                 </div>
-                                                <div className="col-lg-6 py-2">
-                                                    <label className="m-auto" htmlFor="buy_address" style={{position:"absolute"}}>주소</label>
-                                                    <input type="text" id="buy_address" style={{height:3.25+"em",width:100+"%"}}
+                                                {/* 우편번호 */}
+                                                <div className="col-md-3 mx-0 px-0" style={{backgroundColor:"white"}}>
+                                                    <p className="pl-2 py-3 mb-0" style={{color:"black", fontWeight:"600"}}>POSTAL CODE</p>
+                                                </div>
+                                                <div className="col-md-3 mx-0 px-0 my-0 py-0">
+                                                    <input className="pl-2" name="postal" type="text" id="buy_name" style={{height:3.25+"em",width:100+"%", border:"1px solid #F0F0F0",backgroundColor:"#F0F0F0"}}
+                                                            onChange={ e => {
+                                                                const {
+                                                                target: { value }
+                                                                } = e;
+                                                                setPostal(value);
+                                                            }}
+                                                            ref={register({
+                                                                required: "필수 입력 사항입니다.",
+                                                            })}
+                                                            value={postal}
+                                                        >
+                                                        </input>
+                                                </div>
+                                            </div>
+                                            {/* 주소 */}
+                                            <div className="address row mx-0 px-0 my-0 py-0 align-items-center" style={{borderTop:"2px solid #D1D1D1", borderBottom:"2px solid black"}}>
+                                                <div className="col-md-3 mx-0 px-0" style={{backgroundColor:"white"}}>
+                                                    <p className="pl-2 py-3 mb-0" style={{color:"black", fontWeight:"600"}}>ADDRESS</p>
+                                                </div>
+                                                <div className="col-md-3 mx-0 px-0 my-0 py-0">
+                                                    <input className="pl-2" name="address" type="text" id="buy_name" style={{height:3.25+"em",width:100+"%", border:"1px solid #F0F0F0",backgroundColor:"#F0F0F0"}}
                                                         onChange={ e => {
                                                             const {
                                                             target: { value }
@@ -123,90 +195,57 @@ export default ({
                                                             required: "필수 입력 사항입니다.",
                                                         })}
                                                         value={address}
-                                                    ></input>
+                                                    >
+                                                    </input>
                                                 </div>
-                                            </div>
-                                            <div className="col-lg-12 py-2">
-                                                <label className="m-auto" htmlFor="buy_postal" style={{position:"absolute"}}>우편번호</label>
-                                                <input type="text" id="buy_postal" style={{height:3.25+"em",width:100+"%"}}
-                                                    onChange={ e => {
-                                                        const {
-                                                        target: { value }
-                                                        } = e;
-                                                        setPostal(value);
-                                                    }}
-                                                    ref={register({
-                                                        required: "필수 입력 사항입니다.",
-                                                    })}
-                                                    value={postal}
-                                                ></input>
-                                            </div>
-                                            <div className="col-lg-12 py-2">
-                                                <label className="m-auto" htmlFor="buy_detail_address" style={{position:"absolute"}}>건물 번지, 이름 또는 거리 이름</label>
-                                                <input type="text" id="buy_detail_address" style={{height:3.25+"em",width:100+"%"}}
-                                                    onChange={ e => {
-                                                        const {
-                                                        target: { value }
-                                                        } = e;
-                                                        setDetailAddress(value);
-                                                    }}
-                                                    ref={register({
-                                                        required: "필수 입력 사항입니다.",
-                                                    })}
-                                                    value={detail_address}
-                                                ></input>
-                                            </div>
-                                            <div className="col-lg-12 py-2">
-                                                <label className="m-auto" htmlFor="buy_access_code" style={{position:"absolute"}}>아파트 등의 건물 출입 코드</label>
-                                                <input type="text" id="buy_access_code" style={{height:3.25+"em",width:100+"%"}}
-                                                    onChange={ e => {
-                                                        const {
-                                                        target: { value }
-                                                        } = e;
-                                                        setAccessCode(value);
-                                                    }}
-                                                    ref={register({
-                                                        required: "필수 입력 사항입니다.",
-                                                    })}
-                                                    value={access_code}
-                                                ></input>
+                                                {/* 상세 주소 */}
+                                                <div className="col-md-3 mx-0 px-0" style={{backgroundColor:"white"}}>
+                                                    <p className="pl-2 py-3 mb-0" style={{color:"black", fontWeight:"600"}}>DETAIL ADDRESS</p>
+                                                </div>
+                                                <div className="col-md-3 mx-0 px-0 my-0 py-0">
+                                                    <input className="pl-2" name="detail_address" type="text" id="buy_name" style={{height:3.25+"em",width:100+"%", border:"1px solid #F0F0F0",backgroundColor:"#F0F0F0"}}
+                                                        onChange={ e => {
+                                                            const {
+                                                            target: { value }
+                                                            } = e;
+                                                            setDetailAddress(value);
+                                                        }}
+                                                        ref={register({
+                                                            required: "필수 입력 사항입니다.",
+                                                        })}
+                                                        value={detail_address}
+                                                    >
+                                                    </input>
+                                                </div>
                                             </div>
                                         </div>
 
-                                        <div className="row px-0 mx-0 py-5">
-                                            <h3>연락처 정보를 입력해주세요.</h3>
-                                            <div className="col-lg-12 py-2">
-                                                <label className="m-auto" htmlFor="buy_email" style={{position:"absolute"}}>이메일 주소</label>
-                                                <input type="text" id="buy_email" style={{height:3.25+"em",width:100+"%"}}
-                                                    onChange={ e => {
-                                                        const {
-                                                        target: { value }
-                                                        } = e;
-                                                        setEmail(value);
-                                                    }}
-                                                    ref={register({
-                                                        required: "필수 입력 사항입니다.",
-                                                    })}
-                                                    value={email}
-                                                ></input>
+                                        <p className="pl-2 mt-5"style={{color:"black", fontSize:"24px", fontWeight:"bold"}}>OTHER INFORMATION</p>
+                                        <div className="other_information">
+                                            <div className="state row mx-0 px-0 my-0 py-0 align-items-center" style={{borderTop:"2px solid black", borderBottom:"2px solid black"}}>
+                                                <div className="col-md-3 mx-0 px-0" style={{backgroundColor:"white"}}>
+                                                    <p className="pl-2 py-3 mb-0" style={{color:"black", fontWeight:"600"}}>BUILDING ACCESS CODE</p>
+                                                </div>
+                                                <div className="col-md-9 mx-0 px-0 my-0 py-0">
+                                                    <input className="pl-2" name="access_code" type="text" id="buy_name" style={{height:3.25+"em",width:100+"%", border:"1px solid #F0F0F0",backgroundColor:"#F0F0F0"}}
+                                                        onChange={ e => {
+                                                            const {
+                                                            target: { value }
+                                                            } = e;
+                                                            setAccessCode(value);
+                                                        }}
+                                                        ref={register({
+                                                            required: "필수 입력 사항입니다.",
+                                                        })}
+                                                        value={access_code}
+                                                    ></input>
+                                                </div>
                                             </div>
-                                            <div className="col-lg-12 py-2">
-                                                <label className="m-auto" htmlFor="buy_phone" style={{position:"absolute"}}>휴대폰 번호</label>
-                                                <input type="text" id="buy_phone" style={{height:3.25+"em",width:100+"%"}}
-                                                    onChange={ e => {
-                                                        const {
-                                                        target: { value }
-                                                        } = e;
-                                                        setPhone(value);
-                                                    }}
-                                                    ref={register({
-                                                        required: "필수 입력 사항입니다.",
-                                                    })}
-                                                    value={phone}
-                                                ></input>
-                                            </div>
+
                                         </div>
-                                        <button className="btn btn-dark">결제 페이지로 이동</button>
+                                        <div className="row justify-content-center py-2">
+                                            <button className="col-lg-2 col-sm-10 mt-3 btn bg-dark" style={{width:"100%", color:"white", fontSize:1.75+"em"}}>구입 하기</button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>

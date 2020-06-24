@@ -1,7 +1,7 @@
 import React, {Fragment,useContext, useState, useEffect} from "react";
 import { Route, Link, BrowserRouter} from "react-router-dom";
 
-export default () => {
+export default ({product_key}) => {
 
     return (
         // css 개선 
@@ -25,7 +25,7 @@ export default () => {
                             <div className="row mx-0 px-0 justify-content-around pb-3" >
                                 <div className="col-sm-12 col-lg-5 py-3">
                                     <div className="py-1" style={{fontSize:2.5+"em", color:"black"}}>구매한 제품 코드</div>
-                                    <div className="py-1" style={{fontSize:2+"em", color:"black"}}>1234-4567-5854-6545</div>
+                                    <div className="py-1" style={{fontSize:2+"em", color:"black"}}>{product_key}</div>
                                 </div>
                                 <div className="col-sm-12 col-lg-5 btn btn-dark text-center"                                 
                                 style={{ display: "flex",
@@ -45,13 +45,13 @@ export default () => {
                             </div>
                             <div className="row mx-0 px-0 justify-content-around pb-3" >
                                 <div className="col-sm-12 col-lg-4">
-                                    <img className="" src="../icon/googlePlay.png" style={{width:100+'%',zIndex:100}}></img>
+                                    <img className="" src="/icon/googlePlay.png" style={{width:100+'%',zIndex:100}}></img>
                                 </div>
                                 <div className="col-sm-12 col-lg-4">
-                                    <img className="" src="../icon/appStore.png" style={{width:100+'%',zIndex:100}}></img>
+                                    <img className="" src="/icon/appStore.png" style={{width:100+'%',zIndex:100}}></img>
                                 </div>
                                 <div className="col-sm-12 col-lg-4">
-                                    <img className="" src="../icon/oneStore.png" style={{width:100+'%',zIndex:100}}></img>
+                                    <img className="" src="/icon/oneStore.png" style={{width:100+'%',zIndex:100}}></img>
                                 </div>
                             </div>
                         </div>

@@ -72,7 +72,8 @@ class BuyController extends Controller
      */
     public function show($id)
     {
-        //
+        \Log::info("gg");
+        return view("home.main");
     }
 
     /**
