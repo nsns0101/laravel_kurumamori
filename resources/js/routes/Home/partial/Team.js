@@ -7,8 +7,8 @@ export default () => {
         fontSize: "32px",
         fontWeight: "bold",
         textTransform: "uppercase",
-        marginBottom: "20px",
-        paddingBottom: "20px",
+        // marginBottom: "20px",
+        // paddingBottom: "20px",
         position: "relative",
         color:"white",
     }
@@ -28,7 +28,7 @@ export default () => {
             <div className="col-lg-4 col-md-4 col-sm-12 text-center aos-init mb-3 team">
                 <ScrollAnimation animateIn='fadeInUp' delay={300} animateOnce={true}>                
                     <div className="member">
-                        <img src={`/images/team/${name}.jpg`} alt="img" style={{width:"100%", height:"250px"}}/>
+                        <img src={`/images/home/team/${name}.jpg`} alt="img" style={{width:"100%", height:"250px", borderRadius:"12px"}}/>
                         <div className="member-info">
                             <div className="member-info-content">
                                 <h4 className="mt-2">{name}</h4>
@@ -58,10 +58,12 @@ export default () => {
                                 <div className="col-lg-12 col-md-12 col-sm-12 text-center">
                                     <ScrollAnimation animateIn='fadeIn' animateOnce={true}>
                                         <h3 style={main_text}>Team</h3>
-
-                                        <p style={{color:"white", marginBottom:"20px"}}>
-                                            Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. 
-                                            <br/>Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.
+                                        <h3 style={{color:"#00BA94"}}>────</h3>
+                                        <p style={{color:"white", fontWeight:"600"}}>
+                                            딥 러닝 기반의 얼굴인식을 통한 교통사고 예방 & 자동 SOS 서비스
+                                        </p>
+                                        <p className="pb-3" style={{color:"white", marginBottom:"20px", fontWeight:"600"}}>
+                                            クルマモリ9 프로젝트 팀 MIRO입니다.
                                         </p>
                                     </ScrollAnimation>
                                 </div>

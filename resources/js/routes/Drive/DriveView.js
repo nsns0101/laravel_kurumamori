@@ -28,14 +28,14 @@ export default () => {
                         {day_5_danger_count.length ? (
                             <div className="card-body">
                                 <div className="row justify-content-around">
-                                    <div className="col-md-8"></div>
-                                    <div className="col-md-2 text-right">
+                                    <div className="col-xs-8 col-lg-7 col-md-6 col-sm-6"></div>
+                                    <div className="col-xs-2 col-lg-3 col-md-3 col-sm-3 text-right">
                                         <p style={{fontSize:"20px", marginRight:"15px", color:"green", fontWeight:"800"}}>
                                         운전날짜 검색
                                         </p>
                                     </div>
                                     <br />
-                                    <div className="col-md-2">
+                                    <div className="col-xs-2 col-lg-2 col-md-3 col-sm-3">
                                         <div className="form-group">
                                             {/* <!-- 시작시 기본 날짜 설정은 value를 이용 --> */}
                                             <DataPicker onChange={
