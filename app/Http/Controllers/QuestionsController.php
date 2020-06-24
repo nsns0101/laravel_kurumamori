@@ -61,26 +61,19 @@ class QuestionsController extends Controller
     public function update(Request $request){
 
         \Log::info('questions update');
+        \Log::info($request);
         \App\Board::whereId($request->id)->update($request->all());
 
-        if(! $question){
 
-            flash()->error(
-                trans('question 업데이트 실패')
-            );
-
-            return back()->withInput();
-        }
-        $questions = \App\Board::where('category_id','!=','7')->latest()->orderBy('id','desc')->paginate(10);
-
-        return response()->json([
-            'questions' => $questions,
-        ]);
+        return response()->json([], 200);
     }
 
     public function destroy(Request $request)
     {
         \Log::info('questions destroy');
+        \Log::info($request);
+        \Log::info($request->id);
+
 
         \App\Board::whereId($request->id)->delete();
         return response()->json([], 200);

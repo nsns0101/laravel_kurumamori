@@ -7,6 +7,7 @@ import Axios from "axios";
 import Board from "./Board";
 import Create from "./partial/Create";
 import Show from "./partial/Show";
+import Edit from "./partial/Edit";
 
 console.log('board container call')
 export const BoardContext = createContext();
@@ -69,65 +70,60 @@ export default ({history}) => {
         })
     }
 
-    //게시판 보기
+    //게시판 보기 조회수 올리기
     const onShow = () => {
         console.log('onshow')
-        console.log(select)
-        console.log(location.pathname);
-        const url = `/select/boards/questions`;
+
+        const url = "/boards/questions";
+        const body = {
+            // user_id : user.id,
+        }
         const config = {
             headers: {
                 'Content-Type' : 'application/json'
-            }
+                }
         }
-        return Axios.get(url,{
-            params : {
-                board_id : select,
-            }
-            },config).then(res => {
+        return Axios.post(url, body, config).then(res => {
             if(res.data){
                 console.log("Board show call success")
-                console.log(res)
-                // setAction('index')
-                // history.push('/boards/questions')
             }
             else{
-                console.log("Board show call fail")
+                console.log("Board show call fail");
             }
         })
     }
 
     //게시판 업데이트
     const onUpdate = () => {
-        // const url = "/boards/questions";
-        // const body = {
-        //     user_id : user.id,
-        //     title: title,
-        //     category: category,
-        //     content: content,
-        // }
-        // const config = {
-        //     headers: {
-        //         'Content-Type' : 'application/json'
-        //         }
-        // }
-        // return Axios.post(url, body, config).then(res => {
-        //     if(res.data){
-        //         console.log("Board create call success")
-        //         setAction('index')
-        //         history.push('/boards/questions')
-        //     }
-        //     else{
-        //         console.log("Board create call fail");
-        //     }
-        // })
+        const url = `/boards/questions/${select}`;
+        const body = {
+            id:select,
+            user_id : user.id,
+            title: title,
+            content: content,
+        }
+        const config = {
+            headers: {
+                'Content-Type' : 'application/json'
+                }
+        }
+        return Axios.put(url, body, config).then(res => {
+            if(res.data){
+                console.log("Board update call success")
+                setAction('index')
+                history.push('/boards/questions')
+            }
+            else{
+                console.log("Board update call fail");
+            }
+        })
     }
 
     //게시판 삭제
     const onDelete = () => {
         if(window.confirm("정말 삭제 하시겠습니까?")){
             const url = `/boards/questions/${select}`;
-            const body = {
+            const data = {
                 id:select,
             }
             const config = {
@@ -135,7 +131,7 @@ export default ({history}) => {
                     'Content-Type' : 'application/json'
                     }
             }
-            return Axios.delete(url,{ body },config).then(res => {
+            return Axios.delete(url,{data} ,config).then(res => {
                 if(res.data){
                     console.log("Board delete call success");
                     setAction('index')
@@ -171,8 +167,10 @@ export default ({history}) => {
             select,
             setSelect,
             onDelete,
-            onShow
+            onShow,
+            onUpdate,
         }}>
+            {action == "edit" ? <Edit/>:""}
             {action == "show" ? <Show/>:""}
             {action == "create" ? <Create/>:""}
             {action == "index" ? <Board/>:""}
