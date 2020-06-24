@@ -28,7 +28,7 @@ export default ({
     const { register, handleSubmit } = useForm();
 
     return (
-        user.id == null ? 
+        localStorage.getItem('userToken') == null ? 
         <Auth/> 
         :
         <Fragment>

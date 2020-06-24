@@ -27,8 +27,8 @@ export default () => {
     }
     console.log(page_count);
     return (
-        data ? 
-            data && user.id == null ? 
+        data  ? 
+            data && localStorage.getItem('userToken') == null ? 
             <Auth/> 
             : <Fragment>
             <div id="main-question">
