@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import moment from "moment";
 
 import { BoardContext } from "./BoardContanier";
+import Loader from '../../components/Loader';
 import Auth from "./partial/Auth";
 
 export default () => {
@@ -17,10 +18,10 @@ export default () => {
     } = useContext(BoardContext);
 
     return (
-        user.id == null ? 
-        <Auth/> 
-        :
-        <Fragment>
+        data ? 
+            data && user.id == null ? 
+            <Auth/> 
+            : <Fragment>
             <div id="main-question">
                 <div className="contaienr px-3 py-5 p-md-5">
                     <div className="row m-3 justify-content-around">
@@ -85,7 +86,7 @@ export default () => {
                                                     
                                                     <td className="align-middle">{data.category[index]}</td> 
                                                     <td className="align-middle question-index-name">
-                                                        <Link to="/boards/questions/" id="" onClick={()=>{setAction("show"),setSelect(value.id),onShow()}} className="btn btn-intro text-dark">{value.title}
+                                                        <Link to={`/boards/questions/`} id="" onClick={()=>{setAction("show"),setSelect(value.id), onShow()}} className="btn btn-intro text-dark">{value.title}
                                                         </Link>
                                                     </td>
                                                     <td className="align-middle">{data.board_user[index]}</td>
@@ -108,6 +109,7 @@ export default () => {
                 </div>
             </div>
         </Fragment>
+        : <Loader/>
     )
 
 }

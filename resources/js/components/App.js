@@ -112,7 +112,9 @@ function App() {
                 <Route path="/products" exact component={Product}/>
                 <Route path="/products/more" exact component={More}/>
                 <Route path="/products/buy" exact component={Buy}/>
+                
                 {/* <Route path="/products/buy/check" exact component={Check}/> */}
+
                 <Route path="/products/control" exact component={Control}/>
                 <Route path="/products/users" exact component={Users}/>
 

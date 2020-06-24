@@ -26,8 +26,9 @@ export default ({history}) => {
     useEffect(() =>{
         console.log("board useEffect");
         console.log(action);
+        console.log(location.pathname);
 
-        if(action != "show"){
+        if(action == "index"){
             Axios.get(`/get/boards/questions`).then(res => {
             setData(res.data);
             if(res){
@@ -71,7 +72,9 @@ export default ({history}) => {
     //게시판 보기
     const onShow = () => {
         console.log('onshow')
-        const url = `/get/boards/questions`;
+        console.log(select)
+        console.log(location.pathname);
+        const url = `/select/boards/questions`;
         const config = {
             headers: {
                 'Content-Type' : 'application/json'
@@ -83,15 +86,41 @@ export default ({history}) => {
             }
             },config).then(res => {
             if(res.data){
-                console.log("onShow s")
+                console.log("Board show call success")
                 console.log(res)
                 // setAction('index')
                 // history.push('/boards/questions')
             }
             else{
-                console.log("실패")
+                console.log("Board show call fail")
             }
         })
+    }
+
+    //게시판 업데이트
+    const onUpdate = () => {
+        // const url = "/boards/questions";
+        // const body = {
+        //     user_id : user.id,
+        //     title: title,
+        //     category: category,
+        //     content: content,
+        // }
+        // const config = {
+        //     headers: {
+        //         'Content-Type' : 'application/json'
+        //         }
+        // }
+        // return Axios.post(url, body, config).then(res => {
+        //     if(res.data){
+        //         console.log("Board create call success")
+        //         setAction('index')
+        //         history.push('/boards/questions')
+        //     }
+        //     else{
+        //         console.log("Board create call fail");
+        //     }
+        // })
     }
 
     //게시판 삭제

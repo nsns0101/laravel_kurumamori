@@ -58,8 +58,8 @@ Route::get('/thanks', function () {
 Route::resource('/boards/questions','QuestionsController');
 Route::get('/get/boards/questions','QuestionsController@data');
 
-Route::get('/get/boards/questions/{board_id}', [ 
-    'uses' => 'QuestionsController@data',
+Route::get('/select/boards/questions/{board_id}', [ 
+    'uses' => 'QuestionsController@select',
 ]);
 
 Route::resource('/boards/questions/comments','CommentsController');
