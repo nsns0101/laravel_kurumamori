@@ -2,7 +2,6 @@ import React, {Fragment, useContext, useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import moment from "moment";
 import ReactSearchBox from 'react-search-box'
-import "./Board.css";
 
 import { BoardContext } from "./BoardContanier";
 import Loader from '../../components/Loader';
@@ -66,9 +65,8 @@ export default () => {
                                     />
 
                                     {/* 글 작성 항목 */}
-                                    <div className="border-2 border border-dark">
-                                        <Link id="create__btn" to="/boards/questions/" onClick={()=>{setAction("create")}} className="btn btn-intro text-dark" 
-                                        style={{color:"black",fontSize:1.5+"em"}}>글쓰기</Link>
+                                    <div id="create__btn" className="border-2 border border-dark">
+                                        <Link to="/boards/questions/" onClick={()=>{setAction("create")}}>글쓰기</Link>
                                     </div>
                                 </div>
                             </div>

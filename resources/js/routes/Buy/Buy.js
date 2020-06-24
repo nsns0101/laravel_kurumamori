@@ -2,6 +2,7 @@ import React, {Fragment,useState}from "react";
 import { Route, Link, BrowserRouter} from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Auth from "./partial/Auth";
+import Completed from "./partial/Completed";
 
 export default ({
     user,
