@@ -16,7 +16,7 @@ export default () => {
         <section id="intro" className="section intro" style={{paddingTop:"50px"}}>
             <div className="row">
                 <div className="col-md-2"></div>
-                <div className="col-md-8">
+                <div className="col-md-8 mb-3">
                     <div className="bigdata-card-menu mt-5">
                         <p className="bigdata-text">쿠루마모리119에서 제공되는 졸음운전 데이터입니다.</p>
                         <div className="card sleep-chart border-info">

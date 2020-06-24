@@ -20,11 +20,11 @@ const up = () => {
 export default () => {
     return (
         <Footer>
-            <div className="row mt-2">
+            <div className="row">
                 <div className="col-lg-12 col-md-12 col-sm-12">
                     <div className="row">
                         <div className="col-lg-2 col-md-2 col-sm-2">
-                            <p style={{fontSize:"16px"}}>© Copyright Miro.</p>
+                            <p style={{fontSize:"16px"}}>© Copyright MIRO.</p>
                         </div>
                         <div className="col-lg-7 col-md-7 col-sm-7">
 

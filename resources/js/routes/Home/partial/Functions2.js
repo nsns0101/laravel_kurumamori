@@ -41,7 +41,7 @@ export default () => {
 
     const a_func = (img, title_1, title_2, count_set) => {
         return (
-            <div className="col-lg-4 col-md-3 col-sm-12 col-12 text-center">
+            <div key={count_set.count} className="col-lg-4 col-md-3 col-sm-12 col-12 text-center">
                 <ScrollAnimation animateIn="fadeIn" delay={500} animateOnce={true}>                
                     <img src={img} alt="img" style={{width:"50%"}}/>
                     <p className="py-0 my-0" style={{fontSize:"1.25em", color:"black", fontWeight:"600"}}>{title_1}</p>
@@ -58,7 +58,6 @@ export default () => {
         <section id="intro function2" className="section intro" style={{background:"#F9F8FF"}}>
             <div className="row">
                 <div className="col-lg-2 col-md-2 col-sm-2"/>
-
                 <div className="col-lg-8 col-md-8 col-sm-10">
                     <div className="row justify-content-around pt-5">
                         <div className="col-lg-12 col-md-12 col-sm-12 text-center">
