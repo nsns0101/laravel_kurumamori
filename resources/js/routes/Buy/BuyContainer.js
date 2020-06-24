@@ -50,7 +50,7 @@ export default ({ history }) => {
         .then(res => {
             if(res.data){
                 console.log(res);
-                history.push("/");
+                history.push("/products/buy/complate");
             }
             else{
                 console.log('실패');

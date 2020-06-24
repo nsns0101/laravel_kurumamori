@@ -18,7 +18,7 @@ import Bigdata from "../routes/Bigdata/BigdataContainer";
 import Product from "../routes/Product/Product";
 import More from "../routes/Product/More";
 import Buy from "../routes/Buy/BuyContainer";
-import Complate from "../routes/Buy/Complate";
+import Completed from "../routes/Buy/partial/Completed";
 
 import Control from "../routes/Product/Control";
 import Users from "../routes/Product/Users";
@@ -83,7 +83,7 @@ function App() {
                 <Route path="/products" exact component={Product}/>
                 <Route path="/products/more" exact component={More}/>
                 <Route path="/products/buy" exact component={Buy}/>
-                <Route path="/products/buy/complate" exact component={Complate}/>
+                <Route path="/products/buy/completed" exact component={Completed}/>
                 <Route path="/products/control" exact component={Control}/>
                 <Route path="/products/users" exact component={Users}/>
 
