@@ -75,7 +75,7 @@ export default () => {
                                 <hr className="question-show-split"/>
                                 <div className="py-3">
                                 <h4 className="text-justify question-show-content">
-                                    {value.content}
+                                    Hit : {value.content}
                                 </h4>
                             </div>
                         </div>

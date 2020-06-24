@@ -2,6 +2,7 @@ import React, {Fragment, useContext, useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import moment from "moment";
 import ReactSearchBox from 'react-search-box'
+import "./Board.css";
 
 import { BoardContext } from "./BoardContanier";
 import Loader from '../../components/Loader';
@@ -17,6 +18,7 @@ export default () => {
         history,
         onShow,
     } = useContext(BoardContext);
+
 
     return (
         data ? 
@@ -60,15 +62,13 @@ export default () => {
                                     <ReactSearchBox
                                         placeholder="검색어를 입력해 주세요."
                                         value=""
-                                        onFocus={
-                                            ()=>{}
-                                        }
                                         // inputBoxBorderColor=""
                                     />
 
                                     {/* 글 작성 항목 */}
                                     <div className="border-2 border border-dark">
-                                        <Link to="/boards/questions/" id="" onClick={()=>{setAction("create")}} className="btn btn-intro text-dark" >글 작성</Link>
+                                        <Link id="create__btn" to="/boards/questions/" onClick={()=>{setAction("create")}} className="btn btn-intro text-dark" 
+                                        style={{color:"black",fontSize:1.5+"em"}}>글쓰기</Link>
                                     </div>
                                 </div>
                             </div>
