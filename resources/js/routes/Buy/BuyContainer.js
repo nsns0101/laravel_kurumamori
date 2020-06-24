@@ -15,7 +15,17 @@ export default ({ history }) => {
     const [email, setEmail] = useState(""); //buy_email 상세주소
     const [phone, setPhone] = useState(""); //buy_phone 휴대전화
 
-    //post
+    useEffect(()=>{
+        setName("김영진")
+        setState("대구광역시")
+        setAddress("복현동360-23")
+        setPostal("41234")
+        setDetailAddress("청솔맨션 301호")
+        setAccessCode("0310")
+        setEmail("kim@youngjin.com")
+        setPhone("010-7374-6119")
+    },[])
+        //post
     const onSubmit = async () => {
         const url = "/buy";
         const body = {
@@ -61,6 +71,14 @@ export default ({ history }) => {
         setAccessCode={setAccessCode}
         setEmail={setEmail}
         setPhone={setPhone}
+        name={name}
+        state={state}
+        address={address}
+        postal={postal}
+        detail_address={detail_address}
+        access_code={access_code}
+        email={email}
+        phone={phone}
         />
   );
 };

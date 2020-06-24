@@ -13,8 +13,15 @@ export default ({
     setDetailAddress,
     setAccessCode,
     setEmail,
-    setPhone
-
+    setPhone,
+    name,
+    state,
+    address,
+    postal,
+    detail_address,
+    access_code,
+    email,
+    phone
 }) => {
 
     const { register, handleSubmit } = useForm();
@@ -54,7 +61,7 @@ export default ({
                                                     ref={register({
                                                         required: "필수 입력 사항입니다.",
                                                     })} 
-                                                    value="김영진"
+                                                    value={name}
                                                 ></input>
                                             </div>
                                             <div className="col-lg-12 row">
@@ -71,7 +78,7 @@ export default ({
                                                             required: "필수 입력 사항입니다.",
                                                         })}
                                                     >
-                                                        <option  value="non">시/도</option>
+                                                        <option value="non">시/도</option>
                                                         <option value="강원도">강원도</option>
                                                         <option value="경기도">경기도</option>
                                                         <option value="경상남도">경상남도</option>
@@ -103,7 +110,7 @@ export default ({
                                                         ref={register({
                                                             required: "필수 입력 사항입니다.",
                                                         })}
-                                                        value="복현동 362-36"
+                                                        value={address}
                                                     ></input>
                                                 </div>
                                             </div>
@@ -119,7 +126,7 @@ export default ({
                                                     ref={register({
                                                         required: "필수 입력 사항입니다.",
                                                     })}
-                                                    value="42235"
+                                                    value={postal}
                                                 ></input>
                                             </div>
                                             <div className="col-lg-12 py-2">
@@ -134,7 +141,7 @@ export default ({
                                                     ref={register({
                                                         required: "필수 입력 사항입니다.",
                                                     })}
-                                                    value="청솔맨션 304호"
+                                                    value={detail_address}
                                                 ></input>
                                             </div>
                                             <div className="col-lg-12 py-2">
@@ -149,7 +156,7 @@ export default ({
                                                     ref={register({
                                                         required: "필수 입력 사항입니다.",
                                                     })}
-                                                    value="0310"
+                                                    value={access_code}
                                                 ></input>
                                             </div>
                                         </div>
@@ -168,7 +175,7 @@ export default ({
                                                     ref={register({
                                                         required: "필수 입력 사항입니다.",
                                                     })}
-                                                    value="rla@dudwls.com"
+                                                    value={email}
                                                 ></input>
                                             </div>
                                             <div className="col-lg-12 py-2">
@@ -183,7 +190,7 @@ export default ({
                                                     ref={register({
                                                         required: "필수 입력 사항입니다.",
                                                     })}
-                                                    value="010-7374-6119"
+                                                    value={phone}
                                                 ></input>
                                             </div>
                                         </div>
