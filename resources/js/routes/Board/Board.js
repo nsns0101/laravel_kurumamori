@@ -5,18 +5,26 @@ import moment from "moment";
 import { BoardContext } from "./BoardContanier";
 import Loader from '../../components/Loader';
 import Auth from "./partial/Auth";
+import Axios from "axios";
 
 export default () => {
 
     const {
         user,
         data,
+        setData,
         setAction,
         setSelect,
         history,
         onShow,
     } = useContext(BoardContext);
-
+    
+    const page_count = [];
+    console.log(data.questions.last_page);
+    for(var i = 0; i < data.questions.last_page; i++){
+        page_count.push([i]);
+    }
+    console.log(page_count);
     return (
         data ? 
             data && user.id == null ? 
@@ -104,6 +112,22 @@ export default () => {
                                         }
                                     </tbody>
                                 </table>
+                                <div className="justify-content-center">
+                                    {page_count.length ? page_count.map( (value, index) => {
+                                        return <Link key={index} className="btn btn-primary" to="/boards/questions?page=2" 
+                                            onClick={
+                                                () => {
+                                                    Axios.get(`/get/boards/questions?page=${index+1}`).then(res => {
+                                                        console.log(res);
+                                                        setData(res.data);
+                                                    })
+                                                }
+                                            }>
+                                            {index+1}   
+                                        </Link>
+                                    }) : null}    
+                                </div>
+
                             </div>
                         </div>
                     </div>
