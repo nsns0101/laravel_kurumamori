@@ -8,7 +8,6 @@ import { useForm } from "react-hook-form";
 import "./Auth.css";
 
 const Wrapper = styled.div`
-  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
