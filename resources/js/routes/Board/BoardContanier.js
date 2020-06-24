@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 
 import Axios from "axios";
 import Board from "./Board";
+import "./Board.css";
 import Create from "./partial/Create";
 import Show from "./partial/Show";
 import Edit from "./partial/Edit";
