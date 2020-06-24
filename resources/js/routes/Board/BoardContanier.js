@@ -42,7 +42,6 @@ export default ({history}) => {
         });
         }
     }, [location.pathname]);
-    console.log(data);
 
     //게시판 생성
     const onCreate = () => {
@@ -72,11 +71,10 @@ export default ({history}) => {
 
     //게시판 보기 조회수 올리기
     const onShow = () => {
-        console.log('onshow')
-
-        const url = "/boards/questions";
+        const url = "/onShow/boards/questions";
         const body = {
-            // user_id : user.id,
+            board_id: select,
+            user_id : user.id,
         }
         const config = {
             headers: {
@@ -85,10 +83,10 @@ export default ({history}) => {
         }
         return Axios.post(url, body, config).then(res => {
             if(res.data){
-                console.log("Board show call success")
+                console.log("Board onShow call success")
             }
             else{
-                console.log("Board show call fail");
+                console.log("Board onShow call fail");
             }
         })
     }
