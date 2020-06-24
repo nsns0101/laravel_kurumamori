@@ -25,13 +25,13 @@ export default () => {
 
                                 <span className="px-2">
                                     <ScrollAnimation animateIn='fadeInRight' delay={500} animateOnce={true}>
-                                        <Link to="/products/more" id="more" className="btn border-1 rounded border-dark" style={{fontSize:1.3+"em",color:"black"}}>더 알아보기 ></Link>
+                                        <Link to="/products/more" id="more" className="btn border-1 rounded border-dark" style={{fontSize:1.3+"em",color:"black"}} onClick={()=>{window.scrollTo(0, 0)}} >더 알아보기 ></Link>
                                     </ScrollAnimation>
                                 </span>
                     
                                 <span className="px-2">
                                     <ScrollAnimation animateIn='fadeInLeft' delay={500} animateOnce={true}>
-                                        <Link to="/products/buy" id="buy" className="btn border-1 rounded border-dark" style={{fontSize:1.3+"em",color:"black"}}>구입하기 ></Link>
+                                        <Link to="/products/buy" id="buy" className="btn border-1 rounded border-dark" style={{fontSize:1.3+"em",color:"black"}} onClick={()=>{window.scrollTo(0, 0)}}>구입하기 ></Link>
                                     </ScrollAnimation>
                                 </span>
                         </div>
@@ -49,34 +49,41 @@ export default () => {
                 {/* css 조정 필요 */}
                 <div className="row col-sm-12 col-lg-12 justify-content-around px-0 mx-0" style={{backgroundColor:"#F5F5F5"}}>
                     <div className="row col-sm-10 col-lg-10 justify-content-around px-0 mx-0">
-                        \
+                        
                         {/* css 조정 필요 */}
                         <div className=" col-sm-12 col-lg-5 mx-0 py-5 " style={{padding:10+'px'}}>
-                            <img className="card-img" src="product/contr.png" style={{width:100+'%',height: 450 + 'px',opacity:0.8}}></img>
-                            <div className="text-center card-img-overlay" style={{width:100+'%'}}>
-                                <div className="py-2 pt-5">
-                                    <h2 className="card-title" style={{color:"white", fontSize:"2.5em"}}>쉽게 배우는 조작 방법</h2>
-                                    <p className="card-text" style={{color:"white", fontSize:"1.5em"}}>KURUMAMORI 119의 조작방법을 알려드립니다.</p>
-                                </div>
+                            <ScrollAnimation animateIn='zoomIn' animateOnce={true} duration={0.8}>
                                 <div>
-                                    <Link to="/products/control" id="control" className="btn btn-intro card-text" style={{color:"white", fontSize:"1.5em"}} onClick={()=>{window.scrollTo(0, 0)}}>손쉬운 사용 기능 살펴보기 ></Link>
+                                    <img className="card-img" src="product/contr.png" style={{width:100+'%',height: 450 + 'px',opacity:0.8}}></img>
+                                    <div className="text-center card-img-overlay" style={{width:100+'%',top:"20%"}}>
+                                        <div className="py-2 pt-5">
+                                            <h2 className="card-title" style={{color:"white", fontSize:"2.5em",fontWeight:"900",textShadow:"black 2px 0 10px"}}>쉽게 배우는 조작 방법</h2>
+                                            <p className="card-text" style={{color:"white", fontSize:"1.5em",fontWeight:"700",textShadow:"black 2px 0 10px"}}>KURUMAMORI 119의 조작방법을 알려드립니다.</p>
+                                        </div>
+                                        <div className="btn btn-success text-center">
+                                            <Link to="/products/control" id="control" className="btn btn-intro card-text" style={{color:"white", fontSize:"1.5em"}} onClick={()=>{window.scrollTo(0, 0)}}>손쉬운 사용 기능 살펴보기 ></Link>
+                                        </div>
+                                    </div>
                                 </div>
-                                {/* <img src="/product/control.png" style={{width:"60%"}}/> */}
-                            </div>
+                            </ScrollAnimation>
                         </div>
 
                         {/* css 조정 필요 */}
-                        <div className="col-sm-12 col-lg-5 py-5" style={{padding:10+'px'}}>
-                            <img className="card-img" src="product/userv.jpg" style={{width:100+'%',height: 450 + 'px',opacity:0.8}}></img>
-                            <div className="text-center card-img-overlay" style={{width:100+'%',height: 450 + 'px'}}>
-                                <div className="py-2 pt-5">
-                                    <h2 className="card-title" style={{color:"white", fontSize:"2.5em"}}>사용자 영상</h2>
-                                    <p className="card-text" style={{color:"white", fontSize:"1.5em"}}>KURUMAMORI 119의 실제 사용자 영상입니다.</p>
-                                </div>
+                        <div className="col-sm-12 col-lg-5 mx-0 py-5" style={{padding:10+'px'}}>
+                            <ScrollAnimation animateIn='zoomIn' animateOnce={true} duration={0.8}>
                                 <div>
-                                    <Link to="/products/users" id="users" className="btn btn-intro card-text" style={{color:"white", fontSize:"1.5em"}} onClick={()=>{window.scrollTo(0, 0)}}>실제 사용자 영상 보러가기 ></Link>
+                                    <img className="card-img" src="product/userv.jpg" style={{width:100+'%',height: 450 + 'px',opacity:0.8}}></img>
+                                    <div className="text-center card-img-overlay" style={{width:100+'%',top:"20%"}}>
+                                        <div className="py-2 pt-5">
+                                            <h2 className="card-title" style={{color:"white", fontSize:"2.5em",fontWeight:"900",textShadow:"black 2px 0 10px"}}>사용자 영상</h2>
+                                            <p className="card-text" style={{color:"white", fontSize:"1.5em",fontWeight:"700",textShadow:"black 2px 0 10px"}}>KURUMAMORI 119의 실제 사용자 영상입니다.</p>
+                                        </div>
+                                        <div className="btn btn-success text-center">
+                                            <Link to="/products/users" id="users" className="btn btn-intro card-text" style={{color:"white", fontSize:"1.5em"}} onClick={()=>{window.scrollTo(0, 0)}}>실제 사용자 영상 보러가기 ></Link>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            </ScrollAnimation>
                         </div>
 
                     </div>
