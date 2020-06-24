@@ -46,26 +46,27 @@ export default ({history}) => {
     
     const validation = () => {
         //validation
-        if(!blood_type){
-            setBlood_type_message("필수 항목입니다.");
-            return null;
-        }
-        if(insurance_bool){
-            setInsurance_name_message(insurance_name ? "" : "필수항목입니다.");
-            setSubscription_date_message(subscription_date ? "" : "필수항목입니다.");
-            setExpiration_date_message(expiration_date ? "" : "필수항목입니다.");
-            if(subscription_date_message){
-                setSubscription_date_message(expiration_date >= subscription_date ? "" : "필수항목입니다.");
-            }
+        // if(!blood_type){
+        //     setBlood_type_message("필수 항목입니다.");
+        //     return null;
+        // }
 
-            if(insurance_name && subscription_date && expiration_date && expiration_date ){
-                onSubmit();
-            }else{
-                return null;
-            }
-        }else if(blood_type){
+        // if(insurance_bool){
+        //     setInsurance_name_message(insurance_name ? "" : "필수항목입니다.");
+        //     setSubscription_date_message(subscription_date ? "" : "필수항목입니다.");
+        //     setExpiration_date_message(expiration_date ? "" : "필수항목입니다.");
+        //     if(subscription_date_message){
+        //         setSubscription_date_message(expiration_date >= subscription_date ? "" : "필수항목입니다.");
+        //     }
+
+        //     if(insurance_name && subscription_date && expiration_date && expiration_date ){
+        //         onSubmit();
+        //     }else{
+        //         return null;
+        //     }
+        // }else if(blood_type){
             onSubmit();
-        }
+        // }
     }
 
     const onSubmit = () => {
@@ -154,6 +155,11 @@ export default ({history}) => {
                     setPast_sickness_name(arr_past_sickness_name);
                     setPast_sickness_supplementation(arr_past_sickness_supplementation);
                 }
+                //시연용
+                else{   
+                    setPast_sickness_name(["허리디스크", "과민성 대장"]);
+                    setPast_sickness_supplementation(["5년전 허리디스크 수술", "지속적 복부팽만"]);
+                }
 
                 //sickness
                 if(res.data.sickness){
@@ -172,6 +178,13 @@ export default ({history}) => {
                     setSymptom(arr_symptom);
                     setHospital(arr_hosptial);
                 }
+                //시연용
+                else{
+                    setSickness_name(["당뇨", "고혈압", "위암"]);
+                    setMedicine(["인슐린", "암로디핀, 니페디핀", ""]);
+                    setSymptom(["저혈당 쇼크 및 경련", "현기증", "메스꺼움, 구토"]);
+                    setHospital(["경북대병원 내과", "영대병원 내과", "경북대병원 내과"]);
+                }
 
                 //medical_info
                 if(res.data.medical_info){
@@ -181,14 +194,28 @@ export default ({history}) => {
                     setReport_request(res.data.medical_info.report_request);
                     setGuardian_phone(res.data.medical_info.guardian_phone);
                 }
+                //시연용
+                else{
+                    setBlood_type("A형");
+                    setDisability_status(false);
+                    setReport_request("인슐린 필요합니다.");
+                    setGuardian_phone("010-8382-1192");
+                }
 
                 //insurance
                 if(res.data.insurance){
-                    setInsurance_bool(true);
                     setInsurance_name(res.data.insurance_list_my.insurance_name);
                     setInsurance_phone(res.data.insurance_list_my.insurance_phone);
                     setSubscription_date(res.data.insurance.subscription_date);
                     setExpiration_date(res.data.insurance.expiration_date);
+                }
+                //시연용
+                else{
+                    setInsurance_bool(true);
+                    setInsurance_name("하나보험사")
+                    setInsurance_phone("010-5096-5198");
+                    setSubscription_date("2010-08-21");
+                    setExpiration_date("2030-08-20");
                 }
             }
 

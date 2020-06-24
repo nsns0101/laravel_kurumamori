@@ -48,7 +48,7 @@ class MedicalController extends Controller
         // return view('sessions.login');
     }
 
-    public function store(\App\Http\Requests\Medical_infoRequest $request)
+    public function store(Request $request)
     {
         \Log::info($request->all());
 

@@ -54,6 +54,7 @@ export default ({
                                                     ref={register({
                                                         required: "필수 입력 사항입니다.",
                                                     })} 
+                                                    value="김영진"
                                                 ></input>
                                             </div>
                                             <div className="col-lg-12 row">
@@ -70,7 +71,7 @@ export default ({
                                                             required: "필수 입력 사항입니다.",
                                                         })}
                                                     >
-                                                        <option defaultValue value="non">시/도</option>
+                                                        <option  value="non">시/도</option>
                                                         <option value="강원도">강원도</option>
                                                         <option value="경기도">경기도</option>
                                                         <option value="경상남도">경상남도</option>
@@ -82,7 +83,7 @@ export default ({
                                                         <option value="충청북도">충청북도</option>
                                                         <option value="서울">서울</option>
                                                         <option value="부산">부산</option>
-                                                        <option value="대구">대구</option>
+                                                        <option defaultValue value="대구">대구</option>
                                                         <option value="인천">인천</option>
                                                         <option value="광주">광주</option>
                                                         <option value="대전">대전</option>
@@ -102,6 +103,7 @@ export default ({
                                                         ref={register({
                                                             required: "필수 입력 사항입니다.",
                                                         })}
+                                                        value="복현동 362-36"
                                                     ></input>
                                                 </div>
                                             </div>
@@ -117,6 +119,7 @@ export default ({
                                                     ref={register({
                                                         required: "필수 입력 사항입니다.",
                                                     })}
+                                                    value="42235"
                                                 ></input>
                                             </div>
                                             <div className="col-lg-12 py-2">
@@ -131,6 +134,7 @@ export default ({
                                                     ref={register({
                                                         required: "필수 입력 사항입니다.",
                                                     })}
+                                                    value="청솔맨션 304호"
                                                 ></input>
                                             </div>
                                             <div className="col-lg-12 py-2">
@@ -145,6 +149,7 @@ export default ({
                                                     ref={register({
                                                         required: "필수 입력 사항입니다.",
                                                     })}
+                                                    value="0310"
                                                 ></input>
                                             </div>
                                         </div>
@@ -163,6 +168,7 @@ export default ({
                                                     ref={register({
                                                         required: "필수 입력 사항입니다.",
                                                     })}
+                                                    value="rla@dudwls.com"
                                                 ></input>
                                             </div>
                                             <div className="col-lg-12 py-2">
@@ -177,6 +183,7 @@ export default ({
                                                     ref={register({
                                                         required: "필수 입력 사항입니다.",
                                                     })}
+                                                    value="010-7374-6119"
                                                 ></input>
                                             </div>
                                         </div>
