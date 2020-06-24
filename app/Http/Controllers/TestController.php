@@ -33,7 +33,7 @@ class TestController extends Controller
         // $result_address = "대한민국 대구광역시 북구 복현2동 복현로 35";
         // $result_address_url = "https://www.google.com/maps/place/%EB%8C%80%EA%B5%AC%EA%B4%91%EC%97%AD%EC%8B%9C+%EB%B6%81%EA%B5%AC+%EB%B3%B5%ED%98%842%EB%8F%99+%EB%B3%B5%ED%98%84%EB%A1%9C+35/@35.8963134,128.6198624,17z/data=!3m1!4b1!4m5!3m4!1s0x3565e1bb2f087589:0x5a55f9de5c2d9ea!8m2!3d35.8963091!4d128.6220511?hl=ko";
         header("Content-Type: text/html; charset=utf-8");
-        $apiKey_address = env('GCP_API_KEY');
+        $apiKey_address = env('MIX_GCP_API_KEY');
         $latitude = 35.893932;
         $longitude = 128.620904;
         $url_address = "https://maps.googleapis.com/maps/api/geocode/json?latlng={$latitude},{$longitude}&key={$apiKey_address}&language=ko";
@@ -69,6 +69,7 @@ class TestController extends Controller
         // $message->to = "01035989003";
         // $message->to = "01023560525";
         $message->to = "01027794593";
+        // $message->to = "01073746119";
         // $message->to = "01050039201";
         $message->from = "01050039201";
         $message->subject = "[kurumamori119 신고]";

@@ -38,9 +38,15 @@ export default () => {
                             {/* 질문 해더 */}
                             <div className="row justify-content-between py-3"> 
                                 {/* 카테고리 선택 항목 */}
-                                {/* <div className="row col-sm-10 col-lg-12 justify-content-around px-0 mx-0  align-middle">
+                                <div className="row col-sm-10 col-lg-12 justify-content-around px-0 mx-0  align-middle">
                                     <div className="border-2 border border-dark ">
                                         <Link to="/boards/questions" id="" className="btn btn-intro text-dark" >전체 글</Link>
+                                    </div>
+                                    <div className="border-2 border border-dark">
+                                        <Link to="/boards/questions" id="" className="btn btn-intro text-dark" >공지사항</Link>
+                                    </div>
+                                    <div className="border-2 border border-dark">
+                                        <Link to="/boards/questions" id="" className="btn btn-intro text-dark" >업데이트</Link>
                                     </div>
                                     <div className="border-2 border border-dark">
                                         <Link to="/boards/questions" id="" className="btn btn-intro text-dark" >제품구매</Link>
@@ -54,7 +60,7 @@ export default () => {
                                     <div className="border-2 border border-dark">
                                         <Link to="/boards/questions" id="" className="btn btn-intro text-dark" >기타문의</Link>
                                     </div>
-                                </div> */}
+                                </div>
 
                                 {/* 검색 및 글 쓰기 */}
                                 <div className="col-lg-12 d-flex justify-content-end align-middle">
@@ -73,7 +79,7 @@ export default () => {
 
                                     {/* 글 작성 항목 */}
                                     <div id="create__btn" className="border-2 border border-dark">
-                                        <Link to="/boards/questions/" onClick={()=>{setAction("create")}}>글쓰기</Link>
+                                        <Link className="btn" to="/boards/questions/" onClick={()=>{setAction("create")}}>글쓰기</Link>
                                     </div>
                                 </div>
                             </div>
@@ -120,7 +126,8 @@ export default () => {
                                         }
                                     </tbody>
                                 </table>
-                                <div className="justify-content-center">
+
+                                <div className="col-sm-12 col-lg-12 text-center">
                                     {page_count.length ? page_count.map( (value, index) => {
                                         return <Link key={index} className="btn btn-primary" to="/boards/questions?page=2" 
                                             onClick={
