@@ -23,23 +23,20 @@ export default ({history}) => {
     const { register, handleSubmit } = useForm();
 
     const [select, setSelect] = useState(""); 
-
     useEffect(() =>{
         console.log("board useEffect");
-        console.log(action);
-        console.log(location.pathname);
-
         if(action == "index"){
-            Axios.get(`/get/boards/questions`).then(res => {
-            setData(res.data);
-            if(res){
-                console.log("Board index call success");
-            }
-            else{
-                console.log("Board index call fail");
-                
-            }
-        });
+            Axios.get(`/get/boards/questions`).then(res => {                
+                setData(res.data);
+
+                if(res){
+                    console.log("Board index call success");
+                }
+                else{
+                    console.log("Board index call fail");
+                    
+                }
+            });
         }
     }, [location.pathname]);
     console.log(data)
@@ -144,7 +141,7 @@ export default ({history}) => {
     }
 
     return (
-         
+        data ? 
         <BoardContext.Provider value={{
             user,
             action,
@@ -174,6 +171,6 @@ export default ({history}) => {
             {action == "create" ? <Create/>:""}
             {action == "index" ? <Board/>:""}
 
-        </BoardContext.Provider>      
+        </BoardContext.Provider> :null 
     )
 }

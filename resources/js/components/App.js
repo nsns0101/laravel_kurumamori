@@ -49,7 +49,7 @@ function App() {
             }
             Axios.get(url, config)
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 if(res.data.user){
                     console.log("user value call");
                     setUser(res.data.user);
@@ -87,7 +87,7 @@ function App() {
                 <Route path="/products/control" exact component={Control}/>
                 <Route path="/products/users" exact component={Users}/>
 
-                <Route path="/boards/questions" exact component={Board}/>
+                <Route path="/boards/questions" component={Board}/>
 
                 <Footer/>
             </BrowserRouter>
