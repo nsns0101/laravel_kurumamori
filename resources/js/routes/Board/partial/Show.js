@@ -48,8 +48,8 @@ export default () => {
             {data && data.questions.data ? data.questions.data.map( (value, index) => {
                 return (
                     value.id == select ? 
-                    <div className="container mt-5 pt-5">
-                        <header>
+                    <div key={index} className="container mt-5 pt-5">
+                        <div className="row mx-0 mr-0 aligin-middle">
                             <span><Link to="/boards/questions" onClick={()=>{setAction("index")}} className="nav-link">HOME</Link></span>
                             <span className="question-show-slicer">></span>
                             <span >
@@ -57,7 +57,7 @@ export default () => {
                                 <a className="question-show-category" href="{{route('questions.index',['category_id'=>$category])}}">{data.category[index]}</a> 
                                 {/* <Link to="/board/questions" onClick={()=>{setAction("index")}} className="nav-link"></Link> */}
                             </span>
-                        </header>
+                        </div>
                         <hr className="question-show-split"/>
                         <div className="p-1">
                             <div>
@@ -81,17 +81,27 @@ export default () => {
                         </div>
                         <hr className="question-show-split"/>
                         <div className="d-flex justify-content-end pb-3">
-                            <span className="pr-2">
-                                <Link to={"/board/questions/"+data.questions.data.id+"/edit"} className="nav-link">수정하기</Link>
-                            </span>
-                            <span className="pr-2">
-                                <form onSubmit={handleSubmit(onDelete)}>
-                                    <button className="btn btn-point">삭제하기</button>    
-                                </form>
-                            </span>
-                            <span>
-                                <Link to="/boards/questions"onClick={()=>{setAction("index")}} className="nav-link">뒤로가기</Link>
-                            </span>
+                            {user.id == value.user_id ? 
+                                <div className="bg-dark">
+                                    <span className="pr-2">
+                                        <Link to={"/boards/questions/"} onClick={()=>{setAction("edit")}} className="nav-link">수정하기</Link>
+                                    </span>
+                                    <span className="pr-2">
+                                        <form onSubmit={handleSubmit(onDelete)}>
+                                            <button className="btn btn-point">삭제하기</button>    
+                                        </form>
+                                    </span> 
+                                    <span>
+                                        <Link to="/boards/questions"onClick={()=>{setAction("index")}} className="nav-link">뒤로가기</Link>
+                                    </span>
+                                </div>
+                                : 
+                                <div>
+                                    <span>
+                                        <Link to="/boards/questions"onClick={()=>{setAction("index")}} className="nav-link">뒤로가기</Link>
+                                    </span>
+                                </div>
+                                }
                         </div>
                     </div>
                     :
