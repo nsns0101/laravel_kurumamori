@@ -123,42 +123,12 @@ class QuestionsController extends Controller
         ]);
     }
 
-    public function select(Request $request)
+    public function onShow(Request $request)
     {
-        \Log::info('call select');
-        \Log::info($request);
-        
-        if($board_id = $request->input('board_id')) {
-            // $query = $query->where('id','=', $board_id);
-            // $query = $query->orderBy(
-            //     $request->input('sortDesc','id'),
-            //     $request->input('id','desc'),
-            // );
-            $board_id = \App\Board::whereId($board_id)->first();
-            // \App\Board::whereId($board_id)->update(['view_count'=> $board_id->view_count+1]);
-            \Log::info($board_id);
-        }
-        \Log::info($board_id);
-        if($user_id = $request->input('user_id')) {
-            $query = $query->where('user_id','=', $user_id);
-            $query = $query->orderBy(
-                $request->input('sortDesc','id'),
-                $request->input('id','desc'),
-            );
-        }
-        if($search = $request->input('search')) {
-            \DB::statement('ALTER TABLE boards ADD FULLTEXT(title,content);');
-            $raw = 'MATCH(title,content) AGAINST(? IN BOOLEAN MODE)';
-            $query = $query->whereRaw($raw, [$search] );
-            $query = $query->orderBy(
-                $request->input('sortDesc','id'),
-                $request->input('id','desc'),
-            );
-        }
-        return response()->json([
-            'questions' => $questions,
-            'category' => $category,
-            'board_user' => $board_user,
-        ]);
+        \Log::info('questions onShow');
+        $view_count = \App\Board::whereId($request->board_id)->value('view_count') +1;
+        \App\Board::whereId($request->board_id)->update(['view_count' => $view_count]);
+
+        return response()->json([], 200);
     }
 }

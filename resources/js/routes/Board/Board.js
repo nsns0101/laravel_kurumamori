@@ -51,7 +51,7 @@ export default () => {
                                     {/* 검색 항목 */}
                                     <div className="input-group">
                                         <input type="text" className="form-control" placeholder="필요한 내용을 검색하세요." aria-label="Recipient's username" aria-describedby="input_value"/>
-                                        <div class="input-group-append">
+                                        <div className="input-group-append">
                                             <span className="input-group-text" id="input_button">검색</span>
                                         </div>
                                     </div>
@@ -87,7 +87,7 @@ export default () => {
                                                     <td className="align-middle">{data.category[index]}</td> 
                                                     <td className="align-middle question-index-name">
                                                         {/* 온 쇼 추가 할 것 */}
-                                                        <Link to={`/boards/questions/`} id="" onClick={()=>{setAction("show"),setSelect(value.id)}} className="btn btn-intro text-dark">{value.title}
+                                                        <Link to={`/boards/questions/`} id="" onClick={()=>{setAction("show"),setSelect(value.id), onShow()}} className="btn btn-intro text-dark">{value.title}
                                                         </Link>
                                                     </td>
                                                     <td className="align-middle">{data.board_user[index]}</td>
