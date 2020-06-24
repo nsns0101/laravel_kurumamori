@@ -7,8 +7,8 @@ export default () => {
             <div id="product">
                 <div className="col-sm-12 col-lg-12 text-center d-table" style={{height: 100 + 'vh',backgroundColor: 'white'}}>
                     <div className="d-table-cell align-middle">
-                        <div className="my-4">
-                            <img className="" src="icon/logo_curumamori.png" style={{width:30+'%',zIndex:100}}></img>
+                        <div className="my-4 row px-0 mx-0 justify-content-center ">
+                            <img className="col-sm-8 col-lg-4" src="icon/logo_curumamori.png" style={{width:100+'%',zIndex:100}}></img>
                         </div>
                         <div className="my-2">
                             <p className="" style={{fontSize:2.25+"em",color:"black"}}>내 차가 사고를 스스로 예방하고 사고를 스스로 신고한다!</p>
@@ -22,14 +22,17 @@ export default () => {
                                 <Link to="/products/buy" id="buy" className="btn border-1 rounded border-dark" style={{fontSize:1.3+"em",color:"black"}}>구입하기 ></Link>
                             </span>
                         </div>
-                        <div className="my-2">
-                            <img className="" src="product/product_image.png" style={{width:30+'%',zIndex:100}}></img>
+                        <div className="my-2 row px-0 mx-0 justify-content-center ">
+                            <img className="col-sm-8 col-lg-4" src="product/product_image.png" style={{width:100+'%',zIndex:100}}></img>
                         </div>
-                        {/* 이미지 포지션 조정 및 글자 위치 조정 필요 */}
                     </div>
                 </div>
+
+                {/* css 조정 필요 */}
                 <div className="row col-sm-12 col-lg-12 justify-content-around px-0 mx-0" style={{backgroundColor:"#F5F5F5"}}>
                     <div className="row col-sm-10 col-lg-10 justify-content-around px-0 mx-0">
+                        \
+                        {/* css 조정 필요 */}
                         <div className=" col-sm-12 col-lg-5 mx-0 py-5 " style={{padding:10+'px'}}>
                             <img className="card-img" src="product/contr.jpg" style={{width:100+'%',height: 450 + 'px',opacity:0.5}}></img>
                             <div className="text-center card-img-overlay" style={{width:100+'%'}}>
@@ -42,10 +45,11 @@ export default () => {
                                 </div>
                             </div>
                         </div>
+
+                        {/* css 조정 필요 */}
                         <div className="col-sm-12 col-lg-5 py-5" style={{padding:10+'px'}}>
                             <img className="card-img" src="product/userv.jpg" style={{width:100+'%',height: 450 + 'px',opacity:0.5}}></img>
                             <div className="text-center card-img-overlay" style={{width:100+'%',height: 450 + 'px'}}>
-                                {/* 검은 백그라운드 위에 png로된 이미지 넣을 예정 */}
                                 <div className="py-2 pt-5">
                                     <h2 className="card-title" style={{color:"black"}}>사용자 영상</h2>
                                     <p className="card-text" style={{color:"black"}}>KURUMAMORI 119의 실제 사용자 영상입니다.</p>
@@ -55,8 +59,10 @@ export default () => {
                                 </div>
                             </div>
                         </div>
+
                     </div>
-                  
+
+                    {/* 삭제 예정 */}
                     {/* <div className="col-sm-12 col-lg-6 mx-0" style={{padding:10+'px'}}>
                         <div className="text-center" style={{width:100+'%',height: 450 + 'px',backgroundColor: '#000000'}}>
                             <form className="py-2 pt-5">
