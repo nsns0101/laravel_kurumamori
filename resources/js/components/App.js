@@ -51,7 +51,7 @@ function App() {
             .then(res => {
                 console.log(res);
                 if(res.data.user){
-                    console.log("kkk");
+                    console.log("user value call");
                     setUser(res.data.user);
                     setIsLoggedIn(true);
                 }

@@ -42,6 +42,7 @@
         "react-hook-google-maps": "0.0.3",
         "react-player": "^2.3.1",
         "react-router-dom": "^5.2.0",
+        "react-search-box": "^2.0.2",
         "react-toastify": "^6.0.5",
         "requirejs": "^2.3.6",
         "styled-components": "^5.1.1"
