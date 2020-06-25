@@ -84,10 +84,11 @@ class QuestionsController extends Controller
          \Log::info('questions index');
 
         $query = new \App\Board;
-        $query = $query->where('category_id','!=','7')->orderBy(
-            $request->input('sortDesc','id'),
-            $request->input('id','desc'),
-        );
+        // $query = $query->where('category_id','!=','7')->orderBy(
+        //     $request->input('sortDesc','id'),
+        //     $request->input('id','desc'),
+        // );
+        $query = $query->where('category_id','!=','7')->orderBy('id', 'desc');
         $questions = $query->paginate(10);
         
         $board_user = array();
