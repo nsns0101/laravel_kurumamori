@@ -206,6 +206,7 @@ export default ({history}) => {
 
                 //insurance
                 if(res.data.insurance || (form && form != "create") ){
+                    setInsurance_bool(true);
                     setInsurance_name(res.data.insurance_list_my.insurance_name);
                     setInsurance_phone(res.data.insurance_list_my.insurance_phone);
                     setSubscription_date(res.data.insurance.subscription_date);
@@ -213,7 +214,6 @@ export default ({history}) => {
                 }
                 //시연용
                 else{
-                    console.log("zkakakak");
                     setInsurance_bool(true);
                     setInsurance_name("하나보험사")
                     setInsurance_phone("010-5096-5198");
