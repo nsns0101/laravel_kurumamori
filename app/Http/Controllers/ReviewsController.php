@@ -19,10 +19,8 @@ class ReviewsController extends Controller
             ? \App\Category::whereId($category)->firstOrFail()->boards()
             : new \App\Board;
 
-        $query = $query->where('category_id','=','7')->orderBy(
-            $request->input('sortDesc','id'),
-            $request->input('id','desc'),
-        );
+        $query = $query->where('category_id','=','7')->orderBy('id','desc');
+        
         if($search = $request->input('search')) {
             \DB::statement('ALTER TABLE boards ADD FULLTEXT(title,content);');
             $raw = 'MATCH(title,content) AGAINST(? IN BOOLEAN MODE)';
