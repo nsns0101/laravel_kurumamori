@@ -38,7 +38,7 @@ export default () => {
                             {/* 질문 해더 */}
                             <div className="row justify-content-between py-3"> 
                                 {/* 카테고리 선택 항목 */}
-                                <div className="row col-sm-10 col-lg-12 justify-content-around px-0 mx-0  align-middle">
+                                <div className="row col-sm-10 col-lg-12 justify-content-around px-0 mx-0 pb-4 align-middle">
                                     <div className="border-2 border border-dark ">
                                         <Link to="/boards/questions" id="" className="btn btn-intro text-dark" >전체 글</Link>
                                     </div>
