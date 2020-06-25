@@ -145,7 +145,9 @@ export default ({history}) => {
                 setInsurance_name_list(arr_insurance_name_list);
                 // setInsurance_phone_list(arr_insurance_phone_list);
                 //past_sickness
-                if(res.data.past_sickness){
+                if(res.data.past_sickness || (form && form != "create") ){
+                    console.log(res.data.past_sickness);
+                    console.log(form);
                     const arr_past_sickness_name = [];
                     const arr_past_sickness_supplementation = [];
                     for(var i = 0; i < res.data.past_sickness.length; i++){
@@ -162,7 +164,7 @@ export default ({history}) => {
                 }
 
                 //sickness
-                if(res.data.sickness){
+                if(res.data.sickness || (form && form != "create") ){
                     const arr_sickness_name = [];
                     const arr_medicine = [];
                     const arr_symptom = [];
@@ -187,7 +189,7 @@ export default ({history}) => {
                 }
 
                 //medical_info
-                if(res.data.medical_info){
+                if(res.data.medical_info || (form && form != "create") ){
                     setMedical_id(res.data.medical_info.id);
                     setBlood_type(res.data.medical_info.blood_type);
                     setDisability_status(res.data.medical_info.disability_status);
@@ -203,7 +205,7 @@ export default ({history}) => {
                 }
 
                 //insurance
-                if(res.data.insurance){
+                if(res.data.insurance || (form && form != "create") ){
                     setInsurance_name(res.data.insurance_list_my.insurance_name);
                     setInsurance_phone(res.data.insurance_list_my.insurance_phone);
                     setSubscription_date(res.data.insurance.subscription_date);
@@ -211,6 +213,7 @@ export default ({history}) => {
                 }
                 //시연용
                 else{
+                    console.log("zkakakak");
                     setInsurance_bool(true);
                     setInsurance_name("하나보험사")
                     setInsurance_phone("010-5096-5198");
