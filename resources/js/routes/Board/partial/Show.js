@@ -70,19 +70,19 @@ export default () => {
                                 <span className="px-2">|</span>
                                 <span>{moment(value.created_at).format("YYYY-MM-DD")}</span>
                                 <span className="px-2">|</span>
-                                <span>{value.view_count}</span>
+                                <span>Hit : {value.view_count}</span>
                                 </div>
                                 <hr className="question-show-split"/>
                                 <div className="py-3">
                                 <h4 className="text-justify question-show-content">
-                                    Hit : {value.content}
+                                    {value.content}
                                 </h4>
                             </div>
                         </div>
                         <hr className="question-show-split"/>
                         <div className="d-flex justify-content-end pb-3">
                             {user.id == value.user_id ? 
-                                <div className="bg-dark">
+                                <div className="row mx-0 px-0">
                                     <span className="pr-2">
                                         <Link to={"/boards/questions/"} onClick={()=>{setAction("edit")}} className="nav-link">수정하기</Link>
                                     </span>
