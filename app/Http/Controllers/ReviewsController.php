@@ -25,17 +25,11 @@ class ReviewsController extends Controller
             \DB::statement('ALTER TABLE boards ADD FULLTEXT(title,content);');
             $raw = 'MATCH(title,content) AGAINST(? IN BOOLEAN MODE)';
             $query = $query->whereRaw($raw, [$search] );
-            $query = $query->orderBy(
-                $request->input('sortDesc','id'),
-                $request->input('id','desc'),
-            );
+            $query = $query->orderBy('id','desc');
         }
         if($user_id = $request->input('user_id')) {
             $query = $query->where('user_id','=', $user_id);
-            $query = $query->orderBy(
-                $request->input('sortDesc','id'),
-                $request->input('id','desc'),
-            );
+            $query = $query->orderBy('id','desc');
         }
         $reviews = $query->paginate(10);
         return view('reviews.index', compact('reviews'));
