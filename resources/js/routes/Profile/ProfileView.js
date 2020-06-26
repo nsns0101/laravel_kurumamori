@@ -170,7 +170,7 @@ export default ( {
 
                                 <div className="row mt-5">
                                     <div className="col-lg-12">
-                                    <ScrollAnimation animateIn='fadeIn' delay={1000} animateOnce={true}>
+                                    <ScrollAnimation animateIn='fadeIn' animateOnce={true}>
 
                                             <h4 className="text-center">문의 이력 </h4>
                                             <table className="table" style={{borderTop: "3px solid blue", borderBottom: "3px solid blue"}}>

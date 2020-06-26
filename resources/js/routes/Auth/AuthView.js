@@ -120,7 +120,7 @@ export default ({
           <div style={{}}>
             <Img_center>
               <Link to="/">
-                <img src="/icon/logo_curumamori.png" style={{width:"250px"}}/>
+                <img src="/icon/logo_curumamori.png" style={{width:"250px", marginBottom:"10px"}}/>
               </Link>
             </Img_center>
           </div>
@@ -195,7 +195,7 @@ export default ({
           {/* 로고 이미지 */}
           <Img_center>
             <Link to="/">
-              <img src="/icon/logo_curumamori.png" style={{width:"350px"}}/>
+              <img src="/icon/logo_curumamori.png" style={{width:"350px", marginBottom:"10px"}}/>
             </Link>
           </Img_center>
           <h2 style={{fontWeight:"bold", color:"black"}}>{action === "login" ? "SignIn" : "SignUp"}</h2>

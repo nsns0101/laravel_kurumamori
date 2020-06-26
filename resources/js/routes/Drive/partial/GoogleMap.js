@@ -43,10 +43,10 @@ export default () => {
                             <div className="col-lg-4 col-md-4 col-sm-12">
                                 
                                 <div className="py-5 text-center">
-                                    <p style={drive_text}>총 운전 점수 : {score[0]}점</p>
-                                    <p style={drive_text}>졸음 횟수 : {day_5_danger_count[0].count_sleep}회</p>
+                                    <p style={drive_text}>총 운전 점수 : {(score[0] + score[1] + score[2] + score[3]) / score.length}점</p>
                                     <p style={drive_text}>급 가속 횟수 : {day_5_danger_count[0].count_sudden_acceleration}회</p>
                                     <p style={drive_text}>급 감속 횟수 : {day_5_danger_count[0].count_sudden_stop}회</p>
+                                    <p style={drive_text}>졸음 횟수 : {day_5_danger_count[0].count_sleep}회</p>
                                     <p style={drive_text}>사고 : {day_5_danger_count[0].count_report}건</p>
                                     {/* 당일 사고정보 */}
                                     {reports.length ? (
