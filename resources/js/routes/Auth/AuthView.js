@@ -106,7 +106,8 @@ export default ({
   const { handleSubmit, register, errors, watch } = useForm();
   const input_form = {
     width: "100%",
-    border: '5px solid pink',
+    border: '1px solid #d1d3e2',
+    paddingLeft:"5px",
   }
   const [sub_status, setSub_status] = useState(false);
 
@@ -116,50 +117,66 @@ export default ({
 //로그인
         <LoginForm>
           {/* 로고 이미지 */}
-          <Img_center>
-            <Link to="/">
-              <img src="/icon/logo_curumamori.png" style={{width:"250px"}}/>
-            </Link>
-          </Img_center>
+          <div style={{}}>
+            <Img_center>
+              <Link to="/">
+                <img src="/icon/logo_curumamori.png" style={{width:"250px"}}/>
+              </Link>
+            </Img_center>
+          </div>
 
-          <h2>{action === "login" ? "로그인" : "회원가입"}</h2>
+          <h2 style={{fontWeight:"bold", color:"black"}}>{action === "login" ? "SignIn" : "SignUp"}</h2>
           <br/>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="form-group text-center">
-              <input 
-                  name ="email" 
-                  placeholder={"이메일"}
-                  style={input_form}
-                  onChange={ e => {
-                    const {
-                      target: { value }
-                    } = e;
-                    setEmail(value);
-                  }}
-                  ref={register({
-                    required: "Required",
-                  })} 
-              />
+            <div className="form-group">
+              <div className="input-group">
+                <div className="input-group-prepend" style={{width:"100%"}}>
+                  <div className="input-group-text text-center">
+                    <span className="fa fa-user"/>
+                  </div>
+                  <input 
+                      name ="email" 
+                      placeholder={"UserEmail"}
+                      style={input_form}
+                      onChange={ e => {
+                        const {
+                          target: { value }
+                        } = e;
+                        setEmail(value);
+                      }}
+                      ref={register({
+                        required: "Required",
+                      })} 
+                  />
+                </div>
+              </div>
             </div>
             <p className="text-danger">
               {errors.email && errors.email.message}
             </p>
-            <div className="form-group text-center">
-              <input 
-                name ="password" 
-                type="password"
-                placeholder={"비밀번호"}
-                style={input_form}
-                onChange={ e => {
-                  const {
-                    target: { value }
-                  } = e;
-                  setPassword(value);
-                }}
-                ref={register({
-                  required: "Required"
-                })}
-              />
+            <div className="form-group">
+              <div className="input-group">
+                <div className="input-group-prepend" style={{width:"100%"}}>
+                  <div className="input-group-text text-center">
+                    <span className="fa fa-lock"/>
+                  </div>
+                  <input 
+                    name ="password" 
+                    type="password"
+                    placeholder={"Password"}
+                    style={input_form}
+                    onChange={ e => {
+                      const {
+                        target: { value }
+                      } = e;
+                      setPassword(value);
+                    }}
+                    ref={register({
+                      required: "Required"
+                    })}
+                  />
+                </div>
+              </div>
             </div>
             <p className="text-danger">
               {errors.password && errors.password.message}
@@ -181,7 +198,7 @@ export default ({
               <img src="/icon/logo_curumamori.png" style={{width:"350px"}}/>
             </Link>
           </Img_center>
-          <h2>{action === "login" ? "로그인" : "회원가입"}</h2>
+          <h2 style={{fontWeight:"bold", color:"black"}}>{action === "login" ? "SignIn" : "SignUp"}</h2>
           <br/>
           {/* 제출 폼 */}
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -424,7 +441,7 @@ export default ({
         ) : action === 'register' ? (
           <>
             로그인 하시겠습니까?{" "}
-            <Link to="/auth/register">
+            <Link to="/auth/login">
               <Link_qwe onClick={() => setAction("login")}>로그인</Link_qwe>
             </Link>
           </>
