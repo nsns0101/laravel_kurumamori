@@ -97,7 +97,7 @@ export default ( {
                                 
                                 <div className="row mt-5">
                                     {/* 제품 등록 정보 */}
-                                    <div className="col-sm-6 col-lg-6">
+                                    <div className="col-sm-6 col-lg-6" style={{zIndex:1}}>
                                         <ScrollAnimation animateIn='fadeIn' delay={600} animateOnce={true}>
 
                                             <div className="card">
@@ -127,13 +127,13 @@ export default ( {
                                                             </button>
                                                         </div>
                                                     )}
-                                                    <Product_modal
+                                                    <Product_modal 
                                                         product={data.product}
                                                         setProduct_key_input={setProduct_key_input}
                                                         error_text={error_text}
                                                         history={history}
                                                         onSubmit={onSubmit}
-                                                    />
+                                                        />
                                                 </div>
                                             </div>
                                         </ScrollAnimation>

@@ -42,5 +42,6 @@
     <body>
         <div id="app"></div>
         <script src="/js/app.js"></script>
+        <link rel="stylesheet" href="/css/jang.css">
     </body>
 </html>

@@ -12,7 +12,7 @@ export default ({
     const { handleSubmit, register, errors, watch } = useForm();
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="modal fade show" id="productModal" tabIndex="-1" role="dialog" aria-labelledby="productModal" >
+            <div className="modal fade show" id="productModal" tabIndex="-1" role="dialog" aria-labelledby="productModal" style={{backgroundColor: "#000000cc"}}>
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
