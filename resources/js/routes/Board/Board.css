@@ -1,4 +1,46 @@
-/* #create__btn{
+#create__btn{
     color:black;
     font-size: 1.5em;
-} */
+    background-color: aqua;
+}
+#category_tab .btn-toggle-tab {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items:center;
+    width: 100%;
+    height: 56px;
+    color: #fff;
+    font-size: 18px;
+    text-align: left;
+    background-color: #595d6a;
+    transition: background-color 0.3s;
+    width: 100%;
+    padding-left:1em;
+}
+#category_tab .btn-toggle-tab::after {
+    display: block;
+    content: "";
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    -webkit-transform: translate(0, -70%) rotate(225deg);
+    transform: translate(0, -70%) rotate(225deg);
+    width: 0.4rem;
+    height: 0.4rem;
+    border-left: 2px solid #fff;
+    border-top: 2px solid #fff;
+    background: 0 0;
+    transition: 0.3s;
+}
+#category_tab .in-wrap {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    z-index: 5;
+    border: 1px solid #34394d;
+    border-width: 0 1px 1px;
+    /* box-sizing: border-box; */
+    background: #fff;
+    /* display: none; */
+}
