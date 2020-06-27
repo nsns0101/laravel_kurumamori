@@ -36,11 +36,15 @@ export default () => {
                     <div className="row m-3 justify-content-around">
                         <div className="col-xs-10 col-sm-10 col-lg-10 card px-3 py-3">
                             {/* 질문 해더 */}
-                            <div className="row justify-content-between py-3"> 
+                            <div className="row justify-content-center py-3"> 
                                 {/* 카테고리 선택 항목 */}
+<<<<<<< HEAD
                                 <div className="row col-sm-10 col-lg-12 justify-content-around px-0 mx-0 pb-4 align-middle">
+=======
+                                {/* <div className="row col-sm-10 col-lg-12 justify-content-around px-0 mx-0  align-middle py-2">
+>>>>>>> board2
                                     <div className="border-2 border border-dark ">
-                                        <Link to="/boards/questions" id="" className="btn btn-intro text-dark" >전체 글</Link>
+                                        <Link to="/boards/questions" id="" className="btn btn-intro text-dark" >ALL</Link>
                                     </div>
                                     <div className="border-2 border border-dark">
                                         <Link to="/boards/questions" id="" className="btn btn-intro text-dark" >공지사항</Link>
@@ -59,6 +63,53 @@ export default () => {
                                     </div>
                                     <div className="border-2 border border-dark">
                                         <Link to="/boards/questions" id="" className="btn btn-intro text-dark" >기타문의</Link>
+                                    </div>
+                                </div> */}
+
+                                <div id="category_tab" className="col-sm-10 col-lg-10 px-0 mx-0 w-100">
+                                    <button id="" className="btn-toggle-tab" >
+                                        <span>ALL</span>
+                                        {/* <ul id="mobile-only">
+                                        </ul> */}
+                                    </button>
+
+                                    <div className="in-wrap bg-dark row mx-0 px-0 justify-content-center"
+                                        style={{
+                                            // display:"none",
+                                        }}
+                                    >
+                                        <div id="in-wrap" className="col-sm-11 col-lg-11 pt-3 bg-white row mx-0 px-0">
+                                            <div className="col-sm-12 col-lg-12">
+                                                <h2 id="" className="" style={{
+                                                    fontSize:1.5+"em"
+                                                }}>질문 게시판</h2>
+                                            </div>
+                                            <div className="col-sm-12 col-lg-12">
+                                                <ul className="row mx-0 px-0 ">
+                                                    <li className="col-sm-12 col-lg-4">
+                                                        <Link to="/boards/questions" id="" className="text-dark" >ALL</Link>
+                                                    </li>
+                                                    <li className="col-sm-12 col-lg-4">
+                                                        <Link to="/boards/questions" id="" className="text-dark" >공지사항</Link>
+                                                    </li>
+                                                    <li className="col-sm-12 col-lg-4">
+                                                        <Link to="/boards/questions" id="" className="text-dark" >업데이트</Link>
+                                                    </li>
+                                                    <li className="col-sm-12 col-lg-4">
+                                                        <Link to="/boards/questions" id="" className="text-dark" >제품구매</Link>
+                                                    </li>
+                                                    <li className="col-sm-12 col-lg-4">
+                                                        <Link to="/boards/questions" id="" className="text-dark" >제품오류</Link>
+                                                    </li>
+                                                    <li className="col-sm-12 col-lg-4">
+                                                        <Link to="/boards/questions" id="" className="text-dark" >소프트웨어</Link>
+                                                    </li>
+                                                    <li className="col-sm-12 col-lg-4">
+                                                        <Link to="/boards/questions" id="" className="text-dark" >기타문의</Link>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
