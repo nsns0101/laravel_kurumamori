@@ -40,7 +40,7 @@
     z-index: 5;
     border: 1px solid #34394d;
     border-width: 0 1px 1px;
-    /* box-sizing: border-box; */
+    box-sizing: border-box;
     background: #fff;
     /* display: none; */
 }

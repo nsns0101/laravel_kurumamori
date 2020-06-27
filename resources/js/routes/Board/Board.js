@@ -38,11 +38,7 @@ export default () => {
                             {/* 질문 해더 */}
                             <div className="row justify-content-center py-3"> 
                                 {/* 카테고리 선택 항목 */}
-<<<<<<< HEAD
-                                <div className="row col-sm-10 col-lg-12 justify-content-around px-0 mx-0 pb-4 align-middle">
-=======
                                 {/* <div className="row col-sm-10 col-lg-12 justify-content-around px-0 mx-0  align-middle py-2">
->>>>>>> board2
                                     <div className="border-2 border border-dark ">
                                         <Link to="/boards/questions" id="" className="btn btn-intro text-dark" >ALL</Link>
                                     </div>
