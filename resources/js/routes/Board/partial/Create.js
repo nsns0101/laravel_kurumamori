@@ -69,10 +69,10 @@ export default () => {
                     <hr/>
                     <div className="form-group d-flex justify-content-end pb-3">
                         <span className="pr-3">
-                            <button className="btn btn-dark" type="submit">저장하기</button>
+                            <button className="btn-nomal" type="submit">저장하기</button>
                         </span>
                         <span>
-                            <Link to="/boards/questions"onClick={()=>{setAction("index")}} className="nav-link">뒤로가기</Link>
+                            <Link to="/boards/questions"onClick={()=>{setAction("index")}} className="btn-nomal">뒤로가기</Link>
                         </span>
                     </div>
                 </form>
