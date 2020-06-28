@@ -26,7 +26,7 @@ export default () => {
                                 <div className="row col-sm-10 col-lg-10 justify-content-around px-0 mx-0">
                                     <div className="col-sm-12 col-lg-4 text-left">
                                         <h1 style={{fontSize:2.75+'em',fontWeight:800, color:"black"}}>
-                                            45세 오다 에이이치로씨의 코멘트
+                                            24세 예준현씨의 코멘트
                                         </h1>
                                     </div>
                                     <div className="col-sm-12 col-lg-8 text-left">

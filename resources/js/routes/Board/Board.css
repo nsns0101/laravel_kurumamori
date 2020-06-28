@@ -1,9 +1,5 @@
-#create__btn{
-    color:black;
-    font-size: 1.5em;
-    background-color: aqua;
-}
-#category_tab .btn-toggle-tab {
+/* 네비게이션 */
+#category-tab .btn-toggle-tab {
     position: relative;
     display: flex;
     justify-content: flex-start;
@@ -18,7 +14,7 @@
     width: 100%;
     padding-left:1em;
 }
-#category_tab .btn-toggle-tab::after {
+#category-tab .btn-toggle-tab::after {
     display: block;
     content: "";
     position: absolute;
@@ -33,14 +29,44 @@
     background: 0 0;
     transition: 0.3s;
 }
-#category_tab .in-wrap {
+#category-tab .in-wrap {
     position: absolute;
     width: 100%;
     overflow: hidden;
     z-index: 5;
     border: 1px solid #34394d;
     border-width: 0 1px 1px;
-    /* box-sizing: border-box; */
+    box-sizing: border-box;
     background: #fff;
-    /* display: none; */
+    display: none;
 }
+
+#supplementary-tab .btn-create{
+    display: inline-block;
+    font-weight: 400;
+    color: #858796;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.35rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    border: 1px solid #34394d;
+    padding-left: 1em;
+    padding-right: 1em;
+    font-size: 1em;
+}
+
+/* #category-tab {
+    background-color: beige;
+}
+#supplementary-tab{
+    background-color: aquamarine;
+} */
