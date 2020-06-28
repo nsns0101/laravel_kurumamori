@@ -18,6 +18,8 @@ export default () => {
         setSelect,
         history,
         onShow,
+        categoryHover,
+        setCategoryHover,
     } = useContext(BoardContext);
      
     const page_count = [];
@@ -25,7 +27,16 @@ export default () => {
     for(var i = 0; i < data.questions.last_page; i++){
         page_count.push([i]);
     }
-    console.log(page_count);
+    // setCategoryHover('no');
+    console.log(categoryHover);
+
+    if(categoryHover=='yes'){
+        
+    }
+    else{
+
+    }
+
     return (
         data  ? 
             data && localStorage.getItem('userToken') == null ? 
@@ -40,7 +51,9 @@ export default () => {
                             <div className="row justify-content-center py-3"> 
 
                                 {/* 카테고리 선택 항목 */}
-                                {/* <div id="category-tab" className="col-sm-11 col-lg-11 py-2 px-0 mx-0 w-100">
+                                <div id="category-tab" className="col-sm-11 col-lg-11 py-2 px-0 mx-0 w-100" 
+                                    onMouseEnter={()=>{setCategoryHover('yes')}}
+                                    onMouseLeave={()=>{setCategoryHover('no')}}>
                                     <button id="" className="btn-toggle-tab" >
                                         <span>ALL</span>
                                         <ul id="mobile-only">
@@ -61,31 +74,31 @@ export default () => {
                                             <div className="col-sm-12 col-lg-12">
                                                 <ul className="row mx-0 px-0 ">
                                                     <li className="col-sm-12 col-lg-4 py-2">
-                                                        <Link to="/boards/questions" id="" className="text-dark" >ALL</Link>
+                                                        <Link  to="/boards/questions" id="" className="category-text" >ALL</Link>
                                                     </li>
                                                     <li className="col-sm-12 col-lg-4 py-2">
-                                                        <Link to="/boards/questions" id="" className="text-dark" >공지사항</Link>
+                                                        <Link to="/boards/questions" id="" className="category-text" >공지사항</Link>
                                                     </li>
                                                     <li className="col-sm-12 col-lg-4 py-2">
-                                                        <Link to="/boards/questions" id="" className="text-dark" >업데이트</Link>
+                                                        <Link to="/boards/questions" id="" className="category-text" >업데이트</Link>
                                                     </li>
                                                     <li className="col-sm-12 col-lg-4 py-2">
-                                                        <Link to="/boards/questions" id="" className="text-dark" >제품구매</Link>
+                                                        <Link to="/boards/questions" id="" className="category-text" >제품구매</Link>
                                                     </li>
                                                     <li className="col-sm-12 col-lg-4 py-2">
-                                                        <Link to="/boards/questions" id="" className="text-dark" >제품오류</Link>
+                                                        <Link to="/boards/questions" id="" className="category-text" >제품오류</Link>
                                                     </li>
                                                     <li className="col-sm-12 col-lg-4 py-2">
-                                                        <Link to="/boards/questions" id="" className="text-dark" >소프트웨어</Link>
+                                                        <Link to="/boards/questions" id="" className="category-text" >소프트웨어</Link>
                                                     </li>
                                                     <li className="col-sm-12 col-lg-4 py-2">
-                                                        <Link to="/boards/questions" id="" className="text-dark" >기타문의</Link>
+                                                        <Link to="/boards/questions" id="" className="category-text" >기타문의</Link>
                                                     </li>
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
-                                </div> */}
+                                </div>
 
                                 {/* 검색 및 글 쓰기 */}
                                 <div id="supplementary-tab" className="col-sm-11 col-lg-11 py-2 px-0 mx-0 w-100">
@@ -98,12 +111,23 @@ export default () => {
                                     </div> */}
                                     <div className="row justify-content-end px-0 mx-0 w-100">
                                         {/* 글 검색 항목 */}
-                                        <div className="pr-3">
-                                            <ReactSearchBox 
+                                        <div className="pr-3 ">
+                                            {/* <ReactSearchBox 
+                                                className="search-box"
                                                 placeholder="검색어를 입력해 주세요."
                                                 value=""
                                                 // inputBoxBorderColor=""
-                                            />
+                                            /> */}
+                                            <span className="row px-0 mx-0">
+                                                <input
+                                                className="search-box"
+                                                placeholder="검색어를 입력해 주세요."
+                                                >
+                                                </input>
+                                                <Link className="search-botton">
+                                                    <img className="search-img" src="../icon/search.png"></img>
+                                                </Link>
+                                            </span>
                                         </div>
 
                                         {/* 글 작성 항목 */}

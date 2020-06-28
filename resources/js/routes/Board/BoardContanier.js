@@ -24,6 +24,7 @@ export default ({history}) => {
     const { register, handleSubmit } = useForm();
 
     const [select, setSelect] = useState(""); 
+    const [categoryHover, setCategoryHover] = useState("no"); 
     useEffect(() =>{
         console.log("board useEffect");
         if(action == "index"){
@@ -140,6 +141,9 @@ export default ({history}) => {
             })
         }
     }
+    const onHoverNav = () => {
+        
+    }
 
     return (
         data ? 
@@ -166,6 +170,9 @@ export default ({history}) => {
             onDelete,
             onShow,
             onUpdate,
+
+            categoryHover,
+            setCategoryHover,
         }}>
             {action == "edit" ? <Edit/>:""}
             {action == "show" ? <Show/>:""}
