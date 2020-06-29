@@ -158,10 +158,10 @@ class AppController extends Controller
         // $latitude = 35.893932;
         // $longitude = 128.620904;
         $url_address = "https://maps.googleapis.com/maps/api/geocode/json?latlng={$request->_latitude},{$request->_longitude}&key={$apiKey_address}&language=ko";
-        $address = curl_init();
-        curl_setopt($address,CURLOPT_URL,$url_address);
-        curl_setopt($address, CURLOPT_POST, 0);
-        curl_setopt($address,CURLOPT_RETURNTRANSFER, true);
+        $address = \curl_init();
+        \curl_setopt($address,CURLOPT_URL,$url_address);
+        \curl_setopt($address, CURLOPT_POST, 0);
+        \curl_setopt($address,CURLOPT_RETURNTRANSFER, true);
         $result_address = curl_exec($address);
         $result_address = json_decode($result_address); 
 
@@ -187,10 +187,11 @@ class AppController extends Controller
         
         $fields = new \stdClass();
         $message = new \stdClass();
-        $message->to = "01035989003";
-        // $message->to = "01023560525";
-        // $message->to = "01027794593";
-        // $message->to = "01050039201";
+        // $message->to = "01035989003";  //장
+        // $message->to = "01023560525";  //팽
+        $message->to = "01027794593";  //예
+        // $message->to = "01050039201";  //김
+        // $message->to = "01073746119";  //이
         $message->from = "01050039201";
         $message->subject = "[kurumamori119 신고]";
         $message->text = $user_data;
@@ -201,12 +202,12 @@ class AppController extends Controller
         // $.getJSON(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${API_KEY}`,
 
         
-        $sms = curl_init();
-        curl_setopt($sms,CURLOPT_URL,$url);
-        curl_setopt($sms, CURLOPT_HTTPHEADER, array($header, "Content-Type: application/json"));
-        curl_setopt($sms, CURLOPT_POST, 1);
-        curl_setopt($sms, CURLOPT_POSTFIELDS, $fields_string);
-        curl_setopt($sms,CURLOPT_RETURNTRANSFER, true);
+        $sms = \curl_init();
+        \curl_setopt($sms,CURLOPT_URL,$url);
+        \curl_setopt($sms, CURLOPT_HTTPHEADER, array($header, "Content-Type: application/json"));
+        \curl_setopt($sms, CURLOPT_POST, 1);
+        \curl_setopt($sms, CURLOPT_POSTFIELDS, $fields_string);
+        \curl_setopt($sms,CURLOPT_RETURNTRANSFER, true);
 
         $result = curl_exec($sms);
         // json_encode($message,JSON_UNESCAPED_UNICODE)."<br/><br/>".$user_data;

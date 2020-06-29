@@ -28,7 +28,9 @@ export default () => {
         duration: 7000,
         // decimals: 2,    
         useGroup: true,
-        animation: 'roll',
+        // animation: 'roll',
+        animation: 'up',
+
     };
     const count_set3 = {
         start: 0,
@@ -36,7 +38,9 @@ export default () => {
         duration: 7000,
         // decimals: 2,
         useGroup: true,
-        animation: 'slide',
+        // animation: 'slide',
+        animation: 'up',
+
     };
 
     const a_func = (img, title_1, title_2, count_set) => {

@@ -37,10 +37,10 @@ class TestController extends Controller
         $latitude = 35.893932;
         $longitude = 128.620904;
         $url_address = "https://maps.googleapis.com/maps/api/geocode/json?latlng={$latitude},{$longitude}&key={$apiKey_address}&language=ko";
-        $address = curl_init();
-        curl_setopt($address,CURLOPT_URL,$url_address);
-        curl_setopt($address, CURLOPT_POST, 0);
-        curl_setopt($address,CURLOPT_RETURNTRANSFER, true);
+        $address = \curl_init();
+        \curl_setopt($address,CURLOPT_URL,$url_address);
+        \curl_setopt($address, CURLOPT_POST, 0);
+        \curl_setopt($address,CURLOPT_RETURNTRANSFER, true);
         $result_address = curl_exec($address);
         $result_address = json_decode($result_address); 
 
@@ -81,12 +81,12 @@ class TestController extends Controller
         // $.getJSON(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${API_KEY}`,
 
         
-        $sms = curl_init();
-        curl_setopt($sms,CURLOPT_URL,$url);
-        curl_setopt($sms, CURLOPT_HTTPHEADER, array($header, "Content-Type: application/json"));
-        curl_setopt($sms, CURLOPT_POST, 1);
-        curl_setopt($sms, CURLOPT_POSTFIELDS, $fields_string);
-        curl_setopt($sms,CURLOPT_RETURNTRANSFER, true);
+        $sms = \curl_init();
+        \curl_setopt($sms,CURLOPT_URL,$url);
+        \curl_setopt($sms, CURLOPT_HTTPHEADER, array($header, "Content-Type: application/json"));
+        \curl_setopt($sms, CURLOPT_POST, 1);
+        \curl_setopt($sms, CURLOPT_POSTFIELDS, $fields_string);
+        \curl_setopt($sms,CURLOPT_RETURNTRANSFER, true);
 
         $result = curl_exec($sms);
         // return json_encode($message,JSON_UNESCAPED_UNICODE)."<br/><br/>".$user_data;
