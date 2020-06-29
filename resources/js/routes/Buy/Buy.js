@@ -127,7 +127,7 @@ export default ({
                                                     <p className="pl-2 py-3 mb-0" style={{color:"black", fontWeight:"600"}}>PROVINCE/STATE</p>
                                                 </div>
                                                 <div className="col-md-3 mx-0 px-0 my-0 py-0">
-                                                    <select id="buy_state" style={{height:3.25+"em",width:100+"%", border:"1px solid #F0F0F0",backgroundColor:"#F0F0F0"}}
+                                                    <select id="buy_state" name="state" style={{height:3.25+"em",width:100+"%", border:"1px solid #F0F0F0",backgroundColor:"#F0F0F0"}}
                                                         onChange={ e => {
                                                             const {
                                                             target: { value }
@@ -243,7 +243,7 @@ export default ({
                                             </div>
 
                                         </div>
-                                        <div className="row justify-content-center py-2">
+                                        <div className="row justify-content-center py-2 pb-5">
                                             <button className="col-lg-2 col-sm-10 mt-3 btn bg-dark" style={{width:"100%", color:"white", fontSize:1.75+"em"}}>구입 하기</button>
                                         </div>
                                     </form>

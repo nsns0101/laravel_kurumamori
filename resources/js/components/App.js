@@ -72,7 +72,7 @@ function App() {
                 {/* 로그아웃 */}
                 <Route path="/logout" exact component={Login}/>
                 {/* 내정보 */}
-                <Route path="/info/index" exact component={Info_index}/>
+                <Route path="/info/index" component={Info_index}/>
                 {/* 의료정보 */}
                 <Route path="/info/medical_info" component={Info_medical}/>
                 {/* 운전점수 */}
@@ -102,10 +102,6 @@ function App() {
                 <Route path="/auth/login" exact component={Login}/>
                 {/* 회원가입 페이지 */}
                 <Route path="/auth/register" exact component={Login}/>
-                {/* 의료정보 */}
-                <Route path="/info/medical_info" exact component={Info_medical}/>                
-                {/* 운전점수 */}
-                <Route path="/info/drive_score" exact component={Info_drive}/>
                 {/* 빅데이터 자료실 */}
                 <Route path="/bigdata" component={Bigdata}/>
 

@@ -92,7 +92,7 @@ $factory->define(App\Past_sickness::class, function (Faker $faker) {
     $userId = App\User::pluck('id')->toArray();
     $random_userId = $faker->randomElement($userId);
     $medicalId = App\Medical_info::whereUser_id($random_userId)->first()->id;
-    $sickness = ["없음", "고혈압", "당뇨", "결핵", "심장질환", "알러지", "천식", "심부전증", "페렴", "디스크", "간경화", "관절염", "협심증", "암", "갑상선염", "고지혈증", "골다공증", "과민성 대장", "기관지염", "뇌졸중", "신장질환", "간암"];
+    $sickness = ["고혈압", "당뇨", "결핵", "심장질환", "알러지", "천식", "심부전증", "페렴", "디스크", "간경화", "관절염", "협심증", "암", "갑상선염", "고지혈증", "골다공증", "과민성 대장", "기관지염", "뇌졸중", "신장질환", "간암"];
     
     return [
         'user_id' => $random_userId,
