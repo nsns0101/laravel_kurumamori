@@ -46,7 +46,9 @@ export default () => {
                 <div className="contaienr px-3 py-5 p-md-5">
                     <div className="row m-3 justify-content-around">
                         <div className="col-xs-10 col-sm-10 col-lg-10 card px-3 py-3">
-
+                            <div className="px-3 pt-3">
+                                <h2 style={{fontSize:3+"em"}}>고객 문의</h2>
+                            </div>
                             {/* 네비게이션 */}
                             <div className="row justify-content-center py-3"> 
 
