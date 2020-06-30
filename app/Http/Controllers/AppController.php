@@ -249,7 +249,7 @@ class AppController extends Controller
         // $result_address_url = "https://www.google.com/maps/place/%EB%8C%80%EA%B5%AC%EA%B4%91%EC%97%AD%EC%8B%9C+%EB%B6%81%EA%B5%AC+%EB%B3%B5%ED%98%842%EB%8F%99+%EB%B3%B5%ED%98%84%EB%A1%9C+35/@35.8963134,128.6198624,17z/data=!3m1!4b1!4m5!3m4!1s0x3565e1bb2f087589:0x5a55f9de5c2d9ea!8m2!3d35.8963091!4d128.6220511?hl=ko";
         header("Content-Type: text/html; charset=utf-8");
         $apiKey_address = env('MIX_GCP_API_KEY');
-        $url_address = "https://maps.googleapis.com/maps/api/geocode/json?latlng={$request->_latitude},{$request->longitude}&key={$apiKey_address}&language=ko";
+        $url_address = "https://maps.googleapis.com/maps/api/geocode/json?latlng={$request->_latitude},{$request->_longitude}&key={$apiKey_address}&language=ko";
         $address = \curl_init();
         \curl_setopt($address,CURLOPT_URL,$url_address);
         \curl_setopt($address, CURLOPT_POST, 0);
@@ -257,7 +257,7 @@ class AppController extends Controller
         $result_address = curl_exec($address);
         $result_address = json_decode($result_address); 
 
-        $result_address_url = "https://www.google.com/maps/search/?api=1&query={$request->_latitude},{$request->longitude}";
+        $result_address_url = "https://www.google.com/maps/search/?api=1&query={$request->_latitude},{$request->_longitude}";
 
         if(\App\Medical_info::whereUser_id($request->_key)->first()){
           $guardian_phone = isset(\App\Medical_info::whereUser_id($request->_key)->first()->guardian_phone) ? \App\Medical_info::whereUser_id($request->_key)->first()->guardian_phone : "";
