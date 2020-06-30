@@ -185,7 +185,9 @@ class AppController extends Controller
           'sleep_count' => 0,
           'sudden_stop_count' => 0,
           'sudden_acceleration_count' => 0,
-          'created_at' => date("Y-m-d hh:mm:ss"),
+          'created_at' => date("Y-m-d h:m:s", strtotime("+9 hour")),
+          'updated_at' => date("Y-m-d h:m:s", strtotime("+9 hour"))
+
         ]);
         return response()->json($drive_start->id);
       }
@@ -197,6 +199,7 @@ class AppController extends Controller
           'sleep_count' => $request->_sleep_count,
           'sudden_stop_count' => $request->_sudden_stop_count,
           'sudden_acceleration_count' => $request->_sudden_acceleration_count,
+          'updated_at' => date("Y-m-d h:m:s", strtotime("+9 hour"))
         ]);
           return response()->json([
             'success'=>true
@@ -212,6 +215,8 @@ class AppController extends Controller
         //   $request->_bool_sudden_stop,
         //   $request->_bool_sleep
         // ];
+        \Log::info(date("Y-m-d h:m:s", strtotime("+9 hour")));
+
         $drive = \App\Drive_detection::create([
           'drive_id' => $request->_drive_id,
           'user_id' => $request->_key,
@@ -221,6 +226,8 @@ class AppController extends Controller
           'bool_sudden_acceleration' => $request->_bool_sudden_acceleration,
           'bool_sudden_stop' => $request->_bool_sudden_stop,
           'bool_sleep' => $request->_bool_sleep,
+          'created_at' => date("Y-m-d h:m:s", strtotime("+9 hour")),
+          'updated_at' => date("Y-m-d h:m:s", strtotime("+9 hour"))
         ]);
         return response()->json($drive);
       }

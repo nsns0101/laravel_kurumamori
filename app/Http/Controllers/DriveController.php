@@ -14,12 +14,12 @@ class DriveController extends Controller
     {
         \Log::info("good");
         \Log::info($request);
+
         if($request->user_id){
 
             //선택날짜의 운전 정보
             $drive_info = \DB::select("select * from drives where DATE_FORMAT(created_at, '%Y-%m-%d') = '{$request->date}' AND user_id = '{$request->user_id}'");
             //선택날짜의 위험 정보
-            
             //현재날짜포함하여 최근 5일 구하기
             $day_5 = array();
             for($i = 0; $i <5; $i++){
@@ -116,13 +116,15 @@ class DriveController extends Controller
             $add_score = 0; //추가 점수
 
             //운전시간이 1800초 미만일시 감소점수 5배
-            if($day_5_sec[0] < 1800){
-                $mul = 5;
-            }
+            // if($day_5_sec[0] < 1800){
+            //     $mul = 5;
+            // }
+
             //운전시간이 1800~3600초일시 감소점수 2배
-            elseif($day_5_sec[0] < 3600){
-                $mul = 2;
-            }
+            // elseif($day_5_sec[0] < 3600){
+            //     $mul = 2;
+            // }
+
             //운전시간이 3600초 이상일 경우 증가점수 부여
             //증가점수 기준 : 1시간에서 +10분 운전당  => + 점수 4항목 +2점(8점 = 총점수 2점)
             // else{
