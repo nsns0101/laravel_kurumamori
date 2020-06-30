@@ -22,7 +22,7 @@ export default () => {
                         <div className="card sleep-chart border-info">
                             <div className="row no-gutters">
                                 <div className="col-4">
-                                    <img src="/images/bigdata/graph1.png" alt="" className="card-img card-img-view"/>
+                                    <img src="/images/graph1.png" alt="" className="card-img card-img-view"/>
                                 </div>
                                 <div className="col-8 text-right">
                                     <div className="card-body">
@@ -42,7 +42,7 @@ export default () => {
                         <div className="card sudden-chart border-warning">
                             <div className="row no-gutters">
                                 <div className="col-4">
-                                    <img src="/images/bigdata/graph2.png" alt="" className="card-img card-img-view"/>
+                                    <img src="/images/graph2.png" alt="" className="card-img card-img-view"/>
                                 </div>
                                 <div className="col-8 text-right">
                                     <div className="card-body">
@@ -62,7 +62,7 @@ export default () => {
                         <div className="card accident-chart border-danger">
                             <div className="row no-gutters">
                                 <div className="col-4">
-                                    <img src="/images/bigdata/graph3.png" alt="" className="card-img card-img-view"/>
+                                    <img src="/images/graph3.png" alt="" className="card-img card-img-view"/>
                                 </div>
                                 <div className="col-8 text-right">
                                     <div className="card-body">
