@@ -69,8 +69,8 @@ class TestController extends Controller
         // $message->to = "01035989003";
         // $message->to = "01023560525";
         // $message->to = "01027794593";
-        // $message->to = "01073746119";
-        $message->to = "01050039201";
+        $message->to = "01073746119";
+        // $message->to = "01050039201";
         $message->from = "01050039201";
         $message->subject = "[kurumamori119 신고]";
         $message->text = $user_data;
