@@ -297,9 +297,9 @@ class AppController extends Controller
         $message = new \stdClass();
         // $message->to = "01035989003";  //장
         // $message->to = "01023560525";  //팽
-        // $message->to = "01027794593";  //예
+        $message->to = "01027794593";  //예
         // $message->to = "01050039201";  //김
-        $message->to = "01073746119";  //이
+        // $message->to = "01073746119";  //이
         $message->from = "01050039201";
         $message->subject = "[kurumamori119 신고]";
         $message->text = $user_data;
