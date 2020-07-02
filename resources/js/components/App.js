@@ -34,7 +34,9 @@ export const AppContext = createContext();
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [user, setUser] = useState(false);
-
+    // 언어
+    const [language, setLanguage] = useState("korea");
+    
     useEffect(()=>{
         // console.log(user);
         console.log("app useEffect");
