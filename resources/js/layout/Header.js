@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import {AppContext} from "../components/App";
 // import styled from "styled-components";
 
-export default  () => {
+export default  ({t}) => {
+    console.log(t);
     const {user} = useContext(AppContext);    //값 전달 성공
     // console.log(isLoggedIn);
     const nav_text = {

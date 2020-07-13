@@ -2,8 +2,10 @@ import React, {useState, useEffect, createContext, useContext} from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Link, BrowserRouter } from "react-router-dom";
 import Axios from 'axios';
+import {withTranslation} from "react-i18next";
+import i18next from "../config/lang/i18n";
 
-//css
+//Layout
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
 
@@ -128,7 +130,7 @@ function App() {
     );
 }
 
-export default App;
+export default withTranslation()(App);
 
 if (document.getElementById('app')) {
     ReactDOM.render(<App />, document.getElementById('app'));
