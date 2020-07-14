@@ -2,7 +2,7 @@ import React, {useState, useEffect, createContext, useContext} from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Link, BrowserRouter } from "react-router-dom";
 import Axios from 'axios';
-import {withTranslation} from "react-i18next";
+import {useTranslation, withTranslation} from "react-i18next";
 import i18next from "../config/lang/i18n";
 
 //Layout
@@ -34,6 +34,8 @@ import Review from "../routes/Board/Review";
 export const AppContext = createContext();
 
 function App() {
+    const { t } = useTranslation();
+    // console.log(t('hello'));
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [user, setUser] = useState(false);
     // 언어
@@ -67,7 +69,7 @@ function App() {
     }, [isLoggedIn]);
 
     return ( user.id ? (
-        <AppContext.Provider value={{isLoggedIn, setIsLoggedIn, user, setUser}}>
+        <AppContext.Provider value={{isLoggedIn, setIsLoggedIn, user, setUser, t}}>
             <BrowserRouter>
                 <Header/>
                 {/* 메인페이지 */}
@@ -97,7 +99,7 @@ function App() {
             </BrowserRouter>
         </AppContext.Provider>
     ) : (
-        <AppContext.Provider value={{isLoggedIn, setIsLoggedIn, user, setUser}}>
+        <AppContext.Provider value={{isLoggedIn, setIsLoggedIn, user, setUser, t}}>
             <BrowserRouter>
                 <Header/>
                 {/* 메인페이지 */}

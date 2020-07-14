@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useContext} from 'react';
+import {AppContext} from "../../../components/App";
 import AnimationCount from 'react-count-animation';
 import 'react-count-animation/dist/count.min.css';
 import ScrollAnimation from "react-animate-on-scroll";
 
 export default () => {
+    const {t} = useContext(AppContext);
+
     const main_text = {
         fontSize: "32px",
         fontWeight: "bold",
@@ -70,9 +73,9 @@ export default () => {
                                 <h3 style={{color:"black"}}>──────────────────────────────</h3>
                             </ScrollAnimation>
                         </div>
-                        {a_func("/images/home/index_img_chapter01.png", "연간 교통사고", "발생 건 수", count_set1)}
-                        {a_func("/images/home/index_img_chapter02.png", "연간 교통사고", "사망자 수", count_set2)}
-                        {a_func("/images/home/index_img_chapter03.png", "교통사고로 인한", "연간 경제적 손실", count_set3)}
+                        {a_func("/images/home/index_img_chapter01.png", t("연간 교통사고"), t("발생 건 수"), count_set1)}
+                        {a_func("/images/home/index_img_chapter02.png", t("연간 교통사고"), t("사망자 수"), count_set2)}
+                        {a_func("/images/home/index_img_chapter03.png", t("교통사고로 인한"), t("연간 경제적 손실"), count_set3)}
                     </div>
                 </div>
 

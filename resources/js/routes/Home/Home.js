@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {AppContext} from "../../components/App";
 import Function1 from "./partial/Functions1";
 import Function2 from "./partial/Functions2";
 import Team from "./partial/Team";
@@ -7,7 +8,6 @@ import "./Home.css";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import ScrollAnimation from "react-animate-on-scroll";
-
 const Wrapper = styled.div`
   min-height: 80vh;
   display: flex;
@@ -17,6 +17,8 @@ const Wrapper = styled.div`
 `;
 
 export default () => {
+    const {t} = useContext(AppContext);
+
     const main_btn = {
         fontFamily: "Poppins, sansSerif",
         fontWeight: "600",
@@ -43,12 +45,12 @@ export default () => {
                                     <img className="img mb-5" src="/icon/logo_curumamori.png" alt="logo" style={{width:300}}/>
                                 </ScrollAnimation>
                                 <ScrollAnimation animateIn='fadeIn' delay={700} animateOnce={true}>
-                                    <h3 style={{color:"white", fontSize:"24px"}}>딥 러닝 기반의 얼굴인식을 통한</h3>
-                                    <h3 style={{color:"white", fontSize:"24px"}}>교통사고 예방 & 자동 SOS 서비스</h3>
+                                    <h3 style={{color:"white", fontSize:"24px"}}>{t("딥 러닝 기반의 얼굴인식을 통한")}</h3>
+                                    <h3 style={{color:"white", fontSize:"24px"}}>{t("교통사고 예방 & 자동 SOS 서비스")}</h3>
                                 </ScrollAnimation>
                                 <ScrollAnimation animateIn='fadeIn' delay={1000} animateOnce={true}>
                                     <Link className="btn" to="/products" style={main_btn}>
-                                        제품 구매→
+                                        {t("제품 구매") + "→"}
                                     </Link>
                                 </ScrollAnimation>
                             </div>

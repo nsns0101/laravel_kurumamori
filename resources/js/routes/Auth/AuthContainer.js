@@ -5,7 +5,7 @@ import Axios from "axios";
 import {AppContext} from "../../components/App";
 
 export default ({ location, history }) => {
-  const {setUser, setIsLoggedIn} = useContext(AppContext);
+  const {setUser, setIsLoggedIn, t} = useContext(AppContext);
   // console.log(isLoggedIn);  
 
 //현재 로그인인지 회원가입인지 등의 상태
@@ -45,10 +45,10 @@ export default ({ location, history }) => {
         console.log(res);
         if (res.data.error){
           if(res.data.error == "users_email_unique"){
-            setDanger_message("이미 가입한 이메일입니다");
+            setDanger_message(t("이미 가입한 이메일입니다."));
           }
           else if(res.data.error == "users_phone_unique"){
-            setDanger_message("이미 가입한 휴대폰 번호입니다.");
+            setDanger_message(t("이미 가입한 휴대폰 번호입니다."));
           }
         }
         else {
@@ -85,7 +85,7 @@ export default ({ location, history }) => {
           setIsLoggedIn(true);
         }
         else{
-          setDanger_message("잘못된 이메일 또는 비밀번호 입니다.");
+          setDanger_message(t("잘못된 이메일 또는 비밀번호 입니다."));
         }
         
       });
@@ -127,7 +127,7 @@ export default ({ location, history }) => {
         // console.log(isLoggedIn);
       }
       else{
-        setDanger_message("잘못된 이메일 또는 비밀번호 입니다.");
+        setDanger_message(t("잘못된 승인코드 입니다."));
       }
       
     });;;
@@ -135,7 +135,7 @@ export default ({ location, history }) => {
 
   //로그아웃일 때
   if(action === "logout"){
-    console.log("good");
+    console.log("logout");
     localStorage.removeItem("userToken");
     history.push("/");
     setUser(false);

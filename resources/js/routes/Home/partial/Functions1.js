@@ -1,8 +1,11 @@
-import React from "react";
+import React, {useContext} from 'react';
+import {AppContext} from "../../../components/App";
 import styled from "styled-components";
 import ScrollAnimation from "react-animate-on-scroll";
 
 export default () => {
+    const {t} = useContext(AppContext);
+
     const main_text = {
         fontSize: "32px",
         fontWeight: "bold",
@@ -63,9 +66,9 @@ export default () => {
 
                             </ScrollAnimation>
                         </div>
-                            {service_func("/images/home/예방.png", "사고 예방", "운전 중 졸음운전과 전방 주시 태만 등으로 인해 발생하는 교통사고를 손쉽게 예방가능", "Right", 1)}
-                            {service_func("/images/home/신고.png", "자동 신고", "돌발상황 발생 시 사용자의 의료·위치정보를 제공하는 자동 신고로 골든타임 확보가능", "Down", 2)}
-                            {service_func("/images/home/search.png", "빅 데이터", "사용자의 운전습관을 파악하여 사고, 졸음 다발지역 등을 통계자료를 통해 확인가능", 'Left', 3)}
+                            {service_func("/images/home/예방.png", t("사고 예방"), t("운전 중 졸음운전과 전방 주시 태만 등으로 인해 발생하는 교통사고를 손쉽게 예방가능"), "Right", 1)}
+                            {service_func("/images/home/신고.png", t("자동 신고"), t("돌발상황 발생 시 사용자의 의료·위치정보를 제공하는 자동 신고로 골든타임 확보가능"), "Down", 2)}
+                            {service_func("/images/home/search.png", t("빅 데이터"), t("사용자의 운전습관을 파악하여 사고, 졸음 다발지역 등을 통계자료를 통해 확인가능"), 'Left', 3)}
                     </div>
                 </div>
 

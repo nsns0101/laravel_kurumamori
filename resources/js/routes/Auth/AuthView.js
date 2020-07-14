@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
+import {AppContext} from "../../components/App";
 import styled from "styled-components";
 import Input from "../../components/Input";
 // import Button from "../../components/Button";
@@ -103,6 +104,8 @@ export default ({
   danger_message,
   setDanger_message,
 }) => {
+
+  const {t} = useContext(AppContext);
   const { handleSubmit, register, errors, watch } = useForm();
   const input_form = {
     width: "100%",
@@ -184,7 +187,7 @@ export default ({
             </p>
             <div className="form-group">
               <button className="btn btn-primary btn-lg btn-block">
-                로그인
+                {t("로그인")}
               </button>
             </div>
           </form>
@@ -202,7 +205,7 @@ export default ({
           <br/>
           {/* 제출 폼 */}
           <form onSubmit={handleSubmit(onSubmit)}>
-            <h5 className="text-center" style={{color:"black"}}>로그인 정보</h5>
+            <h5 className="text-center" style={{color:"black"}}>{t("로그인 정보")}</h5>
             <br />
             
             {/* 이메일 */}
@@ -210,7 +213,7 @@ export default ({
               <input 
                 name ="email"
                 type="email"
-                placeholder={"이메일"}
+                placeholder={"Email"}
                 style={input_form}
                 onChange={ e => {
                   const {
@@ -222,7 +225,7 @@ export default ({
                   required: "Required",
                   pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                    message: "이메일 형식(@)이 아닙니다."
+                    message: t("이메일 형식(@)이 아닙니다.")
                   }
                 })} 
               />
@@ -235,7 +238,7 @@ export default ({
               <input 
                 name ="password"
                 type="password"
-                placeholder={"비밀번호"}
+                placeholder={"Password"}
                 style={input_form}
                 onChange={ e => {
                   const {
@@ -257,7 +260,7 @@ export default ({
               <input 
                 name ="password_confirmation"
                 type="password"
-                placeholder={"비밀번호 확인"}
+                placeholder={"Password Check"}
                 style={input_form}
                 onChange={ e => {
                   const {
@@ -275,19 +278,19 @@ export default ({
                 })}
               />
               <p className="text-danger">
-                {errors.password_confirmation && errors.password_confirmation.type === "validate" ? "비밀번호가 맞지않습니다" : ""}
+                {errors.password_confirmation && errors.password_confirmation.type === "validate" ? t("비밀번호가 맞지 않습니다.") : ""}
                 {/* {errors.password_confirmation && errors.password_confirmation.type === "required" ? "빈칸을 채워주세요" : ""} */}
                 {errors.password_confirmation && errors.password_confirmation.message}
               </p>
             </div>
             <hr />
-            <h5 className="text-center" style={{color:"black"}}>유저 정보</h5>
+            <h5 className="text-center" style={{color:"black"}}>{t("유저 정보")}</h5>
             <br />
             {/* 이름 */}
             <div className="form-group">
               <input 
                 name ="name" 
-                placeholder={"이름"}
+                placeholder={"Name"}
                 style={input_form}
                 onChange={ e => {
                   const {
@@ -307,7 +310,7 @@ export default ({
             <div className="form-group">
               <input 
                 name ="birth" 
-                placeholder={"생년월일"}
+                placeholder={"Bitrh(0000-00-00)"}
                 style={input_form}
                 onChange={ e => {
                   const {
@@ -319,7 +322,7 @@ export default ({
                   required: "Required",
                   pattern: {
                     value: /^[0-9]{4}-(0[1-9]|1[012])-(0[1-3]|1[0-9])/,
-                    message: "올바른 생년월일 형식이 아닙니다."
+                    message: t("올바른 생년월일 형식이 아닙니다.")
                   }
                 })}
               />
@@ -331,7 +334,7 @@ export default ({
             <div className="form-group">
               <input 
                 name ="phone" 
-                placeholder={"휴대폰 번호"}
+                placeholder={"Phone"}
                 style={input_form}
                 onChange={ e => {
                   const {
@@ -343,7 +346,7 @@ export default ({
                   required: "Required",
                   pattern: {
                     value: /^[0-9]{3}-[0-9]{4}-[0-9]{4,4}/,
-                    message: "올바른 휴대폰 번호 형식이 아닙니다."
+                    message: t("올바른 휴대폰 번호 형식이 아닙니다.")
                   }
                 })}
               />
@@ -354,9 +357,9 @@ export default ({
 
             <div className="form-group text-center">
               <fieldset>
-                남성
+                {t("남성")}
                 <input type="radio" name="gender" ref={register({})} onClick={() => setGender("남")}/>
-                여성
+                {t("여성")}
                 <input type="radio" name="gender" ref={register({})} onClick={() => setGender("여")}/>
               </fieldset>
             </div>
@@ -366,7 +369,7 @@ export default ({
             {/* 제출 버튼을 눌렀는데 성별을 선택하지 않았으면 */}
             {sub_status && !gender ? (
               <p className="text-danger">
-                성별을 입력해주세요
+                {t("성별을 입력해주세요.")}
               </p>
             ) : "" }
               {console.log(sub_status)}
@@ -375,7 +378,7 @@ export default ({
               {danger_message}
             </p>
             <div className="form-group">
-              <button className="btn btn-primary btn-lg btn-block" onClick={()=> setSub_status(true)}>가입하기</button>
+              <button className="btn btn-primary btn-lg btn-block" onClick={()=> setSub_status(true)}>{t("가입하기")}</button>
             </div>
           </form>
         </RegisterForm>
@@ -389,13 +392,13 @@ export default ({
                 <img src="/icon/logo_curumamori.png" style={{width:"250px"}}/>
               </Link>
             </Img_center>
-            <h2>승인코드 입력</h2>
+            <h2>{t("승인코드 입력")}</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="form-group text-center">
-                <h5 style={{color:"black"}}>이메일로 보낸 승인코드를 입력해 주세요</h5>
+                <h5 style={{color:"black"}}>{t("이메일로 보낸 승인코드를 입력해 주세요.")}</h5>
                 <input 
                     name ="confirm_code" 
-                    placeholder={"승인코드 입력"}
+                    placeholder={t("승인코드 입력")}
                     style={input_form}
                     onChange={ e => {
                       const {
@@ -407,7 +410,7 @@ export default ({
                       required: "Required",
                       pattern: {
                         value: /^[0-9]{4,4}/i,
-                        message: "승인코드를 다시 확인해주세요."
+                        message: t("승인코드를 다시 확인해주세요.")
                       }
                     })} 
                 />
@@ -418,14 +421,14 @@ export default ({
                 </div>
                 ) : null}
               <div className="form-group">
-                <button className="btn btn-primary btn-lg btn-block">확인</button>
+                <button className="btn btn-primary btn-lg btn-block">{t("확인")}</button>
               </div>
             </form>
           </ConfirmForm>
         </div>
       ) : (
         <div>
-          로그인 중입니다....
+          {t("로그인 중입니다....")}
         </div>
       )}
         
@@ -433,16 +436,16 @@ export default ({
       <StateChanger>
         {action === "login" ? (
           <>
-            계정이 없습니까?{" "}
+            {t("계정이 없습니까?")}
             <Link to="/auth/register">
-              <Link_qwe onClick={() => setAction('register')}>회원가입</Link_qwe>
+              <Link_qwe onClick={() => setAction('register')}>{t("회원가입")}</Link_qwe>
             </Link>
           </>
         ) : action === 'register' ? (
           <>
-            로그인 하시겠습니까?{" "}
+            {t("로그인 하시겠습니까?")}
             <Link to="/auth/login">
-              <Link_qwe onClick={() => setAction("login")}>로그인</Link_qwe>
+              <Link_qwe onClick={() => setAction("login")}>{t("로그인")}</Link_qwe>
             </Link>
           </>
         ) : null}
