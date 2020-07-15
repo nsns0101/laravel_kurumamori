@@ -44,7 +44,7 @@ export default () => {
                         }
                     </div>
                     <div className="col-md-2 text-center p-3">
-                        <span className="medical_text"style={{marginTop:"13px"}}>과거 병력{index + 1}</span>
+                        <span className="medical_text"style={{marginTop:"13px"}}>{t("과거 병력")}{index + 1}</span>
                     </div>
                     {/* {{-- 드롭다운버튼 --}} */}
                     <div className="col-md-2 text-center p-2">
@@ -56,7 +56,7 @@ export default () => {
                                     newArr[index] = data.value;
                                     setPast_sickness_name(newArr);
                                 }
-                            } value={past_sickness_name[index] ? past_sickness_name[index] : ""} placeholder="선택" style={{width:"200px"}}/>
+                            } value={past_sickness_name[index] ? past_sickness_name[index] : ""} placeholder={t("선택")} style={{width:"200px"}}/>
                     </div>
                     {/* // {{--  --}} */}
                     <div className="col-md-6">
@@ -72,7 +72,7 @@ export default () => {
                                         setPast_sickness_supplementation(newArr);
                                     }
                                 }
-                                 className="form-control" placeholder="보충설명(복용 약물, 기간)"/> 
+                                 className="form-control" placeholder={t("보충설명(복용 약물, 기간)")}/> 
                             {/* {!! $errors->first('past_sickness_supplementation', '<span className="form-error">:message</span>') !!} */}
                         </div>
                     </div>

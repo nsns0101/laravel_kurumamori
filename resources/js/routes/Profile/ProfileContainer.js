@@ -7,7 +7,7 @@ import ProfileView from "./ProfileView";
 
 
 export default ( {history} ) => {
-    const { user } = useContext(AppContext);
+    const { user, t } = useContext(AppContext);
     // const [profile, setProfile] = useState("");         //프로필
     // const [product, setProduct] = useState("");         //등록 제품
     // const [product_buy, setProduct_buy] = useState("")  //등록 제품(구입날짜 때문에 (유저가 안샀는 경우도 있으니))
@@ -68,12 +68,12 @@ export default ( {history} ) => {
         }
         return Axios.post(url, body, config).then(res => {
             if(res.data){
-                window.alert("제품을 등록하였습니다.");
+                window.alert(t("제품을 등록하였습니다."));
                 // history.push("/info/index");
                 window.location.reload();
             }
             else{
-                setError_text("값을 잘 못 입력하였거나 이미 사용중인 key입니다. 다시 확인해 주세요.");
+                setError_text(t("값을 잘 못 입력하였거나 이미 사용중인 key입니다. 다시 확인해 주세요."));
 
             }
         })
@@ -91,12 +91,12 @@ export default ( {history} ) => {
         }
         return Axios.put(url, body, config).then(res => {
             if(res.data){
-                window.alert("제품을 재등록하였습니다.");
+                window.alert(t("제품을 등록하였습니다."));
                 // history.push("/info/index");
                 window.location.reload();
             }
             else{
-                setError_text("잘못된 key입니다. 다시 확인해 주세요.");
+                setError_text(t("잘못된 key입니다. 다시 확인해 주세요."));
 
             }
         })
@@ -105,7 +105,7 @@ export default ( {history} ) => {
 
     //제품 삭제
     const delete_product = () => {
-        if(window.confirm("제품등록을 취소하시겠습니까?")){
+        if(window.confirm(t("제품등록을 취소하시겠습니까?"))){
             const url = `/products/${data.product.id}`;
             return Axios.delete(url).then(res => {
                 window.location.reload();

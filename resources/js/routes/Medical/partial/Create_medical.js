@@ -53,7 +53,7 @@ export default () => {
                 <div className="col-md-12">
                     <div className="card">
                         <div className="text-center card-header card-main" style={{color:"white", background:"blue"}}>
-                            질병 사항
+                            {t("질병 사항")}
                         </div>
                             <br/>
                             {/* {{-- 과거 질환 --}} */}
@@ -70,7 +70,7 @@ export default () => {
                 <div className="col-md-12">
                     <div className="card">
                         <div className="text-center card-header card-main" style={{color:"white", background:"blue"}}>
-                            신청자 인적사항
+                            {t("신청자 인적사항")}
                         </div>
                         <br/>
                         <div className="row">
@@ -79,7 +79,7 @@ export default () => {
                             <div className="col-md-2 text-center p-1">
                                 <span style={{color:"red", fontSize:"30px"}}>*</span>
                                 <span className="medical_text"style={{marginTop:"13px"}}>
-                                    혈액형
+                                    {t("혈액형")}
                                 </span>
                             </div>
                             {/* 혈액형 드롭다운버튼 */}
@@ -89,7 +89,7 @@ export default () => {
                                         (data) => {
                                             setBlood_type(data.value);
                                         }
-                                    } value={blood_type ? blood_type : ""} placeholder="선택" style={{width:"200px"}}
+                                    } value={blood_type ? blood_type : ""} placeholder={t("선택")} style={{width:"200px"}}
                                     
                                     />
                                     <div className="text-danger">
@@ -101,7 +101,7 @@ export default () => {
                             <div className="col-md-2 text-center p-1">
                                 <span style={{color:"red", fontSize:"30px"}}>*</span>
                                 <span className="medical_text" style={{marginTop:"13px"}}>
-                                    장애여부
+                                    {t("장애여부")}
                                 </span>
                             </div>
                                 
@@ -109,16 +109,16 @@ export default () => {
                                 <div className="form-group">
                                     {disability_status ? (
                                         <fieldset style={{fontSize:"20px", marginTop:"6px"}} key="1">
-                                            예
+                                            {t("예")}
                                             <input type="radio" onChange={()=> setDisability_status(true)} checked={true}/>
-                                            아니오
+                                            {t("아니오")}
                                             <input type="radio" onChange={()=> setDisability_status(false)}/>
                                         </fieldset>
                                     ) : (
                                         <fieldset style={{fontSize:"20px", marginTop:"6px"}} key="2">
-                                            예
+                                            {t("예")}
                                             <input type="radio" onChange={()=> setDisability_status(true)}/>
-                                            아니오
+                                            {t("아니오")}
                                             <input type="radio" onChange={()=> setDisability_status(false)} checked={true}/>
                                         </fieldset>
                                     )}
@@ -132,12 +132,12 @@ export default () => {
                             <div className="col-md-1"></div>
                             <div className="col-md-3 text-center p-1">
                                 <span className="medical_text" style={{marginTop:"13px"}}>
-                                신고시 요청사항
+                                {t("신고시 요청사항")}
                                 </span>
                             </div>
                             <div className="col-md-7">
                                 <div className="form-group">
-                                    <input type="text" className="form-control" placeholder="○○를 가져와주세요!"
+                                    <input type="text" className="form-control" placeholder={t("○○를 가져와주세요!")}
                                     onChange={(e) => setReport_request(e.target.value)}
                                      value={report_request ? report_request : ""}/>
                                 </div>
@@ -151,20 +151,20 @@ export default () => {
                 <div className="col-md-12">
                     <div className="card">
                         <div className="text-center card-header card-main" style={{color:"white"}}>
-                            보호자 정보
+                            {t("보호자 정보")}
                         </div>
                         <br/>
                         <div className="row">
                             <div className="col-md-1"></div>
                             <div className="col-md-2 text-center p-1">
                                 <span className="medical_text" style={{marginTop:"13px", marginRight:"15px"}}>
-                                보호자 번호
+                                {t("보호자 번호")}
                                 </span>
                             </div>
                             <br/>
                             <div className="col-md-5">
                                 <div className="form-group">
-                                    <input type="text" className="form-control" placeholder="응급시 연락가능한 보호자 휴대폰 번호" 
+                                    <input type="text" className="form-control" placeholder={t("응급시 연락가능한 보호자 휴대폰 번호")} 
                                     onChange={(e)=> setGuardian_phone(e.target.value)}
                                     value={guardian_phone ? guardian_phone : ""}/>
                                 </div>
@@ -178,7 +178,7 @@ export default () => {
                 <div className="col-md-12">
                     <div className="card">
                         <div className="text-center card-header card-main" style={{background:"darkgray", color:"white"}}>
-                            보험 정보
+                            {t("보험 정보")}
                         </div>
                         <br/>
                         {/* 보험 여부 */}
@@ -186,23 +186,23 @@ export default () => {
                             <div className="col-md-1"></div>
                             <div className="col-md-2 text-center p-1">
                                 <span className="medical_text" style={{marginTop:"13px", marginRight:"15px"}}>
-                                    보험 여부
+                                    {t("보험 여부")}
                                 </span>
                             </div>
                             <div className="col-md-4 p-1">
                                 <div className="form-group">
                                     {insurance_bool ? (
                                         <fieldset style={{fontSize:"20px", marginTop:"6px"}} key="3">
-                                            예
+                                            {t("예")}
                                             <input type="radio" onChange={()=> setInsurance_bool(true)} checked={true}/>
-                                            아니오
+                                            {t("아니오")}
                                             <input type="radio" onChange={()=> setInsurance_bool(false)}/>
                                         </fieldset>
                                     ) : (
                                         <fieldset style={{fontSize:"20px", marginTop:"6px"}} key="4">
-                                            예
+                                           {t("예")}
                                             <input type="radio" onChange={()=> setInsurance_bool(true)}/>
-                                            아니오
+                                            {t("아니오")}
                                             <input type="radio" onChange={()=> setInsurance_bool(false)} checked={true}/>
                                         </fieldset>
                                     )}
@@ -216,7 +216,7 @@ export default () => {
                             <div className="col-md-1"></div>
                             <div className="col-md-2 text-center p-3">
                                 <span className="medical_text" style={{marginTop:"13px",marginRight:"25px"}}>
-                                보험사 명
+                                {t("보험사 명")}
                                 </span>
                             </div>
                             <div className="col-md-3 text-center p-2">
@@ -225,7 +225,7 @@ export default () => {
                                         (data) => {
                                             setInsurance_name(data.value);
                                         }
-                                    } value={insurance_name ? insurance_name : ""} placeholder="선택" style={{width:"200px"}}/>
+                                    } value={insurance_name ? insurance_name : ""} placeholder={t("선택")} style={{width:"200px"}}/>
                                 <div className="text-danger text-center">
                                     {insurance_name_message}
                                 </div>
@@ -236,7 +236,7 @@ export default () => {
                                     
                             <div className="col-md-2 text-center p-1">
                                 <span className="medical_text" style={{marginTop:"13px",marginRight:"25px"}}>
-                                보험 가입일
+                                {t("보험 가입일")}
                                 </span>
                             </div>
 
@@ -251,7 +251,7 @@ export default () => {
                             </div>
                             <div className="col-md-2 text-center p-1">
                                 <span className="medical_text" style={{marginTop:"13px",marginRight:"25px"}}>
-                                보험 만기일
+                                {t("보험 만기일")}
                                 </span> 
                             </div>
 
@@ -273,7 +273,7 @@ export default () => {
                 <div className="col-md-2">
                     <div className="form-group">
                         <button className="btn btn-success btn-lg btn-block" type="submit" style={{width:"150px"}}>
-                            등록하기
+                            {t("등록하기")}
                         </button>
                     </div>
                 </div>

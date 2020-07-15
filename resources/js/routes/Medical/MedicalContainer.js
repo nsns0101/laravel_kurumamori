@@ -9,8 +9,8 @@ export default ({history}) => {
     const { user } = useContext(AppContext);
     let [form, setForm] = useState("");
     //drop_down list
-    const sickness_list = ["없음", "고혈압", "당뇨", "결핵", "심장질환", "알러지", "천식", "심부전증", "페렴", "디스크", "간경화", "관절염", "협심증", "암", "갑상선염", "고지혈증", "골다공증", "과민성 대장", "기관지염", "뇌졸중", "신장질환", "간암"];
-    const blood_type_list = ["A형", "B형", "AB형", "O형"];
+    const sickness_list = [t("없음"), t("고혈압"), t("당뇨"), t("결핵"), t("심장질환"), t("알러지"), t("천식"), t("심부전증"), t("페렴"), t("디스크"), t("간경화"), t("관절염"), t("협심증"), t("암"), t("갑상선염"), t("고지혈증"), t("골다공증"), t("과민성 대장"), t("기관지염"), t("뇌졸중"), t("신장질환"), t("간암")];
+    const blood_type_list = [t("A형"), t("B형"), t("AB형"), t("O형")];
     const [insurance_name_list, setInsurance_name_list]= useState("");
     // const [insurance_phone_list, setInsurance_phone_list]= useState("");
     
@@ -70,8 +70,8 @@ export default ({history}) => {
     }
 
     const onSubmit = () => {
-        past_sickness_name == "없음" ? setPast_sickness_name([]) :  past_sickness_name;
-        sickness_name == "없음" ? setSickness_name([]) :  sickness_name;
+        past_sickness_name == t("없음") ? setPast_sickness_name([]) :  past_sickness_name;
+        sickness_name == t("없음") ? setSickness_name([]) :  sickness_name;
 
         const body = {
             user_id : user.id,
@@ -101,7 +101,7 @@ export default ({history}) => {
             const url = "/info/medical_info"
             return Axios.post(url, body, config).then( res => {
                 if(res.data.success){
-                    window.alert("의료정보를 등록하였습니다.");
+                    window.alert(t("의료정보를 등록하였습니다."));
                     setForm("view");
                 }
             })
@@ -159,8 +159,8 @@ export default ({history}) => {
                 }
                 //시연용
                 else{   
-                    setPast_sickness_name(["허리디스크", "과민성 대장"]);
-                    setPast_sickness_supplementation(["5년전 허리디스크 수술", "지속적 복부팽만"]);
+                    setPast_sickness_name([t("허리디스크"), t("과민성 대장")]);
+                    setPast_sickness_supplementation([t("5년전 허리디스크 수술"), t("지속적 복부팽만")]);
                 }
 
                 //sickness
@@ -182,10 +182,10 @@ export default ({history}) => {
                 }
                 //시연용
                 else{
-                    setSickness_name(["당뇨", "고혈압", "위암"]);
-                    setMedicine(["인슐린", "암로디핀, 니페디핀", ""]);
-                    setSymptom(["저혈당 쇼크 및 경련", "현기증", "메스꺼움, 구토"]);
-                    setHospital(["경북대병원 내과", "영대병원 내과", "경북대병원 내과"]);
+                    setSickness_name([t("당뇨"), t("고혈압"), t("위암")]);
+                    setMedicine([t("인슐린"), t("암로디핀"), t("니페디핀")]);
+                    setSymptom([t("저혈당 쇼크 및 경련"), t("현기증"), t("메스꺼움, 구토")]);
+                    setHospital([t("경북대병원 내과"), t("영대병원 내과"), t("경북대병원 내과")]);
                 }
 
                 //medical_info
@@ -198,9 +198,9 @@ export default ({history}) => {
                 }
                 //시연용
                 else{
-                    setBlood_type("A형");
+                    setBlood_type(t("A형"));
                     setDisability_status(false);
-                    setReport_request("인슐린 필요합니다.");
+                    setReport_request(t("인슐린 필요합니다."));
                     setGuardian_phone("010-8382-1192");
                 }
 
@@ -215,7 +215,7 @@ export default ({history}) => {
                 //시연용
                 else{
                     setInsurance_bool(true);
-                    setInsurance_name("하나보험사")
+                    setInsurance_name(t("하나보험사"))
                     setInsurance_phone("010-5096-5198");
                     setSubscription_date("2010-08-21");
                     setExpiration_date("2030-08-20");

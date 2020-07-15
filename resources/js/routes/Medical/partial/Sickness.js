@@ -57,7 +57,7 @@ export default () => {
                     </div>
                     {/* 현재질환 글자 */}
                     <div className="col-md-2 text-center p-3">
-                        <span className="medical_text"style={{marginTop:"13px"}}>현재 질환{index + 1}</span>
+                        <span className="medical_text"style={{marginTop:"13px"}}>{t("현재 질환") + (index + 1)}</span>
                     </div>
                     {/* 현재 질환 드롭다운버튼 */}
                     <div className="col-md-2 text-center p-2">
@@ -69,11 +69,11 @@ export default () => {
                                     newArr[index] = data.value;
                                     setSickness_name(newArr)
                                 }
-                            } value={sickness_name[index] ? sickness_name[index] : ""} placeholder="선택" style={{width:"200px"}}/>
+                            } value={sickness_name[index] ? sickness_name[index] : ""} placeholder={t("선택")} style={{width:"200px"}}/>
                     </div>
                     {/* 복용중인 약 글자 */}
                     <div className="col-md-2 text-center p-3">
-                        <span className="medical_text"style={{marginTop:"13px"}}>복용중인 약</span>
+                        <span className="medical_text"style={{marginTop:"13px"}}>{t("복용중인 약")}</span>
                     </div>
                     {/* 복용중인 약 input */}
                     <div className="col-md-4">
@@ -87,19 +87,19 @@ export default () => {
                                         setMedicine(newArr);
                                     }
                                 }
-                                className="form-control" placeholder="복용중인 약"/> 
+                                className="form-control" placeholder={t("복용중인 약")}/> 
                         </div>
                     </div>
                     <div className="col-md-1"></div>
                     {/* 증상 글*/}
                     <div className="col-md-1"></div>
                     <div className="col-md-2 text-center p-2">
-                        <span className="medical_text"style={{marginTop:"13px"}}>증상</span>
+                        <span className="medical_text"style={{marginTop:"13px"}}>{t("증상")}</span>
                     </div>
                     {/* 증상 input */}
                     <div className="col-md-8">
                             <input style={{fontSize:"1em", width:"100%"}} type="text" 
-                                    className="form-control" placeholder="증상을 적어주세요"
+                                    className="form-control" placeholder={t("증상을 적어주세요")}
                                     value={symptom[index] ? symptom[index] : ""}
                                     onChange={
                                         (e) => {
@@ -110,19 +110,19 @@ export default () => {
                                     }
                             />
                             <span className="text-danger" style={{fontSize:"16px"}}>
-                                증상은 최대한 자세히 적어주세요!
+                                {t("증상은 최대한 자세히 적어주세요!")}
                             </span>
                     </div>
                     <div className="col-md-1"></div>
                     {/* 진료기관 글 */}
                     <div className="col-md-1"></div>
                     <div className="col-md-2 text-center pt-2 pb-3">
-                        <span className="medical_text"style={{marginTop:"13px"}}>진료기관</span>
+                        <span className="medical_text"style={{marginTop:"13px"}}>{t("진료기관")}</span>
                     </div>
                     {/* 진료기관 input */}
                     <div className="col-md-8 pt-2 pb-3">
                             <input style={{fontSize:"1em", width:"100%"}} type="text" 
-                                    className="form-control" placeholder="진료기관 명을 적어주세요"
+                                    className="form-control" placeholder={t("진료기관 명을 적어주세요")}
                                     value={hospital[index] ? hospital[index] : ""}
                                     onChange={
                                         (e) => {
