@@ -1,10 +1,14 @@
 import React, { useContext } from "react";
 import { BigdataContext } from "../BigdataContainer";
+import {AppContext} from "../../../components/App";
+
 import Sleep from "./chart/Sleep"
 import Sudden from "./chart/Sudden";
 import Accident from "./chart/Accident";
 import {Map_api} from "./google_map/Map_api.js";
 export default () => {
+    const { t } = useContext(AppContext);
+
     const {
         action,
         age_data

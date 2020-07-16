@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import {AppContext} from "../../../components/App";
+import {AppContext} from "../../../../components/App"
 import { BigdataContext } from "../../BigdataContainer";
 import { MDBContainer } from "mdbreact";
 import { Line, Bar } from "react-chartjs-2";

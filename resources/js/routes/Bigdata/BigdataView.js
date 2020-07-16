@@ -81,9 +81,4 @@ export default () => {
             </div>
         </section>
     ) : <Detail/>
-    // ) : action == "sleep" ? (
-    //     <Sleep/>
-    // ) : action == "sudden" ? (
-    //     <Sudden/>
-    // ) : <Accident/>
 }

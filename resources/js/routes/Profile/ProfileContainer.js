@@ -105,7 +105,7 @@ export default ( {history} ) => {
 
     //제품 삭제
     const delete_product = () => {
-        if(window.confirm(t("제품등록을 취소하시겠습니까?"))){
+        if(window.confirm(t("제품 등록을 취소하시겠습니까?"))){
             const url = `/products/${data.product.id}`;
             return Axios.delete(url).then(res => {
                 window.location.reload();

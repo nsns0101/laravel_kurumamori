@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import {AppContext} from "../../components/App";
+import {AppContext} from "../../../components/App";
 import { MDBContainer } from "mdbreact"
 import LineChart from "./chart/LineChart";
 import BarChart from "./chart/BarChart";
