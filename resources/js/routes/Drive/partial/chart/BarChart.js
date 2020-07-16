@@ -1,8 +1,11 @@
 import React, {useContext} from "react";
+import {AppContext} from "../../components/App";
+
 import { DriveContext } from "../../DriveContainer";
 import {Bar} from "react-chartjs-2";
 
 export default () => {
+    const { t } = useContext(AppContext);
     const {
         day_5,
         day_5_sec,
@@ -29,7 +32,7 @@ export default () => {
             day_5[0],
             ],
             datasets: [{
-            label: "운전시간",
+            label: t("운전시간"),
             backgroundColor: "#4e73df",
             hoverBackgroundColor: "#2e59d9",
             borderColor: "#4e73df",

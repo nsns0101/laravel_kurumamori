@@ -1,9 +1,12 @@
 import React, {useContext} from "react";
+import {AppContext} from "../../components/App";
 import { DriveContext } from "../DriveContainer";
 import {Map_api} from "./google_map/Map_api.js"
 import ScrollAnimation from "react-animate-on-scroll";
 
 export default () => {
+    const { t } = useContext(AppContext);
+
     const {
         score,
         day_5_danger_count,
@@ -24,7 +27,7 @@ export default () => {
 
                     <div className="card shadow" >
                         <div className="card-header py-3">
-                            <h6 className="m-0 font-weight-bold text-primary">오늘의 운전</h6>
+                            <h6 className="m-0 font-weight-bold text-primary">{t("오늘의 운전")}</h6>
                         </div>
                         <div className="row">
                             <div className="col-xl-6 col-lg-6 col-md-6">
@@ -43,18 +46,18 @@ export default () => {
                             <div className="col-lg-4 col-md-4 col-sm-12">
                                 
                                 <div className="py-5 text-center">
-                                    <p style={drive_text}>총 운전 점수 : {(score[0] + score[1] + score[2] + score[3]) / score.length}점</p>
-                                    <p style={drive_text}>급 가속 횟수 : {day_5_danger_count[0].count_sudden_acceleration}회</p>
-                                    <p style={drive_text}>급 감속 횟수 : {day_5_danger_count[0].count_sudden_stop}회</p>
-                                    <p style={drive_text}>졸음 횟수 : {day_5_danger_count[0].count_sleep}회</p>
-                                    <p style={drive_text}>사고 : {day_5_danger_count[0].count_report}건</p>
+                                    <p style={drive_text}>{t("총 운전 점수")} : {(score[0] + score[1] + score[2] + score[3]) / score.length}점</p>
+                                    <p style={drive_text}>{t("급 가속 횟수")} : {day_5_danger_count[0].count_sudden_acceleration}회</p>
+                                    <p style={drive_text}>{t("급 감속 횟수")} : {day_5_danger_count[0].count_sudden_stop}회</p>
+                                    <p style={drive_text}>{t("졸음 횟수")} : {day_5_danger_count[0].count_sleep}회</p>
+                                    <p style={drive_text}>{t("사고")} : {day_5_danger_count[0].count_report}건</p>
                                     {/* 당일 사고정보 */}
                                     {reports.length ? (
                                         reports.map( (value, index) => {
                                             return (
                                                 <p key={index} className="gps" style={{fontSize:"16px"}}>
                                                 {/* 사고 장소{index+1} : {gps[index]} */}
-                                                사고 장소{index+1} : {reports[index]}
+                                                {t("사고 장소")}{index+1} : {reports[index]}
                                                 </p>                                     
                                             )
                                         })
@@ -66,7 +69,7 @@ export default () => {
 
                                 {drive_info.map( (value, index) => {
                                     <p key={index}>
-                                        운전 시간 : {drive_info[index].created_at} ~ {drive_info[index].updated_at}
+                                        {t("운전 시간")} : {drive_info[index].created_at} ~ {drive_info[index].updated_at}
                                     </p>
                                 })}
                             </div>
@@ -75,16 +78,16 @@ export default () => {
                                 <hr/>
                                 <div className="col-xl-12 col-lg-12 col-md-12">
                                     <span className="pr-3">
-                                        <img src="/icon/orange_map_icon.png"/>급가속 구간
+                                        <img src="/icon/orange_map_icon.png"/>{t("급가속 구간")}
                                     </span>
                                     <span className="pr-3">
-                                        <img src="/icon/green_map_icon.png"/>급감속 구간
+                                        <img src="/icon/green_map_icon.png"/>{t("급감속 구간")}
                                     </span>
                                     <span className="pr-3">
-                                        <img src="/icon/blue_map_icon.png"/>졸음 구간
+                                        <img src="/icon/blue_map_icon.png"/>{t("졸음 구간")}
                                     </span>
                                     <span className="pr-3">
-                                        <img src="/icon/red_map_icon.png"/>신고 구간
+                                        <img src="/icon/red_map_icon.png"/>{t("신고 구간")}
                                     </span>
                                 </div>             
                             </div>

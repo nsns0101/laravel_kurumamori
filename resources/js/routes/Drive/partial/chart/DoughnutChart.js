@@ -1,9 +1,13 @@
 import React, {useContext} from "react";
+import {AppContext} from "../../components/App";
+
+
 import { DriveContext } from "../../DriveContainer";
 import { Doughnut } from "react-chartjs-2";
 // import CanvasJSReact from "./canvasjs.react";
 
 export default () => {
+    const { t } = useContext(AppContext);
 
     const {
         day_5,
@@ -37,7 +41,7 @@ export default () => {
             labels: [day_5[4], day_5[3],day_5[2],day_5[1],day_5[0]],
             datasets: [
                 {
-                    labels: "위험요소 빈도",
+                    labels: t("위험요소 빈도"),
                     backgroundColor: "#4e73df",
                     hoverBackgroundColor: "#2e59d9",
                     // borderColor: "#4e73df",

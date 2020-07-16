@@ -1,10 +1,13 @@
 import React, {useContext} from "react";
+import {AppContext} from "../../components/App";
 import { DriveContext } from "../DriveContainer";
 import AnimationCount from 'react-count-animation';
 import 'react-count-animation/dist/count.min.css';
 import ScrollAnimation from "react-animate-on-scroll";
 
 export default () => {
+    const { t } = useContext(AppContext);
+
     const {
         score
     } = useContext(DriveContext);
@@ -90,17 +93,17 @@ export default () => {
                                     <img src="/icon/주의.png"/>
                                 )}
                             </div>
-                            <h1 className="pb-3" style={{fontSize:"48px", fontColor:"#222222", fontWeight:"500"}}>총 점수</h1>
+                            <h1 className="pb-3" style={{fontSize:"48px", fontColor:"#222222", fontWeight:"500"}}>{t("총 점수")}</h1>
                             <h1 className="pb-3" style={{fontSize:"48px", fontColor:"#222222", fontWeight:"500"}}>
                                 <AnimationCount {...count_set_main}/>
                             </h1>
                         </div>
                     </ScrollAnimation>
                 </div>
-                {drive_score("급가속 점수", count_set_1, 0)}
-                {drive_score("급감속 점수", count_set_2, 1)}
-                {drive_score("졸음 점수", count_set_3, 2)}
-                {drive_score("사고 점수", count_set_4, 3)}
+                {drive_score(t("급가속 점수"), count_set_1, 0)}
+                {drive_score(t("급감속 점수"), count_set_2, 1)}
+                {drive_score(t("졸음 점수"), count_set_3, 2)}
+                {drive_score(t("사고 점수"), count_set_4, 3)}
             </div>
             <br/>
         </div>

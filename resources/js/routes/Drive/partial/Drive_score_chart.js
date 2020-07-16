@@ -1,4 +1,5 @@
 import React, {useContext} from "react";
+import {AppContext} from "../../components/App";
 import { MDBContainer } from "mdbreact"
 import LineChart from "./chart/LineChart";
 import BarChart from "./chart/BarChart";
@@ -7,13 +8,15 @@ export default () => {
     // var a = CanvasJSReact.CanvasJSChart;
     // console.log(LineChart);
     // console.log(DoughnutChart);
+    const { t } = useContext(AppContext);
+
     return  (
         <div className="row mt-3">
             {/* Area Chart */}
             <div className="col-xl-4 col-lg-4 col-sm-12 mb-4">
                 <div className="card shadow" >
                     <div className="card-header py-3">
-                        <h6 className="m-0 font-weight-bold text-primary">최근 5일간 위험요소 카운트</h6>
+                        <h6 className="m-0 font-weight-bold text-primary">{t("최근 5일간 위험요소 카운트")}</h6>
                     </div>
                     <div className="card-body">
                         <div className="chart-area">
@@ -32,7 +35,7 @@ export default () => {
                             </MDBContainer>
                         </div>
                         <hr/>
-                        <p>최근 5일간의 위험요소를 횟수로 나타낸 그래프</p>
+                        <p>{t("최근 5일간의 위험요소를 횟수로 나타낸 그래프")}</p>
                     </div>
                 </div>
             </div>
@@ -40,7 +43,7 @@ export default () => {
             <div className="col-xl-4 col-lg-4 col-sm-12 mb-4">
                 <div className="card shadow">
                     <div className="card-header py-3">
-                        <h6 className="m-0 font-weight-bold text-primary">최근 5일간 운전량</h6>
+                        <h6 className="m-0 font-weight-bold text-primary">{t("최근 5일간 운전량")}</h6>
                     </div>
                     <div className="card-body">
                         <div className="chart-bar">
@@ -57,7 +60,7 @@ export default () => {
                             </MDBContainer>
                         </div>
                         <hr/>
-                        <p>최근 5일간의 운전 시간을 초(s)로 나타낸 그래프</p>
+                        <p>{t("최근 5일간의 운전 시간을 초(s)로 나타낸 그래프")}</p>
                     </div>
                 </div>
             </div>
@@ -65,7 +68,7 @@ export default () => {
             <div className="col-xl-4 col-lg-4 col-sm-12 mb-4">
                 <div className="card shadow">
                     <div className="card-header py-3">
-                        <h6 className="m-0 font-weight-bold text-primary">최근 5일간 위험요소 빈도</h6>
+                        <h6 className="m-0 font-weight-bold text-primary">{t("최근 5일간 위험요소 빈도")}</h6>
                     </div>
                     <div className="card-body">
                         <div className="chart-doughnut">
@@ -82,7 +85,7 @@ export default () => {
                             </MDBContainer>
                         </div>
                         <hr/>
-                        <p>최근 5일간의 운전 시간을 초(s)로 나타낸 그래프</p>
+                        <p>{t("최근 5일간의 운전 시간을 초(s)로 나타낸 그래프")}</p>
                         {/* <p>최근 5일간 위험요소를 백분율로 나타낸 차트</p> */}
                     </div>
                 </div>

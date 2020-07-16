@@ -19,11 +19,11 @@ export default () => {
                     <div className="card-header">
                         <p>
                             {action == "sleep" ? (
-                                "최근 7일간의 졸음운전 위치"
+                                t("최근 7일간의 졸음운전 위치")
                             ) : action == "sudden" ? (
-                                "최근 7일간의 급가속, 급정거 위치"   
+                                t("최근 7일간의 급가속, 급정거 위치") 
                             ) : (
-                                "최근 7일간의 사고 위치"
+                                t("최근 7일간의 사고 위치")
                             )}
                         </p>
                     </div>
@@ -34,20 +34,20 @@ export default () => {
                         {action == "sleep" ? (
                             <div>
                                 <img src="/icon/blue_map_icon.png"/>
-                                <span>졸음 구간</span>
+                                <span>{t("졸음 구간")}</span>
                             </div>
                         ) : action == "sudden" ? (
                             <div>
                                 <img src="/icon/orange_map_icon.png"/>
-                                <span>급가속 구간</span>
+                                <span>{t("급가속 구간")}</span>
                                 <img src="/icon/green_map_icon.png"/>
-                                <span>급감속 구간</span>
+                                <span>{t("급감속 구간")}</span>
                             </div>
 
                         ) : (
                             <div>
                                 <img src="/icon/red_map_icon.png"/>
-                                <span>신고 구간</span>
+                                <span>{t("신고 구간")}</span>
                             </div>
                         )}
                     </div>

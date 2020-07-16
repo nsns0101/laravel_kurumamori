@@ -1,8 +1,11 @@
 import React, {useContext} from "react";
+import {AppContext} from "../../components/App";
 import { DriveContext } from "../../DriveContainer";
 import {Line} from "react-chartjs-2";
 
 export default () => {
+  const { t } = useContext(AppContext);
+
     const {
         day_5,
         day_5_danger_count
@@ -41,7 +44,7 @@ export default () => {
             labels: [day_5[4], day_5[3],day_5[2], day_5[1], day_5[0]], //항목
             datasets: [{
               type: 'line',       //차트 형태
-              label: "급 가속",
+              label: t("급 가속"),
               lineTension: 0.3,
               backgroundColor: "rgba(78, 115, 223, 0.05)",
               borderColor: "orange",   //선 색깔
@@ -64,7 +67,7 @@ export default () => {
             },
             {
               type: 'line',
-              label: "급 감속",
+              label: t("급 감속"),
               lineTension: 0.3,
               backgroundColor: "rgba(78, 115, 223, 0.05)",
               borderColor: "green",
@@ -87,7 +90,7 @@ export default () => {
             },
             {
               type: 'line',
-              label: "졸음",
+              label: t("졸음"),
               lineTension: 0.3,
               backgroundColor: "rgba(78, 115, 223, 0.05)",
               borderColor: "rgba(78, 115, 223, 1)",
@@ -110,7 +113,7 @@ export default () => {
             },
             {
               type: 'line',
-              label: "신고",
+              label: t("신고"),
               lineTension: 0.3,
               backgroundColor: "rgba(78, 115, 223, 0.05)",
               borderColor: "red",   //선 색깔

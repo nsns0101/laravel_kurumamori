@@ -1,9 +1,12 @@
 import React, { useContext } from "react";
+import {AppContext} from "../../../components/App";
 import { BigdataContext } from "../../BigdataContainer";
 import { MDBContainer } from "mdbreact";
 import { Line, Bar } from "react-chartjs-2";
 
 export default () => {
+    const { t } = useContext(AppContext);
+
     const {
         day_7,
         age_data,
@@ -15,7 +18,7 @@ export default () => {
             labels: [day_7[6], day_7[5], day_7[4], day_7[3], day_7[2], day_7[1], day_7[0]],    // 제목
             datasets: [
                 {   // 20대
-                    label: "20대",
+                    label: t("20대"),
                     borderColor: "purple",   //선 색깔
                     pointRadius: 3,
                     pointBackgroundColor: "purple",  //꼭짓점 색깔
@@ -32,7 +35,7 @@ export default () => {
                     ],
                 },
                 {   // 30대
-                    label: "30대",
+                    label: t("30대"),
                     borderColor: "orange",   //선 색깔
                     pointRadius: 3,
                     pointBackgroundColor: "orange",  //꼭짓점 색깔
@@ -49,7 +52,7 @@ export default () => {
                     ],
                 },
                 {   // 40대
-                    label: "40대",
+                    label: t("40대"),
                     borderColor: "green",   //선 색깔
                     pointRadius: 3,
                     pointBackgroundColor: "green",  //꼭짓점 색깔
@@ -66,7 +69,7 @@ export default () => {
                     ],
                 },
                 {   // 50대
-                    label: "50대",
+                    label: t("50대"),
                     borderColor: "blue",   //선 색깔
                     pointRadius: 3,
                     pointBackgroundColor: "blue",  //꼭짓점 색깔
@@ -83,7 +86,7 @@ export default () => {
                     ],
                 },
                 {   // 60대 이상
-                    label: "60대 이상",
+                    label: t("60대 이상"),
                     borderColor: "red",   //선 색깔
                     pointRadius: 3,
                     pointBackgroundColor: "red",  //꼭짓점 색깔
@@ -122,7 +125,7 @@ export default () => {
             labels: [day_7[6], day_7[5], day_7[4], day_7[3], day_7[2], day_7[1], day_7[0]],    // 제목
             datasets: [
                 {   // 20대
-                    label: "20대",
+                    label: t("20대"),
                     borderColor: "purple",   //선 색깔
                     pointRadius: 3,
                     pointBackgroundColor: "purple",  //꼭짓점 색깔
@@ -139,7 +142,7 @@ export default () => {
                     ],
                 },
                 {   // 30대
-                    label: "30대",
+                    label: t("30대"),
                     borderColor: "orange",   //선 색깔
                     pointRadius: 3,
                     pointBackgroundColor: "orange",  //꼭짓점 색깔
@@ -156,7 +159,7 @@ export default () => {
                     ],
                 },
                 {   // 40대
-                    label: "40대",
+                    label: t("40대"),
                     borderColor: "green",   //선 색깔
                     pointRadius: 3,
                     pointBackgroundColor: "green",  //꼭짓점 색깔
@@ -173,7 +176,7 @@ export default () => {
                     ],
                 },
                 {   // 50대
-                    label: "50대",
+                    label: t("50대"),
                     borderColor: "blue",   //선 색깔
                     pointRadius: 3,
                     pointBackgroundColor: "blue",  //꼭짓점 색깔
@@ -190,7 +193,7 @@ export default () => {
                     ],
                 },
                 {   // 60대 이상
-                    label: "60대 이상",
+                    label: t("60대 이상"),
                     borderColor: "red",   //선 색깔
                     pointRadius: 3,
                     pointBackgroundColor: "red",  //꼭짓점 색깔
@@ -226,10 +229,15 @@ export default () => {
 
     const SuddenAccelerationTimeChart = {
         data: {
-            labels: ["00시 ~ 06시", "06시 ~ 12시", "12시 ~ 18시", "18시 ~ 24시"],    // 기준
+            labels: [
+                "00" + t("시") + "~ 06"+t("시"), 
+                "06" + t("시") + "~ 12"+t("시"), 
+                "12" + t("시") + "~ 18"+t("시"), 
+                "18" + t("시") + "~ 24"+t("시")
+            ],
             datasets: [
                 {
-                    label: "급가속",
+                    label: t("급가속"),
                     backgroundColor: "green",
                     hoverBackgroundColor: "#2e59d9",
                     borderColor: "green",
@@ -268,10 +276,15 @@ export default () => {
     }
     const SuddenStopTimeChart = {
         data: {
-            labels: ["00시 ~ 06시", "06시 ~ 12시", "12시 ~ 18시", "18시 ~ 24시"],    // 기준
+            labels: [
+                "00" + t("시") + "~ 06"+t("시"), 
+                "06" + t("시") + "~ 12"+t("시"), 
+                "12" + t("시") + "~ 18"+t("시"), 
+                "18" + t("시") + "~ 24"+t("시")
+            ],
             datasets: [
                 {
-                    label: "급정거",
+                    label: t("급정거"),
                     backgroundColor: "orange",
                     hoverBackgroundColor: "#2e59d9",
                     borderColor: "orange",
@@ -316,7 +329,7 @@ export default () => {
                     {/* 연령대 그래프 */}
                     <div className="card">
                         <div className="card-header">
-                            최근 7일간의 급가속 발생 건수
+                            {t("최근 7일간의 급가속 발생 건수")}
                         </div>
                         <div className="card-body">
                             <div className="age-chart-container">
@@ -332,7 +345,7 @@ export default () => {
                     {/* 연령대 그래프 */}
                     <div className="card">
                         <div className="card-header">
-                            최근 7일간의 급정거 발생 건수
+                            {t("최근 7일간의 급정거 발생 건수")}
                         </div>
                         <div className="card-body">
                             <div className="age-chart-container">
@@ -348,7 +361,7 @@ export default () => {
                 <div className="pt-5">
                     <div className="card">
                         <div className="card-header">
-                            시간대별 급가속 발생 건수
+                            {t("시간대별 급가속 발생 건수")}
                         </div>
                         <div className="card-body">
                             <div className="age-chart-container">
@@ -364,7 +377,7 @@ export default () => {
                 <div className="pt-5">
                     <div className="card">
                         <div className="card-header">
-                            시간대별 급정거 발생 건수
+                            {t("시간대별 급정거 발생 건수")}
                         </div>
                         <div className="card-body">
                             <div className="age-chart-container">

@@ -89,7 +89,7 @@ export default () => {
                                         (data) => {
                                             setBlood_type(data.value);
                                         }
-                                    } value={blood_type ? blood_type : ""} placeholder={t("선택")} style={{width:"200px"}}
+                                    } value={blood_type ? t(blood_type) : ""} placeholder={t("선택")} style={{width:"200px"}}
                                     
                                     />
                                     <div className="text-danger">
