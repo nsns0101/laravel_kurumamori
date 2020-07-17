@@ -6,7 +6,7 @@ import MedicalView from "./MedicalView";
 export const MedicalContext = createContext();
 
 export default ({history}) => {
-    const { user } = useContext(AppContext);
+    const { user, t } = useContext(AppContext);
     let [form, setForm] = useState("");
     //drop_down list
     const sickness_list = [t("없음"), t("고혈압"), t("당뇨"), t("결핵"), t("심장질환"), t("알러지"), t("천식"), t("심부전증"), t("페렴"), t("디스크"), t("간경화"), t("관절염"), t("협심증"), t("암"), t("갑상선염"), t("고지혈증"), t("골다공증"), t("과민성 대장"), t("기관지염"), t("뇌졸중"), t("신장질환"), t("간암")];

@@ -10,7 +10,7 @@ import {AppContext} from "../../../components/App";
 import {MedicalContext} from "../MedicalContainer";
 
 export default () => {
-    const { user } = useContext(AppContext);
+    const { user, t } = useContext(AppContext);
     const {
         blood_type_list,
         insurance_name_list,

@@ -4,7 +4,7 @@ import {AppContext} from "../../../components/App";
 import {MedicalContext} from "../MedicalContainer";
 
 export default () => {
-    const { user } = useContext(AppContext);
+    const { user, t } = useContext(AppContext);
     const { 
         sickness_list,
         sickness_name,

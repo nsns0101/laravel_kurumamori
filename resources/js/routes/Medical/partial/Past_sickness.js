@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import Dropdown from "react-dropdown";
+import {AppContext} from "../../../components/App";
 import {MedicalContext} from "../MedicalContainer";
 export default () => {
     const {
@@ -12,6 +13,7 @@ export default () => {
     //드롭다운 옵션
     // console.log(past_sickness_name);
     // console.log(past_sickness_supplementation);
+    const { t } = useContext(AppContext);
 
     const add_past_sickness = () => {
         if(past_sickness_name.length < 3){

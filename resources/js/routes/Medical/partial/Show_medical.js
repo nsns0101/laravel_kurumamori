@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 import ScrollAnimation from "react-animate-on-scroll";
 
 export default () => {
-    const { user } = useContext(AppContext);
+    const { user, t } = useContext(AppContext);
     const {
         setForm,
         medical_id,
