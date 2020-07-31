@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
+import {AppContext} from "../../components/App";
 import { BigdataContext } from "./BigdataContainer";
 import { Link } from "react-router-dom";
 import Detail from "./partial/Detail";
 
 
 export default () => {
+    const { t } = useContext(AppContext);
 
     const {
         action,

@@ -37,32 +37,33 @@ export default () => {
         <div>
             <section id="hero">
                 <div className="row mx-0 px-0">
-                    <div className="col-lg-1 col-md-1 col-sm-1"/>
-                    <div className="col-lg-10 col-md-10 col-sm-10">
+                    <div className="col-lg-2 col-md-2 col-sm-2"/>
+                    <div className="col-lg-9 col-md-9 col-sm-9">
                         <div className="row">
-                            <div className="col-sm-12 col-lg-6" style={{marginTop:"20%"}}>
+                            <div className="col-md-4 col-sm-12" style={{marginTop:"15%"}}>
                                 <ScrollAnimation animateIn='fadeIn' delay={500} animateOnce={true}>
-                                    <img className="img mb-5" src="/icon/logo_curumamori.png" alt="logo" style={{width:300}}/>
+                                    <img className="img mb-5" src="/icon/white_kurumamori.png" alt="logo" style={{width:"100%"}}/>
                                 </ScrollAnimation>
                                 <ScrollAnimation animateIn='fadeIn' delay={700} animateOnce={true}>
-                                    <h3 style={{color:"white", fontSize:"24px"}}>{t("딥 러닝 기반의 얼굴인식을 통한")}</h3>
-                                    <h3 style={{color:"white", fontSize:"24px"}}>{t("교통사고 예방 & 자동 SOS 서비스")}</h3>
+                                    <h3 style={{color:"white", fontSize:"24px", marginTop:"20px"}}>{t("딥 러닝 기반의")}</h3>
+                                    <h3 style={{color:"white", fontSize:"24px", marginTop:"20px"}}>{t("얼굴인식을 통한")}</h3>
+                                    <h3 style={{color:"white", fontSize:"24px", marginTop:"20px"}}>{t("교통사고 예방 & 자동 SOS 서비스")}</h3>
                                 </ScrollAnimation>
                                 <ScrollAnimation animateIn='fadeIn' delay={1000} animateOnce={true}>
                                     <Link className="btn" to="/products" style={main_btn}>
-                                        {t("제품 구매") + "→"}
+                                        {t("제품 알아보기")}
                                     </Link>
                                 </ScrollAnimation>
                             </div>
 
-                            <div className="animated fadeInUp col-lg-6 col-md-6 col-sm-6 pt-3 align-self-center" style={{marginTop:"10%"}}>
+                            <div className="animated fadeInUp col-md-8 col-sm-6 pt-3 align-self-center" style={{marginTop:"10%"}}>
                                 <ScrollAnimation animateIn='zoomIn' animateOnce={true}>
                                     <img src="/images/home/main_image.png" style={{width:"80%"}}/>
                                 </ScrollAnimation>
                             </div>
                         </div>
                     </div>
-                    <div className="col-lg-1"/>
+                    {/* <div className="col-lg-1"/> */}
                 </div>
             </section>
             <Function1/>

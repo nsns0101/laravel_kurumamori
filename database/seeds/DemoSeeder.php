@@ -12,25 +12,25 @@ class DemoSeeder extends Seeder
     public function run()
     {
                 //시연 유저
-                \App\User::create([
-                    'email' => "rla@dudwls.com",
-                    'password' => bcrypt('password'),
-                    'name' => "김영진",
-                    'birth' => "1997/06/12",
-                    'gender' => "남",
-                    'phone' => "010-1234-5678",
-                    'confirm_code' => null,
-                    // 'remember_token' => Str::random(10),
-                ]);
+                // \App\User::create([
+                //     'email' => "rla@dudwls.com",
+                //     'password' => bcrypt('password'),
+                //     'name' => "김영진",
+                //     'birth' => "1997/06/12",
+                //     'gender' => "남",
+                //     'phone' => "010-1234-5678",
+                //     'confirm_code' => null,
+                //     // 'remember_token' => Str::random(10),
+                // ]);
 
-                //시연 게시글
-                $user_id = \App\User::whereEmail("rla@dudwls.com")->first()->id;
-                \App\Board::create([
-                    'user_id' => $user_id,
-                    'category_id' => 1,
-                    'title' => "제품 너무 좋아요!!",
-                    'content' => "너무 잘샀다고 생각해요",
-                ]);
+                // //시연 게시글
+                // $user_id = \App\User::whereEmail("rla@dudwls.com")->first()->id;
+                // \App\Board::create([
+                //     'user_id' => $user_id,
+                //     'category_id' => 1,
+                //     'title' => "제품 너무 좋아요!!",
+                //     'content' => "너무 잘샀다고 생각해요",
+                // ]);
 
 
                 // //시연 운전

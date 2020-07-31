@@ -19,7 +19,7 @@ export default  () => {
                 <div className="col-lg-10">
                     <nav className="navbar navbar-expand-lg px-0 py-0">
                         <Link to="/" className="navbar-brand" style={{marginRight:"2em"}}>
-                            <img className="img mx-4" src="/icon/logo_curumamori.png" alt="logo" style={{width:150}}/>
+                            <img className="img mx-4" src="/icon/logo_kurumamori.png" alt="logo" style={{width:150}}/>
                         </Link>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                             <img className="search-img" src="../icon/list.png" 
