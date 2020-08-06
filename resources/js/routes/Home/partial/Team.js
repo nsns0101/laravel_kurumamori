@@ -29,7 +29,7 @@ export default () => {
     const team_func = (img_name, name,position) => {
         return (
             <div className="col-lg-4 col-md-4 col-sm-12 text-center aos-init mb-3 team">
-                <ScrollAnimation animateIn='fadeInUp' delay={300} animateOnce={true}>                
+                <ScrollAnimation animateIn='fadeIn' delay={300} animateOnce={true}>                
                     <div style={{marginLeft:"20%", width:"60%",borderRadius:"125px", boxShadow:"rgb(191,191,191) 0px 0px 20px 10px", backgroundColor:"black"}}>    
                         <div className="member" style={{borderRadius:"125px", padding:"10px", backgroundColor:"white"}}>
                             <img src={`/images/home/team/${img_name}.jpg`} alt="img" style={{width:"100%", height:"250px", borderRadius:"125px"}}/>
