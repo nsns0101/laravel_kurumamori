@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {AppContext} from "../components/App";
 // import styled from "styled-components";
@@ -9,16 +9,22 @@ export default  () => {
     const {user, t} = useContext(AppContext);    //값 전달 성공
     // console.log(isLoggedIn);
     const nav_text = {
-        fontSize:"22px",
+        fontSize:"18px",
         color:"white",
+        marginTop:"5px",
     }
+    const [path_url, setPath_url] = useState(location.pathname.split('/')[1]); 
+    console.log("------------------------------------------------");
+    console.log(path_url);
+    console.log("------------------------------------------------");
+
     return (
         <section id="main-navigation">
             <div className="row py-1" style={{background:"#002ef0", opacity:1, display: "flex", height:"65px", borderBottom:"solid blue 1px"}}>
                 <div className="col-lg-1"></div>
                 <div className="col-lg-10">
                     <nav className="navbar navbar-expand-lg px-0 py-0">
-                        <Link to="/" className="navbar-brand" style={{marginRight:"2em"}}>
+                        <Link to="/" className="navbar-brand" style={{marginRight:"50px"}} onClick={()=>setPath_url("")}>
                             <img className="img mx-4" src="/icon/logo_kurumamori.png" alt="logo" style={{width:150}}/>
                         </Link>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,16 +38,19 @@ export default  () => {
                         <div className="collapse navbar-collapse px-4" id="main_navbar" style={{background:"#002ef0", zIndex:1000}}>
                             <ul className="navbar-nav mr-auto col-auto">
                                 <li className="nav-item" style={{marginRight:"1.5em"}}>
-                                    <Link to="/products" className="nav-link" style={nav_text}>{t("제품")}</Link>
+                                    <Link to="/products" className="nav-link" style={nav_text} onClick={()=>setPath_url("")}>{t("홈")}</Link>
                                 </li>
                                 <li className="nav-item" style={{marginRight:"1.5em"}}>
-                                    <Link to="/bigdata" className="nav-link" style={nav_text}>{t("빅데이터 자료실")}</Link>
+                                    <Link to="/products" className="nav-link" style={nav_text} onClick={()=>setPath_url("product")}>{t("제품")}</Link>
                                 </li>
                                 <li className="nav-item" style={{marginRight:"1.5em"}}>
-                                    <Link to="/boards/questions" className="nav-link" style={nav_text}>{t("고객 문의")}</Link>
+                                    <Link to="/bigdata" className="nav-link" style={nav_text} onClick={()=>setPath_url("bigdata")}>{t("빅데이터 자료실")}</Link>
                                 </li>
                                 <li className="nav-item" style={{marginRight:"1.5em"}}>
-                                    <a className="nav-link" href="/boards/reviews" style={nav_text}>{t("고객 리뷰")}</a>
+                                    <Link to="/boards/questions" className="nav-link" style={nav_text} onClick={()=>setPath_url("boards")}>{t("고객 문의")}</Link>
+                                </li>
+                                <li className="nav-item" style={{marginRight:"1.5em"}}>
+                                    <a className="nav-link" href="/boards/reviews" style={nav_text} onClick={()=>setPath_url("reviews")}>{t("고객 리뷰")}</a>
                                 </li>
                             </ul>
                 
@@ -50,20 +59,20 @@ export default  () => {
                                 {user.id ? 
                                 <React.Fragment>
                                     <li className="nav-item" style={{marginRight:"1.5em"}}>
-                                        <Link to="/info/index" className="nav-link" style={nav_text}>{t("내정보")}</Link> 
+                                        <Link to="/info/index" className="nav-link" style={nav_text} onClick={()=>setPath_url("info")}>{t("내정보")}</Link> 
                                     </li>
                                     <li className="nav-item" style={{marginRight:"1.5em"}}>
-                                        <Link to="/logout" className="nav-link" style={nav_text}>{t("로그아웃")}</Link> 
+                                        <Link to="/logout" className="nav-link" style={nav_text} onClick={()=>setPath_url("")}>{t("로그아웃")}</Link> 
                                     </li>
                                 </React.Fragment>
                                 :
                                 <React.Fragment>
-                                <li className="nav-item" style={{marginRight:"1.5em"}}>
-                                    <Link to="/auth/login" className="nav-link" style={nav_text}>{t("로그인")}</Link>
+                                <li className="nav-item" style={{marginRight:"1.5em", border:"2px solid white", borderRadius:"10px", padding: "0 10px 0 10px"}}>
+                                    <Link to="/auth/login" className="nav-link" style={{fontSize:"18px", color:"white", marginTop:"5px", padding:2}}>{t("로그인")}</Link>
                                 </li> 
-                                <li className="nav-item" style={{marginRight:"1.5em"}}>
+                                {/* <li className="nav-item" style={{marginRight:"1.5em"}}>
                                     <Link to="/auth/register" className="nav-link" style={nav_text}>{t("회원가입")}</Link>
-                                </li>
+                                </li> */}
                                 </React.Fragment>
                                 }
 

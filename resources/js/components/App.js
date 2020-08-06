@@ -34,6 +34,9 @@ import Review from "../routes/Board/Review";
 export const AppContext = createContext();
 
 function App() {
+    console.log("------------------------------------------------");
+    console.log(location.pathname.split('/')[1]);
+    
     const { t } = useTranslation();
     // console.log(t('hello'));
     const [isLoggedIn, setIsLoggedIn] = useState(false);

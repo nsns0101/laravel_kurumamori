@@ -21,7 +21,7 @@ const up = () => {
 export default () => {
     return (
         <Footer>
-            <div className="row foot_back">
+            <div className="row foot_back" style={{margin:0}}>
                 <div className="col-lg-12 col-md-12 col-sm-12" style={{marginTop:"15px"}}>
                     <div className="row">
                         <div className="col-md-8">
