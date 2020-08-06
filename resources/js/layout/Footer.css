@@ -1,0 +1,6 @@
+.foot_back{
+    width: 100%;
+    background: linear-gradient(45deg, rgba(0, 47, 240, 1) 5%, rgba(0, 124, 240, 1) 100%) center center no-repeat;
+    /* background: linear-gradient(45deg, #002ef0 0%, rgba(116, 15, 214, 0.9) 100%), url(/images/hero-bg.jpg) center center no-repeat; */
+    background-size: cover;
+}

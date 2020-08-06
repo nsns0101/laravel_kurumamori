@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import "./Footer.css";
 
 const Footer = styled.div`
     position:relative;
@@ -20,22 +21,20 @@ const up = () => {
 export default () => {
     return (
         <Footer>
-            <div className="row">
-                <div className="col-lg-12 col-md-12 col-sm-12">
+            <div className="row foot_back">
+                <div className="col-lg-12 col-md-12 col-sm-12" style={{marginTop:"15px"}}>
                     <div className="row">
-                        <div className="col-lg-2 col-md-2 col-sm-2">
-                            <p style={{fontSize:"16px"}}>© Copyright MIRO.</p>
+                        <div className="col-md-8">
+                            <p style={{color:"white", fontSize:"16px", fontWeight:500}}>©Copyright クルマモリ9。All Rights Reserved</p>
                         </div>
-                        <div className="col-lg-7 col-md-7 col-sm-7">
-
-                        </div>
-                        <div className="col-lg-1 col-md-1 col-sm-1">
+                        <div className="col-md-4">
                             <a href="https://www.youtube.com/channel/UCTLr43DTgWut2lSQ2vFcXAw/featured">
-                                <img src="/icon/youtube.png" style={{width:"30px"}}/>
+                                <img src="/icon/footer_Logos.png" style={{width:"30%"}}/>
                             </a>
+                        </div>   
+                        
 
-                        </div>
-                        <div className="col-lg-2 col-md-2 col-sm-2">
+                        {/* <div className="col-lg-2 col-md-2 col-sm-2">
                             <button className="btn btn-success" onClick={()=>up()} style={{
                                 position: "fixed",
                                 // bottom:"70px",
@@ -44,7 +43,7 @@ export default () => {
                             }}>
                                ↑<br/>TOP
                             </button>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

@@ -3,18 +3,19 @@ import {AppContext} from "../../../components/App";
 import AnimationCount from 'react-count-animation';
 import 'react-count-animation/dist/count.min.css';
 import ScrollAnimation from "react-animate-on-scroll";
+import "./Functions2.css";
 
 export default () => {
     const {t} = useContext(AppContext);
 
     const main_text = {
         fontSize: "32px",
-        fontWeight: "bold",
+        fontWeight: "900",
         textTransform: "uppercase",
         // marginBottom: "20px",
         // paddingBottom: "20px",
         position: "relative",
-        color:"black",
+        color:"white",
     }
 
     const count_set1 = {
@@ -37,7 +38,7 @@ export default () => {
     };
     const count_set3 = {
         start: 0,
-        count: 40500000000000,
+        count: 40,
         duration: 7000,
         // decimals: 2,
         useGroup: true,
@@ -46,36 +47,47 @@ export default () => {
 
     };
 
-    const a_func = (img, title_1, title_2, count_set) => {
+    const a_func = (title, count_set) => {
         return (
-            <div key={count_set.count} className="col-lg-4 col-md-3 col-sm-12 col-12 text-center">
+            <div key={count_set.count} className="col-lg-4 col-md-3 col-sm-12 col-12 text-center" style={{marginBottom:"80px"}}>
                 <ScrollAnimation animateIn="fadeIn" delay={500} animateOnce={true}>                
-                    <img src={img} alt="img" style={{width:"50%"}}/>
-                    <p className="py-0 my-0" style={{fontSize:"1.25em", color:"black", fontWeight:"600"}}>{title_1}</p>
-                    <p className="py-0 my-0" style={{fontSize:"1.25em", color:"black", fontWeight:"600"}}>{title_2}</p>
-                    <div style={{fontSize:"1.5em", color:"red"}}>
-                        <AnimationCount {...count_set}/>
-                    </div>
+                    <p style={{fontSize:"2em", color:"white", fontWeight:"900", marginTop:"50px", padding:0, marginBottom:0}}>{title}</p>
+                    {count_set == count_set3 ? (
+                        <div className="row justify-content-center" style={{fontSize:"1.5em", color:"rgb(181,191,243)"}}>
+                            <p className="text-center" style={{paddingRight:"5px"}}>약</p>
+                            <AnimationCount {...count_set}/>
+                            <p className="text-center">조억원</p>
+                        </div>
+                    ) : (
+                        <div className="row justify-content-center" style={{fontSize:"1.5em", color:"rgb(181,191,243)"}}>
+                            <p className="text-center" style={{paddingRight:"5px"}}>약</p>
+                            <AnimationCount {...count_set}/>
+                            <p className="text-center">건</p>
+                        </div>
+                    )}
                 </ScrollAnimation>
             </div>
         )
     }
 
     return (
-        <section id="intro function2" className="section intro" style={{background:"#F9F8FF"}}>
+        <section id="intro function2" className="section intro back_img">
             <div className="row">
                 <div className="col-lg-2 col-md-2 col-sm-2"/>
                 <div className="col-lg-8 col-md-8 col-sm-10">
-                    <div className="row justify-content-around pt-5">
+                    <div className="row justify-content-around" style={{marginTop:"80px"}}>
                         <div className="col-lg-12 col-md-12 col-sm-12 text-center">
                             <ScrollAnimation animateIn='fadeIn' animateOnce={true}>
-                                <h3 style={main_text}>damage caused by traffic accidents</h3>
-                                <h3 style={{color:"black"}}>──────────────────────────────</h3>
+                                <h3 style={main_text}>연간 교통사고 피해량</h3>
+                                <h3 style={{color:"rgb(150,191,243)"}}>───────────────</h3>
                             </ScrollAnimation>
                         </div>
-                        {a_func("/images/home/index_img_chapter01.png", t("연간 교통사고"), t("발생 건 수"), count_set1)}
+                        {/* {a_func("/images/home/index_img_chapter01.png", t("연간 교통사고"), t("발생 건 수"), count_set1)}
                         {a_func("/images/home/index_img_chapter02.png", t("연간 교통사고"), t("사망자 수"), count_set2)}
-                        {a_func("/images/home/index_img_chapter03.png", t("교통사고로 인한"), t("연간 경제적 손실"), count_set3)}
+                        {a_func("/images/home/index_img_chapter03.png", t("교통사고로 인한"), t("연간 경제적 손실"), count_set3)} */}
+                        {a_func(t("발생건 수"), count_set1)}
+                        {a_func(t("사망자 수"), count_set2)}
+                        {a_func(t("경제적 손실"), count_set3)}
                     </div>
                 </div>
 

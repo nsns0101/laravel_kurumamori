@@ -14,7 +14,7 @@ export default  () => {
     }
     return (
         <section id="main-navigation">
-            <div className="row py-1" style={{background:"#002ef0", opacity:1, display: "flex", height:"65px"}}>
+            <div className="row py-1" style={{background:"#002ef0", opacity:1, display: "flex", height:"65px", borderBottom:"solid blue 1px"}}>
                 <div className="col-lg-1"></div>
                 <div className="col-lg-10">
                     <nav className="navbar navbar-expand-lg px-0 py-0">
