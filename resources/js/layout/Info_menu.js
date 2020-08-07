@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import "../../../public/css/sb-admin-2.css";
 import {Link} from "react-router-dom";
+import {AppContext} from "../components/App";
 
 const Info_menu = styled.div`
     background-color:white;
@@ -9,6 +10,8 @@ const Info_menu = styled.div`
 `;
 
 export default () => {
+    const {user, t} = useContext(AppContext);
+
     const info_menu = {
         background : "white",
         height : "100%"
@@ -27,19 +30,19 @@ export default () => {
                     {/* 액티브! */}
                     <Link to="/info/index" className={`nav-link ${location.pathname.split('/')[2] == 'index' ? "active" : ""}`}>
                         {/* <i className="fas fa-fw fa-wrench" style={{color:"blue"}}></i> */}
-                        <span className="text-color" style={text_color}>개인정보</span>
+                        <span className="text-color" style={text_color}>{t("개인정보")}</span>
                     </Link>                  
                 </li>
                 <li className="nav-item">
                     <Link to="/info/medical_info" className={`nav-link ${location.pathname.split('/')[2] == 'medical_info' ? "active" : ""}`}>
                         {/* <i className="fas fa-fw fa-wrench" style={{color:"blue"}}></i> */}
-                        <span className="text-color" style={text_color}>의료정보</span>
+                        <span className="text-color" style={text_color}>{t("의료정보")}</span>
                     </Link>                      
                 </li>
                 <li className="nav-item">
                     <Link to="/info/drive_score" className={`nav-link ${location.pathname.split('/')[2] == 'drive_score' ? "active" : ""}`}>
                         {/* <i className="fas fa-fw fa-wrench" style={{color:"blue"}}></i> */}
-                        <span className="text-color" style={text_color}>운전점수</span>
+                        <span className="text-color" style={text_color}>{t("운전정보")}</span>
                     </Link> 
                 </li>
             </ul>
