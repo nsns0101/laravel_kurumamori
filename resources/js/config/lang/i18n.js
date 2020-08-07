@@ -17,10 +17,10 @@ i18n
     .use(initReactI18next)  // passes i18n down to react-i18next
     .init({
         resources: resource,
-        lng: "jp",
-        fallbackLng: 'jp',
-        // ns: ['translation'],
-        // defaultNS: "translation",
+        lng: "ko",
+        fallbackLng: 'ko',
+        ns: ['translation'],
+        defaultNS: "translation",
         debug: true,
         keySeparator: false, // we do not use keys in form messages.welcome
         interpolation: {

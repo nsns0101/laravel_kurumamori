@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import {AppContext} from "../components/App";
 // import styled from "styled-components";
 import {Dropdown} from "react-bootstrap";
-
+import i18next from "../config/lang/i18n.js";
+import "./Header.css";
 
 export default  () => {
     const {user, t} = useContext(AppContext);    //값 전달 성공
@@ -17,6 +18,15 @@ export default  () => {
     // console.log("------------------------------------------------");
     // console.log(path_url);
     // console.log("------------------------------------------------");
+
+    const [languageTitle, setLanguageTitle] = useState("한국어");
+
+    const change_language = (lang_arr) => {
+        //언어 변경
+        i18next.changeLanguage(lang_arr.split(',')[0]);
+        //이름 변경
+        setLanguageTitle(lang_arr.split(',')[1]);
+    };
 
     return (
         <section id="main-navigation">
@@ -38,7 +48,7 @@ export default  () => {
                         <div className="collapse navbar-collapse px-4" id="main_navbar" style={{background:"#002ef0", zIndex:1000}}>
                             <ul className="navbar-nav mr-auto col-auto">
                                 <li className="nav-item" style={{marginRight:"1.5em"}}>
-                                    <Link to="/products" className="nav-link" style={nav_text} onClick={()=>setPath_url("")}>{t("홈")}</Link>
+                                    <Link to="/" className="nav-link" style={nav_text} onClick={()=>setPath_url("")}>{t("홈")}</Link>
                                 </li>
                                 <li className="nav-item" style={{marginRight:"1.5em"}}>
                                     <Link to="/products" className="nav-link" style={nav_text} onClick={()=>setPath_url("product")}>{t("제품")}</Link>
@@ -77,7 +87,24 @@ export default  () => {
                                 </li> */}
                                 </React.Fragment>
                                 }
-
+                                {/* 다국어 지원 기능 */}
+                                <div className="lang_button" style={{marginTop:"10px"}}> 
+                                    <Dropdown onSelect={change_language}> 
+                                        <Dropdown.Toggle variant="" size="sm"> 
+                                            {languageTitle} 
+                                        </Dropdown.Toggle> 
+                                        <Dropdown.Menu> 
+                                            <Dropdown.Item eventKey={["ko", "한국어"]}>
+                                                <img src="http://img.cafe24.com/img/common/global/ko_KR_32x24.png" style={{marginRight:"10px"}}/>
+                                                한국어
+                                            </Dropdown.Item> 
+                                            <Dropdown.Item eventKey={["jp", "日本語"]}>
+                                                <img src="http://img.cafe24.com/img/common/global/ja_JP_32x24.png" style={{marginRight:"10px"}}/>
+                                                日本語
+                                            </Dropdown.Item> 
+                                        </Dropdown.Menu> 
+                                    </Dropdown> 
+                                </div>
                             </ul>
                         </div>
                     </nav>   
