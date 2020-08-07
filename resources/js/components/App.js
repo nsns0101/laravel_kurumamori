@@ -33,21 +33,24 @@ import Review from "../routes/Board/Review";
 //전역변수
 export const AppContext = createContext();
 
-function App() {
-    console.log("------------------------------------------------");
-    console.log(location.pathname.split('/')[1]);
-    
+function App() {    
     const { t } = useTranslation();
-    // console.log(t('hello'));
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [user, setUser] = useState(false);
-    // 언어
-    const [language, setLanguage] = useState("korea");
-    
     useEffect(()=>{
         // console.log(user);
-        console.log("app useEffect");
+        // console.log("app useEffect");
+
+        //기본언어 한국어
+        //(Render가 느려서 Header.js말고 여기에 추가해야함)
+        if(!localStorage.getItem('lang')){
+            localStorage.setItem('lang', 'ko');
+        }
+        i18next.changeLanguage(localStorage.getItem("lang"))
+
+        
         if(localStorage.getItem('userToken')){
+            console.log(localStorage.getItem('userToken'));
             const url = "/api/profile";
             // const token = localStorage;
             // console.log(token);
@@ -60,7 +63,7 @@ function App() {
             .then(res => {
                 // console.log(res);
                 if(res.data.user){
-                    console.log("user value call");
+                    // console.log("user value call");
                     setUser(res.data.user);
                     setIsLoggedIn(true);
                 }
@@ -69,9 +72,14 @@ function App() {
                 }
             }) 
         }
+        else{
+
+        }
     }, [isLoggedIn]);
 
-    return ( user.id ? (
+    //localStorage.getItem('lang')가 있어야 페이지가 나오게
+    //없으면 페이지 로딩시 한국어로 나오다가 0.3초뒤에 일본어로 나오기 때문에
+    return localStorage.getItem('lang') ? ( user.id ? (
         <AppContext.Provider value={{isLoggedIn, setIsLoggedIn, user, setUser, t}}>
             <BrowserRouter>
                 <Header/>
@@ -132,7 +140,7 @@ function App() {
             </BrowserRouter>
         </AppContext.Provider>
         )
-    );
+    ) : null
 }
 
 export default withTranslation()(App);

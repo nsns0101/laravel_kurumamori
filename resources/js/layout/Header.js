@@ -20,13 +20,16 @@ export default  () => {
     // console.log("------------------------------------------------");
 
     useEffect(()=>{
+        console.log("헤더");
         i18next.changeLanguage(localStorage.getItem("lang"))
     }, []);
 
+    //언어 제목
     const [languageTitle, setLanguageTitle] = useState(
         localStorage.getItem("lang") == "ko" ? "한국어" : "日本語"
     );
 
+    //언어 체인지
     const change_language = (lang_arr) => {
         //언어 변경
         i18next.changeLanguage(lang_arr.split(',')[0]);

@@ -18,7 +18,7 @@ i18n
     .init({
         resources: resource,
         lng: "ko",
-        fallbackLng: 'ko',
+        fallbackLng: "ko",
         // ns: ['translation'],
         // defaultNS: "translation",
         debug: true,

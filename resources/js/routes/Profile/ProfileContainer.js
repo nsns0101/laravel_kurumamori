@@ -108,9 +108,9 @@ export default ( {history} ) => {
         if(window.confirm(t("제품 등록을 취소하시겠습니까?"))){
             const url = `/products/${data.product.id}`;
             return Axios.delete(url).then(res => {
-                // window.location.reload();
-                // history.push('/info/index/delete');
                 setProduct_action("create");
+                window.location.reload();
+                // history.push('/info/index/delete');
             })
         }
     }
