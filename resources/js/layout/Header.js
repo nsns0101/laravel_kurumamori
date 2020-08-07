@@ -19,13 +19,22 @@ export default  () => {
     // console.log(path_url);
     // console.log("------------------------------------------------");
 
-    const [languageTitle, setLanguageTitle] = useState("한국어");
+    useEffect(()=>{
+        i18next.changeLanguage(localStorage.getItem("lang"))
+    }, []);
+
+    const [languageTitle, setLanguageTitle] = useState(
+        localStorage.getItem("lang") == "ko" ? "한국어" : "日本語"
+    );
 
     const change_language = (lang_arr) => {
         //언어 변경
         i18next.changeLanguage(lang_arr.split(',')[0]);
         //이름 변경
         setLanguageTitle(lang_arr.split(',')[1]);
+
+        //새로고침해도 유지되게 localStorage에 등록
+        localStorage.setItem("lang", lang_arr.split(',')[0]);
     };
 
     return (

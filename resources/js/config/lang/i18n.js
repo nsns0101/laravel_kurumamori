@@ -19,8 +19,8 @@ i18n
         resources: resource,
         lng: "ko",
         fallbackLng: 'ko',
-        ns: ['translation'],
-        defaultNS: "translation",
+        // ns: ['translation'],
+        // defaultNS: "translation",
         debug: true,
         keySeparator: false, // we do not use keys in form messages.welcome
         interpolation: {
