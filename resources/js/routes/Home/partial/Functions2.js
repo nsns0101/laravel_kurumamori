@@ -54,15 +54,15 @@ export default () => {
                     <p style={{fontSize:"2em", color:"white", fontWeight:"900", marginTop:"50px", padding:0, marginBottom:0}}>{title}</p>
                     {count_set == count_set3 ? (
                         <div className="row justify-content-center" style={{fontSize:"1.5em", color:"rgb(181,191,243)"}}>
-                            <p className="text-center" style={{paddingRight:"5px"}}>약</p>
+                            <p className="text-center" style={{paddingRight:"5px"}}>{t("약")}</p>
                             <AnimationCount {...count_set}/>
-                            <p className="text-center">조억원</p>
+                            <p className="text-center">{t("조원")}</p>
                         </div>
                     ) : (
                         <div className="row justify-content-center" style={{fontSize:"1.5em", color:"rgb(181,191,243)"}}>
-                            <p className="text-center" style={{paddingRight:"5px"}}>약</p>
+                            <p className="text-center" style={{paddingRight:"5px"}}>{t("약")}</p>
                             <AnimationCount {...count_set}/>
-                            <p className="text-center">건</p>
+                            <p className="text-center">{t("건")}</p>
                         </div>
                     )}
                 </ScrollAnimation>
@@ -78,7 +78,7 @@ export default () => {
                     <div className="row justify-content-around" style={{marginTop:"80px"}}>
                         <div className="col-lg-12 col-md-12 col-sm-12 text-center">
                             <ScrollAnimation animateIn='fadeIn' animateOnce={true}>
-                                <h3 style={main_text}>연간 교통사고 피해량</h3>
+                                <h3 style={main_text}>{t("연간 교통사고 피해량")}</h3>
                                 <h3 style={{color:"rgb(150,191,243)"}}>───────────────</h3>
                             </ScrollAnimation>
                         </div>

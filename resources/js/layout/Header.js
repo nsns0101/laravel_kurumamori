@@ -14,9 +14,9 @@ export default  () => {
         marginTop:"5px",
     }
     const [path_url, setPath_url] = useState(location.pathname.split('/')[1]); 
-    console.log("------------------------------------------------");
-    console.log(path_url);
-    console.log("------------------------------------------------");
+    // console.log("------------------------------------------------");
+    // console.log(path_url);
+    // console.log("------------------------------------------------");
 
     return (
         <section id="main-navigation">
@@ -59,11 +59,13 @@ export default  () => {
                                 {user.id ? 
                                 <React.Fragment>
                                     <li className="nav-item" style={{marginRight:"1.5em"}}>
-                                        <Link to="/info/index" className="nav-link" style={nav_text} onClick={()=>setPath_url("info")}>{t("내정보")}</Link> 
+                                        <Link to="/info/index" className="nav-link" style={nav_text} onClick={()=>setPath_url("info")}>
+                                            <img className="img mx-4" src="/icon/profile.png" alt="profile" style={{width:30}}/>
+                                        </Link> 
                                     </li>
-                                    <li className="nav-item" style={{marginRight:"1.5em"}}>
+                                    {/* <li className="nav-item" style={{marginRight:"1.5em"}}>
                                         <Link to="/logout" className="nav-link" style={nav_text} onClick={()=>setPath_url("")}>{t("로그아웃")}</Link> 
-                                    </li>
+                                    </li> */}
                                 </React.Fragment>
                                 :
                                 <React.Fragment>
