@@ -12,7 +12,7 @@ export default () => {
         age_data,
         time_set_data
     } = useContext(BigdataContext);
-    console.log(age_data);
+    // console.log(age_data);
     const SuddenAccelerationAgeChart = {
         data: {
             labels: [day_7[6], day_7[5], day_7[4], day_7[3], day_7[2], day_7[1], day_7[0]],    // 제목
@@ -85,8 +85,8 @@ export default () => {
                         age_data["50"]["bool_sudden_acceleration"][day_7[0]].bool_sudden_acceleration_count,
                     ],
                 },
-                {   // 60대 이상
-                    label: t("60대 이상"),
+                {   // 60대이상
+                    label: t("60대이상"),
                     borderColor: "red",   //선 색깔
                     pointRadius: 3,
                     pointBackgroundColor: "red",  //꼭짓점 색깔
@@ -192,8 +192,8 @@ export default () => {
                         age_data["50"]["bool_sudden_stop"][day_7[0]].bool_sudden_stop_count,
                     ],
                 },
-                {   // 60대 이상
-                    label: t("60대 이상"),
+                {   // 60대이상
+                    label: t("60대이상"),
                     borderColor: "red",   //선 색깔
                     pointRadius: 3,
                     pointBackgroundColor: "red",  //꼭짓점 색깔
@@ -237,7 +237,7 @@ export default () => {
             ],
             datasets: [
                 {
-                    label: t("급가속"),
+                    label: t("급 가속"),
                     backgroundColor: "green",
                     hoverBackgroundColor: "#2e59d9",
                     borderColor: "green",
@@ -284,7 +284,7 @@ export default () => {
             ],
             datasets: [
                 {
-                    label: t("급정거"),
+                    label: t("급 감속"),
                     backgroundColor: "orange",
                     hoverBackgroundColor: "#2e59d9",
                     borderColor: "orange",

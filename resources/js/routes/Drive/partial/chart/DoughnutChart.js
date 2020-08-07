@@ -89,7 +89,9 @@ export default () => {
             },
         }
     }
+    const datasetKeyProvider = Math.random();
+
     return(
-        <Doughnut data={DoughnutChart.data} options={DoughnutChart.options} width={693} height={320}/>      
+            <Doughnut data={DoughnutChart.data} options={DoughnutChart.options} width={693} height={320} key={datasetKeyProvider}/>      
     )
 }

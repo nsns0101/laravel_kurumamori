@@ -13,15 +13,15 @@ export default () => {
         action,
         age_data
     } = useContext(BigdataContext);
-    console.log(age_data);
-    console.log(action);
+    // console.log(age_data);
+    // console.log(action);
     //제일 마지막에 렌더된 값이 있을 때
     return age_data ? (
         <section id="intro" className="section intro" style={{paddingTop:"50px", background:"#F0F0F0"}}>
             <div className="container px-3 py-5 p-md-5">
                 <div className="card">
                     <div className="card-header">
-                        <p>
+                        <p style={{margin:0}}>
                             {action == "sleep" ? (
                                 t("최근 7일간의 졸음운전 위치")
                             ) : action == "sudden" ? (
@@ -31,27 +31,27 @@ export default () => {
                             )}
                         </p>
                     </div>
-                    <div className="card-body" style={{width:"100%", height:"500px"}}>
+                    <div className="card-body" style={{width:"100%", height:"500px", marginBottom:"30px"}}>
                         {/* 구글맵 */}
                         <Map_api/>
 
                         {action == "sleep" ? (
-                            <div>
+                            <div style={{marginTop:"10px"}}>
                                 <img src="/icon/blue_map_icon.png"/>
                                 <span>{t("졸음 구간")}</span>
                             </div>
                         ) : action == "sudden" ? (
-                            <div>
+                            <div style={{marginTop:"10px"}}>
                                 <img src="/icon/orange_map_icon.png"/>
-                                <span>{t("급가속 구간")}</span>
+                                <span style={{marginRight:"15px"}}>{t("급가속 구간")}</span>
                                 <img src="/icon/green_map_icon.png"/>
                                 <span>{t("급감속 구간")}</span>
                             </div>
 
                         ) : (
-                            <div>
+                            <div style={{marginTop:"10px"}}>
                                 <img src="/icon/red_map_icon.png"/>
-                                <span>{t("신고 구간")}</span>
+                                <span>{t("사고 구간")}</span>
                             </div>
                         )}
                     </div>

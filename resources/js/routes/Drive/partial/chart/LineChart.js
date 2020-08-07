@@ -205,13 +205,15 @@ export default () => {
               callbacks: {
                 label: function(tooltipItem, chart) {
                   var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-                  return datasetLabel + number_format(tooltipItem.yLabel) + '회';
+                  return datasetLabel + number_format(tooltipItem.yLabel) + t('회');
                 }
               }
             }
           }
     }
+    const datasetKeyProvider = Math.random();
+
     return(
-        <Line data={LineChart.data} options={LineChart.options} width={693} height={320}/>
+        <Line data={LineChart.data} options={LineChart.options} width={693} height={320} key={datasetKeyProvider}/>
     )
 }

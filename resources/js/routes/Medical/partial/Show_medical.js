@@ -53,9 +53,9 @@ export default () => {
                                                         <div className="card-body" style={{color:"white"}}>{t(sickness_name[index])}</div>
                                                         <div className="card-footer d-flex align-items-center justify-content-between">
                                                             <div className="row text-truncate">
-                                                                <p className="col-lg-12 col-md-12 col-sm-12">{t("복용중인 약")} : {medicine[index] ? t(medicine[index]) : t("없음")}</p>
-                                                                <p className="col-lg-12 col-md-12 col-sm-12">{t("증상")} : {symptom[index] ? t(symptom[index]) : t("없음")}</p>
-                                                                <p className="col-lg-12 col-md-12 col-sm-12">{t("다니는 병원")} : {hospital[index] ? t(hospital[index]) : t("없음")}</p>
+                                                                <p className="col-lg-12 col-md-12 col-sm-12">{t("복용중인 약")} : {medicine[index] ? medicine[index] : t("없음")}</p>
+                                                                <p className="col-lg-12 col-md-12 col-sm-12">{t("증상")} : {symptom[index] ? symptom[index] : t("없음")}</p>
+                                                                <p className="col-lg-12 col-md-12 col-sm-12">{t("다니는 병원")} : {hospital[index] ? hospital[index] : t("없음")}</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -87,7 +87,7 @@ export default () => {
                                                         <div className="card-footer d-flex align-items-center justify-content-between">
                                                             <div className="row text-truncate">
                                                                 {/* <p className="col-lg-12 col-md-12 col-sm-12">기저 질환 : {past_sickness_name[index]}</p> */}
-                                                                <p className="col-lg-12 col-md-12 col-sm-12">{t("보충설명")} : {past_sickness_supplementation[index] ? t(past_sickness_supplementation[index]) : t("없음")}</p>
+                                                                <p className="col-lg-12 col-md-12 col-sm-12">{t("보충설명")} : {past_sickness_supplementation[index] ? past_sickness_supplementation[index] : t("없음")}</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -110,10 +110,10 @@ export default () => {
                                 </div>
                                 <div className="card-body d-flex align-items-center justify-content-between">
                                     <div className="row text-truncate">
-                                        <p className="col-lg-12 col-md-12 col-sm-12">{t("보호자 휴대폰")} : {guardian_phone ? t(guardian_phone) : t("없음")}</p>
+                                        <p className="col-lg-12 col-md-12 col-sm-12">{t("보호자 휴대폰")} : {guardian_phone ? guardian_phone : t("없음")}</p>
                                         <p className="col-lg-12 col-md-12 col-sm-12">{t("혈액형")} : {t(blood_type)}</p>
                                         <p className="col-lg-12 col-md-12 col-sm-12">{t("장애 여부")} : {disability_status ? t("예") : t("아니오")}</p>
-                                        <p className="col-lg-12 col-md-12 col-sm-12">{t("신고시 요청사항")} : {report_request ? t(report_request) : t("없음")}</p>     
+                                        <p className="col-lg-12 col-md-12 col-sm-12">{t("신고시 요청사항")} : {report_request ? report_request : t("없음")}</p>     
                                     </div>
                                 </div>
                             </div>

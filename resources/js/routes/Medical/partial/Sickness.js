@@ -69,7 +69,7 @@ export default () => {
                                     newArr[index] = data.value;
                                     setSickness_name(newArr)
                                 }
-                            } value={sickness_name[index] ? sickness_name[index] : ""} placeholder={t("선택")} style={{width:"200px"}}/>
+                            } value={sickness_name[index] ? t(sickness_name[index]) : ""} placeholder={t("선택")} style={{width:"200px"}}/>
                     </div>
                     {/* 복용중인 약 글자 */}
                     <div className="col-md-2 text-center p-3">

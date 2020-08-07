@@ -46,11 +46,11 @@ export default () => {
                             <div className="col-lg-4 col-md-4 col-sm-12">
                                 
                                 <div className="py-5 text-center">
-                                    <p style={drive_text}>{t("총 운전 점수")} : {(score[0] + score[1] + score[2] + score[3]) / score.length}점</p>
-                                    <p style={drive_text}>{t("급 가속 횟수")} : {day_5_danger_count[0].count_sudden_acceleration}회</p>
-                                    <p style={drive_text}>{t("급 감속 횟수")} : {day_5_danger_count[0].count_sudden_stop}회</p>
-                                    <p style={drive_text}>{t("졸음 횟수")} : {day_5_danger_count[0].count_sleep}회</p>
-                                    <p style={drive_text}>{t("사고")} : {day_5_danger_count[0].count_report}건</p>
+                                    <p style={drive_text}>{t("총 운전 점수")} : {(score[0] + score[1] + score[2] + score[3]) / score.length}{t("점")}</p>
+                                    <p style={drive_text}>{t("급 가속 횟수")} : {day_5_danger_count[0].count_sudden_acceleration}{t("회")}</p>
+                                    <p style={drive_text}>{t("급 감속 횟수")} : {day_5_danger_count[0].count_sudden_stop}{t("회")}</p>
+                                    <p style={drive_text}>{t("졸음 횟수")} : {day_5_danger_count[0].count_sleep}{t("회")}</p>
+                                    <p style={drive_text}>{t("사고")} : {day_5_danger_count[0].count_report}{t("건")}</p>
                                     {/* 당일 사고정보 */}
                                     {reports.length ? (
                                         reports.map( (value, index) => {
@@ -69,7 +69,7 @@ export default () => {
 
                                 {drive_info.map( (value, index) => {
                                     <p key={index}>
-                                        {t("운전 시간")} : {drive_info[index].created_at} ~ {drive_info[index].updated_at}
+                                        {t("운전시간")} : {drive_info[index].created_at} ~ {drive_info[index].updated_at}
                                     </p>
                                 })}
                             </div>
@@ -87,7 +87,7 @@ export default () => {
                                         <img src="/icon/blue_map_icon.png"/>{t("졸음 구간")}
                                     </span>
                                     <span className="pr-3">
-                                        <img src="/icon/red_map_icon.png"/>{t("신고 구간")}
+                                        <img src="/icon/red_map_icon.png"/>{t("사고 구간")}
                                     </span>
                                 </div>             
                             </div>

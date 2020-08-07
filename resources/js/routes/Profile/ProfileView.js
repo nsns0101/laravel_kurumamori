@@ -49,7 +49,7 @@ export default ( {
                                                             <p className="card-text"><b>{t("생년월일")}</b><br/>{data.user.birth}</p>
                                                         </div>
                                                         <div className="col-lg-6">
-                                                            <p className="card-text"><b>{t("성별")}</b><br/>{data.user.gender}</p>
+                                                            <p className="card-text"><b>{t("성별")}</b><br/>{t(data.user.gender)}</p>
                                                         </div>
                                                         
                                                         <div className="col-lg-6 mb-3">
@@ -150,7 +150,7 @@ export default ( {
                                                             return (
                                                                 <div className="row" key={index}>
                                                                     <div className="col-lg-6">
-                                                                        <p className="card-text"><b>{t("구매한 제품키")}</b><br/>{value.product_key}</p>
+                                                                        <p className="card-text"><b>{t("제품키")}</b><br/>{value.product_key}</p>
                                                                     </div>
                                                                     <div className="col-lg-6 mb-3">
                                                                         <p className="card-text"><b>{t("구매 날짜")}</b><br/>{moment(value.created_at).format("YYYY-MM-DD")}</p>
@@ -191,7 +191,7 @@ export default ( {
                                                             <tr key={index} onClick={()=> history.push(`/boards/${data.board_categories[index].category == "유저리뷰" ? "reviews" : "questions"}/${value.id}`)} style={{cursor:"pointer"}}>
                                                                 <th className="text-center" scope="row">{value.id}</th>
                                                                 <td className="text-center" scope="row">{value.title}</td>
-                                                                <td className="text-center" scope="row">{data.board_categories[index].category}</td>
+                                                                <td className="text-center" scope="row">{t(data.board_categories[index].category)}</td>
                                                                 <td className="text-center" scope="row">{moment(value.created_at).format("YYYY-MM-DD")}</td>
                                                                 <td className="text-center" scope="row">{value.view_count}</td>
                                                                 <td className="text-center" scope="row">{data.board_comments[index] ? "O" : "X"}</td>

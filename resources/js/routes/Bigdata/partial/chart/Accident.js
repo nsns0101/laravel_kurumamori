@@ -84,8 +84,8 @@ export default () => {
                         age_data["50"]["bool_report"][day_7[0]].bool_report_count,
                     ],
                 },
-                {   // 60대 이상
-                    label: t("60대 이상"),
+                {   // 60대이상
+                    label: t("60대이상"),
                     borderColor: "red",   //선 색깔
                     pointRadius: 3,
                     pointBackgroundColor: "red",  //꼭짓점 색깔
@@ -129,7 +129,7 @@ export default () => {
             ],    // 기준
             datasets: [
                 {
-                    label: t("교통사고"),
+                    label: t("교통 사고"),
                     backgroundColor: "red",
                     hoverBackgroundColor: "#2e59d9",
                     borderColor: "red",

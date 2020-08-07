@@ -58,7 +58,7 @@ export default () => {
                                     newArr[index] = data.value;
                                     setPast_sickness_name(newArr);
                                 }
-                            } value={past_sickness_name[index] ? past_sickness_name[index] : ""} placeholder={t("선택")} style={{width:"200px"}}/>
+                            } value={past_sickness_name[index] ? t(past_sickness_name[index]) : ""} placeholder={t("선택")} style={{width:"200px"}}/>
                     </div>
                     {/* // {{--  --}} */}
                     <div className="col-md-6">

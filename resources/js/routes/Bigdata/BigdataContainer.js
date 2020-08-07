@@ -55,6 +55,10 @@ export default () => {
             });
         }else{
             setAction("index");
+            setDay_7("");
+            setDay_7_drive_detection("");
+            setTime_set_data("");
+            setAge_data("");
         }
     }, [location.pathname])
     

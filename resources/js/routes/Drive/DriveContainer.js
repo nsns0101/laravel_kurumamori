@@ -96,7 +96,7 @@ export default () => {
     }, [user, date])
     // console.log(date);
     // console.log(drive_info);
-    console.log(reports);
+    // console.log(reports);
     // console.log(score);
     // console.log(day_5);
     // console.log(day_5_sec);
