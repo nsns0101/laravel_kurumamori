@@ -23,3 +23,13 @@
     font-weight: bold;
     margin-bottom: 5px;
 }
+
+.info_menu_span {
+    color: black;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+.active {
+    border-bottom:"10px solid black"
+}
