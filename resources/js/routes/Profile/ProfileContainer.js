@@ -1,20 +1,14 @@
-import React, {useContext, useState, useEffect} from "react";
+import React, {useContext, useState, useEffect, createContext} from "react";
 import {AppContext} from "../../components/App";
 import Axios from "axios";
 import Geocode from "react-geocode";
 import ProfileView from "./ProfileView";
 
+export const ProfileContext = createContext();
 
 
 export default ( {history} ) => {
     const { user, t } = useContext(AppContext);
-    // const [profile, setProfile] = useState("");         //프로필
-    // const [product, setProduct] = useState("");         //등록 제품
-    // const [product_buy, setProduct_buy] = useState("")  //등록 제품(구입날짜 때문에 (유저가 안샀는 경우도 있으니))
-    // const [user_product_buy_key, setUser_product_buy_key] = useState([]);  //구입한 제품의 키
-    // const [boards, setBoards] = useState([]);     //작성한 게시글
-    // const [board_categories, setBoard_categories] = useState([]);   //작성한 게시글의 카테고리
-    // const [board_comments, setBoards_comments] = useState([]);      //작성한 게시글의 댓글
     
     const [reports, setReports] = useState([]);   //신고 위치
     const [data, setData] = useState("");
@@ -129,14 +123,16 @@ export default ( {history} ) => {
     }
 
     return (
-        <ProfileView
-            history={history}
-            data={data}
-            setProduct_key_input={setProduct_key_input}
-            error_text={error_text}
-            onSubmit={onSubmit}
-            reports={reports}
-            setData={setData}
-        />        
+        <ProfileContext.Provider value={{
+            history,
+            data,
+            setProduct_key_input,
+            error_text,
+            onSubmit,
+            reports,
+            setData,
+        }}>
+            <ProfileView/>
+        </ProfileContext.Provider>
     )
 }

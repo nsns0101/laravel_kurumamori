@@ -7,7 +7,7 @@ import i18next from "../config/lang/i18n.js";
 import "./Header.css";
 
 export default  () => {
-    const {user, t} = useContext(AppContext);    //값 전달 성공
+    const {user, t} = useContext(AppContext);
     // console.log(isLoggedIn);
     const nav_text = {
         fontSize:"18px",
@@ -18,11 +18,6 @@ export default  () => {
     // console.log("------------------------------------------------");
     // console.log(path_url);
     // console.log("------------------------------------------------");
-
-    useEffect(()=>{
-        console.log("헤더");
-        i18next.changeLanguage(localStorage.getItem("lang"))
-    }, []);
 
     //언어 제목
     const [languageTitle, setLanguageTitle] = useState(
