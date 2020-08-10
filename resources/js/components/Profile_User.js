@@ -1,6 +1,7 @@
 import React, {useEffect, useState, useContext} from "react";
 import {AppContext} from "./App";
 import {ProfileContext} from "../routes/Profile/ProfileContainer";
+import { Link } from "react-router-dom";
 import moment from "moment";
 import ScrollAnimation from "react-animate-on-scroll";
 
@@ -29,6 +30,9 @@ export default () => {
                 <p className="profile_other_data">{data.user.email}</p>
                 <p className="profile_other_title">{t("가입일")}</p>
                 <p className="profile_other_data">{moment(data.user.created_at).format("YYYY-MM-DD")}</p>
+                <Link to="/logout">
+                    <button className="btn btn-primary" style={{width:"100%"}}>{t("로그아웃")}</button>
+                </Link>
             </div>
         </div>
     )
