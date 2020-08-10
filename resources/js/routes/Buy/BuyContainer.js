@@ -5,6 +5,8 @@ import Buy from "./Buy";
 import Completed from "./partial/Completed";
 
 export default ({ history }) => {
+    const {t} = useContext(AppContext);
+
     const { user } = useContext(AppContext);
 
     const [name, setName] = useState(""); //setName 이름
@@ -86,6 +88,8 @@ export default ({ history }) => {
         email={email}
         phone={phone}
         product_key={product_key}
+
+        t={t}
         />
       
   );
