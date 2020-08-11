@@ -132,10 +132,15 @@ class MedicalController extends Controller
         $past_sickness_count = 0;
         $sickness_count = 0;
         \Log::info($past_sickness);
+
+        //count($past_sickness)와 count($request->data['past_sickness_name'])을 비교하여 더 큰값으로 결정
+        $count_for_past_sickness = count($past_sickness) > count($request->data['past_sickness_name']) ? count($past_sickness) : count($request->data['past_sickness_name']); 
+        $count_for_sickness = count($sickness) > count($request->data['sickness_name']) ? count($sickness) : count($request->data['sickness_name']); 
+        
         //past_sickness DB Update
-        for($i = 0; $i < count($request->data['past_sickness_name']); $i++){
+        for($i = 0; $i < $count_for_past_sickness; $i++){
             //input창에 넣은 값이 있고 "없음"이 아닐 때
-            if($request->data['past_sickness_name'][$i] && $request->data['past_sickness_name'][$i]!="없음"){
+            if(isset($request->data['past_sickness_name'][$i]) && $request->data['past_sickness_name'][$i]!="없음" && $request->data['past_sickness_name'][$i]!=""){
                 \Log::info($i);
                 //현재 해당하는 past_sickness_name의 인덱스가 
                 //i == 0, count가 0일 때는 create(유일하게 같을 때 create)
@@ -167,17 +172,18 @@ class MedicalController extends Controller
             }
             //수정창에서 지운 경우
             elseif(isset($past_sickness[$i])){
+                \Log::info("gg");
                 $past_sickness[$i]->delete();
             }
             $past_sickness_count++;
         }
         // \Log::info($error);
         //sickness DB Update
-        for($i = 0; $i < count($request->data['sickness_name']); $i++){
-            if($request->data['sickness_name'][$i] && $request->data['sickness_name'][$i]!="없음"){
+        for($i = 0; $i < $count_for_sickness; $i++){
+
+            if(isset($request->data['sickness_name'][$i]) && $request->data['sickness_name'][$i]!="없음"){
                 if(($i == 0 && count($sickness) == 0 ) || $i > count($sickness) - 1 ){
                     \Log::info($request->all());
-                    
                     \App\Sickness::create([
                         'user_id' => $request->data['user_id'],
                         'medical_id' => $medical_id,

@@ -9,7 +9,6 @@ import Profile_User from "../../components/Profile_User";
 import Info_menu from "../../layout/Info_menu";
 import Product_modal from "./partial/Product_modal";
 
-
 export default ({history}) => {
     const { user, setUser, t } = useContext(AppContext);
     const { 
@@ -35,11 +34,11 @@ export default ({history}) => {
                             <div className="col-md-9">
                                 <Info_menu/>
 
-                                <div className="" style={{maxHeight:"635px", overflow:"scroll", marginTop:"30px"}}>
+                                <div className="" style={{maxHeight:"635px", overflowY:"auto", overflowX:"hidden", marginTop:"30px"}}>
                                     {/* 사고 이력 */}
                                     <div className="card" style={{padding:"20px 20px 0 20px"}}>
-                                        <p style={{color:"blue", fontWeight:"bold"}}>{t("사고 이력")}</p>
-                                        <div style={{maxHeight:"140px", overflow:"scroll"}}>
+                                        <p className="no_scroll_p">{t("사고 이력")}</p>
+                                        <div style={{maxHeight:"140px", overflowY:"auto", overflowX:"hidden"}}>
                                             {data.reports.data.length ? data.reports.data.map( (value, index) => {
                                                 return (
                                                     // 
@@ -67,9 +66,9 @@ export default ({history}) => {
                                         {/* 제품 등록 정보 */}
                                         <div className="col-md-6">
                                             <div className="card" style={{marginTop:"30px", padding:"20px"}}>
-                                                <p style={{color:"blue", fontWeight:"bold"}}>{t("제품 등록 정보")}</p>
+                                                <p className="no_scroll_p">{t("제품 등록 정보")}</p>
                                                 {data.product ? (
-                                                    <div className="row on_registration_product" style={{maxHeight:"94px", overflow:"auto"}}>
+                                                    <div className="row on_registration_product" style={{maxHeight:"94px", overflowY:"auto", overflowX:"hidden"}}>
                                                         {/* 등록한 제품키 */}
                                                         <div className="col-md-6 text-center">
                                                             <hr style={{width:"30px", border:"2px solid green", margin:"0 auto 10px auto"}}/>
@@ -110,8 +109,8 @@ export default ({history}) => {
                                         {/* 제품 구매 이력 */}
                                         <div className="col-md-6">
                                             <div className="card" style={{marginTop:"30px", padding:"20px"}}>
-                                                <p style={{color:"blue", fontWeight:"bold"}}>{t("제품 구매 이력")}</p>
-                                                <div style={{maxHeight:"94px", overflow:"auto"}}>
+                                                <p className="no_scroll_p">{t("제품 구매 이력")}</p>
+                                                <div style={{maxHeight:"94px", overflowY:"auto", overflowX:"hidden"}}>
                                                     {data.user_product_buy_key.length ? data.user_product_buy_key.map( (value, index) => {
                                                         return (
                                                             <div className="row on_buy_product">
@@ -149,7 +148,7 @@ export default ({history}) => {
 
                                     {/* 게시글 */}
                                     <div className="card" style={{marginTop:"30px", padding:"20px 20px 0 20px"}}>
-                                        <p style={{color:"blue", fontWeight:"bold"}}>{t("사고 이력")}</p>
+                                        <p className="no_scroll_p">{t("사고 이력")}</p>
                                         <table className="table" style={{borderTop: "2px solid #e3e6f0", borderBottom: "2px solid #e3e6f0"}}>
                                             <thead>
                                                 <tr>

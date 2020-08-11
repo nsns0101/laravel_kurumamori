@@ -35,52 +35,57 @@ export default () => {
         past_sickness_name.push("");
     }
     return (
-        past_sickness_name ? past_sickness_name.map( (value, index) => {
-            return (
-                <div key={index} className="row" style={{display:"flex"}}>
-                    <div className="col-md-1">
-                        {index == 0 ? 
-                            <img src="/icon/button_plus.png" style={{marginLeft:"50%"}} onClick={() => add_past_sickness()}/>
-                        :
-                            <img src="/icon/button_minus.png" style={{marginLeft:"50%"}} onClick={() => minus_past_sickness(index)}/>
-                        }
-                    </div>
-                    <div className="col-md-2 text-center">
-                        <div className="medical_title_p">{t("과거 병력")}{index + 1}</div>
-                    </div>
-                    {/* {{-- 드롭다운버튼 --}} */}
-                    <div className="col-md-2 text-center medical_dropdown_p">
-                        <Dropdown options={sickness_list} 
-                            onChange={
-                                (data) => {
-                                    // console.log(data.value);
-                                    let newArr = [...past_sickness_name];
-                                    newArr[index] = data.value;
-                                    setPast_sickness_name(newArr);
-                                }
-                            } value={past_sickness_name[index] ? t(past_sickness_name[index]) : ""} placeholder={t("선택")} style={{width:"200px"}}/>
-                    </div>
-                    {/* // {{--  --}} */}
-                    <div className="col-md-6">
-                        <div className="form-group">
-                            {/* {{-- <input className="past_sickness_supplementation" style="font-size:24px; width:100%;"type="text"  */}
-                                {/* name="past_sickness_supplementation[]" className="form-control" placeholder="보충설명(복용 약물, 기간)" value="{{isset($past_sickness[$i-1]) ? old("past_sickness_supplementation.$i" ,$past_sickness[$i-1]->past_sickness_supplementation) :  old("past_sickness_supplementation.$i") }}"/> --}} */}
-                                <input style={{fontSize:"20px", width:"100%"}} type="text" 
-                                value={past_sickness_supplementation[index] ? past_sickness_supplementation[index] : ""}
-                                onChange={
-                                    (e) => {
-                                        let newArr = [...past_sickness_supplementation];
-                                        newArr[index] = e.target.value;
-                                        setPast_sickness_supplementation(newArr);
-                                    }
-                                }
-                                 className="form-control" placeholder={t("보충설명(복용 약물, 기간)")}/> 
-                            {/* {!! $errors->first('past_sickness_supplementation', '<span className="form-error">:message</span>') !!} */}
+        <div>
+            {past_sickness_name ? past_sickness_name.map( (value, index) => {
+                return (
+                    <div key={index} className="row" style={{display:"flex"}}>
+                        <div className="col-md-1">
+                            {index == 0 ? 
+                                <img src="/icon/button_plus.png" className="btn_plus_minus" onClick={() => add_past_sickness()}/>
+                            :
+                                <img src="/icon/button_minus.png" className="btn_plus_minus" onClick={() => minus_past_sickness(index)}/>
+                            }
                         </div>
+                        <hr/>
+                        <div className="col-md-2">
+                            <div className="medical_title_p">{t("과거 병력")}{index + 1}</div>
+                        </div>
+                        {/* {{-- 드롭다운버튼 --}} */}
+                        <div className="col-md-3 text-center medical_dropdown_p">
+                            <Dropdown options={sickness_list} style={{zIndex:"9999"}}
+                                onChange={
+                                    (data) => {
+                                        // console.log(data.value);
+                                        let newArr = [...past_sickness_name];
+                                        newArr[index] = data.value;
+                                        setPast_sickness_name(newArr);
+                                    }
+                                } value={past_sickness_name[index] ? t(past_sickness_name[index]) : ""} placeholder={t("선택")} style={{width:"200px"}}/>
+                        </div>
+                        {/* // {{--  --}} */}
+                        <div className="col-md-5">
+                            <div className="form-group">
+                                {/* {{-- <input className="past_sickness_supplementation" style="font-size:24px; width:100%;"type="text"  */}
+                                    {/* name="past_sickness_supplementation[]" className="form-control" placeholder="보충설명(복용 약물, 기간)" value="{{isset($past_sickness[$i-1]) ? old("past_sickness_supplementation.$i" ,$past_sickness[$i-1]->past_sickness_supplementation) :  old("past_sickness_supplementation.$i") }}"/> --}} */}
+                                    <input className="form-control medical_input_p" type="text" 
+                                    value={past_sickness_supplementation[index] ? past_sickness_supplementation[index] : ""}
+                                    onChange={
+                                        (e) => {
+                                            let newArr = [...past_sickness_supplementation];
+                                            newArr[index] = e.target.value;
+                                            setPast_sickness_supplementation(newArr);
+                                        }
+                                    }
+                                    placeholder={t("보충설명(복용 약물, 기간)")}/> 
+                                {/* {!! $errors->first('past_sickness_supplementation', '<span className="form-error">:message</span>') !!} */}
+                            </div>
+                        </div>
+                        <div className="col-md-1"></div>
                     </div>
-                    <div className="col-md-1"></div>
-                </div>
-            )
-        } ) : null
+                    )
+                }) : null
+            }
+            <hr/>
+        </div>
     )
 }

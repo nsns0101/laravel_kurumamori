@@ -46,92 +46,99 @@ export default () => {
     return (
         sickness_name ? sickness_name.map( (value, index) => {
             return (
-                <div key={index} className="row" style={{marginTop:"10px"}}>
-                    {/* +,- 아이콘 */}
-                    <div className="col-md-1" >
-                        {index == 0 ? 
-                            <img src="/icon/plus.png" style={{marginLeft:"50%"}} onClick={() => add_sickness()}/>
-                        :
-                            <img src="/icon/minus.png" style={{marginLeft:"50%"}} onClick={() => minus_sickness(index)}/>
-                        }
-                    </div>
-                    {/* 현재질환 글자 */}
-                    <div className="col-md-2 text-center p-3">
-                        <span className="medical_text"style={{marginTop:"13px"}}>{t("현재 질환") + (index + 1)}</span>
-                    </div>
-                    {/* 현재 질환 드롭다운버튼 */}
-                    <div className="col-md-2 text-center p-2">
-                        <Dropdown options={sickness_list} 
-                            onChange={
-                                (data) => {
-                                    // console.log(data.value);
-                                    let newArr = [...sickness_name];
-                                    newArr[index] = data.value;
-                                    setSickness_name(newArr)
-                                }
-                            } value={sickness_name[index] ? t(sickness_name[index]) : ""} placeholder={t("선택")} style={{width:"200px"}}/>
-                    </div>
-                    {/* 복용중인 약 글자 */}
-                    <div className="col-md-2 text-center p-3">
-                        <span className="medical_text"style={{marginTop:"13px"}}>{t("복용중인 약")}</span>
-                    </div>
-                    {/* 복용중인 약 input */}
-                    <div className="col-md-4">
-                        <div className="form-group pt-2">
-                                <input style={{fontSize:"1em", width:"100%"}} type="text" 
-                                value={medicine[index] ? medicine[index] : ""}
+                <div key={index}>
+                    <div className="row">
+                        {/* +,- 아이콘 */}
+                        <div className="col-md-1" >
+                            {index == 0 ? 
+                                <img src="/icon/button_plus.png" className="btn_plus_minus" onClick={() => add_sickness()}/>
+                            :
+                                <img src="/icon/button_minus.png" className="btn_plus_minus" onClick={() => minus_sickness(index)}/>
+                            }
+                        </div>
+                        {/* 현재질환 글자 */}
+                        <div className="col-md-2">
+                            <div className="medical_title_p">{t("현재 질환") + (index + 1)}</div>
+                        </div>
+                        {/* 현재 질환 드롭다운버튼 */}
+                        <div className="col-md-3 text-center medical_dropdown_p">
+                            <Dropdown options={sickness_list} 
                                 onChange={
-                                    (e) => {
-                                        let newArr = [...medicine];
-                                        newArr[index] = e.target.value;
-                                        setMedicine(newArr);
+                                    (data) => {
+                                        // console.log(data.value);
+                                        let newArr = [...sickness_name];
+                                        newArr[index] = data.value;
+                                        setSickness_name(newArr)
                                     }
-                                }
-                                className="form-control" placeholder={t("복용중인 약")}/> 
+                                } value={sickness_name[index] ? t(sickness_name[index]) : ""} placeholder={t("선택")} style={{width:"200px"}}/>
+                        </div>
+                        {/* 복용중인 약 글자 */}
+                        <div className="col-md-2">
+                            <div className="medical_title_p">{t("복용중인 약")}</div>
+                        </div>
+                        {/* 복용중인 약 input */}
+                        <div className="col-md-3">
+                            <div className="form-group">
+                                    <input className="form-control medical_input_p" type="text" 
+                                    value={medicine[index] ? medicine[index] : ""}
+                                    onChange={
+                                        (e) => {
+                                            let newArr = [...medicine];
+                                            newArr[index] = e.target.value;
+                                            setMedicine(newArr);
+                                        }
+                                    }
+                                    placeholder={t("복용중인 약")}/> 
+                            </div>
                         </div>
                     </div>
-                    <div className="col-md-1"></div>
-                    {/* 증상 글*/}
-                    <div className="col-md-1"></div>
-                    <div className="col-md-2 text-center p-2">
-                        <span className="medical_text"style={{marginTop:"13px"}}>{t("증상")}</span>
-                    </div>
-                    {/* 증상 input */}
-                    <div className="col-md-8">
-                            <input style={{fontSize:"1em", width:"100%"}} type="text" 
-                                    className="form-control" placeholder={t("증상을 적어주세요")}
-                                    value={symptom[index] ? symptom[index] : ""}
-                                    onChange={
-                                        (e) => {
-                                            let newArr = [...symptom];
-                                            newArr[index] = e.target.value;
-                                            setSymptom(newArr);
+                    {/*  */}
+                    <div className="row">
+                        {/* 증상 글*/}
+                        <div className="col-md-1"></div>
+                        <div className="col-md-2">
+                            <div className="medical_title_p">{t("증상")}</div>
+                        </div>
+                        {/* 증상 input */}
+                        <div className="col-md-8">
+                            <div className="form-group">
+
+                                <input type="text" className="form-control medical_input_p" placeholder={t("증상을 적어주세요")}
+                                        value={symptom[index] ? symptom[index] : ""}
+                                        onChange={
+                                            (e) => {
+                                                let newArr = [...symptom];
+                                                newArr[index] = e.target.value;
+                                                setSymptom(newArr);
+                                            }
                                         }
-                                    }
-                            />
-                            <span className="text-danger" style={{fontSize:"16px"}}>
-                                {t("증상은 최대한 자세히 적어주세요!")}
-                            </span>
-                    </div>
-                    <div className="col-md-1"></div>
-                    {/* 진료기관 글 */}
-                    <div className="col-md-1"></div>
-                    <div className="col-md-2 text-center pt-2 pb-3">
-                        <span className="medical_text"style={{marginTop:"13px"}}>{t("진료기관")}</span>
-                    </div>
-                    {/* 진료기관 input */}
-                    <div className="col-md-8 pt-2 pb-3">
-                            <input style={{fontSize:"1em", width:"100%"}} type="text" 
-                                    className="form-control" placeholder={t("진료기관 명을 적어주세요")}
-                                    value={hospital[index] ? hospital[index] : ""}
-                                    onChange={
-                                        (e) => {
-                                            let newArr = [...hospital];
-                                            newArr[index] = e.target.value;
-                                            setHospital(newArr);
+                                />
+                            </div>
+                                {/* <span className="text-danger" style={{fontSize:"16px"}}>
+                                    {t("증상은 최대한 자세히 적어주세요!")}
+                                </span> */}
+                        </div>
+                        <div className="col-md-1"></div>
+                        <div className="col-md-1"></div>
+                        {/* 진료기관 글 */}
+                        <div className="col-md-2">
+                            <div className="medical_title_p">{t("진료기관")}</div>
+                        </div>
+                        {/* 진료기관 input */}
+                        <div className="col-md-8">
+                            <div className="form-group">
+                                <input type="text" className="form-control medical_input_p" placeholder={t("진료기관 명을 적어주세요")}
+                                        value={hospital[index] ? hospital[index] : ""}
+                                        onChange={
+                                            (e) => {
+                                                let newArr = [...hospital];
+                                                newArr[index] = e.target.value;
+                                                setHospital(newArr);
+                                            }
                                         }
-                                    }
-                            />
+                                />
+                            </div>
+                        </div>
                     </div>
                 </div>
             )

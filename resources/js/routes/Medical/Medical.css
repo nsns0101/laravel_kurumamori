@@ -150,13 +150,36 @@
 .medical_title_p {
     color : black;
     font-size : 14px;
-    font-weight: 600;   
+    font-weight: 600;
+    margin-top: 10px;
 }
 .medical_dropdown_p {
     color : black;
     font-size : 12px;
-    font-weight: 600;   
+    font-weight: 600; 
+    margin-bottom: 10px;  
 }
-.card-main {
-    background-color : #002ef0
+.medical_input_p {
+    color : black;
+    font-size : 14px;
+    font-weight: 600;
+    background-color: rgb(242,244,253); 
+}
+.btn_plus_minus {
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 20px;
+}
+.btn_radio {
+    color: black;
+    font-size: 12px;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.react-datepicker__input-container input {
+    color : black;
+    font-size : 14px;
+    font-weight: 600;
+    background-color: rgb(242,244,253); 
 }

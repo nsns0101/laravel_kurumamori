@@ -30,8 +30,7 @@ export default ({history}) => {
                             </div>
                             <div className="col-md-9">
                                 <Info_menu/>
-
-                                <div className="" style={{maxHeight:"635px", overflow:"scroll", marginTop:"30px"}}>
+                                <div className="" style={{maxHeight:"635px", overflowY:"auto", marginTop:"30px"}}>
                                 {user && user.id && form  ? (
                                     <div className="card-body">
                                             {form == "view" ? (
