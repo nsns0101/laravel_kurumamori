@@ -117,7 +117,6 @@ export default ({history}) => {
             })
         }
     }
-    console.log(form);
     //값 받기
     useEffect(()=>{
         console.log("medical useEffect");
@@ -139,15 +138,13 @@ export default ({history}) => {
 
                 const arr_insurance_name_list = [];            
                 for(var i = 0; i < res.data.insurance_list.length; i++){
-                    arr_insurance_name_list.push(res.data.insurance_list[i].insurance_name);
+                    arr_insurance_name_list.push(t(res.data.insurance_list[i].insurance_name));
                     // arr_insurance_phone_list.push(res.data.insurance_list[i].insurance_phone);
                 }
                 setInsurance_name_list(arr_insurance_name_list);
                 // setInsurance_phone_list(arr_insurance_phone_list);
                 //past_sickness
                 if(res.data.past_sickness || (form && form != "create") ){
-                    console.log(res.data.past_sickness);
-                    console.log(form);
                     const arr_past_sickness_name = [];
                     const arr_past_sickness_supplementation = [];
                     for(var i = 0; i < res.data.past_sickness.length; i++){
@@ -205,8 +202,9 @@ export default ({history}) => {
                 }
 
                 //insurance
-                if(res.data.insurance || (form && form != "create") ){
+                if(res.data.insurance_list_my && (form && form != "create") ){
                     setInsurance_bool(true);
+                    console.log(res.data);
                     setInsurance_name(res.data.insurance_list_my.insurance_name);
                     setInsurance_phone(res.data.insurance_list_my.insurance_phone);
                     setSubscription_date(res.data.insurance.subscription_date);
@@ -214,11 +212,11 @@ export default ({history}) => {
                 }
                 //시연용
                 else{
-                    setInsurance_bool(true);
-                    setInsurance_name("하나보험사")
-                    setInsurance_phone("010-5096-5198");
-                    setSubscription_date("2010-08-21");
-                    setExpiration_date("2030-08-20");
+                    // setInsurance_bool(true);
+                    // setInsurance_name("하나보험사")
+                    // setInsurance_phone("010-5096-5198");
+                    // setSubscription_date("2010-08-21");
+                    // setExpiration_date("2030-08-20");
                 }
             }
 

@@ -24,8 +24,8 @@ export default () => {
      const add_sickness = () => {
         if(sickness_name.length < 3){
             
-            setMedicine(sickness_name => [...sickness_name, null]);
-            setSickness_name(medicine => [...medicine, null]);
+            setMedicine(medicine => [...medicine, null]);
+            setSickness_name(sickness_name => [...sickness_name, null]);
             setSymptom(symptom => [...symptom, null]);
             setHospital(hospital => [...hospital, null]);
         }
