@@ -37,19 +37,19 @@ export default () => {
     return (
         past_sickness_name ? past_sickness_name.map( (value, index) => {
             return (
-                <div key={index} className="row" style={{display:"flex", marginTop:"10px"}}>
+                <div key={index} className="row" style={{display:"flex"}}>
                     <div className="col-md-1">
                         {index == 0 ? 
-                            <img src="/icon/plus.png" style={{marginLeft:"50%"}} onClick={() => add_past_sickness()}/>
+                            <img src="/icon/button_plus.png" style={{marginLeft:"50%"}} onClick={() => add_past_sickness()}/>
                         :
-                            <img src="/icon/minus.png" style={{marginLeft:"50%"}} onClick={() => minus_past_sickness(index)}/>
+                            <img src="/icon/button_minus.png" style={{marginLeft:"50%"}} onClick={() => minus_past_sickness(index)}/>
                         }
                     </div>
-                    <div className="col-md-2 text-center p-3">
-                        <span className="medical_text"style={{marginTop:"13px"}}>{t("과거 병력")}{index + 1}</span>
+                    <div className="col-md-2 text-center">
+                        <div className="medical_title_p">{t("과거 병력")}{index + 1}</div>
                     </div>
                     {/* {{-- 드롭다운버튼 --}} */}
-                    <div className="col-md-2 text-center p-2">
+                    <div className="col-md-2 text-center medical_dropdown_p">
                         <Dropdown options={sickness_list} 
                             onChange={
                                 (data) => {
@@ -62,7 +62,7 @@ export default () => {
                     </div>
                     {/* // {{--  --}} */}
                     <div className="col-md-6">
-                        <div className="form-group p-2">
+                        <div className="form-group">
                             {/* {{-- <input className="past_sickness_supplementation" style="font-size:24px; width:100%;"type="text"  */}
                                 {/* name="past_sickness_supplementation[]" className="form-control" placeholder="보충설명(복용 약물, 기간)" value="{{isset($past_sickness[$i-1]) ? old("past_sickness_supplementation.$i" ,$past_sickness[$i-1]->past_sickness_supplementation) :  old("past_sickness_supplementation.$i") }}"/> --}} */}
                                 <input style={{fontSize:"20px", width:"100%"}} type="text" 

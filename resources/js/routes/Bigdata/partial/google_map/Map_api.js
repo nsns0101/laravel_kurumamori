@@ -15,10 +15,9 @@ export const Map_api = () => {
     //1차배열은 날짜 2차배열은 값
     // console.log(day_7_drive_detection);
     if(day_7_drive_detection[0]){
-
         for(var i = 0; i < day_7_drive_detection.length; i++){
             if(day_7_drive_detection[i] != null){
-                for(var j = 0; j < day_7_drive_detection[i].length; j++){          
+                for(var j = 0; j < day_7_drive_detection[i].length; j++){     
                     if(day_7_drive_detection[i][j].bool_sleep && action == "sleep"){
                         location.push({
                             lat : Number(day_7_drive_detection[i][j].latitude), 
@@ -54,12 +53,15 @@ export const Map_api = () => {
     }
     return (
     <GoogleMapReact
-        bootstrapURLKeys={{key:process.env.MIX_GCP_API_KEY}}
+        bootstrapURLKeys={{
+            key:process.env.MIX_GCP_API_KEY,
+            language:"en"
+        }}
         defaultCenter={{
             lat: location[0] ? location[0].lat : 37.3857469,
             lng: location[0] ? location[0].lng : 127.245579
             }}
-        defaultZoom={8}
+        defaultZoom={9}
     >
         {location && location.map( (value, index) => {
             return (

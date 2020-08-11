@@ -1,4 +1,5 @@
 import React, {useEffect, useState, useContext} from "react";
+import { Link } from "react-router-dom";
 import {AppContext} from "../../components/App";
 import {ProfileContext} from "./ProfileContainer";
 import Loader from "../../components/Loader";
@@ -34,7 +35,7 @@ export default ({history}) => {
                             <div className="col-md-9">
                                 <Info_menu/>
 
-                                <div className="" style={{maxHeight:"630px", overflow:"scroll", marginTop:"30px"}}>
+                                <div className="" style={{maxHeight:"635px", overflow:"scroll", marginTop:"30px"}}>
                                     {/* 사고 이력 */}
                                     <div className="card" style={{padding:"20px 20px 0 20px"}}>
                                         <p style={{color:"blue", fontWeight:"bold"}}>{t("사고 이력")}</p>
@@ -68,7 +69,7 @@ export default ({history}) => {
                                             <div className="card" style={{marginTop:"30px", padding:"20px"}}>
                                                 <p style={{color:"blue", fontWeight:"bold"}}>{t("제품 등록 정보")}</p>
                                                 {data.product ? (
-                                                    <div className="row on_product">
+                                                    <div className="row on_registration_product" style={{maxHeight:"94px", overflow:"auto"}}>
                                                         {/* 등록한 제품키 */}
                                                         <div className="col-md-6 text-center">
                                                             <hr style={{width:"30px", border:"2px solid green", margin:"0 auto 10px auto"}}/>
@@ -84,7 +85,7 @@ export default ({history}) => {
                                                         </div>
                                                     </div>
                                                 ): (
-                                                    <div className="not_product">
+                                                    <div className="not_registration_product">
                                                         <p className="text-center" style={{color:"black", fontSize:"14px",fontWeight:"bold"}}>
                                                             {t("등록된 제품이 없습니다.")}
                                                         </p>
@@ -110,13 +111,38 @@ export default ({history}) => {
                                         <div className="col-md-6">
                                             <div className="card" style={{marginTop:"30px", padding:"20px"}}>
                                                 <p style={{color:"blue", fontWeight:"bold"}}>{t("제품 구매 이력")}</p>
-                                                <p className="text-center" style={{color:"black", fontSize:"14px",fontWeight:"bold"}}>{t("구입한 제품이 없습니다.")}</p>
-                                                <div className="text-center">
-                                                    <button type="button" className="btn btn-success " data-toggle="modal" data-target="#productModal" style={{}}>
-                                                        {t("제품 구입")}
-                                                    </button>
-                                                </div>    
-                                                    
+                                                <div style={{maxHeight:"94px", overflow:"auto"}}>
+                                                    {data.user_product_buy_key.length ? data.user_product_buy_key.map( (value, index) => {
+                                                        return (
+                                                            <div className="row on_buy_product">
+                                                                {/* 제품 키 */}
+                                                                <div className="col-md-6 text-center">
+                                                                    <hr style={{width:"30px", border:"2px solid green", margin:"0 auto 10px auto"}}/>
+                                                                    <p style={{fontWeight:"600", color:"black"}}>{t("제품 키")}</p>
+                                                                    <p style={{fontWeight:"600"}}>{value.product_key}</p>
+                                                                </div>
+                                                                {/* 구입일 */}
+                                                                <div className="col-md-6 text-center">
+                                                                    {/* <img src="/icon/blue_line.png"/> */}
+                                                                    <hr style={{width:"30px", border:"2px solid green", margin:"0 auto 10px auto"}}/>
+                                                                    <p style={{fontWeight:"600", color:"black"}}>{t("구입 날짜")}</p>
+                                                                    <p style={{fontWeight:"600"}}>{moment(value.created_at).format("YYYY-MM-DD")}</p>
+                                                                </div>
+                                                            </div>
+                                                        )
+                                                    }) : (
+                                                        <div className="not_buy_product">
+                                                            <p className="text-center" style={{color:"black", fontSize:"14px",fontWeight:"bold"}}>{t("구입한 제품이 없습니다.")}</p>
+                                                            <div className="text-center">
+                                                                <Link to="/products">
+                                                                    <button type="button" className="btn btn-success">
+                                                                        {t("제품 구입")}
+                                                                    </button>
+                                                                </Link>
+                                                            </div>    
+                                                        </div>
+                                                    )}
+                                                </div>
                                             </div>
                                         </div>  
                                     </div>

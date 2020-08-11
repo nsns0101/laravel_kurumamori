@@ -4,19 +4,26 @@ import {ProfileContext} from "../routes/Profile/ProfileContainer";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import ScrollAnimation from "react-animate-on-scroll";
-
+import Axios from "axios";
 export default () => {
     const { user, setUser, t } = useContext(AppContext);
-    const { data } = useContext(ProfileContext);
-    return (
+    const [data, setData] = useState("");
+
+    useEffect(()=>{
+        Axios.get(`/info/index/${user.id}`).then(res => {
+            setData(res.data);
+        });
+    }, []);
+
+    return data ? (
         <div className="user_profile">
             {/* <p style={{fontSize:"20px", color:"black", fontWeight:"600"}}>나의 정보</p> */}
             <div className="card" style={{backgroundColor:"white", padding:"30px"}}>
                 <p style={{color:"blue", fontWeight:"bold"}}>INFO</p>
                 {/* 이미지, 이름 */}
                 <div className="text-center">
-                    <img className="profile_image"src="/images/home/team/이재영.jpg"/>
-                    <p className="profile_name_p">이재영</p>
+                    <img className="profile_image"src="/images/home/team/예준현.jpg"/>
+                <p className="profile_name_p">{data.user.name}</p>
                 </div>
 
                 {/* 성, 생년, 폰, 메일, 가입일 */}
@@ -35,5 +42,5 @@ export default () => {
                 </Link>
             </div>
         </div>
-    )
+    ) : null
 }

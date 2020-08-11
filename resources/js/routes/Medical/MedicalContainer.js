@@ -159,7 +159,7 @@ export default ({history}) => {
                 }
                 //시연용
                 else{   
-                    setPast_sickness_name([t("허리디스크"), t("과민성 대장")]);
+                    setPast_sickness_name(["허리디스크", "과민성 대장"]);
                     setPast_sickness_supplementation([t("5년전 허리디스크 수술"), t("지속적 복부팽만")]);
                 }
 
@@ -182,7 +182,7 @@ export default ({history}) => {
                 }
                 //시연용
                 else{
-                    setSickness_name([t("당뇨"), t("고혈압"), t("위암")]);
+                    setSickness_name(["당뇨", "고혈압", "위암"]);
                     setMedicine([t("인슐린"), t("암로디핀"), t("니페디핀")]);
                     setSymptom([t("저혈당 쇼크 및 경련"), t("현기증"), t("메스꺼움, 구토")]);
                     setHospital([t("경북대병원 내과"), t("영대병원 내과"), t("경북대병원 내과")]);
@@ -198,7 +198,7 @@ export default ({history}) => {
                 }
                 //시연용
                 else{
-                    setBlood_type(t("A형"));
+                    setBlood_type("A형");
                     setDisability_status(false);
                     setReport_request(t("인슐린 필요합니다."));
                     setGuardian_phone("010-8382-1192");
@@ -215,7 +215,7 @@ export default ({history}) => {
                 //시연용
                 else{
                     setInsurance_bool(true);
-                    setInsurance_name(t("하나보험사"))
+                    setInsurance_name("하나보험사")
                     setInsurance_phone("010-5096-5198");
                     setSubscription_date("2010-08-21");
                     setExpiration_date("2030-08-20");

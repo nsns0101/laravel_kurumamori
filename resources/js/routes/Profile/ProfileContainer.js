@@ -17,7 +17,7 @@ export default ( {history} ) => {
     const [error_text, setError_text] = useState("");
     const [arr, setArr] = useState([]);
     Geocode.setApiKey(process.env.MIX_GCP_API_KEY);
-    Geocode.setLanguage("ko");
+    Geocode.setLanguage("ja");
     //값 받기
 
 

@@ -235,11 +235,22 @@ $factory->define(App\Drive_detection::class, function (Faker $faker) {
     //강릉역/@37.7637815,128.8994525,17z
     //광주역/@36.2779417,125.9574318,8z
     //부산역/@35.115225,129.040049,17z
+
+    //나고야시/@35.0862994,138.9367994
+    //지바현/@35.4997389,139.747371
+    //도야마시/@36.5677272,137.2263219
+    //이이데마치/@37.955237,139.7435436
     return [
         'user_id' => $userId,
         'drive_id' => $rand_drive->id,
-        'latitude' => rand(35, 37) . '.' . rand(1000, 9999999),     //세로
-        'longitude' => rand(127, 128) . '.' . rand(200000, 900000),  //가로
+        //한국 시드 데이터
+        // 'latitude' => rand(35, 37) . '.' . rand(1000, 9999999),     //세로
+        // 'longitude' => rand(127, 128) . '.' . rand(200000, 900000),  //가로
+        
+        // 일본 시드 데이터
+        'latitude' => rand(35, 36) . '.' . rand(5000000, 999999999),     //세로
+        'longitude' => rand(137, 139) . '.' . rand(2263219, 9000000),  //가로
+        
         'bool_report' => $random[0],
         'bool_sudden_acceleration' => $random[1],
         'bool_sudden_stop' => $random[2],

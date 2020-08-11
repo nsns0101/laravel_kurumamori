@@ -9,7 +9,7 @@ export const Map_api = () => {
         day_5_drive_detection,
     } = useContext(DriveContext);
     // console.log(day_5_drive_detection);
-
+    // console.log(localStorage.getItem("lang"));
     const location = [];
     const location_color = [];
     //1차배열은 날짜 2차배열은 값
@@ -28,7 +28,10 @@ export const Map_api = () => {
     }
     return (
     <GoogleMapReact
-        bootstrapURLKeys={{key:process.env.MIX_GCP_API_KEY}}
+        bootstrapURLKeys={{
+            key:process.env.MIX_GCP_API_KEY,
+            language: 'en',
+        }}
         defaultCenter={{
             // lat: 59.95,
             // lng: 30.33

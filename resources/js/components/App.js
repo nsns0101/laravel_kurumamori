@@ -50,7 +50,7 @@ function App() {
 
         
         if(localStorage.getItem('userToken')){
-            console.log(localStorage.getItem('userToken'));
+            // console.log(localStorage.getItem('userToken'));
             const url = "/api/profile";
             // const token = localStorage;
             // console.log(token);
