@@ -7,6 +7,7 @@ import { AppContext } from "../../components/App";
 import { DriveContext } from "./DriveContainer";
 import Drive_score_icon from "./partial/Drive_score_icon";
 import Drive_score_chart from "./partial/Drive_score_chart";
+import Drive_score_chart2 from "./partial/Drive_score_chart2";
 import GoogleMap from "./partial/GoogleMap";
 import Loader from "../../components/Loader";
 import Profile_User from "../../components/Profile_User";
@@ -72,6 +73,9 @@ export default () => {
                                                 {/* 구글맵 */}
                                                 <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                                                     <GoogleMap/>
+                                                </div>
+                                                <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                                    <Drive_score_chart2/>
                                                 </div>
                                             </div>
                                         </div>

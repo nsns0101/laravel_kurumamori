@@ -47,8 +47,28 @@ export default () => {
                     </div>
                 </div>
             </div>
-            {/* Area Chart */}
+
+            {/* Bar Chart */}
             <div className="col-xl-7 col-lg-7 col-md-12 col-sm-12">
+                <div className="card chart_card">
+                    <h6 className="m-0 font-weight-bold text-primary">{t("최근 5일간 운전량")}</h6>
+                    <div className="chart-area">
+                        <div className="chartjs-size-monitor">
+                            <div className="chartjs-size-monitor-expand">
+                                <div className=""></div>
+                            </div>
+                            <div className="chartjs-size-monitor-shrink">
+                                <div className=""></div>
+                            </div>
+                        </div>
+                        <MDBContainer style={{padding:0}}>
+                            <BarChart/>
+                        </MDBContainer>
+                    </div>
+                </div>
+            </div>
+            {/* Area Chart */}
+            {/* <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                     <div className="card chart_card">
                         <h6 className="m-0 font-weight-bold text-primary">{t("최근 5일간 위험요소 카운트")}</h6>
                         <div className="chart-area">
@@ -65,45 +85,26 @@ export default () => {
                             </MDBContainer>
                         </div>
                     </div>
-            </div>
-            {/* Area Chart */}
-            <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                    <div className="card chart_card">
-                        <h6 className="m-0 font-weight-bold text-primary">{t("최근 5일간 운전량")}</h6>
-                        <div className="chart-area">
-                            <div className="chartjs-size-monitor">
-                                <div className="chartjs-size-monitor-expand">
-                                    <div className=""></div>
-                                </div>
-                                <div className="chartjs-size-monitor-shrink">
-                                    <div className=""></div>
-                                </div>
+            </div> */}
+            {/* Dounhnut Chart */}
+            {/* <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                <div className="card chart_card">
+                    <h6 className="m-0 font-weight-bold text-primary">{t("최근 5일간 위험요소 빈도")}</h6>
+                    <div className="chart-area">
+                        <div className="chartjs-size-monitor">
+                            <div className="chartjs-size-monitor-expand">
+                                <div className=""></div>
                             </div>
-                            <MDBContainer style={{padding:0}}>
-                                <BarChart/>
-                            </MDBContainer>
-                        </div>
-                    </div>
-            </div>
-            {/* Area Chart */}
-            <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                    <div className="card chart_card">
-                        <h6 className="m-0 font-weight-bold text-primary">{t("최근 5일간 위험요소 빈도")}</h6>
-                        <div className="chart-area">
-                            <div className="chartjs-size-monitor">
-                                <div className="chartjs-size-monitor-expand">
-                                    <div className=""></div>
-                                </div>
-                                <div className="chartjs-size-monitor-shrink">
-                                    <div className=""></div>
-                                </div>
+                            <div className="chartjs-size-monitor-shrink">
+                                <div className=""></div>
                             </div>
-                            <MDBContainer>
-                                <DoughnutChart/>
-                            </MDBContainer>
                         </div>
+                        <MDBContainer>
+                            <DoughnutChart/>
+                        </MDBContainer>
                     </div>
-            </div>
+                </div>
+            </div> */}
         </div>
     )
 }
