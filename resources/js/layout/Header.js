@@ -63,12 +63,14 @@ export default  () => {
                                 <li className="nav-item" style={{marginRight:"1.5em"}}>
                                     <Link to="/bigdata" className="nav-link" style={nav_text} onClick={()=>setPath_url("bigdata")}>{t("빅데이터 자료실")}</Link>
                                 </li>
-                                <li className="nav-item" style={{marginRight:"1.5em"}}>
+
+                                {/* <li className="nav-item" style={{marginRight:"1.5em"}}>
                                     <Link to="/boards/questions" className="nav-link" style={nav_text} onClick={()=>setPath_url("boards")}>{t("고객 문의")}</Link>
                                 </li>
                                 <li className="nav-item" style={{marginRight:"1.5em"}}>
                                     <a className="nav-link" href="/boards/reviews" style={nav_text} onClick={()=>setPath_url("reviews")}>{t("고객 리뷰")}</a>
-                                </li>
+                                </li> */}
+
                             </ul>
                 
                             <ul className="navbar-nav col-auto">
