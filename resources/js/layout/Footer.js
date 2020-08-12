@@ -31,6 +31,12 @@ export default () => {
                             <a href="https://www.youtube.com/channel/UCTLr43DTgWut2lSQ2vFcXAw/featured">
                                 <img src="/icon/footer_Logos.png" style={{width:"30%"}}/>
                             </a>
+                            {/* <a href="https://www.youtube.com/channel/UCTLr43DTgWut2lSQ2vFcXAw/featured">
+                                <img src="/icon/youtube.png" style={{width:"6%"}}/>
+                            </a>
+                            <a href="https://www.youtube.com/channel/UCTLr43DTgWut2lSQ2vFcXAw/featured">
+                                <img src="/icon/github.png" style={{width:"4%"}}/>
+                            </a> */}
                         </div>   
                         
 

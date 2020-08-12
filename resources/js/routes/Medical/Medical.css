@@ -183,3 +183,31 @@
     font-weight: 600;
     background-color: rgb(242,244,253); 
 }
+
+.show_title_p {
+  color : black;
+  font-size : 14px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+.show_dropdown_p {
+  color : black;
+  font-size : 13px;
+  font-weight: 600; 
+  margin-top: 10px;
+  margin-bottom: 10px;
+  /* width: 120px; */
+  border: 1px solid brown;
+
+}
+.show_input_p {
+  color : black;
+  font-size : 14px;
+  font-weight: 600;
+  /* background-color: rgb(242,244,253);  */
+}
+
+.form-control:disabled, .form-control[readonly] {
+  background-color: rgb(240,240,240);
+  opacity: 1;
+}

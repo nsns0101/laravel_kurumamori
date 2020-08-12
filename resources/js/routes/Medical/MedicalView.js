@@ -6,8 +6,8 @@ import Loader from "../../components/Loader";
 import moment from "moment";
 import Profile_User from "../../components/Profile_User";
 import Info_menu from "../../layout/Info_menu";
-import Show_medical from "./partial/Show_medical.js";
-import Create_medical from "./partial/Create_medical.js";
+import Show_medical from "./Show/Show_medical.js";
+import Create_medical from "./Create/Create_medical.js";
 import "./Medical.css";
 import { useForm } from "react-hook-form";
 
@@ -19,7 +19,7 @@ export default ({history}) => {
     const { handleSubmit, register, errors, watch } = useForm();
 
     return user.id ? (
-        <div style={{backgroundColor:"rgb(240, 240, 240)", minHeight:"86vh"}}>
+        <div style={{backgroundColor:"rgb(240, 240, 240)"}}>
             <div className="row" style={{padding:"50px 0 50px 0"}}>
                 {/* 여백 */}
                 <div className="col-md-1"></div>
