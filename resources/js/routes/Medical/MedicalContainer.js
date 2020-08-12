@@ -46,27 +46,27 @@ export default ({history}) => {
     
     const validation = () => {
         //validation
-        // if(!blood_type){
-        //     setBlood_type_message("필수 항목입니다.");
-        //     return null;
-        // }
+        if(!blood_type){
+            setBlood_type_message(t("필수 항목입니다."));
+            return null;
+        }
 
-        // if(insurance_bool){
-        //     setInsurance_name_message(insurance_name ? "" : "필수항목입니다.");
-        //     setSubscription_date_message(subscription_date ? "" : "필수항목입니다.");
-        //     setExpiration_date_message(expiration_date ? "" : "필수항목입니다.");
-        //     if(subscription_date_message){
-        //         setSubscription_date_message(expiration_date >= subscription_date ? "" : "필수항목입니다.");
-        //     }
+        if(insurance_bool){
+            setInsurance_name_message(insurance_name ? "" : t("필수 항목입니다."));
+            setSubscription_date_message(subscription_date ? "" : t("필수 항목입니다."));
+            setExpiration_date_message(expiration_date ? "" : t("필수 항목입니다."));
+            if(subscription_date_message){
+                setSubscription_date_message(expiration_date >= subscription_date ? "" : t("필수 항목입니다."));
+            }
 
-        //     if(insurance_name && subscription_date && expiration_date && expiration_date ){
-        //         onSubmit();
-        //     }else{
-        //         return null;
-        //     }
-        // }else if(blood_type){
+            if(insurance_name && subscription_date && expiration_date && expiration_date ){
+                onSubmit();
+            }else{
+                return null;
+            }
+        }else if(blood_type){
             onSubmit();
-        // }
+        }
     }
 
     const onSubmit = () => {

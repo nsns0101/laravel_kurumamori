@@ -40,23 +40,7 @@ export default ({history}) => {
                                                 <Show_medical/>
                                             </div>
                                         ) : (
-                                        <form onSubmit={handleSubmit(validation)}>
-                                            <div className="" style={{maxHeight:"555px", overflowY:"auto", marginTop:"30px"}}>
-                                                <Create_medical/>
-                                            </div>
-                                             {/* 등록 버튼 */}
-                                            <div className="row" style={{marginTop:"20px"}}>
-                                                <div className="col-md-5"></div>
-                                                <div className="col-md-2">
-                                                    <div className="form-group">
-                                                        <button className="btn btn-success btn-lg btn-block" type="submit" style={{width:"150px"}}>
-                                                            {t("등록하기")}
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div className="col-md-5"></div>
-                                            </div>
-                                        </form>
+                                                <Create_medical/>     
                                         )}
                                     </div>
                                 ) : <Loader/>}
