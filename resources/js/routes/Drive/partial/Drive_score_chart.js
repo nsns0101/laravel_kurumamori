@@ -60,8 +60,6 @@ export default () => {
                                     <div className=""></div>
                                 </div>
                             </div>
-                            {/* <canvas id="myAreaChart" width="693" height="320" className="chartjs-render-monitor"
-                                style={{display: "block", width:"693px", height:"320px"}}></canvas> */}
                             <MDBContainer>
                                 <LineChart/>
                             </MDBContainer>
@@ -71,7 +69,7 @@ export default () => {
             {/* Area Chart */}
             <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                     <div className="card chart_card">
-                        <h6 className="m-0 font-weight-bold text-primary">{t("최근 5일간 위험요소 카운트")}</h6>
+                        <h6 className="m-0 font-weight-bold text-primary">{t("최근 5일간 운전량")}</h6>
                         <div className="chart-area">
                             <div className="chartjs-size-monitor">
                                 <div className="chartjs-size-monitor-expand">
@@ -81,10 +79,8 @@ export default () => {
                                     <div className=""></div>
                                 </div>
                             </div>
-                            {/* <canvas id="myAreaChart" width="693" height="320" className="chartjs-render-monitor"
-                                style={{display: "block", width:"693px", height:"320px"}}></canvas> */}
-                            <MDBContainer>
-                                <LineChart/>
+                            <MDBContainer style={{padding:0}}>
+                                <BarChart/>
                             </MDBContainer>
                         </div>
                     </div>
@@ -92,7 +88,7 @@ export default () => {
             {/* Area Chart */}
             <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                     <div className="card chart_card">
-                        <h6 className="m-0 font-weight-bold text-primary">{t("최근 5일간 위험요소 카운트")}</h6>
+                        <h6 className="m-0 font-weight-bold text-primary">{t("최근 5일간 위험요소 빈도")}</h6>
                         <div className="chart-area">
                             <div className="chartjs-size-monitor">
                                 <div className="chartjs-size-monitor-expand">
@@ -102,10 +98,8 @@ export default () => {
                                     <div className=""></div>
                                 </div>
                             </div>
-                            {/* <canvas id="myAreaChart" width="693" height="320" className="chartjs-render-monitor"
-                                style={{display: "block", width:"693px", height:"320px"}}></canvas> */}
                             <MDBContainer>
-                                <LineChart/>
+                                <DoughnutChart/>
                             </MDBContainer>
                         </div>
                     </div>

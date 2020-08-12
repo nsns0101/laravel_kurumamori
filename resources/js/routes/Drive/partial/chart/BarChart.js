@@ -122,8 +122,6 @@ export default () => {
     }
     const datasetKeyProvider = Math.random();
     return(
-        <label>
             <Bar data={BarChart.data} options={BarChart.options} height={320} key={datasetKeyProvider}/>
-        </label>
     )
 }
