@@ -44,7 +44,7 @@ export default () => {
         sickness_name.push("");
     }
     return (
-        sickness_name ? sickness_name.map( (value, index) => {
+        sickness_name && sickness_name != "" ? sickness_name.map( (value, index) => {
             return (
                 <div key={index}>
                     <div className="row">
@@ -108,6 +108,12 @@ export default () => {
                     </div>
                 </div>
             )
-        }) : null
+        }) : (
+            <div>
+                <p className="text-center text-danger">
+                    {t("기저 질환이 없습니다.")}
+                </p>
+            </div>
+        )
     )
 }

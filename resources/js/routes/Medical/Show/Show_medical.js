@@ -140,48 +140,55 @@ export default () => {
 
                         <div className="card" style={{padding:"20px 20px 0 20px", marginTop:"20px", marginBottom:"20px"}}>
                             <p className="no_scroll_p">{t("보험 정보")}</p>
-                            {/* <div style={{maxHeight:"235px", overflowY:"auto", overflowX:"hidden"}}> */}
-                            <div>
-                                {/* 보험 여부 */}
-                                <div className="row">
-                                    <div className="col-md-1"></div>
-                                    <div className="col-md-2" style={insurance_bool ? {display:"block"} : {display:"none"} }>
-                                        <div className="show_title_p">
-                                            {t("보험사 명")}
-                                            {/* <span style={{color:"red"}}>*</span> */}
+                                {insurance_bool ? (
+                                    <div>
+                                        {/* 보험 여부 */}
+                                        <div className="row">
+                                            <div className="col-md-1"></div>
+                                            <div className="col-md-2" style={insurance_bool ? {display:"block"} : {display:"none"} }>
+                                                <div className="show_title_p">
+                                                    {t("보험사 명")}
+                                                    {/* <span style={{color:"red"}}>*</span> */}
+                                                </div>
+                                            </div>
+                                            <div className="col-md-3 text-center">
+                                                <p className="show_dropdown_p">{t(insurance_name)}</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="col-md-3 text-center">
-                                        <p className="show_dropdown_p">{t(insurance_name)}</p>
-                                    </div>
-                                </div>
-                                {/* 보험 가입, 만기 일 */}
-                                <div className="row" id="insurance_table" style={insurance_bool ? {display:"flex"} : {display:"none"} }>              
-                                    <div className="col-md-1"/>
-                                    <div className="col-md-2">
-                                        <span className="show_title_p">
-                                            {t("보험 가입일")}
-                                        </span>
-                                    </div>
+                                        {/* 보험 가입, 만기 일 */}
+                                        <div className="row" id="insurance_table" style={insurance_bool ? {display:"flex"} : {display:"none"} }>              
+                                            <div className="col-md-1"/>
+                                            <div className="col-md-2">
+                                                <span className="show_title_p">
+                                                    {t("보험 가입일")}
+                                                </span>
+                                            </div>
 
-                                    <div className="col-md-3">
-                                        <div className="form-group text-center">
-                                            <input type="text" className="form-control show_input_p" value={subscription_date} readOnly/>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-2">
-                                        <div className="show_title_p">
-                                            {t("보험 만기일")}
-                                        </div> 
-                                    </div>
+                                            <div className="col-md-3">
+                                                <div className="form-group text-center">
+                                                    <input type="text" className="form-control show_input_p" value={subscription_date} readOnly/>
+                                                </div>
+                                            </div>
+                                            <div className="col-md-2">
+                                                <div className="show_title_p">
+                                                    {t("보험 만기일")}
+                                                </div> 
+                                            </div>
 
-                                    <div className="col-md-3">
-                                        <div className="form-group text-center">
-                                            <input type="text" className="form-control show_input_p" value={expiration_date} readOnly/>
+                                            <div className="col-md-3">
+                                                <div className="form-group text-center">
+                                                    <input type="text" className="form-control show_input_p" value={expiration_date} readOnly/>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                ):(
+                                    <div>
+                                        <p className="text-center text-danger">
+                                            {t("보험을 등록하지 않았습니다.")}
+                                        </p>
+                                    </div>
+                                )}    
                         </div>
                     </div>
                 ) : null}

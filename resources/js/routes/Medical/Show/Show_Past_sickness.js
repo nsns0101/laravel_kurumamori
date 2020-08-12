@@ -34,9 +34,10 @@ export default () => {
     if(!past_sickness_name.length){
         past_sickness_name.push("");
     }
+    console.log(past_sickness_name);
     return (
         <div>
-            {past_sickness_name ? past_sickness_name.map( (value, index) => {
+            {past_sickness_name && past_sickness_name !="" ? past_sickness_name.map( (value, index) => {
                 return (
                     <div key={index} className="row" style={{display:"flex"}}>
                         <div className="col-md-1">
@@ -68,7 +69,13 @@ export default () => {
                         <div className="col-md-1"></div>
                     </div>
                     )
-                }) : null
+                }) : (
+                    <div>
+                        <p className="text-center text-danger">
+                            {t("과거 병력이 없습니다.")}
+                        </p>
+                    </div>
+                )
             }
             <hr/>
         </div>

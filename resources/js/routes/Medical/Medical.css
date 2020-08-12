@@ -201,9 +201,10 @@
 
 }
 .show_input_p {
-  color : black;
+  color : rgb(87, 85, 85);
   font-size : 14px;
   font-weight: 600;
+  opacity: 0.6;
   /* background-color: rgb(242,244,253);  */
 }
 
