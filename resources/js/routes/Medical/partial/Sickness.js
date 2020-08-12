@@ -128,14 +128,14 @@ export default () => {
                         <div className="col-md-8">
                             <div className="form-group">
                                 <input type="text" className="form-control medical_input_p" placeholder={t("진료기관 명을 적어주세요")}
-                                        value={hospital[index] ? hospital[index] : ""}
-                                        onChange={
-                                            (e) => {
-                                                let newArr = [...hospital];
-                                                newArr[index] = e.target.value;
-                                                setHospital(newArr);
-                                            }
+                                    value={hospital[index] ? hospital[index] : ""}
+                                    onChange={
+                                        (e) => {
+                                            let newArr = [...hospital];
+                                            newArr[index] = e.target.value;
+                                            setHospital(newArr);
                                         }
+                                    }
                                 />
                             </div>
                         </div>

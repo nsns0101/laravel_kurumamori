@@ -45,10 +45,11 @@ export default () => {
 
     return (
         insurance_name_list ? (
-            <form onSubmit={handleSubmit(validation)}>
+            <div>
                 <div className="card" style={{padding:"20px 20px 0 20px"}}>
                     <p className="no_scroll_p">{t("질병 사항")}</p>
-                    <div style={{maxHeight:"237px", overflowY:"auto", overflowX:"hidden"}}>
+                    {/* <div style={{maxHeight:"237px", overflowY:"auto", overflowX:"hidden"}}> */}
+                    <div>
                         {/* {{-- 과거 질환 --}} */}
                         <Past_sickness/>
                         {/* {{-- 현재 질환 --}} */}
@@ -59,7 +60,8 @@ export default () => {
                 {/* {{-- 신청자 인적사항 --}} */}
                 <div className="card" style={{padding:"20px 20px 0 20px", marginTop:"20px"}}>
                     <p className="no_scroll_p">{t("신청자 인적사항")}</p>
-                    <div style={{maxHeight:"150px", overflowY:"auto", overflowX:"hidden"}}>
+                    {/* <div style={{maxHeight:"150px", overflowY:"auto", overflowX:"hidden"}}> */}
+                    <div>
                         {/* 혈액형, 장애 유무 */}
                         <div className="row">
                             <div className="col-md-1"></div>
@@ -135,7 +137,8 @@ export default () => {
 
                 <div className="card" style={{padding:"20px 20px 0 20px", marginTop:"20px"}}>
                     <p className="no_scroll_p">{t("보험 정보")}</p>
-                    <div style={{maxHeight:"235px", overflowY:"auto", overflowX:"hidden"}}>
+                    {/* <div style={{maxHeight:"235px", overflowY:"auto", overflowX:"hidden"}}> */}
+                    <div>
                         {/* 보험 여부 */}
                         <div className="row">
                             <div className="col-md-1"></div>
@@ -218,19 +221,8 @@ export default () => {
                         </div>
                     </div>
                 </div>
-                {/* 등록 버튼 */}
-                <div className="row" style={{marginTop:"20px"}}>
-                    <div className="col-md-5"></div>
-                    <div className="col-md-2">
-                        <div className="form-group">
-                            <button className="btn btn-success btn-lg btn-block" type="submit" style={{width:"150px"}}>
-                                {t("등록하기")}
-                            </button>
-                        </div>
-                    </div>
-                    <div className="col-md-5"></div>
-                </div>
-            </form>
+               
+            </div>
         ) : null
 
     )
