@@ -3,6 +3,7 @@ import styled from "styled-components";
 import "../../../public/css/sb-admin-2.css";
 import {Link} from "react-router-dom";
 import {AppContext} from "../components/App";
+import "./info_menu.css";
 
 const Info_menu = styled.div`
     background-color:white;

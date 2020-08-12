@@ -174,7 +174,7 @@ export default () => {
                                             <span style={{color:"red"}}>*</span>
                                         </div>
                                     </div>
-                                    <div className="col-md-3 text-center medical_dropdown_p" style={insurance_bool ? {display:"flex"} : {display:"none"} }>
+                                    <div className="col-md-3 text-center medical_dropdown_p" style={insurance_bool ? {display:"block"} : {display:"none"} }>
                                         <Dropdown options={insurance_name_list} 
                                             onChange={
                                                 (data) => {

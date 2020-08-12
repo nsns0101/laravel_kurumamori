@@ -1,0 +1,32 @@
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    color: #6e707e;
+    background-color: rgb(180, 180, 240, 0.6);
+    border-color: #dddfeb #dddfeb #fff;
+    border: 1px solid black;
+    border-bottom: 3px solid red;
+    /* border: none; */
+    /* border-radius: 2px; */
+    /* padding: 12px 18px; */
+    /* font-size: 16px; */
+    text-transform: uppercase;
+    /* cursor: pointer; */
+    /* color: white; */
+    /* background-color: #2196f3; */
+    box-shadow: 0 0 4px #999;
+    outline: none;
+    background-position: center;
+}
+.nav-tabs .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: 0.35rem;
+    border-top-right-radius: 0.35rem;
+    border: 1px solid black;
+    border-bottom:0px;
+
+}
+.card-header-tabs {
+    margin-right: -0.625rem;
+    margin-bottom: -0.75rem;
+    margin-left: -0.625rem;
+    border-bottom: 1px solid black;
+}

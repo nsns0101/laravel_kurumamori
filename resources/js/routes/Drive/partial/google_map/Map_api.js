@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import GoogleMapReact from 'google-map-react';
 import { DriveContext } from "../../DriveContainer";
 
-const AnyReactComponent = ({img_color}) => <img src={`/icon/${img_color}_map_icon.png`}/>
+const AnyReactComponent = ({img_name}) => <img src={`/icon/${img_name}.png`}/>
 
 export const Map_api = () => {
     const {
@@ -20,10 +20,10 @@ export const Map_api = () => {
                 lat : Number(day_5_drive_detection[0][i].latitude), 
                 lng : Number(day_5_drive_detection[0][i].longitude)
             }); 
-            if(day_5_drive_detection[0][i].bool_report) location_color.push("red");
-            else if(day_5_drive_detection[0][i].bool_sleep) location_color.push("blue");
-            else if(day_5_drive_detection[0][i].bool_sudden_acceleration) location_color.push("orange");
-            else if(day_5_drive_detection[0][i].bool_sudden_stop) location_color.push("green");
+            if(day_5_drive_detection[0][i].bool_report) location_color.push("map_report");
+            else if(day_5_drive_detection[0][i].bool_sleep) location_color.push("map_sleep");
+            else if(day_5_drive_detection[0][i].bool_sudden_acceleration) location_color.push("map_sudden_acceleration");
+            else if(day_5_drive_detection[0][i].bool_sudden_stop) location_color.push("map_sudden_stop");
         }
     }
     return (
@@ -46,7 +46,7 @@ export const Map_api = () => {
                 key={index}
                 lat={location[index].lat}
                 lng={location[index].lng}
-                img_color={location_color[index]}
+                img_name={location_color[index]}
             />
             )
         })}
