@@ -13,7 +13,7 @@ export default () => {
                         <ScrollAnimation animateIn='fadeIn' animateOnce={true}>  
                             <div className="py-2 pt-5">
                                 <h4 style={{fontWeight:700}}>{t("쉽게 조작법을 익혀보세요!")}</h4>
-                                <h1 style={{fontSize:3.25+'em',fontWeight:900}}>{t("한눈에 보는 조작법.")}</h1>
+                                <h1 style={{fontSize:3.25+'em',fontWeight:900,color:"black"}}>{t("한눈에 보는 조작법.")}</h1>
                             </div>
                         </ScrollAnimation>
                         <ScrollAnimation animateIn='fadeIn' delay={500} animateOnce={true}>  
@@ -25,7 +25,7 @@ export default () => {
                                     <div className="row justify-content-around px-0 mx-0 py-5 text-left">
                                         <div className="col-lg-8">
                                             <h4 style={{fontWeight:500}}>
-                                                {t("이런 간단한 버튼 조작을 통해서 쉽게 kurumamori 119 서비스를 사용할 수 있습니다. 더 자세히 알고 싶다면 step별로 더 쉽게! 배우는 영상 조작법을 이용해 보는 것은 어떨까요? 여러분 모두 kurumamori 119의 전문가가 될 수 있습니다.")}
+                                                {t("이런 간단한 버튼 조작을 통해서 쉽게 クルマモリ9 서비스를 사용할 수 있습니다. 더 자세히 알고 싶다면 step별로 더 쉽게! 배우는 영상 조작법을 이용해 보는 것은 어떨까요? 여러분 모두 クルマモリ9의 전문가가 될 수 있습니다.")}
                                             </h4>
                                         </div>
                                     </div>
@@ -82,7 +82,7 @@ export default () => {
                                     <div className="row justify-content-around px-0 mx-0 py-5 text-center">
                                         <div className="col-lg-10 py-3 text-left">
                                             <h3 style={{color:"black"}}>{t("step 3.")}</h3>
-                                            <p>{t("이제 거의 당신은 kurumamori 119 마스터!")}</p>
+                                            <p>{t("이제 거의 당신은 クルマモリ9 마스터!")}</p>
                                         </div>
                                         <div className="col-lg-10">
                                             <div className="row justify-content-around mx-0 px-0">

@@ -13,7 +13,8 @@ export default () => {
                         <div className="my-4 row px-0 mx-0 justify-content-center ">
                             <div classNmae="col-sm-8 col-lg-4" >
                                 <ScrollAnimation animateIn='fadeIn' animateOnce={true}>
-                                    <img src="images/product/logo.png" style={{width:100+'%',zIndex:100}}></img>
+                                    {/* <img src="images/product/logo.png" style={{width:100+'%',zIndex:100}}></img> */}
+                                    <h4 className="" style={{fontSize:5+"em",color:"white"}}>{t("クルマモリ9")}</h4> 
                                 </ScrollAnimation>
                             </div>
                         </div>
@@ -23,17 +24,17 @@ export default () => {
                                 <h4 className="" style={{fontSize:1.7+"em",color:"white"}}>{t("가격미정")}</h4> 
                             </ScrollAnimation>
                         </div>
-                        <div className="my-2 row px-0 mx-0 justify-content-center" >
+                        <div className="my-2 row pt-4 px-0 mx-0 justify-content-center" >
 
-                                <span className="px-2">
+                                <span className="px-4">
                                     <ScrollAnimation animateIn='fadeInRight' delay={500} animateOnce={true}>
-                                        <Link to="/products/more" id="more" className="btn border-1 rounded border-dark" style={{fontSize:1.3+"em",color:"white"}} onClick={()=>{window.scrollTo(0, 0)}} >{t("더 알아보기 >")}</Link>
+                                        <Link to="/products/more" id="more" style={{fontSize:1.4+"em",color:"blue",fontWeight:900,textDecoration:"none"}} onClick={()=>{window.scrollTo(0, 0)}} >{t("더 알아보기 >")}</Link>
                                     </ScrollAnimation>
                                 </span>
                     
-                                <span className="px-2">
+                                <span className="px-4">
                                     <ScrollAnimation animateIn='fadeInLeft' delay={500} animateOnce={true}>
-                                        <Link to="/products/buy" id="buy" className="btn border-1 rounded border-dark" style={{fontSize:1.3+"em",color:"white"}} onClick={()=>{window.scrollTo(0, 0)}}>{t("구입하기 >")}</Link>
+                                        <Link to="/products/buy" id="buy" style={{fontSize:1.4+"em",color:"blue",fontWeight:900,textDecoration:"none"}} onClick={()=>{window.scrollTo(0, 0)}}>{t("구입하기 >")}</Link>
                                     </ScrollAnimation>
                                 </span>
                         </div>
@@ -56,14 +57,14 @@ export default () => {
                         <div className=" col-sm-12 col-lg-5 mx-0 py-5 " style={{padding:10+'px'}}>
                             <ScrollAnimation animateIn='zoomIn' animateOnce={true} duration={0.8}>
                                 <div>
-                                    <img className="card-img" src="images/product/background.png" style={{width:100+'%',height: 450 + 'px',opacity:0.8}}></img>
+                                    <img className="card-img" src="images/product/background.png" style={{width:100+'%',height: 450 + 'px'}}></img>
                                     <div className="text-center card-img-overlay" style={{width:100+'%',top:"20%"}}>
                                         <div className="py-2 pt-5">
-                                            <h2 className="card-title" style={{color:"white", fontSize:"2.5em",fontWeight:"900",textShadow:"black 2px 0 10px"}}>{t("쉽게 배우는 조작 방법")}</h2>
-                                            <p className="card-text" style={{color:"white", fontSize:"1.5em",fontWeight:"700",textShadow:"black 2px 0 10px"}}>{t("KURUMAMORI 119의 조작방법을 알려드립니다.")}</p>
+                                            <h2 className="card-title" style={{color:"white", fontSize:"2.2em",fontWeight:"900",textShadow:"black 2px 0 10px"}}>{t("쉽게 배우는 조작 방법")}</h2>
+                                            <p className="card-text" style={{color:"white", fontSize:"1.25em",fontWeight:"700",textShadow:"black 2px 0 10px"}}>{t("クルマモリ9의 조작방법을 알려드립니다.")}</p>
                                         </div>
-                                        <div className="btn btn-success text-center">
-                                            <Link to="/products/control" id="control" className="btn btn-intro card-text" style={{color:"white", fontSize:"1.5em"}} onClick={()=>{window.scrollTo(0, 0)}}>{t("손쉬운 사용 기능 살펴보기 >")}</Link>
+                                        <div className="text-center">
+                                            <Link to="/products/control" id="control" className="btn card-text" style={{color:"blue", fontSize:"1.1em",fontWeight:900, backgroundColor:"white"}} onClick={()=>{window.scrollTo(0, 0)}}>{t("손쉬운 사용 기능 살펴보기 >")}</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -74,14 +75,14 @@ export default () => {
                         <div className="col-sm-12 col-lg-5 mx-0 py-5" style={{padding:10+'px'}}>
                             <ScrollAnimation animateIn='zoomIn' animateOnce={true} duration={0.8}>
                                 <div>
-                                    <img className="card-img" src="images/product/background.png" style={{width:100+'%',height: 450 + 'px',opacity:0.8}}></img>
+                                    <img className="card-img" src="images/product/background.png" style={{width:100+'%',height: 450 + 'px'}}></img>
                                     <div className="text-center card-img-overlay" style={{width:100+'%',top:"20%"}}>
                                         <div className="py-2 pt-5">
-                                            <h2 className="card-title" style={{color:"white", fontSize:"2.5em",fontWeight:"900",textShadow:"black 2px 0 10px"}}>{t("사용자 영상")}</h2>
-                                            <p className="card-text" style={{color:"white", fontSize:"1.5em",fontWeight:"700",textShadow:"black 2px 0 10px"}}>{t("KURUMAMORI 119의 실제 사용자 영상입니다.")}</p>
+                                            <h2 className="card-title" style={{color:"white", fontSize:"2.2em",fontWeight:"900",textShadow:"black 2px 0 10px"}}>{t("사용자 영상")}</h2>
+                                            <p className="card-text" style={{color:"white", fontSize:"1.25em",fontWeight:"700",textShadow:"black 2px 0 10px"}}>{t("クルマモリ9의 실제 사용자 영상입니다.")}</p>
                                         </div>
-                                        <div className="btn btn-success text-center">
-                                            <Link to="/products/users" id="users" className="btn btn-intro card-text" style={{color:"white", fontSize:"1.5em"}} onClick={()=>{window.scrollTo(0, 0)}}>{t("실제 사용자 영상 보러가기 >")}</Link>
+                                        <div className="text-center">
+                                            <Link to="/products/users" id="users" className="btn card-text" style={{color:"blue", fontSize:"1.1em",fontWeight:900, backgroundColor:"white"}} onClick={()=>{window.scrollTo(0, 0)}}>{t("실제 사용자 영상 보러가기 >")}</Link>
                                         </div>
                                     </div>
                                 </div>

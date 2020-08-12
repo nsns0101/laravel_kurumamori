@@ -11,21 +11,22 @@ export default () => {
         true == 1 ? 
         <Fragment>
             <div className="" id="More">
-                <div className="col-sm-12 col-lg-12 text-center d-table" style={{height: 100 + 'vh',backgroundColor: 'white'}}>
+                <div className="col-sm-12 col-lg-12 text-center d-table" style={{height: 100 + 'vh',backgroundColor: 'black'}}>
                     <div className="d-table-cell align-middle">
                         <div className="py-2 pt-5">
                             <ScrollAnimation animateIn='fadeIn' animateOnce={true}>
                                 <div className="my-4 row px-0 mx-0 justify-content-center ">
-                                    <img className="col-sm-8 col-lg-4" src="../icon/logo_curumamori.png" style={{width:100+'%',zIndex:100}}></img>
+                                    {/* <img className="col-sm-8 col-lg-4" src="../icon/logo_curumamori.png" style={{width:100+'%',zIndex:100}}></img> */}
+                                    <h4 className="" style={{fontSize:5+"em",color:"white"}}>{t("クルマモリ9")}</h4> 
                                 </div>
                                 <div>
-                                    <p className="" style={{fontSize:2.25+"em",color:"black"}}>{t("내 차가 사고를 스스로 예방하고 사고를 스스로 신고한다!")}</p>
+                                    <p className="" style={{fontSize:2.25+"em",color:"white"}}>{t("내 차가 사고를 스스로 예방하고 사고를 스스로 신고한다!")}</p>
                                 </div>
                             </ScrollAnimation>
                         </div>
 
                         <ScrollAnimation animateIn='fadeIn' delay={500} animateOnce={true}>
-                            <div className="my-2 row px-0 mx-0 justify-content-center">
+                            <div className="my-2 row py-3 mx-0 justify-content-center">
                                 <img className="col-sm-8 col-lg-4" src="../images/product/product.png" style={{width:100+'%',zIndex:100}}></img>
                             </div>
                         </ScrollAnimation>
@@ -35,29 +36,29 @@ export default () => {
                                     <div className="col-sm-12 col-lg-5 text-left">
                                         <hr style={{backgroundColor:'#636363',height:2+'px'}}/>
                                         <div className="px-2">
-                                            <h4 className="" style={{color:"black"}}>{t("교통사고 사망원인 1위")}</h4>
-                                            <h4 className="" style={{color:"black"}}>{t("졸음 운전 예방")}</h4>
+                                            <h4 className="" style={{color:"white"}}>{t("교통사고 사망원인 1위")}</h4>
+                                            <h4 className="" style={{color:"white"}}>{t("졸음 운전 예방")}</h4>
                                         </div>
                                     </div>
                                     <div className="col-sm-12 col-lg-5 text-left">
                                         <hr style={{backgroundColor:'#636363',height:2+'px'}}/>
                                         <div className="px-2">
-                                            <h4 className="" style={{color:"black"}}>{t("전방주시 태만 방지")}</h4>
-                                            <h4 className="" style={{color:"black"}}>{t("운전자 시선 추적 감지")}</h4>
+                                            <h4 className="" style={{color:"white"}}>{t("전방주시 태만 방지")}</h4>
+                                            <h4 className="" style={{color:"white"}}>{t("운전자 시선 추적 감지")}</h4>
                                         </div>
                                     </div>
                                     <div className="col-sm-12 col-lg-5 text-left py-3">
                                         <hr style={{backgroundColor:'#636363',height:2+'px'}}/>
                                         <div className="px-2">
-                                            <h4 className="" style={{color:"black"}}>{t("사고를 스스로 감지")}</h4>
-                                            <h4 className="" style={{color:"black"}}>{t("SMS 자동 사고 신고")}</h4>
+                                            <h4 className="" style={{color:"white"}}>{t("사고를 스스로 감지")}</h4>
+                                            <h4 className="" style={{color:"white"}}>{t("SMS 자동 사고 신고")}</h4>
                                         </div>
                                     </div>
                                     <div className="col-sm-12 col-lg-5 text-left py-3">
                                         <hr style={{backgroundColor:'#636363',height:2+'px'}}/>
                                         <div className="px-2">
-                                            <h4 className="" style={{color:"black"}}>{t("사고 사망율 감소")}</h4>
-                                            <h4 className="" style={{color:"black"}}>{t("조기 신고. 사용자 정보.")}</h4>
+                                            <h4 className="" style={{color:"white"}}>{t("사고 사망율 감소")}</h4>
+                                            <h4 className="" style={{color:"white"}}>{t("조기 신고. 사용자 정보.")}</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -68,67 +69,67 @@ export default () => {
                 </div>
 
                 {/* 쿠루마모리 홍보  */}
-                <div className="col-sm-12 col-lg-12 text-center d-table" style={{height: 700 + 'px',backgroundColor: '#F5F5F5'}}>
+                <div className="col-sm-12 col-lg-12 text-center d-table" style={{height: 700 + 'px',backgroundColor: 'black'}}>
                     <div className="d-table-cell align-middle">
                         <div className="row justify-content-around">
                             <div className="col-sm-12 col-lg-10 text-left" style={{paddingTop:100+'px'}}>
                                 <div className="row justify-content-around">
                                     
                                     {/* 졸음운전 예방 */}
-                                    <div className="col-sm-12 col-lg-10">
+                                    <div className="col-sm-12 col-lg-10 pb-3">
                                         <div>
                                             <ScrollAnimation animateIn='fadeInUp' animateOnce={true}>
                                                 <div>
                                                     <h2 style={{fontWeight:900,color:'#3E3E45'}}>{t("졸음 운전 예방")}</h2>
-                                                    <h2 className="py-1" style={{color:"black",fontWeight:900,fontSize:2.5+'em'}}>{t("혹시 모르는 실수. 이젠 안전히 운전.")}</h2>
+                                                    <h2 className="py-1" style={{color:"white",fontWeight:900,fontSize:2.5+'em'}}>{t("혹시 모르는 실수. 이젠 안전히 운전.")}</h2>
                                                     <h4 className="py-3" style={{fontWeight:500,color:'#3E3E45'}}>
-                                                        {t("Kurumamori 119는 운전자의 눈을 감지해서 사용자의 졸음 운전을 탐지하고 예방합니다. 운전자가 혹시 모르게 졸음 운전을 할 경우 강력한 경고음 발생시켜 사용자의 안전을 보장합니다. 당신이 운전을 하면서 발생하는 혹시 모르는 실수! 이제는 Kurumamori 119로 예방하세요.")}
+                                                        {t("クルマモリ9는 운전자의 눈을 감지해서 사용자의 졸음 운전을 탐지하고 예방합니다. 운전자가 혹시 모르게 졸음 운전을 할 경우 강력한 경고음 발생시켜 사용자의 안전을 보장합니다. 당신이 운전을 하면서 발생하는 혹시 모르는 실수! 이제는 クルマモリ9로 예방하세요.")}
                                                     </h4>
                                                 </div>
                                             </ScrollAnimation>
                                             <ScrollAnimation animateIn='fadeInUp' animateOnce={true} duration={0.8}>
                                                 <div className="row justify-content-around mx-0 px-0">
-                                                    <ReactPlayer className="col-sm-11 col-lg-9" url='https://www.youtu.be/H4hTGm87JTw' width="100%" height="600px" onReady={()=>{valueUp()}}/>
+                                                    <ReactPlayer className="col-sm-11 col-lg-9" url='https://www.youtu.be/H4hTGm87JTw' onReady={()=>{valueUp()}}/>
                                                 </div>
                                             </ScrollAnimation>
                                         </div>
                                     </div>
 
                                     {/* 전방주시태만 */}
-                                    <div className="col-sm-12 col-lg-10">
+                                    <div className="col-sm-12 col-lg-10 pb-3">
                                         <div className="pt-5 ">
                                             <ScrollAnimation animateIn='fadeInUp' animateOnce={true}>
                                                 <div>
                                                     <h2 style={{fontWeight:900,color:'#3E3E45'}}>{t("전방 주시 태만 감지")}</h2>
-                                                    <h2 className="py-1" style={{color:"black",fontWeight:900,fontSize:2.5+'em'}}>{t("더 운전에 집중. 더 안전한 운전.")}</h2>
+                                                    <h2 className="py-1" style={{color:"white",fontWeight:900,fontSize:2.5+'em'}}>{t("더 운전에 집중. 더 안전한 운전.")}</h2>
                                                     <h4 className="py-3" style={{fontWeight:500,color:'#3E3E45'}}>
-                                                        {t("Kurumamori 119는 더 운전에 집중할 수 있도록 더 안전한 운전을 할 수 있도록 서포트합니다. 전방 주시 태만 감지 서비스를 통해서 사용자의 운전 집중도를 최대화 할 수 있습니다. Kurumamori 119를 통해서 더 안전하고 더 집중된 운전을 경험하세요.")}
+                                                        {t("クルマモリ9는 더 운전에 집중할 수 있도록 더 안전한 운전을 할 수 있도록 서포트합니다. 전방 주시 태만 감지 서비스를 통해서 사용자의 운전 집중도를 최대화 할 수 있습니다. クルマモリ9를 통해서 더 안전하고 더 집중된 운전을 경험하세요.")}
                                                     </h4>
                                                 </div>
                                             </ScrollAnimation>
                                             <ScrollAnimation animateIn='fadeInUp' animateOnce={true} duration={0.8}>
                                                 <div className="row justify-content-around mx-0 px-0">
-                                                    <ReactPlayer className="col-sm-11 col-lg-9" url='https://www.youtu.be/u7QIokPUbS8' width="100%" height="600px"/>
+                                                    <ReactPlayer className="col-sm-11 col-lg-9" url='https://www.youtu.be/u7QIokPUbS8'/>
                                                 </div>
                                             </ScrollAnimation>
                                         </div>
                                     </div>
 
                                     {/* 자동신고 */}
-                                    <div className="col-sm-12 col-lg-10">
+                                    <div className="col-sm-12 col-lg-10 pb-3">
                                         <div className="py-5">
                                             <ScrollAnimation animateIn='fadeInUp' animateOnce={true}>
                                                 <div>
                                                     <h2 style={{fontWeight:900,color:'#3E3E45'}}>{t("자동 신고 서비스")}</h2>
-                                                    <h2 className="py-1" style={{color:"black",fontWeight:900,fontSize:2.5+'em'}}>{t("골든타임. 혼자라도.")}</h2>
+                                                    <h2 className="py-1" style={{color:"white",fontWeight:900,fontSize:2.5+'em'}}>{t("골든타임. 혼자라도.")}</h2>
                                                     <h4 className="py-3" style={{fontWeight:500,color:'#3E3E45'}}>
-                                                        {t("Kurumamori 119는 당신이 혼자라더라도 외지에 있더라도 운전자 사고 신고를 할 수 있습니다. 사고시 무엇보다 중요한 골든타임을 확보에 도움을 드립니다. 자동 신고시 위치정보, 의료정보 전송으로 더 빠른 조치 더 확실한 조치를 받을 수 있도록 서포트합니다.")}
+                                                        {t("クルマモリ9는 당신이 혼자라더라도 외지에 있더라도 운전자 사고 신고를 할 수 있습니다. 사고시 무엇보다 중요한 골든타임을 확보에 도움을 드립니다. 자동 신고시 위치정보, 의료정보 전송으로 더 빠른 조치 더 확실한 조치를 받을 수 있도록 서포트합니다.")}
                                                     </h4>
                                                 </div>
                                             </ScrollAnimation>
                                             <ScrollAnimation animateIn='fadeInUp' animateOnce={true} duration={0.8}>
                                                 <div className="row justify-content-around mx-0 px-0 pb-3">
-                                                    <ReactPlayer className="col-sm-11 col-lg-9" url='https://www.youtu.be/CGDO4qMb3dk' width="100%" height="600px"/>
+                                                    <ReactPlayer className="col-sm-11 col-lg-9" url='https://www.youtu.be/CGDO4qMb3dk'/>
                                                 </div>
                                             </ScrollAnimation>
                                         </div>
@@ -158,7 +159,7 @@ export default () => {
                                                     <h2 style={{fontWeight:900,color:'#3E3E45'}}>{t("사고 예방")}</h2>
                                                     <h2 className="py-1" style={{color:"black",fontWeight:900,fontSize:2.5+'em'}}>{t("졸음 운전 예방.")}</h2>
                                                     <h4 className="py-3" style={{fontWeight:500,color:'#3E3E45'}}>
-                                                        {t("졸음운전방지 서비스는 하드웨어의 카메라를 통해서 운전자가 눈을 뜨고있는지 감고있는지 감지합니다. 감지여부에 따라서 Kurumamori 119의 알고리즘에 의해서 졸음운전 판단을 실시합니다. 졸음운전이 판단되면 경고 음성 제공을 통해서 졸음 운전을 예방합니다.")}
+                                                        {t("졸음운전방지 서비스는 하드웨어의 카메라를 통해서 운전자가 눈을 뜨고있는지 감고있는지 감지합니다. 감지여부에 따라서 クルマモリ9의 알고리즘에 의해서 졸음운전 판단을 실시합니다. 졸음운전이 판단되면 경고 음성 제공을 통해서 졸음 운전을 예방합니다.")}
                                                     </h4>
                                                 </div>
                                             </ScrollAnimation>
@@ -183,7 +184,7 @@ export default () => {
                                                 <h2 style={{fontWeight:900,color:'#3E3E45'}}>{t("사고 예방")}</h2>
                                                 <h2 className="py-1" style={{color:"black",fontWeight:900,fontSize:2.5+'em'}}>{t("전방 주시 태만 감지.")}</h2>
                                                 <h4 className="py-3" style={{fontWeight:500,color:'#3E3E45'}}>
-                                                    {t("전방 주시 태만 감지 서비스는 하드웨어의 카메라를 통해 운전자의 시선을 추적하여 감지합니다. 감지여부에 따라서 Kurumamori 119의 알고리즘에 의해서 전방 주시 태만 감지를 실시합니다. 전방 주시 태만이 판단되면 음성 경고 제공을 통해서 전방 주시 태만을 방지합니다.")}
+                                                    {t("전방 주시 태만 감지 서비스는 하드웨어의 카메라를 통해 운전자의 시선을 추적하여 감지합니다. 감지여부에 따라서 クルマモリ9의 알고리즘에 의해서 전방 주시 태만 감지를 실시합니다. 전방 주시 태만이 판단되면 음성 경고 제공을 통해서 전방 주시 태만을 방지합니다.")}
                                                 </h4>
                                             </div> 
                                             </ScrollAnimation>

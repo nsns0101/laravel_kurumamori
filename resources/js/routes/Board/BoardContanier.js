@@ -25,6 +25,9 @@ export default ({history}) => {
 
     const [select, setSelect] = useState(""); 
     const [categoryHover, setCategoryHover] = useState("no"); 
+
+    const {t} = useContext(AppContext);
+    
     useEffect(() =>{
         console.log("board useEffect");
         if(action == "index"){
