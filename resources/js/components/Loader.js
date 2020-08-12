@@ -4,7 +4,7 @@ import styled, { keyframes } from "styled-components";
 // import { Logo } from "./Icons";
 
 const Wrapper = styled.div`
-  min-height: 80vh;
+  min-height: 87vh;
   display: flex;
   align-items: center;
   justify-content: center;

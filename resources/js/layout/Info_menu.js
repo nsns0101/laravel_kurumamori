@@ -20,6 +20,8 @@ export default () => {
         fontWeight: "800",
         fontSize: "20px"
     }
+
+
     // console.log(location.pathname.split('/')[2])
     return (
         <div>
@@ -27,19 +29,19 @@ export default () => {
                 {/* <span className="pt-2" style={{fontSize:"20px", color:"black", marginLeft:"10px"}}>내 정보 - &nbsp;&nbsp;&nbsp;</span> */}
                 <li className="nav-item">
                     {/* 액티브! */}
-                    <Link to="/info/index" className={`nav-link ${location.pathname.split('/')[2] == 'index' ? "active" : ""}`}>
+                    <Link to="/info/index" className={`nav-link ${location.pathname.split('/')[2] == 'index' ? "active" : "no_active"}`}>
                         {/* <i className="fas fa-fw fa-wrench" style={{color:"blue"}}></i> */}
                         <span className="info_menu_span">{t("개인정보")}</span>
                     </Link>                  
                 </li>
                 <li className="nav-item">
-                    <Link to="/info/medical_info" className={`nav-link ${location.pathname.split('/')[2] == 'medical_info' ? "active" : ""}`}>
+                    <Link to="/info/medical_info" className={`nav-link ${location.pathname.split('/')[2] == 'medical_info' ? "active" : "no_active"}`}>
                         {/* <i className="fas fa-fw fa-wrench" style={{color:"blue"}}></i> */}
                         <span className="info_menu_span">{t("의료정보")}</span>
                     </Link>                      
                 </li>
                 <li className="nav-item">
-                    <Link to="/info/drive_score" className={`nav-link ${location.pathname.split('/')[2] == 'drive_score' ? "active" : ""}`}>
+                    <Link to="/info/drive_score" className={`nav-link ${location.pathname.split('/')[2] == 'drive_score' ? "active" : "no_active"}`}>
                         {/* <i className="fas fa-fw fa-wrench" style={{color:"blue"}}></i> */}
                         <span className="info_menu_span">{t("운전정보")}</span>
                     </Link> 

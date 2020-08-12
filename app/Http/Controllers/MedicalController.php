@@ -91,14 +91,14 @@ class MedicalController extends Controller
             }
         }
         //insurance DB create
-        if($request->insurance_bool){
-            $insurance_list_id = \App\Insurance_list::whereInsurance_name($request->insurance_name)->first()->id;
+        if($request->data['insurance_bool']){
+            $insurance_list_id = \App\Insurance_list::whereInsurance_name($request->data['insurance_name'])->first()->id;
             $insurance = \App\Insurance::create([
                 'user_id' => $request->user_id,
                 'medical_id' => $medical_info->id,
                 'insurance_list_id' => $insurance_list_id,
-                'subscription_date' => $request->subscription_date,
-                'expiration_date' => $request->expiration_date,
+                'subscription_date' => $request->data['subscription_date'],
+                'expiration_date' => $request->data['expiration_date'],
             ]);
         }
         return response()->json([
@@ -132,10 +132,15 @@ class MedicalController extends Controller
         $past_sickness_count = 0;
         $sickness_count = 0;
         \Log::info($past_sickness);
+
+        //count($past_sickness)와 count($request->data['past_sickness_name'])을 비교하여 더 큰값으로 결정
+        $count_for_past_sickness = count($past_sickness) > count($request->data['past_sickness_name']) ? count($past_sickness) : count($request->data['past_sickness_name']); 
+        $count_for_sickness = count($sickness) > count($request->data['sickness_name']) ? count($sickness) : count($request->data['sickness_name']); 
+        
         //past_sickness DB Update
-        for($i = 0; $i < count($request->data['past_sickness_name']); $i++){
+        for($i = 0; $i < $count_for_past_sickness; $i++){
             //input창에 넣은 값이 있고 "없음"이 아닐 때
-            if($request->data['past_sickness_name'][$i] && $request->data['past_sickness_name'][$i]!="없음"){
+            if(isset($request->data['past_sickness_name'][$i]) && $request->data['past_sickness_name'][$i]!="없음" && $request->data['past_sickness_name'][$i]!="ない"){
                 \Log::info($i);
                 //현재 해당하는 past_sickness_name의 인덱스가 
                 //i == 0, count가 0일 때는 create(유일하게 같을 때 create)
@@ -167,17 +172,18 @@ class MedicalController extends Controller
             }
             //수정창에서 지운 경우
             elseif(isset($past_sickness[$i])){
+                \Log::info("gg");
                 $past_sickness[$i]->delete();
             }
             $past_sickness_count++;
         }
         // \Log::info($error);
         //sickness DB Update
-        for($i = 0; $i < count($request->data['sickness_name']); $i++){
-            if($request->data['sickness_name'][$i] && $request->data['sickness_name'][$i]!="없음"){
+        for($i = 0; $i < $count_for_sickness; $i++){
+
+            if(isset($request->data['sickness_name'][$i]) && $request->data['sickness_name'][$i]!="없음" && $request->data['sickness_name'][$i]!="ない"){
                 if(($i == 0 && count($sickness) == 0 ) || $i > count($sickness) - 1 ){
                     \Log::info($request->all());
-                    
                     \App\Sickness::create([
                         'user_id' => $request->data['user_id'],
                         'medical_id' => $medical_id,
@@ -218,8 +224,22 @@ class MedicalController extends Controller
         //insurances DB Update
         $insurance = \App\Insurance::whereUser_id($request->data['user_id'])->first();
 
-        if($request->insurance_bool){
-            $insurance_list_id = \App\Insurance_list::whereInsurance_name($request->insurance_name)->first()->id;
+        if($request->data['insurance_bool']){
+            $change_insurance_ko = $request->data['insurance_name'];
+            if($change_insurance_ko == "ハナ保険会社"){
+                $change_insurance_ko  = "하나보험사";
+             }
+             else if($change_insurance_ko == "ウリ保険会社"){
+                $change_insurance_ko  = "우리보험사";
+             }
+             else if($change_insurance_ko == "ディグ保険会社"){
+                $change_insurance_ko  = "대구보험사";
+             }
+             else if($change_insurance_ko == "ドンフォア保険会社"){
+                $change_insurance_ko  = "동화보험사";
+             }
+             
+            $insurance_list_id = \App\Insurance_list::whereInsurance_name($change_insurance_ko)->first()->id;
             \Log::info($insurance);
             if($insurance){
                 $insurance->update([

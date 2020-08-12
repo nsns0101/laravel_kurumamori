@@ -11,7 +11,7 @@ class Insurance_listsTableSeeder extends Seeder
      */
     public function run()
     {
-        $insurance_name = ["하나보험사", "우리보험사", "준혁보험사", "동화보험사"];
+        $insurance_name = ["하나보험사", "우리보험사", "대구보험사", "동화보험사"];
         for($i = 0; $i < count($insurance_name); $i++){
             App\Insurance_list::create(
                 [
