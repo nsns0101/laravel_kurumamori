@@ -6,16 +6,20 @@
     font-size: 24px;
     color: black;
     font-weight: bold;
+    margin: 0;
 }
 
 .drive_sub_score_p {
     font-size: 24x;
     color: black;
     font-weight: bold;
+    margin: 0;
 }
 .google_map {
-    width:100%;
-    height:350px;
+    /* margin-left: 15px; */
+    margin-top: 15px;
+    width: 100%;
+    height:320px;
     box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
 }
 
@@ -32,8 +36,8 @@
 
 }
 .chart_card {
+    margin-top: 15px;
     padding: 20px;
-    margin-bottom: 15px;
 }
 .chart_card_p {
     margin: 0 0 20px 0;

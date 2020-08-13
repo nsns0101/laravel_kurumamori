@@ -23,7 +23,7 @@ export default () => {
         day_5_danger_count,
     } = useContext(DriveContext);
 
-    return user.id && day_5_danger_count.length ? (
+    return user.id ? (
         <div style={{backgroundColor:"rgb(240, 240, 240)"}}>
             <div className="row" style={{padding:"50px 0 50px 0"}}>
                 {/* 여백 */}
@@ -46,7 +46,6 @@ export default () => {
                                         {t("운전날짜 검색")}
                                         </p>
                                     </div>
-                                    <br />
                                     <div className="col-xs-2 col-lg-2 col-md-3 col-sm-3">
                                         <div className="form-group">
                                             {/* <!-- 시작시 기본 날짜 설정은 value를 이용 --> */}
@@ -59,28 +58,28 @@ export default () => {
                                     </div>
                                 </div>
 
-                                <div className="" style={{maxHeight:"555px", overflowY:"auto", overflowX:"hidden"}}>
-                                    {day_5_sec[0] ? (
+                                <div className="" style={{maxHeight:"585px", overflowY:"auto", overflowX:"hidden"}}>
+                                    {day_5_sec[0] && day_5_danger_count.length ? (
                                         <div>
                                             {/* 점수 아이콘 */}
                                             <Drive_score_icon/>
 
                                             <div className="row justify-content-around">
                                                 {/* 차트 */}
-                                                <div className="col-xl-7 col-lg-7 col-md-12 col-sm-12">
+                                                {/* <div className="col-xl-7 col-lg-7 col-md-12 col-sm-12">
                                                     <Drive_score_chart/>
-                                                </div>
+                                                </div> */}
                                                 {/* 구글맵 */}
-                                                <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                                                {/* <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                                                     <GoogleMap/>
-                                                </div>
-                                                <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                                </div> */}
+                                                <div className="col-xl-11 col-lg-11 col-md-11 col-sm-12">
                                                     <Drive_score_chart2/>
                                                 </div>
                                             </div>
                                         </div>
                                     ) : (
-                                        <div style={{height:"65vh"}}>
+                                        <div className="text-center">
                                             <p className="text-danger">{t("운전 데이터가 없습니다.")}</p>
                                         </div>
                                     )}

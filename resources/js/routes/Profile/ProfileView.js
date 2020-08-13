@@ -34,7 +34,7 @@ export default ({history}) => {
                             <div className="col-md-9">
                                 <Info_menu/>
 
-                                <div className="" style={{maxHeight:"635px", overflowY:"auto", overflowX:"hidden", marginTop:"30px"}}>
+                                <div className="" style={{maxHeight:"615px", overflowY:"auto", overflowX:"hidden", marginTop:"30px"}}>
                                     {/* 사고 이력 */}
                                     <div className="card" style={{padding:"20px 20px 0 20px"}}>
                                         <p className="no_scroll_p">{t("사고 이력")}</p>

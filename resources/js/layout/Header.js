@@ -9,14 +9,10 @@ import "./Header.css";
 export default  () => {
     const {user, t} = useContext(AppContext);
     // console.log(isLoggedIn);
-    const nav_text = {
-        fontSize:"18px",
-        color:"white",
-        marginTop:"5px",
-    }
+
     const [path_url, setPath_url] = useState(location.pathname.split('/')[1]); 
     // console.log("------------------------------------------------");
-    // console.log(path_url);
+    console.log(path_url);
     // console.log("------------------------------------------------");
 
     //언어 제목
@@ -37,7 +33,7 @@ export default  () => {
 
     return (
         <section id="main-navigation">
-            <div className="row py-1" style={{background:"#002ef0", opacity:1, display: "flex", height:"65px", borderBottom:"solid blue 1px"}}>
+            <div className="row" style={{background:"#002ef0", opacity:1, display: "flex", height:"65px", borderBottom:"solid blue 1px"}}>
                 <div className="col-lg-1"></div>
                 <div className="col-lg-10">
                     <nav className="navbar navbar-expand-lg px-0 py-0">
@@ -55,13 +51,13 @@ export default  () => {
                         <div className="collapse navbar-collapse px-4" id="main_navbar" style={{background:"#002ef0", zIndex:1000}}>
                             <ul className="navbar-nav mr-auto col-auto">
                                 <li className="nav-item" style={{marginRight:"1.5em"}}>
-                                    <Link to="/" className="nav-link" style={nav_text} onClick={()=>setPath_url("")}>{t("홈")}</Link>
+                                    <Link to="/" className={`nav-link good_nav ${location.pathname.split('/')[1] == "" ? "active" : ""}`} onClick={()=>setPath_url("")}>{t("홈")}</Link>
                                 </li>
                                 <li className="nav-item" style={{marginRight:"1.5em"}}>
-                                    <Link to="/products" className="nav-link" style={nav_text} onClick={()=>setPath_url("product")}>{t("제품")}</Link>
+                                    <Link to="/products" className={`nav-link good_nav ${location.pathname.split('/')[1] == 'products' ? "active" : ""}`} onClick={()=>setPath_url("product")}>{t("제품")}</Link>
                                 </li>
                                 <li className="nav-item" style={{marginRight:"1.5em"}}>
-                                    <Link to="/bigdata" className="nav-link" style={nav_text} onClick={()=>setPath_url("bigdata")}>{t("빅데이터 자료실")}</Link>
+                                    <Link to="/bigdata" className={`nav-link good_nav ${location.pathname.split('/')[1] == 'bigdata' ? "active" : ""}`} onClick={()=>setPath_url("bigdata")}>{t("빅데이터 자료실")}</Link>
                                 </li>
 
                                 {/* <li className="nav-item" style={{marginRight:"1.5em"}}>
@@ -78,8 +74,8 @@ export default  () => {
                                 {user.id ? 
                                 <React.Fragment>
                                     <li className="nav-item" style={{marginRight:"1.5em"}}>
-                                        <Link to="/info/index" className="nav-link" style={nav_text} onClick={()=>setPath_url("info")}>
-                                            <img className="img mx-4" src="/icon/profile.png" alt="profile" style={{width:30}}/>
+                                        <Link to="/info/index" className={`nav-link good_profile`} onClick={()=>setPath_url("info")}>
+                                            <img className={`img mx-4 profile_icon ${location.pathname.split("/")[1] == "info" ? "active" : ""}`} src="/icon/profile.png" alt="profile"/>
                                         </Link> 
                                     </li>
                                     {/* <li className="nav-item" style={{marginRight:"1.5em"}}>
@@ -88,8 +84,8 @@ export default  () => {
                                 </React.Fragment>
                                 :
                                 <React.Fragment>
-                                <li className="nav-item" style={{marginRight:"1.5em", border:"2px solid white", borderRadius:"10px", padding: "0 10px 0 10px"}}>
-                                    <Link to="/auth/login" className="nav-link" style={{fontSize:"18px", color:"white", marginTop:"5px", padding:2}}>{t("로그인")}</Link>
+                                <li className={`nav-item login_nav_item ${location.pathname.split("/")[1] == "auth" ? "active" : ""}`}>
+                                    <Link to="/auth/login" className={`nav-link good_login ${location.pathname.split("/")[1] == "auth" ? "active" : ""}`} onClick={()=>setPath_url("auth")}>{t("로그인")}</Link>
                                 </li> 
                                 {/* <li className="nav-item" style={{marginRight:"1.5em"}}>
                                     <Link to="/auth/register" className="nav-link" style={nav_text}>{t("회원가입")}</Link>
@@ -97,7 +93,7 @@ export default  () => {
                                 </React.Fragment>
                                 }
                                 {/* 다국어 지원 기능 */}
-                                <div className="lang_button" style={{marginTop:"10px"}}> 
+                                <li className="nav-item lang_button"> 
                                     <Dropdown onSelect={change_language}> 
                                         <Dropdown.Toggle variant="" size="sm"> 
                                             {languageTitle} 
@@ -113,7 +109,7 @@ export default  () => {
                                             </Dropdown.Item> 
                                         </Dropdown.Menu> 
                                     </Dropdown> 
-                                </div>
+                                </li>
                             </ul>
                         </div>
                     </nav>   

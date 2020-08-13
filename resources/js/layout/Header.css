@@ -1,4 +1,48 @@
+.lang_button {
+    margin-top:20px;
+}
+
 .lang_button button {
     background-color: transparent !important;
     color: white;
+}
+
+.login_nav_item {
+    margin-right: 1.5em;
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 0 10px;
+    height: 40px;
+    margin-top: 10px;
+}
+
+.good_login{
+    font-size: 18px;
+    color: white;
+    /* margin-top: 5px; */
+    padding:2;
+    /* margin:0 */
+}
+
+.good_profile {
+    width:30;
+    font-size: 18px;
+    color: white;
+    margin-top: 5px;
+}
+
+.good_nav {
+    font-size: 18px;
+    color: white;
+    margin-top: 5px;
+}
+
+.good_nav.active {
+    opacity: 0.5;
+    /* font-weight: bold; */
+}
+
+.profile_icon.active, .good_login.active, .login_nav_item.active {
+    opacity: 0.5;
+
 }
