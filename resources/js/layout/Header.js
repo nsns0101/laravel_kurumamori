@@ -32,7 +32,7 @@ export default  () => {
     };
 
     return (
-        <section id="main-navigation">
+        <nav id="main-navigation">
             <div className="row" style={{background:"#002ef0", opacity:1, display: "flex", height:"65px", borderBottom:"solid blue 1px"}}>
                 <div className="col-lg-1"></div>
                 <div className="col-lg-10">
@@ -115,6 +115,6 @@ export default  () => {
                     </nav>   
                 </div>
             </div>
-        </section>
+        </nav>
     )
 };

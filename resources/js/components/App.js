@@ -80,7 +80,7 @@ function App() {
     //localStorage.getItem('lang')가 있어야 페이지가 나오게
     //없으면 페이지 로딩시 한국어로 나오다가 0.3초뒤에 일본어로 나오기 때문에
     return localStorage.getItem('lang') ? ( user.id ? (
-        <div style={{overflow:"hidden"}}>
+        <div style={{overflow:"hidden", minHeight:"100vh"}}>
             <AppContext.Provider value={{isLoggedIn, setIsLoggedIn, user, setUser, t}}>
                 <BrowserRouter>
                     <Header/>
