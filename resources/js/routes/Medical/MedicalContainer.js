@@ -119,7 +119,7 @@ export default ({history}) => {
     }
     //값 받기
     useEffect(()=>{
-        console.log("medical useEffect");
+        // console.log("medical useEffect");
         Axios.get(`/info/medical_info/${user.id}`).then(res => {
             if(user.id){
                 // url이 edit면
@@ -204,7 +204,7 @@ export default ({history}) => {
                 //insurance
                 if(res.data.insurance_list_my && (form && form != "create") ){
                     setInsurance_bool(true);
-                    console.log(res.data);
+                    // console.log(res.data);
                     setInsurance_name(res.data.insurance_list_my.insurance_name);
                     setInsurance_phone(res.data.insurance_list_my.insurance_phone);
                     setSubscription_date(res.data.insurance.subscription_date);

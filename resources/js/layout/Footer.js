@@ -20,15 +20,15 @@ const up = () => {
 }
 export default () => {
     return (
-        <div style={{marginTop:"40px"}}>
+        <div>
             <Footer>
                 <footer className="row foot_back" style={{margin:0}}>
                     <div className="col-lg-12 col-md-12 col-sm-12">
                         <div className="row">
-                            <div className="col-md-8" style={{marginTop:"15px"}}>
+                            <div className="col-md-8" style={{paddingTop:"15px"}}>
                                 <p style={{color:"white", fontSize:"16px", fontWeight:500}}>©Copyright クルマモリ9。All Rights Reserved</p>
                             </div>
-                            <div className="col-md-4" style={{marginTop:"10px"}}>
+                            <div className="col-md-4" style={{paddingTop:"10px"}}>
                                 <a href="https://www.youtube.com/channel/UCTLr43DTgWut2lSQ2vFcXAw/featured">
                                     <img src="/icon/footer_Logos.png" style={{width:"30%"}}/>
                                 </a>

@@ -34,7 +34,7 @@ export default () => {
     if(!past_sickness_name.length){
         past_sickness_name.push("");
     }
-    console.log(past_sickness_name);
+    // console.log(past_sickness_name);
     return (
         <div>
             {past_sickness_name && past_sickness_name !="" ? past_sickness_name.map( (value, index) => {

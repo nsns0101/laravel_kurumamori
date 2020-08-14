@@ -109,12 +109,12 @@ export default () => {
                                             {disability_status ? (
                                                 <div>
                                                     <span className="btn_radio">{t("예")}</span>
-                                                    <input type="radio" checked={true}/>
+                                                    <input type="radio" defaultChecked={true}/>
                                                 </div>
                                             ) : (
                                                 <div>
                                                     <span className="btn_radio">{t("아니오")}</span>
-                                                    <input type="radio" checked={true}/>
+                                                    <input type="radio" defaultChecked={true}/>
                                                 </div>
                                             )}
                                         </div>

@@ -19,7 +19,7 @@ export default ({history}) => {
     const { handleSubmit, register, errors, watch } = useForm();
 
     return user.id ? (
-        <div style={{backgroundColor:"rgb(240, 240, 240)"}}>
+        <div style={{backgroundColor:"white"}}>
             <div className="row" style={{padding:"50px 0 50px 0"}}>
                 {/* 여백 */}
                 <div className="col-md-1"></div>
