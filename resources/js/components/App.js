@@ -80,65 +80,69 @@ function App() {
     //localStorage.getItem('lang')가 있어야 페이지가 나오게
     //없으면 페이지 로딩시 한국어로 나오다가 0.3초뒤에 일본어로 나오기 때문에
     return localStorage.getItem('lang') ? ( user.id ? (
-        <AppContext.Provider value={{isLoggedIn, setIsLoggedIn, user, setUser, t}}>
-            <BrowserRouter>
-                <Header/>
-                {/* 메인페이지 */}
-                <Route path="/" exact={true} component={Home}/>
+        <div style={{overflow:"hidden"}}>
+            <AppContext.Provider value={{isLoggedIn, setIsLoggedIn, user, setUser, t}}>
+                <BrowserRouter>
+                    <Header/>
+                    {/* 메인페이지 */}
+                    <Route path="/" exact={true} component={Home}/>
 
-                {/* 로그아웃 */}
-                <Route path="/logout" exact component={Login}/>
-                {/* 내정보 */}
-                <Route path="/info/index" component={Info_index}/>
-                {/* 의료정보 */}
-                <Route path="/info/medical_info" component={Info_medical}/>
-                {/* 운전점수 */}
-                <Route path="/info/drive_score" exact component={Info_drive}/>
-                {/* 빅데이터 자료실 */}
-                <Route path="/bigdata" component={Bigdata}/>
+                    {/* 로그아웃 */}
+                    <Route path="/logout" exact component={Login}/>
+                    {/* 내정보 */}
+                    <Route path="/info/index" component={Info_index}/>
+                    {/* 의료정보 */}
+                    <Route path="/info/medical_info" component={Info_medical}/>
+                    {/* 운전점수 */}
+                    <Route path="/info/drive_score" exact component={Info_drive}/>
+                    {/* 빅데이터 자료실 */}
+                    <Route path="/bigdata" component={Bigdata}/>
 
-                <Route path="/products" exact component={Product}/>
-                <Route path="/products/more" exact component={More}/>
-                <Route path="/products/buy"  component={Buy}/>
-                {/* <Route path="/products/buy/completed"  component={Completed}/> */}
-                <Route path="/products/control" exact component={Control}/>
-                <Route path="/products/users" exact component={Users}/>
+                    <Route path="/products" exact component={Product}/>
+                    <Route path="/products/more" exact component={More}/>
+                    <Route path="/products/buy"  component={Buy}/>
+                    {/* <Route path="/products/buy/completed"  component={Completed}/> */}
+                    <Route path="/products/control" exact component={Control}/>
+                    <Route path="/products/users" exact component={Users}/>
 
-                <Route path="/boards/questions" component={Board}/>
+                    <Route path="/boards/questions" component={Board}/>
 
-                <Footer/>
-            </BrowserRouter>
-        </AppContext.Provider>
+                    <Footer/>
+                </BrowserRouter>
+            </AppContext.Provider>
+        </div>
     ) : (
-        <AppContext.Provider value={{isLoggedIn, setIsLoggedIn, user, setUser, t}}>
-            <BrowserRouter>
-                <Header/>
-                {/* 메인페이지 */}
-                <Route path="/" exact={true} component={Home}/>
-                {/* 로그인 페이지 */}
-                <Route path="/auth/login" exact component={Login}/>
-                {/* 회원가입 페이지 */}
-                <Route path="/auth/register" exact component={Login}/>
-                {/* 빅데이터 자료실 */}
-                <Route path="/bigdata" component={Bigdata}/>
+        <div style={{overflow:"hidden"}}>
+            <AppContext.Provider value={{isLoggedIn, setIsLoggedIn, user, setUser, t}}>
+                <BrowserRouter>
+                    <Header/>
+                    {/* 메인페이지 */}
+                    <Route path="/" exact={true} component={Home}/>
+                    {/* 로그인 페이지 */}
+                    <Route path="/auth/login" exact component={Login}/>
+                    {/* 회원가입 페이지 */}
+                    <Route path="/auth/register" exact component={Login}/>
+                    {/* 빅데이터 자료실 */}
+                    <Route path="/bigdata" component={Bigdata}/>
 
-                <Route path="/products" exact component={Product}/>
-                <Route path="/products/more" exact component={More}/>
-                <Route path="/products/buy" exact component={Buy}/>
-                
-                {/* <Route path="/products/buy/completed" exact component={Completed}/> */}
+                    <Route path="/products" exact component={Product}/>
+                    <Route path="/products/more" exact component={More}/>
+                    <Route path="/products/buy" exact component={Buy}/>
+                    
+                    {/* <Route path="/products/buy/completed" exact component={Completed}/> */}
 
-                <Route path="/products/control" exact component={Control}/>
-                <Route path="/products/users" exact component={Users}/>
+                    <Route path="/products/control" exact component={Control}/>
+                    <Route path="/products/users" exact component={Users}/>
 
-                <Route path="/boards/questions" exact component={Board}/>
+                    <Route path="/boards/questions" exact component={Board}/>
 
-                {/* <Route path="/board/review" exact component={Review}/> */}
+                    {/* <Route path="/board/review" exact component={Review}/> */}
 
 
-                <Footer/>
-            </BrowserRouter>
-        </AppContext.Provider>
+                    <Footer/>
+                </BrowserRouter>
+            </AppContext.Provider>
+        </div>
         )
     ) : null
 }

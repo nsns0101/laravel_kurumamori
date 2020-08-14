@@ -55,7 +55,7 @@ export default () => {
                     </Link>
                 </div>
             </div>
-            <div className="" style={{maxHeight:"535px", overflowY:"auto", marginTop:"10px"}}>
+            <div className="" style={{maxHeight:"608px", overflowY:"auto", overflowX:"hidden", marginTop:"10px"}}>
                 {insurance_name_list ? (
                     <div>
                         <div className="card" style={{padding:"20px 20px 0 20px"}}>

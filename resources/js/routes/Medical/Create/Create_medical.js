@@ -45,7 +45,7 @@ export default () => {
 
     return (
         <form onSubmit={handleSubmit(validation)}>
-            <div className="" style={{maxHeight:"535px", overflowY:"auto", marginTop:"30px"}}>
+            <div className="" style={{maxHeight:"570px", overflowY:"auto", marginTop:"30px"}}>
                 {insurance_name_list ? (
                     <div>
                         <div className="card" style={{padding:"20px 20px 0 20px"}}>

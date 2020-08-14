@@ -7,7 +7,6 @@ import { AppContext } from "../../components/App";
 import { DriveContext } from "./DriveContainer";
 import Drive_score_icon from "./partial/Drive_score_icon";
 import Drive_score_chart from "./partial/Drive_score_chart";
-import Drive_score_chart2 from "./partial/Drive_score_chart2";
 import GoogleMap from "./partial/GoogleMap";
 import Loader from "../../components/Loader";
 import Profile_User from "../../components/Profile_User";
@@ -58,7 +57,7 @@ export default () => {
                                     </div>
                                 </div>
 
-                                <div className="" style={{maxHeight:"585px", overflowY:"auto", overflowX:"hidden"}}>
+                                <div className="" style={{height:"618px", overflowY:"auto", overflowX:"hidden"}}>
                                     {day_5_sec[0] && day_5_danger_count.length ? (
                                         <div>
                                             {/* 점수 아이콘 */}
@@ -74,7 +73,7 @@ export default () => {
                                                     <GoogleMap/>
                                                 </div> */}
                                                 <div className="col-xl-11 col-lg-11 col-md-11 col-sm-12">
-                                                    <Drive_score_chart2/>
+                                                    <Drive_score_chart/>
                                                 </div>
                                             </div>
                                         </div>
