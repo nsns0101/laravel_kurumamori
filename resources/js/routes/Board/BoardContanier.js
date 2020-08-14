@@ -176,6 +176,7 @@ export default ({history}) => {
 
             categoryHover,
             setCategoryHover,
+            t
         }}>
             {action == "edit" ? <Edit/>:""}
             {action == "show" ? <Show/>:""}

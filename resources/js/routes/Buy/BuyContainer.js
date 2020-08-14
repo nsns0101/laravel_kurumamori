@@ -19,11 +19,11 @@ export default ({ history }) => {
     const [phone, setPhone] = useState(""); //buy_phone 휴대전화
     const [product_key, setProduct_key] = useState("");
     useEffect(()=>{
-        setName("김영진")
-        setState("대구광역시")
-        setAddress("복현동360-23")
+        setName("キム·ヨンジン")
+        setState("大阪県")
+        setAddress("大阪市中央区宗右衛門町７−18")
         setPostal("41234")
-        setDetailAddress("청솔맨션 301호")
+        setDetailAddress("チョンソルマンション301号")
         setAccessCode("0310")
         setEmail("kim@youngjin.com")
         setPhone("010-7374-6119")
