@@ -15,6 +15,7 @@ import Login from "../routes/Auth/AuthContainer";
 import Info_index from "../routes/Profile/ProfileContainer"; 
 import Info_medical from "../routes/Medical/MedicalContainer";
 import Info_drive from "../routes/Drive/DriveContainer";
+import Info_history from "../routes/History/HistoryContainer";
 import Bigdata from "../routes/Bigdata/BigdataContainer";
 
 import Product from "../routes/Product/Product";
@@ -89,12 +90,14 @@ function App() {
 
                     {/* 로그아웃 */}
                     <Route path="/logout" exact component={Login}/>
-                    {/* 내정보 */}
+                    {/* 제품정보 */}
                     <Route path="/info/index" component={Info_index}/>
                     {/* 의료정보 */}
                     <Route path="/info/medical_info" component={Info_medical}/>
                     {/* 운전점수 */}
                     <Route path="/info/drive_score" exact component={Info_drive}/>
+                    {/* 사용이력 */}
+                    <Route path="/info/history" component={Info_history}/>  
                     {/* 빅데이터 자료실 */}
                     <Route path="/bigdata" component={Bigdata}/>
 

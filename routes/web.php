@@ -37,6 +37,8 @@ Route::resource('/confirm', 'ConfirmController');
 Route::resource('/info/index', 'InfoController');
 Route::resource('/info/medical_info', 'MedicalController');
 Route::put('/info/medical_infos/{medical_id}', 'MedicalController@update');
+Route::resource('/info/history', 'HistoryController');
+
 Route::resource('/info/drive_score', 'DriveController');
 
 //운전점수 날짜별 검색

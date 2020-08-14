@@ -10,12 +10,10 @@ export const ProfileContext = createContext();
 export default ( {history} ) => {
     const { user, t } = useContext(AppContext);
     
-    const [reports, setReports] = useState([]);   //신고 위치
     const [data, setData] = useState("");
     const [product_action, setProduct_action] = useState("create");
     const [product_key_input, setProduct_key_input] = useState("");
     const [error_text, setError_text] = useState("");
-    const [arr, setArr] = useState([]);
     Geocode.setApiKey(process.env.MIX_GCP_API_KEY);
     Geocode.setLanguage("ja");
     //값 받기
@@ -30,19 +28,6 @@ export default ( {history} ) => {
 
             if(res.data.product){
                 setProduct_action("update");
-            }
-
-            // 해치움 ㅋㅋ gps
-            if(res.data.reports){
-                // const arr = [];
-                for(var i = 0; i < (res.data.reports.data).length; i++){
-                    Geocode.fromLatLng(res.data.reports.data[i].latitude, res.data.reports.data[i].longitude).then(
-                        res => {
-                            setArr(arr.push(res.results[0].formatted_address))
-                            setReports(arr);
-                        }
-                    )
-                }
             }
 
         });
@@ -129,7 +114,6 @@ export default ( {history} ) => {
             setProduct_key_input,
             error_text,
             onSubmit,
-            reports,
             setData,
         }}>
             <ProfileView/>

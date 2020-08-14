@@ -56,3 +56,7 @@
 /* .char-area .container {
     padding:0;
 } */
+
+.react-datepicker__input-container input{
+    text-align: center;
+}

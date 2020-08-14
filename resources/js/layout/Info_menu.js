@@ -32,7 +32,7 @@ export default () => {
                     {/* 액티브! */}
                     <Link to="/info/index" className={`nav-link ${location.pathname.split('/')[2] == 'index' ? "active" : "no_active"}`}>
                         {/* <i className="fas fa-fw fa-wrench" style={{color:"blue"}}></i> */}
-                        <span className="info_menu_span">{t("개인정보")}</span>
+                        <span className="info_menu_span">{t("제품정보")}</span>
                     </Link>                  
                 </li>
                 <li className="nav-item">
@@ -45,6 +45,12 @@ export default () => {
                     <Link to="/info/drive_score" className={`nav-link ${location.pathname.split('/')[2] == 'drive_score' ? "active" : "no_active"}`}>
                         {/* <i className="fas fa-fw fa-wrench" style={{color:"blue"}}></i> */}
                         <span className="info_menu_span">{t("운전정보")}</span>
+                    </Link> 
+                </li>
+                <li className="nav-item">
+                    <Link to="/info/history" className={`nav-link ${location.pathname.split('/')[2] == 'history' ? "active" : "no_active"}`}>
+                        {/* <i className="fas fa-fw fa-wrench" style={{color:"blue"}}></i> */}
+                        <span className="info_menu_span">{t("사용이력")}</span>
                     </Link> 
                 </li>
             </ul>
