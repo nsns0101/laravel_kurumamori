@@ -36,14 +36,21 @@ export default ({history}) => {
                                 {user && user.id && form  ? (
                                     <div>
                                         {form == "view" ? (
-                                            <div className="" style={{maxHeight:"635px", overflowY:"auto", marginTop:"30px"}}>
+                                            <div className="" style={{maxHeight:"665px", overflowX:"hidden",  overflowY:"auto", marginTop:"30px"}}>
                                                 <Show_medical/>
                                             </div>
                                         ) : (
-                                                <Create_medical/>     
+                                            <div className="" style={{maxHeight:"654px", overflowX:"hidden",  overflowY:"auto", marginTop:"30px"}}>
+                                                <Create_medical/>    
+                                            </div> 
                                         )}
                                     </div>
-                                ) : <Loader/>}
+                                ) :  (
+                                    <div className="" style={{height:"654px", overflowX:"hidden",  overflowY:"auto", marginTop:"30px"}}>
+                                        <Loader/>
+                                    </div>
+                                )
+                            }
                             </div>
                         </div>
                     </section>
