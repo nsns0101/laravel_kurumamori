@@ -1,0 +1,90 @@
+{
+    "0" : {
+        "latitude": "35.7072365",
+        "longitude": "139.7606506",
+        "bool_report":1,
+        "bool_sudden_acceleration":0,
+        "bool_sudden_stop":0,
+        "bool_sleep":0
+    },
+    "1" : {
+        "latitude": "35.7056735",
+        "longitude": "139.7597374",
+        "bool_report":0,
+        "bool_sudden_acceleration":1,
+        "bool_sudden_stop":0,
+        "bool_sleep":0
+    },
+    "2" : {
+        "latitude": "35.7051632",
+        "longitude": "139.7598287",
+        "bool_report":0,
+        "bool_sudden_acceleration":0,
+        "bool_sudden_stop":1,
+        "bool_sleep":0
+    },
+    "3" : {
+        "latitude": "35.7075268",
+        "longitude": "139.7537528",
+        "bool_report":0,
+        "bool_sudden_acceleration":0,
+        "bool_sudden_stop":1,
+        "bool_sleep":0
+    },
+    "4" : {
+        "latitude": "35.7095164",
+        "longitude": "139.7471098",
+        "bool_report":0,
+        "bool_sudden_acceleration":1,
+        "bool_sudden_stop":0,
+        "bool_sleep":0
+    },
+    "5" : {
+        "latitude": "35.7060968",
+        "longitude": "139.7430592",
+        "bool_report":0,
+        "bool_sudden_acceleration":1,
+        "bool_sudden_stop":0,
+        "bool_sleep":0
+    },
+    "6" : {
+        "latitude": "35.700008",
+        "longitude": "139.743458",
+        "bool_report":0,
+        "bool_sudden_acceleration":1,
+        "bool_sudden_stop":0,
+        "bool_sleep":0
+    },
+    "7" : {
+        "latitude": "35.689105",
+        "longitude": "139.746083",
+        "bool_report":0,
+        "bool_sudden_acceleration":1,
+        "bool_sudden_stop":0,
+        "bool_sleep":0
+    },
+    "8" : {
+        "latitude": "35.696548",
+        "longitude": "139.752745",
+        "bool_report":0,
+        "bool_sudden_acceleration":1,
+        "bool_sudden_stop":0,
+        "bool_sleep":0
+    },
+    "9" : {
+        "latitude": "35.702531",
+        "longitude": "139.750157",
+        "bool_report":0,
+        "bool_sudden_acceleration":1,
+        "bool_sudden_stop":0,
+        "bool_sleep":0
+    },
+    "10" : {
+        "latitude": "35.702967",
+        "longitude": "139.749153",
+        "bool_report":0,
+        "bool_sudden_acceleration":1,
+        "bool_sudden_stop":0,
+        "bool_sleep":0
+    }
+}

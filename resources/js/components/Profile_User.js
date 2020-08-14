@@ -22,7 +22,7 @@ export default () => {
                 <p style={{color:"blue", fontWeight:"bold"}}>INFO</p>
                 {/* 이미지, 이름 */}
                 <div className="text-center">
-                    <img className="profile_image"src="/images/home/team/예준현.jpg"/>
+                    <img className="profile_image"src="/images/home/team/이재영.jpg"/>
                 <p className="profile_name_p">{data.user.name}</p>
                 </div>
 

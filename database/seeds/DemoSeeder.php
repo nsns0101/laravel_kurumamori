@@ -31,7 +31,7 @@ class DemoSeeder extends Seeder
                     'title' => "제품 너무 좋아요!!",
                     'content' => "너무 잘샀다고 생각해요",
                 ]);
-
+                
 
                 //시연 운전
                 $date = date("Y-m-d H:m:s", time()); //현재날짜
@@ -61,47 +61,52 @@ class DemoSeeder extends Seeder
                 //시연 운전감지(0, 0, 1, 1)
                 $drive = \App\Drive::whereUser_id($user_id)->get();
                 
+                $json = json_decode(file_get_contents(public_path('\json\google.json')), true);
                 //최근날짜
-                \App\Drive_detection::create([
-                    'user_id' => $user_id,
-                    'drive_id' => $drive[0]->id,
-                    'latitude' => rand(35, 37) . '.' . rand(1000, 9999999),     //세로
-                    'longitude' => rand(127, 128) . '.' . rand(200000, 900000),  //가로
-                    'bool_report' => 1,
-                    'bool_sudden_acceleration' => 0,
-                    'bool_sudden_stop' => 0,
-                    'bool_sleep' => 0,
-                    'created_at' => $drive[0]->created_at,
-                ]);
-                \App\Drive_detection::create([
-                    'user_id' => $user_id,
-                    'drive_id' => $drive[0]->id,
-                    'latitude' => rand(35, 37) . '.' . rand(1000, 9999999),     //세로
-                    'longitude' => rand(127, 128) . '.' . rand(200000, 900000),  //가로
-                    'bool_report' => 0,
-                    'bool_sudden_acceleration' => 1,
-                    'bool_sudden_stop' => 0,
-                    'bool_sleep' => 0,
-                    'created_at' => $drive[0]->created_at,
-                ]);
+                // for($i = 0; $i < count($json); $i++){
+                for($i = 0; $i < 3; $i++){
+                    \App\Drive_detection::create([
+                        'user_id' => $user_id,
+                        'drive_id' => $drive[0]->id,
+                        'latitude' => $json["$i"]["latitude"],     //세로
+                        'longitude' => $json["$i"]["longitude"],  //가로
+                        'bool_report' => $json["$i"]["bool_report"],
+                        'bool_sudden_acceleration' => $json["$i"]["bool_sudden_acceleration"],
+                        'bool_sudden_stop' => $json["$i"]["bool_sudden_stop"],
+                        'bool_sleep' => $json["$i"]["bool_sleep"],
+                        'created_at' => $drive[0]->created_at,
+                    ]);
+                }
+
+                // \App\Drive_detection::create([
+                //     'user_id' => $user_id,
+                //     'drive_id' => $drive[0]->id,
+                //     'latitude' => rand(35, 37) . '.' . rand(1000, 9999999),     //세로
+                //     'longitude' => rand(127, 128) . '.' . rand(200000, 900000),  //가로
+                //     'bool_report' => 0,
+                //     'bool_sudden_acceleration' => 1,
+                //     'bool_sudden_stop' => 0,
+                //     'bool_sleep' => 0,
+                //     'created_at' => $drive[0]->created_at,
+                // ]);
 
 
 
                 
                 //최근날짜 빼고는 랜덤
-                for($i = 1; $i < count($day_7); $i++){
-                    \App\Drive_detection::create([
-                        'user_id' => $user_id,
-                        'drive_id' => $drive[$i]->id,
-                        'latitude' => rand(35, 37) . '.' . rand(1000, 9999999),     //세로
-                        'longitude' => rand(127, 128) . '.' . rand(200000, 900000),  //가로
-                        'bool_report' => rand(0,2),
-                        'bool_sudden_acceleration' => rand(0,3),
-                        'bool_sudden_stop' => rand(0,3),
-                        'bool_sleep' => rand(0,4),
-                        'created_at' => $drive[$i]->created_at,
-                    ]);
-                }
+                // for($i = 1; $i < count($day_7); $i++){
+                //     \App\Drive_detection::create([
+                //         'user_id' => $user_id,
+                //         'drive_id' => $drive[$i]->id,
+                //         'latitude' => rand(35, 37) . '.' . rand(1000, 9999999),     //세로
+                //         'longitude' => rand(127, 128) . '.' . rand(200000, 900000),  //가로
+                //         'bool_report' => rand(0,2),
+                //         'bool_sudden_acceleration' => rand(0,3),
+                //         'bool_sudden_stop' => rand(0,3),
+                //         'bool_sleep' => rand(0,4),
+                //         'created_at' => $drive[$i]->created_at,
+                //     ]);
+                // }
 
     }
 }
