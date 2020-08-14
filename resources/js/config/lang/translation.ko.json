@@ -334,6 +334,18 @@
     "더 많은 사용자의 후기들.":"더 많은 사용자의 후기들.",
 
     "구입 하기":"구입 하기",
+    "PAYMENT":"PAYMENT",
+    "RECIPIENT INFORMATION":"RECIPIENT INFORMATION",
+    "NAME":"NAME",
+    "EMAIL":"EMAIL",
+    "PHONE":"PHONE",
+    "CONTACT INFORMATION":"CONTACT INFORMATION",
+    "PROVINCE/STATE":"PROVINCE/STATE",
+    "POSTAL CODE":"POSTAL CODE",
+    "ADDRESS":"ADDRESS",
+    "DETAIL ADDRESS":"DETAIL ADDRESS",
+    "OTHER INFORMATION":"OTHER INFORMATION",
+    "BUILDING ACCESS CODE":"BUILDING ACCESS CODE",
 
     "구매해주셔서 감사합니다.":"구매해주셔서 감사합니다.",
     "クルマモリ9 사용을 위해서 아래 두가지 사항을 미리 준비해주세요!":"クルマモリ9 사용을 위해서 아래 두가지 사항을 미리 준비해주세요!",
@@ -343,7 +355,21 @@
     "스마트폰 앱스토어에서 쿠루마모리 앱 설치 하기":"스마트폰 앱스토어에서 쿠루마모리 앱 설치 하기",
 
     "로그인이 필요한 서비스 입니다.":"로그인이 필요한 서비스 입니다.",
-    "혹시 아이디가 없으신가요?":"혹시 아이디가 없으신가요?"
+    "혹시 아이디가 없으신가요?":"혹시 아이디가 없으신가요?",
+
+    "고객문의":"고객문의",
+    "ALL":"ALL",
+    "공지사항":"공지사항",
+    "업데이트":"업데이트",
+    "제품구매":"제품구매",
+    "제품오류":"제품오류",
+    "소프트웨어":"소프트웨어",
+    "기타문의":"기타문의",
+    "검색어를 입력해 주세요.":"검색어를 입력해 주세요.",
+    "글쓰기":"글쓰기",
+    "작성된 글이 없습니다.":"작성된 글이 없습니다."
+
+
 }
 
 

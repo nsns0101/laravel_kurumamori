@@ -20,6 +20,7 @@ export default () => {
         onShow,
         categoryHover,
         setCategoryHover,
+        t
     } = useContext(BoardContext);
      
     const page_count = [];
@@ -45,10 +46,10 @@ export default () => {
             <div id="main-question">
                 <div className="contaienr px-3 py-5 p-md-5">
                     <div className="row m-3 justify-content-around">
+                        <div className="px-3 pt-3">
+                            <h2 style={{fontSize:3+"em"}}>{t("고객문의")}</h2>
+                        </div>
                         <div className="col-xs-10 col-sm-10 col-lg-10 card px-3 py-3">
-                            <div className="px-3 pt-3">
-                                <h2 style={{fontSize:3+"em"}}>고객 문의</h2>
-                            </div>
                             {/* 네비게이션 */}
                             <div className="row justify-content-center py-3"> 
 
@@ -57,7 +58,7 @@ export default () => {
                                     onMouseEnter={()=>{setCategoryHover('yes')}}
                                     onMouseLeave={()=>{setCategoryHover('no')}}>
                                     <button id="" className="btn-toggle-tab" >
-                                        <span>ALL</span>
+                                        <span>{t("ALL")}</span>
                                         <ul id="mobile-only">
                                         </ul>
                                     </button>
@@ -71,30 +72,30 @@ export default () => {
                                             <div className="col-sm-12 col-lg-12">
                                                 <h2 id="" className="" style={{
                                                     fontSize:1.5+"em"
-                                                }}>질문 게시판</h2>
+                                                }}></h2>
                                             </div>
                                             <div className="col-sm-12 col-lg-12">
                                                 <ul className="row mx-0 px-0 ">
                                                     <li className="col-sm-12 col-lg-4 py-2">
-                                                        <Link  to="/boards/questions" id="" className="category-text" >ALL</Link>
+                                                        <Link  to="/boards/questions" id="" className="category-text" >{t("ALL")}</Link>
                                                     </li>
                                                     <li className="col-sm-12 col-lg-4 py-2">
-                                                        <Link to="/boards/questions" id="" className="category-text" >공지사항</Link>
+                                                        <Link to="/boards/questions" id="" className="category-text" >{t("공지사항")}</Link>
                                                     </li>
                                                     <li className="col-sm-12 col-lg-4 py-2">
-                                                        <Link to="/boards/questions" id="" className="category-text" >업데이트</Link>
+                                                        <Link to="/boards/questions" id="" className="category-text" >{t("업데이트")}</Link>
                                                     </li>
                                                     <li className="col-sm-12 col-lg-4 py-2">
-                                                        <Link to="/boards/questions" id="" className="category-text" >제품구매</Link>
+                                                        <Link to="/boards/questions" id="" className="category-text" >{t("제품구매")}</Link>
                                                     </li>
                                                     <li className="col-sm-12 col-lg-4 py-2">
-                                                        <Link to="/boards/questions" id="" className="category-text" >제품오류</Link>
+                                                        <Link to="/boards/questions" id="" className="category-text" >{t("제품오류")}</Link>
                                                     </li>
                                                     <li className="col-sm-12 col-lg-4 py-2">
-                                                        <Link to="/boards/questions" id="" className="category-text" >소프트웨어</Link>
+                                                        <Link to="/boards/questions" id="" className="category-text" >{t("소프트웨어")}</Link>
                                                     </li>
                                                     <li className="col-sm-12 col-lg-4 py-2">
-                                                        <Link to="/boards/questions" id="" className="category-text" >기타문의</Link>
+                                                        <Link to="/boards/questions" id="" className="category-text" >{t("기타문의")}</Link>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -123,7 +124,7 @@ export default () => {
                                             <span className="row px-0 mx-0">
                                                 <input
                                                 className="search-box"
-                                                placeholder="검색어를 입력해 주세요."
+                                                placeholder={t("검색어를 입력해 주세요.")}
                                                 >
                                                 </input>
                                                 <Link className="search-botton">
@@ -134,7 +135,7 @@ export default () => {
 
                                         {/* 글 작성 항목 */}
                                         <div id="" className="my-0 py-0 text-center">
-                                            <Link className="btn-create " to="/boards/questions/" onClick={()=>{setAction("create")}}>글쓰기</Link>
+                                            <Link className="btn-create " to="/boards/questions/" onClick={()=>{setAction("create")}}>{t("글쓰기")}</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -177,7 +178,7 @@ export default () => {
                                             })
                                             :   (
                                                 <tr>
-                                                    <td className="text-center" style={{color:"blue"}}>작성된 글이 없습니다.</td>
+                                                    <td className="text-center" style={{color:"blue"}}>{t("작성된 글이 없습니다.")}</td>
                                                 </tr>
                                                 )
                                             }
