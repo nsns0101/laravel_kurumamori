@@ -136,12 +136,12 @@ export default ({history}) => {
                                         </div>
                                         <div className="col-md-1"/>
                                         <div className="col-md-10">
-                                            <div className="card" style={{padding:"20px 20px 0 20px", marginTop:"30px"}}>
-                                                {/* <div style={{maxHeight:"400px", overflowY:"auto", overflowX:"hidden"}}> */}
-                                                <div>
-                                                    <p className="no_scroll_p">{t("제품 이미지")}</p>
-                                                    {data.product ? 
-                                                        (   
+                                            {/* <div style={{maxHeight:"400px", overflowY:"auto", overflowX:"hidden"}}> */}
+                                            {data.product ? 
+                                                (   
+                                                    <div className="card" style={{padding:"20px 20px 0 20px", marginTop:"30px"}}>
+                                                        <div>
+                                                            <p className="no_scroll_p">{t("제품 이미지")}</p>
                                                             <div className="row">
                                                                 <div className="col-xl-6 col-md-12">
                                                                     <img src="/product/product_image3.png" style={{width:"80%"}}/>
@@ -172,12 +172,12 @@ export default ({history}) => {
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        ) : (
-                                                            null
-                                                        )
-                                                    }
-                                                </div> 
-                                            </div>
+                                                        </div> 
+                                                    </div>
+                                                ) : (
+                                                    null
+                                                )
+                                            }
                                         </div>
                                         {/* <div className="col-md-1"/> */}
                                        

@@ -7,8 +7,8 @@ export const BigdataContext = createContext();
 
 export default () => {
     
-    const [action, setAction] = useState("index");
-
+    const [action, setAction] = useState(location.pathname.split('/')[2]);
+    const [action2, setAction2] = useState("map");
     const time_set = [0, 6, 12, 18, 24];      //시간대별 셋팅
     const [day_7, setDay_7] = useState([]);     //최근 7일
     const [day_7_drive_detection, setDay_7_drive_detection] = useState([]);    //최근 7일의 위험 카운트
@@ -18,16 +18,17 @@ export default () => {
     // const [time_set, setTime_set] = useState([]);
 
     useEffect(()=> {
+        console.log("good");
         if(location.pathname.split('/')[2]){
-            if(location.pathname.split('/')[2] == "sleep"){
-                setAction("sleep");
-            }
-            else if(location.pathname.split('/')[2] == "sudden"){
-                setAction("sudden");
-            }
-            else if(location.pathname.split('/')[2] == "accident"){
-                setAction("accident");
-            }
+            // if(location.pathname.split('/')[2] == "sleep"){
+            //     setAction("sleep");
+            // }
+            // else if(location.pathname.split('/')[2] == "sudden"){
+            //     setAction("sudden");
+            // }
+            // else if(location.pathname.split('/')[2] == "accident"){
+            //     setAction("accident");
+            // }
             //detail페이지면 axios 요청
             Axios.get(`/api/bigdata/`,{
                 params : {
@@ -60,12 +61,14 @@ export default () => {
             setTime_set_data("");
             setAge_data("");
         }
-    }, [location.pathname])
+    }, [action])
     
     return (
         <BigdataContext.Provider value={{
             action,
             setAction,
+            action2,
+            setAction2,
             time_set,
             day_7,
             day_7_drive_detection,

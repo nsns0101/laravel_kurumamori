@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import GoogleMapReact from 'google-map-react';
 import { BigdataContext } from "../../BigdataContainer";
 
-const AnyReactComponent = ({img_color}) => <img src={`/icon/${img_color}_map_icon.png`}/>
+// const AnyReactComponent = ({img_color}) => <img src={`/icon/${img_color}_map_icon.png`}/>
+const AnyReactComponent = ({img_color}) => <img src={`/icon/${img_color}.png`}/>
 
 export const Map_api = () => {
     const {
@@ -23,28 +24,32 @@ export const Map_api = () => {
                             lat : Number(day_7_drive_detection[i][j].latitude), 
                             lng : Number(day_7_drive_detection[i][j].longitude)
                         });   
-                        location_color.push("blue");  //신고 : red
+                        // location_color.push("blue");  //신고 : red
+                        location_color.push("map_sleep");  //신고 : red
                     } 
                     else if(day_7_drive_detection[i][j].bool_report && action == "accident"){
                         location.push({
                             lat : Number(day_7_drive_detection[i][j].latitude), 
                             lng : Number(day_7_drive_detection[i][j].longitude)
                         });   
-                        location_color.push("red");  //신고 : red
+                        // location_color.push("red");  //신고 : red
+                        location_color.push("map_report");  //신고 : red
                     } 
                     else if(day_7_drive_detection[i][j].bool_sudden_acceleration && action == "sudden"){
                         location.push({
                             lat : Number(day_7_drive_detection[i][j].latitude), 
                             lng : Number(day_7_drive_detection[i][j].longitude)
                         });   
-                        location_color.push("orange");  //가속 : orange
+                        // location_color.push("orange");  //가속 : orange
+                        location_color.push("map_sudden_acceleration");  //가속 : orange
                     } 
                     else if(day_7_drive_detection[i][j].bool_sudden_stop && action == "sudden"){
                         location.push({
                             lat : Number(day_7_drive_detection[i][j].latitude), 
                             lng : Number(day_7_drive_detection[i][j].longitude)
                         });   
-                        location_color.push("green");  //감속 : green
+                        // location_color.push("green");  //감속 : green
+                        location_color.push("map_sudden_stop");  //감속 : green
                     } 
                 }
             }

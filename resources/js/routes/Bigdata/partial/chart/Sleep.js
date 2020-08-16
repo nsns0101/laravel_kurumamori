@@ -11,7 +11,7 @@ export default () => {
         time_set_data,
         age_data,
     } = useContext(BigdataContext);
-    // console.log(time_set_data);
+    console.log(age_data);
     const AgeChart = {
         data: {
             labels: [day_7[6], day_7[5], day_7[4], day_7[3], day_7[2], day_7[1], day_7[0]],    // 제목
