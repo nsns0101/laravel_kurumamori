@@ -171,13 +171,19 @@ export default () => {
     return (
         <div className="chart-container">
             {action3 == "age" ? (
-                <MDBContainer>
-                    <Line data={AgeChart.data} options={AgeChart.options} width={313} height={253}/>
-                </MDBContainer>
+                <div className="text-center">
+                    <p className="bigdata_title_p">{t("최근 7일간의 졸음운전 발생 건수")}</p>
+                    <MDBContainer>
+                        <Line data={AgeChart.data} options={AgeChart.options} width={313} height={253}/>
+                    </MDBContainer>
+                </div>
             ) : (
-                <MDBContainer>
-                    <Bar data={TimeChart.data} options={TimeChart.options} width={313} height={253}/>
-                </MDBContainer>                          
+                <div className="text-center">
+                    <p className="bigdata_title_p">{t("최근 7일간의 졸음운전 발생 건수")}</p>
+                    <MDBContainer>
+                        <Bar data={TimeChart.data} options={TimeChart.options} width={313} height={253}/>
+                    </MDBContainer>   
+                </div>                       
             )}
         </div>
     )

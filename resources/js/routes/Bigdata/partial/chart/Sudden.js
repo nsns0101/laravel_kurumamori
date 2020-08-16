@@ -326,24 +326,24 @@ export default () => {
         <div className="chart-container">
             {action3 == "age" ? (
                 <div className="text-center">
-                    <p style={{color:"black", fontWeight:"bold", fontSize:"24px"}}>{t("급가속")}</p>
+                    <p className="bigdata_title_p">{t("최근 7일간의 급가속 발생 건수")}</p>
                     <MDBContainer>
                         <Line data={SuddenAccelerationAgeChart.data} options={SuddenAccelerationAgeChart.options} width={313} height={253}/>
                     </MDBContainer>
 
-                    <p style={{color:"black", fontWeight:"bold", fontSize:"24px"}}>{t("급감속")}</p>
+                    <p className="bigdata_title_p" style={{marginTop:"20px"}}>{t("최근 7일간의 급정거 발생 건수")}</p>
                     <MDBContainer>
                         <Line data={suddenStopAgeChart.data} options={suddenStopAgeChart.options} width={313} height={253}/>
                     </MDBContainer>
                 </div>
             ) : (
                 <div className="text-center">
-                    <p style={{color:"black", fontWeight:"bold", fontSize:"24px"}}>{t("급가속")}</p>
+                    <p className="bigdata_title_p">{t("최근 7일간의 급가속 발생 건수")}</p>
                     <MDBContainer>
                         <Bar data={SuddenAccelerationTimeChart.data} options={SuddenAccelerationTimeChart.options} width={313} height={253}/>
                     </MDBContainer>   
 
-                    <p style={{color:"black", fontWeight:"bold", fontSize:"24px"}}>{t("급감속")}</p>
+                    <p className="bigdata_title_p" style={{marginTop:"20px"}}>{t("최근 7일간의 급정거 발생 건수")}</p>
                     <MDBContainer>
                         <Bar data={SuddenStopTimeChart.data} options={SuddenStopTimeChart.options} width={313} height={253}/>
                     </MDBContainer>    

@@ -3,7 +3,7 @@ import {AppContext} from "../../components/App";
 import { BigdataContext } from "./BigdataContainer";
 import { Link } from "react-router-dom";
 import Detail from "./partial/Detail";
-
+import "./Bigdata.css";
 
 export default () => {
     const { t } = useContext(AppContext);

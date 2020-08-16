@@ -100,6 +100,15 @@ export default () => {
                         {action2 == "map" ? (
                             <div className="card-body" style={{width:"100%", height:"500px", marginBottom:"30px"}}>
                                 {/* 구글맵 */}
+                                <p className="bigdata_title_p">
+                                    {action == "sleep" ? (
+                                        t("최근 7일간의 졸음운전 위치")
+                                    ) : action == "sudden" ? (
+                                        t("최근 7일간의 급가속, 급정거 위치")
+                                    ) : (
+                                        t("최근 7일간의 사고 위치")
+                                    )}
+                                </p>
                                 <Map_api/>
                                 {action == "sleep" ? (
                                     <div style={{marginTop:"10px"}}>
