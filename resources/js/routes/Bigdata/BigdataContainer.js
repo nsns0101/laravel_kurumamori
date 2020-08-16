@@ -7,8 +7,10 @@ export const BigdataContext = createContext();
 
 export default () => {
     
-    const [action, setAction] = useState(location.pathname.split('/')[2]);
+    const [action, setAction] = useState("sleep");
     const [action2, setAction2] = useState("map");
+    const [action3, setAction3] = useState("age");
+
     const time_set = [0, 6, 12, 18, 24];      //시간대별 셋팅
     const [day_7, setDay_7] = useState([]);     //최근 7일
     const [day_7_drive_detection, setDay_7_drive_detection] = useState([]);    //최근 7일의 위험 카운트
@@ -19,7 +21,7 @@ export default () => {
 
     useEffect(()=> {
         console.log("good");
-        if(location.pathname.split('/')[2]){
+        // if(location.pathname.split('/')[2]){
             // if(location.pathname.split('/')[2] == "sleep"){
             //     setAction("sleep");
             // }
@@ -32,7 +34,8 @@ export default () => {
             //detail페이지면 axios 요청
             Axios.get(`/api/bigdata/`,{
                 params : {
-                    option : location.pathname.split('/')[2]
+                    // option : location.pathname.split('/')[2]
+                    option: action
                 }
             }).then( (res) => {
                 console.log(res.data);
@@ -54,13 +57,13 @@ export default () => {
                 setTime_set_data(arr_time_set_data);
                 setAge_data(res.data.age_data);
             });
-        }else{
-            setAction("index");
-            setDay_7("");
-            setDay_7_drive_detection("");
-            setTime_set_data("");
-            setAge_data("");
-        }
+        // }else{
+        //     setAction("index");
+        //     setDay_7("");
+        //     setDay_7_drive_detection("");
+        //     setTime_set_data("");
+        //     setAge_data("");
+        // }
     }, [action])
     
     return (
@@ -69,11 +72,15 @@ export default () => {
             setAction,
             action2,
             setAction2,
+            action3,
+            setAction3,
+
             time_set,
             day_7,
             day_7_drive_detection,
             time_set_data,
-            age_data
+            age_data,
+            setAge_data
         }}>
             <BigdataView/>
         </BigdataContext.Provider>

@@ -10,7 +10,8 @@ export default () => {
     const {
         day_7,
         age_data,
-        time_set_data
+        time_set_data,
+        action3,
     } = useContext(BigdataContext);
     // console.log(age_data);
     const SuddenAccelerationAgeChart = {
@@ -323,72 +324,31 @@ export default () => {
     }
     return (
         <div className="chart-container">
-            {/* 그래프 */}
-            <div className="container px-3 py-5 p-md-5">
-                <div className="pt-5">
-                    {/* 연령대 그래프 */}
-                    <div className="card">
-                        <div className="card-header">
-                            {t("최근 7일간의 급가속 발생 건수")}
-                        </div>
-                        <div className="card-body">
-                            <div className="age-chart-container">
-                                <MDBContainer>
-                                    <Line data={SuddenAccelerationAgeChart.data} options={SuddenAccelerationAgeChart.options} width={313} height={253}/>
-                                </MDBContainer>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            {action3 == "age" ? (
+                <div className="text-center">
+                    <p style={{color:"black", fontWeight:"bold", fontSize:"24px"}}>{t("급가속")}</p>
+                    <MDBContainer>
+                        <Line data={SuddenAccelerationAgeChart.data} options={SuddenAccelerationAgeChart.options} width={313} height={253}/>
+                    </MDBContainer>
 
-                <div className="pt-5">
-                    {/* 연령대 그래프 */}
-                    <div className="card">
-                        <div className="card-header">
-                            {t("최근 7일간의 급정거 발생 건수")}
-                        </div>
-                        <div className="card-body">
-                            <div className="age-chart-container">
-                                <MDBContainer>
-                                    <Line data={suddenStopAgeChart.data} options={suddenStopAgeChart.options} width={313} height={253}/>
-                                </MDBContainer>
-                            </div>
-                        </div>
-                    </div>
+                    <p style={{color:"black", fontWeight:"bold", fontSize:"24px"}}>{t("급감속")}</p>
+                    <MDBContainer>
+                        <Line data={suddenStopAgeChart.data} options={suddenStopAgeChart.options} width={313} height={253}/>
+                    </MDBContainer>
                 </div>
+            ) : (
+                <div className="text-center">
+                    <p style={{color:"black", fontWeight:"bold", fontSize:"24px"}}>{t("급가속")}</p>
+                    <MDBContainer>
+                        <Bar data={SuddenAccelerationTimeChart.data} options={SuddenAccelerationTimeChart.options} width={313} height={253}/>
+                    </MDBContainer>   
 
-                {/* 시간대 그래프 */}
-                <div className="pt-5">
-                    <div className="card">
-                        <div className="card-header">
-                            {t("시간대별 급가속 발생 건수")}
-                        </div>
-                        <div className="card-body">
-                            <div className="age-chart-container">
-                                <MDBContainer>
-                                    <Bar data={SuddenAccelerationTimeChart.data} options={SuddenAccelerationTimeChart.options} width={313} height={253}/>
-                                </MDBContainer>                            
-                            </div>
-                        </div>
-                    </div>
+                    <p style={{color:"black", fontWeight:"bold", fontSize:"24px"}}>{t("급감속")}</p>
+                    <MDBContainer>
+                        <Bar data={SuddenStopTimeChart.data} options={SuddenStopTimeChart.options} width={313} height={253}/>
+                    </MDBContainer>    
                 </div>
-
-                {/* 시간대 그래프 */}
-                <div className="pt-5">
-                    <div className="card">
-                        <div className="card-header">
-                            {t("시간대별 급정거 발생 건수")}
-                        </div>
-                        <div className="card-body">
-                            <div className="age-chart-container">
-                                <MDBContainer>
-                                    <Bar data={SuddenStopTimeChart.data} options={SuddenStopTimeChart.options} width={313} height={253}/>
-                                </MDBContainer>                             
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            )}           
         </div>
     )
 }

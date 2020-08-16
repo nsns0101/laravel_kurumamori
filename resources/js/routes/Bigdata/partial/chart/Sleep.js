@@ -10,6 +10,7 @@ export default () => {
         day_7,
         time_set_data,
         age_data,
+        action3,
     } = useContext(BigdataContext);
     console.log(age_data);
     const AgeChart = {
@@ -168,41 +169,15 @@ export default () => {
 
     return (
         <div className="chart-container">
-            {/* 그래프 */}
-            <div className="container px-3 py-5 p-md-5">
-                <div className="pt-5">
-                    {/* 연령대 그래프 */}
-                    <div className="card">
-                        <div className="card-header">
-                            {t("최근 7일간의 졸음운전 발생 건수")}
-                        </div>
-                        <div className="card-body">
-                            <div className="age-chart-container">
-                                <MDBContainer>
-                                    <Line data={AgeChart.data} options={AgeChart.options} width={313} height={253}/>
-                                </MDBContainer>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* 시간대 그래프 */}
-                <div className="pt-5">
-                    <div className="card">
-                        <div className="card-header">
-                            {t("시간대별 졸음운전 발생 건수")}
-                        </div>
-                        <div className="card-body">
-                            <div className="age-chart-container">
-                                <MDBContainer>
-                                    <Bar data={TimeChart.data} options={TimeChart.options} width={313} height={253}/>
-                                </MDBContainer>                          
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {action3 == "age" ? (
+                <MDBContainer>
+                    <Line data={AgeChart.data} options={AgeChart.options} width={313} height={253}/>
+                </MDBContainer>
+            ) : (
+                <MDBContainer>
+                    <Bar data={TimeChart.data} options={TimeChart.options} width={313} height={253}/>
+                </MDBContainer>                          
+            )}
         </div>
-
     )
 }
