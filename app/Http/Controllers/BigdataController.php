@@ -31,20 +31,23 @@ class BigdataController extends Controller
         // $danger = ["bool_report","bool_sudden_acceleration","bool_sudden_stop","bool_sleep"];
         $age = [20,30,40,50,60];
 
-        if($request->option == "accident"){
-            $danger = ["bool_report"];
-        }
-        elseif($request->option == "sudden"){
-            $danger = ["bool_sudden_acceleration", "bool_sudden_stop"];
-        }
-        else{
-            $danger = ["bool_sleep"];
-        }
-
+        //사고
+        // if($request->option == "accident"){
+        //     $danger = ["bool_report"];
+        // }
+        // // 급가속, 급감속
+        // elseif($request->option == "sudden"){
+        //     $danger = ["bool_sudden_acceleration", "bool_sudden_stop"];
+        // }
+        // // 졸음
+        // else{
+        //     $danger = ["bool_sleep"];
+        // }
+        $danger = ["bool_sleep", "bool_sudden_acceleration", "bool_sudden_stop", "bool_report"];
         // 시간대별 사람들의 전체 졸음운전, 급정거 급가속, 교통사고 횟수
         for($i = 0; $i < count($time_set); $i++){
             if($i < 4) {
-                for($j = 0; $j < count($danger); $j++) {
+                for($j = 0; $j < count($danger); $j++) {    
                     $time_set_data[$i][$danger[$j]] = \DB::table('drive_detections')
                     ->select(\DB::raw("count({$danger[$j]}) as {$danger[$j]}_count"))
                     ->where("drive_detections.{$danger[$j]}","=",true)

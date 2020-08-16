@@ -16,8 +16,7 @@ export default () => {
         setAction2,
         action3,
         setAction3,
-        age_data,
-        setAge_data
+        age_data
     } = useContext(BigdataContext);
     // console.log(age_data);
     console.log(action);
@@ -28,106 +27,34 @@ export default () => {
                 <div className="col-md-8">
                     <div className="card">
                         <div className="card-header">
-                            <p style={{margin:0}}>
-                                {/* {action == "sleep" ? (
-                                    t("최근 7일간의 졸음운전 위치")
-                                ) : action == "sudden" ? (
-                                    t("최근 7일간의 급가속, 급정거 위치") 
-                                ) : (
-                                    t("최근 7일간의 사고 위치")
-                                )} */}
-                                {action == "sleep" ? (
-                                    <fieldset key="1">
-                                        <span className="btn_radio">{t("졸음 운전")}</span>
-                                        <input type="radio" 
-                                            onChange={()=> 
-                                                {
-                                                    setAge_data("");
-                                                    setAction("sleep");
-                                                }
-                                            } defaultChecked
-                                        />
-                                        <span className="btn_radio">{t("급가속과 급감속")}</span>
-                                        <input type="radio" 
-                                            onChange={()=> 
-                                                {
-                                                    setAge_data("");
-                                                    setAction("sudden");
-                                                }
-                                            }
-                                        />
-                                        <span className="btn_radio">{t("사고")}</span>
-                                        <input type="radio" 
-                                            onChange={()=> 
-                                                {
-                                                    setAge_data("");
-                                                    setAction("accident");
-                                                }
-                                            }
-                                        />
-                                    </fieldset>
-                                ) : action == "sudden" ? (
-                                    <fieldset key="2">
-                                        <span className="btn_radio">{t("졸음 운전")}</span>
-                                        <input type="radio" 
-                                            onChange={()=> 
-                                            {
-                                                setAge_data("");
-                                                setAction("sleep");
-                                            }
-                                            } 
-                                        />
-                                        <span className="btn_radio">{t("급가속과 급감속")}</span>
-                                        <input type="radio" 
-                                            onChange={()=> 
-                                                {
-                                                    setAge_data("");
-                                                    setAction("sudden");
-                                                }
-                                            } defaultChecked
-                                        />
-                                        <span className="btn_radio">{t("사고")}</span>
-                                        <input type="radio" 
-                                            onChange={()=> 
-                                                {
-                                                    setAge_data("");
-                                                    setAction("accident");
-                                                }
-                                            }
-                                        />
-                                    </fieldset>
-                                ) : (
-                                    <fieldset key="3">
-                                        <span className="btn_radio">{t("졸음 운전")}</span>
-                                        <input type="radio" 
-                                            onChange={()=> 
-                                                {
-                                                    setAge_data("");
-                                                    setAction("sleep");
-                                                }
-                                            }
-                                        />
-                                        <span className="btn_radio">{t("급가속과 급감속")}</span>
-                                        <input type="radio" 
-                                            onChange={()=> 
-                                                {
-                                                    setAge_data("");
-                                                    setAction("sudden");
-                                                }
-                                            }
-                                        />
-                                        <span className="btn_radio">{t("사고")}</span>
-                                        <input type="radio" 
-                                            onChange={()=> 
-                                                {
-                                                    setAge_data("");
-                                                    setAction("accident");
-                                                }
-                                            } defaultChecked
-                                        />
-                                    </fieldset>
-                                )}
-                            </p>
+                            {action == "sleep" ? (
+                                <fieldset key="1">
+                                    <span className="btn_radio">{t("졸음 운전")}</span>
+                                    <input type="radio" onChange={()=> setAction("sleep")} defaultChecked/>
+                                    <span className="btn_radio">{t("급가속과 급감속")}</span>
+                                    <input type="radio" onChange={()=> setAction("sudden")}/>
+                                    <span className="btn_radio">{t("사고")}</span>
+                                    <input type="radio" onChange={()=> setAction("accident")}/>
+                                </fieldset>
+                            ) : action == "sudden" ? (
+                                <fieldset key="2">
+                                    <span className="btn_radio">{t("졸음 운전")}</span>
+                                    <input type="radio" onChange={()=> setAction("sleep")} />
+                                    <span className="btn_radio">{t("급가속과 급감속")}</span>
+                                    <input type="radio" onChange={()=> setAction("sudden")} defaultChecked/>
+                                    <span className="btn_radio">{t("사고")}</span>
+                                    <input type="radio" onChange={()=> setAction("accident")}/>
+                                </fieldset>
+                            ) : (
+                                <fieldset key="3">
+                                    <span className="btn_radio">{t("졸음 운전")}</span>
+                                    <input type="radio" onChange={()=> setAction("sleep")}/>
+                                    <span className="btn_radio">{t("급가속과 급감속")}</span>
+                                    <input type="radio" onChange={()=> setAction("sudden")}/>
+                                    <span className="btn_radio">{t("사고")}</span>
+                                    <input type="radio" onChange={()=> setAction("accident")} defaultChecked/>
+                                </fieldset>
+                            )}
                         </div>
                         <div>
                         {
@@ -149,7 +76,7 @@ export default () => {
                         }
                         </div>
                         <div>
-                            {action2 == "chart" && age_data && (
+                            {action2 == "chart" && (
                                 <div>
                                     {action3 == "age" ? (
                                         <fieldset key="1">

@@ -7,9 +7,9 @@ export const BigdataContext = createContext();
 
 export default () => {
     
-    const [action, setAction] = useState("sleep");
-    const [action2, setAction2] = useState("map");
-    const [action3, setAction3] = useState("age");
+    const [action, setAction] = useState("sleep");  //졸음, 사고, 급가속 및 급감속
+    const [action2, setAction2] = useState("map");  //맵, 차트
+    const [action3, setAction3] = useState("age");  //차트 - 연령대, 시간대
 
     const time_set = [0, 6, 12, 18, 24];      //시간대별 셋팅
     const [day_7, setDay_7] = useState([]);     //최근 7일
@@ -21,49 +21,30 @@ export default () => {
 
     useEffect(()=> {
         console.log("good");
-        // if(location.pathname.split('/')[2]){
-            // if(location.pathname.split('/')[2] == "sleep"){
-            //     setAction("sleep");
-            // }
-            // else if(location.pathname.split('/')[2] == "sudden"){
-            //     setAction("sudden");
-            // }
-            // else if(location.pathname.split('/')[2] == "accident"){
-            //     setAction("accident");
-            // }
-            //detail페이지면 axios 요청
-            Axios.get(`/api/bigdata/`,{
-                params : {
-                    // option : location.pathname.split('/')[2]
-                    option: action
-                }
-            }).then( (res) => {
-                console.log(res.data);
-                const arr_day_7 = []
-                const arr_day_7_drive_detection = []
-                const arr_time_set_data = [];
+        Axios.get(`/api/bigdata/`,{
+            params : {
+                option: action
+            }
+        }).then( (res) => {
+            console.log(res.data);
+            const arr_day_7 = []
+            const arr_day_7_drive_detection = []
+            const arr_time_set_data = [];
 
-                //최근 7일, 최근 7일의 위험 카운트 get
-                for(var i = 0; i < res.data.day_7.length; i++){
-                    arr_day_7.push(res.data.day_7[i]);
-                    arr_day_7_drive_detection.push(res.data.day_7_drive_detection[i]);
-                }
-                //시간대별 위험 카운트 get
-                for(var i = 0; i < res.data.time_set_data.length; i++){
-                    arr_time_set_data.push(res.data.time_set_data[i]);
-                }
-                setDay_7(arr_day_7);
-                setDay_7_drive_detection(arr_day_7_drive_detection);
-                setTime_set_data(arr_time_set_data);
-                setAge_data(res.data.age_data);
-            });
-        // }else{
-        //     setAction("index");
-        //     setDay_7("");
-        //     setDay_7_drive_detection("");
-        //     setTime_set_data("");
-        //     setAge_data("");
-        // }
+            //최근 7일, 최근 7일의 위험 카운트 get
+            for(var i = 0; i < res.data.day_7.length; i++){
+                arr_day_7.push(res.data.day_7[i]);
+                arr_day_7_drive_detection.push(res.data.day_7_drive_detection[i]);
+            }
+            //시간대별 위험 카운트 get
+            for(var i = 0; i < res.data.time_set_data.length; i++){
+                arr_time_set_data.push(res.data.time_set_data[i]);
+            }
+            setDay_7(arr_day_7);
+            setDay_7_drive_detection(arr_day_7_drive_detection);
+            setTime_set_data(arr_time_set_data);
+            setAge_data(res.data.age_data);
+        });
     }, [action])
     
     return (
