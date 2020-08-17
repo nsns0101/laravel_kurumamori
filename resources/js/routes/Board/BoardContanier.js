@@ -9,8 +9,10 @@ import "./Board.css";
 import Create from "./partial/Create";
 import Show from "./partial/Show";
 import Edit from "./partial/Edit";
+import Modal from 'react-modal';
 
 console.log('board container call')
+
 export const BoardContext = createContext();
 export default ({history}) => {
     const { user } = useContext(AppContext);
@@ -27,6 +29,15 @@ export default ({history}) => {
     const [categoryHover, setCategoryHover] = useState("no"); 
 
     const {t} = useContext(AppContext);
+
+    const [modalIsOpen,setIsOpen] = React.useState(false);
+
+    const openModal = () => {
+        setIsOpen(true);
+    }
+    const closeModal = () =>{
+        setIsOpen(false);
+    }
     
     useEffect(() =>{
         console.log("board useEffect");
@@ -176,7 +187,12 @@ export default ({history}) => {
 
             categoryHover,
             setCategoryHover,
-            t
+            t,
+
+            openModal,
+            closeModal,
+            modalIsOpen,
+            setIsOpen
         }}>
             {action == "edit" ? <Edit/>:""}
             {action == "show" ? <Show/>:""}

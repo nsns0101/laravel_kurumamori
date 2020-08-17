@@ -7,6 +7,9 @@ import { BoardContext } from "./BoardContanier";
 import Loader from '../../components/Loader';
 import Auth from "./partial/Auth";
 import Axios from "axios";
+import Modal from 'react-modal';
+import Create_modal from "./partial/CreateModal";
+import Show_modal from "./partial/ShowModal";
 
 export default () => {
 
@@ -20,7 +23,12 @@ export default () => {
         onShow,
         categoryHover,
         setCategoryHover,
-        t
+        t,
+
+        openModal,
+        closeModal,
+        modalIsOpen,
+        setIsOpen
     } = useContext(BoardContext);
      
     const page_count = [];
@@ -46,8 +54,8 @@ export default () => {
             <div id="main-question">
                 <div className="contaienr px-3 py-5 p-md-5">
                     <div className="row m-3 justify-content-around">
-                        <div className="px-3 pt-3">
-                            <h2 style={{fontSize:3+"em"}}>{t("고객문의")}</h2>
+                        <div className="col-xs-10 col-sm-10 col-lg-10 px-3 pt-3 pb-1">
+                            <h2 style={{fontSize:2+"em"}}>{t("고객문의")}</h2>
                         </div>
                         <div className="col-xs-10 col-sm-10 col-lg-10 card px-3 py-3">
                             {/* 네비게이션 */}
@@ -134,9 +142,17 @@ export default () => {
                                         </div>
 
                                         {/* 글 작성 항목 */}
-                                        <div id="" className="my-0 py-0 text-center">
-                                            <Link className="btn-create " to="/boards/questions/" onClick={()=>{setAction("create")}}>{t("글쓰기")}</Link>
-                                        </div>
+                                        <div className="text-center">
+                                            <button type="button" className="btn-create " data-toggle="modal" data-target="#createModal" style={{}}>
+                                                {t("글쓰기")}
+                                            </button>
+                                        </div>  
+                                        <Create_modal
+                                            isOpen={modalIsOpen}
+                                            onRequestClose={closeModal}
+                                            history={history}
+                                            contentLabel="CreateModal"
+                                        />
                                     </div>
                                 </div>
                             </div>
@@ -167,8 +183,17 @@ export default () => {
                                                         <td className="align-middle">{data.category[index]}</td> 
                                                         <td className="align-middle question-index-name">
                                                             {/* 온 쇼 추가 할 것 */}
-                                                            <Link to={`/boards/questions/`} id="" onClick={()=>{setAction("show"),setSelect(value.id), onShow()}} className="btn btn-intro text-dark">{value.title}
-                                                            </Link>
+                                                            {/* <Link to={`/boards/questions/`} id="" onClick={()=>{setAction("show"),setSelect(value.id), onShow()}} className="btn btn-intro text-dark">{value.title}
+                                                            </Link> */}
+                                                            <button type="button" className="" data-toggle="modal" data-target="#showModal" style={{}}>
+                                                                {value.title}
+                                                            </button>
+                                                            <Show_modal
+                                                                isOpen={modalIsOpen}
+                                                                onRequestClose={closeModal}
+                                                                history={history}
+                                                                contentLabel="showModal"
+                                                            />
                                                         </td>
                                                         <td className="align-middle">{data.board_user[index]}</td>
                                                         <td className="align-middle text-nowrap">{moment(value.created_at).format("YYYY-MM-DD")}</td>
