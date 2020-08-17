@@ -29,7 +29,7 @@ export default () => {
                         <div className="card-header">
                             {action == "sleep" ? (
                                 <fieldset key="1">
-                                    <span className="bigdata_btn_radio">{t("졸음 운전")}</span>
+                                    <span className="bigdata_btn_radio" style={{paddingLeft:0}}>{t("졸음 운전")}</span>
                                     <input type="radio" onChange={()=> setAction("sleep")} defaultChecked/>
                                     <span className="bigdata_btn_radio">{t("급가속과 급감속")}</span>
                                     <input type="radio" onChange={()=> setAction("sudden")}/>
