@@ -157,7 +157,7 @@ export default ({history}) => {
                                                                             </div>
                                                                             <div className="row">
                                                                                 <img src="/icon/막대 기호.png" style={{height:"20px", margin:"0 20px 0 10px", visibility:"hidden"}}/>
-                                                                                <p className="drive_today_p">{t("Color")} : Red</p>
+                                                                                <p className="drive_today_p">Color : Red</p>
                                                                             </div>
                                                                             <div className="row">
                                                                                 <img src="/icon/막대 기호.png" style={{height:"20px", margin:"0 20px 0 10px", visibility:"hidden"}}/>
@@ -165,7 +165,7 @@ export default ({history}) => {
                                                                             </div>
                                                                             <div className="row">
                                                                                 <img src="/icon/막대 기호.png" style={{height:"20px", margin:"0 20px 0 10px", visibility:"hidden"}}/>
-                                                                                <p className="drive_today_p">{t("AS기한")} : 구입후 1년까지</p>
+                                                                                <p className="drive_today_p">{t("AS기한")} : {t("구입후 1년까지")}</p>
                                                                             </div>
 
                                                                         </div>

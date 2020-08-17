@@ -108,12 +108,16 @@ class BigdataController extends Controller
         }
         \Log::info($day_7_drive_detection);
         // return view('home.main', compact('option', 'day_7', 'time_set', 'time_set_data', 'age_data', 'day_7_drive_detection'));
+        
+        $detection_count = \App\Drive_detection::get();
+
         return response()->json([
             'day_7' => $day_7,
             // 'time_set' => $time_set,
             'time_set_data' => $time_set_data,
             'age_data' => $age_data,
-            'day_7_drive_detection' => $day_7_drive_detection
+            'day_7_drive_detection' => $day_7_drive_detection,
+            'detection_count' => $detection_count
         ]);
     }
 }

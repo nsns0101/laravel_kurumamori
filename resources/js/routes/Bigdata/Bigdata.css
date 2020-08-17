@@ -11,3 +11,45 @@
     font-weight: 600;
     margin-left: 10px;
 }
+
+
+.card_1 {
+    background-color: #78c350 !important
+}
+.card_2 {
+    background-color: #45bbe0 !important
+}
+.card_3 {
+    /* background-color: #f06292 !important */
+    background-color: #F2D536 !important
+    
+}
+.card_4 {
+    /* background-color: #8892d6 !important */
+    background-color: #f06292 !important
+}
+
+.card_map {
+    width: 80%;
+    height: auto;
+    margin-bottom: 30px;
+    margin: 0 10%;
+}
+.card_date_p {
+    margin-bottom: 0px;
+    color: white;
+    font-size: 10px;
+}
+
+.card_title_p {
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: left;
+}
+
+.big_data_google_map {
+    margin: 0 5%;
+    width: 90%;
+    height: 400px;
+}

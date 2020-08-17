@@ -49,6 +49,6 @@ class Drive_detectionsTableSeeder extends Seeder
                 ]);
             }
         }
-        factory(App\Drive_detection::class, 500)->create();
+        factory(App\Drive_detection::class, 250)->create();
     }
 }

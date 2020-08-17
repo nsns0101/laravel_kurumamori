@@ -40,7 +40,7 @@ export default ({history}) => {
                                                 <Show_medical/>
                                             </div>
                                         ) : (
-                                            <div className="" style={{maxHeight:"654px", overflowX:"hidden",  overflowY:"auto", marginTop:"30px"}}>
+                                            <div className="" style={{maxHeight:"654px", marginTop:"30px"}}>
                                                 <Create_medical/>    
                                             </div> 
                                         )}
