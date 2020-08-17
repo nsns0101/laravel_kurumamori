@@ -29,29 +29,29 @@ export default () => {
                         <div className="card-header">
                             {action == "sleep" ? (
                                 <fieldset key="1">
-                                    <span className="btn_radio">{t("졸음 운전")}</span>
+                                    <span className="bigdata_btn_radio">{t("졸음 운전")}</span>
                                     <input type="radio" onChange={()=> setAction("sleep")} defaultChecked/>
-                                    <span className="btn_radio">{t("급가속과 급감속")}</span>
+                                    <span className="bigdata_btn_radio">{t("급가속과 급감속")}</span>
                                     <input type="radio" onChange={()=> setAction("sudden")}/>
-                                    <span className="btn_radio">{t("사고")}</span>
+                                    <span className="bigdata_btn_radio">{t("사고")}</span>
                                     <input type="radio" onChange={()=> setAction("accident")}/>
                                 </fieldset>
                             ) : action == "sudden" ? (
                                 <fieldset key="2">
-                                    <span className="btn_radio">{t("졸음 운전")}</span>
+                                    <span className="bigdata_btn_radio">{t("졸음 운전")}</span>
                                     <input type="radio" onChange={()=> setAction("sleep")} />
-                                    <span className="btn_radio">{t("급가속과 급감속")}</span>
+                                    <span className="bigdata_btn_radio">{t("급가속과 급감속")}</span>
                                     <input type="radio" onChange={()=> setAction("sudden")} defaultChecked/>
-                                    <span className="btn_radio">{t("사고")}</span>
+                                    <span className="bigdata_btn_radio">{t("사고")}</span>
                                     <input type="radio" onChange={()=> setAction("accident")}/>
                                 </fieldset>
                             ) : (
                                 <fieldset key="3">
-                                    <span className="btn_radio">{t("졸음 운전")}</span>
+                                    <span className="bigdata_btn_radio">{t("졸음 운전")}</span>
                                     <input type="radio" onChange={()=> setAction("sleep")}/>
-                                    <span className="btn_radio">{t("급가속과 급감속")}</span>
+                                    <span className="bigdata_btn_radio">{t("급가속과 급감속")}</span>
                                     <input type="radio" onChange={()=> setAction("sudden")}/>
-                                    <span className="btn_radio">{t("사고")}</span>
+                                    <span className="bigdata_btn_radio">{t("사고")}</span>
                                     <input type="radio" onChange={()=> setAction("accident")} defaultChecked/>
                                 </fieldset>
                             )}
@@ -60,16 +60,16 @@ export default () => {
                         {
                             action2 == "map" ? (
                                 <fieldset key="1">
-                                    <span className="btn_radio">Map</span>
+                                    <span className="bigdata_btn_radio">Map</span>
                                     <input type="radio" onChange={()=> setAction2("map")} defaultChecked/>
-                                    <span className="btn_radio">Chart</span>
+                                    <span className="bigdata_btn_radio">Chart</span>
                                     <input type="radio" onChange={()=> setAction2("chart")}/>
                                 </fieldset>
                             ) : (
                                 <fieldset key="2">
-                                    <span className="btn_radio">Map</span>
+                                    <span className="bigdata_btn_radio">Map</span>
                                     <input type="radio" onChange={()=> setAction2("map")}/>
-                                    <span className="btn_radio">Chart</span>
+                                    <span className="bigdata_btn_radio">Chart</span>
                                     <input type="radio" onChange={()=> setAction2("chart")} defaultChecked/>
                                 </fieldset>
                             )
@@ -80,16 +80,16 @@ export default () => {
                                 <div>
                                     {action3 == "age" ? (
                                         <fieldset key="1">
-                                            <span className="btn_radio">{t("연령대")}</span>
+                                            <span className="bigdata_btn_radio">{t("연령대")}</span>
                                             <input type="radio" onChange={()=> setAction3("age")} defaultChecked/>
-                                            <span className="btn_radio">{t("시간대")}</span>
+                                            <span className="bigdata_btn_radio">{t("시간대")}</span>
                                             <input type="radio" onChange={()=> setAction3("time")}/>
                                         </fieldset>
                                     ) : (
                                         <fieldset key="2">
-                                            <span className="btn_radio">{t("연령대")}</span>
+                                            <span className="bigdata_btn_radio">{t("연령대")}</span>
                                             <input type="radio" onChange={()=> setAction3("age")}/>
-                                            <span className="btn_radio">{t("시간대")}</span>
+                                            <span className="bigdata_btn_radio">{t("시간대")}</span>
                                             <input type="radio" onChange={()=> setAction3("time")} defaultChecked/>
                                         </fieldset>
                                     )}
