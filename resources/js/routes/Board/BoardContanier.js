@@ -10,6 +10,7 @@ import Create from "./partial/Create";
 import Show from "./partial/Show";
 import Edit from "./partial/Edit";
 import Modal from 'react-modal';
+import CreateModal from "./partial/CreateModal";
 
 console.log('board container call')
 
@@ -74,8 +75,19 @@ export default ({history}) => {
         return Axios.post(url, body, config).then(res => {
             if(res.data){
                 console.log("Board create call success")
-                setAction('index')
                 history.push('/boards/questions')
+                window.location.reload();
+                // Axios.get(`/get/boards/questions`).then(res => {                
+                //     setData(res.data);
+    
+                //     if(res){
+                //         console.log("Board index call success");
+                //     }
+                //     else{
+                //         console.log("Board index call fail");
+                        
+                //     }
+                // });
             }
             else{
                 console.log("Board create call fail");
@@ -98,6 +110,17 @@ export default ({history}) => {
         return Axios.post(url, body, config).then(res => {
             if(res.data){
                 console.log("Board onShow call success")
+                Axios.get(`/get/boards/questions`).then(res => {                
+                    setData(res.data);
+    
+                    if(res){
+                        console.log("Board index call success");
+                    }
+                    else{
+                        console.log("Board index call fail");
+                        
+                    }
+                });
             }
             else{
                 console.log("Board onShow call fail");

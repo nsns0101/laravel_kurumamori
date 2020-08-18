@@ -86,6 +86,7 @@ export default ({ history }) => {
                 address={address}
                 detail_address={detail_address}
                 postal={postal}
+                user={user}
             />
             
         ) : <Buy 

@@ -364,7 +364,7 @@ export default ({
 
                                         </div> */}
                                         <div className="row justify-content-center py-2 pb-5">
-                                            <button className="col-lg-2 col-sm-10 mt-3 btn bg-dark" style={{width:"100%", color:"white", fontSize:1.75+"em"}}>{t("구입 하기")}</button>
+                                            <button className="col-lg-2 col-sm-10 mt-3 btn btn-primary" style={{width:"100%", color:"white", fontSize:1.75+"em"}}>{t("구입 하기")}</button>
                                         </div>
                                     </form>
                                 </div>
