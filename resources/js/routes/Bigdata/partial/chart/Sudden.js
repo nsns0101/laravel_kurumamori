@@ -325,28 +325,34 @@ export default () => {
     return (
         <div className="chart-container">
             {action3 == "age" ? (
-                <div className="text-center">
-                    <p className="bigdata_title_p">{t("최근 7일간의 급가속 발생 건수")}</p>
-                    <MDBContainer>
-                        <Line data={SuddenAccelerationAgeChart.data} options={SuddenAccelerationAgeChart.options} width={313} height={253}/>
-                    </MDBContainer>
-
-                    <p className="bigdata_title_p" style={{marginTop:"20px"}}>{t("최근 7일간의 급정거 발생 건수")}</p>
-                    <MDBContainer>
-                        <Line data={suddenStopAgeChart.data} options={suddenStopAgeChart.options} width={313} height={253}/>
-                    </MDBContainer>
+                <div className="row text-center">
+                    <div className="col-md-6">
+                        <p className="bigdata_title_p">{t("최근 7일간의 급가속 발생 건수")}</p>
+                        <MDBContainer>
+                            <Line data={SuddenAccelerationAgeChart.data} options={SuddenAccelerationAgeChart.options} width={313} height={253}/>
+                        </MDBContainer>
+                    </div>
+                    <div className="col-md-6">
+                        <p className="bigdata_title_p" style={{marginTop:"20px"}}>{t("최근 7일간의 급정거 발생 건수")}</p>
+                        <MDBContainer>
+                            <Line data={suddenStopAgeChart.data} options={suddenStopAgeChart.options} width={313} height={253}/>
+                        </MDBContainer>
+                        </div>
                 </div>
             ) : (
-                <div className="text-center">
-                    <p className="bigdata_title_p">{t("최근 7일간의 급가속 발생 건수")}</p>
-                    <MDBContainer>
-                        <Bar data={SuddenAccelerationTimeChart.data} options={SuddenAccelerationTimeChart.options} width={313} height={253}/>
-                    </MDBContainer>   
-
-                    <p className="bigdata_title_p" style={{marginTop:"20px"}}>{t("최근 7일간의 급정거 발생 건수")}</p>
-                    <MDBContainer>
-                        <Bar data={SuddenStopTimeChart.data} options={SuddenStopTimeChart.options} width={313} height={253}/>
-                    </MDBContainer>    
+                <div className="row text-center">
+                    <div className="col-md-6">
+                        <p className="bigdata_title_p">{t("최근 7일간의 급가속 발생 건수")}</p>
+                        <MDBContainer>
+                            <Bar data={SuddenAccelerationTimeChart.data} options={SuddenAccelerationTimeChart.options} width={313} height={253}/>
+                        </MDBContainer> 
+                    </div>  
+                    <div className="col-md-6">
+                        <p className="bigdata_title_p" style={{marginTop:"20px"}}>{t("최근 7일간의 급정거 발생 건수")}</p>
+                        <MDBContainer>
+                            <Bar data={SuddenStopTimeChart.data} options={SuddenStopTimeChart.options} width={313} height={253}/>
+                        </MDBContainer> 
+                    </div>   
                 </div>
             )}           
         </div>
