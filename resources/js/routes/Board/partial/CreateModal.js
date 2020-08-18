@@ -5,11 +5,6 @@ import { useForm } from "react-hook-form";
 import Axios from "axios";
 
 export default ({ 
-    // history,
-    product, 
-    setProduct_key_input,
-    error_text,
-    onSubmit,
 
 }) => {
     const { t } = useContext(AppContext);
@@ -24,24 +19,27 @@ export default ({
         handleSubmit,
         setAction,
         history,
+        closeModal
     } = useContext(BoardContext);
 
+    console.log("board create form call")
+
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onCreate)}>
             <div className="modal fade show" id="createModal" tabIndex="-1" role="dialog" aria-labelledby="createModal" style={{backgroundColor: "#000000cc"}}>
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h1 className="">글 쓰기</h1>
+                            <h1 className="">{t("글쓰기")}</h1>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div className="modal-body">
-                            <form onSubmit={handleSubmit(onCreate)}>
+                            <div>
                                 <div className="px-3">
                                     <div className="form-group">
-                                            <label className="">제목</label>
+                                            <label className="">{t("제목 ")}</label>
                                             <input className="form-control" type="text" id="title" name="title" 
                                             onChange={ e => {
                                                 const {
@@ -58,18 +56,23 @@ export default ({
                                             target: { value }
                                             } = e;
                                             setCategory(value);
+                                            console.log(value)
                                         }}>
-                                            {user && user.id == 3 ? `` : 
+                                            {/* {
+                                            user && user.id == 3 ? `` : 
                                             `<option defaultValue>공지사항</option>
-                                            <option>업데이트</option>`}
-                                            <option>제품구매</option>
-                                            <option>제품오류</option>
-                                            <option>소프트웨어</option>
-                                            <option>기타문의</option>
+                                            <option>업데이트</option>`
+                                            } */}
+                                            <option value="공지사항">{t("공지사항")}</option>
+                                            <option value="업데이트">{t("업데이트")}</option>
+                                            <option value="제품구매">{t("제품구매")}</option>
+                                            <option value="제품오류">{t("제품오류")}</option>
+                                            <option value="소프트웨어">{t("소프트웨어")}</option>
+                                            <option value="기타문의">{t("기타문의")}</option>
                                         </select>
                                     </div>
                                     <div className="form-group">
-                                        <label className="">본문</label>
+                                        <label className="">{t("본문")}</label>
                                         <textarea className="form-control" name="content" id="content" cols="30" rows="10"
                                         onChange={ e => {
                                             const {
@@ -84,10 +87,10 @@ export default ({
                                 <div className="form-group d-flex justify-content-end pb-3">
                                     {/* 글써지면 꺼지게 고쳐야함 */}
                                     <span className="pr-3">
-                                        <button className="btn-nomal" type="submit">저장하기</button>
+                                        <button className="btn-nomal" type="submit" closeModal>{t("저장하기")}</button>
                                     </span>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>

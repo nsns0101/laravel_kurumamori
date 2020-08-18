@@ -15,34 +15,7 @@ export default () => {
         onDelete,
         handleSubmit,
     } = useContext(BoardContext);
-
-    // useEffect(()=>{
-        
-    //     console.log("show useEffect");
-    //     const url = `/select/boards/questions`;
-    //     const config = {
-    //         headers: {
-    //             'Content-Type' : 'application/json'
-    //         }
-    //     }
-    //     return Axios.get(url,{
-    //         params : {
-    //             board_id : select,
-    //         }
-    //         },config).then(res => {
-    //         if(res.data){
-    //             console.log("Board show call success")
-    //             console.log(res)
-    //             // setAction('index')
-    //             // history.push('/boards/questions')
-    //         }
-    //         else{
-    //             console.log("Board show call fail")
-    //         }
-    //     })
-
-    // }, []);
-
+    
     return (
         <Fragment>
             {data && data.questions.data ? data.questions.data.map( (value, index) => {

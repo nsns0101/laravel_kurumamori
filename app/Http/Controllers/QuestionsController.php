@@ -28,7 +28,7 @@ class QuestionsController extends Controller
     
         $question = \App\Board::create([
             'user_id'=>$request->user_id,
-            'category_id'=>1,
+            'category_id'=> \App\Category::where('category','=',$request->category)->first()->id,
             'title'=>$request->title,
             'content'=>$request->content,
         ]);

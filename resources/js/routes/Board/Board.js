@@ -54,8 +54,8 @@ export default () => {
             <div id="main-question">
                 <div className="contaienr px-3 py-5 p-md-5">
                     <div className="row m-3 justify-content-around">
-                        <div className="col-xs-10 col-sm-10 col-lg-10 px-3 pt-3 pb-1">
-                            <h2 style={{fontSize:2+"em"}}>{t("고객문의")}</h2>
+                        <div className="col-xs-10 col-sm-10 col-lg-10 px-3 py-3">
+                            <h2 style={{fontSize:1.6+"em", fontWeight:800}}>{t("고객문의")}</h2>
                         </div>
                         <div className="col-xs-10 col-sm-10 col-lg-10 card px-3 py-3">
                             {/* 네비게이션 */}
@@ -111,50 +111,7 @@ export default () => {
                                     </div>
                                 </div>
 
-                                {/* 검색 및 글 쓰기 */}
-                                <div id="supplementary-tab" className="col-sm-11 col-lg-11 py-2 px-0 mx-0 w-100">
-                                    {/* 검색 항목 */}
-                                    {/* <div className="input-group">
-                                        <input type="text" className="form-control" placeholder="필요한 내용을 검색하세요." aria-label="Recipient's username" aria-describedby="input_value"/>
-                                        <div className="input-group-append">
-                                            <span className="input-group-text" id="input_button">검색</span>
-                                        </div>
-                                    </div> */}
-                                    <div className="row justify-content-end px-0 mx-0 w-100">
-                                        {/* 글 검색 항목 */}
-                                        <div className="pr-3 ">
-                                            {/* <ReactSearchBox 
-                                                className="search-box"
-                                                placeholder="검색어를 입력해 주세요."
-                                                value=""
-                                                // inputBoxBorderColor=""
-                                            /> */}
-                                            <span className="row px-0 mx-0">
-                                                <input
-                                                className="search-box"
-                                                placeholder={t("검색어를 입력해 주세요.")}
-                                                >
-                                                </input>
-                                                <Link className="search-botton">
-                                                    <img className="search-img" src="../icon/search.png"></img>
-                                                </Link>
-                                            </span>
-                                        </div>
-
-                                        {/* 글 작성 항목 */}
-                                        <div className="text-center">
-                                            <button type="button" className="btn-create " data-toggle="modal" data-target="#createModal" style={{}}>
-                                                {t("글쓰기")}
-                                            </button>
-                                        </div>  
-                                        <Create_modal
-                                            isOpen={modalIsOpen}
-                                            onRequestClose={closeModal}
-                                            history={history}
-                                            contentLabel="CreateModal"
-                                        />
-                                    </div>
-                                </div>
+                                
                             </div>
                             
                             {/* 질문 리스트 */}
@@ -180,18 +137,18 @@ export default () => {
                                                         {/* <td className="align-middle">{value.comment ?  "O": "x"}</td>  */}
                                                         <td className="align-middle">X</td> 
                                                         
-                                                        <td className="align-middle">{data.category[index]}</td> 
+                                                        <td className="align-middle">{t(data.category[index])}</td> 
                                                         <td className="align-middle question-index-name">
                                                             {/* 온 쇼 추가 할 것 */}
                                                             {/* <Link to={`/boards/questions/`} id="" onClick={()=>{setAction("show"),setSelect(value.id), onShow()}} className="btn btn-intro text-dark">{value.title}
                                                             </Link> */}
-                                                            <button type="button" className="" data-toggle="modal" data-target="#showModal" style={{}}>
+                                                            <button type="button" className="btn btn-link" data-toggle="modal" data-target="#showModal" onClick={()=>{setSelect(value.id), onShow()}}>
                                                                 {value.title}
                                                             </button>
                                                             <Show_modal
-                                                                isOpen={modalIsOpen}
-                                                                onRequestClose={closeModal}
-                                                                history={history}
+                                                                closeTimeoutMS={200}
+                                                                isOpen={openModal}
+                                                                onRequestClose={() => this.toggleModal()}
                                                                 contentLabel="showModal"
                                                             />
                                                         </td>
@@ -209,7 +166,53 @@ export default () => {
                                             }
                                         </tbody>
                                     </table>
+                                    {/* 검색 및 글 쓰기 */}
+                                    <div className="row justify-content-end py-3">
+                                        <div id="supplementary-tab" className="col-sm-11 col-lg-11 py-2 px-0 mx-0 w-100">
+                                            {/* 검색 항목 */}
+                                            {/* <div className="input-group">
+                                                <input type="text" className="form-control" placeholder="필요한 내용을 검색하세요." aria-label="Recipient's username" aria-describedby="input_value"/>
+                                                <div className="input-group-append">
+                                                    <span className="input-group-text" id="input_button">검색</span>
+                                                </div>
+                                            </div> */}
+                                            <div className="row justify-content-end px-0 mx-0 w-100">
+                                                {/* 글 검색 항목 */}
+                                                <div className="pr-3 ">
+                                                    {/* <ReactSearchBox 
+                                                        className="search-box"
+                                                        placeholder="검색어를 입력해 주세요."
+                                                        value=""
+                                                        // inputBoxBorderColor=""
+                                                    /> */}
+                                                    <span className="row px-0 mx-0">
+                                                        <input
+                                                        className="search-box"
+                                                        placeholder={t("검색어를 입력해 주세요.")}
+                                                        >
+                                                        </input>
+                                                        <Link className="search-botton">
+                                                            <img className="search-img" src="../icon/search.png"></img>
+                                                        </Link>
+                                                    </span>
+                                                </div>
 
+                                                {/* 글 작성 항목 */}
+                                                <div className="text-center">
+                                                    <button type="button" className="btn-create " data-toggle="modal" data-target="#createModal">
+                                                        {t("글쓰기")}
+                                                    </button>
+                                                </div>  
+                                                <Create_modal
+                                                    closeTimeoutMS={200}
+                                                    isOpen={openModal}
+                                                    onRequestClose={() => this.toggleModal()}
+                                                    contentLabel="CreateModal"
+                                                    
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div className="col-sm-12 col-lg-12 text-center">
                                         {page_count.length ? page_count.map( (value, index) => {
                                             return <Link key={index} className="btn btn-primary" to="/boards/questions?page=2" 
