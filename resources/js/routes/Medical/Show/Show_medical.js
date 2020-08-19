@@ -46,8 +46,15 @@ export default () => {
     return (
         <div>
             <div className="row">
-                <div className="col-md-2"></div>
                 <div className="col-md-10">
+                    <p className="medical_danger_p">
+                        {t("119 신고시 자동으로 전달되는 의료정보입니다.")}
+                    </p>
+                    <p className="medical_danger_p">
+                        {t("최대한 자세하게 적어주세요.")}
+                    </p>
+                </div>
+                <div className="col-md-2">
                     <Link to={`/info/medical_info/${medical_id}/edit`} onClick={() => setForm("update")}>
                         <button className="btn btn-success btn-lg btn-block" type="submit" style={{width:"100px", fontSize:"12px", float:"right"}}>
                             {t("수정하기")}

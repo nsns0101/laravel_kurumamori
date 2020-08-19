@@ -212,3 +212,9 @@
   background-color: rgb(240,240,240);
   opacity: 1;
 }
+
+.medical_danger_p {
+  margin : 0;
+  color: red;
+  font-size: 12px;
+}

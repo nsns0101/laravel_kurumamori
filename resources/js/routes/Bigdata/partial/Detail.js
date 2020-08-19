@@ -33,10 +33,10 @@ export default () => {
                 </div>
                 <div className="col-md-8">
                     <div className="card" style={{marginBottom:"150px", minHeight:"500px"}}>
-                        <div className="card-header">
+                        <div className="card-header" style={{paddingLeft:0}}>
                             {action == "sleep" ? (
                                 <fieldset key="1">
-                                    <span className="bigdata_btn_radio" style={{paddingLeft:0}}>{t("졸음 운전")}</span>
+                                    <span className="bigdata_btn_radio">{t("졸음 운전")}</span>
                                     <input type="radio" onChange={()=> setAction("sleep")} defaultChecked/>
                                     <span className="bigdata_btn_radio">{t("급가속과 급감속")}</span>
                                     <input type="radio" onChange={()=> setAction("sudden")}/>
@@ -82,9 +82,9 @@ export default () => {
                             )
                         }
                         </div>
-                        <div>
+                        <div style={{marginRight:"10px"}}>
                             {action2 == "chart" && (
-                                <div className="text-center">
+                                <div className="text-right">
                                     {action3 == "age" ? (
                                         <fieldset key="1">
                                             <span className="bigdata_btn_radio">{t("연령대")}</span>
@@ -117,30 +117,30 @@ export default () => {
                                             t("최근 7일간의 사고 위치")
                                         )}
                                     </p>
-                                    <div className="big_data_google_map">
+                                    <div className="bigdata_google_map">
                                         <Map_api/>
                                     </div>
                                     {action == "sleep" ? (
                                         <div style={{marginTop:"10px", marginLeft:"5%"}}>
                                             {/* <img src="/icon/blue_map_icon.png"/> */}
                                             <img src="/icon/map_sleep.png"/>
-                                            <span>{t("졸음 구간")}</span>
+                                            <span className="bigdata_google_map_span" >{t("졸음 구간")}</span>
                                         </div>
                                     ) : action == "sudden" ? (
-                                        <div style={{marginTop:"10px"}}>
+                                        <div style={{marginTop:"10px", marginLeft:"5%"}}>
                                             {/* <img src="/icon/orange_map_icon.png"/> */}
                                             <img src="/icon/map_sudden_acceleration.png"/>
-                                            <span style={{marginRight:"15px"}}>{t("급가속 구간")}</span>
+                                            <span  className="bigdata_google_map_span" style={{marginRight:"15px"}}>{t("급가속 구간")}</span>
                                             {/* <img src="/icon/green_map_icon.png"/> */}
                                             <img src="/icon/map_sudden_stop.png"/>
-                                            <span>{t("급감속 구간")}</span>
+                                            <span className="bigdata_google_map_span" >{t("급감속 구간")}</span>
                                         </div>
 
                                     ) : (
-                                        <div style={{marginTop:"10px"}}>
+                                        <div style={{marginTop:"10px", marginLeft:"5%"}}>
                                             {/* <img src="/icon/red_map_icon.png"/> */}
                                             <img src="/icon/map_report.png"/>
-                                            <span>{t("사고 구간")}</span>
+                                            <span className="bigdata_google_map_span" >{t("사고 구간")}</span>
                                         </div>
                                     )}
                                 </div>
