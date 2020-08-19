@@ -11,6 +11,7 @@ export default () => {
         day_7,
         age_data,
         time_set_data,
+        action2,
         action3,
     } = useContext(BigdataContext);
     // console.log(age_data);

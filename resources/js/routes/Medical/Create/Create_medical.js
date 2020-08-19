@@ -45,7 +45,13 @@ export default () => {
 
     return (
         <form onSubmit={handleSubmit(validation)}>
-            <div className="" style={{maxHeight:"570px", overflowY:"auto", marginTop:"30px"}}>
+                    <p className="medical_danger_p">
+                        {t("119 신고시 자동으로 전달되는 의료정보입니다.")}
+                    </p>
+                    <p className="medical_danger_p">
+                        {t("최대한 자세하게 적어주세요.")}
+                    </p>
+            <div className="" style={{maxHeight:"570px", overflowY:"auto", marginTop:"10px"}}>
                 {insurance_name_list ? (
                     <div>
                         <div className="card" style={{padding:"20px 20px 0 20px"}}>
