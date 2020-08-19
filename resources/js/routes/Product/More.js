@@ -165,7 +165,7 @@ export default () => {
                                             </ScrollAnimation>
                                             <ScrollAnimation animateIn='fadeInUp' animateOnce={true} duration={0.9}>  
                                                 <div className="row justify-content-around mx-0 px-0">
-                                                    <img className="col-sm-11 col-lg-9" src="../product/sleep.jpg" style={{width:100+'%',zIndex:100}}></img>
+                                                    <img className="col-sm-11 col-lg-9" src="../product/sleep.png" style={{width:100+'%',zIndex:100}}></img>
                                                 </div>
                                             </ScrollAnimation>
                                         </div>
@@ -190,7 +190,7 @@ export default () => {
                                             </ScrollAnimation>
                                             <ScrollAnimation animateIn='fadeInUp' animateOnce={true} duration={0.9}>
                                                 <div className="row justify-content-around mx-0 px-0">
-                                                    <img className="col-sm-11 col-lg-9" src="../product/danger.jpg" style={{width:100+'%',zIndex:100}}></img>
+                                                    <img className="col-sm-11 col-lg-9" src="../product/danger.png" style={{width:100+'%',zIndex:100}}></img>
                                                 </div>  
                                             </ScrollAnimation>
                                         </div>
@@ -211,7 +211,7 @@ export default () => {
                                             </ScrollAnimation>
                                             <ScrollAnimation animateIn='fadeInUp' animateOnce={true} duration={0.9}>
                                                 <div className="row justify-content-around mx-0 px-0">
-                                                    <img className="col-sm-11 col-lg-9" src="../product/resque.jpg" style={{width:100+'%',zIndex:100}}></img>
+                                                    <img className="col-sm-11 col-lg-9" src="../product/resque.png" style={{width:100+'%',zIndex:100}}></img>
                                                 </div>  
                                             </ScrollAnimation>
                                         </div>
