@@ -40,7 +40,7 @@ export default () => {
                     <div className="col-lg-2 col-md-2 col-sm-2"/>
                     <div className="col-lg-9 col-md-9 col-sm-9">
                         <div className="row">
-                            <div className="col-md-4 col-sm-12" style={{marginTop:"15%"}}>
+                            <div className="col-md-4 col-sm-12" style={{marginTop:"20%"}}>
                                 <ScrollAnimation animateIn='fadeIn' delay={500} animateOnce={true}>
                                     <img className="img mb-5" src="/icon/white_kurumamori.png" alt="logo" style={{width:"100%"}}/>
                                 </ScrollAnimation>

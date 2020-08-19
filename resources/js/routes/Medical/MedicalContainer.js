@@ -155,10 +155,10 @@ export default ({history}) => {
                     setPast_sickness_supplementation(arr_past_sickness_supplementation);
                 }
                 //시연용
-                else{   
-                    setPast_sickness_name(["허리디스크", "과민성 대장"]);
-                    setPast_sickness_supplementation([t("5년전 허리디스크 수술"), t("지속적 복부팽만")]);
-                }
+                // else{   
+                //     setPast_sickness_name(["허리디스크", "과민성 대장"]);
+                //     setPast_sickness_supplementation([t("5년전 허리디스크 수술"), t("지속적 복부팽만")]);
+                // }
 
                 //sickness
                 if(res.data.sickness || (form && form != "create") ){
@@ -178,12 +178,12 @@ export default ({history}) => {
                     setHospital(arr_hosptial);
                 }
                 //시연용
-                else{
-                    setSickness_name(["당뇨", "고혈압", "위암"]);
-                    setMedicine([t("인슐린"), t("암로디핀"), t("니페디핀")]);
-                    setSymptom([t("저혈당 쇼크 및 경련"), t("현기증"), t("메스꺼움, 구토")]);
-                    setHospital([t("경북대병원 내과"), t("영대병원 내과"), t("경북대병원 내과")]);
-                }
+                // else{
+                //     setSickness_name(["당뇨", "고혈압", "위암"]);
+                //     setMedicine([t("인슐린"), t("암로디핀"), t("니페디핀")]);
+                //     setSymptom([t("저혈당 쇼크 및 경련"), t("현기증"), t("메스꺼움, 구토")]);
+                //     setHospital([t("경북대병원 내과"), t("영대병원 내과"), t("경북대병원 내과")]);
+                // }
 
                 //medical_info
                 if(res.data.medical_info || (form && form != "create") ){
@@ -194,12 +194,12 @@ export default ({history}) => {
                     setGuardian_phone(res.data.medical_info.guardian_phone);
                 }
                 //시연용
-                else{
-                    setBlood_type("A형");
-                    setDisability_status(false);
-                    setReport_request(t("인슐린 필요합니다."));
-                    setGuardian_phone("010-8382-1192");
-                }
+                // else{
+                //     setBlood_type("A형");
+                //     setDisability_status(false);
+                //     setReport_request(t("인슐린 필요합니다."));
+                //     setGuardian_phone("010-8382-1192");
+                // }
 
                 //insurance
                 if(res.data.insurance_list_my && (form && form != "create") ){

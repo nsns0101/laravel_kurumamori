@@ -55,7 +55,7 @@ export default () => {
     return (
         <section id="intro" className="section intro" style={{background:"white"}}>
                 <div className="team">
-                    <div className="row">
+                    <div className="row" style={{marginBottom:"50px"}}>
                         <div className="col-lg-2 col-md-2 col-sm-3"/>
 
                         <div className="col-lg-8 col-md-8 col-sm-6">
