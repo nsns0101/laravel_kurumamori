@@ -14,7 +14,7 @@ class DemoSeeder extends Seeder
                 // 시연 유저
                 \App\User::create([
                     'email' => "rla@dudwls.com",
-                    'password' => bcrypt('password'),
+                    'password' => bcrypt('password123'),
                     'name' => "김영진",
                     'birth' => "1997/06/12",
                     'gender' => "남",
