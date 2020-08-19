@@ -25,76 +25,55 @@ export default ({
         history,
     } = useContext(BoardContext);
 
-    console.log("board create form call")
+    console.log("board update form call")
 
     return (
         <Fragment>
             {data && data.questions.data ? data.questions.data.map( (value, index) => {
                 return (
                     value.id == select ? 
-                    <div key={index} className="modal fade show" id="showModal" tabIndex="-1" role="dialog" aria-labelledby="showModal" style={{backgroundColor: "#000000cc"}}>
+                    <div key={index} className="modal fade show" id="editModal" tabIndex="-1" role="dialog" aria-labelledby="editModal" style={{backgroundColor: "#000000cc"}}>
                         <div className="modal-dialog" role="document">
                             <div className="modal-content">
-
-                                <div className="row justify-content-center">
-                                    <div className="col-sm-12 col-lg-12 py-2">
-                                        <div className="container">
-                                            <div className="row justify-content-between mx-0 mr-0">
-                                                <div>
-                                                    <span><Link to="/boards/questions" onClick={()=>{setAction("index")}} className="show-home">HOME</Link></span>
-                                                    <span className="question-show-slicer"> > </span>
-                                                    <span >
-                                                        {/* 변경예정 */}
-                                                        {/* <a className="question-show-category" href="{{route('questions.index',['category_id'=>$category])}}">{data.category[index]}</a>  */}
-                                                        <Link to="/boards/questions" onClick={()=>{setAction("index")}} className="show-category">{t(data.category[index])}</Link>
-                                                    </span>
-                                                </div>
-                                                <div>
-                                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
+                                <div className="container">
+                                    <div className="modal-header">
+                                        <h1 className="">{t("글 수정")}</h1>
+                                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <form onSubmit={handleSubmit(onUpdate)}>
+                                        <div className="px-3">
+                                            <div className="form-group">
+                                                    <label className="pt-1">{t("제목")}</label>
+                                                    <input className="form-control" type="text" id="title" name="title" 
+                                                    placeholder={value.title}
+                                                    onChange={ e => {
+                                                        const {
+                                                        target: { value }
+                                                        } = e;
+                                                        setTitle(value);
+                                                    }}/>
                                             </div>
-                                            <hr className="question-show-split"/>
-                                            <div className="p-1">
-                                                <div>
-                                                    <h2 className="question-show-title">{value.title}</h2>
-                                                </div>
-                                                <div className="px-3">
-                                                    {/* 변경예정 */}
-                                                    {/* <span><a className="question-show-name" href="{{route('questions.index',['user_id'=>$question->user->id])}}">{data.board_user[index]}</a></span> */}
-                                                    <span><Link to="/boards/questions" onClick={()=>{setAction("index")}} className="show-user-name">{data.board_user[index]}</Link></span>
-                                                    <span className="question-show-slicer2 ">|</span>
-                                                    <span className="question-show-date">{moment(value.created_at).format("YYYY-MM-DD")}</span>
-                                                    <span className="question-show-slicer2">|</span>
-                                                    <span className="question-show-viewCount">Hit : {value.view_count}</span>
-                                                    </div>
-                                                    <hr className="question-show-split"/>
-                                                    <div className="py-3">
-                                                    <h4 className="text-justify question-show-content">
-                                                        {value.content}
-                                                    </h4>
-                                                </div>
-                                            </div>
-                                            <hr className="question-show-split"/>
-                                            <div className="d-flex justify-content-end pb-3">
-                                                {user.id == value.user_id ? 
-                                                    <div className="row mx-0 px-0">
-                                                        <span className="pr-2">
-                                                            {/* <Link to={"/boards/questions/"} onClick={()=>{setAction("edit")}} className="btn-nomal">수정하기</Link> */}
-                                                            
-                                                        </span>
-                                                        
-                                                    </div>
-                                                    : 
-                                                    <div>
-
-                                                    </div>
-                                                    }
+                                            <div className="form-group">
+                                                <label className="">{t("본문")}</label>
+                                                <textarea className="form-control" name="content" id="content" cols="30" rows="10"
+                                                onChange={ e => {
+                                                    const {
+                                                    target: { value }
+                                                    } = e;
+                                                    setContent(value);
+                                                }}
+                                                >{value.content}</textarea>
                                             </div>
                                         </div>
-                                
-                                    </div>
+                                        <hr/>
+                                        <div className="form-group d-flex justify-content-end pb-3">
+                                            <span className="pr-3">
+                                                <button className="btn-nomal" type="submit">{t("저장하기")}</button>
+                                            </span>
+                                        </div>
+                                    </form> 
                                 </div>
                             </div>
                         </div>

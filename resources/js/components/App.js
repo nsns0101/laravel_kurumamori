@@ -1,6 +1,6 @@
 import React, {useState, useEffect, createContext, useContext} from 'react';
 import ReactDOM from 'react-dom';
-import { Route, Link, BrowserRouter } from "react-router-dom";
+import { Route, Link, BrowserRouter, Switch  } from "react-router-dom";
 import Axios from 'axios';
 import {useTranslation, withTranslation} from "react-i18next";
 import i18next from "../config/lang/i18n";
@@ -107,9 +107,13 @@ function App() {
                     {/* <Route path="/products/buy/completed"  component={Completed}/> */}
                     <Route path="/products/control" exact component={Control}/>
                     <Route path="/products/users" exact component={Users}/>
-
-                    <Route path="/boards/questions" component={Board}/>
-
+                    <Switch>
+                        <Route path="/boards/questions/:category" component={Board}/>
+                        <Route path="/boards/questions" component={Board}/>
+                    </Switch>
+                    {/* <Route path="/boards/questions" component={Board}>
+                        <Route path=":id" component={Board} />
+                    </Route> */}
                     <Footer/>
                 </BrowserRouter>
             </AppContext.Provider>

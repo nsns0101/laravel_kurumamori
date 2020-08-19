@@ -11,19 +11,20 @@ import Show from "./partial/Show";
 import Edit from "./partial/Edit";
 import Modal from 'react-modal';
 import CreateModal from "./partial/CreateModal";
+import queryString from 'query-string';
 
 console.log('board container call')
 
 export const BoardContext = createContext();
-export default ({history}) => {
+export default ({history,location, match}) => {
     const { user } = useContext(AppContext);
     const [action, setAction] = useState("index");
-
     const [data, setData] = useState("");
 
     const [title, setTitle] = useState(""); 
     const [category, setCategory] = useState(""); 
     const [content, setContent] = useState(""); 
+    const [search, setSearch] = useState(""); 
     const { register, handleSubmit } = useForm();
 
     const [select, setSelect] = useState(""); 
@@ -39,11 +40,15 @@ export default ({history}) => {
     const closeModal = () =>{
         setIsOpen(false);
     }
+
+    // const query = queryString.parse(location.pathname);
+    // console.log(location.pathname,"=쿼리");
+    // console.log(match.params.category,"=매치");
     
     useEffect(() =>{
         console.log("board useEffect");
         if(action == "index"){
-            Axios.get(`/get/boards/questions`).then(res => {                
+            Axios.get(`/get/boards/questions/${match.params.category}`).then(res => {                
                 setData(res.data);
 
                 if(res){
@@ -145,8 +150,7 @@ export default ({history}) => {
         return Axios.put(url, body, config).then(res => {
             if(res.data){
                 console.log("Board update call success")
-                setAction('index')
-                history.push('/boards/questions')
+                window.location.reload();
             }
             else{
                 console.log("Board update call fail");
@@ -178,8 +182,36 @@ export default ({history}) => {
             })
         }
     }
-    const onHoverNav = () => {
-        
+    const onSearch = () => {
+        const url = "/onSearch/boards/questions";
+        const body = {
+            search : search,
+        }
+        const config = {
+            headers: {
+                'Content-Type' : 'application/json'
+                }
+        }
+        return Axios.post(url, body, config).then(res => {
+            if(res.data){
+                console.log("Board onSearch call success")
+                history.push('/boards/questions')
+                // Axios.get(`/get/boards/questions`).then(res => {                
+                //     setData(res.data);
+    
+                //     if(res){
+                //         console.log("Board index call success");
+                //     }
+                //     else{
+                //         console.log("Board index call fail");
+                        
+                //     }
+                // });
+            }
+            else{
+                console.log("Board create call fail");
+            }
+        })
     }
 
     return (
@@ -198,6 +230,7 @@ export default ({history}) => {
             setCategory,
             content,
             setContent,
+            setSearch,
 
             register,
             handleSubmit,
@@ -207,6 +240,7 @@ export default ({history}) => {
             onDelete,
             onShow,
             onUpdate,
+            onSearch,
 
             categoryHover,
             setCategoryHover,

@@ -21,7 +21,7 @@ export default () => {
                         <div className="my-2">
                             <ScrollAnimation animateIn='fadeIn' delay={500} animateOnce={true}>
                                 <p className="" style={{fontSize:2.25+"em",color:"white"}}>{t("내 차가 사고를 스스로 예방하고 사고를 스스로 신고한다!")}</p>
-                                <h4 className="" style={{fontSize:1.7+"em",color:"white"}}>{t("가격미정")}</h4> 
+                                <h4 className="" style={{fontSize:1.7+"em",color:"white"}}>{t("147,000원")}</h4> 
                             </ScrollAnimation>
                         </div>
                         <div className="my-2 row pt-4 px-0 mx-0 justify-content-center" >

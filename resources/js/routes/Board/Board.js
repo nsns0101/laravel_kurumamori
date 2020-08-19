@@ -11,7 +11,7 @@ import Modal from 'react-modal';
 import Create_modal from "./partial/CreateModal";
 import Show_modal from "./partial/ShowModal";
 
-export default () => {
+export default ({location, match}) => {
 
     const {
         user,
@@ -21,6 +21,8 @@ export default () => {
         setSelect,
         history,
         onShow,
+        setSearch,
+        onSearch,
         categoryHover,
         setCategoryHover,
         t,
@@ -28,7 +30,8 @@ export default () => {
         openModal,
         closeModal,
         modalIsOpen,
-        setIsOpen
+        setIsOpen,
+        handleSubmit
     } = useContext(BoardContext);
      
     const page_count = [];
@@ -85,25 +88,25 @@ export default () => {
                                             <div className="col-sm-12 col-lg-12">
                                                 <ul className="row mx-0 px-0 ">
                                                     <li className="col-sm-12 col-lg-4 py-2">
-                                                        <Link  to="/boards/questions" id="" className="category-text" >{t("ALL")}</Link>
+                                                        <Link  to="/boards/questions/all" id="" className="category-text" >{t("ALL")}</Link>
                                                     </li>
                                                     <li className="col-sm-12 col-lg-4 py-2">
-                                                        <Link to="/boards/questions" id="" className="category-text" >{t("공지사항")}</Link>
+                                                        <Link to="/boards/questions/notice" id="" className="category-text" >{t("공지사항")}</Link>
                                                     </li>
                                                     <li className="col-sm-12 col-lg-4 py-2">
-                                                        <Link to="/boards/questions" id="" className="category-text" >{t("업데이트")}</Link>
+                                                        <Link to="/boards/questions/update" id="" className="category-text" >{t("업데이트")}</Link>
                                                     </li>
                                                     <li className="col-sm-12 col-lg-4 py-2">
-                                                        <Link to="/boards/questions" id="" className="category-text" >{t("제품구매")}</Link>
+                                                        <Link to="/boards/questions/productB" id="" className="category-text" >{t("제품구매")}</Link>
                                                     </li>
                                                     <li className="col-sm-12 col-lg-4 py-2">
-                                                        <Link to="/boards/questions" id="" className="category-text" >{t("제품오류")}</Link>
+                                                        <Link to="/boards/questions/productE" id="" className="category-text" >{t("제품오류")}</Link>
                                                     </li>
                                                     <li className="col-sm-12 col-lg-4 py-2">
-                                                        <Link to="/boards/questions" id="" className="category-text" >{t("소프트웨어")}</Link>
+                                                        <Link to="/boards/questions/software" id="" className="category-text" >{t("소프트웨어")}</Link>
                                                     </li>
                                                     <li className="col-sm-12 col-lg-4 py-2">
-                                                        <Link to="/boards/questions" id="" className="category-text" >{t("기타문의")}</Link>
+                                                        <Link to="/boards/questions/other" id="" className="category-text" >{t("기타문의")}</Link>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -178,7 +181,7 @@ export default () => {
                                             </div> */}
                                             <div className="row justify-content-end px-0 mx-0 w-100">
                                                 {/* 글 검색 항목 */}
-                                                <div className="pr-3 ">
+                                                <form className="pr-3 " onSubmit={handleSubmit(onSearch)}>
                                                     {/* <ReactSearchBox 
                                                         className="search-box"
                                                         placeholder="검색어를 입력해 주세요."
@@ -189,13 +192,19 @@ export default () => {
                                                         <input
                                                         className="search-box"
                                                         placeholder={t("검색어를 입력해 주세요.")}
+                                                        onChange={ e => {
+                                                            const {
+                                                            target: { value }
+                                                            } = e;
+                                                            setSearch(value);
+                                                        }}
                                                         >
                                                         </input>
-                                                        <Link className="search-botton">
+                                                        <button className="search-botton">
                                                             <img className="search-img" src="../icon/search.png"></img>
-                                                        </Link>
+                                                        </button>
                                                     </span>
-                                                </div>
+                                                </form>
 
                                                 {/* 글 작성 항목 */}
                                                 <div className="text-center">

@@ -4,6 +4,7 @@ import { BoardContext } from "../BoardContanier";
 import {Link} from "react-router-dom";
 import moment from "moment";
 import Edit_modal from "../partial/EditModal";
+
 import { useForm } from "react-hook-form";
 import Axios from "axios";
 
@@ -34,19 +35,20 @@ export default ({
                 return (
                     value.id == select ? 
                     <div key={index} className="modal fade show" id="showModal" tabIndex="-1" role="dialog" aria-labelledby="showModal" style={{backgroundColor: "#000000cc"}}>
-                        <div className="modal-dialog" role="document">
-                            <div className="modal-content">
+                        <div className="modal-dialog">
+                            <div className="modal-content" >
                                 <div className="row justify-content-center">
                                     <div className="col-sm-12 col-lg-12 py-2">
                                         <div className="container">
                                             <div className="row justify-content-between mx-0 mr-0">
                                                 <div>
-                                                    <span><Link to="/boards/questions" onClick={()=>{setAction("index")}} className="show-home">HOME</Link></span>
+                                                    <span><Link to="/boards/questions/all" onClick={()=>{setAction("index")}} className="show-home">HOME</Link></span>
                                                     <span className="question-show-slicer"> > </span>
                                                     <span >
                                                         {/* 변경예정 */}
                                                         {/* <a className="question-show-category" href="{{route('questions.index',['category_id'=>$category])}}">{data.category[index]}</a>  */}
                                                         <Link to="/boards/questions" onClick={()=>{setAction("index")}} className="show-category">{t(data.category[index])}</Link>
+                                                        {/* <p className="show-category">{t(data.category[index])}</p> */}
                                                     </span>
                                                 </div>
                                                 <div>
@@ -81,20 +83,22 @@ export default ({
                                                 {user.id == value.user_id ? 
                                                     <div className="row mx-0 px-0">
                                                         <span className="pr-2">
-                                                            <Link to={"/boards/questions/"} onClick={()=>{setAction("edit")}} className="btn-nomal">수정하기</Link>
-                                                            <button type="button" className="btn btn-create" data-toggle="modal" data-target="#editModal" onClick={()=>{setSelect(value.id), onShow()}}>
-                                                                수정하기
-                                                            </button>
+                                                            <div className="text-center">
+                                                                <button type="button" className="btn-nomal" data-toggle="modal" data-target="#editModal">
+                                                                {t("수정하기")}
+                                                                </button>
+                                                            </div>  
                                                             <Edit_modal
                                                                 closeTimeoutMS={200}
                                                                 isOpen={openModal}
                                                                 onRequestClose={() => this.toggleModal()}
                                                                 contentLabel="editModal"
+                                                                
                                                             />
                                                         </span>
                                                         <span className="pr-2">
                                                             <form onSubmit={handleSubmit(onDelete)}>
-                                                                <button className="btn-nomal">삭제하기</button>    
+                                                                <button className="btn-nomal">{t("삭제하기")}</button>    
                                                             </form>
                                                         </span> 
                                                     </div>

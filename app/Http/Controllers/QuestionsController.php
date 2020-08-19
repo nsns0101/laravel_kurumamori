@@ -79,25 +79,61 @@ class QuestionsController extends Controller
         return response()->json([], 200);
     }
 
-    public function data(Request $request)
+    public function data(Request $request, $category)
     {
          \Log::info('questions index');
-
-        $query = new \App\Board;
-        // $query = $query->where('category_id','!=','7')->orderBy(
-        //     $request->input('sortDesc','id'),
-        //     $request->input('id','desc'),
-        // );
-        $query = $query->where('category_id','!=','7')->orderBy('id', 'desc');
-        $questions = $query->paginate(10);
+         \Log::info($category);
         
-        $board_user = array();
-        for($i = 0; $i < count($questions); $i++){
-            array_push($board_user, \App\User::whereId($questions[$i]->user_id)->first()->name);
+        $category_id = 999;
+        if($category === "all"){
+            $category_id = 0;
         }
-        $category = array();
-        for($i = 0; $i < count($questions); $i++){
-            array_push($category, \App\Category::whereId($questions[$i]->category_id)->first()->category);
+        else if($category === "notice"){
+            $category_id = 1;
+        }
+        else if($category === "update"){
+            $category_id = 2;
+        }
+        else if($category === "productB"){
+            $category_id = 3;
+        }
+        else if($category === "productE"){
+            $category_id = 4;
+        }
+        else if($category === "software"){
+            $category_id = 5;
+        }
+        else if($category === "other"){
+            $category_id = 6;
+        }
+
+        if($category_id != 999){
+            if($category_id === 0){
+                $query = new \App\Board;
+                $query = $query->where('category_id','!=','7')->orderBy('id', 'desc');
+                $questions = $query->paginate(10);
+                $board_user = array();
+                for($i = 0; $i < count($questions); $i++){
+                    array_push($board_user, \App\User::whereId($questions[$i]->user_id)->first()->name);
+                }
+                $category = array();
+                for($i = 0; $i < count($questions); $i++){
+                    array_push($category, \App\Category::whereId($questions[$i]->category_id)->first()->category);
+                }
+            }
+            else{
+                $query = new \App\Board;
+                $query = $query->where('category_id','=',$category_id)->orderBy('id', 'desc');
+                $questions = $query->paginate(10);
+                $board_user = array();
+                for($i = 0; $i < count($questions); $i++){
+                    array_push($board_user, \App\User::whereId($questions[$i]->user_id)->first()->name);
+                }
+                $category = array();
+                for($i = 0; $i < count($questions); $i++){
+                    array_push($category, \App\Category::whereId($questions[$i]->category_id)->first()->category);
+                }
+            }
         }
 
         // $comment = array();
@@ -119,5 +155,31 @@ class QuestionsController extends Controller
         \App\Board::whereId($request->board_id)->update(['view_count' => $view_count]);
 
         return response()->json([], 200);
+    }
+    public function onSearch(Request $request)
+    {
+        \Log::info('questions onSearch');
+        \Log::info($request);
+        // $view_count = \App\Board::whereId($request->board_id)->value('view_count') +1;
+        // \App\Board::whereId($request->board_id)->update(['view_count' => $view_count]);
+        $query = new \App\Board;
+        $query = $query->where('title','=',$request->search)->orderBy('id', 'desc');
+        $questions = $query->paginate(10);
+        \Log::info($questions);
+
+        $board_user = array();
+        for($i = 0; $i < count($questions); $i++){
+            array_push($board_user, \App\User::whereId($questions[$i]->user_id)->first()->name);
+        }
+        $category = array();
+        for($i = 0; $i < count($questions); $i++){
+            array_push($category, \App\Category::whereId($questions[$i]->category_id)->first()->category);
+        }
+
+        return response()->json([
+            'questions' => $questions,
+            'category' => $category,
+            'board_user' => $board_user,
+        ]);
     }
 }
