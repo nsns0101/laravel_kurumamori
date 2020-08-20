@@ -24,18 +24,18 @@ export default ({ history }) => {
     const [access_code, setAccessCode] = useState(""); //buy_access_code 상세주소
     const [product_key, setProduct_key] = useState("");
     useEffect(()=>{
-        setName("キム·ヨンジン")
-        setLocal("大阪県")
-        setAddress("大阪市中央区宗右衛門町７−18")
-        setPostal("41234")
-        setDetailAddress("チョンソルマンション301号")
-        setAccessCode("0310")
-        setEmail("kim@youngjin.com")
-        setPhone("010-7374-6119")
+        // setName("キム·ヨンジン")
+        // setLocal("大阪県")
+        // setAddress("大阪市中央区宗右衛門町７−18")
+        // setPostal("41234")
+        // setDetailAddress("チョンソルマンション301号")
+        // setAccessCode("0310")
+        // setEmail("kim@youngjin.com")
+        // setPhone("010-7374-6119")
 
-        setName2("キム·ヨンジン")
-        setEmail2("kim@youngjin.com")
-        setPhone2("010-7374-6119")
+        // setName2("キム·ヨンジン")
+        // setEmail2("kim@youngjin.com")
+        // setPhone2("010-7374-6119")
     },[])
         //post
     const onSubmit = async () => {
