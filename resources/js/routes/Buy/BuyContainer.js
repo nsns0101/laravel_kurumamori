@@ -17,25 +17,25 @@ export default ({ history }) => {
     const [phone2, setPhone2] = useState(""); //buy_phone 휴대전화
     const [email2, setEmail2] = useState(""); //buy_email 상세주소
     
-    const [state, setState] = useState(""); //setState 지역
+    const [local, setLocal] = useState(""); //setState 지역
     const [address, setAddress] = useState(""); //setAddress 주소
     const [postal, setPostal] = useState(""); //buy_postal 우편번호
     const [detail_address, setDetailAddress] = useState(""); //buy_detail_address 상세주소
     const [access_code, setAccessCode] = useState(""); //buy_access_code 상세주소
     const [product_key, setProduct_key] = useState("");
     useEffect(()=>{
-        // setName("キム·ヨンジン")
-        // setState("大阪県")
-        // setAddress("大阪市中央区宗右衛門町７−18")
-        // setPostal("41234")
-        // setDetailAddress("チョンソルマンション301号")
-        // setAccessCode("0310")
-        // setEmail("kim@youngjin.com")
-        // setPhone("010-7374-6119")
+        setName("キム·ヨンジン")
+        setLocal("大阪県")
+        setAddress("大阪市中央区宗右衛門町７−18")
+        setPostal("41234")
+        setDetailAddress("チョンソルマンション301号")
+        setAccessCode("0310")
+        setEmail("kim@youngjin.com")
+        setPhone("010-7374-6119")
 
-        // setName2("キム·ヨンジン")
-        // setEmail2("kim@youngjin.com")
-        // setPhone2("010-7374-6119")
+        setName2("キム·ヨンジン")
+        setEmail2("kim@youngjin.com")
+        setPhone2("010-7374-6119")
     },[])
         //post
     const onSubmit = async () => {
@@ -43,7 +43,7 @@ export default ({ history }) => {
         const body = {
             user_id : user.id,
             name: name,
-            state: state,
+            state: local,
             address: address,
             postal: postal,
             detail_address: detail_address,
@@ -93,7 +93,7 @@ export default ({ history }) => {
         user={user}
         onSubmit={onSubmit}
         setName={setName}
-        setState={setState}
+        setLocal={setLocal}
         setAddress={setAddress}
         setPostal={setPostal}
         setDetailAddress={setDetailAddress}
@@ -101,7 +101,7 @@ export default ({ history }) => {
         setEmail={setEmail}
         setPhone={setPhone}
         name={name}
-        state={state}
+        local={local}
         address={address}
         postal={postal}
         detail_address={detail_address}
