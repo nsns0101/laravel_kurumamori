@@ -135,9 +135,9 @@ class DriveController extends Controller
             // $score_sudden_stop -= ($day_5_danger_count[0]["count_sudden_stop"] * (40 * $mul)) - $add_score;
             // $score_sleep -= ($day_5_danger_count[0]["count_sleep"] * (100 * $mul)) - $add_score;
             // $score_report -= ($day_5_danger_count[0]["count_report"] * (100 * $mul)) - $add_score;
-            $score_sudden_acceleration -= ($day_5_danger_count[0]["count_sudden_acceleration"] * (40 * $mul));
-            $score_sudden_stop -= ($day_5_danger_count[0]["count_sudden_stop"] * (40 * $mul));
-            $score_sleep -= ($day_5_danger_count[0]["count_sleep"] * (50 * $mul));
+            $score_sudden_acceleration -= ($day_5_danger_count[0]["count_sudden_acceleration"] * (55 * $mul));
+            $score_sudden_stop -= ($day_5_danger_count[0]["count_sudden_stop"] * (60 * $mul));
+            $score_sleep -= ($day_5_danger_count[0]["count_sleep"] * (80 * $mul));
             $score_report -= ($day_5_danger_count[0]["count_report"] * (100 * $mul));
             //총 점수
             $score = [$score_sudden_acceleration, $score_sudden_stop, $score_sleep, $score_report];

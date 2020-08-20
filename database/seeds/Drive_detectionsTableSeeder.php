@@ -11,7 +11,7 @@ class Drive_detectionsTableSeeder extends Seeder
      */
     public function run()
     {
-        // $json_dodobu = json_decode(file_get_contents(public_path('\json\dodobu.json')), true);
+        $json_dodobu = json_decode(file_get_contents(public_path('json/dodobu.json')), true);
         
         
         //json 길이만큼
