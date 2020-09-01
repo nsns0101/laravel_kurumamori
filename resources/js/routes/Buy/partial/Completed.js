@@ -19,6 +19,8 @@ export default (
     }
     ) => {
     const {t} = useContext(AppContext);
+    console.log(user.name);
+    console.log(t(user.name));
     return (
         // css 개선 
         <Fragment>
@@ -30,7 +32,7 @@ export default (
                                 <img className="" src="/images/buy/check.png"></img>
                             </div>
                             <h4 style={{fontSize:"3em", color:"black",fontWeight:"900"}}>{t("구매해주셔서 감사합니다.")}</h4>
-                            <h4 style={{fontSize:"1.5em",fontWeight:"900"}}>{user.name}{t("님의 구매 내역입니다.")}</h4>
+                            <h4 style={{fontSize:"1.5em",fontWeight:"900"}}>{t(user.name)}{t("님의 구매 내역입니다.")}</h4>
                         </div>
                         <div className="row justify-content-center mx-0 px-0 py-1 mb-2">
                             <table className="table col-sm-12 col-lg-12">

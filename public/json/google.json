@@ -28,8 +28,8 @@
         "longitude": "139.7537528",
         "bool_report":0,
         "bool_sudden_acceleration":0,
-        "bool_sudden_stop":1,
-        "bool_sleep":0
+        "bool_sudden_stop":0,
+        "bool_sleep":1
     },
     "4" : {
         "latitude": "35.7095164",
