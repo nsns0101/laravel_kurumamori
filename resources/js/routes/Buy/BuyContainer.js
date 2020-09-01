@@ -53,11 +53,10 @@ export default ({ history }) => {
         };
         console.log
         const config = {
-        headers: {
-            'Content-Type' : 'application/json'
+            headers: {
+                'Content-Type' : 'application/json'
+            }
         }
-        }
-
         return Axios.post(url, body, config)
         .then(res => {
             if(res.data){

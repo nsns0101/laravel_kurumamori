@@ -129,6 +129,7 @@ export default (
                                     <img className="" src="/images/buy/check2.png"></img>
                                 </div>
                                 <p style={{fontSize:"2.7em", color:"black",fontWeight:"900"}}>{t("クルマモリ9 사용을 위해서 미리 준비해주세요!")}</p>
+                                
                             </div>
                         </div>
 

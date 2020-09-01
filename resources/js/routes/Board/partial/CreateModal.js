@@ -3,6 +3,7 @@ import {AppContext} from "../../../components/App";
 import { BoardContext } from "../BoardContanier";
 import { useForm } from "react-hook-form";
 import Axios from "axios";
+import "../Board.css";
 
 export default ({ 
 
@@ -19,16 +20,24 @@ export default ({
         handleSubmit,
         setAction,
         history,
-        closeModal
+        closeModal,
+        modalIsOpen,
+        setIsOpen,
+
+        openCreateModal,
+        closeCreateModal,
+        craeteModalIsOpen
+
     } = useContext(BoardContext);
+    
 
     console.log("board create form call")
-
     return (
+        craeteModalIsOpen == true ?
         <form onSubmit={handleSubmit(onCreate)}>
             <div className="modal fade show" id="createModal" tabIndex="-1" role="dialog" aria-labelledby="createModal" style={{backgroundColor: "#000000cc"}}>
-                <div className="modal-dialog" role="document">
-                    <div className="modal-content">
+                <div className="modal-dialog modal-80size" role="document">
+                    <div className="modal-content modal-80size">
                         <div className="modal-header">
                             <h1 className="">{t("글쓰기")}</h1>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
@@ -56,7 +65,6 @@ export default ({
                                             target: { value }
                                             } = e;
                                             setCategory(value);
-                                            console.log(value)
                                         }}>
                                             {/* {
                                             user && user.id == 3 ? `` : 
@@ -87,7 +95,7 @@ export default ({
                                 <div className="form-group d-flex justify-content-end pb-3">
                                     {/* 글써지면 꺼지게 고쳐야함 */}
                                     <span className="pr-3">
-                                        <button className="btn-nomal" type="submit" closeModal>{t("저장하기")}</button>
+                                        <button className="btn-create" type="submit">{t("저장하기")}</button>
                                     </span>
                                 </div>
                             </div>
@@ -96,5 +104,9 @@ export default ({
                 </div>
             </div>
         </form>
+        :
+        <div>
+            
+        </div>
     )
 }

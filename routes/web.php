@@ -57,16 +57,15 @@ Route::get('/thanks', function () {
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ Q&A ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
 Route::resource('/boards/questions','QuestionsController');
-Route::get('/get/boards/questions/{category}','QuestionsController@data');
-Route::post('/onShow/boards/questions/', [ 
-    'uses' => 'QuestionsController@onShow',
-]);
-Route::post('/onSearch/boards/questions/', [ 
-    'uses' => 'QuestionsController@onSearch',
-]);
+Route::get('/get/boards/questions/{category}', ['uses' => 'QuestionsController@data']);
+Route::post('/onShow/boards/questions/', ['uses' => 'QuestionsController@onShow']);
+Route::get('/onSearch/boards/questions/{search?}',['uses' => 'QuestionsController@onSearch']);
+
 
 Route::resource('/boards/questions/comments','CommentsController');
+Route::get('/getComment/boards/questions/{board_id}', ['uses' => 'CommentsController@getCommnet']);
 
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 유저리뷰 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 Route::resource('/boards/reviews','ReviewsController');

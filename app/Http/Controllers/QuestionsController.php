@@ -43,10 +43,19 @@ class QuestionsController extends Controller
             array_push($board_user, \App\User::whereId($questions[$i]->user_id)->first()->name);
         }
 
+        $comments = array();
+        for($i = 0; $i < count($questions); $i++){
+            $query2 = new \App\Comment;
+            $comment = $query2->where('board_id','=',$questions[$i]->id)->orderBy('id', 'desc')->paginate(10);
+            array_push($comments, $comment);
+        }
+        \Log::info($comments);
+
         return response()->json([
             'questions' => $questions,
             'category' => $category,
             'board_user' => $board_user,
+            'comments' => $comments,
         ]);
 
     }
@@ -135,16 +144,20 @@ class QuestionsController extends Controller
                 }
             }
         }
+        
+        $comments = array();
+        for($i = 0; $i < count($questions); $i++){
+            $query2 = new \App\Comment;
+            $comment = $query2->where('board_id','=',$questions[$i]->id)->orderBy('id', 'desc')->paginate(10);
+            array_push($comments, $comment);
+        }
 
-        // $comment = array();
-        // for($i = 0; $i < count($questions); $i++){
-        //     array_push($comment, \App\Comment::whereBoard_id($questions[$i]->id)->first());
-        // }
 
         return response()->json([
             'questions' => $questions,
             'category' => $category,
             'board_user' => $board_user,
+            'comments' => $comments
         ]);
     }
 
@@ -156,14 +169,14 @@ class QuestionsController extends Controller
 
         return response()->json([], 200);
     }
-    public function onSearch(Request $request)
+    public function onSearch(Request $request, $search)
     {
         \Log::info('questions onSearch');
         \Log::info($request);
-        // $view_count = \App\Board::whereId($request->board_id)->value('view_count') +1;
-        // \App\Board::whereId($request->board_id)->update(['view_count' => $view_count]);
+        \Log::info($search);
+
         $query = new \App\Board;
-        $query = $query->where('title','=',$request->search)->orderBy('id', 'desc');
+        $query = $query->where('title','like', '%'.$search.'%')->orderBy('id', 'desc');
         $questions = $query->paginate(10);
         \Log::info($questions);
 
@@ -182,4 +195,5 @@ class QuestionsController extends Controller
             'board_user' => $board_user,
         ]);
     }
+
 }

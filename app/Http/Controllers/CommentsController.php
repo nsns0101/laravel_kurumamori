@@ -7,34 +7,27 @@ use Illuminate\Http\Request;
 class CommentsController extends Controller
 {
   
-    public function store(\App\Http\Requests\CommentsRequest $request)
+    public function store(Request $request)
     {
         \Log::info('comments store');
         \Log::info($request->all());
-        if($request->question){
-            $board = $request->question;
-        }
-        else{
-            $board = $request->review;
-        }
-        if(\App\Category::find( \App\Board::find($board)->category_id )->id == 7){
-            \Log::info(1);
 
-            $comment = \App\User::find(1)->comments()->create([
-                'board_id'=>$request->review,
+        if(\App\Category::find( \App\Board::find($request->select)->category_id )->id == 7){
+
+            $comment = \App\User::find($request->user_id)->comments()->create([
+                'board_id'=>$request->select,
                 'multiple_type'=> true,
                 'content'=>$request->content,
             ]);
         }
         else{
-            \Log::info(2);
-            $comment = \App\User::find(1)->comments()->create([
-                'board_id'=>$request->question,
+            $comment = \App\User::find($request->user_id)->comments()->create([
+                'board_id'=>$request->select,
                 'multiple_type'=> false,
-                'title'=>$request->title,
                 'content'=>$request->content,
             ]);
         }
+
         if(! $comment){
 
             flash()->error(
@@ -44,32 +37,41 @@ class CommentsController extends Controller
             return back()->withInput();
         }
         
-        return back()->withInput();
+        return response()->json([
+            'comment' => $comment
+        ]);
     }
 
-    public function update(\App\Http\Requests\CommentsRequest $request,\App\Comment $comment)
+    public function update(Request $request)
     {
         \Log::info('comments update');
-        \Log::info($request->all());
-        
-        $comment->update($request->all());
+        \Log::info($request);
+        \App\Comment::whereId($request->id)->update($request->all());
 
-        if(! $comment){
 
-            flash()->error(
-                trans('comment 업데이트 실패')
-            );
-
-            return back()->withInput();
-        }
-
-        return back()->withInput();
+        return response()->json([], 200);
     }
-    public function destroy(\App\Comment $comment)
+    public function destroy(Request $request)
     {
         \Log::info('comments destroy');
-        $comment->delete();
+        \Log::info($request);
+        \Log::info($request->id);
 
-        return back()->withInput();
+
+        \App\Comment::whereId($request->id)->delete();
+        return response()->json([], 200);
+    }
+    public function getCommnet(Request $request, $board_id)
+    {
+        \Log::info('comment get');
+
+        $query2 = new \App\Comment;
+        $comment = $query2->where('board_id','=',$board_id)->orderBy('id', 'desc')->paginate(10);
+
+        \Log::info($comment);
+        
+        return response()->json([
+            'comment'=> $comment,
+        ]);
     }
 }

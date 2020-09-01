@@ -27,27 +27,39 @@ export default ({location, match}) => {
         setCategoryHover,
         t,
 
-        openModal,
-        closeModal,
         modalIsOpen,
         setIsOpen,
-        handleSubmit
+        handleSubmit,
+
+        openCreateModal,
+        closeCreateModal,
+        craeteModalIsOpen,
+
+        openShowModal,
+        closeShowModal,
+        showModalIsOpen,
+
+        onShowEdit,
+        offShowEdit,
+        showModalIsState
+
     } = useContext(BoardContext);
      
     const page_count = [];
-    console.log(data.questions.last_page);
+    // console.log(data.questions.last_page);
     for(var i = 0; i < data.questions.last_page; i++){
         page_count.push([i]);
     }
+
     // setCategoryHover('no');
-    console.log(categoryHover);
+    // console.log(categoryHover);
 
-    if(categoryHover=='yes'){
+    // if(categoryHover=='yes'){
         
-    }
-    else{
+    // }
+    // else{
 
-    }
+    // }
 
     return (
         data  ? 
@@ -68,17 +80,23 @@ export default ({location, match}) => {
                                 <div id="category-tab" className="col-sm-11 col-lg-11 py-2 px-0 mx-0 w-100" 
                                     onMouseEnter={()=>{setCategoryHover('yes')}}
                                     onMouseLeave={()=>{setCategoryHover('no')}}>
-                                    <button id="" className="btn-toggle-tab" >
-                                        <span>{t("ALL")}</span>
+                                    <button id="" className="btn-toggle-tab" 
+                                        style={{
+                                            backgroundColor:"#6682f6",
+                                            borderRadius:"0.5em"
+                                        }} 
+                                    >
+                                        <span
+                                        style={{
+                                            fontSize:1+"em",
+                                            borderRadius:"0.5em"
+                                        }} 
+                                        >{t("ALL")}</span>
                                         <ul id="mobile-only">
                                         </ul>
                                     </button>
 
-                                    <div className="in-wrap row mx-0 px-0 justify-content-center"
-                                        style={{
-                                            // display:"none",
-                                        }}
-                                    >
+                                    <div className="in-wrap row mx-0 px-0 justify-content-center">
                                         <div id="in-wrap" className="col-sm-11 col-lg-11 pt-3 bg-white row mx-0 px-0">
                                             <div className="col-sm-12 col-lg-12">
                                                 <h2 id="" className="" style={{
@@ -142,16 +160,12 @@ export default ({location, match}) => {
                                                         
                                                         <td className="align-middle">{t(data.category[index])}</td> 
                                                         <td className="align-middle question-index-name">
-                                                            {/* 온 쇼 추가 할 것 */}
-                                                            {/* <Link to={`/boards/questions/`} id="" onClick={()=>{setAction("show"),setSelect(value.id), onShow()}} className="btn btn-intro text-dark">{value.title}
-                                                            </Link> */}
-                                                            <button type="button" className="btn btn-link" data-toggle="modal" data-target="#showModal" onClick={()=>{setSelect(value.id), onShow()}}>
+                                                            <button type="button" className="btn btn-link" data-toggle="modal" data-target="#showModal" 
+                                                            onClick={()=>{ setSelect(value.id), onShow(), openShowModal(), offShowEdit()}}>
                                                                 {value.title}
                                                             </button>
                                                             <Show_modal
                                                                 closeTimeoutMS={200}
-                                                                isOpen={openModal}
-                                                                onRequestClose={() => this.toggleModal()}
                                                                 contentLabel="showModal"
                                                             />
                                                         </td>
@@ -201,21 +215,21 @@ export default ({location, match}) => {
                                                         >
                                                         </input>
                                                         <button className="search-botton">
-                                                            <img className="search-img" src="../icon/search.png"></img>
+                                                            <img className="search-img" src="../../icon/search.png"></img>
                                                         </button>
                                                     </span>
                                                 </form>
 
                                                 {/* 글 작성 항목 */}
                                                 <div className="text-center">
-                                                    <button type="button" className="btn-create " data-toggle="modal" data-target="#createModal">
+                                                    <button type="button" className="btn-create " data-toggle="modal" data-target="#createModal" 
+                                                    onClick={()=>{openCreateModal()}}
+                                                    >
                                                         {t("글쓰기")}
                                                     </button>
                                                 </div>  
                                                 <Create_modal
                                                     closeTimeoutMS={200}
-                                                    isOpen={openModal}
-                                                    onRequestClose={() => this.toggleModal()}
                                                     contentLabel="CreateModal"
                                                     
                                                 />
@@ -228,7 +242,7 @@ export default ({location, match}) => {
                                                 onClick={
                                                     () => {
                                                         Axios.get(`/get/boards/questions?page=${index+1}`).then(res => {
-                                                            console.log(res);
+                                                            // console.log(res);
                                                             setData(res.data);
                                                         })
                                                     }
