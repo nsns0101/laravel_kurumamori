@@ -8,7 +8,7 @@ export default ({
     user,
     onSubmit,
     setName,
-    setState,
+    setLocal,
     setAddress,
     setPostal,
     setDetailAddress,
@@ -16,14 +16,17 @@ export default ({
     setEmail,
     setPhone,
     name,
-    state,
+    local,
     address,
     postal,
     detail_address,
     access_code,
     email,
     phone,
-
+    
+    name2,
+    email2,
+    phone2,
     setName2,
     setEmail2,
     setPhone2,
@@ -130,7 +133,7 @@ export default ({
                                                     <p className="pl-2 py-3 mb-0" style={{color:"black", fontWeight:"600"}}> {t("NAME")} </p>
                                                 </div>
                                                 <div className="col-md-9 mx-0 px-0 my-0 py-0">
-                                                    <input className="pl-2" name="name" type="text" id="buy_name" style={{height:3.25+"em",width:100+"%", border:"1px solid #F0F0F0",backgroundColor:"#F0F0F0"}}
+                                                    <input className="pl-2" name="name2" type="text" id="buy_name" style={{height:3.25+"em",width:100+"%", border:"1px solid #F0F0F0",backgroundColor:"#F0F0F0"}}
                                                         onChange={ e => {
                                                             const {
                                                             target: { value }
@@ -140,7 +143,7 @@ export default ({
                                                         ref={register({
                                                             required: "필수 입력 사항입니다.",
                                                         })} 
-                                                        value={name}
+                                                        value={name2}
                                                     >    
                                                     </input>
                                                 </div>
@@ -152,7 +155,7 @@ export default ({
                                                     <p className="pl-2 py-3 mb-0" style={{color:"black", fontWeight:"600"}}> {t("EMAIL")} </p>
                                                 </div>
                                                 <div className="col-md-3 mx-0 px-0 my-0 py-0">
-                                                <input className="pl-2" name="email" type="text" id="buy_name" style={{height:3.25+"em",width:100+"%", border:"1px solid #F0F0F0",backgroundColor:"#F0F0F0"}}
+                                                <input className="pl-2" name="email2" type="text" id="buy_name" style={{height:3.25+"em",width:100+"%", border:"1px solid #F0F0F0",backgroundColor:"#F0F0F0"}}
                                                         onChange={ e => {
                                                             const {
                                                             target: { value }
@@ -162,7 +165,7 @@ export default ({
                                                         ref={register({
                                                             required: "필수 입력 사항입니다.",
                                                         })}
-                                                        value={email}
+                                                        value={email2}
                                                     >
                                                     </input>
                                                 </div>
@@ -171,7 +174,7 @@ export default ({
                                                     <p className="pl-2 py-3 mb-0" style={{color:"black", fontWeight:"600"}}>  {t("PHONE")} </p>
                                                 </div>
                                                 <div className="col-md-3 mx-0 px-0 my-0 py-0">
-                                                    <input className="pl-2" name="phone" type="text" id="buy_name" style={{height:3.25+"em",width:100+"%", border:"1px solid #F0F0F0",backgroundColor:"#F0F0F0"}}
+                                                    <input className="pl-2" name="phone2" type="text" id="buy_name" style={{height:3.25+"em",width:100+"%", border:"1px solid #F0F0F0",backgroundColor:"#F0F0F0"}}
                                                         onChange={ e => {
                                                             const {
                                                             target: { value }
@@ -181,7 +184,7 @@ export default ({
                                                         ref={register({
                                                             required: "필수 입력 사항입니다.",
                                                         })}
-                                                        value={phone}
+                                                        value={phone2}
                                                     ></input>
                                                 </div>
                                             </div>
@@ -195,14 +198,15 @@ export default ({
                                                 {/* 지역 */}
                                                 <div className="col-md-3 mx-0 px-0" style={{backgroundColor:"white"}}>
                                                     <p className="pl-2 py-3 mb-0" style={{color:"black", fontWeight:"600"}}> {t("PROVINCE/STATE")} </p>
+                                                    <p>{local}</p>
                                                 </div>
                                                 <div className="col-md-3 mx-0 px-0 my-0 py-0">
-                                                    <select id="buy_state" name="state" style={{height:3.25+"em",width:100+"%", border:"1px solid #F0F0F0",backgroundColor:"#F0F0F0"}}
+                                                    <select id="buy_local" name="local" style={{height:3.25+"em",width:100+"%", border:"1px solid #F0F0F0",backgroundColor:"#F0F0F0"}}
                                                         onChange={ e => {
                                                             const {
                                                             target: { value }
                                                             } = e;
-                                                            setState(value);
+                                                            setLocal(value);
                                                         }}
                                                         ref={register({
                                                             required: "필수 입력 사항입니다.",
@@ -226,7 +230,7 @@ export default ({
                                                         <option value="대전">대전</option>
                                                         <option value="울산">울산</option>
                                                         <option value="세종">세종</option> */}
-                    
+    
                                                         <option value="non">都道府県</option>
                                                         <option value="香川県">香川県</option>
                                                         <option value="鹿児島県">鹿児島県</option>
@@ -260,7 +264,7 @@ export default ({
                                                         <option value="山口県">山口県</option>
                                                         <option value="山梨県">山梨県</option>
                                                         <option value="愛媛県">愛媛県</option>
-                                                        <option defaultValue value="大阪府">大阪府</option>
+                                                        <option value="大阪府">大阪府</option>
                                                         <option value="大分県">大分県</option>
                                                         <option value="岡山県">岡山県</option>
                                                         <option value="沖縄県">沖縄県</option>

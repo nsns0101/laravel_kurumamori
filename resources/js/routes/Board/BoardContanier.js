@@ -30,21 +30,62 @@ export default ({history,location, match}) => {
     const [select, setSelect] = useState(""); 
     const [categoryHover, setCategoryHover] = useState("no"); 
 
+    const [content2, setContent2] = useState(""); 
+    const [commentSelect, setCommentSelect] = useState("");
+    const [commentContent, setCommentContent] = useState("");
+
     const {t} = useContext(AppContext);
 
-    const [modalIsOpen,setIsOpen] = React.useState(false);
+    const [modalIsOpen,setIsOpen] = useState(false);
 
-    const openModal = () => {
-        setIsOpen(true);
+    const [craeteModalIsOpen,setCraeteModalIsOpen] = useState(false);
+    const [showModalIsOpen,setShowModalIsOpen] = useState(false);
+    const [showModalIsState,setShowModalIsState] = useState(false);
+
+    const [showModalCommentIsState,setShowModalCommentIsState] = useState(false);
+
+
+    const openCreateModal = () => {
+        setCraeteModalIsOpen(true);
     }
-    const closeModal = () =>{
-        setIsOpen(false);
+    const closeCreateModal = () => {
+        setCraeteModalIsOpen(false);
     }
 
-    // const query = queryString.parse(location.pathname);
-    // console.log(location.pathname,"=쿼리");
-    // console.log(match.params.category,"=매치");
+    const openShowModal = () => {
+        setShowModalIsOpen(true);
+    }
+    const closeShowModal = () => {
+        setShowModalIsOpen(false);
+    }
     
+    const onShowEdit = () => {
+        setShowModalIsState(true);
+    }
+
+    const offShowEdit = () => {
+        setShowModalIsState(false);
+    }
+
+    const onCommnetEdit = () => {
+        setShowModalCommentIsState(true);
+        console.log("onCommnetEdit");
+        console.log(commentSelect);
+        Axios.get(`/get/boards/questions/${match.params.category}`).then(res => {                
+            setData(res.data);
+
+            if(res){
+            }
+            else{
+                console.log("Board index call fail");
+            }
+        });
+    }
+
+    const offCommentEdit = () => {
+        setShowModalCommentIsState(false);
+    }
+
     useEffect(() =>{
         console.log("board useEffect");
         if(action == "index"){
@@ -62,8 +103,9 @@ export default ({history,location, match}) => {
         }
     }, [location.pathname]);
     console.log(data)
+    console.log(data.comments)
 
-    //게시판 생성
+    //게시판 생성 S
     const onCreate = () => {
         const url = "/boards/questions";
         const body = {
@@ -79,20 +121,17 @@ export default ({history,location, match}) => {
         }
         return Axios.post(url, body, config).then(res => {
             if(res.data){
-                console.log("Board create call success")
-                history.push('/boards/questions')
-                window.location.reload();
-                // Axios.get(`/get/boards/questions`).then(res => {                
-                //     setData(res.data);
+                Axios.get(`/get/boards/questions/${match.params.category}`).then(res => {                
+                    setData(res.data);
     
-                //     if(res){
-                //         console.log("Board index call success");
-                //     }
-                //     else{
-                //         console.log("Board index call fail");
+                    if(res){
+                    }
+                    else{
+                        console.log("Board index call fail");
                         
-                //     }
-                // });
+                    }
+                });
+                closeCreateModal()
             }
             else{
                 console.log("Board create call fail");
@@ -100,7 +139,7 @@ export default ({history,location, match}) => {
         })
     }
 
-    //게시판 보기 조회수 올리기
+    //게시판 보기 조회수 올리기 S
     const onShow = () => {
         const url = "/onShow/boards/questions";
         const body = {
@@ -114,16 +153,13 @@ export default ({history,location, match}) => {
         }
         return Axios.post(url, body, config).then(res => {
             if(res.data){
-                console.log("Board onShow call success")
-                Axios.get(`/get/boards/questions`).then(res => {                
+                Axios.get(`/get/boards/questions/${match.params.category}`).then(res => {                
                     setData(res.data);
     
                     if(res){
-                        console.log("Board index call success");
                     }
                     else{
                         console.log("Board index call fail");
-                        
                     }
                 });
             }
@@ -133,7 +169,7 @@ export default ({history,location, match}) => {
         })
     }
 
-    //게시판 업데이트
+    //게시판 업데이트 S
     const onUpdate = () => {
         const url = `/boards/questions/${select}`;
         const body = {
@@ -148,9 +184,19 @@ export default ({history,location, match}) => {
                 }
         }
         return Axios.put(url, body, config).then(res => {
+            
             if(res.data){
-                console.log("Board update call success")
-                window.location.reload();
+                Axios.get(`/get/boards/questions/${match.params.category}`).then(res => {                
+                    setData(res.data);
+    
+                    if(res){
+                    }
+                    else{
+                        console.log("Board index call fail");
+                        
+                    }
+                });
+                offShowEdit()
             }
             else{
                 console.log("Board update call fail");
@@ -158,7 +204,7 @@ export default ({history,location, match}) => {
         })
     }
 
-    //게시판 삭제
+    //게시판 삭제 S
     const onDelete = () => {
         if(window.confirm("정말 삭제 하시겠습니까?")){
             const url = `/boards/questions/${select}`;
@@ -172,9 +218,16 @@ export default ({history,location, match}) => {
             }
             return Axios.delete(url,{data} ,config).then(res => {
                 if(res.data){
-                    console.log("Board delete call success");
-                    setAction('index')
-                    history.push('/boards/questions')
+                    Axios.get(`/get/boards/questions/${match.params.category}`).then(res => {                
+                        setData(res.data);
+        
+                        if(res){
+                        }
+                        else{
+                            console.log("Board index call fail");
+                            
+                        }
+                    });
                 }
                 else{
                     console.log("Board delete call fail");
@@ -182,8 +235,10 @@ export default ({history,location, match}) => {
             })
         }
     }
+
+    //검색 S
     const onSearch = () => {
-        const url = "/onSearch/boards/questions";
+        const url = `/onSearch/boards/questions/${search}`;
         const body = {
             search : search,
         }
@@ -192,21 +247,9 @@ export default ({history,location, match}) => {
                 'Content-Type' : 'application/json'
                 }
         }
-        return Axios.post(url, body, config).then(res => {
+        return Axios.get(url, body, config).then(res => {
+            setData(res.data);
             if(res.data){
-                console.log("Board onSearch call success")
-                history.push('/boards/questions')
-                // Axios.get(`/get/boards/questions`).then(res => {                
-                //     setData(res.data);
-    
-                //     if(res){
-                //         console.log("Board index call success");
-                //     }
-                //     else{
-                //         console.log("Board index call fail");
-                        
-                //     }
-                // });
             }
             else{
                 console.log("Board create call fail");
@@ -214,6 +257,103 @@ export default ({history,location, match}) => {
         })
     }
 
+    //댓글 생성 S
+    const onCreateComment = () => {
+        const url = "/boards/questions/comments";
+        const body = {
+            user_id : user.id,
+            content: content2,
+            select: select,
+        }
+        const config = {
+            headers: {
+                'Content-Type' : 'application/json'
+                }
+        }
+        return Axios.post(url, body, config).then(res => {
+            if(res.data){
+                Axios.get(`/get/boards/questions/${match.params.category}`).then(res => {                
+                    setData(res.data);
+                    if(res){
+                    }
+                    else{
+                        console.log("Board index call fail");
+                        
+                    }
+                });
+            }
+            else{
+                console.log("comment create call fail");
+            }
+        })
+    }
+
+    //댓글 삭제 S
+    const onCommnetDelete = () => {
+        if(window.confirm("정말 삭제 하시겠습니까?")){
+            const url = `/boards/questions/comments/${commentSelect}`;
+            const data = {
+                id:commentSelect,
+            }
+            const config = {
+                headers: {
+                    'Content-Type' : 'application/json'
+                    }
+            }
+            return Axios.delete(url,{data} ,config).then(res => {
+                if(res.data){
+                    Axios.get(`/get/boards/questions/${match.params.category}`).then(res => {                
+                        setData(res.data);
+        
+                        if(res){
+                            console.log("Board index call success");
+                        }
+                        else{
+                            console.log("Board index call fail");
+                            
+                        }
+                    });
+                }
+                else{
+                    console.log("comment delete call fail");
+                }
+            })
+        }
+    }
+
+    //댓글 수정 S
+    const onCommentUpdate = () => {
+        const url = `/boards/questions/comments/${commentSelect}`;
+        const body = {
+            id: commentSelect,
+            user_id : user.id,
+            content: commentContent,
+        }
+        const config = {
+            headers: {
+                'Content-Type' : 'application/json'
+                }
+        }
+        return Axios.put(url, body, config).then(res => {
+            if(res.data){
+                console.log("comment update call success")
+                Axios.get(`/get/boards/questions/${match.params.category}`).then(res => {                
+                    setData(res.data);
+    
+                    if(res){
+                    }
+                    else{
+                        console.log("Board index call fail");
+                    }
+                });
+                offCommentEdit()
+            }
+            else{
+                console.log("comment update call fail");
+            }
+        })
+    }
+    
     return (
         data ? 
         <BoardContext.Provider value={{
@@ -246,10 +386,34 @@ export default ({history,location, match}) => {
             setCategoryHover,
             t,
 
-            openModal,
-            closeModal,
             modalIsOpen,
-            setIsOpen
+            setIsOpen,
+
+            setContent2,
+            content2,
+            onCreateComment,
+            onCommnetDelete,
+            setCommentSelect,
+            setCommentContent,
+            onCommentUpdate,
+
+            openCreateModal,
+            closeCreateModal,
+            craeteModalIsOpen,
+
+            openShowModal,
+            closeShowModal,
+            showModalIsOpen,
+
+            onShowEdit,
+            offShowEdit,
+            showModalIsState,
+
+            showModalCommentIsState,
+            setShowModalCommentIsState,
+            onCommnetEdit,
+            offCommentEdit
+
         }}>
             {action == "edit" ? <Edit/>:""}
             {action == "show" ? <Show/>:""}

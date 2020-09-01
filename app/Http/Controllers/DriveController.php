@@ -107,38 +107,37 @@ class DriveController extends Controller
             //     ->get();
             
             //당일 운전점수
-            $score_all = 0; //총 점수
-            $score_sudden_acceleration = 100; //급 가속 점수
-            $score_sudden_stop = 100; //급 정거 점수
-            $score_sleep = 100;   //졸음 점수
-            $score_report = 100;   //사고 점수
-            $mul = 1;       //감소 배수(급가속, 급감속은 30분 ~ 1시간 운전시 2배 적용, 30분 미만시 5배적용)
-            $add_score = 0; //추가 점수
+            $score_all = 0;                     //총 점수
+            $score_sudden_acceleration = 100;   //급 가속 점수
+            $score_sudden_stop = 100;           //급 정거 점수
+            $score_sleep = 100;                 //졸음 점수
+            $score_report = 100;                //사고 점수
+            $mul = 1;                           //감소 배수(급가속, 급감속은 30분 ~ 1시간 운전시 2배 적용, 30분 미만시 5배적용)
+            $add_score = 0;                     //추가 점수
 
             //운전시간이 1800초 미만일시 감소점수 5배
-            // if($day_5_sec[0] < 1800){
-            //     $mul = 5;
-            // }
+            if($day_5_sec[0] < 1800){
+                $mul = 5;
+            }
 
             //운전시간이 1800~3600초일시 감소점수 2배
-            // elseif($day_5_sec[0] < 3600){
-            //     $mul = 2;
-            // }
+            elseif($day_5_sec[0] < 3600){
+                $mul = 2;
+            }
 
             //운전시간이 3600초 이상일 경우 증가점수 부여
             //증가점수 기준 : 1시간에서 +10분 운전당  => + 점수 4항목 +2점(8점 = 총점수 2점)
-            // else{
-            //     $add_score = (($day_5_sec[0]-3600)/600) *2;
-            // }
+            else{
+            }
 
-            //점수 감산
+            //오늘의 운전 점수 감산
             // $score_sudden_acceleration -= ($day_5_danger_count[0]["count_sudden_acceleration"] * (40 * $mul)) - $add_score;
             // $score_sudden_stop -= ($day_5_danger_count[0]["count_sudden_stop"] * (40 * $mul)) - $add_score;
             // $score_sleep -= ($day_5_danger_count[0]["count_sleep"] * (100 * $mul)) - $add_score;
             // $score_report -= ($day_5_danger_count[0]["count_report"] * (100 * $mul)) - $add_score;
-            $score_sudden_acceleration -= ($day_5_danger_count[0]["count_sudden_acceleration"] * (40 * $mul));
-            $score_sudden_stop -= ($day_5_danger_count[0]["count_sudden_stop"] * (40 * $mul));
-            $score_sleep -= ($day_5_danger_count[0]["count_sleep"] * (50 * $mul));
+            $score_sudden_acceleration -= ($day_5_danger_count[0]["count_sudden_acceleration"] * (55 * $mul));
+            $score_sudden_stop -= ($day_5_danger_count[0]["count_sudden_stop"] * (60 * $mul));
+            $score_sleep -= ($day_5_danger_count[0]["count_sleep"] * (80 * $mul));
             $score_report -= ($day_5_danger_count[0]["count_report"] * (100 * $mul));
             //총 점수
             $score = [$score_sudden_acceleration, $score_sudden_stop, $score_sleep, $score_report];
@@ -167,7 +166,7 @@ class DriveController extends Controller
                     $score[$i] = 0;
                 }
             }
-            
+            \Log::info("선택한날짜");
             // \Log::info($score_sudden_acceleration);
             // \Log::info("선택 날짜 : " . $request->date);
             \Log::info("선택한 날짜의 정보 :", $drive_info);

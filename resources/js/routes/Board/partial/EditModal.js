@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 import moment from "moment";
 import { useForm } from "react-hook-form";
 import Axios from "axios";
+import "../Board.css";
 
 export default ({ 
 
@@ -34,7 +35,7 @@ export default ({
                     value.id == select ? 
                     <div key={index} className="modal fade show" id="editModal" tabIndex="-1" role="dialog" aria-labelledby="editModal" style={{backgroundColor: "#000000cc"}}>
                         <div className="modal-dialog" role="document">
-                            <div className="modal-content">
+                            <div className="modal-content modal-80size">
                                 <div className="container">
                                     <div className="modal-header">
                                         <h1 className="">{t("글 수정")}</h1>
@@ -70,7 +71,7 @@ export default ({
                                         <hr/>
                                         <div className="form-group d-flex justify-content-end pb-3">
                                             <span className="pr-3">
-                                                <button className="btn-nomal" type="submit">{t("저장하기")}</button>
+                                                <button className="btn-create" type="submit">{t("저장하기")}</button>
                                             </span>
                                         </div>
                                     </form> 

@@ -14,7 +14,7 @@ class DemoSeeder extends Seeder
                 // 시연 유저
                 \App\User::create([
                     'email' => "rla@dudwls.com",
-                    'password' => bcrypt('password'),
+                    'password' => bcrypt('password123'),
                     'name' => "김영진",
                     'birth' => "1997/06/12",
                     'gender' => "남",
@@ -61,10 +61,10 @@ class DemoSeeder extends Seeder
                 //시연 운전감지(0, 0, 1, 1)
                 $drive = \App\Drive::whereUser_id($user_id)->get();
                 
-                $json = json_decode(file_get_contents(public_path('\json\google.json')), true);
+                $json = json_decode(file_get_contents(public_path('json/google.json')), true);
                 //최근날짜
                 // for($i = 0; $i < count($json); $i++){
-                for($i = 0; $i < 3; $i++){
+                for($i = 0; $i < 4; $i++){
                     \App\Drive_detection::create([
                         'user_id' => $user_id,
                         'drive_id' => $drive[0]->id,

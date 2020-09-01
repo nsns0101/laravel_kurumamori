@@ -79,21 +79,28 @@
 }
 
 #supplementary-tab .search-box{
-    padding-top: 0.75em;
-    padding-bottom: 0.75em;
-    padding-left: 1.75em;
-    padding-right: 1.75em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    font-size: 0.75em;
+    border-radius: 0.5em 0 0 0.5em;
     display: table;
+    width: 20em;
 }
 #supplementary-tab .search-botton{
     overflow: hidden;
     box-sizing: border-box;
-    border: 1px solid #424242;
+    border: 1px solid black;
     /* background-color: #424242; */
     text-align: center;
     text-decoration: none;
     display: table-cell;
+    text-align: center;
+    text-decoration: none;
     vertical-align: middle;
+    background-color: #6682f6;
+    border-radius: 0 0.5em 0.5em 0;
 }
 #supplementary-tab .search-botton::before{
     content: ""; 
@@ -101,7 +108,6 @@
     width: 1px; 
     height: 100%;
     margin-right: 0; 
-    vertical-align: middle;
 }
 #supplementary-tab .search-botton:hover{
     border: 1px solid #424242;
@@ -110,32 +116,32 @@
 #supplementary-tab .search-img{
     display: inline-block; 
     vertical-align: middle;
-    width:60%;
-    height: 60%;
+    width:40%;
+    height: 40%;
 }
 
-#supplementary-tab .btn-create{
+.btn-create{
     display: inline-block;
     font-weight: 700;
-    color: #858796;
+    color: white;
     text-align: center;
     text-decoration: none;
     vertical-align: middle;
-    background-color: #424242;
+    background-color: #6682f6;
     border: 1px solid transparent;
     padding: 0.375rem 0.75rem;
-    font-size: 1rem;
     line-height: 1.5;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     border: 1px solid #34394d;
-    padding-left: 1.75em;
-    padding-right: 1.75em;
-    padding-top: 0.75em;
-    padding-bottom: 0.75em;
-    font-size: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    font-size: 0.75em;
+    border-radius: 0.5em;
 }
-#supplementary-tab .btn-create:hover{
-    color: white;
+.btn-create:hover{
+    color: black;
     background-color: #002EF0;
 }
 
@@ -209,4 +215,29 @@
 .btn-nomal:hover{
     color: white;
     background-color: #002EF0;
+}
+
+.modal-dialog .modal-80size {
+    width: 120%;
+    height: 120%;
+    margin: 0;
+    padding: 0;
+}
+
+.modal-content .modal-80size {
+    height: auto;
+    min-height: 120%;
+}
+
+.modal.modal-center {
+    text-align: center; 
+}
+
+@media screen and (min-width: 768px) {
+    .modal.modal-center:before {
+        display: inline-block;
+        vertical-align: middle;
+        content: " ";
+        height: 100%;
+    }   
 }

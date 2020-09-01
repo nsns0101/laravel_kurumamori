@@ -11,6 +11,7 @@ export default (
         email2,
         phone,
         phone2,
+        local,
         address,
         detail_address,
         postal,
@@ -18,6 +19,8 @@ export default (
     }
     ) => {
     const {t} = useContext(AppContext);
+    console.log(user.name);
+    console.log(t(user.name));
     return (
         // css 개선 
         <Fragment>
@@ -29,10 +32,10 @@ export default (
                                 <img className="" src="/images/buy/check.png"></img>
                             </div>
                             <h4 style={{fontSize:"3em", color:"black",fontWeight:"900"}}>{t("구매해주셔서 감사합니다.")}</h4>
-                            <h4 style={{fontSize:"1.5em",fontWeight:"900"}}>{user.name}{t("님의 구매 내역입니다.")}</h4>
+                            <h4 style={{fontSize:"1.5em",fontWeight:"900"}}>{t(user.name)}{t("님의 구매 내역입니다.")}</h4>
                         </div>
-                        <div className="row justify-content-center mx-0 px-0  col-sm-10 col-lg-10 py-1 mb-4">
-                            <table class="table">
+                        <div className="row justify-content-center mx-0 px-0 py-1 mb-2">
+                            <table className="table col-sm-12 col-lg-12">
                                 <thead  className="mx-2 my-2">
                                     <tr>
                                         <th scope="col">{t("구매자 정보")}</th>
@@ -108,7 +111,7 @@ export default (
                                 <tbody className="mx-2 my-2">
                                     <tr>
                                         <th scope="row">{t("수령장소")}</th>
-                                        <td>{address} {detail_address}</td>
+                                        <td> {local} {address} {detail_address}</td>
                                         <td></td>
                                         <td></td>
                                     </tr>
@@ -123,11 +126,12 @@ export default (
                         </div>
 
                         <div className="col-sm-12 col-lg-10">
-                            <div className="pt-4">
+                            <div className="pt-2">
                                 <div className="pt-5 pb-3">
                                     <img className="" src="/images/buy/check2.png"></img>
                                 </div>
                                 <p style={{fontSize:"2.7em", color:"black",fontWeight:"900"}}>{t("クルマモリ9 사용을 위해서 미리 준비해주세요!")}</p>
+                                
                             </div>
                         </div>
 

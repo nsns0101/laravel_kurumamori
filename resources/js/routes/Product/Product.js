@@ -28,13 +28,13 @@ export default () => {
 
                                 <span className="px-4">
                                     <ScrollAnimation animateIn='fadeInRight' delay={500} animateOnce={true}>
-                                        <Link to="/products/more" id="more" style={{fontSize:1.4+"em",color:"blue",fontWeight:900,textDecoration:"none"}} onClick={()=>{window.scrollTo(0, 0)}} >{t("더 알아보기 >")}</Link>
+                                        <Link to="/products/more" id="more" style={{fontSize:1.4+"em",color:"blue",fontWeight:900,textDecoration:"none",textShadow:"#FEFEFE 0px 0px 1.4em"}} onClick={()=>{window.scrollTo(0, 0)}} >{t("더 알아보기 >")}</Link>
                                     </ScrollAnimation>
                                 </span>
                     
                                 <span className="px-4">
                                     <ScrollAnimation animateIn='fadeInLeft' delay={500} animateOnce={true}>
-                                        <Link to="/products/buy" id="buy" style={{fontSize:1.4+"em",color:"blue",fontWeight:900,textDecoration:"none"}} onClick={()=>{window.scrollTo(0, 0)}}>{t("구입하기 >")}</Link>
+                                        <Link to="/products/buy" id="buy" style={{fontSize:1.4+"em",color:"blue",fontWeight:900,textDecoration:"none",textShadow:"#FEFEFE 0px 0px 1.4em"}} onClick={()=>{window.scrollTo(0, 0)}}>{t("구입하기 >")}</Link>
                                     </ScrollAnimation>
                                 </span>
                         </div>
