@@ -242,7 +242,7 @@ export default ({
                                                                 data.comments[index].data.map( (value2, index2) => {
                                                                     return(
                                                                         <div key={index2}>
-                                                                            {showModalCommentIsState == true && value2.id == 46 ? 
+                                                                            {showModalCommentIsState == true && value2.id == commentSelect ? 
                                                                                 <div className="card">
                                                                                     <form onSubmit={handleSubmit(onCommentUpdate)}>
                                                                                         <div className="px-3">
@@ -275,9 +275,6 @@ export default ({
                                                                                 <div className="card">
                                                                                     <div className="px-2 py-3">
                                                                                         <h4 className="px-0 py-0">{value2.content} 내용</h4>
-                                                                                        <h4 className="px-0 py-0">{value2.id} 코멘트 아이디 </h4>
-                                                                                        <h4 className="px-0 py-0">{commentSelect} 선택 코멘트 아이디</h4>
-                                                                                        <h4 className="px-0 py-0">{showModalCommentIsState} 코멘트 상태</h4>
                                                                                         {user.id == value2.user_id ?
                                                                                             <div className="row mx-0 px-0">
                                                                                                 <span className="pr-2">
