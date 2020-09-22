@@ -47,32 +47,51 @@ class TestController extends Controller
         $result_address_url = "https://www.google.com/maps/search/?api=1&query={$latitude},{$longitude}";
 
         $user_data = 
-        "-----신고자 정보-----\n"
-        ."이름 : ".\App\User::find(12)->name."\n"
-        ."생년월일 : ".\App\User::find(12)->birth." | 성별 : ".\App\User::find(12)->gender."\n"
-        ."전화번호 : ".\App\User::find(12)->phone."\n"
-        ."-----의료 정보-----\n"
-        ."보호자 전화번호 : ".\App\Medical_info::whereUser_id(12)->first()->guardian_phone."\n"
-        ."혈액형 : ".\App\Medical_info::whereUser_id(12)->first()->blood_type."\n"
-        ."기타메시지 : ".\App\Medical_info::whereUser_id(12)->first()->report_request."\n"
-        ."-----병력-----\n"
-        .substr($sickness , 0, -1)."경북대병원\n"
-        ."-----과거 병력-----\n"
-        .substr($past_sickness , 0, -1)."\n"
-        ."-----사고 발생 지점-----\n"
-        .$result_address->results[0]->formatted_address."\n"
+        "-----通報者情報-----\n"
+        ."名前 : キム·ヨンジン"."\n"
+        ."生年月日 : 1997/06/12"." | 性別 : 男"."\n"
+        ."電話番号 : 010-1234-5678"."\n"
+        ."-----医療情報-----\n"
+        ."保護者電話番号 : 010-8765-4321"."\n"
+        ."血液型 : A型"."\n"
+        ."その他のメッセージ : 念のためインスリンを持ってきてください。"."\n"
+        ."-----現在の病気-----\n"
+        ."現在の病気 : 糖尿 | 服用している薬 : インスリン | 症状 : 糖尿がひどい方です。"."\n"
+        ."-----過去の病歴-----\n"
+        ."過去の病歴 : 癌 | 補足説明 : 胃癌手術の経歴があります。"."\n"
+        ."-----事故発生地点-----\n"
+        ."大韓民国大邱広域市北区福峴洞339-32"."\n"
         .$result_address_url
         ;
+        // $user_data = 
+        // "-----通報者情報-----\n"
+        // ."名前 : ".\App\User::find(12)->name."\n"
+        // ."生年月日 : ".\App\User::find(12)->birth." | 성별 : ".\App\User::find(12)->gender."\n"
+        // ."電話番号 : ".\App\User::find(12)->phone."\n"
+        // ."-----医療情報-----\n"
+        // ."保護者電話番号 : ".\App\Medical_info::whereUser_id(12)->first()->guardian_phone."\n"
+        // ."血液型 : ".\App\Medical_info::whereUser_id(12)->first()->blood_type."\n"
+        // ."その他のメッセージ : ".\App\Medical_info::whereUser_id(12)->first()->report_request."\n"
+        // ."-----병력-----\n"
+        // .substr($sickness , 0, -1)."경북대병원\n"
+        // ."-----과거 병력-----\n"
+        // .substr($past_sickness , 0, -1)."\n"
+        // ."-----事故発生地点-----\n"
+        // .$result_address->results[0]->formatted_address."\n"
+        // .$result_address_url
+        // ;
+
+
         
         $fields = new \stdClass();
         $message = new \stdClass();
         // $message->to = "01035989003";
         // $message->to = "01023560525";
         // $message->to = "01027794593";
-        $message->to = "01073746119";
-        // $message->to = "01050039201";
+        // $message->to = "01073746119";
+        $message->to = "01050039201";
         $message->from = "01050039201";
-        $message->subject = "[kurumamori119 신고]";
+        $message->subject = "[kurumamori119自動通報]";
         $message->text = $user_data;
         $message->type = "LMS";
         $fields->message = $message;

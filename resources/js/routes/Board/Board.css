@@ -229,6 +229,21 @@
     min-height: 120%;
 }
 
+
+.modal-dialog .modal-120size {
+    position: fixed;
+    width: 80%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    margin-left: -250px;
+}
+
+.modal-content .modal-120size {
+    height: auto;
+    min-height: 100%;
+}
+
 .modal.modal-center {
     text-align: center; 
 }
@@ -240,4 +255,25 @@
         content: " ";
         height: 100%;
     }   
+}
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #000000;
+  }
+
+.scroll{
+    max-height: 200px;
+    overflow-y:scroll;
+}
+.scroll-box{
+    position: absolute;
+    overflow: hidden;
+}
+.comment-text{
+    font-size: 1em;
+    color: black;
 }

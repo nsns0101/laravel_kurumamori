@@ -63,13 +63,13 @@ export default ({
                     {data && data.questions.data  ? data.questions.data.map( (value, index) => {
                         return (
                             value.id == select ? 
-                            <div key={index} className="modal fade show" id="showModal" tabIndex="-1" role="dialog" aria-labelledby="showModal" style={{backgroundColor: "#000000cc"}}>
-                                <div className="modal-dialog modal-80size">
-                                    <div className="modal-content modal-80size" >
+                            <div key={index} className="modal fade show" id="showModal" data-backdrop="false" tabIndex="-1" role="dialog" aria-labelledby="showModal" style={{backgroundColor: "#000000cc"}}>
+                                <div className="modal-dialog modal-120size">
+                                    <div className="modal-content modal-120size" >
                                         <div className="row justify-content-center">
                                             <div className="col-sm-12 col-lg-12 py-2">
                                                 <div className="container">
-                                                    <div className="row justify-content-between mx-0 mr-0">
+                                                    <div className="row justify-content-between mx-0 mr-0 mt-2">
                                                         <div>
                                                             <span><Link to="/boards/questions/all" onClick={()=>{setAction("index")}} className="show-home">HOME</Link></span>
                                                             <span className="question-show-slicer"> > </span>
@@ -141,9 +141,9 @@ export default ({
                                                     <div className="px-2">
                                                         <form onSubmit={handleSubmit(onCreateComment)}>
                                                             <div className="form-group">
-                                                                <label className="">댓글 작성</label>
+                                                                <label className="">{t("댓글 작성")}</label>
                                                                 <textarea className="form-control" name="content" id="content" cols="30" rows="5"
-                                                                defaultValue={"댓글을 작성해주세요"}
+                                                                placeholder={t("댓글을 입력해 주세요.")}
                                                                 onChange={ e => {
                                                                     const {
                                                                     target: { value }
@@ -167,6 +167,7 @@ export default ({
                                                                         <div className="card">
                                                                             <div className="px-2 py-3">
                                                                                 <h4 className="px-0 py-0">{value2.content}</h4>
+                                                                                <h4 className="px-0 py-0">{value2.id}</h4>
                                                                                 { user.id == value2.user_id ?
                                                                                     <div className="row mx-0 px-0">
                                                                                         <span className="pr-2">
@@ -216,9 +217,9 @@ export default ({
                                                         <div className="px-2">
                                                             <form onSubmit={handleSubmit(onCreateComment)}>
                                                                 <div className="form-group">
-                                                                    <label className="">댓글 작성</label>
-                                                                    <textarea className="form-control" name="content" id="content" cols="30" rows="5"
-                                                                        defaultValue={"댓글을 작성해주세요"}
+                                                                    <label className="">{t("댓글 작성")}</label>
+                                                                    <textarea className="form-control" name="content" id="content" cols="30" rows="4"
+                                                                        placeholder={t("댓글을 입력해 주세요.")}
                                                                         onChange={ e => {
                                                                             const {
                                                                             target: { value }
@@ -237,78 +238,91 @@ export default ({
                                                         </div>
                                                         {/* 댓글*/}
                                                         <div className="px-2">
-                                                        { 
-                                                            data && data.comments[index].data  ? 
-                                                                data.comments[index].data.map( (value2, index2) => {
-                                                                    return(
-                                                                        <div key={index2}>
-                                                                            {showModalCommentIsState == true && value2.id == commentSelect ? 
-                                                                                <div className="card">
-                                                                                    <form onSubmit={handleSubmit(onCommentUpdate)}>
-                                                                                        <div className="px-3">
-                                                                                            <div className="form-group">
-                                                                                                <label className="">{t("내용")}</label>
-                                                                                                <textarea className="form-control" name="content" id="content" cols="30" rows="5"
-                                                                                                defalutValue={value2.content}
-                                                                                                onChange={ e => {
-                                                                                                    const {
-                                                                                                    target: { value }
-                                                                                                    } = e;
-                                                                                                    setCommentContent(value);
-                                                                                                }}
-                                                                                                ></textarea>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <hr/>
-                                                                                        <div className="form-group d-flex justify-content-end pb-3">
-                                                                                            {/* 글써지면 꺼지게 고쳐야함 */}
-                                                                                            <span className="pr-3">
-                                                                                                <button className="btn-create" type="submit">{t("저장하기")}</button>
-                                                                                            </span>
-                                                                                            <span className="pr-3">
-                                                                                                <button className="btn-create" type="buttom" onClick={()=>{offCommentEdit()}}>{t("뒤로가기")}</button>
-                                                                                            </span>
-                                                                                        </div>
-                                                                                    </form>
-                                                                                </div>
-                                                                            : 
-                                                                                <div className="card">
-                                                                                    <div className="px-2 py-3">
-                                                                                        <h4 className="px-0 py-0">{value2.content} 내용</h4>
-                                                                                        {user.id == value2.user_id ?
-                                                                                            <div className="row mx-0 px-0">
-                                                                                                <span className="pr-2">
-                                                                                                    <div className="text-center">
-                                                                                                        <button type="button" className="btn-create" data-toggle="modal" data-target="#editCommentModal" 
-                                                                                                        onClick={()=>{onCommnetEdit(), setCommentSelect(value2.id)} }
-                                                                                                        >
-                                                                                                        {t("수정하기")}
-                                                                                                        </button>
+                                                            <div className="scroll">
+                                                                { 
+                                                                    data && data.comments[index].data  ? 
+                                                                        data.comments[index].data.map( (value2, index2) => {
+                                                                            return(
+                                                                                <div key={index2}>
+                                                                                    {showModalCommentIsState == true && value2.id == commentSelect ? 
+                                                                                        //댓글 변경 폼
+                                                                                        <div className="card">
+                                                                                            <form onSubmit={handleSubmit(onCommentUpdate)}>
+                                                                                                <div className="px-3">
+                                                                                                    <div className="form-group">
+                                                                                                        {/* <label className="">{t("내용")}</label> */}
+                                                                                                        <textarea className="form-control" name="content" id="content" cols="30" rows="5"
+                                                                                                        placeholder={value2.content}
+                                                                                                        onChange={ e => {
+                                                                                                            const {
+                                                                                                            target: { value }
+                                                                                                            } = e;
+                                                                                                            setCommentContent(value);
+                                                                                                        }}
+                                                                                                        ></textarea>
                                                                                                     </div>
-                                                                                                </span>
-                                                                                                <span className="pr-2">
-                                                                                                    <form onSubmit={handleSubmit(onCommnetDelete)}>
-                                                                                                        <button className="btn-create" onClick={()=>{setCommentSelect(value2.id)} }>{t("삭제하기")}</button>    
-                                                                                                    </form>
-                                                                                                </span>  
+                                                                                                </div>
+                                                                                                <hr/>
+                                                                                                <div className="form-group d-flex justify-content-end pb-3">
+                                                                                                    <span className="pr-3">
+                                                                                                        <button className="btn-create" type="submit">{t("저장하기")}</button>
+                                                                                                    </span>
+                                                                                                    <span className="pr-3">
+                                                                                                        <button className="btn-create" type="buttom" onClick={()=>{offCommentEdit()}}>{t("돌아가기")}</button>
+                                                                                                    </span>
+                                                                                                </div>
+                                                                                            </form>
+                                                                                        </div>
+                                                                                    :
+                                                                                        // 댓글 폼
+                                                                                        <div className="card">
+                                                                                            <div className="px-2 py-3">
+                                                                                                <div className="d-flex justify-content-between">
+                                                                                                    <div className="d-flex align-middle">
+                                                                                                        <span>
+                                                                                                            <h4 className="px-0 py-0 comment-text">{value2.user_id} - </h4>
+                                                                                                        </span>
+                                                                                                        <span>
+                                                                                                        <h4 className="px-0 py-0 comment-text"> {value2.content}</h4>
+                                                                                                        </span>
+                                                                                                    </div>
+                                                                                                {user.id == value2.user_id ?
+                                                                                                    <div className="row mx-0 px-0">
+                                                                                                        <span className="pr-2">
+                                                                                                            <div className="text-center">
+                                                                                                                <button type="button" className="btn-create" data-toggle="modal" data-target="#editCommentModal" 
+                                                                                                                onClick={()=>{onCommnetEdit(), setCommentSelect(value2.id)} }
+                                                                                                                >
+                                                                                                                {t("수정하기")}
+                                                                                                                </button>
+                                                                                                            </div>
+                                                                                                        </span>
+                                                                                                        <span className="pr-2">
+                                                                                                            <form onSubmit={handleSubmit(onCommnetDelete)}>
+                                                                                                                <button className="btn-create" onClick={()=>{setCommentSelect(value2.id)} }>{t("삭제하기")}</button>    
+                                                                                                            </form>
+                                                                                                        </span>  
+                                                                                                    </div>
+                                                                                                    
+                                                                                                :
+                                                                                                    //버튼 안보일 때
+                                                                                                    <div></div>
+                                                                                                }
+
+                                                                                                </div>
                                                                                             </div>
-                                                                                            
-                                                                                        :
-                                                                                            //버튼 안보일 때
-                                                                                            <div></div>
-                                                                                        }
-                                                                                    </div>
+                                                                                        </div>
+                                                                                    }
                                                                                 </div>
-                                                                            }
-                                                                        </div>
-                                                                    )
-                                                                    
-                                                                })
-                                                            :
-                                                                <div>comment is no</div>
-                                                        }
+                                                                            )
+                                                                            
+                                                                        })
+                                                                    :
+                                                                        <div>comment is no</div>
+                                                                }
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
                                             }
                                             
                                         </div>

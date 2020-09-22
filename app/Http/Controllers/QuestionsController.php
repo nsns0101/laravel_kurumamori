@@ -151,13 +151,20 @@ class QuestionsController extends Controller
             $comment = $query2->where('board_id','=',$questions[$i]->id)->orderBy('id', 'desc')->paginate(10);
             array_push($comments, $comment);
         }
+        // $comment_users = array();
+        // for($i = 0; $i < count($comments); $i++){
+        //     $query3 = new \App\User;
+        //     $comment_user = $query3->where('id','=',$comments[$i]->id)->orderBy('id', 'desc')->paginate(10);
+        //     array_push($comment_users, $comment_user);
+        // }
 
 
         return response()->json([
             'questions' => $questions,
             'category' => $category,
             'board_user' => $board_user,
-            'comments' => $comments
+            'comments' => $comments,
+            // 'comment_user' =>$comment_users
         ]);
     }
 

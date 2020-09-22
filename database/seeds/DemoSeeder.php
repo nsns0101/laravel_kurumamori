@@ -107,6 +107,5 @@ class DemoSeeder extends Seeder
                 //         'created_at' => $drive[$i]->created_at,
                 //     ]);
                 // }
-
     }
 }

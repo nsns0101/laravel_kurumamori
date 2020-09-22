@@ -35,7 +35,7 @@ export default ({
     return (
         craeteModalIsOpen == true ?
         <form onSubmit={handleSubmit(onCreate)}>
-            <div className="modal fade show" id="createModal" tabIndex="-1" role="dialog" aria-labelledby="createModal" style={{backgroundColor: "#000000cc"}}>
+            <div className="modal fade show" id="createModal" tabIndex="-1" role="dialog" data-backdrop="false" aria-labelledby="createModal" style={{backgroundColor: "#000000cc"}}>
                 <div className="modal-dialog modal-80size" role="document">
                     <div className="modal-content modal-80size">
                         <div className="modal-header">
@@ -59,6 +59,24 @@ export default ({
                                             />
                                     </div>
                                     <div>
+                                        { user && user.id ==3 ? 
+                                            <select className="form-group form-control-sm" name="category_id" id="category_id"
+                                            onChange={ e => {
+                                                const {
+                                                target: { value }
+                                                } = e;
+                                                setCategory(value);
+                                            }}>
+    
+                                                <option value="공지사항">{t("공지사항")}</option>
+                                                <option value="업데이트">{t("업데이트")}</option>
+                                                <option value="제품구매">{t("제품구매")}</option>
+                                                <option value="제품오류">{t("제품오류")}</option>
+                                                <option value="소프트웨어">{t("소프트웨어")}</option>
+                                                <option value="기타문의">{t("기타문의")}</option>
+    
+                                            </select>
+                                        : 
                                         <select className="form-group form-control-sm" name="category_id" id="category_id"
                                         onChange={ e => {
                                             const {
@@ -66,18 +84,12 @@ export default ({
                                             } = e;
                                             setCategory(value);
                                         }}>
-                                            {/* {
-                                            user && user.id == 3 ? `` : 
-                                            `<option defaultValue>공지사항</option>
-                                            <option>업데이트</option>`
-                                            } */}
-                                            <option value="공지사항">{t("공지사항")}</option>
-                                            <option value="업데이트">{t("업데이트")}</option>
                                             <option value="제품구매">{t("제품구매")}</option>
                                             <option value="제품오류">{t("제품오류")}</option>
                                             <option value="소프트웨어">{t("소프트웨어")}</option>
                                             <option value="기타문의">{t("기타문의")}</option>
-                                        </select>
+
+                                        </select>}
                                     </div>
                                     <div className="form-group">
                                         <label className="">{t("본문")}</label>
