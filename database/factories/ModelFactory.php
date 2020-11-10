@@ -244,12 +244,12 @@ $factory->define(App\Drive_detection::class, function (Faker $faker) {
         'user_id' => $userId,
         'drive_id' => $rand_drive->id,
         //한국 시드 데이터
-        // 'latitude' => rand(35, 37) . '.' . rand(1000, 9999999),     //세로
-        // 'longitude' => rand(127, 128) . '.' . rand(200000, 900000),  //가로
+        'latitude' => rand(35, 37) . '.' . rand(1000, 9999999),     //세로
+        'longitude' => rand(127, 128) . '.' . rand(200000, 900000),  //가로
         
         // 일본 시드 데이터
-        'latitude' => rand(35, 36) . '.' . rand(5000000, 999999999),     //세로
-        'longitude' => rand(137, 139) . '.' . rand(2263219, 9000000),  //가로
+        // 'latitude' => rand(35, 36) . '.' . rand(5000000, 999999999),     //세로
+        // 'longitude' => rand(137, 139) . '.' . rand(2263219, 9000000),  //가로
         
         'bool_report' => $random[0],
         'bool_sudden_acceleration' => $random[1],

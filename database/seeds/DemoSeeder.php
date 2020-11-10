@@ -61,22 +61,22 @@ class DemoSeeder extends Seeder
                 //시연 운전감지(0, 0, 1, 1)
                 $drive = \App\Drive::whereUser_id($user_id)->get();
                 
-                $json = json_decode(file_get_contents(public_path('json/google.json')), true);
-                //최근날짜
-                // for($i = 0; $i < count($json); $i++){
-                for($i = 0; $i < 4; $i++){
-                    \App\Drive_detection::create([
-                        'user_id' => $user_id,
-                        'drive_id' => $drive[0]->id,
-                        'latitude' => $json["$i"]["latitude"],     //세로
-                        'longitude' => $json["$i"]["longitude"],  //가로
-                        'bool_report' => $json["$i"]["bool_report"],
-                        'bool_sudden_acceleration' => $json["$i"]["bool_sudden_acceleration"],
-                        'bool_sudden_stop' => $json["$i"]["bool_sudden_stop"],
-                        'bool_sleep' => $json["$i"]["bool_sleep"],
-                        'created_at' => $drive[0]->created_at,
-                    ]);
-                }
+                // $json = json_decode(file_get_contents(public_path('json/google.json')), true);
+                // //최근날짜
+                // // for($i = 0; $i < count($json); $i++){
+                // for($i = 0; $i < 4; $i++){
+                //     \App\Drive_detection::create([
+                //         'user_id' => $user_id,
+                //         'drive_id' => $drive[0]->id,
+                //         'latitude' => $json["$i"]["latitude"],     //세로
+                //         'longitude' => $json["$i"]["longitude"],  //가로
+                //         'bool_report' => $json["$i"]["bool_report"],
+                //         'bool_sudden_acceleration' => $json["$i"]["bool_sudden_acceleration"],
+                //         'bool_sudden_stop' => $json["$i"]["bool_sudden_stop"],
+                //         'bool_sleep' => $json["$i"]["bool_sleep"],
+                //         'created_at' => $drive[0]->created_at,
+                //     ]);
+                // }
 
                 // \App\Drive_detection::create([
                 //     'user_id' => $user_id,

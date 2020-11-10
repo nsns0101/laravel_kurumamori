@@ -65,7 +65,7 @@ export default () => {
                                         <h3 style={main_text}>OUR TEAM</h3>
                                         <h3 style={{color:"#00BA94"}}>────</h3>
                                         <p style={{color:"black", fontWeight:"600", marginBottom:"100px"}}>
-                                            {t("딥 러닝 기반의 얼굴인식을 통한") + t("교통사고 예방 & 자동 SOS 서비스") + t("クルマモリ9 프로젝트 팀 MIRO입니다.")}
+                                            {t("딥 러닝 기반의 얼굴인식을 통한") + t("교통사고 예방 & 자동 SOS 서비스") + " "+ t("クルマモリ9 프로젝트 팀 MIRO입니다.")}
                                         </p>
                                        
                                     </ScrollAnimation>

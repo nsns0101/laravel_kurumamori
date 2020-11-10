@@ -63,12 +63,12 @@ export const Map_api = () => {
             language:"en"
         }}
         defaultCenter={{
-            // lat: location[0] ? location[0].lat : 37.3857469,
-            // lng: location[0] ? location[0].lng : 127.245579
-            lat: 36.114202,
-            lng: 137.4714192
+            lat: location[0] ? location[0].lat : 37.3857469,
+            lng: location[0] ? location[0].lng : 127.245579
+            // lat: 36.114202,
+            // lng: 137.4714192
             }}
-        defaultZoom={8}
+        defaultZoom={10}
     >
         {location && location.map( (value, index) => {
             return (
