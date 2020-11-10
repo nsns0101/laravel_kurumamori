@@ -212,7 +212,7 @@ export default ({
                                                             required: "필수 입력 사항입니다.",
                                                         })}
                                                     >
-                                                        {/* <option value="non">시/도</option>
+                                                        <option value="non">시/도</option>
                                                         <option value="강원도">강원도</option>
                                                         <option value="경기도">경기도</option>
                                                         <option value="경상남도">경상남도</option>
@@ -229,9 +229,9 @@ export default ({
                                                         <option value="광주">광주</option>
                                                         <option value="대전">대전</option>
                                                         <option value="울산">울산</option>
-                                                        <option value="세종">세종</option> */}
+                                                        <option value="세종">세종</option>
     
-                                                        <option value="non">都道府県</option>
+                                                        {/* <option value="non">都道府県</option>
                                                         <option value="香川県">香川県</option>
                                                         <option value="鹿児島県">鹿児島県</option>
                                                         <option value="神奈川県">神奈川県</option>
@@ -278,7 +278,7 @@ export default ({
                                                         <option value="福島県">福島県</option>
                                                         <option value="福岡県">福岡県</option>
                                                         <option value="福井県">福井県</option>
-                                                        <option value="広島県">広島県</option>
+                                                        <option value="広島県">広島県</option> */}
                                                         
                                                     </select>
                                                 </div>
